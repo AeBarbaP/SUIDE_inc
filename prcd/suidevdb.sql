@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2022 at 06:36 PM
+-- Generation Time: Sep 01, 2022 at 09:58 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -29,18 +29,29 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `documentos` (
   `id` int(11) NOT NULL,
-  `id_ext` varchar(10) NOT NULL,
-  `concatenado_id` varchar(20) NOT NULL,
+  `id_ext` varchar(50) NOT NULL,
+  `concatenado_id` varchar(50) NOT NULL,
   `qr_cred` varchar(100) NOT NULL,
   `qr_tarjeton` varchar(100) NOT NULL,
   `entregado_c` int(10) NOT NULL,
-  `fecha_c` date NOT NULL,
-  `entregado_t` int(10) NOT NULL,
-  `fecha_t` date NOT NULL,
-  `vigencia_cred` date NOT NULL,
-  `vigencia_tarjeton` date NOT NULL,
-  `id_users` int(15) NOT NULL
+  `fecha_c` date DEFAULT NULL,
+  `entregado_t` int(10) DEFAULT NULL,
+  `fecha_t` date DEFAULT NULL,
+  `vigencia_cred` date DEFAULT NULL,
+  `vigencia_tarjeton` date DEFAULT NULL,
+  `id_users` int(15) NOT NULL,
+  `recibido` varchar(50) NOT NULL,
+  `folio_cred` int(10) NOT NULL,
+  `folio_tarj` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `documentos`
+--
+
+INSERT INTO `documentos` (`id`, `id_ext`, `concatenado_id`, `qr_cred`, `qr_tarjeton`, `entregado_c`, `fecha_c`, `entregado_t`, `fecha_t`, `vigencia_cred`, `vigencia_tarjeton`, `id_users`, `recibido`, `folio_cred`, `folio_tarj`) VALUES
+(1, 'C-4940-44790', '', '', '', 1, '2022-07-06', 0, '0000-00-00', '2023-07-06', '0000-00-00', 1, '', 0, 0),
+(2, 'C-4940-44790', 'C-4940-44790-1', '-', '-', 1, '2022-08-31', 1, '2022-08-31', '2023-08-31', '2023-08-31', 1, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -60,6 +71,33 @@ CREATE TABLE `log_entregas` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `prestamo`
+--
+
+CREATE TABLE `prestamo` (
+  `id` int(11) NOT NULL,
+  `apellido_p` varchar(15) NOT NULL,
+  `apellido_m` varchar(15) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `curp` varchar(18) NOT NULL,
+  `calle_num` varchar(35) NOT NULL,
+  `colonia` varchar(20) NOT NULL,
+  `ciudad` varchar(20) NOT NULL,
+  `municipio` varchar(20) NOT NULL,
+  `codigo_postal` varchar(30) NOT NULL,
+  `telefono` int(10) NOT NULL,
+  `contacto` int(10) DEFAULT NULL,
+  `folio_tarj` int(10) NOT NULL,
+  `fecha_entrega` datetime NOT NULL,
+  `vigencia` datetime NOT NULL,
+  `id_users` int(11) NOT NULL,
+  `qr_prestamo` varchar(100) NOT NULL,
+  `entregado` int(1) NOT NULL COMMENT '1 Beneficiario\r\n2 Familiar\r\n3 Enlace Municipal'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -67,7 +105,32 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `user_name` varchar(10) NOT NULL,
   `password` varchar(8) NOT NULL,
-  `perfil` int(2) NOT NULL
+  `perfil` int(2) NOT NULL,
+  `nombre` varchar(80) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `user_name`, `password`, `perfil`, `nombre`) VALUES
+(1, 'annaeliza', '12345', 1, 'Ana Elisa Barba Pinedo');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehiculos`
+--
+
+CREATE TABLE `vehiculos` (
+  `id` int(11) NOT NULL,
+  `id_prestamo` int(10) DEFAULT NULL,
+  `id_documentos` int(11) DEFAULT NULL,
+  `modelo` varchar(50) NOT NULL,
+  `marca` varchar(15) NOT NULL,
+  `annio` int(4) NOT NULL,
+  `no_placas` varchar(10) NOT NULL,
+  `chofer` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -87,9 +150,21 @@ ALTER TABLE `log_entregas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `prestamo`
+--
+ALTER TABLE `prestamo`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vehiculos`
+--
+ALTER TABLE `vehiculos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -100,7 +175,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `log_entregas`
@@ -109,9 +184,21 @@ ALTER TABLE `log_entregas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `prestamo`
+--
+ALTER TABLE `prestamo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `vehiculos`
+--
+ALTER TABLE `vehiculos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
