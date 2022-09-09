@@ -1,3 +1,41 @@
+<?php
+session_start();
+
+if (isset($_SESSION['usr'])) {
+    if($_SESSION['perfil']==1){
+        // header('Location: javascript: history.go(-1)');
+    }
+    elseif($_SESSION['perfil']==2){
+        // header('Location: javascript: history.go(-1)');
+    }
+    elseif($_SESSION['perfil']==3){
+        // header('Location: javascript: history.go(-1)');
+    }
+    else{
+        header('Location:prcd/sort.php');
+    }
+    // Si esta identificado, en otras palabras existe la variable, le saludamos
+    // echo 'Hola ' . $_SESSION['usr'];
+} else {
+    // En caso contrario redirigimos el visitante a otra página
+
+    echo 'Usuario no válido';
+    // header('Location: ../../autentificacion/');
+    header('Location: prcd/sort.php');
+    die();
+}
+
+include('prcd/qc/qc.php');
+
+// variables de sesión
+
+    $usuario = $_SESSION['usr'];
+    $id = $_SESSION['id'];
+    $perfil = $_SESSION['perfil'];
+    $nombre = $_SESSION['nombre'];
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,7 +53,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script>
-
 
     
 
@@ -88,7 +125,7 @@
   <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Cerrar Sesión</a>
+      <a class="nav-link px-3" href="prcd/sort.php">Cerrar Sesión</a>
     </div>
   </div>
 </header>
@@ -96,6 +133,14 @@
 <div class="container-fluid">
   <div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse mt-3">
+      <p class="sidebar-heading d-flex justify-content-center text-center align-items-center px-3 mt-4 mb-1 text-muted" style="font-size: 1rem;">
+        <span class=""><strong>Bienvenido<br><i class="fas fa-user"></i> 
+          <?php
+            echo ($nombre);
+          ?></strong>
+        </span>
+      </p>
+      <hr>
       <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
@@ -105,7 +150,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#credgen" href="">
               <span data-feather="credit-card" class="align-text-bottom"></span>
               Generar credencial
             </a>
@@ -234,6 +279,38 @@
                       }
                       echo '
                     <tr>
+                    <!-- Inicia Modal para generar credencial -->
+
+                    <div class="modal fade " id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Generar Credencial con QR</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <label for="exampleDataList" class="form-label">Número de Expediente</label>
+                            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar...">
+                            <datalist id="datalistOptions">
+                              <option value="San Francisco">
+                              <option value="New York">
+                              <option value="Seattle">
+                              <option value="Los Angeles">
+                              <option value="Chicago">
+                            </datalist>
+                            <hr>
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Termina Modal para generar credencial -->
+
                     <!-- Modal -->
                     <div class="modal fade" id="QR'.$row_sqlQueryCredencial['id'].'" tabindex="-1" aria-labelledby="QRLabel" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered">
@@ -307,133 +384,7 @@
             ?>
           </div>
 
-      <!-- <div class="table-responsive">
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,002</td>
-              <td>placeholder</td>
-              <td>irrelevant</td>
-              <td>visual</td>
-              <td>layout</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>data</td>
-              <td>rich</td>
-              <td>dashboard</td>
-              <td>tabular</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>information</td>
-              <td>placeholder</td>
-              <td>illustrative</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,004</td>
-              <td>text</td>
-              <td>random</td>
-              <td>layout</td>
-              <td>dashboard</td>
-            </tr>
-            <tr>
-              <td>1,005</td>
-              <td>dashboard</td>
-              <td>irrelevant</td>
-              <td>text</td>
-              <td>placeholder</td>
-            </tr>
-            <tr>
-              <td>1,006</td>
-              <td>dashboard</td>
-              <td>illustrative</td>
-              <td>rich</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,007</td>
-              <td>placeholder</td>
-              <td>tabular</td>
-              <td>information</td>
-              <td>irrelevant</td>
-            </tr>
-            <tr>
-              <td>1,008</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,009</td>
-              <td>placeholder</td>
-              <td>irrelevant</td>
-              <td>visual</td>
-              <td>layout</td>
-            </tr>
-            <tr>
-              <td>1,010</td>
-              <td>data</td>
-              <td>rich</td>
-              <td>dashboard</td>
-              <td>tabular</td>
-            </tr>
-            <tr>
-              <td>1,011</td>
-              <td>information</td>
-              <td>placeholder</td>
-              <td>illustrative</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,012</td>
-              <td>text</td>
-              <td>placeholder</td>
-              <td>layout</td>
-              <td>dashboard</td>
-            </tr>
-            <tr>
-              <td>1,013</td>
-              <td>dashboard</td>
-              <td>irrelevant</td>
-              <td>text</td>
-              <td>visual</td>
-            </tr>
-            <tr>
-              <td>1,014</td>
-              <td>dashboard</td>
-              <td>illustrative</td>
-              <td>rich</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,015</td>
-              <td>random</td>
-              <td>tabular</td>
-              <td>information</td>
-              <td>text</td>
-            </tr>
-          </tbody>
-        </table>
-      </div> -->
+      
     </main>
   </div>
 </div>
