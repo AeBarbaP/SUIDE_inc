@@ -32,7 +32,7 @@ include('prcd/qc/qc.php');
     $usuario = $_SESSION['usr'];
     $id = $_SESSION['id'];
     $perfil = $_SESSION['perfil'];
-    $nombre = $_SESSION['nombre'];
+    $nombre = $_SESSION['username'];
 
 ?>
 
