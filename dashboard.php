@@ -32,19 +32,23 @@ include('prcd/qc/qc.php');
     $usuario = $_SESSION['usr'];
     $id = $_SESSION['id'];
     $perfil = $_SESSION['perfil'];
-    $nombre = $_SESSION['username'];
+    $nombre = $_SESSION['nombre'];
 
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
-    <title>Dashboard Template · Bootstrap v5.2</title>
+    <title>SUIDEV · Inclusión</title>
+
+    <link rel="icon" type="image/png" href="img/inclusion.ico"/>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
+    <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -117,24 +121,23 @@ include('prcd/qc/qc.php');
   </head>
   <body>
     
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow mb-5">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#"><img src="img/small.png" with="auto" height="40rem"> | SUIDEV</a>
+<nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
   <div class="navbar-nav">
-    <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="prcd/sort.php">Cerrar Sesión</a>
+    <div class="nav-item text-nowrap text-light">
+      <a class="nav-link px-3 text-white" href="prcd/sort.php">Cerrar Sesión</a>
     </div>
   </div>
-</header>
+</nav>
 
 <div class="container-fluid">
   <div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse mt-3">
       <p class="sidebar-heading d-flex justify-content-center text-center align-items-center px-3 mt-4 mb-1 text-muted" style="font-size: 1rem;">
-        <span class=""><strong>Bienvenido<br><i class="fas fa-user"></i> 
+        <span class=""><strong>Bienvenid@<br><i class="fas fa-user"></i> 
           <?php
             echo ($nombre);
           ?></strong>
@@ -218,7 +221,7 @@ include('prcd/qc/qc.php');
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
-        <p class="h3 text-muted">Sistema Único de Identificación y Verificación</p>
+        <p class="h3">Bienvenid@</p>
         <div class="btn-toolbar mb-2 mb-md-0">
           <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
             <span data-feather="calendar" class="align-text-bottom"></span>
@@ -226,12 +229,12 @@ include('prcd/qc/qc.php');
           </button>
         </div>
       </div>
-      <p class="h1 mb-3">Bienvenido</p>
+      <p class="h6 mb-5  text-muted">Sistema Único de Identificación y Verificación</p>
       <hr>
-      <h4 class="text-muted mt-3">Últimas credenciales generadas</h4>
+      <h4 class="text-muted mt-4">Últimas credenciales generadas</h4>
       <div class="table-responsive">
             <table class="table table-hover table-bordered table-sm align-middle mt-4">
-              <thead style="background-color:#7B8DAB;" class="text-light align-middle">
+              <thead style="background-color:#B8B8B8;" class="text-light align-middle">
                 <tr class="text-center">
                     <th scope="col">#</th>
                     <th scope="col">No. de Expediente</th>
@@ -298,12 +301,36 @@ include('prcd/qc/qc.php');
                               <option value="Los Angeles">
                               <option value="Chicago">
                             </datalist>
-                            <hr>
-
-                          </div>
+                            <br>
+                            <div class="container text-center">
+                              <div class="card mb-3" style="max-width: 100%;">
+                                <div class="row g-0">
+                                  <div class="col-md-4">
+                                    <!-- <img src="..." class="img-fluid rounded-start" alt="..."> -->
+                                    <i class="bi bi-file-person-fill" style="font-size: 15rem;"></i>
+                                    <div class="input-group">
+                                      <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                                      <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-8">
+                                    <div class="card-body text-start">
+                                      <h5 class="card-title mt-3">Nombre Completo</h5>
+                                      <p class="card-text">Tipo Discapacidad: </p>
+                                      <p class="card-text">No. Expediente: </p>
+                                      <p class="card-text">CURP: </p>
+                                      <p class="card-text">Domicilio: <br>     Calle y no.:<br>     Colonia:</p>
+                                      <!-- <p class="card-text text-end text-muted" style="font-size: 5rem;"><i class="bi bi-qr-code"></i></p> -->
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>  
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary"><i class="bi bi-save2"></i> Guardar Cambios</button>
+                            <button type="button" class="btn btn-primary"><i class="bi bi-printer"></i> Imprimir</button>
                           </div>
                         </div>
                       </div>

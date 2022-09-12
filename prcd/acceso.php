@@ -13,6 +13,7 @@ if (isset($_POST['usr']) && isset($_POST['pwd'])) {
    
         $_SESSION['id']=$row_sql['id'];
         $_SESSION['usr']=$row_sql['username'];
+        $_SESSION['nombre']=$row_sql['nombre'];
         $_SESSION['pwd']=$row_sql['pwd'];
         $_SESSION['perfil']=$row_sql['perfil'];
 
