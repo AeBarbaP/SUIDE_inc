@@ -49,7 +49,10 @@ include('prcd/qc/qc.php');
     <link rel="icon" type="image/png" href="img/inclusion.ico"/>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
     <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -57,12 +60,15 @@ include('prcd/qc/qc.php');
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
 
-<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
+      body {
+        font-family: 'Quicksand', sans-serif;
+      }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -122,13 +128,13 @@ include('prcd/qc/qc.php');
   <body>
     
 <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="navbar-nav">
     <div class="nav-item text-nowrap text-light">
-      <a class="nav-link px-3 text-white" href="prcd/sort.php">Cerrar Sesión</a>
+      <a class="nav-link px-3 text-white" style="font-family: 'Quicksand', sans-serif;" href="prcd/sort.php">Cerrar Sesión</a>
     </div>
   </div>
 </nav>
@@ -137,7 +143,7 @@ include('prcd/qc/qc.php');
   <div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse mt-3">
       <p class="sidebar-heading d-flex justify-content-center text-center align-items-center px-3 mt-4 mb-1 text-muted" style="font-size: 1rem;">
-        <span class=""><strong>Bienvenid@<br><i class="fas fa-user"></i> 
+        <span class="" style="font-family: 'Montserrat', sans-serif;"><strong>Bienvenid@<br><i class="fas fa-user"></i> 
           <?php
             echo ($nombre);
           ?></strong>
@@ -145,7 +151,7 @@ include('prcd/qc/qc.php');
       </p>
       <hr>
       <div class="position-sticky pt-3 sidebar-sticky">
-        <ul class="nav flex-column">
+        <ul class="nav flex-column" style="font-family: 'Quicksand', sans-serif;">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">
               <span data-feather="home" class="align-text-bottom"></span>
@@ -159,7 +165,7 @@ include('prcd/qc/qc.php');
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#tarjetongen" href="#">
               <span data-feather="clipboard" class="align-text-bottom"></span>
               Generar tarjetón
             </a>
@@ -310,7 +316,6 @@ include('prcd/qc/qc.php');
                                     <i class="bi bi-file-person-fill" style="font-size: 15rem;"></i>
                                     <div class="input-group">
                                       <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                      <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
                                     </div>
                                   </div>
                                   <div class="col-md-8">
@@ -329,7 +334,7 @@ include('prcd/qc/qc.php');
                           </div>  
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary"><i class="bi bi-save2"></i> Guardar Cambios</button>
+                            <button type="button" class="btn btn-primary" onclick="swaldatos()"><i class="bi bi-save2"></i> Generar Credencial</button>
                             <button type="button" class="btn btn-primary"><i class="bi bi-printer"></i> Imprimir</button>
                           </div>
                         </div>
@@ -337,6 +342,81 @@ include('prcd/qc/qc.php');
                     </div>
                     
                     <!-- Termina Modal para generar credencial -->
+
+                    <!-- Inicia Modal para generar tarjeton -->
+
+                    <div class="modal fade " id="tarjetongen" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Generar Tarjetón con QR</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <label for="exampleDataList" class="form-label">Número de Expediente</label>
+                            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar...">
+                            <datalist id="datalistOptions">
+                              <option value="San Francisco">
+                              <option value="New York">
+                              <option value="Seattle">
+                              <option value="Los Angeles">
+                              <option value="Chicago">
+                            </datalist>
+                            <br>
+                            <div class="container text-center">
+                              <div class="card mb-3" style="max-width: 100%;">
+                                <div class="row g-0">
+                                  <div class="col-md-4">
+                                    <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
+                                  </div>
+                                  <div class="col-md-8">
+                                    <div class="card-body text-start">
+                                      <h5 class="card-title mt-3">Nombre Completo</h5>
+                                      <p class="card-text">Tipo Discapacidad: </p>
+                                      <p class="card-text">No. Expediente: </p>
+                                      <p class="card-text">CURP: </p>
+                                      <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">Marca</span>
+                                        <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1">
+                                      </div>
+                                      <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">Modelo</span>
+                                        <input type="text" class="form-control" placeholder="Modelo" aria-label="modelo" aria-describedby="basic-addon1">
+                                        <span class="input-group-text">Año</span>
+                                        <input type="text" class="form-control" placeholder="Año" aria-label="anio">
+                                      </div>
+                                      <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">No. de Placas</span>
+                                        <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1">
+                                      </div>
+                                      <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">No. de Serie</span>
+                                        <input type="text" class="form-control" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1">
+                                      </div>
+                                      <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">No. de choferes</span>
+                                        <input type="number" class="form-control" placeholder="# de choferes" aria-label="marca" aria-describedby="basic-addon1">
+                                      </div>
+                                      <div class="input-group">
+                                        <span class="input-group-text">Nombre(s) del(los)<br>Chofer(es)</span>
+                                        <textarea class="form-control" aria-label="nombres de los choferes"></textarea>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>  
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" onclick="swaldatos()"><i class="bi bi-save2"></i> Generar Tarjetón</button>
+                            <button type="button" class="btn btn-primary"><i class="bi bi-printer"></i> Imprimir</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Termina Modal para generar tarjeton -->
 
                     <!-- Modal -->
                     <div class="modal fade" id="QR'.$row_sqlQueryCredencial['id'].'" tabindex="-1" aria-labelledby="QRLabel" aria-hidden="true">
@@ -422,3 +502,22 @@ include('prcd/qc/qc.php');
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
   </body>
 </html>
+
+<script>
+  function swaldatos () {
+    Swal.fire({
+      title: 'Los datos están correctos?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Sí',
+      denyButtonText: `No`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('Listo!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('Verifica los datos!', '', 'info')
+      }
+    })
+}
+</script>
