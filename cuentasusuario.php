@@ -260,31 +260,14 @@ include('prcd/qc/qc.php');
                     echo '
                     <input id="imprime2" value="'.$row_sqlQueryUsers['id'].'" hidden>
                     <tr class="text-center bg-white">
-                      <td>' . $x . '</td>
+                      <td>' . $x . '<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
                       <td>' . $row_sqlQueryUsers['nombre'] . '</td>
                       <td>' . $row_sqlQueryUsers['username'] . '</td>
-                      <td>' . $row_sqlQueryUsers['pwd'] . '</td>';
-                      $idusers= $row_sqlQueryCredencial['id_users'];
-                      $sqlUser= "SELECT * FROM users WHERE id ='$idusers'";
-                      $resultadoQueryUser = $conn->query($sqlUser);
-                      $row_sqlQueryUser = $resultadoQueryUser->fetch_assoc();
-                      echo '
-                      <td>' . $row_sqlQueryUser['nombre'] . '</td>';
-
-                      if($row_sqlQueryCredencial['entregado_c'] == 1){
-                        echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#QR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-check text-success"></i></a></td>';
-                      } elseif($row_sqlQueryCredencial['entregado_c'] == 0){
-                        echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#QR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-x text-danger"></a></i></td>';
-                      }
-
-                      if($row_sqlQueryCredencial['entregado_t'] == 1){
-                        echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#QR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-check text-success"></i></a></td>';
-                      } elseif($row_sqlQueryCredencial['entregado_t'] == 0){
-                        echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#QR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-x text-danger"></i></a></td>';
+                      <td>' . $row_sqlQueryUsers['pwd'] . '</td>
+                      <td>' . $row_sqlQueryUsers['perfil'] . '</td>
+                      <td><a href="data-bs-toggle="modal" data-bs-target="#QR'.$row_sqlQueryUsers['fecha_creacion'].'""><i class="h4 bi bi-check text-success"></i></a></td>
+                      <td><a href="data-bs-toggle="modal" data-bs-target="#QR'.$row_sqlQueryUsers['id'].'""><i class="h4 bi bi-check text-success"></i></a></td>
+                      ';
                       }
                       echo '
                     <tr>
@@ -419,18 +402,18 @@ include('prcd/qc/qc.php');
                     <!-- Termina Modal para generar tarjeton -->
 
                     <!-- Modal -->
-                    <div class="modal fade" id="QR'.$row_sqlQueryCredencial['id'].'" tabindex="-1" aria-labelledby="QRLabel" aria-hidden="true">
+                    <div class="modal fade" id="QR'.$row_sqlQueryUsers['id'].'" tabindex="-1" aria-labelledby="QRLabel" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-qr-code"></i> Información QR</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
-                          <div class="modal-body" style="text-align: center;" id="div_print'.$row_sqlQueryCredencial['id'].'">
-                            <center><img src="img/logomorismas.png" height="150"></center>
+                          <div class="modal-body" style="text-align: center;" id="div_print'.$row_sqlQueryUsers['id'].'">
+                            <center><img src="" height="150"></center>
                             <br>
-                            <center><h5 style="font-size: 1.5rem"><strong>Número de Expediente:</strong> ' . $row_sqlQueryCredencial['id_ext'] . ' </h5>
-                            <h5 style="font-size: 1.5rem"><strong>Fecha de expedición:</strong> ' . $row_sqlQueryCredencial['fecha_c'] . '</h5>
+                            <center><h5 style="font-size: 1.5rem"><strong>Número de Expediente:</strong> ' . $row_sqlQueryUsers['id_ext'] . ' </h5>
+                            <h5 style="font-size: 1.5rem"><strong>Fecha de expedición:</strong> ' . $row_sqlQueryUsers['fecha_c'] . '</h5>
                             <h5 style="font-size: 1.5rem"><strong>Expira:</strong> ' . $row_sqlQueryCredencial['vigencia_cred'] . ' </h5>
                             <h5 style="font-size: 1.5rem"><strong>Atenidod por:</strong> ' . $row_sqlQueryCredencial['id_users'] . '</h5>
                             <h5 style="font-size: 1.5rem"><strong></strong></h5></center>
@@ -485,8 +468,6 @@ include('prcd/qc/qc.php');
                       </div>
                     </div>
                     ';
-                    
-                  }
             echo'</table>';
             ?>
           </div>
