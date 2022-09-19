@@ -13,10 +13,10 @@
     $sqlQueryTarjeton ="SELECT * FROM documentos WHERE entregado_t = 1 ORDER BY fecha_t ASC";
     $resultadoQueryTarjeton = $conn->query($sqlQueryTarjeton);
 
-/*     $sqlQueryEntregadoC ="SELECT * FROM documentos WHERE entregado_c = 1 ORDER BY fecha_c ASC";
-    $resultadoQueryEntregadoC = $conn->query($sqlQueryEntregadoC);
+    $sqlQueryUsers ="SELECT * FROM users ORDER BY fecha_c ASC";
+    $resultadoQueryUsers = $conn->query($sqlQueryUsers);
 
-    $sqlQueryEntregadoT ="SELECT * FROM documentos WHERE entregado_t = 1 ORDER BY fecha_t ASC";
+/*    $sqlQueryEntregadoT ="SELECT * FROM documentos WHERE entregado_t = 1 ORDER BY fecha_t ASC";
     $resultadoQueryEntregadoT = $conn->query($sqlQueryEntregadoT); */
 ?>
 

@@ -153,7 +153,7 @@ include('prcd/qc/qc.php');
       <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column" style="font-family: 'Quicksand', sans-serif;">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="dashboard.php">
+            <a class="nav-link" href="dashboard.php">
               <span data-feather="home" class="align-text-bottom"></span>
               Inicio
             </a>
@@ -171,7 +171,7 @@ include('prcd/qc/qc.php');
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cuentasusuario.php">
+            <a class="nav-link active" aria-current="page" href="cuentasusuario.php">
               <span data-feather="users" class="align-text-bottom"></span>
               Usuarios SUIDEV
             </a>
@@ -237,33 +237,33 @@ include('prcd/qc/qc.php');
       </div>
       <p class="h6 mb-5  text-muted">Sistema Único de Identificación y Verificación</p>
       <hr>
-      <h4 class="text-muted mt-4">Gestión de cuentas de usuario</h4>
+      <h4 class="text-muted mt-4">Últimas credenciales generadas</h4>
       <div class="table-responsive">
             <table class="table table-hover table-bordered table-sm align-middle mt-4">
               <thead style="background-color:#B8B8B8;" class="text-light align-middle">
                 <tr class="text-center">
-                    <th scope="col">#</th>
-                    <th scope="col">No. de Expediente</th>
-                    <th scope="col">Fecha de Entrega</th>
-                    <th scope="col">Vigencia</th>
+                    <th scope="col">Sel</th>
+                    <th scope="col">Nombre Completo</th>
                     <th scope="col">Usuario</th>
-                    <th scope="col">Credencial</th>
-                    <th scope="col">Tarjetón</th>
+                    <th scope="col">Contraseña</th>
+                    <th scope="col">Perfil</th>
+                    <th scope="col">Fecha creación</th>
+                    <th scope="col">Último LogIn</th>
                 </tr>
               </thead>
               <tbody id="myTable">
                 <?php
                   include('prcd/query.php');
                   $x = 0;
-                  while ($row_sqlQueryCredencial = $resultadoQueryCredencial->fetch_assoc()) {
+                  while ($row_sqlQueryUsers = $resultadoQueryUsers->fetch_assoc()) {
                     $x++;
                     echo '
-                    <input id="imprime2" value="'.$row_sqlQueryCredencial['id'].'" hidden>
+                    <input id="imprime2" value="'.$row_sqlQueryUsers['id'].'" hidden>
                     <tr class="text-center bg-white">
                       <td>' . $x . '</td>
-                      <td>' . $row_sqlQueryCredencial['id_ext'] . '</td>
-                      <td>' . $row_sqlQueryCredencial['fecha_c'] . '</td>
-                      <td>' . $row_sqlQueryCredencial['vigencia_cred'] . '</td>';
+                      <td>' . $row_sqlQueryUsers['nombre'] . '</td>
+                      <td>' . $row_sqlQueryUsers['username'] . '</td>
+                      <td>' . $row_sqlQueryUsers['pwd'] . '</td>';
                       $idusers= $row_sqlQueryCredencial['id_users'];
                       $sqlUser= "SELECT * FROM users WHERE id ='$idusers'";
                       $resultadoQueryUser = $conn->query($sqlUser);
@@ -334,7 +334,7 @@ include('prcd/qc/qc.php');
                           </div>  
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatos()"><i class="bi bi-save2"></i> Generar Credencial</button>
+                            <button type="button" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd()"><i class="bi bi-save2"></i> Generar Credencial</button>
                             <button type="button" class="btn btn-primary" id="imprimirc" disabled><i class="bi bi-printer"></i> Imprimir</button>
                           </div>
                         </div>
@@ -409,7 +409,7 @@ include('prcd/qc/qc.php');
                           </div>  
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" id="habilitaimprimirt" onclick="swaldatos()"><i class="bi bi-save2"></i> Generar Tarjetón</button>
+                            <button type="button" class="btn btn-primary" id="habilitaimprimirt" onclick="swaldatostrn()"><i class="bi bi-save2"></i> Generar Tarjetón</button>
                             <button type="button" class="btn btn-primary" id="imprimirt" disabled><i class="bi bi-printer"></i> Imprimir</button>
                           </div>
                         </div>
@@ -490,8 +490,6 @@ include('prcd/qc/qc.php');
             echo'</table>';
             ?>
           </div>
-
-      
     </main>
   </div>
 </div>
