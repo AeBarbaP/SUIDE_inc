@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2022 at 09:58 PM
+-- Generation Time: Sep 19, 2022 at 10:15 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -71,6 +71,19 @@ CREATE TABLE `log_entregas` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `log_usrlogin`
+--
+
+CREATE TABLE `log_usrlogin` (
+  `id` int(11) NOT NULL,
+  `id_usr` int(11) NOT NULL,
+  `fecha_iniciosesion` datetime NOT NULL,
+  `fecha_cierresesion` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `prestamo`
 --
 
@@ -103,18 +116,19 @@ CREATE TABLE `prestamo` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `user_name` varchar(10) NOT NULL,
-  `password` varchar(8) NOT NULL,
+  `username` varchar(10) NOT NULL,
+  `pwd` varchar(8) NOT NULL,
   `perfil` int(2) NOT NULL,
-  `nombre` varchar(80) NOT NULL
+  `nombre` varchar(80) NOT NULL,
+  `fecha_creacion` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_name`, `password`, `perfil`, `nombre`) VALUES
-(1, 'annaeliza', '12345', 1, 'Ana Elisa Barba Pinedo');
+INSERT INTO `users` (`id`, `username`, `pwd`, `perfil`, `nombre`, `fecha_creacion`) VALUES
+(1, 'annaeliza', '12345', 1, 'Ana Elisa Barba Pinedo', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -150,6 +164,12 @@ ALTER TABLE `log_entregas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `log_usrlogin`
+--
+ALTER TABLE `log_usrlogin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `prestamo`
 --
 ALTER TABLE `prestamo`
@@ -181,6 +201,12 @@ ALTER TABLE `documentos`
 -- AUTO_INCREMENT for table `log_entregas`
 --
 ALTER TABLE `log_entregas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `log_usrlogin`
+--
+ALTER TABLE `log_usrlogin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
