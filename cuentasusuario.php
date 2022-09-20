@@ -401,33 +401,6 @@ include('prcd/qc/qc.php');
                     
                     <!-- Termina Modal para generar tarjeton -->
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="QR'.$row_sqlQueryUsers['id'].'" tabindex="-1" aria-labelledby="QRLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-qr-code"></i> Información QR</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body" style="text-align: center;" id="div_print'.$row_sqlQueryUsers['id'].'">
-                            <center><img src="" height="150"></center>
-                            <br>
-                            <center><h5 style="font-size: 1.5rem"><strong>Número de Expediente:</strong> ' . $row_sqlQueryUsers['id_ext'] . ' </h5>
-                            <h5 style="font-size: 1.5rem"><strong>Fecha de expedición:</strong> ' . $row_sqlQueryUsers['fecha_c'] . '</h5>
-                            <h5 style="font-size: 1.5rem"><strong>Expira:</strong> ' . $row_sqlQueryCredencial['vigencia_cred'] . ' </h5>
-                            <h5 style="font-size: 1.5rem"><strong>Atenidod por:</strong> ' . $row_sqlQueryCredencial['id_users'] . '</h5>
-                            <h5 style="font-size: 1.5rem"><strong></strong></h5></center>
-                            <p class="text-center"><img src="prcd/QR/codes/'. $row_sqlQueryCredencial['qr_cred'].'"></p>
-                          </div>
-                          <div class="modal-footer">';?>
-                          <!-- <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('div_print<?php echo $row_sqlQuery['id']?>')"><i class="bi bi-printer-fill"></i> Imprimir</a> -->
-                          <?php echo '
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
                     <!-- Modal editar-->
                     <div class="modal fade" id="editar'.$row_sqlQuery['id'].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog">

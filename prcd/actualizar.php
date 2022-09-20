@@ -8,12 +8,10 @@
 include('qc/qc.php');
 
 $id = $_POST['id'];
-$nombre = $_POST['nombre'];
-$apellidos = $_POST['apellidos'];
-$detalles = $_POST['detalles'];
+$pwd = $_POST['pwd'];
 
     /* $sqlinsert= "INSERT INTO asistentes(nombre,apellidos,curp,detalles,cantidad_polvora,entregado) VALUES('$nombre','$apellidos','$curp','$detalles','$cantidad_polvora','$entregado')"; */
-    $sqlUpdate ="UPDATE asistentes SET nombre='$nombre',apellidos='$apellidos',detalles='$detalles' WHERE id='$id'";
+    $sqlUpdate ="UPDATE users SET pwd='$pwd' WHERE id='$id'";
     $resultado= $conn->query($sqlUpdate);
 
 
@@ -24,8 +22,8 @@ $detalles = $_POST['detalles'];
             icon: 'success',
             title: 'Registro correcto',
             text: 'Actualizado',
-            footer: 'Morismas de Bracho</a>'
-        }).then(function(){window.location='../home_config.php';});</script>";
+            footer: 'SUIDEV - INCLUSIÓN 2022-2027'
+        }).then(function(){window.location='../cuentasusuario.php';});</script>";
         }
         else{
         echo 'No se registró producto';
