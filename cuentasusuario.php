@@ -242,13 +242,14 @@ include('prcd/qc/qc.php');
             <table class="table table-hover table-bordered table-sm align-middle mt-4">
               <thead style="background-color:#B8B8B8;" class="text-light align-middle">
                 <tr class="text-center">
-                    <th scope="col">Sel</th>
+                    <th scope="col">No.</th>
                     <th scope="col">Nombre Completo</th>
                     <th scope="col">Usuario</th>
                     <th scope="col">Contraseña</th>
                     <th scope="col">Perfil</th>
                     <th scope="col">Fecha creación</th>
                     <th scope="col">Último LogIn</th>
+                    <th scope="col">Editar</th>
                 </tr>
               </thead>
               <tbody id="myTable">
@@ -260,187 +261,61 @@ include('prcd/qc/qc.php');
                     echo '
                     <input id="imprime2" value="'.$row_sqlQueryUsers['id'].'" hidden>
                     <tr class="text-center bg-white">
-                      <td>' . $x . '<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                      <td>' . $x . '</td>
                       <td>' . $row_sqlQueryUsers['nombre'] . '</td>
                       <td>' . $row_sqlQueryUsers['username'] . '</td>
                       <td>' . $row_sqlQueryUsers['pwd'] . '</td>
                       <td>' . $row_sqlQueryUsers['perfil'] . '</td>
-                      <td><a href="data-bs-toggle="modal" data-bs-target="#QR'.$row_sqlQueryUsers['fecha_creacion'].'""><i class="h4 bi bi-check text-success"></i></a></td>
-                      <td><a href="data-bs-toggle="modal" data-bs-target="#QR'.$row_sqlQueryUsers['id'].'""><i class="h4 bi bi-check text-success"></i></a></td>
+                      <td>' . $row_sqlQueryUsers['fecha_creacion'].'</td>';
+                      $idLogIn = $row_sqlQueryUsers['id'];
+                      include ('prcd/querylogs.php');
+                      $rowLogIn = $resultadoLogIn->fetch_assoc();
+                      echo ' 
+                      <td>' .$rowLogIn['fecha_iniciosesion'].'</td>
                       ';
-                      }
+
+                      echo '<td><span class="badge text-bg-secondary" type="button" data-bs-toggle="modal" data-bs-target="#editar'.$row_sqlQueryUsers['id'].'"><i class="bi bi-pencil-square"></i> Editar</span></td>
+                      ';
                       echo '
                     <tr>
-                    <!-- Inicia Modal para generar credencial -->
-
-                    <div class="modal fade " id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Generar Credencial con QR</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <label for="exampleDataList" class="form-label">Número de Expediente</label>
-                            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar...">
-                            <datalist id="datalistOptions">
-                              <option value="San Francisco">
-                              <option value="New York">
-                              <option value="Seattle">
-                              <option value="Los Angeles">
-                              <option value="Chicago">
-                            </datalist>
-                            <br>
-                            <div class="container text-center">
-                              <div class="card mb-3" style="max-width: 100%;">
-                                <div class="row g-0">
-                                  <div class="col-md-4">
-                                    <!-- <img src="..." class="img-fluid rounded-start" alt="..."> -->
-                                    <i class="bi bi-file-person-fill" style="font-size: 15rem;"></i>
-                                    <div class="input-group">
-                                      <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                    </div>
-                                  </div>
-                                  <div class="col-md-8">
-                                    <div class="card-body text-start">
-                                      <h5 class="card-title mt-3">Nombre Completo</h5>
-                                      <p class="card-text">Tipo Discapacidad: </p>
-                                      <p class="card-text">No. Expediente: </p>
-                                      <p class="card-text">CURP: </p>
-                                      <p class="card-text">Domicilio: <br>     Calle y no.:<br>     Colonia:</p>
-                                      <!-- <p class="card-text text-end text-muted" style="font-size: 5rem;"><i class="bi bi-qr-code"></i></p> -->
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>  
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd()"><i class="bi bi-save2"></i> Generar Credencial</button>
-                            <button type="button" class="btn btn-primary" id="imprimirc" disabled><i class="bi bi-printer"></i> Imprimir</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                     
-                    <!-- Termina Modal para generar credencial -->
-
-                    <!-- Inicia Modal para generar tarjeton -->
-
-                    <div class="modal fade " id="tarjetongen" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Generar Tarjetón con QR</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <label for="exampleDataList" class="form-label">Número de Expediente</label>
-                            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar...">
-                            <datalist id="datalistOptions">
-                              <option value="San Francisco">
-                              <option value="New York">
-                              <option value="Seattle">
-                              <option value="Los Angeles">
-                              <option value="Chicago">
-                            </datalist>
-                            <br>
-                            <div class="container text-center">
-                              <div class="card mb-3" style="max-width: 100%;">
-                                <div class="row g-0">
-                                  <div class="col-md-4">
-                                    <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
-                                  </div>
-                                  <div class="col-md-8">
-                                    <div class="card-body text-start">
-                                      <h5 class="card-title mt-3">Nombre Completo</h5>
-                                      <p class="card-text">Tipo Discapacidad: </p>
-                                      <p class="card-text">No. Expediente: </p>
-                                      <p class="card-text">CURP: </p>
-                                      <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">Marca</span>
-                                        <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1">
-                                      </div>
-                                      <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">Modelo</span>
-                                        <input type="text" class="form-control" placeholder="Modelo" aria-label="modelo" aria-describedby="basic-addon1">
-                                        <span class="input-group-text">Año</span>
-                                        <input type="text" class="form-control" placeholder="Año" aria-label="anio">
-                                      </div>
-                                      <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">No. de Placas</span>
-                                        <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1">
-                                      </div>
-                                      <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-                                        <input type="text" class="form-control" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1">
-                                      </div>
-                                      <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">No. de choferes</span>
-                                        <input type="number" class="form-control" placeholder="# de choferes" aria-label="marca" aria-describedby="basic-addon1">
-                                      </div>
-                                      <div class="input-group">
-                                        <span class="input-group-text">Nombre(s) del(los)<br>Chofer(es)</span>
-                                        <textarea class="form-control" aria-label="nombres de los choferes"></textarea>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>  
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" id="habilitaimprimirt" onclick="swaldatostrn()"><i class="bi bi-save2"></i> Generar Tarjetón</button>
-                            <button type="button" class="btn btn-primary" id="imprimirt" disabled><i class="bi bi-printer"></i> Imprimir</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <!-- Termina Modal para generar tarjeton -->
-
-                    <!-- Modal editar-->
-                    <div class="modal fade" id="editar'.$row_sqlQuery['id'].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <!-- Inicia Modal editar-->
+                    <div class="modal fade" id="editar'.$row_sqlQueryUsers['id'].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Alta de polvora</h5>
+                            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Editar Usuario</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
                             <form action="prcd/actualizar.php" method="POST"><!--form-->
-                                  <input name="id" value="'.$row_sqlQuery['id'].'" hidden>
+                                  <input name="id" value="'.$row_sqlQueryUsers['id'].'" hidden>
                                   <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
-                                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" value="' . $row_sqlQuery['nombre'] . '" aria-describedby="basic-addon1" name="nombre" required>
+                                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" value="' . $row_sqlQueryUsers['nombre'] . '" aria-describedby="basic-addon1" name="nombre" required>
                                   </div>
                                   <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-workspace"></i></span>
-                                    <input type="text" class="form-control" placeholder="Apellidos" aria-label="Apellidos" value="' . $row_sqlQuery['apellidos'] . '" aria-describedby="basic-addon1"  name="apellidos" required>
+                                    <input type="text" class="form-control" placeholder="Usuario" aria-label="usuario" value="' . $row_sqlQueryUsers['username'] . '" aria-describedby="basic-addon1"  name="username" readonly>
                                   </div>
                                   <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-badge"></i></span>
-                                    <input type="text" class="form-control" placeholder="CURP" aria-label="CURP" aria-describedby="basic-addon1" value="' . $row_sqlQuery['curp'] . '" name="curp" readonly>
+                                    <input type="text" class="form-control" placeholder="Contraseña" aria-label="contrasenia" aria-describedby="basic-addon1" value="' . $row_sqlQueryUsers['pwd'] . '" name="pwd">
                                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-123"></i></span>
-                                    <input type="text" class="form-control" placeholder="Cantidad" aria-label="Cantidad" value="' . $row_sqlQuery['cantidad_polvora'] . '" aria-describedby="basic-addon1" maxlength="1" onkeypress="ValidaSoloNumeros()" name="cantidad_polvora" readonly>
-                                  </div><!-- Si, y solo si se asignan 2kg de polvora, se habilita el campo de detalles y se convierte en obligatorio -->
-                                  
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-card-text"></i></span>
-                                    <textarea style="resize: none;" rows="4" type="text" class="form-control" placeholder="Detalles (opcional)" aria-label="Detalles" aria-describedby="basic-addon1" name="detalles">' . $row_sqlQuery['detalles'] . '</textarea>
+                                    <input type="text" class="form-control" placeholder="Perfil" aria-label="Perfil" value="' . $row_sqlQueryUsers['perfil'] . '">
                                   </div>
+                                  
                             </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
-                                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Guardar</button>
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Guardar Cambios</button>
                               </div>
                             </form><!--form-->
                         </div>
                       </div>
                     </div>
-                    ';
+                  
+                    ';}
             echo'</table>';
             ?>
           </div>

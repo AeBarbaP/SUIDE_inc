@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2022 at 10:15 PM
+-- Generation Time: Sep 20, 2022 at 10:33 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -81,6 +81,13 @@ CREATE TABLE `log_usrlogin` (
   `fecha_cierresesion` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `log_usrlogin`
+--
+
+INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierresesion`) VALUES
+(1, 1, '2022-09-20 22:27:24', '2022-09-20 22:27:24');
+
 -- --------------------------------------------------------
 
 --
@@ -120,15 +127,16 @@ CREATE TABLE `users` (
   `pwd` varchar(8) NOT NULL,
   `perfil` int(2) NOT NULL,
   `nombre` varchar(80) NOT NULL,
-  `fecha_creacion` datetime NOT NULL
+  `fecha_creacion` datetime NOT NULL,
+  `estatus` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `pwd`, `perfil`, `nombre`, `fecha_creacion`) VALUES
-(1, 'annaeliza', '12345', 1, 'Ana Elisa Barba Pinedo', '0000-00-00 00:00:00');
+INSERT INTO `users` (`id`, `username`, `pwd`, `perfil`, `nombre`, `fecha_creacion`, `estatus`) VALUES
+(1, 'annaeliza', '12345', 1, 'Ana Elisa Barba Pinedo', '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -207,7 +215,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `prestamo`
