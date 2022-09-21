@@ -208,13 +208,13 @@ include('prcd/qc/qc.php');
           </div>
           <div class="col-6 mt-3 text-end">
             <div class="btn-group" role="group" aria-label="Basic outlined example">
-              <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#agregar"><i class="bi bi-person-plus-fill"></i> Nuevo</button>
-              <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#agregar"><i class="bi bi-person-plus-fill"></i> Nuevo</button>
+              <button class="btn btn-outline-secondary dropdown-toggle btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-list"></i> Listas de Usuarios
               </button>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Activos</a></li>
-                  <li><a class="dropdown-item" href="#">Inactivos</a></li>
+                  <li><a class="dropdown-item" style="font-size:small" href="#">Activos</a></li>
+                  <li><a class="dropdown-item" style="font-size:small" href="#">Inactivos</a></li>
                 </ul>
               
             </div>
