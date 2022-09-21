@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2022 at 10:33 PM
+-- Generation Time: Sep 21, 2022 at 10:09 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -86,7 +86,8 @@ CREATE TABLE `log_usrlogin` (
 --
 
 INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierresesion`) VALUES
-(1, 1, '2022-09-20 22:27:24', '2022-09-20 22:27:24');
+(1, 1, '2022-09-20 22:27:24', '2022-09-20 22:27:24'),
+(2, 2, '2022-09-21 21:27:57', '2022-09-21 21:27:57');
 
 -- --------------------------------------------------------
 
@@ -124,7 +125,7 @@ CREATE TABLE `prestamo` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(10) NOT NULL,
-  `pwd` varchar(8) NOT NULL,
+  `pwd` varchar(10) NOT NULL,
   `perfil` int(2) NOT NULL,
   `nombre` varchar(80) NOT NULL,
   `fecha_creacion` datetime NOT NULL,
@@ -136,7 +137,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `pwd`, `perfil`, `nombre`, `fecha_creacion`, `estatus`) VALUES
-(1, 'annaeliza', '12345', 1, 'Ana Elisa Barba Pinedo', '0000-00-00 00:00:00', 0);
+(1, 'annaeliza', '12345', 1, 'Ana Elisa Barba Pinedo', '0000-00-00 00:00:00', 1),
+(2, 'jrodolfo', '12345678', 1, 'Jesús Rodolfo Leaños Villegas', '2022-09-21 14:23:40', 1),
+(4, 'juanjo', '12345678', 2, 'Juan José Quiroz Nava', '2022-09-21 14:34:03', 1),
+(5, 'grisgalvan', '789456123', 1, 'Griselda Galván Galván', '2022-09-21 15:08:58', 1);
 
 -- --------------------------------------------------------
 
@@ -215,7 +219,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `prestamo`
@@ -227,7 +231,7 @@ ALTER TABLE `prestamo`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `vehiculos`

@@ -334,7 +334,7 @@ include('prcd/qc/qc.php');
                           </div>  
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatos()"><i class="bi bi-save2"></i> Generar Credencial</button>
+                            <button type="button" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd()"><i class="bi bi-save2"></i> Generar Credencial</button>
                             <button type="button" class="btn btn-primary" id="imprimirc" disabled><i class="bi bi-printer"></i> Imprimir</button>
                           </div>
                         </div>
@@ -409,7 +409,7 @@ include('prcd/qc/qc.php');
                           </div>  
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" id="habilitaimprimirt" onclick="swaldatos()"><i class="bi bi-save2"></i> Generar Tarjetón</button>
+                            <button type="button" class="btn btn-primary" id="habilitaimprimirt" onclick="swaldatostrn()"><i class="bi bi-save2"></i> Generar Tarjetón</button>
                             <button type="button" class="btn btn-primary" id="imprimirt" disabled><i class="bi bi-printer"></i> Imprimir</button>
                           </div>
                         </div>

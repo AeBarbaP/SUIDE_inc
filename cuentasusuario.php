@@ -61,6 +61,8 @@ include('prcd/qc/qc.php');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
     
 
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -159,13 +161,13 @@ include('prcd/qc/qc.php');
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#credgen" href="">
+            <a class="nav-link text-muted" data-bs-toggle="modal" data-bs-target="#credgen" disabled>
               <span data-feather="credit-card" class="align-text-bottom"></span>
               Generar credencial
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#tarjetongen" href="#">
+            <a class="nav-link text-muted" data-bs-toggle="modal" data-bs-target="#tarjetongen" disabled>
               <span data-feather="clipboard" class="align-text-bottom"></span>
               Generar tarjetón
             </a>
@@ -189,66 +191,50 @@ include('prcd/qc/qc.php');
             </a>
           </li>
         </ul>
-
-        <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-          <span>Saved reports</span>
-          <a class="link-secondary" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle" class="align-text-bottom"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text" class="align-text-bottom"></span>
-              Current month
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text" class="align-text-bottom"></span>
-              Last quarter
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text" class="align-text-bottom"></span>
-              Social engagement
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text" class="align-text-bottom"></span>
-              Year-end sale
-            </a>
-          </li>
-        </ul> -->
       </div>
     </nav>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
         <p class="h3">Bienvenid@</p>
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            <span data-feather="calendar" class="align-text-bottom"></span>
-            Esta semana
-          </button>
-        </div>
+        
       </div>
-      <p class="h6 mb-5  text-muted">Sistema Único de Identificación y Verificación</p>
+      <p class="h6 mb-4 text-muted">Sistema Único de Identificación y Verificación</p>
       <hr>
-      <h4 class="text-muted mt-4">Últimas credenciales generadas</h4>
-      <div class="table-responsive">
+      <div class="container-fluid">
+        <div class="row justify-content-between">
+          <div class="col-6 mt-3">
+            <h4 class="text-muted">Usuarios SUIDEV</h4>
+          </div>
+          <div class="col-6 mt-3 text-end">
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+              <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#agregar"><i class="bi bi-person-plus-fill"></i> Nuevo</button>
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-list"></i> Listas de Usuarios
+              </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Activos</a></li>
+                  <li><a class="dropdown-item" href="#">Inactivos</a></li>
+                </ul>
+              
+            </div>
+          </div>
+        </div>  
+
+      
+        
+      
+      <div class="table-responsive mt-3">
             <table class="table table-hover table-bordered table-sm align-middle mt-4">
               <thead style="background-color:#B8B8B8;" class="text-light align-middle">
                 <tr class="text-center">
                     <th scope="col">No.</th>
                     <th scope="col">Nombre Completo</th>
                     <th scope="col">Usuario</th>
-                    <th scope="col">Contraseña</th>
                     <th scope="col">Perfil</th>
                     <th scope="col">Fecha creación</th>
                     <th scope="col">Último LogIn</th>
+                    <th scope="col">Estatus</th>
                     <th scope="col">Editar</th>
                 </tr>
               </thead>
@@ -264,14 +250,21 @@ include('prcd/qc/qc.php');
                       <td>' . $x . '</td>
                       <td>' . $row_sqlQueryUsers['nombre'] . '</td>
                       <td>' . $row_sqlQueryUsers['username'] . '</td>
-                      <td>' . $row_sqlQueryUsers['pwd'] . '</td>
                       <td>' . $row_sqlQueryUsers['perfil'] . '</td>
                       <td>' . $row_sqlQueryUsers['fecha_creacion'].'</td>';
                       $idLogIn = $row_sqlQueryUsers['id'];
                       include ('prcd/querylogs.php');
                       $rowLogIn = $resultadoLogIn->fetch_assoc();
-                      echo ' 
-                      <td>' .$rowLogIn['fecha_iniciosesion'].'</td>
+                      
+                      if(!empty($rowLogIn['fecha_iniciosesion'])) {
+                        echo'
+                          <td>' .$rowLogIn['fecha_iniciosesion'].'</td>';
+                      }
+                          else{
+                            echo '<td>Usuario nuevo</td>';
+                            }
+                      echo '
+                      <td>' . $row_sqlQueryUsers['estatus'] . '</td>
                       ';
 
                       echo '<td><span class="badge text-bg-secondary" type="button" data-bs-toggle="modal" data-bs-target="#editar'.$row_sqlQueryUsers['id'].'"><i class="bi bi-pencil-square"></i> Editar</span></td>
@@ -299,10 +292,80 @@ include('prcd/qc/qc.php');
                                     <input type="text" class="form-control" placeholder="Usuario" aria-label="usuario" value="' . $row_sqlQueryUsers['username'] . '" aria-describedby="basic-addon1"  name="username" readonly>
                                   </div>
                                   <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-badge"></i></span>
-                                    <input type="text" class="form-control" placeholder="Contraseña" aria-label="contrasenia" aria-describedby="basic-addon1" value="' . $row_sqlQueryUsers['pwd'] . '" name="pwd">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-123"></i></span>
-                                    <input type="text" class="form-control" placeholder="Perfil" aria-label="Perfil" value="' . $row_sqlQueryUsers['perfil'] . '">
+                                    <span class="input-group-text" id="basic-addon1" for="inputGroupSelect01">Perfil</span>
+                                    <select class="form-select" id="inputGroupSelect01" value="' . $row_sqlQueryUsers['perfil'] . '">
+                                      <option selected>Elige...</option>
+                                      <option value="1">Administrador</option>
+                                      <option value="2">Usuario</option>
+                                    </select>
+                                
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">';
+                                    if ($row_sqlQueryUsers['estatus']==1){
+                                      echo '
+                                      <script>
+                                        document.getElementById("btnradio1").checked = true;
+                                        document.getElementById("btnradio2").checked = false;
+                                      </script>
+                                      ';
+                                    } else {
+                                      echo '
+                                      <script>
+                                        document.getElementById("btnradio2").checked = true;
+                                        document.getElementById("btnradio1").checked = false;
+                                      </script>
+                                      ';
+                                    }
+                                    echo '
+                                      <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" >
+                                      <label class="btn btn-outline-success" for="btnradio1"><i class="bi bi-check-lg"></i> Activo</label>
+                                      <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                      <label class="btn btn-outline-danger" for="btnradio2"><i class="bi bi-x-lg"></i> Inactivo</label>
+                                    </div>
+                                  </div>
+                                  <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-shield-lock-fill"></i></span>
+                                    <input type="text" class="form-control" placeholder="Contraseña" aria-label="contraseña" value="' . $row_sqlQueryUsers['pwd'] . '" aria-describedby="basic-addon1"  name="pwd">
+                                  </div>
+                                  
+                            </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Guardar Cambios</button>
+                              </div>
+                            </form><!--form-->
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Inicia Modal agregar-->
+                    <div class="modal fade" id="agregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Agregar Usuario</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <form action="prcd/guardarusr.php" method="POST"><!--form-->
+                                  <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+                                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1" name="nombre" required>
+                                  </div>
+                                  <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-workspace"></i></span>
+                                    <input type="text" class="form-control" placeholder="Usuario" aria-label="usuario" aria-describedby="basic-addon1"  name="username" required>
+                                  </div>
+                                  <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1" for="inputGroupSelect01">Perfil</span>
+                                    <select class="form-select" id="inputGroupSelect01" name="perfil" required>
+                                      <option selected>Elige...</option>
+                                      <option value="1">Administrador</option>
+                                      <option value="2">Usuario</option>
+                                    </select>
+                                  </div>
+                                  <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-shield-lock-fill"></i></span>
+                                    <input type="text" class="form-control" placeholder="Contraseña" aria-label="contraseña" aria-describedby="basic-addon1"  name="pwd" required>
                                   </div>
                                   
                             </div>
@@ -318,6 +381,7 @@ include('prcd/qc/qc.php');
                     ';}
             echo'</table>';
             ?>
+          </div>
           </div>
     </main>
   </div>
