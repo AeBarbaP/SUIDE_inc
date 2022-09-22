@@ -10,6 +10,7 @@
     $sqlLogIn ="SELECT * FROM log_usrlogin WHERE id_usr = '$idLogIn' ORDER BY fecha_iniciosesion DESC LIMIT 1";
     $resultadoLogIn = $conn->query($sqlLogIn);
 
+
 /*    $sqlQueryEntregadoT ="SELECT * FROM documentos WHERE entregado_t = 1 ORDER BY fecha_t ASC";
     $resultadoQueryEntregadoT = $conn->query($sqlQueryEntregadoT); */
 ?>

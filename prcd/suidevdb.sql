@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2022 at 10:09 PM
+-- Generation Time: Sep 22, 2022 at 10:03 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -92,6 +92,25 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `perfiles_usr`
+--
+
+CREATE TABLE `perfiles_usr` (
+  `id` int(11) NOT NULL,
+  `perfil` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `perfiles_usr`
+--
+
+INSERT INTO `perfiles_usr` (`id`, `perfil`) VALUES
+(1, 'Administrador'),
+(2, 'Usuario');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `prestamo`
 --
 
@@ -140,7 +159,9 @@ INSERT INTO `users` (`id`, `username`, `pwd`, `perfil`, `nombre`, `fecha_creacio
 (1, 'annaeliza', '12345', 1, 'Ana Elisa Barba Pinedo', '0000-00-00 00:00:00', 1),
 (2, 'jrodolfo', '12345678', 1, 'Jesús Rodolfo Leaños Villegas', '2022-09-21 14:23:40', 1),
 (4, 'juanjo', '12345678', 2, 'Juan José Quiroz Nava', '2022-09-21 14:34:03', 1),
-(5, 'grisgalvan', '789456123', 1, 'Griselda Galván Galván', '2022-09-21 15:08:58', 1);
+(5, 'grisgalvan', '789456123', 1, 'Griselda Galván Galván', '2022-09-21 15:08:58', 1),
+(6, 'amparoi', '654213', 2, 'Amparo Iturriaga Araiza', '2022-09-22 12:56:45', 1),
+(7, 'hecmendoza', '123456789', 2, 'Héctor Mario Mendoza Bañuelos', '2022-09-22 14:04:40', 2);
 
 -- --------------------------------------------------------
 
@@ -179,6 +200,12 @@ ALTER TABLE `log_entregas`
 -- Indexes for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `perfiles_usr`
+--
+ALTER TABLE `perfiles_usr`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -222,6 +249,12 @@ ALTER TABLE `log_usrlogin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `perfiles_usr`
+--
+ALTER TABLE `perfiles_usr`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `prestamo`
 --
 ALTER TABLE `prestamo`
@@ -231,7 +264,7 @@ ALTER TABLE `prestamo`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `vehiculos`

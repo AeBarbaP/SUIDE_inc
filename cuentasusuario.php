@@ -56,7 +56,6 @@ include('prcd/qc/qc.php');
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script>
@@ -204,7 +203,7 @@ include('prcd/qc/qc.php');
       <div class="container-fluid">
         <div class="row justify-content-between">
           <div class="col-6 mt-3">
-            <h4 class="text-muted">Usuarios SUIDEV</h4>
+            <h4 class="text-muted">Gestión de usuarios SUIDEV</h4>
           </div>
           <div class="col-6 mt-3 text-end">
             <div class="btn-group" role="group" aria-label="Basic outlined example">
@@ -216,12 +215,18 @@ include('prcd/qc/qc.php');
                   <li><a class="dropdown-item" style="font-size:small" href="#">Activos</a></li>
                   <li><a class="dropdown-item" style="font-size:small" href="#">Inactivos</a></li>
                 </ul>
-              
             </div>
           </div>
-        </div>  
-
-      
+        </div> 
+        <br>
+        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar usuario...">
+        <datalist id="datalistOptions">
+          <option value="San Francisco">
+          <option value="New York">
+          <option value="Seattle">
+          <option value="Los Angeles">
+          <option value="Chicago">
+        </datalist>
         
       
       <div class="table-responsive mt-3">
@@ -293,33 +298,56 @@ include('prcd/qc/qc.php');
                                   </div>
                                   <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1" for="inputGroupSelect01">Perfil</span>
-                                    <select class="form-select" id="inputGroupSelect01" value="' . $row_sqlQueryUsers['perfil'] . '">
-                                      <option selected>Elige...</option>
+                                    ';
+                                    $idPerfil=$row_sqlQueryUsers['perfil'];
+                                    $sqlPefil="SELECT * FROM perfiles_usr WHERE id='$idPerfil'";
+                                    $resultadoPerfil = $conn->query($sqlPefil);
+                                    $rowPerfil=$resultadoPerfil->fetch_assoc();
+
+
+                                    echo '
+                                    <select class="form-select" id="inputGroupSelect01" value="' . $row_sqlQueryUsers['perfil'] . '" selected="selected">
+                                      <option value="'.$rowPerfil['id'].'" selected disabled>'.$rowPerfil['perfil'].'</option>
                                       <option value="1">Administrador</option>
                                       <option value="2">Usuario</option>
                                     </select>
                                 
                                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">';
-                                    if ($row_sqlQueryUsers['estatus']==1){
+                                    $idId =$rowPerfil['id'];
+                                    $estatusUsr=$row_sqlQueryUsers['estatus'];
+                                    /* if ($estatusUsr = 1){
                                       echo '
                                       <script>
-                                        document.getElementById("btnradio1").checked = true;
-                                        document.getElementById("btnradio2").checked = false;
+                                      document.getElementById("btnradio1'.$idId.'").setAttribute("checked", "checked");
+                                      alert('.$estatusUsr.');
+
                                       </script>
                                       ';
-                                    } else {
+                                    } else if ($estatusUsr = 2){
                                       echo '
                                       <script>
-                                        document.getElementById("btnradio2").checked = true;
-                                        document.getElementById("btnradio1").checked = false;
+                                      document.getElementById("btnradio2'.$idId.'").setAttribute("checked", "checked");
+                                      alert('.$estatusUsr.');
                                       </script>
+                                      ';
+                                    } */
+                                    if ($estatusUsr==1) {
+                                      echo '
+                                      <input type="radio" class="btn-check" name="btnradio1" id="btnradio1'.$idId.'" autocomplete="off" checked>
+                                      <label class="btn btn-outline-success" for="btnradio1"><i class="bi bi-check-lg"></i> Activo</label>
+                                      <input type="radio" class="btn-check" name="btnradio2" id="btnradio2'.$idId.'" autocomplete="off">
+                                      <label class="btn btn-outline-danger" for="btnradio2"><i class="bi bi-x-lg"></i> Inactivo</label>
+                                      ';
+                                    } else if ($estatusUsr==2){
+
+                                    echo '
+                                      <input type="radio" class="btn-check" name="btnradio1" id="btnradio1'.$idId.'" autocomplete="off" >
+                                      <label class="btn btn-outline-success" for="btnradio1"><i class="bi bi-check-lg"></i> Activo</label>
+                                      <input type="radio" class="btn-check" name="btnradio2" id="btnradio2'.$idId.'" autocomplete="off" checked>
+                                      <label class="btn btn-outline-danger" for="btnradio2"><i class="bi bi-x-lg"></i> Inactivo</label>
                                       ';
                                     }
                                     echo '
-                                      <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" >
-                                      <label class="btn btn-outline-success" for="btnradio1"><i class="bi bi-check-lg"></i> Activo</label>
-                                      <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                                      <label class="btn btn-outline-danger" for="btnradio2"><i class="bi bi-x-lg"></i> Inactivo</label>
                                     </div>
                                   </div>
                                   <div class="input-group mb-3">

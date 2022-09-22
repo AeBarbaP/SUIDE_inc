@@ -228,16 +228,10 @@ include('prcd/qc/qc.php');
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
         <p class="h3">Bienvenid@</p>
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            <span data-feather="calendar" class="align-text-bottom"></span>
-            Esta semana
-          </button>
-        </div>
       </div>
       <p class="h6 mb-5  text-muted">Sistema Único de Identificación y Verificación</p>
       <hr>
-      <h4 class="text-muted mt-4">Gestión de cuentas de usuario</h4>
+      <h4 class="text-muted mt-4">Últimos documentos generados</h4>
       <div class="table-responsive">
             <table class="table table-hover table-bordered table-sm align-middle mt-4">
               <thead style="background-color:#B8B8B8;" class="text-light align-middle">
@@ -418,7 +412,7 @@ include('prcd/qc/qc.php');
                     
                     <!-- Termina Modal para generar tarjeton -->
 
-                    <!-- Modal -->
+                    <!-- Modal para imprimir credencial-->
                     <div class="modal fade" id="QR'.$row_sqlQueryCredencial['id'].'" tabindex="-1" aria-labelledby="QRLabel" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
