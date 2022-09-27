@@ -320,31 +320,67 @@ include('prcd/qc/qc.php');
                                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">';
                                     $idId =$rowPerfil['id'];
                                     $estatusUsr=$row_sqlQueryUsers['estatus'];
-                                    if ($estatusUsr == 1){
-                                      echo '
-                                      <script>
-                                      document.getElementById("btnradio1'.$idLogIn.'").setAttribute("checked");
-                                      document.getElementById("btnradio2'.$idLogIn.'").removeAttribute("checked");
-                                      alert('.$estatusUsr.');
+                                    // echo'
+                                    // <script>
+                                    // console.log('.$estatusUsr.');
+                                    // </script>
+                                    // ';
+                                  ?>
+                                    <script>
+                                      // var check1 = document.getElementById("btnradio1<?php echo $idLogIn ?>").value;
+                                      // var check2 = document.getElementById("btnradio2<?php echo $idLogIn ?>").value;
+                                      // console.log(check1);
+                                      // if(check1 == 1){
+                                      //   check1.checked = true;
+                                      //   check2.checked = false;
+                                      // }
+                                      // else if(check2 == 2){
+                                      //   check1.checked = false;
+                                      //   check2.checked = true;
+                                      // }
 
-                                      </script>
+                                    </script>
+
+                                  <?php
+                                    // if ($estatusUsr = 1){
+                                    //   echo '
+                                    //   <script>
+                                      
+                                    //   document.getElementById("btnradio1'.$idLogIn.'").checked = true;
+                                    //   document.getElementById("btnradio2'.$idLogIn.'").checked = false;
+                                      
+
+                                    //   </script>
+                                    //   ';
+                                    // } elseif ($estatusUsr = 2){
+                                    //   echo '
+                                    //   <script>
+                                     
+                                    //   document.getElementById("btnradio2'.$idLogIn.'").checked=true;
+                                    //   document.getElementById("btnradio1'.$idLogIn.'").checked=false;
+                                    
+                                    //   </script>
+                                    //   ';
+                                    // }
+
+                                      echo '
+
+                                      <input type="radio" class="btn-check" value="'.$estatusUsr.'" name="btnradio" id="btnradio1'.$idLogIn.'" autocomplete="off" 
                                       ';
-                                    } else if ($estatusUsr == 2){
-                                      echo '
-                                      <script>
-                                      document.getElementById("btnradio2'.$idLogIn.'").setAttribute("checked");
-                                      document.getElementById("btnradio1'.$idLogIn.'").removeAttribute("checked");
-                                      alert('.$estatusUsr.');
-                                      </script>
-                                      ';
-                                    }
-
-                                      echo '
-
-                                      <input type="radio" class="btn-check" value="'.$estatusUsr.'" name="btnradio" id="btnradio1'.$idLogIn.'" autocomplete="off">
+                                      if($estatusUsr == 1){
+                                        echo 'checked';
+                                      }
+                                      echo'
+                                      >
                                       <label class="btn btn-outline-success" for="btnradio1'.$idLogIn.'"><i class="bi bi-check-lg"></i> Activo</label>
                                     
-                                      <input type="radio" class="btn-check" value="'.$estatusUsr.'" name="btnradio" id="btnradio2'.$idLogIn.'" autocomplete="off">
+                                      <input type="radio" class="btn-check" value="'.$estatusUsr.'" name="btnradio" id="btnradio2'.$idLogIn.'" autocomplete="off" 
+                                      ';
+                                      if($estatusUsr == 2){
+                                        echo 'checked';
+                                      }
+                                      echo'
+                                      >
                                       <label class="btn btn-outline-danger" for="btnradio2'.$idLogIn.'"><i class="bi bi-x-lg"></i> Inactivo</label>
                                       ';
                                     
