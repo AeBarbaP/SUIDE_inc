@@ -9,9 +9,9 @@ include('qc/qc.php');
 
 $id = $_POST['id'];
 $pwd = $_POST['pwd'];
-$nombre = $_POST['nombre']
+$nombre = $_POST['nombre'];
 $perfil = $_POST['perfilselect'];
-$estatusUsr = $_POST['estatusop'];
+$estatusUsr = $_POST['btnradio'];
 
 date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
