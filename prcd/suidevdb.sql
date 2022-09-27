@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2022 at 05:32 PM
+-- Generation Time: Sep 27, 2022 at 10:23 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -102,7 +102,8 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (14, 0, '2022-09-27 10:22:36', NULL),
 (15, 0, '2022-09-27 10:23:55', NULL),
 (16, 4, '2022-09-27 10:29:57', NULL),
-(17, 4, NULL, '2022-09-27 10:30:01');
+(17, 4, NULL, '2022-09-27 10:30:01'),
+(18, 1, '2022-09-27 12:11:54', NULL);
 
 -- --------------------------------------------------------
 
@@ -261,7 +262,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `perfiles_usr`

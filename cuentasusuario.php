@@ -53,7 +53,6 @@ include('prcd/qc/qc.php');
     <title>SUIDEV · Inclusión</title>
 
     <link rel="icon" type="image/png" href="img/inclusion.ico"/>
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
     <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -292,7 +291,7 @@ include('prcd/qc/qc.php');
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            <form action="prcd/actualizar.php" method="POST"><!--form-->
+                            <form action="prcd/actualizaruser.php" method="POST"><!--form-->
                                   <input name="id" value="'.$row_sqlQueryUsers['id'].'" hidden>
                                   <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
@@ -321,38 +320,34 @@ include('prcd/qc/qc.php');
                                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">';
                                     $idId =$rowPerfil['id'];
                                     $estatusUsr=$row_sqlQueryUsers['estatus'];
-                                    /* if ($estatusUsr = 1){
+                                    if ($estatusUsr == 1){
                                       echo '
                                       <script>
-                                      document.getElementById("btnradio1'.$idId.'").setAttribute("checked", "checked");
+                                      document.getElementById("btnradio1'.$idLogIn.'").setAttribute("checked");
+                                      document.getElementById("btnradio2'.$idLogIn.'").removeAttribute("checked");
                                       alert('.$estatusUsr.');
 
                                       </script>
                                       ';
-                                    } else if ($estatusUsr = 2){
+                                    } else if ($estatusUsr == 2){
                                       echo '
                                       <script>
-                                      document.getElementById("btnradio2'.$idId.'").setAttribute("checked", "checked");
+                                      document.getElementById("btnradio2'.$idLogIn.'").setAttribute("checked");
+                                      document.getElementById("btnradio1'.$idLogIn.'").removeAttribute("checked");
                                       alert('.$estatusUsr.');
                                       </script>
-                                      ';
-                                    } */
-                                    if ($estatusUsr==1) {
-                                      echo '
-                                      <input type="radio" class="btn-check" name="btnradio1" id="btnradio1'.$idId.'" autocomplete="off" checked>
-                                      <label class="btn btn-outline-success" for="btnradio1"><i class="bi bi-check-lg"></i> Activo</label>
-                                      <input type="radio" class="btn-check" name="btnradio2" id="btnradio2'.$idId.'" autocomplete="off">
-                                      <label class="btn btn-outline-danger" for="btnradio2"><i class="bi bi-x-lg"></i> Inactivo</label>
-                                      ';
-                                    } else if ($estatusUsr==2){
-
-                                    echo '
-                                      <input type="radio" class="btn-check" name="btnradio1" id="btnradio1'.$idId.'" autocomplete="off" >
-                                      <label class="btn btn-outline-success" for="btnradio1"><i class="bi bi-check-lg"></i> Activo</label>
-                                      <input type="radio" class="btn-check" name="btnradio2" id="btnradio2'.$idId.'" autocomplete="off" checked>
-                                      <label class="btn btn-outline-danger" for="btnradio2"><i class="bi bi-x-lg"></i> Inactivo</label>
                                       ';
                                     }
+
+                                      echo '
+
+                                      <input type="radio" class="btn-check" value="'.$estatusUsr.'" name="btnradio" id="btnradio1'.$idLogIn.'" autocomplete="off">
+                                      <label class="btn btn-outline-success" for="btnradio1'.$idLogIn.'"><i class="bi bi-check-lg"></i> Activo</label>
+                                    
+                                      <input type="radio" class="btn-check" value="'.$estatusUsr.'" name="btnradio" id="btnradio2'.$idLogIn.'" autocomplete="off">
+                                      <label class="btn btn-outline-danger" for="btnradio2'.$idLogIn.'"><i class="bi bi-x-lg"></i> Inactivo</label>
+                                      ';
+                                    
                                     echo '
                                     </div>
                                   </div>

@@ -9,7 +9,7 @@ include('qc/qc.php');
 
 $id = $_POST['id'];
 $pwd = $_POST['pwd'];
-
+$nombre = $_POST['nombre']
 $perfil = $_POST['perfilselect'];
 $estatusUsr = $_POST['estatusop'];
 
@@ -20,7 +20,7 @@ $fecha_creacion = strftime("%Y-%m-%d,%H:%M:%S");
 
 
     /* $sqlinsert= "INSERT INTO asistentes(nombre,apellidos,curp,detalles,cantidad_polvora,entregado) VALUES('$nombre','$apellidos','$curp','$detalles','$cantidad_polvora','$entregado')"; */
-    $sqlUpdate ="UPDATE users SET pwd='$pwd', perfil='$perfil', estatus='$estatusUsr' WHERE id='$id'";
+    $sqlUpdate ="UPDATE users SET pwd='$pwd', nombre='$nombre', perfil='$perfil', estatus='$estatusUsr' WHERE id='$id'";
     $resultado= $conn->query($sqlUpdate);
 
 
