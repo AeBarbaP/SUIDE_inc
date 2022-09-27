@@ -367,7 +367,7 @@ include('prcd/qc/qc.php');
 
                                       <input type="radio" class="btn-check" value="'.$estatusUsr.'" name="btnradio" id="btnradio1'.$idLogIn.'" autocomplete="off" 
                                       ';
-                                      if($estatusUsr == 1){
+                                      if($estatusUsr ==  1){
                                         echo 'checked';
                                       }
                                       echo'
