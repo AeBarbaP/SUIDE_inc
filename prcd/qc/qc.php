@@ -5,10 +5,10 @@
     $username="root";
     $password="";
 
-    // $servername="localhost";
-    // $database="morismas"; //solo se quitó para conexión remota
-    // $username="admin";
-    // $password="";
+    //$servername="localhost";
+    //$database="inclusiondb"; //solo se quitó para conexión remota
+    //$username="root";
+    //$password="";
 
     // $servername="localhost";
     // $database="c7morismas"; //solo se quitó para conexión remota

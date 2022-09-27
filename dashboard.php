@@ -267,18 +267,18 @@ include('prcd/qc/qc.php');
 
                       if($row_sqlQueryCredencial['entregado_c'] == 1){
                         echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#QR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-check text-success"></i></a></td>';
+                        <td><a href="data-bs-toggle="modal" data-bs-target="#CredencialQR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-check text-success"></i></a></td>';
                       } elseif($row_sqlQueryCredencial['entregado_c'] == 0){
                         echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#QR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-x text-danger"></a></i></td>';
+                        <td><a href="data-bs-toggle="modal" data-bs-target="#'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-x text-danger"></a></i></td>';
                       }
 
                       if($row_sqlQueryCredencial['entregado_t'] == 1){
                         echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#QR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-check text-success"></i></a></td>';
+                        <td><a href="data-bs-toggle="modal" data-bs-target="#TarjetonQR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-check text-success"></i></a></td>';
                       } elseif($row_sqlQueryCredencial['entregado_t'] == 0){
                         echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#QR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-x text-danger"></i></a></td>';
+                        <td><a href="data-bs-toggle="modal" data-bs-target="#'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-x text-danger"></i></a></td>';
                       }
                       echo '
                     <tr>
@@ -413,14 +413,14 @@ include('prcd/qc/qc.php');
                     <!-- Termina Modal para generar tarjeton -->
 
                     <!-- Modal para imprimir credencial-->
-                    <div class="modal fade" id="QR'.$row_sqlQueryCredencial['id'].'" tabindex="-1" aria-labelledby="QRLabel" aria-hidden="true">
+                    <div class="modal fade" id="CredencialQR'.$row_sqlQueryCredencial['id'].'" tabindex="-1" aria-labelledby="QRLabel" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-qr-code"></i> Información QR</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
-                          <div class="modal-body" style="text-align: center;" id="div_print'.$row_sqlQueryCredencial['id'].'">
+                          <div class="modal-body" style="text-align: center; background-image: url(img/CredencialInclusionFront.jpg); background-repeat: no-repeat;background-attachment: fixed; background-size: cover;" id="div_print'.$row_sqlQueryCredencial['id'].'">
                             <center><img src="img/logomorismas.png" height="150"></center>
                             <br>
                             <center><h5 style="font-size: 1.5rem"><strong>Número de Expediente:</strong> ' . $row_sqlQueryCredencial['id_ext'] . ' </h5>

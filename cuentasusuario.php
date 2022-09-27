@@ -34,6 +34,12 @@ include('prcd/qc/qc.php');
     $perfil = $_SESSION['perfil'];
     $nombre = $_SESSION['nombre'];
 
+    date_default_timezone_set('America/Mexico_City');
+    setlocale(LC_TIME, 'es_MX.UTF-8');
+
+    $fecha_iniciosesion = strftime("%Y-%m-%d,%H:%M:%S");
+
+
 ?>
 
 <!doctype html>
@@ -300,8 +306,8 @@ include('prcd/qc/qc.php');
                                     <span class="input-group-text" id="basic-addon1" for="inputGroupSelect01">Perfil</span>
                                     ';
                                     $idPerfil=$row_sqlQueryUsers['perfil'];
-                                    $sqlPefil="SELECT * FROM perfiles_usr WHERE id='$idPerfil'";
-                                    $resultadoPerfil = $conn->query($sqlPefil);
+                                    $sqlPerfil="SELECT * FROM perfiles_usr WHERE id='$idPerfil'";
+                                    $resultadoPerfil = $conn->query($sqlPerfil);
                                     $rowPerfil=$resultadoPerfil->fetch_assoc();
 
 
