@@ -14,15 +14,21 @@ if (isset($_POST['usr']) && isset($_POST['pwd'])) {
 
     $sql = "SELECT * FROM users WHERE username = '$id' AND pwd ='$pwd'";   
     $resultado_sql = $conn->query($sql);
-    if($row_sql=mysqli_fetch_array($resultado_sql)){
-    
+    $no_resultados = mysqli_num_rows($resultado_sql);
+
+    if ($no_resultados==1) {
+        $row_sql=$resultado_sql->fetch_assoc();
+
         $_SESSION['id']=$row_sql['id'];
         $_SESSION['usr']=$row_sql['username'];
         $_SESSION['nombre']=$row_sql['nombre'];
         $_SESSION['pwd']=$row_sql['pwd'];
         $_SESSION['perfil']=$row_sql['perfil'];
+
+        $idSesion=$row_sql['id'];
         
-        $sqlInicioSesion = "INSERT INTO log_usrlogin (id_usr, fecha_iniciosesion) VALUES ('$id','$fecha_iniciosesion')";
+        $sqlInicioSesion = "INSERT INTO log_usrlogin(id_usr, fecha_iniciosesion) VALUES ('$idSesion','$fecha_iniciosesion')";
+        $resultadoSesion= $conn->query($sqlInicioSesion);
 
         if($row_sql['perfil']==1){ //admin 1
     
@@ -41,10 +47,17 @@ if (isset($_POST['usr']) && isset($_POST['pwd'])) {
     
         }
 
+    }
 
+    else{
+
+        session_destroy();
+        $_SESSION = [];
+        echo "<script type=\"text/javascript\">alert('Usuario no válido');location.href='../index.html';</script>";
+
+
+    }
 }
-
-
 else{
 
     session_destroy();
@@ -52,5 +65,4 @@ else{
     echo "<script type=\"text/javascript\">alert('Usuario no válido');location.href='../index.html';</script>";
 
 
-}
 }

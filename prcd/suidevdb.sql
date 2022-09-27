@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2022 at 10:03 PM
+-- Generation Time: Sep 27, 2022 at 05:32 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -77,8 +77,8 @@ CREATE TABLE `log_entregas` (
 CREATE TABLE `log_usrlogin` (
   `id` int(11) NOT NULL,
   `id_usr` int(11) NOT NULL,
-  `fecha_iniciosesion` datetime NOT NULL,
-  `fecha_cierresesion` datetime NOT NULL
+  `fecha_iniciosesion` datetime DEFAULT NULL,
+  `fecha_cierresesion` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -87,7 +87,22 @@ CREATE TABLE `log_usrlogin` (
 
 INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierresesion`) VALUES
 (1, 1, '2022-09-20 22:27:24', '2022-09-20 22:27:24'),
-(2, 2, '2022-09-21 21:27:57', '2022-09-21 21:27:57');
+(2, 2, '2022-09-21 21:27:57', '2022-09-21 21:27:57'),
+(3, 3, '2022-09-27 09:58:40', NULL),
+(4, 7, '2022-09-27 10:01:24', NULL),
+(5, 7, NULL, '2022-09-27 10:12:27'),
+(6, 1, '2022-09-27 10:12:41', NULL),
+(7, 1, NULL, '2022-09-27 10:18:14'),
+(8, 1, '2022-09-27 10:18:25', NULL),
+(9, 1, NULL, '2022-09-27 10:18:30'),
+(10, 0, '2022-09-27 10:18:55', NULL),
+(11, 0, '2022-09-27 10:21:38', NULL),
+(12, 4, '2022-09-27 10:21:53', NULL),
+(13, 4, NULL, '2022-09-27 10:21:55'),
+(14, 0, '2022-09-27 10:22:36', NULL),
+(15, 0, '2022-09-27 10:23:55', NULL),
+(16, 4, '2022-09-27 10:29:57', NULL),
+(17, 4, NULL, '2022-09-27 10:30:01');
 
 -- --------------------------------------------------------
 
@@ -246,7 +261,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `perfiles_usr`
