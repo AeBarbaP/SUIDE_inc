@@ -311,7 +311,7 @@ include('prcd/qc/qc.php');
 
 
                                     echo '
-                                    <select class="form-select" id="inputGroupSelect01" value="' . $row_sqlQueryUsers['perfil'] . '" selected="selected">
+                                    <select class="form-select" id="inputGroupSelect01" value="' . $row_sqlQueryUsers['perfil'] . '" selected="selected" name="perfilselect">
                                       <option value="'.$rowPerfil['id'].'" selected disabled>'.$rowPerfil['perfil'].'</option>
                                       <option value="1">Administrador</option>
                                       <option value="2">Usuario</option>
@@ -320,64 +320,22 @@ include('prcd/qc/qc.php');
                                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">';
                                     $idId =$rowPerfil['id'];
                                     $estatusUsr=$row_sqlQueryUsers['estatus'];
-                                    // echo'
-                                    // <script>
-                                    // console.log('.$estatusUsr.');
-                                    // </script>
-                                    // ';
-                                  ?>
-                                    <script>
-                                      // var check1 = document.getElementById("btnradio1<?php echo $idLogIn ?>").value;
-                                      // var check2 = document.getElementById("btnradio2<?php echo $idLogIn ?>").value;
-                                      // console.log(check1);
-                                      // if(check1 == 1){
-                                      //   check1.checked = true;
-                                      //   check2.checked = false;
-                                      // }
-                                      // else if(check2 == 2){
-                                      //   check1.checked = false;
-                                      //   check2.checked = true;
-                                      // }
-
-                                    </script>
-
-                                  <?php
-                                    // if ($estatusUsr = 1){
-                                    //   echo '
-                                    //   <script>
-                                      
-                                    //   document.getElementById("btnradio1'.$idLogIn.'").checked = true;
-                                    //   document.getElementById("btnradio2'.$idLogIn.'").checked = false;
-                                      
-
-                                    //   </script>
-                                    //   ';
-                                    // } elseif ($estatusUsr = 2){
-                                    //   echo '
-                                    //   <script>
-                                     
-                                    //   document.getElementById("btnradio2'.$idLogIn.'").checked=true;
-                                    //   document.getElementById("btnradio1'.$idLogIn.'").checked=false;
-                                    
-                                    //   </script>
-                                    //   ';
-                                    // }
-
+              
                                       echo '
 
-                                      <input type="radio" class="btn-check" value="'.$estatusUsr.'" name="btnradio" id="btnradio1'.$idLogIn.'" autocomplete="off" 
+                                      <input type="radio" class="btn-check" value="1" name="btnradio" id="btnradio1'.$idLogIn.'" 
                                       ';
                                       if($estatusUsr ==  1){
-                                        echo 'checked';
+                                        echo 'checked="checked"';
                                       }
                                       echo'
                                       >
                                       <label class="btn btn-outline-success" for="btnradio1'.$idLogIn.'"><i class="bi bi-check-lg"></i> Activo</label>
                                     
-                                      <input type="radio" class="btn-check" value="'.$estatusUsr.'" name="btnradio" id="btnradio2'.$idLogIn.'" autocomplete="off" 
+                                      <input type="radio" class="btn-check" value="2" name="btnradio" id="btnradio2'.$idLogIn.'"  
                                       ';
                                       if($estatusUsr == 2){
-                                        echo 'checked';
+                                        echo 'checked="checked"';
                                       }
                                       echo'
                                       >
@@ -389,8 +347,19 @@ include('prcd/qc/qc.php');
                                   </div>
                                   <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-shield-lock-fill"></i></span>
-                                    <input type="text" class="form-control" placeholder="Contraseña" aria-label="contraseña" value="' . $row_sqlQueryUsers['pwd'] . '" aria-describedby="basic-addon1"  name="pwd">
+                                    <input type="password" class="form-control" placeholder="Contraseña" aria-label="contraseña" value="' . $row_sqlQueryUsers['pwd'] . '" aria-describedby="basic-addon1" name="pwd" id="passW'.$idLogIn.'">
                                   </div>
+                                  <input type="checkbox" onclick="myFunction'.$idLogIn.'()"> Mostrar Password 
+                                  <script>
+                                  function myFunction'.$idLogIn.'() {
+                                    var x = document.getElementById("passW'.$idLogIn.'");
+                                    if (x.type === "password") {
+                                      x.type = "text";
+                                    } else {
+                                      x.type = "password";
+                                    }
+                                  } 
+                                  </script>
                                   
                             </div>
                               <div class="modal-footer">
