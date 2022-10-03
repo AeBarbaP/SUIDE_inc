@@ -3,11 +3,11 @@
 
 include('qc/qc.php');
 
-$concatenado = $_POST['text'];
+$expediente = $_POST['text'];
 
-    $Query = "SELECT * FROM asistentes WHERE concatenado = '$concatenado' " ;
-    $resultado_Query = $conn->query($Query);
-    $row_sql_catalogo = $resultado_Query->fetch_assoc();
+    $QueryExpediente = "SELECT * FROM inclusiondb WHERE expediente = '$expediente' " ;
+    $resultado_QueryExpediente = $conn->query($QueryExpediente);
+    $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
 
     $resultado_rows = mysqli_num_rows($resultado_Query);
     if($resultado_rows == 0){

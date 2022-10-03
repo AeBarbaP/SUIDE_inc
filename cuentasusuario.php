@@ -312,7 +312,7 @@ include('prcd/qc/qc.php');
 
                                     echo '
                                     <select class="form-select" id="inputGroupSelect01" value="' . $row_sqlQueryUsers['perfil'] . '" selected="selected" name="perfilselect">
-                                      <option value="'.$rowPerfil['id'].'" selected disabled>'.$rowPerfil['perfil'].'</option>
+                                      <option value="'.$rowPerfil['id'].'" selected="selected" disabled>'.$rowPerfil['perfil'].'</option>
                                       <option value="1">Administrador</option>
                                       <option value="2">Usuario</option>
                                     </select>
