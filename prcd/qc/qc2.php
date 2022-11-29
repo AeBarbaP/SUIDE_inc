@@ -1,11 +1,9 @@
 <?php
 
-    $servername="localhost";
-    $database="suidevdb"; //solo se quitó para conexión remota
-    $username="root";
-    $password="";
-
-
+    $servername2="localhost";
+    $database2="inclusiondb"; //solo se quitó para conexión remota
+    $username2="root";
+    $password2="";
 
     // $servername="localhost";
     // $database="c7morismas"; //solo se quitó para conexión remota
@@ -23,9 +21,8 @@
     $username="morismas_usr";
     $password="dIgMg8&wMrbd"; */
 
-    $conn= new mysqli ($servername,$username,$password,$database); //solo se quitó para conexión remota
-    $conn->set_charset("utf8");
-
+    $conn2= new mysqli ($servername2,$username2,$password2,$database2); //solo se quitó para conexión remota
+    $conn2->set_charset("utf8");
 
 
 ?>

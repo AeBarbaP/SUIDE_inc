@@ -61,7 +61,7 @@ include('prcd/qc/qc.php');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -282,9 +282,80 @@ include('prcd/qc/qc.php');
                       }
                       echo '
                     <tr>
-                    <!-- Inicia Modal para generar credencial -->
+                    <!-- Modal para imprimir credencial-->
+                    <div class="modal fade" id="CredencialQR'.$row_sqlQueryCredencial['id'].'" tabindex="-1" aria-labelledby="QRLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-qr-code"></i> Información QR</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body" style="text-align: center; background-image: url(img/CredencialInclusionFront.jpg); background-repeat: no-repeat;background-attachment: fixed; background-size: cover;" id="div_print'.$row_sqlQueryCredencial['id'].'">
+                            <center><img src="img/logomorismas.png" height="150"></center>
+                            <br>
+                            <center><h5 style="font-size: 1.5rem"><strong>Número de Expediente:</strong> ' . $row_sqlQueryCredencial['id_ext'] . ' </h5>
+                            <h5 style="font-size: 1.5rem"><strong>Fecha de expedición:</strong> ' . $row_sqlQueryCredencial['fecha_c'] . '</h5>
+                            <h5 style="font-size: 1.5rem"><strong>Expira:</strong> ' . $row_sqlQueryCredencial['vigencia_cred'] . ' </h5>
+                            <h5 style="font-size: 1.5rem"><strong>Atenidod por:</strong> ' . $row_sqlQueryCredencial['id_users'] . '</h5>
+                            <h5 style="font-size: 1.5rem"><strong></strong></h5></center>
+                            <p class="text-center"><img src="prcd/QR/codes/'. $row_sqlQueryCredencial['qr_cred'].'"></p>
+                          </div>
+                          <div class="modal-footer">';?>
+                          <!-- <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('div_print<?php echo $row_sqlQuery['id']?>')"><i class="bi bi-printer-fill"></i> Imprimir</a> -->
+                          <?php echo '
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
-                    <div class="modal fade " id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
+                    <!-- Modal editar-->
+                    <div class="modal fade" id="editar'.$row_sqlQuery['id'].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Alta de polvora</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <form action="prcd/actualizar.php" method="POST"><!--form-->
+                                  <input name="id" value="'.$row_sqlQuery['id'].'" hidden>
+                                  <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+                                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" value="' . $row_sqlQuery['nombre'] . '" aria-describedby="basic-addon1" name="nombre" required>
+                                  </div>
+                                  <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-workspace"></i></span>
+                                    <input type="text" class="form-control" placeholder="Apellidos" aria-label="Apellidos" value="' . $row_sqlQuery['apellidos'] . '" aria-describedby="basic-addon1"  name="apellidos" required>
+                                  </div>
+                                  <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-badge"></i></span>
+                                    <input type="text" class="form-control" placeholder="CURP" aria-label="CURP" aria-describedby="basic-addon1" value="' . $row_sqlQuery['curp'] . '" name="curp" readonly>
+                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-123"></i></span>
+                                    <input type="text" class="form-control" placeholder="Cantidad" aria-label="Cantidad" value="' . $row_sqlQuery['cantidad_polvora'] . '" aria-describedby="basic-addon1" maxlength="1" onkeypress="ValidaSoloNumeros()" name="cantidad_polvora" readonly>
+                                  </div><!-- Si, y solo si se asignan 2kg de polvora, se habilita el campo de detalles y se convierte en obligatorio -->
+                                  
+                                  <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-card-text"></i></span>
+                                    <textarea style="resize: none;" rows="4" type="text" class="form-control" placeholder="Detalles (opcional)" aria-label="Detalles" aria-describedby="basic-addon1" name="detalles">' . $row_sqlQuery['detalles'] . '</textarea>
+                                  </div>
+                            </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Guardar</button>
+                              </div>
+                            </form><!--form-->
+                        </div>
+                      </div>
+                    </div>
+                    ';
+                    
+                  }
+            echo'</table>';
+            ?>
+          </div>
+        <!-- Inicia Modal para generar credencial -->
+        <div class="modal fade " id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -292,14 +363,24 @@ include('prcd/qc/qc.php');
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            <label for="exampleDataList" class="form-label">Número de Expediente</label>
-                            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar...">
+                            <label for="exampleDataList" class="form-label">Buscar</label>
+                            <input class="form-control" list="datalistOptions" id="searchDBInclusion" onchange="buscarExpediente()"  placeholder="Buscar...">
                             <datalist id="datalistOptions">
-                              <option value="San Francisco">
-                              <option value="New York">
-                              <option value="Seattle">
-                              <option value="Los Angeles">
-                              <option value="Chicago">
+<?php
+include('qc/qc2.php');
+ $QueryExpediente = "SELECT * FROM expedientes WHERE ordenExpediente LIKE 1";
+ $resultado_QueryExpediente = $conn2->query($QueryExpediente);
+
+ while ($row_sql_expediente = $resultado_QueryExpediente->fetch_assoc()){
+   echo '
+   <script>
+console.log('.$row_sql_expediente['ordenExpediente'].');
+</script>
+           <option value="'.$row_sql_expediente['ordenExpediente'].'">
+         ';
+ }
+?>
+
                             </datalist>
                             <br>
                             <div class="container text-center">
@@ -411,80 +492,6 @@ include('prcd/qc/qc.php');
                     </div>
                     
                     <!-- Termina Modal para generar tarjeton -->
-
-                    <!-- Modal para imprimir credencial-->
-                    <div class="modal fade" id="CredencialQR'.$row_sqlQueryCredencial['id'].'" tabindex="-1" aria-labelledby="QRLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-qr-code"></i> Información QR</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body" style="text-align: center; background-image: url(img/CredencialInclusionFront.jpg); background-repeat: no-repeat;background-attachment: fixed; background-size: cover;" id="div_print'.$row_sqlQueryCredencial['id'].'">
-                            <center><img src="img/logomorismas.png" height="150"></center>
-                            <br>
-                            <center><h5 style="font-size: 1.5rem"><strong>Número de Expediente:</strong> ' . $row_sqlQueryCredencial['id_ext'] . ' </h5>
-                            <h5 style="font-size: 1.5rem"><strong>Fecha de expedición:</strong> ' . $row_sqlQueryCredencial['fecha_c'] . '</h5>
-                            <h5 style="font-size: 1.5rem"><strong>Expira:</strong> ' . $row_sqlQueryCredencial['vigencia_cred'] . ' </h5>
-                            <h5 style="font-size: 1.5rem"><strong>Atenidod por:</strong> ' . $row_sqlQueryCredencial['id_users'] . '</h5>
-                            <h5 style="font-size: 1.5rem"><strong></strong></h5></center>
-                            <p class="text-center"><img src="prcd/QR/codes/'. $row_sqlQueryCredencial['qr_cred'].'"></p>
-                          </div>
-                          <div class="modal-footer">';?>
-                          <!-- <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('div_print<?php echo $row_sqlQuery['id']?>')"><i class="bi bi-printer-fill"></i> Imprimir</a> -->
-                          <?php echo '
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Modal editar-->
-                    <div class="modal fade" id="editar'.$row_sqlQuery['id'].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Alta de polvora</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <form action="prcd/actualizar.php" method="POST"><!--form-->
-                                  <input name="id" value="'.$row_sqlQuery['id'].'" hidden>
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
-                                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" value="' . $row_sqlQuery['nombre'] . '" aria-describedby="basic-addon1" name="nombre" required>
-                                  </div>
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-workspace"></i></span>
-                                    <input type="text" class="form-control" placeholder="Apellidos" aria-label="Apellidos" value="' . $row_sqlQuery['apellidos'] . '" aria-describedby="basic-addon1"  name="apellidos" required>
-                                  </div>
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-badge"></i></span>
-                                    <input type="text" class="form-control" placeholder="CURP" aria-label="CURP" aria-describedby="basic-addon1" value="' . $row_sqlQuery['curp'] . '" name="curp" readonly>
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-123"></i></span>
-                                    <input type="text" class="form-control" placeholder="Cantidad" aria-label="Cantidad" value="' . $row_sqlQuery['cantidad_polvora'] . '" aria-describedby="basic-addon1" maxlength="1" onkeypress="ValidaSoloNumeros()" name="cantidad_polvora" readonly>
-                                  </div><!-- Si, y solo si se asignan 2kg de polvora, se habilita el campo de detalles y se convierte en obligatorio -->
-                                  
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-card-text"></i></span>
-                                    <textarea style="resize: none;" rows="4" type="text" class="form-control" placeholder="Detalles (opcional)" aria-label="Detalles" aria-describedby="basic-addon1" name="detalles">' . $row_sqlQuery['detalles'] . '</textarea>
-                                  </div>
-                            </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
-                                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Guardar</button>
-                              </div>
-                            </form><!--form-->
-                        </div>
-                      </div>
-                    </div>
-                    ';
-                    
-                  }
-            echo'</table>';
-            ?>
-          </div>
-
       
     </main>
   </div>
@@ -533,5 +540,28 @@ include('prcd/qc/qc.php');
         Swal.fire('Verifica los datos!', '', 'info')
       }
     })
+  }
+  function buscarExpediente(){
+    var expediente = document.getElementById('searchDBInclusion').value;
+    $.ajax({
+      type:"POST",
+      url:"prcd/query_searchPadronBD.php",
+      data:{
+        expediente:expediente
+      //   hour:hour,
+      //   last:last,
+      //   first:first,
+      //   email:email,
+      //   address:address
+      },
+      // dataType: "html",
+      //contentType:false,
+      //processData:false,
+      cache: false,
+        success: function(data) {
+          $("#datalistOptions").html(data);
+
+      }               
+    });
   }
 </script>

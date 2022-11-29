@@ -1,15 +1,29 @@
 <?php
 // if (isset($POST['text'])){
 
-include('qc/qc.php');
+include('qc/qc2.php');
 
-$expediente = $_POST['text'];
+$expediente = $_POST['expediente'];
+/* echo '
+<script>
+console.log('.$expediente.');
+</script>
+';  */
 
-    $QueryExpediente = "SELECT * FROM inclusiondb WHERE expediente = '$expediente' " ;
-    $resultado_QueryExpediente = $conn->query($QueryExpediente);
-    $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
+    $QueryExpediente = "SELECT * FROM expedientes WHERE ordenExpediente = '$expediente'";
+    $resultado_QueryExpediente = $conn2->query($QueryExpediente);
 
-    $resultado_rows = mysqli_num_rows($resultado_Query);
+    while ($row_sql_expediente = $resultado_QueryExpediente->fetch_assoc()){
+      echo '
+      <script>
+console.log('.$row_sql_expediente['ordenExpediente'].');
+</script>
+              <option value="'.$row_sql_expediente['ordenExpediente'].'">
+            ';
+    }
+   
+
+    /* $resultado_rows = mysqli_num_rows($resultado_Query);
     if($resultado_rows == 0){
         echo '
         <div class="alert alert-danger text-center mt-1 pt-2 pb-2" role="alert">
@@ -81,4 +95,4 @@ $expediente = $_POST['text'];
 
 }
 
-?>
+?> */
