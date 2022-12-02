@@ -27,6 +27,7 @@ if (isset($_SESSION['usr'])) {
 
 include('prcd/qc/qc.php');
 
+
 // variables de sesión
 
     $usuario = $_SESSION['usr'];
