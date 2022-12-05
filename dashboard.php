@@ -367,20 +367,6 @@ include('prcd/qc/qc.php');
                             <label for="exampleDataList" class="form-label">Buscar</label>
                             <input class="form-control" list="datalistOptions" id="searchDBInclusion" onchange="buscarExpediente()"  placeholder="Buscar...">
                             <datalist id="datalistOptions">
-<?php
-include('qc/qc2.php');
- $QueryExpediente = "SELECT * FROM expedientes WHERE ordenExpediente LIKE 1";
- $resultado_QueryExpediente = $conn2->query($QueryExpediente);
-
- while ($row_sql_expediente = $resultado_QueryExpediente->fetch_assoc()){
-   echo '
-   <script>
-console.log('.$row_sql_expediente['ordenExpediente'].');
-</script>
-           <option value="'.$row_sql_expediente['ordenExpediente'].'">
-         ';
- }
-?>
 
                             </datalist>
                             <br>
