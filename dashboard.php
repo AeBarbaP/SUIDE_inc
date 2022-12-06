@@ -389,7 +389,7 @@ include('prcd/qc/qc.php');
                                       <p class="card-text">Tipo Discapacidad: <?php echo $nombreExp ?></p>
                                       <p class="card-text">No. Expediente: <?php echo $folio ?></p>
                                       <p class="card-text">CURP: <?php echo $curp ?></p>
-                                      <p class="card-text">Domicilio:<br>     Calle y no.: <?php echo $direccion; $numeroCasa; $numeroInterior  ?><br>     Colonia: <?php echo $colonia ?></p><br>     C.P.: <?php echo $cp ?>
+                                      <p class="card-text">Domicilio:<br>     Calle y no.: <?php echo $direccion; $numeroCasa; $numeroInterior  ?><br>     Colonia: <?php echo $colonia ?><br>     C.P.: <?php echo $cp ?></p>
                                       <!-- <p class="card-text text-end text-muted" style="font-size: 5rem;"><i class="bi bi-qr-code"></i></p> -->
                                     </div>
                                   </div>

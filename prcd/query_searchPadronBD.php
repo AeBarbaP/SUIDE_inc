@@ -19,6 +19,12 @@ console.log('.$expediente.');
     $apellidoMaterno = $row_sql_expediente['apellidoMaterno'];
     $tipoDiscap = $row_sql_expediente[''];
     $curp = $row_sql_expediente['curp'];
+    $direccion = $row_sql_detallesexpediente['direccion'];
+    $numeroCasa = $row_sql_detallesexpediente['numeroCasa'];
+    $numeroInterior = $row_sql_detallesexpediente['numeroInterior'];
+    $colonia = $row_sql_detallesexpediente['colonia'];
+    $cp = $row_sql_detallesexpediente['cp'];
+    
 
     /* $resultado_rows = mysqli_num_rows($resultado_Query);
     if($resultado_rows == 0){
