@@ -10,18 +10,15 @@ console.log('.$expediente.');
 </script>
 ';  */
 
-    $QueryExpediente = "SELECT * FROM expedientes WHERE ordenExpediente = '$expediente'";
+    $QueryExpediente = "SELECT * FROM expedientes WHERE ordenExpediente LIKE '$expediente'";
     $resultado_QueryExpediente = $conn2->query($QueryExpediente);
 
-    while ($row_sql_expediente = $resultado_QueryExpediente->fetch_assoc()){
-      echo '
-      <script>
-console.log('.$row_sql_expediente['ordenExpediente'].');
-</script>
-              <option value="'.$row_sql_expediente['ordenExpediente'].'">
-            ';
-    }
-   
+    $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
+    $nombreExp = $row_sql_expediente['nombre'];
+    $apellidoPaterno = $row_sql_expediente['apellidoPaterno'];
+    $apellidoMaterno = $row_sql_expediente['apellidoMaterno'];
+    $tipoDiscap = $row_sql_expediente[''];
+    $curp = $row_sql_expediente['curp'];
 
     /* $resultado_rows = mysqli_num_rows($resultado_Query);
     if($resultado_rows == 0){

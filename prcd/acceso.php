@@ -53,7 +53,7 @@ if (isset($_POST['usr']) && isset($_POST['pwd'])) {
 
         session_destroy();
         $_SESSION = [];
-        echo "<script type=\"text/javascript\">alert('Usuario no válido');location.href='../index.html';</script>";
+        echo "<script type=\"text/javascript\">alert('Usuario no válido');location.href='../login.html';</script>";
 
 
     }

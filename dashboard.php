@@ -365,10 +365,13 @@ include('prcd/qc/qc.php');
                           </div>
                           <div class="modal-body">
                             <label for="exampleDataList" class="form-label">Buscar</label>
-                            <input class="form-control" list="datalistOptions" id="searchDBInclusion" onchange="buscarExpediente()"  placeholder="Buscar...">
+                            <input class="form-control" list="datalistOptions" id="searchDBInclusion" onkeypress="buscarExpediente()"  placeholder="Buscar...">
                             <datalist id="datalistOptions">
 
                             </datalist>
+                            <div id="prueba">
+                              
+                            </div>
                             <br>
                             <div class="container text-center">
                               <div class="card mb-3" style="max-width: 100%;">
@@ -382,11 +385,11 @@ include('prcd/qc/qc.php');
                                   </div>
                                   <div class="col-md-8">
                                     <div class="card-body text-start">
-                                      <h5 class="card-title mt-3">Nombre Completo</h5>
-                                      <p class="card-text">Tipo Discapacidad: </p>
-                                      <p class="card-text">No. Expediente: </p>
-                                      <p class="card-text">CURP: </p>
-                                      <p class="card-text">Domicilio: <br>     Calle y no.:<br>     Colonia:</p>
+                                      <h5 class="card-title mt-3">Nombre Completo <?php echo $nombreExp ?></h5>
+                                      <p class="card-text">Tipo Discapacidad: <?php echo $nombreExp ?></p>
+                                      <p class="card-text">No. Expediente: <?php echo $folio ?></p>
+                                      <p class="card-text">CURP: <?php echo $curp ?></p>
+                                      <p class="card-text">Domicilio:<br>     Calle y no.: <?php echo $direccion; $numeroCasa; $numeroInterior  ?><br>     Colonia: <?php echo $colonia ?></p><br>     C.P.: <?php echo $cp ?>
                                       <!-- <p class="card-text text-end text-muted" style="font-size: 5rem;"><i class="bi bi-qr-code"></i></p> -->
                                     </div>
                                   </div>
@@ -546,7 +549,7 @@ include('prcd/qc/qc.php');
       //processData:false,
       cache: false,
         success: function(data) {
-          $("#datalistOptions").html(data);
+          $("#prueba").html(data);
 
       }               
     });
