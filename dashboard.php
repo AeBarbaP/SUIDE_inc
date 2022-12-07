@@ -336,20 +336,19 @@ include('prcd/qc/qc.php');
                               <div class="card mb-3" style="max-width: 100%;">
                                 <div class="row g-0">
                                   <div class="col-md-4">
-                                    <i class="bi bi-file-person-fill" style="font-size: 15rem;"></i>
+                                    <!-- <i class="bi bi-file-person-fill" style="font-size: 15rem;"></i> -->
+                                    <img src="" alt="">
                                     <div class="input-group">
                                       <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                                     </div>
                                   </div>
                                   <div class="col-md-8">
                                     <div class="card-body text-start">
-
                                       <div id="prueba"></div>
-
-                                    </div>
                                   </div>
                                 </div>
                               </div>
+                            </div>
                             </div>
                           </div>  
                           <div class="modal-footer">
