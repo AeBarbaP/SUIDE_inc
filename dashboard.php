@@ -27,7 +27,6 @@ if (isset($_SESSION['usr'])) {
 
 include('prcd/qc/qc.php');
 
-
 // variables de sesión
 
     $usuario = $_SESSION['usr'];
@@ -48,8 +47,7 @@ include('prcd/qc/qc.php');
     <title>SUIDEV · Inclusión</title>
 
     <link rel="icon" type="image/png" href="img/inclusion.ico"/>
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
-    <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
@@ -121,8 +119,6 @@ include('prcd/qc/qc.php');
         -webkit-overflow-scrolling: touch;
       }
     </style>
-
-    
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
@@ -190,39 +186,6 @@ include('prcd/qc/qc.php');
             </a>
           </li>
         </ul>
-
-        <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-          <span>Saved reports</span>
-          <a class="link-secondary" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle" class="align-text-bottom"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text" class="align-text-bottom"></span>
-              Current month
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text" class="align-text-bottom"></span>
-              Last quarter
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text" class="align-text-bottom"></span>
-              Social engagement
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text" class="align-text-bottom"></span>
-              Year-end sale
-            </a>
-          </li>
-        </ul> -->
       </div>
     </nav>
 
@@ -364,16 +327,15 @@ include('prcd/qc/qc.php');
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            <div class="input-group mb-3 w-50">
+                            <div class="input-group mb-1 mt-2 w-50">
                               <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                              <input class="form-control" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" placeholder="Buscar...">
+                              <input class="form-control" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
                             </div>
                             <br>
                             <div class="container text-center">
                               <div class="card mb-3" style="max-width: 100%;">
                                 <div class="row g-0">
                                   <div class="col-md-4">
-                                    <!-- <img src="..." class="img-fluid rounded-start" alt="..."> -->
                                     <i class="bi bi-file-person-fill" style="font-size: 15rem;"></i>
                                     <div class="input-group">
                                       <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
@@ -381,11 +343,9 @@ include('prcd/qc/qc.php');
                                   </div>
                                   <div class="col-md-8">
                                     <div class="card-body text-start">
-                                    <div id="prueba"></div>
-                                     
 
+                                      <div id="prueba"></div>
 
-                                      <!-- <p class="card-text text-end text-muted" style="font-size: 5rem;"><i class="bi bi-qr-code"></i></p> -->
                                     </div>
                                   </div>
                                 </div>
@@ -483,7 +443,6 @@ include('prcd/qc/qc.php');
 </div>
 
 
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
   </body>

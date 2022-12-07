@@ -27,7 +27,7 @@ $expediente = $_POST['expediente'];
     
     if($resultado_QueryExpediente){
       echo'
-      <h5 class="card-title mt-3">Nombre Completo '.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
+      <h5 class="card-title mt-3">Nombre Completo: '.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
       <p class="card-text">Tipo Discapacidad: '.$nombreExp.'</p>
       <p class="card-text">CURP: '.$curp.'</p>
       <p class="card-text">Domicilio:<br>Calle y no.: '.$direccion.'; '.$numeroCasa.'; '.$numeroInterior.'<br>Colonia: '.$colonia.'<br>C.P.: '.$cp.'</p>
@@ -36,6 +36,6 @@ $expediente = $_POST['expediente'];
     else{
       echo'
       <script>
-      alert("No se encontró el registro");
+        alert("No se encontró el registro");
       </script>';
     }
