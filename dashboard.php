@@ -364,13 +364,9 @@ include('prcd/qc/qc.php');
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            <label for="exampleDataList" class="form-label">Buscar</label>
-                            <input class="form-control" list="datalistOptions" id="searchDBInclusion" onkeypress="buscarExpediente()"  placeholder="Buscar...">
-                            <datalist id="datalistOptions">
-
-                            </datalist>
-                            <div id="prueba">
-                              
+                            <div class="input-group mb-3 w-50">
+                              <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                              <input class="form-control" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" placeholder="Buscar...">
                             </div>
                             <br>
                             <div class="container text-center">
@@ -385,11 +381,10 @@ include('prcd/qc/qc.php');
                                   </div>
                                   <div class="col-md-8">
                                     <div class="card-body text-start">
-                                      <h5 class="card-title mt-3">Nombre Completo <?php echo $nombreExp ?></h5>
-                                      <p class="card-text">Tipo Discapacidad: <?php echo $nombreExp ?></p>
-                                      <p class="card-text">No. Expediente: <?php echo $folio ?></p>
-                                      <p class="card-text">CURP: <?php echo $curp ?></p>
-                                      <p class="card-text">Domicilio:<br>     Calle y no.: <?php echo $direccion; $numeroCasa; $numeroInterior  ?><br>     Colonia: <?php echo $colonia ?><br>     C.P.: <?php echo $cp ?></p>
+                                    <div id="prueba"></div>
+                                     
+
+
                                       <!-- <p class="card-text text-end text-muted" style="font-size: 5rem;"><i class="bi bi-qr-code"></i></p> -->
                                     </div>
                                   </div>
@@ -538,11 +533,6 @@ include('prcd/qc/qc.php');
       url:"prcd/query_searchPadronBD.php",
       data:{
         expediente:expediente
-      //   hour:hour,
-      //   last:last,
-      //   first:first,
-      //   email:email,
-      //   address:address
       },
       // dataType: "html",
       //contentType:false,
@@ -553,5 +543,10 @@ include('prcd/qc/qc.php');
 
       }               
     });
+  }
+
+  function ValidaSoloNumeros() {
+  if ((event.keyCode < 48) || (event.keyCode > 57)) 
+    event.returnValue = false;
   }
 </script>
