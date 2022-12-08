@@ -62,6 +62,12 @@ header("content-type: image/jpeg");
     $imagen = $row_QueryImagen['fotografia'];
 
     if($resultado_QueryExpediente){
+      // if(empty($resultado_QueryImagen)){
+      //   echo'
+      //   <script>
+      //     alert("No se encontró el imagen");
+      //   </script>';
+      // }
       echo '
       <div class="col-md-4">
         <img width="100%" src="data:image/jpg;base64,'.base64_encode($row_QueryImagen['fotografia']).'" style="width:15rem">
