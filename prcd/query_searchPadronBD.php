@@ -2,6 +2,7 @@
 include('qc/qc2.php');
 
 $expediente = $_POST['expediente'];
+header("content-type: image/jpeg");
 
   // Detalles del expediente
     $QueryExpediente = "SELECT * FROM expedientes WHERE ordenExpediente = '$expediente'";
@@ -58,17 +59,25 @@ $expediente = $_POST['expediente'];
     $QueryImagen = "SELECT * FROM empleadocredenciales WHERE idExpediente = '$idExp'";
     $resultado_QueryImagen = $conn2->query($QueryImagen);
     $row_QueryImagen = $resultado_QueryImagen->fetch_assoc();
-    //$imagen = $row_QueryImagen['fotografia'];
+    $imagen = $row_QueryImagen['fotografia'];
 
     if($resultado_QueryExpediente){
-      echo'
-      <h5 class="card-title mt-3">'.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
-      <p class="card-text">Tipo Discapacidad: '.$nombreExp.'</p>
-      <p class="card-text">CURP: '.$curp.'</p>
-      <p class="card-text">Domicilio:'.$direccion.'; '.$numeroCasa.'; '.$numeroInterior.'<br>Colonia: '.$colonia.'<br>Localidad: '.$localidad2.'<br>Municipio: '.$municipio2.'<br>Estado: '.$estado2.'<br>C.P.: '.$cp.'</p>
-      <p>'.$row_QueryImagen['id'].'</p>
-      <p>'.$idExp.'</p>
-      <p><img width="100%" src="data:image/jpeg;base64,'.base64_encode($row_QueryImagen['fotografia']).'">
+      echo '
+      <div class="col-md-4">
+        <img width="100%" src="data:image/jpg;base64,'.base64_encode($row_QueryImagen['fotografia']).'" style="width:15rem">
+        <div class="input-group">
+          <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body text-start">
+          <h5 class="card-title mt-3">'.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
+          <p class="card-text">Tipo Discapacidad: '.$nombreExp.'</p>
+          <p class="card-text">CURP: '.$curp.'</p>
+          <p class="card-text">Domicilio:'.$direccion.'; '.$numeroCasa.'; '.$numeroInterior.'<br>Colonia: '.$colonia.'<br>Localidad: '.$localidad2.'<br>Municipio: '.$municipio2.'<br>Estado: '.$estado2.'<br>C.P.: '.$cp.'</p>
+        </div>
+      </div>
+      
       ';
     }
     else{
