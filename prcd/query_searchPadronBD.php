@@ -24,6 +24,7 @@ $expediente = $_POST['expediente'];
   $row_QueryDiscapacidad = $resultado_QueryDiscapacidad->fetch_assoc();
 
     $nombreExp = $row_sql_expediente['nombre'];
+    $idExp = $row_sql_expediente['id'];
     $apellidoPaterno = $row_sql_expediente['apellidoPaterno'];
     $apellidoMaterno = $row_sql_expediente['apellidoMaterno'];
   //  $tipoDiscap = $row_QueryDiscapacidad[''];
@@ -54,7 +55,7 @@ $expediente = $_POST['expediente'];
     $row_QueryLocalidad = $resultado_QueryLocalidad->fetch_assoc();
     $localidad2 = $row_QueryLocalidad['nombreLocalidad'];
     
-    $QueryImagen = "SELECT * FROM empleadocredenciales WHERE idExpediente = '$expediente'";
+    $QueryImagen = "SELECT * FROM empleadocredenciales WHERE idExpediente = '$idExp'";
     $resultado_QueryImagen = $conn2->query($QueryImagen);
     $row_QueryImagen = $resultado_QueryImagen->fetch_assoc();
     //$imagen = $row_QueryImagen['fotografia'];
@@ -65,7 +66,9 @@ $expediente = $_POST['expediente'];
       <p class="card-text">Tipo Discapacidad: '.$nombreExp.'</p>
       <p class="card-text">CURP: '.$curp.'</p>
       <p class="card-text">Domicilio:'.$direccion.'; '.$numeroCasa.'; '.$numeroInterior.'<br>Colonia: '.$colonia.'<br>Localidad: '.$localidad2.'<br>Municipio: '.$municipio2.'<br>Estado: '.$estado2.'<br>C.P.: '.$cp.'</p>
-      <p><img width="100%" src="data:image/jpeg;base64,'.base64_encode(stripslashes($row_QueryImagen['fotografia'])) .'">
+      <p>'.$row_QueryImagen['id'].'</p>
+      <p>'.$idExp.'</p>
+      <p><img width="100%" src="data:image/jpeg;base64,'.base64_encode($row_QueryImagen['fotografia']).'">
       ';
     }
     else{
