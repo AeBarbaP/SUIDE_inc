@@ -59,18 +59,30 @@ header("content-type: image/jpeg");
     $QueryImagen = "SELECT * FROM empleadocredenciales WHERE idExpediente = '$idExp'";
     $resultado_QueryImagen = $conn2->query($QueryImagen);
     $row_QueryImagen = $resultado_QueryImagen->fetch_assoc();
-    $imagen = $row_QueryImagen['fotografia'];
+    // $imagen = $row_QueryImagen['fotografia'];
 
     if($resultado_QueryExpediente){
-      // if(empty($resultado_QueryImagen)){
+      // if(isset($imagen)){
+      //   $imagen = $row_QueryImagen['fotografia'];
+      // }
+      // else{
       //   echo'
       //   <script>
-      //     alert("No se encontró el imagen");
+      //     alert("No se encontró la imagen");
       //   </script>';
       // }
       echo '
-      <div class="col-md-4">
-        <img width="100%" src="data:image/jpg;base64,'.base64_encode($row_QueryImagen['fotografia']).'" style="width:15rem">
+      <div class="col-md-4">';
+      if(isset($imagen)){
+        echo'
+        <img width="100%" src="data:image/jpg;base64,'.base64_encode($row_QueryImagen['fotografia']).'" style="width:15rem">';
+      }
+      else{
+        echo'
+        <img width="100%" src="img/no_profile.png" style="width:15rem">'; 
+      }
+      echo'
+      
         <div class="input-group">
           <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
         </div>
