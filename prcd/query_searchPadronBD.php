@@ -59,7 +59,7 @@ header("content-type: image/jpeg");
     $QueryImagen = "SELECT * FROM empleadocredenciales WHERE idExpediente = '$idExp'";
     $resultado_QueryImagen = $conn2->query($QueryImagen);
     $row_QueryImagen = $resultado_QueryImagen->fetch_assoc();
-    // $imagen = $row_QueryImagen['fotografia'];
+    $imagen = $row_QueryImagen['fotografia'];
 
     if($resultado_QueryExpediente){
       // if(isset($imagen)){

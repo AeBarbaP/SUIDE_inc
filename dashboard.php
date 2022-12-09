@@ -330,12 +330,12 @@ include('prcd/qc/qc.php');
                             <div class="input-group mb-1 mt-2 w-50">
                               <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
                               <input class="form-control" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
-                            </div>
+                            </div><!-- input group -->
                             <br>
                             <div class="container text-center">
                               <div class="card mb-3" style="max-width: 100%;">
-                                <div class="row g-0">
-                                  <div id="prueba"></div>
+                                <div class="row g-0" id="prueba">
+                                    <!-- <div id="prueba"></div> -->
                                   <!-- <div class="col-md-4">
                                     <img src="" alt="" id="imagenTarjeta">
                                     <div class="input-group">
@@ -343,22 +343,23 @@ include('prcd/qc/qc.php');
                                     </div>
                                   </div>
                                   <div class="col-md-8">
-                                    <div class="card-body text-start"> -->
-                                      <!-- <div id="prueba"></div> -->
-                                  <!-- </div> -->
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <!-- </div>   -->
+                                    <div class="card-body text-start">
+                                      <div id="prueba"></div>
+                                    </div> card 
+                                  </div>col -->
+                                </div><!-- row -->
+                              </div><!-- card -->
+                            </div><!-- container -->
+                          </div><!-- modal body -->
+                          
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             <button type="button" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd()"><i class="bi bi-save2"></i> Generar Credencial</button>
                             <button type="button" class="btn btn-primary" id="imprimirc" disabled><i class="bi bi-printer"></i> Imprimir</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                          </div><!-- modal footer -->
+                        </div><!-- modal content -->
+                      </div><!-- modal dialog -->
+                    </div><!-- modal -->
                     
                     <!-- Termina Modal para generar credencial -->
 
