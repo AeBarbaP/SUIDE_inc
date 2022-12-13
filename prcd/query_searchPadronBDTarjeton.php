@@ -26,7 +26,7 @@ header("content-type: image/jpeg");
     $row_QueryDiscapacidad2 = $resultado_QueryDiscapacidad2->fetch_assoc();
     $discapacidad2 = $row_QueryDiscapacidad2['nombreDiscapacidad'];
 
- 
+
 
     if($resultado_QueryExpediente){
 

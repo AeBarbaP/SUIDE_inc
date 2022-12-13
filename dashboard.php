@@ -335,18 +335,7 @@ include('prcd/qc/qc.php');
                             <div class="container text-center">
                               <div class="card mb-3" style="max-width: 100%;">
                                 <div class="row g-0" id="credencial">
-                                    <!-- <div id="prueba"></div> -->
-                                  <!-- <div class="col-md-4">
-                                    <img src="" alt="" id="imagenTarjeta">
-                                    <div class="input-group">
-                                      <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                    </div>
-                                  </div>
-                                  <div class="col-md-8">
-                                    <div class="card-body text-start">
-                                      <div id="prueba"></div>
-                                    </div> card 
-                                  </div>col -->
+                                    
                                 </div><!-- row -->
                               </div><!-- card -->
                             </div><!-- container -->
