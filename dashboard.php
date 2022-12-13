@@ -334,7 +334,7 @@ include('prcd/qc/qc.php');
                             <br>
                             <div class="container text-center">
                               <div class="card mb-3" style="max-width: 100%;">
-                                <div class="row g-0" id="prueba">
+                                <div class="row g-0" id="credencial">
                                     <!-- <div id="prueba"></div> -->
                                   <!-- <div class="col-md-4">
                                     <img src="" alt="" id="imagenTarjeta">
@@ -373,15 +373,10 @@ include('prcd/qc/qc.php');
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            <label for="exampleDataList" class="form-label">Número de Expediente</label>
-                            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar...">
-                            <datalist id="datalistOptions">
-                              <option value="San Francisco">
-                              <option value="New York">
-                              <option value="Seattle">
-                              <option value="Los Angeles">
-                              <option value="Chicago">
-                            </datalist>
+                            <div class="input-group mb-1 mt-2 w-100">
+                              <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                              <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+                            </div><!-- input group -->
                             <br>
                             <div class="container text-center">
                               <div class="card mb-3" style="max-width: 100%;">
@@ -390,11 +385,12 @@ include('prcd/qc/qc.php');
                                     <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
                                   </div>
                                   <div class="col-md-8">
-                                    <div class="card-body text-start">
-                                      <h5 class="card-title mt-3">Nombre Completo</h5>
-                                      <p class="card-text">Tipo Discapacidad: </p>
-                                      <p class="card-text">No. Expediente: </p>
-                                      <p class="card-text">CURP: </p>
+                                    <div class="card-body text-start" >
+                                      <div id = "tarjeton">
+
+                                      </div>
+                                      <hr>
+                                      <h5 class="mb-3">Datos del vehículo</h5>
                                       <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Marca</span>
                                         <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1">
@@ -498,7 +494,26 @@ include('prcd/qc/qc.php');
       //processData:false,
       cache: false,
         success: function(data) {
-          $("#prueba").html(data);
+          $("#credencial").html(data);
+
+      }               
+    });
+  }
+
+  function buscarExpediente2(){
+    var expediente = document.getElementById('searchDBInclusion2').value;
+    $.ajax({
+      type:"POST",
+      url:"prcd/query_searchPadronBDTarjeton.php",
+      data:{
+        expediente:expediente
+      },
+      // dataType: "html",
+      //contentType:false,
+      //processData:false,
+      cache: false,
+        success: function(data) {
+          $("#tarjeton").html(data);
 
       }               
     });

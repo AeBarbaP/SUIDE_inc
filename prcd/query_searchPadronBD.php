@@ -19,16 +19,10 @@ header("content-type: image/jpeg");
   $resultado_QueryDatosMedicos = $conn2->query($QueryDatosMedicos);
   $row_QueryDatosMedicos = $resultado_QueryDatosMedicos->fetch_assoc();
 
-  //Discapacidad
-  $QueryDiscapacidad = "SELECT * FROM discapacidades WHERE idExpediente = '$expediente'";
-  $resultado_QueryDiscapacidad = $conn2->query($QueryDiscapacidad);
-  $row_QueryDiscapacidad = $resultado_QueryDiscapacidad->fetch_assoc();
-
     $nombreExp = $row_sql_expediente['nombre'];
     $idExp = $row_sql_expediente['id'];
     $apellidoPaterno = $row_sql_expediente['apellidoPaterno'];
     $apellidoMaterno = $row_sql_expediente['apellidoMaterno'];
-  //  $tipoDiscap = $row_QueryDiscapacidad[''];
     $curp = $row_sql_expediente['curp'];
     $direccion = $row_QueryDireccion['direccion'];
     $numeroCasa = $row_QueryDireccion['numeroCasa'];
@@ -56,6 +50,17 @@ header("content-type: image/jpeg");
     $row_QueryLocalidad = $resultado_QueryLocalidad->fetch_assoc();
     $localidad2 = $row_QueryLocalidad['nombreLocalidad'];
     
+    //Discapacidad
+    $QueryDiscapacidad = "SELECT * FROM discapacidades WHERE idExpediente = '$idExp'";
+    $resultado_QueryDiscapacidad = $conn2->query($QueryDiscapacidad);
+    $row_QueryDiscapacidad = $resultado_QueryDiscapacidad->fetch_assoc();
+    $discapacidad = $row_QueryDiscapacidad['idCatDiscapacidad'];
+
+    $QueryDiscapacidad2 = "SELECT * FROM catdiscapacidades WHERE id = '$discapacidad'";
+    $resultado_QueryDiscapacidad2 = $conn2->query($QueryDiscapacidad2);
+    $row_QueryDiscapacidad2 = $resultado_QueryDiscapacidad2->fetch_assoc();
+    $discapacidad2 = $row_QueryDiscapacidad2['nombreDiscapacidad'];
+
     $QueryImagen = "SELECT * FROM empleadocredenciales WHERE idExpediente = '$idExp'";
     $resultado_QueryImagen = $conn2->query($QueryImagen);
     $row_QueryImagen = $resultado_QueryImagen->fetch_assoc();
@@ -90,7 +95,7 @@ header("content-type: image/jpeg");
       <div class="col-md-8">
         <div class="card-body text-start">
           <h5 class="card-title mt-3">'.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
-          <p class="card-text">Tipo Discapacidad: '.$nombreExp.'</p>
+          <p class="card-text">Tipo Discapacidad: '.$discapacidad2.'</p>
           <p class="card-text">CURP: '.$curp.'</p>
           <p class="card-text">Domicilio:'.$direccion.'; '.$numeroCasa.'; '.$numeroInterior.'<br>Colonia: '.$colonia.'<br>Localidad: '.$localidad2.'<br>Municipio: '.$municipio2.'<br>Estado: '.$estado2.'<br>C.P.: '.$cp.'</p>
         </div>
