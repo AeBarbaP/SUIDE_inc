@@ -1,6 +1,13 @@
 <?php
 include('qc/qc2.php');
 
+
+if ($_POST['expediente'] == 0){
+  $tipoSangre = "";
+  $tipoSangre2 = "";
+}
+else{
+
 $expediente = $_POST['expediente'];
 header("content-type: image/jpeg");
 
@@ -9,7 +16,7 @@ header("content-type: image/jpeg");
     $resultado_QueryExpediente = $conn2->query($QueryExpediente);
     $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
 
-    if (isset($row_sql_expediente['id'])){
+    if ($resultado_QueryExpediente){
 
     // Dirección
       $QueryDireccion = "SELECT * FROM detalleexpedientes WHERE idExpediente = '$expediente'";
@@ -148,5 +155,10 @@ header("content-type: image/jpeg");
       }
   }
   else {
+    $tipoSangre = "";
+    $tipoSangre2 = "";
     
   }
+
+}
+
