@@ -11,28 +11,28 @@ else{
 $expediente = $_POST['expediente'];
 header("content-type: image/jpeg");
 
-  // Detalles del expediente
+    // Detalles del expediente
     $QueryExpediente = "SELECT * FROM expedientes WHERE ordenExpediente = '$expediente'";
     $resultado_QueryExpediente = $conn2->query($QueryExpediente);
     $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
 
     if ($resultado_QueryExpediente){
 
-    // Dirección
+       // Dirección
       $QueryDireccion = "SELECT * FROM detalleexpedientes WHERE idExpediente = '$expediente'";
       $resultado_QueryDireccion = $conn2->query($QueryDireccion);
       $row_QueryDireccion = $resultado_QueryDireccion->fetch_assoc();
 
-    //Datos Médicos
-    $QueryDatosMedicos = "SELECT * FROM datosmedicos WHERE idExpediente = '$expediente'";
-    $resultado_QueryDatosMedicos = $conn2->query($QueryDatosMedicos);
-    $row_QueryDatosMedicos = $resultado_QueryDatosMedicos->fetch_assoc();
-    $tipoSangre = $row_QueryDatosMedicos['idTipoSangre'];
+      //Datos Médicos
+      $QueryDatosMedicos = "SELECT * FROM datosmedicos WHERE idExpediente = '$expediente'";
+      $resultado_QueryDatosMedicos = $conn2->query($QueryDatosMedicos);
+      $row_QueryDatosMedicos = $resultado_QueryDatosMedicos->fetch_assoc();
+      $tipoSangre = $row_QueryDatosMedicos['idTipoSangre'];
 
-    $QueryDatosMedicos2 = "SELECT * FROM tiposangres WHERE id = '$tipoSangre'";
-    $resultado_QueryDatosMedicos2 = $conn2->query($QueryDatosMedicos2);
-    $row_QueryDatosMedicos2 = $resultado_QueryDatosMedicos2->fetch_assoc();
-    $tipoSangre2 = $row_QueryDatosMedicos2['nombreSangre'];
+      $QueryDatosMedicos2 = "SELECT * FROM tiposangres WHERE id = '$tipoSangre'";
+      $resultado_QueryDatosMedicos2 = $conn2->query($QueryDatosMedicos2);
+      $row_QueryDatosMedicos2 = $resultado_QueryDatosMedicos2->fetch_assoc();
+      $tipoSangre2 = $row_QueryDatosMedicos2['nombreSangre'];
 
       $nombreExp = $row_sql_expediente['nombre'];
       $idExp = $row_sql_expediente['id'];
@@ -46,8 +46,7 @@ header("content-type: image/jpeg");
       $municipio = $row_QueryDireccion['idCatMunicipio'];
       $localidad = $row_QueryDireccion['idCatLocalidad'];
       $cp = $row_QueryDireccion['cp'];
-      //$tipoSangre = $row_QueryDireccion['tipoSangre'];
-      //$alergias = $row_QueryDireccion['alergias'];
+      $folio = $row_sql_expediente['folio'];
 
       $QueryMunicipio = "SELECT * FROM catmunicipios WHERE id = '$municipio'";
       $resultado_QueryMunicipio = $conn2->query($QueryMunicipio);
@@ -114,8 +113,7 @@ header("content-type: image/jpeg");
       $QueryImagen = "SELECT * FROM empleadocredenciales WHERE idExpediente = '$idExp'";
       $resultado_QueryImagen = $conn2->query($QueryImagen);
       $row_QueryImagen = $resultado_QueryImagen->fetch_assoc();
-  /*     $imagen = $row_QueryImagen['fotografia']; */
-
+      
       if($resultado_QueryExpediente){
 
         echo '
@@ -126,22 +124,34 @@ header("content-type: image/jpeg");
         }
         else{
           echo'
-          <img width="100%" src="img/no_profile.png" style="width:15rem">'; 
+          <img id="img1" width="100%" style="width:15rem">
+          <div class="input-group">
+            <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+          </div>
+          '; 
         }
         echo'
         
-          <div class="input-group">
-            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-          </div>
+          
         </div>
         <div class="col-md-8">
           <div class="card-body text-start">
-            <h5 class="card-title mt-3">'.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
+            <h5 class="card-title mt-3" >'.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
+            <p class="card-text">Número de Expediente: '.$folio.'</p>
             <p class="card-text">Tipo Discapacidad: '.$discapacidad2.'</p>
             <p class="card-text">CURP: '.$curp.'</p>
             <p class="card-text">Domicilio:'.$direccion.'; '.$numeroCasa.'; '.$numeroInterior.'<br>Colonia: '.$colonia.'<br>Localidad: '.$localidad2.'<br>Municipio: '.$municipio2.'<br>Estado: '.$estado2.'<br>C.P.: '.$cp.'</p>
             <p class="card-text">Tipo de Sangre: '.$tipoSangre2.'</p>
             <p class="card-text">Alergias: '.$alergias3.'</p>
+            <select class="form-select mb-3" id="selectentrega" onchange="OcultarInput()" aria-label="Default select example">
+              <option selected>Selecciona a quien se entrega la credencial</option>
+              <option value="1">Usuario</option>
+              <option value="2">Otro</option>
+            </select>
+            <div class="form-floating" id="inputentrega" hidden>
+              <input type="text" class="form-control" id="recibe" placeholder="">
+              <label for="floatingInput">Nombre de quien recibe la credencial</label>
+            </div>
           </div>
         </div>
         
