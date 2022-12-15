@@ -124,7 +124,7 @@ header("content-type: image/jpeg");
         }
         else{
           echo'
-          <img id="img1" width="100%" style="width:15rem">
+          <img id="img1" src="img/no_profile.png" width="100%" style="width:15rem">
           <div class="input-group">
             <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
           </div>
@@ -140,7 +140,7 @@ header("content-type: image/jpeg");
             <p class="card-text">Número de Expediente: '.$folio.'</p>
             <p class="card-text">Tipo Discapacidad: '.$discapacidad2.'</p>
             <p class="card-text">CURP: '.$curp.'</p>
-            <p class="card-text">Domicilio:'.$direccion.'; '.$numeroCasa.'; '.$numeroInterior.'<br>Colonia: '.$colonia.'<br>Localidad: '.$localidad2.'<br>Municipio: '.$municipio2.'<br>Estado: '.$estado2.'<br>C.P.: '.$cp.'</p>
+            <p class="card-text">Domicilio: '.$direccion.' '.$numeroCasa.' '.$numeroInterior.'<br>Colonia: '.$colonia.'<br>Localidad: '.$localidad2.'<br>Municipio: '.$municipio2.'<br>Estado: '.$estado2.'<br>C.P.: '.$cp.'</p>
             <p class="card-text">Tipo de Sangre: '.$tipoSangre2.'</p>
             <p class="card-text">Alergias: '.$alergias3.'</p>
             <select class="form-select mb-3" id="selectentrega" onchange="OcultarInput()" aria-label="Default select example">

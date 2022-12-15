@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2022 at 10:23 PM
+-- Generation Time: Dec 15, 2022 at 10:25 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -24,6 +24,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `descripcion_alergia`
+--
+
+CREATE TABLE `descripcion_alergia` (
+  `id` int(11) NOT NULL,
+  `id_documentos` int(11) NOT NULL COMMENT 'Se relaciona con el id de la tabla documentos',
+  `descripcion` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `documentos`
 --
 
@@ -40,16 +52,16 @@ CREATE TABLE `documentos` (
   `vigencia_cred` date DEFAULT NULL,
   `vigencia_tarjeton` date DEFAULT NULL,
   `id_users` int(15) NOT NULL,
-  `recibido` varchar(50) NOT NULL,
-  `folio_cred` int(10) NOT NULL,
-  `folio_tarj` int(10) NOT NULL
+  `recibe` varchar(50) NOT NULL,
+  `folio_cred` int(10) DEFAULT NULL,
+  `folio_tarj` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `documentos`
 --
 
-INSERT INTO `documentos` (`id`, `id_ext`, `concatenado_id`, `qr_cred`, `qr_tarjeton`, `entregado_c`, `fecha_c`, `entregado_t`, `fecha_t`, `vigencia_cred`, `vigencia_tarjeton`, `id_users`, `recibido`, `folio_cred`, `folio_tarj`) VALUES
+INSERT INTO `documentos` (`id`, `id_ext`, `concatenado_id`, `qr_cred`, `qr_tarjeton`, `entregado_c`, `fecha_c`, `entregado_t`, `fecha_t`, `vigencia_cred`, `vigencia_tarjeton`, `id_users`, `recibe`, `folio_cred`, `folio_tarj`) VALUES
 (1, 'C-4940-44790', '', '', '', 1, '2022-07-06', 0, '0000-00-00', '2023-07-06', '0000-00-00', 1, '', 0, 0),
 (2, 'C-4940-44790', 'C-4940-44790-1', '-', '-', 1, '2022-08-31', 1, '2022-08-31', '2023-08-31', '2023-08-31', 1, '', 0, 0);
 
@@ -103,7 +115,32 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (15, 0, '2022-09-27 10:23:55', NULL),
 (16, 4, '2022-09-27 10:29:57', NULL),
 (17, 4, NULL, '2022-09-27 10:30:01'),
-(18, 1, '2022-09-27 12:11:54', NULL);
+(18, 1, '2022-09-27 12:11:54', NULL),
+(19, 1, '2022-09-28 09:52:02', NULL),
+(20, 1, NULL, '2022-09-28 12:30:20'),
+(21, 1, '2022-09-28 12:31:01', NULL),
+(22, 1, '2022-10-03 14:04:15', NULL),
+(23, 1, '2022-10-04 11:41:36', NULL),
+(24, 1, '2022-11-29 12:25:57', NULL),
+(25, 1, '2022-12-05 09:45:42', NULL),
+(26, 1, '2022-12-06 12:13:35', NULL),
+(27, 0, NULL, '2022-12-06 12:35:02'),
+(28, 1, '2022-12-07 08:33:41', NULL),
+(29, 1, NULL, '2022-12-07 12:55:40'),
+(30, 1, '2022-12-07 12:56:39', NULL),
+(31, 1, '2022-12-08 10:30:21', NULL),
+(32, 0, NULL, '2022-12-08 11:19:31'),
+(33, 1, '2022-12-13 09:03:35', NULL),
+(34, 1, '2022-12-14 08:42:12', NULL),
+(35, 1, NULL, '2022-12-14 08:50:08'),
+(36, 1, '2022-12-14 08:51:37', NULL),
+(37, 1, NULL, '2022-12-14 08:54:04'),
+(38, 1, '2022-12-14 08:55:47', NULL),
+(39, 1, NULL, '2022-12-14 08:56:32'),
+(40, 1, '2022-12-14 10:38:35', NULL),
+(41, 1, NULL, '2022-12-14 15:28:32'),
+(42, 1, '2022-12-15 08:22:53', NULL),
+(43, 1, NULL, '2022-12-15 14:53:10');
 
 -- --------------------------------------------------------
 
@@ -154,6 +191,51 @@ CREATE TABLE `prestamo` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `registro_pcd`
+--
+
+CREATE TABLE `registro_pcd` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `ap_paterno` varchar(50) NOT NULL,
+  `ap_materno` varchar(50) DEFAULT NULL,
+  `tipo_discapacidad` int(11) NOT NULL,
+  `curp` varchar(16) NOT NULL,
+  `domicilio` varchar(100) NOT NULL,
+  `colonia` varchar(50) NOT NULL,
+  `localidad` int(11) NOT NULL,
+  `municipio` int(11) NOT NULL,
+  `estado` int(11) NOT NULL,
+  `cp` int(11) NOT NULL,
+  `tipo_sangre` int(2) NOT NULL,
+  `tipo_alergia` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tipo_alergia`
+--
+
+CREATE TABLE `tipo_alergia` (
+  `id` int(11) NOT NULL,
+  `tipo` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tipo_alergia`
+--
+
+INSERT INTO `tipo_alergia` (`id`, `tipo`) VALUES
+(1, 'Ambiental'),
+(2, 'Alimentaria'),
+(3, 'Intradérmica'),
+(4, 'Por contacto'),
+(5, 'Farmacológica');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -175,9 +257,9 @@ INSERT INTO `users` (`id`, `username`, `pwd`, `perfil`, `nombre`, `fecha_creacio
 (1, 'annaeliza', '12345', 1, 'Ana Elisa Barba Pinedo', '0000-00-00 00:00:00', 1),
 (2, 'jrodolfo', '12345678', 1, 'Jesús Rodolfo Leaños Villegas', '2022-09-21 14:23:40', 1),
 (4, 'juanjo', '12345678', 2, 'Juan José Quiroz Nava', '2022-09-21 14:34:03', 1),
-(5, 'grisgalvan', '789456123', 1, 'Griselda Galván Galván', '2022-09-21 15:08:58', 1),
+(5, 'grisgalvan', '789456123', 2, 'Griselda Galván Galván', '2022-09-21 15:08:58', 2),
 (6, 'amparoi', '654213', 2, 'Amparo Iturriaga Araiza', '2022-09-22 12:56:45', 1),
-(7, 'hecmendoza', '123456789', 2, 'Héctor Mario Mendoza Bañuelos', '2022-09-22 14:04:40', 2);
+(7, 'hecmendoza', '123456789', 2, 'Héctor Mario Mendoza Bañuelos', '2022-09-22 14:04:40', 1);
 
 -- --------------------------------------------------------
 
@@ -193,12 +275,19 @@ CREATE TABLE `vehiculos` (
   `marca` varchar(15) NOT NULL,
   `annio` int(4) NOT NULL,
   `no_placas` varchar(10) NOT NULL,
-  `chofer` varchar(100) NOT NULL
+  `chofer` varchar(100) NOT NULL,
+  `no_serie` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `descripcion_alergia`
+--
+ALTER TABLE `descripcion_alergia`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `documentos`
@@ -231,6 +320,18 @@ ALTER TABLE `prestamo`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `registro_pcd`
+--
+ALTER TABLE `registro_pcd`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tipo_alergia`
+--
+ALTER TABLE `tipo_alergia`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -245,6 +346,12 @@ ALTER TABLE `vehiculos`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `descripcion_alergia`
+--
+ALTER TABLE `descripcion_alergia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `documentos`
@@ -262,7 +369,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `perfiles_usr`
@@ -275,6 +382,18 @@ ALTER TABLE `perfiles_usr`
 --
 ALTER TABLE `prestamo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `registro_pcd`
+--
+ALTER TABLE `registro_pcd`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tipo_alergia`
+--
+ALTER TABLE `tipo_alergia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
