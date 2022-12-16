@@ -334,7 +334,7 @@ include('prcd/qc/qc.php');
                             <br>
                             <div class="container text-center">
                               <div class="card mb-3" style="max-width: 100%;">
-                              <form action="prcd/generaqrcredencial.php" method="POST"><!--form-->
+                              <form action="prcd/generaqrcredencial.php" id="form-id" method="POST"><!--form-->
                                 <div class="row g-0" id="credencial">
                                     
                                 </div><!-- row -->
@@ -345,7 +345,7 @@ include('prcd/qc/qc.php');
                           
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd()"><i class="bi bi-save2"></i> Generar Credencial</button>
+                            <button type="submit" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd()"><i class="bi bi-save2"></i> Generar Credencial</button>
                             <button type="button" class="btn btn-primary" id="imprimirc" disabled><i class="bi bi-printer"></i> Imprimir</button>
                           </div><!-- modal footer -->
                         </div><!-- modal content -->
@@ -436,6 +436,7 @@ include('prcd/qc/qc.php');
 </html>
 
 <script>
+
   function swaldatoscrd () {
     Swal.fire({
       title: 'Los datos están correctos?',
@@ -448,9 +449,11 @@ include('prcd/qc/qc.php');
       if (result.isConfirmed) {
         document.getElementById("habilitaimprimirc").disabled=true;
         document.getElementById("imprimirc").disabled=false;
+        var form = document.getElementById("form-id");
+        form.submit();
         Swal.fire('Listo!', '', 'success')
       } else if (result.isDenied) {
-        Swal.fire('Verifica los datos!', '', 'info')
+        Swal.fire('Verifica los datos en el padrón!', '', 'info')
       }
     })
   }
@@ -468,10 +471,11 @@ include('prcd/qc/qc.php');
         document.getElementById("imprimirt").disabled=false;
         Swal.fire('Listo!', '', 'success')
       } else if (result.isDenied) {
-        Swal.fire('Verifica los datos!', '', 'info')
+        Swal.fire('Verifica los datos en el padrón!', '', 'info')
       }
     })
   }
+
   function buscarExpediente(){
     var expediente = document.getElementById('searchDBInclusion').value;
     $.ajax({

@@ -143,8 +143,8 @@ header("content-type: image/jpeg");
             <p class="card-text">Domicilio: '.$direccion.' '.$numeroCasa.' '.$numeroInterior.'<br>Colonia: '.$colonia.'<br>Localidad: '.$localidad2.'<br>Municipio: '.$municipio2.'<br>Estado: '.$estado2.'<br>C.P.: '.$cp.'</p>
             <p class="card-text">Tipo de Sangre: '.$tipoSangre2.'</p>
             <p class="card-text">Alergias: '.$alergias3.'</p>
-            <select class="form-select mb-3" id="selectentrega" onchange="OcultarInput()" aria-label="Default select example">
-              <option selected>Selecciona a quien se entrega la credencial</option>
+            <select class="form-select mb-3" id="selectentrega" onchange="OcultarInput()" aria-label="Default select example" required>
+              <option selected value="">Selecciona a quien se entrega la credencial</option>
               <option value="1">Usuario</option>
               <option value="2">Otro</option>
             </select>
