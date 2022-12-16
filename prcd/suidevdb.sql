@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2022 at 10:25 PM
+-- Generation Time: Dec 16, 2022 at 08:46 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -24,14 +24,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `descripcion_alergia`
+-- Table structure for table `alergia_descripcion`
 --
 
-CREATE TABLE `descripcion_alergia` (
+CREATE TABLE `alergia_descripcion` (
   `id` int(11) NOT NULL,
   `id_documentos` int(11) NOT NULL COMMENT 'Se relaciona con el id de la tabla documentos',
   `descripcion` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `alergia_tipo`
+--
+
+CREATE TABLE `alergia_tipo` (
+  `id` int(11) NOT NULL,
+  `tipo` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `alergia_tipo`
+--
+
+INSERT INTO `alergia_tipo` (`id`, `tipo`) VALUES
+(1, 'Ambiental'),
+(2, 'Alimentaria'),
+(3, 'Intradérmica'),
+(4, 'Por contacto'),
+(5, 'Farmacológica');
 
 -- --------------------------------------------------------
 
@@ -140,7 +162,8 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (40, 1, '2022-12-14 10:38:35', NULL),
 (41, 1, NULL, '2022-12-14 15:28:32'),
 (42, 1, '2022-12-15 08:22:53', NULL),
-(43, 1, NULL, '2022-12-15 14:53:10');
+(43, 1, NULL, '2022-12-15 14:53:10'),
+(44, 1, '2022-12-16 10:36:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -214,28 +237,6 @@ CREATE TABLE `registro_pcd` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tipo_alergia`
---
-
-CREATE TABLE `tipo_alergia` (
-  `id` int(11) NOT NULL,
-  `tipo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tipo_alergia`
---
-
-INSERT INTO `tipo_alergia` (`id`, `tipo`) VALUES
-(1, 'Ambiental'),
-(2, 'Alimentaria'),
-(3, 'Intradérmica'),
-(4, 'Por contacto'),
-(5, 'Farmacológica');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -284,9 +285,15 @@ CREATE TABLE `vehiculos` (
 --
 
 --
--- Indexes for table `descripcion_alergia`
+-- Indexes for table `alergia_descripcion`
 --
-ALTER TABLE `descripcion_alergia`
+ALTER TABLE `alergia_descripcion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `alergia_tipo`
+--
+ALTER TABLE `alergia_tipo`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -326,12 +333,6 @@ ALTER TABLE `registro_pcd`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tipo_alergia`
---
-ALTER TABLE `tipo_alergia`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -348,10 +349,16 @@ ALTER TABLE `vehiculos`
 --
 
 --
--- AUTO_INCREMENT for table `descripcion_alergia`
+-- AUTO_INCREMENT for table `alergia_descripcion`
 --
-ALTER TABLE `descripcion_alergia`
+ALTER TABLE `alergia_descripcion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `alergia_tipo`
+--
+ALTER TABLE `alergia_tipo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `documentos`
@@ -369,7 +376,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `perfiles_usr`
@@ -388,12 +395,6 @@ ALTER TABLE `prestamo`
 --
 ALTER TABLE `registro_pcd`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tipo_alergia`
---
-ALTER TABLE `tipo_alergia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
