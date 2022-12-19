@@ -438,6 +438,11 @@ include('prcd/qc/qc.php');
 <script>
 
   function swaldatoscrd () {
+    var selectAB = document.getElementById("selectentrega").value;
+    var selectVig = document.getElementById("selectvigencia").value;
+    if ((selectAB!=="") && (selectVig!=="")){
+
+    
     Swal.fire({
       title: 'Los datos están correctos?',
       showDenyButton: true,
@@ -456,7 +461,21 @@ include('prcd/qc/qc.php');
         Swal.fire('Verifica los datos en el padrón!', '', 'info')
       }
     })
+    } else {
+      Swal.fire({
+        title: '<strong>SUIDEV</strong>',
+        imageUrl: 'img/horizontal-justo.png',
+        imageHeight: 120,
+        text: 'Hay un campo vacío',
+        showCloseButton: true,
+        focusConfirm: false,
+        confirmButtonText:
+          '<i class="fa fa-thumbs-up"></i> OK!',
+        confirmButtonAriaLabel: 'OK!',
+    })
+    }
   }
+
   function swaldatostrn () {
     Swal.fire({
       title: 'Los datos están correctos?',
@@ -475,6 +494,7 @@ include('prcd/qc/qc.php');
       }
     })
   }
+
 
   function buscarExpediente(){
     var expediente = document.getElementById('searchDBInclusion').value;
