@@ -326,7 +326,7 @@ include('prcd/qc/qc.php');
                             <h5 class="modal-title" id="exampleModalLabel">Generar Credencial con QR</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
-                          <div class="modal-body">
+                          <div class="modal-body" style="height: 620px;">
                             <div class="input-group mb-1 mt-2 w-50">
                               <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
                               <input class="form-control" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
@@ -334,16 +334,18 @@ include('prcd/qc/qc.php');
                             <br>
                             <div class="container text-center">
                               <div class="card mb-3" style="max-width: 100%;">
+                              <form action="prcd/generaqrcredencial.php" id="form-id" method="POST"><!--form-->
                                 <div class="row g-0" id="credencial">
                                     
                                 </div><!-- row -->
+                              </form>
                               </div><!-- card -->
                             </div><!-- container -->
                           </div><!-- modal body -->
                           
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd()"><i class="bi bi-save2"></i> Generar Credencial</button>
+                            <button type="submit" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd()"><i class="bi bi-save2"></i> Generar Credencial</button>
                             <button type="button" class="btn btn-primary" id="imprimirc" disabled><i class="bi bi-printer"></i> Imprimir</button>
                           </div><!-- modal footer -->
                         </div><!-- modal content -->
@@ -434,6 +436,7 @@ include('prcd/qc/qc.php');
 </html>
 
 <script>
+
   function swaldatoscrd () {
     Swal.fire({
       title: 'Los datos están correctos?',
@@ -446,9 +449,11 @@ include('prcd/qc/qc.php');
       if (result.isConfirmed) {
         document.getElementById("habilitaimprimirc").disabled=true;
         document.getElementById("imprimirc").disabled=false;
+        var form = document.getElementById("form-id");
+        form.submit();
         Swal.fire('Listo!', '', 'success')
       } else if (result.isDenied) {
-        Swal.fire('Verifica los datos!', '', 'info')
+        Swal.fire('Verifica los datos en el padrón!', '', 'info')
       }
     })
   }
@@ -466,10 +471,11 @@ include('prcd/qc/qc.php');
         document.getElementById("imprimirt").disabled=false;
         Swal.fire('Listo!', '', 'success')
       } else if (result.isDenied) {
-        Swal.fire('Verifica los datos!', '', 'info')
+        Swal.fire('Verifica los datos en el padrón!', '', 'info')
       }
     })
   }
+
   function buscarExpediente(){
     var expediente = document.getElementById('searchDBInclusion').value;
     $.ajax({
@@ -509,7 +515,41 @@ include('prcd/qc/qc.php');
   }
 
   function ValidaSoloNumeros() {
-  if ((event.keyCode < 48) || (event.keyCode > 57)) 
-    event.returnValue = false;
+    if ((event.keyCode < 48) || (event.keyCode > 57)) 
+      event.returnValue = false;
   }
+
+  function OcultarInput() {
+    var valor = document.getElementById("selectentrega").value;
+    if(valor == 1){
+        document.getElementById("selectentrega").setAttribute("name","recibeCrd");
+        document.getElementById("recibe").removeAttribute("name");
+        document.getElementById("selectentrega").required = true;
+        document.getElementById("inputentrega").hidden = true;
+    }
+    else if (valor == 2){
+      document.getElementById("recibe").setAttribute("name","recibeCrd");
+      document.getElementById("selectentrega").removeAttribute("name");
+      document.getElementById("recibe").required = true;
+      document.getElementById("inputentrega").hidden = false;
+    }
+  }
+
+  function init() {
+    var inputFile = document.getElementById('inputFile1');
+    inputFile.addEventListener('change', mostrarImagen, false);
+  }
+
+  function mostrarImagen(event) {
+    var file = event.target.files[0];
+    var reader = new FileReader();
+    reader.onload = function(event) {
+      var img = document.getElementById('img1');
+      img.src= event.target.result;
+    }
+    reader.readAsDataURL(file);
+  }
+
+  window.addEventListener('load', init, false);
+
 </script>
