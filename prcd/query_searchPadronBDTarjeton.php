@@ -1,10 +1,10 @@
 <?php
 include('qc/qc2.php');
 
-$expediente = $_POST['expediente'];
-header("content-type: image/jpeg");
+    $expediente = $_POST['expediente'];
+    header("content-type: image/jpeg");
 
-  // Detalles del expediente
+    // Detalles del expediente
     $QueryExpediente = "SELECT * FROM expedientes WHERE ordenExpediente = '$expediente'";
     $resultado_QueryExpediente = $conn2->query($QueryExpediente);
     $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
