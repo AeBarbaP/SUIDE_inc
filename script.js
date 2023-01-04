@@ -1,4 +1,6 @@
 function abrirCamara(){
+    document.getElementById("imagenLogo").hidden = true;
+    document.getElementById("preview").hidden = false;
 
     let scanner = new Instascan.Scanner({video:document.getElementById('preview') });
     scanner.addListener('scan', function (content) {
@@ -23,6 +25,8 @@ function abrirCamara(){
 
       $('#validate').on('hide.bs.modal', function () { 
         scanner.stop();
+        document.getElementById("imagenLogo").hidden = false;
+        document.getElementById("preview").hidden = true;
       });
 
   }
