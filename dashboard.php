@@ -470,6 +470,7 @@ include('prcd/qc/qc.php');
         document.getElementById("habilitaimprimirt").disabled=true;
         document.getElementById("imprimirt").disabled=false;
         // enviar datos
+        var expediente = document.getElementById('searchDBInclusion').value;
         var marca = document.geteElementById("marcaForm").value;
         var modelo = document.geteElementById("modeloForm").value;
         var annio = document.geteElementById("annioForm").value;
@@ -482,6 +483,7 @@ include('prcd/qc/qc.php');
                   type:"POST",
                   url:"prcd/checkin.php",
                   data:{
+                    expediente:expediente,
                     marca:marca,
                     modelo:modelo,
                     annio:annio,
@@ -503,8 +505,8 @@ include('prcd/qc/qc.php');
                         {
                           let timerInterval
                           Swal.fire({
-                            title: 'Asistente ya estaba registrado',
-                            html: 'Este asistente ya estaba registrado previamente<br>TEXTO ADICIONAL',
+                            title: 'No hay datos registrados',
+                            html: 'No hay datos registrados',
                             timer: 2000,
                             timerProgressBar: true,
                             didOpen: () => {
@@ -530,9 +532,9 @@ include('prcd/qc/qc.php');
                             let timerInterval
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Usuario correcto',
-                                text: 'Credenciales correctas',
-                                footer: 'INJUVENTUD</a>',
+                                title: 'Usuario ya existe',
+                                text: '¿Quieres editar sus datos?',
+                                footer: 'INCLUSIÓN',
                                 timer: 2000,
                               timerProgressBar: true,
                               didOpen: () => {
