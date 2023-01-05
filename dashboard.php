@@ -517,7 +517,7 @@ include('prcd/qc/qc.php');
                     success: function(response)
                     {
                         var jsonData = JSON.parse(response);
-         
+
                         // user is logged in successfully in the back-end
                         // let's redirect
                         if (jsonData.success == "0")
@@ -602,7 +602,7 @@ include('prcd/qc/qc.php');
                             });
                         }
                         
-                   }           
+                  }           
                   });
         // ajax
 
