@@ -33,8 +33,9 @@ if(isset($_POST['expediente'])){
     $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
 
     $idExp = $row_sql_expediente['id'];
+    $folio = $row_sql_expediente['folio'];
 
-    $sqlVerificacion = "SELECT * FROM documentos WHERE id_ext ='$idExp'";
+    $sqlVerificacion = "SELECT * FROM documentos WHERE id_ext ='$folio'";
     $resultadoVerificacion = $conn->query($sqlVerificacion);
     $numRow = $resultadoSql->num_rows;
     
