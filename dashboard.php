@@ -384,29 +384,29 @@ include('prcd/qc/qc.php');
                                       <h5 class="mb-3">Datos del vehículo</h5>
                                       <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Marca</span>
-                                        <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaForm">
                                       </div>
                                       <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Modelo</span>
                                         <input type="text" class="form-control" placeholder="Modelo" aria-label="modelo" aria-describedby="basic-addon1">
                                         <span class="input-group-text">Año</span>
-                                        <input type="text" class="form-control" placeholder="Año" aria-label="anio">
+                                        <input type="text" class="form-control" placeholder="Año" aria-label="anio" id="annioForm">
                                       </div>
                                       <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">No. de Placas</span>
-                                        <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasForm">
                                       </div>
                                       <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-                                        <input type="text" class="form-control" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieForm">
                                       </div>
                                       <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">No. de choferes</span>
-                                        <input type="number" class="form-control" placeholder="# de choferes" aria-label="marca" aria-describedby="basic-addon1">
+                                        <input type="number" class="form-control" placeholder="# de choferes" aria-label="no_choferes" aria-describedby="basic-addon1" id="choferesForm">
                                       </div>
                                       <div class="input-group">
                                         <span class="input-group-text">Nombre(s) del(los)<br>Chofer(es)</span>
-                                        <textarea class="form-control" aria-label="nombres de los choferes"></textarea>
+                                        <textarea class="form-control" aria-label="nombres de los choferes"  id="nombresChoferesForm"></textarea>
                                       </div>
                                     </div>
                                   </div>
@@ -488,13 +488,131 @@ include('prcd/qc/qc.php');
       if (result.isConfirmed) {
         document.getElementById("habilitaimprimirt").disabled=true;
         document.getElementById("imprimirt").disabled=false;
+        // enviar datos
+        var expediente = document.getElementById('searchDBInclusion').value;
+        var marca = document.geteElementById("marcaForm").value;
+        var modelo = document.geteElementById("modeloForm").value;
+        var annio = document.geteElementById("annioForm").value;
+        var placas = document.geteElementById("placasForm").value;
+        var serie = document.geteElementById("serieForm").value;
+        var noChoferes = document.geteElementById("choferesForm").value;
+        var nombreChoferes = document.geteElementById("nombresChoferesForm").value;
+        // ajax
+        $.ajax({
+                  type:"POST",
+                  url:"prcd/checkin.php",
+                  data:{
+                    expediente:expediente,
+                    marca:marca,
+                    modelo:modelo,
+                    annio:annio,
+                    placas:placas,
+                    serie:serie,
+                    noChoferes:noChoferes,
+                    nombreChoferes:nombreChoferes
+                  },
+                  dataType: "html",
+                  async:true,
+                  cache: false,
+                    success: function(response)
+                    {
+                        var jsonData = JSON.parse(response);
+         
+                        // user is logged in successfully in the back-end
+                        // let's redirect
+                        if (jsonData.success == "0")
+                        {
+                          let timerInterval
+                          Swal.fire({
+                            title: 'No hay datos registrados',
+                            html: 'No hay datos registrados',
+                            timer: 2000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                              Swal.showLoading()
+                              const b = Swal.getHtmlContainer().querySelector('b')
+                              timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                              }, 100)
+                            },
+                            willClose: () => {
+                              clearInterval(timerInterval)
+                            }
+                          }).then((result) => {
+                            /* Read more about handling dismissals below */
+                            if (result.dismiss === Swal.DismissReason.timer) {
+                              console.log('I was closed by the timer')
+                            }
+                          })
+                        }
+                        else if (jsonData.success == "1")
+                        {
+                            // location.href = 'my_profile.php';
+                            let timerInterval
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Usuario ya existe',
+                                text: '¿Quieres editar sus datos?',
+                                footer: 'INCLUSIÓN',
+                                timer: 2000,
+                              timerProgressBar: true,
+                              didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                  b.textContent = Swal.getTimerLeft()
+                                }, 100)
+                              },
+                              willClose: () => {
+                                clearInterval(timerInterval)
+                              }
+                            }).then((result) => {
+                              /* Read more about handling dismissals below */
+                              if (result.dismiss === Swal.DismissReason.timer) {
+                                console.log('I was closed by the timer')
+                              }
+                            });
+                        }
+                        else if (jsonData.success == "3")
+                        {
+                            // location.href = 'my_profile.php';
+                            let timerInterval
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'NO EXISTE REGISTRO',
+                                text: 'Credenciales incorrectas',
+                                footer: 'UACYA | UAZ',
+                                timer: 2000,
+                                timerProgressBar: true,
+                                didOpen: () => {
+                                  Swal.showLoading()
+                                  const b = Swal.getHtmlContainer().querySelector('b')
+                                  timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                  }, 100)
+                                },
+                                willClose: () => {
+                                  clearInterval(timerInterval)
+                                }
+                              }).then((result) => {
+                                /* Read more about handling dismissals below */
+                                if (result.dismiss === Swal.DismissReason.timer) {
+                                  console.log('I was closed by the timer')
+                                }
+                            });
+                        }
+                        
+                   }           
+                  });
+        // ajax
+
         Swal.fire('Listo!', '', 'success')
       } else if (result.isDenied) {
         Swal.fire('Verifica los datos en el padrón!', '', 'info')
       }
     })
   }
-
+// para generar credencial
 
   function buscarExpediente(){
     var expediente = document.getElementById('searchDBInclusion').value;
@@ -514,7 +632,7 @@ include('prcd/qc/qc.php');
       }               
     });
   }
-
+// para generar tarjetón
   function buscarExpediente2(){
     var expediente = document.getElementById('searchDBInclusion2').value;
     $.ajax({

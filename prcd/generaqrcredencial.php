@@ -1,8 +1,8 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 ?>
 
@@ -24,14 +24,16 @@ include('QR/phpqrcode/qrlib.php');
 date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
 
-$fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
+$fechaSistema = strftime("%Y-%m-%d,%H:%M:%S");
 
-$nombre = $_POST['nombre'];
-$apellidos = $_POST['apellidos'];
-$cantidad_polvora = $_POST['cantidad_polvora'];
-$curp = $_POST['curp'];
-$detalles = $_POST['detalles'];
-$entregado = 0; 
+$marca = $_POST['marca'];
+$modelo = $_POST['modelo'];
+$annio = $_POST['annio'];
+$placas = $_POST['placas'];
+$serie = $_POST['serie'];
+$noChoferes = $_POST['noChoferes'];
+$nombreChoferes = $_POST['nombreChoferes'];
+// $entregado = 0; 
 
 function generarCodigo($longitud) {
     $key = '';
