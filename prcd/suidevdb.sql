@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
--- Generation Time: Dec 19, 2022 at 09:00 PM
-=======
--- Generation Time: Dec 16, 2022 at 08:46 PM
->>>>>>> fdaedd48757cfc07edec8ab81fa283bc8b24a120
+-- Generation Time: Jan 05, 2023 at 08:29 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -82,28 +78,6 @@ CREATE TABLE `datos_generales` (
   `tipo_sangre` int(2) NOT NULL,
   `tipo_alergia` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `alergia_tipo`
---
-
-CREATE TABLE `alergia_tipo` (
-  `id` int(11) NOT NULL,
-  `tipo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `alergia_tipo`
---
-
-INSERT INTO `alergia_tipo` (`id`, `tipo`) VALUES
-(1, 'Ambiental'),
-(2, 'Alimentaria'),
-(3, 'Intradérmica'),
-(4, 'Por contacto'),
-(5, 'Farmacológica');
 
 -- --------------------------------------------------------
 
@@ -213,13 +187,12 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (41, 1, NULL, '2022-12-14 15:28:32'),
 (42, 1, '2022-12-15 08:22:53', NULL),
 (43, 1, NULL, '2022-12-15 14:53:10'),
-<<<<<<< HEAD
 (44, 1, '2022-12-16 10:36:39', NULL),
 (45, 1, '2022-12-19 13:02:34', NULL),
-(46, 1, '2022-12-19 13:03:23', NULL);
-=======
-(44, 1, '2022-12-16 10:36:39', NULL);
->>>>>>> fdaedd48757cfc07edec8ab81fa283bc8b24a120
+(46, 1, '2022-12-19 13:03:23', NULL),
+(47, 1, '2023-01-05 11:40:25', NULL),
+(48, 1, NULL, '2023-01-05 13:15:26'),
+(49, 1, '2023-01-05 13:27:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -270,32 +243,6 @@ CREATE TABLE `prestamo` (
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
-=======
--- Table structure for table `registro_pcd`
---
-
-CREATE TABLE `registro_pcd` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `ap_paterno` varchar(50) NOT NULL,
-  `ap_materno` varchar(50) DEFAULT NULL,
-  `tipo_discapacidad` int(11) NOT NULL,
-  `curp` varchar(16) NOT NULL,
-  `domicilio` varchar(100) NOT NULL,
-  `colonia` varchar(50) NOT NULL,
-  `localidad` int(11) NOT NULL,
-  `municipio` int(11) NOT NULL,
-  `estado` int(11) NOT NULL,
-  `cp` int(11) NOT NULL,
-  `tipo_sangre` int(2) NOT NULL,
-  `tipo_alergia` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
->>>>>>> fdaedd48757cfc07edec8ab81fa283bc8b24a120
 -- Table structure for table `users`
 --
 
@@ -353,15 +300,12 @@ ALTER TABLE `alergia_descripcion`
 -- Indexes for table `alergia_tipo`
 --
 ALTER TABLE `alergia_tipo`
-<<<<<<< HEAD
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `datos_generales`
 --
 ALTER TABLE `datos_generales`
-=======
->>>>>>> fdaedd48757cfc07edec8ab81fa283bc8b24a120
   ADD PRIMARY KEY (`id`);
 
 --
@@ -395,15 +339,6 @@ ALTER TABLE `prestamo`
   ADD PRIMARY KEY (`id`);
 
 --
-<<<<<<< HEAD
-=======
--- Indexes for table `registro_pcd`
---
-ALTER TABLE `registro_pcd`
-  ADD PRIMARY KEY (`id`);
-
---
->>>>>>> fdaedd48757cfc07edec8ab81fa283bc8b24a120
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -423,7 +358,6 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT for table `alergia_descripcion`
 --
 ALTER TABLE `alergia_descripcion`
-<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -436,15 +370,7 @@ ALTER TABLE `alergia_tipo`
 -- AUTO_INCREMENT for table `datos_generales`
 --
 ALTER TABLE `datos_generales`
-=======
->>>>>>> fdaedd48757cfc07edec8ab81fa283bc8b24a120
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `alergia_tipo`
---
-ALTER TABLE `alergia_tipo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `documentos`
@@ -462,11 +388,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
-=======
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
->>>>>>> fdaedd48757cfc07edec8ab81fa283bc8b24a120
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `perfiles_usr`
@@ -481,15 +403,6 @@ ALTER TABLE `prestamo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
-<<<<<<< HEAD
-=======
--- AUTO_INCREMENT for table `registro_pcd`
---
-ALTER TABLE `registro_pcd`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
->>>>>>> fdaedd48757cfc07edec8ab81fa283bc8b24a120
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
