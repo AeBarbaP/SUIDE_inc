@@ -15,6 +15,17 @@ main {
   overflow-y: hidden;
 }
 
+#linkHome{
+  color: rgba(0, 0, 0, .65);
+  text-decoration: none;
+}
+#linkHome:hover{
+  color: rgba(0, 0, 0, .65);
+  background-color: rgba(145, 119, 153,0.3);
+  border-radius: 3px;
+  padding-right: 27px;
+}
+
 .dropdown-toggle { outline: 0; }
 
 .btn-toggle {
@@ -26,7 +37,8 @@ main {
 .btn-toggle:hover,
 .btn-toggle:focus {
   color: rgba(0, 0, 0, .85);
-  background-color: #d2f4ea;
+  
+  /* background-color: rgba(145, 119, 153,0.3); */
 }
 
 .btn-toggle::before {
@@ -51,7 +63,8 @@ main {
 }
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
-  background-color: #d2f4ea;
+  background-color: rgba(145, 119, 153,0.3);
+  color: aliceblue;
 }
 
 .scrollarea {
