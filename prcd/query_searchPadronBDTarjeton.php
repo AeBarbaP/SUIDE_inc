@@ -34,6 +34,7 @@ include('qc/qc2.php');
           <h5 class="card-title mt-3">'.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
           <p class="card-text">Tipo Discapacidad: '.$discapacidad2.'</p>
           <p class="card-text">Número de Expediente: '.$folio.'</p>
+          <p class="card-text">Número de Expediente: '.$folio.'</p>
 
       ';
     }
