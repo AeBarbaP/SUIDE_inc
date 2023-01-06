@@ -53,19 +53,20 @@ include('prcd/qc/qc.php');
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+    <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="sidebars.css" rel="stylesheet">
-    <script src="sidebars.js"></script>
-    <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="sidebars.js"></script> -->
+    <!-- <script src="assets/dist/js/bootstrap.bundle.min.js"></script> -->
 
-    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <style>
       body {
@@ -149,57 +150,39 @@ include('prcd/qc/qc.php');
           ?></strong>
         </span>
       </p>
-      <hr>
-      <!-- <div class="position-sticky pt-3 sidebar-sticky"> -->
-      
-      <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-      <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
-      <span class="fs-5 fw-semibold">Collapsible</span>
-    </a>
-    <ul class="list-unstyled ps-0">
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-          Home
-        </button>
-        <div class="collapse show" id="home-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Overview</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Updates</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Reports</a></li>
-          </ul>
-        </div>
+      <hr>      
+      <div class="flex-shrink-0 p-2 bg-white" style="width: 100%;">
+    
+    <ul class="list-unstyled ps-0 mt-3">
+      <li class="ms-4 mb-1">
+        <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-house-door-fill ms-2 me-1"></i> Inicio</a></span>
       </li>
       <li class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-          Dashboard
+          Tarjetones
         </button>
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Overview</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Weekly</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Monthly</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Annually</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetongen"><i class="bi bi-credit-card-2-front ms-2 me-1"></i> Tarjetón de padrón</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-credit-card-2-front ms-2 me-1"></i> Préstamo</a></li>
+            
           </ul>
         </div>
       </li>
       <li class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-          Orders
+          Credenciales
         </button>
         <div class="collapse" id="orders-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">New</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Processed</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Shipped</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Returned</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#credgen"><i class="bi bi-plus-circle-fill ms-2 me-1"></i> Nueva</a></li>
           </ul>
         </div>
       </li>
       <li class="border-top my-3"></li>
       <li class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          Account
+          Otro menú que quieras acomodar Annely
         </button>
         <div class="collapse" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -319,7 +302,7 @@ include('prcd/qc/qc.php');
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body" style="text-align: center; background-image: url(img/CredencialInclusionFront.jpg); background-repeat: no-repeat;background-attachment: fixed; background-size: cover;" id="div_print'.$row_sqlQueryCredencial['id'].'">
-                            <center><img src="img/logomorismas.png" height="150"></center>
+                           
                             <br>
                             <center><h5 style="font-size: 1.5rem"><strong>Número de Expediente:</strong> ' . $row_sqlQueryCredencial['id_ext'] . ' </h5>
                             <h5 style="font-size: 1.5rem"><strong>Fecha de expedición:</strong> ' . $row_sqlQueryCredencial['fecha_c'] . '</h5>
@@ -383,7 +366,7 @@ include('prcd/qc/qc.php');
             ?>
           </div>
         <!-- Inicia Modal para generar credencial -->
-        <div class="modal fade " id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
+        <div class="modal fade" id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -490,12 +473,15 @@ include('prcd/qc/qc.php');
                     <!-- Termina Modal para generar tarjeton -->
       
     </main>
+    <script src="sidebars.js"></script>
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
   </div>
 </div>
 
 
 
-      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script> -->
   </body>
 </html>
 
@@ -737,21 +723,21 @@ include('prcd/qc/qc.php');
     }
   }
 
-  function init() {
-    var inputFile = document.getElementById('inputFile1');
-    inputFile.addEventListener('change', mostrarImagen, false);
-  }
+  // function init() {
+  //   var inputFile = document.getElementById('inputFile1');
+  //   inputFile.addEventListener('change', mostrarImagen, false);
+  // }
 
-  function mostrarImagen(event) {
-    var file = event.target.files[0];
-    var reader = new FileReader();
-    reader.onload = function(event) {
-      var img = document.getElementById('img1');
-      img.src= event.target.result;
-    }
-    reader.readAsDataURL(file);
-  }
+  // function mostrarImagen(event) {
+  //   var file = event.target.files[0];
+  //   var reader = new FileReader();
+  //   reader.onload = function(event) {
+  //     var img = document.getElementById('img1');
+  //     img.src= event.target.result;
+  //   }
+  //   reader.readAsDataURL(file);
+  // }
 
-  window.addEventListener('load', init, false);
+  // window.addEventListener('load', init, false);
 
 </script>
