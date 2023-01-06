@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2023 at 08:29 PM
+-- Generation Time: Jan 06, 2023 at 10:30 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -76,7 +76,32 @@ CREATE TABLE `datos_generales` (
   `estado` int(11) NOT NULL,
   `cp` int(11) NOT NULL,
   `tipo_sangre` int(2) NOT NULL,
-  `tipo_alergia` int(2) NOT NULL
+  `tipo_alergia` int(2) NOT NULL,
+  `id_ext` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `discapacidad_descripcion`
+--
+
+CREATE TABLE `discapacidad_descripcion` (
+  `id` int(11) NOT NULL,
+  `id_discapacidadtipo` int(11) NOT NULL,
+  `descripcion` varchar(100) NOT NULL,
+  `nota` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `discapacidad_tipo`
+--
+
+CREATE TABLE `discapacidad_tipo` (
+  `id` int(11) NOT NULL,
+  `tipo` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -110,6 +135,26 @@ CREATE TABLE `documentos` (
 INSERT INTO `documentos` (`id`, `id_ext`, `concatenado_id`, `qr_cred`, `qr_tarjeton`, `entregado_c`, `fecha_c`, `entregado_t`, `fecha_t`, `vigencia_cred`, `vigencia_tarjeton`, `id_users`, `recibe`, `folio_cred`, `folio_tarj`) VALUES
 (1, 'C-4940-44790', '', '', '', 1, '2022-07-06', 0, '0000-00-00', '2023-07-06', '0000-00-00', 1, '', 0, 0),
 (2, 'C-4940-44790', 'C-4940-44790-1', '-', '-', 1, '2022-08-31', 1, '2022-08-31', '2023-08-31', '2023-08-31', 1, '', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `estudio_se`
+--
+
+CREATE TABLE `estudio_se` (
+  `id` int(11) NOT NULL,
+  `estudios` varchar(50) DEFAULT NULL,
+  `trabajo` varchar(100) DEFAULT NULL,
+  `asociacion` varchar(100) DEFAULT NULL,
+  `sindicato` varchar(100) DEFAULT NULL,
+  `id_istitucionpension` int(11) DEFAULT NULL,
+  `monto_pension` varchar(10) DEFAULT NULL COMMENT 'Agregar bloqueo de pensión',
+  `id_institucioncredito` int(11) DEFAULT NULL,
+  `monto_credito` varchar(10) DEFAULT NULL COMMENT 'Agregar bloqueo',
+  `id_documentos` int(11) NOT NULL,
+  `id_ingresomensual` varchar(10) DEFAULT NULL COMMENT 'agregar bloqueo'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -192,7 +237,8 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (46, 1, '2022-12-19 13:03:23', NULL),
 (47, 1, '2023-01-05 11:40:25', NULL),
 (48, 1, NULL, '2023-01-05 13:15:26'),
-(49, 1, '2023-01-05 13:27:10', NULL);
+(49, 1, '2023-01-05 13:27:10', NULL),
+(50, 1, '2023-01-06 14:11:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -309,9 +355,27 @@ ALTER TABLE `datos_generales`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `discapacidad_descripcion`
+--
+ALTER TABLE `discapacidad_descripcion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `discapacidad_tipo`
+--
+ALTER TABLE `discapacidad_tipo`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `documentos`
 --
 ALTER TABLE `documentos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `estudio_se`
+--
+ALTER TABLE `estudio_se`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -373,10 +437,28 @@ ALTER TABLE `datos_generales`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `discapacidad_descripcion`
+--
+ALTER TABLE `discapacidad_descripcion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `discapacidad_tipo`
+--
+ALTER TABLE `discapacidad_tipo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `documentos`
 --
 ALTER TABLE `documentos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `estudio_se`
+--
+ALTER TABLE `estudio_se`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `log_entregas`
@@ -388,7 +470,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `perfiles_usr`
