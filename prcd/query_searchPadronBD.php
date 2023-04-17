@@ -115,14 +115,20 @@ header("content-type: image/jpeg");
       $row_QueryImagen = $resultado_QueryImagen->fetch_assoc();
       
       if($resultado_QueryExpediente){
-
+        /* $filaA = $resultado_QueryExpediente -> num_rows;
+        if ($filaA >= 1){
+          $foto = $row_QueryImagen['fotografia'];
+        }
+        else if ($filaA = 0){
+          $foto = "";
+        } */
         echo '
         <div class="col-md-4">';
-        if(isset($row_QueryImagen['fotografia'])){
+        if(isset($foto)){
           echo'
           <img width="100%" src="data:image/jpg;base64,'.base64_encode($row_QueryImagen['fotografia']).'" style="width:15rem">';
         }
-        else{
+        else if(empty($foto)) {
           echo'
           <img id="img1" src="img/no_profile.png" width="100%" style="width:15rem">
           <div class="input-group">
