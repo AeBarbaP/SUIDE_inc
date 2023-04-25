@@ -13,9 +13,10 @@
 
 /*         $archivo_ext=$_FILES['file']['name'];
         $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION); */
-        $file = (base64_encode($rowFotos['fotografia']));
-        $fichero="fotos2/";
+        $file = ($rowFotos['fotografia']);
+        $fichero="fotos2/img".$x.".jpg";
         file_put_contents($fichero, $file);
+        echo $file;
 /*         mkdir(dirname($fichero), 0777, true); */
 /*         if (copy($file, $fichero)){
             echo"copiado";
