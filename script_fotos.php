@@ -4,31 +4,27 @@
     $fotos = "SELECT * FROM empleadocredenciales";
     $resultadoFotos = $conn2-> query($fotos);
     $x=0;
-    while($rowFotos->fetch_assoc){
+    
+    while($rowFotos= $resultadoFotos -> fetch_assoc()){
         $x++;
-        $expediente = $rowFotos['idExpediente'];
+/*         $expediente = $rowFotos['idExpediente'];
         $fileTmpLoc = base64_encode($rowFotos['fotografia']);
-        $_FILES["file"]["tmp_name"] = $fileTmpLoc;
+        $_FILES["file"]["tmp_name"] = $fileTmpLoc; */
 
-        $archivo_ext=$_FILES['file']['name'];
-        $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
-
-        if(move_uploaded_file($_FILES["file"]["tmp_name"],"fotos/fotografia". $expediente .'.'.$extension)){
-            echo "$fileName carga completa";
-            
-            /* $ruta = $link .'.'.$extension; */
-            
-            // $sqlInsert= "INSERT INTO documentos (documento,id_ext,link,fecha) 
-            // VALUES('$doc','$idUsr','$ruta','$fecha_sistema')";
-            // $resultado= $conn->query($sqlInsert);
-        
-            /* $query = "UPDATE bitacora SET `$variableUpdate` = '$ruta' WHERE folio = '$folio'";
-            $resultado = $conn->query($query); */
-            
-            
+/*         $archivo_ext=$_FILES['file']['name'];
+        $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION); */
+        $file = (base64_encode($rowFotos['fotografia']));
+        $fichero="fotos2/";
+        file_put_contents($fichero, $file);
+/*         mkdir(dirname($fichero), 0777, true); */
+/*         if (copy($file, $fichero)){
+            echo"copiado";
         } else {
-            echo "move_uploaded_file function failed";
-        }
-    }
+            echo"no copiado";
+        } */
+/*         fwrite($fichero, $file);
+        fclose($fichero); */
 
+    }
+    
 ?>
