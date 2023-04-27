@@ -34,12 +34,6 @@ include('prcd/qc/qc.php');
     $perfil = $_SESSION['perfil'];
     $nombre = $_SESSION['nombre'];
 
-    date_default_timezone_set('America/Mexico_City');
-    setlocale(LC_TIME, 'es_MX.UTF-8');
-
-    $fecha_iniciosesion = strftime("%Y-%m-%d,%H:%M:%S");
-
-
 ?>
 
 <!doctype html>
@@ -53,23 +47,26 @@ include('prcd/qc/qc.php');
     <title>SUIDEV · Inclusión</title>
 
     <link rel="icon" type="image/png" href="img/inclusion.ico"/>
-    <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="sidebars.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <!-- <script src="sidebars.js"></script> -->
+    <!-- <script src="assets/dist/js/bootstrap.bundle.min.js"></script> -->
 
-    
-
-    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <style>
       body {
@@ -126,8 +123,6 @@ include('prcd/qc/qc.php');
         -webkit-overflow-scrolling: touch;
       }
     </style>
-
-    
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
@@ -155,47 +150,62 @@ include('prcd/qc/qc.php');
           ?></strong>
         </span>
       </p>
-      <hr>
-      <div class="position-sticky pt-3 sidebar-sticky">
-        <ul class="nav flex-column" style="font-family: 'Quicksand', sans-serif;">
-          <li class="nav-item">
-            <a class="nav-link" href="dashboard.php">
-              <span data-feather="home" class="align-text-bottom"></span>
-              Inicio
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-muted" data-bs-toggle="modal" data-bs-target="#credgen" disabled>
-              <span data-feather="credit-card" class="align-text-bottom"></span>
-              Generar credencial
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-muted" data-bs-toggle="modal" data-bs-target="#tarjetongen" disabled>
-              <span data-feather="clipboard" class="align-text-bottom"></span>
-              Generar tarjetón
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="cuentasusuario.php">
-              <span data-feather="users" class="align-text-bottom"></span>
-              Usuarios SUIDEV
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-              Reportes
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="settings" class="align-text-bottom"></span>
-              Ajustes
-            </a>
-          </li>
-        </ul>
-      </div>
+      <hr>      
+      <div class="flex-shrink-0 p-2 bg-white" style="width: 100%;">
+    
+    <ul class="list-unstyled ps-0 mt-3">
+      <li class="ms-2 mb-1">
+        <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
+      </li>
+      <li class="mb-1 mt-2">
+      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-person-badge ms-3 me-2"></i>
+          Tarjetones
+        </a></span>
+        <div class="collapse" id="dashboard-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetongen"><i class="bi bi-bookmark-plus ms-2 me-3"></i> Tarjetón de padrón</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-tag ms-2 me-3"></i> Préstamo</a></li>
+            
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1 ms-2">
+      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#credencial-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-person-vcard ms-2 me-2"></i>
+          Credenciales
+        </a></span>
+        <div class="collapse" id="credencial-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#credgen"><i class="bi bi-plus-circle me-3"></i> Nueva</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="border-top my-3"></li>
+      <li class="ms-2 mb-1">
+        <!-- <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-gear-fill ms-2 me-3"></i> Ajustes</a></span> -->
+        <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-gear-fill ms-2 me-2"></i>
+          Ajustes
+        </a></span>
+      </li>
+      <li class="mb-1"> 
+<!--         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+          Ajustes
+        </button> -->
+        <div class="collapse" id="account-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li class="list-group-item disabled"><a class="link-secondary d-inline-flex text-decoration-none rounded" readonly><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
+            <li><a href="cuentasusuario.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-people ms-2 me-3"></i>Gestión de usuarios</a></li>
+          </ul>
+          <li class="border-top my-3"></li>
+      <li class="ms-2 mb-1">
+      <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
+          Cerrar Sesión
+          </a></span>
+      </li>
+      <li class="mb-1"> 
+        </div>
+      </li>
+    </ul>
+    </div>
     </nav>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -314,7 +324,7 @@ include('prcd/qc/qc.php');
                                     <select class="form-select" id="inputGroupSelect01" value="' . $row_sqlQueryUsers['perfil'] . '" selected="selected" name="perfilselect">';
                                     ?>
                                       
-                                      <option value="'.$rowPerfil['id'].'" selected="selected" disabled>'.$rowPerfil['perfil'].'</option>
+                                      <option value="<?php echo $rowPerfil['id'];?>" selected="selected" disabled><?php echo $rowPerfil['perfil'];?></option>
                                       <option value="1">Administrador</option>
                                       <option value="2">Usuario</option>
                                     </select>
@@ -422,18 +432,26 @@ include('prcd/qc/qc.php');
           </div>
           </div>
     </main>
+    <script src="sidebars.js"></script>
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
   </div>
 </div>
 
 
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script> -->
   </body>
 </html>
 
 <script>
+
   function swaldatoscrd () {
+    var selectAB = document.getElementById("selectentrega").value;
+    var selectVig = document.getElementById("selectvigencia").value;
+    if ((selectAB!=="") && (selectVig!=="")){
+
+    
     Swal.fire({
       title: 'Los datos están correctos?',
       showDenyButton: true,
@@ -445,12 +463,28 @@ include('prcd/qc/qc.php');
       if (result.isConfirmed) {
         document.getElementById("habilitaimprimirc").disabled=true;
         document.getElementById("imprimirc").disabled=false;
+        var form = document.getElementById("form-id");
+        form.submit();
         Swal.fire('Listo!', '', 'success')
       } else if (result.isDenied) {
-        Swal.fire('Verifica los datos!', '', 'info')
+        Swal.fire('Verifica los datos en el padrón!', '', 'info')
       }
     })
+    } else {
+      Swal.fire({
+        title: '<strong>SUIDEV</strong>',
+        imageUrl: 'img/horizontal-justo.png',
+        imageHeight: 120,
+        text: 'Hay un campo vacío',
+        showCloseButton: true,
+        focusConfirm: false,
+        confirmButtonText:
+          '<i class="fa fa-thumbs-up"></i> OK!',
+        confirmButtonAriaLabel: 'OK!',
+    })
+    }
   }
+
   function swaldatostrn () {
     Swal.fire({
       title: 'Los datos están correctos?',
@@ -463,10 +497,206 @@ include('prcd/qc/qc.php');
       if (result.isConfirmed) {
         document.getElementById("habilitaimprimirt").disabled=true;
         document.getElementById("imprimirt").disabled=false;
+        // enviar datos
+        var expediente = document.getElementById('searchDBInclusion').value;
+        var marca = document.geteElementById("marcaForm").value;
+        var modelo = document.geteElementById("modeloForm").value;
+        var annio = document.geteElementById("annioForm").value;
+        var placas = document.geteElementById("placasForm").value;
+        var serie = document.geteElementById("serieForm").value;
+        var noChoferes = document.geteElementById("choferesForm").value;
+        var nombreChoferes = document.geteElementById("nombresChoferesForm").value;
+        // ajax
+        $.ajax({
+                  type:"POST",
+                  url:"prcd/checkin.php",
+                  data:{
+                    expediente:expediente,
+                    marca:marca,
+                    modelo:modelo,
+                    annio:annio,
+                    placas:placas,
+                    serie:serie,
+                    noChoferes:noChoferes,
+                    nombreChoferes:nombreChoferes
+                  },
+                  dataType: "html",
+                  async:true,
+                  cache: false,
+                    success: function(response)
+                    {
+                        var jsonData = JSON.parse(response);
+
+                        // user is logged in successfully in the back-end
+                        // let's redirect
+                        if (jsonData.success == "0")
+                        {
+                          let timerInterval
+                          Swal.fire({
+                            title: 'No hay datos registrados',
+                            html: 'No hay datos registrados',
+                            timer: 2000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                              Swal.showLoading()
+                              const b = Swal.getHtmlContainer().querySelector('b')
+                              timerInterval = setInterval(() => {
+                                b.textContent = Swal.getTimerLeft()
+                              }, 100)
+                            },
+                            willClose: () => {
+                              clearInterval(timerInterval)
+                            }
+                          }).then((result) => {
+                            /* Read more about handling dismissals below */
+                            if (result.dismiss === Swal.DismissReason.timer) {
+                              console.log('I was closed by the timer')
+                            }
+                          })
+                        }
+                        else if (jsonData.success == "1")
+                        {
+                            // location.href = 'my_profile.php';
+                            let timerInterval
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Usuario ya existe',
+                                text: '¿Quieres editar sus datos?',
+                                footer: 'INCLUSIÓN',
+                                timer: 2000,
+                              timerProgressBar: true,
+                              didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                  b.textContent = Swal.getTimerLeft()
+                                }, 100)
+                              },
+                              willClose: () => {
+                                clearInterval(timerInterval)
+                              }
+                            }).then((result) => {
+                              /* Read more about handling dismissals below */
+                              if (result.dismiss === Swal.DismissReason.timer) {
+                                console.log('I was closed by the timer')
+                              }
+                            });
+                        }
+                        else if (jsonData.success == "3")
+                        {
+                            // location.href = 'my_profile.php';
+                            let timerInterval
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'NO EXISTE REGISTRO',
+                                text: 'Credenciales incorrectas',
+                                footer: 'UACYA | UAZ',
+                                timer: 2000,
+                                timerProgressBar: true,
+                                didOpen: () => {
+                                  Swal.showLoading()
+                                  const b = Swal.getHtmlContainer().querySelector('b')
+                                  timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                  }, 100)
+                                },
+                                willClose: () => {
+                                  clearInterval(timerInterval)
+                                }
+                              }).then((result) => {
+                                /* Read more about handling dismissals below */
+                                if (result.dismiss === Swal.DismissReason.timer) {
+                                  console.log('I was closed by the timer')
+                                }
+                            });
+                        }
+                        
+                  }           
+                  });
+        // ajax
+
         Swal.fire('Listo!', '', 'success')
       } else if (result.isDenied) {
-        Swal.fire('Verifica los datos!', '', 'info')
+        Swal.fire('Verifica los datos en el padrón!', '', 'info')
       }
     })
   }
+// para generar credencial
+
+  function buscarExpediente(){
+    var expediente = document.getElementById('searchDBInclusion').value;
+    $.ajax({
+      type:"POST",
+      url:"prcd/query_searchPadronBD.php",
+      data:{
+        expediente:expediente
+      },
+      // dataType: "html",
+      //contentType:false,
+      //processData:false,
+      cache: false,
+        success: function(data) {
+          $("#credencial").html(data);
+
+      }               
+    });
+  }
+// para generar tarjetón
+  function buscarExpediente2(){
+    var expediente = document.getElementById('searchDBInclusion2').value;
+    $.ajax({
+      type:"POST",
+      url:"prcd/query_searchPadronBDTarjeton.php",
+      data:{
+        expediente:expediente
+      },
+      // dataType: "html",
+      //contentType:false,
+      //processData:false,
+      cache: false,
+        success: function(data) {
+          $("#tarjeton").html(data);
+
+      }               
+    });
+  }
+
+  function ValidaSoloNumeros() {
+    if ((event.keyCode < 48) || (event.keyCode > 57)) 
+      event.returnValue = false;
+  }
+
+  function OcultarInput() {
+    var valor = document.getElementById("selectentrega").value;
+    if(valor == 1){
+        document.getElementById("selectentrega").setAttribute("name","recibeCrd");
+        document.getElementById("recibe").removeAttribute("name");
+        document.getElementById("selectentrega").required = true;
+        document.getElementById("inputentrega").hidden = true;
+    }
+    else if (valor == 2){
+      document.getElementById("recibe").setAttribute("name","recibeCrd");
+      document.getElementById("selectentrega").removeAttribute("name");
+      document.getElementById("recibe").required = true;
+      document.getElementById("inputentrega").hidden = false;
+    }
+  }
+
+  // function init() {
+  //   var inputFile = document.getElementById('inputFile1');
+  //   inputFile.addEventListener('change', mostrarImagen, false);
+  // }
+
+  // function mostrarImagen(event) {
+  //   var file = event.target.files[0];
+  //   var reader = new FileReader();
+  //   reader.onload = function(event) {
+  //     var img = document.getElementById('img1');
+  //     img.src= event.target.result;
+  //   }
+  //   reader.readAsDataURL(file);
+  // }
+
+  // window.addEventListener('load', init, false);
+
 </script>
