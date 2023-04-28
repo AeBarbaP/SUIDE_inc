@@ -33,6 +33,14 @@ include('prcd/qc/qc.php');
     $id = $_SESSION['id'];
     $perfil = $_SESSION['perfil'];
     $nombre = $_SESSION['nombre'];
+    
+    $sqlStatus = "SELECT * FROM users WHERE id ='$id'";
+    $resultadoStatus = $conn->query($sqlStatus);
+    $rowStatus = $resultadoStatus->fetch_assoc();
+
+    $sqlPerfil="SELECT * FROM perfiles_usr WHERE id='$perfil'";
+    $resultadoPerfil = $conn->query($sqlPerfil);
+    $rowPerfil=$resultadoPerfil->fetch_assoc();
 
 ?>
 
@@ -192,7 +200,7 @@ include('prcd/qc/qc.php');
         </button> -->
         <div class="collapse" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#editarUser"><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
             <li><a href="cuentasusuario.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-people ms-2 me-3"></i>Gestión de usuarios</a></li>
           </ul>
           <li class="border-top my-3"></li>
@@ -274,7 +282,7 @@ include('prcd/qc/qc.php');
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body" style="text-align: center; background-image: url(img/CredencialInclusionFront.jpg); background-repeat: no-repeat;background-attachment: fixed; background-size: cover;" id="div_print'.$row_sqlQueryCredencial['id'].'">
-                           
+                          
                             <br>
                             <center><h5 style="font-size: 1.5rem"><strong>Número de Expediente:</strong> ' . $row_sqlQueryCredencial['id_ext'] . ' </h5>
                             <h5 style="font-size: 1.5rem"><strong>Fecha de expedición:</strong> ' . $row_sqlQueryCredencial['fecha_c'] . '</h5>
@@ -716,94 +724,83 @@ include('prcd/qc/qc.php');
 
 <!-- Inicia Modal editar-->
 
-<?php
-$a = "SELECT * FROM users WHERE id = '$id'";
-$resultadoa = $conn->query($a);
 
-while ($rowa = $resultadoa->fetch_assoc()){
-?>
-<div class="modal fade" id="editar'.$row_sqlQueryUsers['id'].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Editar Usuario</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <form action="prcd/actualizaruser.php" method="POST"><!--form-->
-                                  <input name="id" value="'.$row_sqlQueryUsers['id'].'" hidden>
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
-                                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" value="' . $row_sqlQueryUsers['nombre'] . '" aria-describedby="basic-addon1" name="nombre" required>
-                                  </div>
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-workspace"></i></span>
-                                    <input type="text" class="form-control" placeholder="Usuario" aria-label="usuario" value="' . $row_sqlQueryUsers['username'] . '" aria-describedby="basic-addon1"  name="username" readonly>
-                                  </div>
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1" for="inputGroupSelect01">Perfil</span>
+<div class="modal fade" id="editarUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Editar Usuario</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="prcd/actualizaruseractivo.php" method="POST"><!--form-->
+                  <input name="id" value="<?php echo $id?>" hidden>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" value="<?php echo $nombre?>" aria-describedby="basic-addon1" name="nombre" required>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-workspace"></i></span>
+                    <input type="text" class="form-control" placeholder="Usuario" aria-label="usuario" value="<?php echo $usuario?>" aria-describedby="basic-addon1"  name="username" readonly>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" for="inputGroupSelect01" readonly>Perfil</span>
 
-                                    <select class="form-select" id="inputGroupSelect01" value="' . $row_sqlQueryUsers['perfil'] . '" selected="selected" name="perfilselect">';
-  
-                                      
-                                      <option value="<?php echo $rowa['id'];?>" selected="selected" disabled><?php echo $rowa['perfil'];?></option>
-                                      <option value="1">Administrador</option>
-                                      <option value="2">Usuario</option>
-                                    </select>
+                    <select class="form-select" id="inputGroupSelect01" value="<?php echo $rowPerfil;?>" selected="selected" name="perfilselect" disabled>
 
-                                    <?php
-                                    echo '
-                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">';
-                                    $idId =$rowa['id'];
-                                    $estatusUsr=$rowa['estatus'];
-              
-                                      echo '
+                      <option value="<?php echo $rowPerfil['id'];?>" selected="selected" disabled><?php echo $rowPerfil['perfil'];?></option>
 
-                                      <input type="radio" class="btn-check" value="1" name="btnradio" id="btnradio1'.$idLogIn.'" 
-                                      ';
-                                      if($estatusUsr ==  1){
-                                        echo 'checked="checked"';
-                                      }
-                                      echo'
-                                      >
-                                      <label class="btn btn-outline-success" for="btnradio1'.$idLogIn.'"><i class="bi bi-check-lg"></i> Activo</label>
-                                    
-                                      <input type="radio" class="btn-check" value="2" name="btnradio" id="btnradio2'.$idLogIn.'"  
-                                      ';
-                                      if($estatusUsr == 2){
-                                        echo 'checked="checked"';
-                                      }
-                                      echo'
-                                      >
-                                      <label class="btn btn-outline-danger" for="btnradio2'.$idLogIn.'"><i class="bi bi-x-lg"></i> Inactivo</label>
-                                      ';
-                                    
-                                    echo '
-                                    </div>
-                                  </div>
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-shield-lock-fill"></i></span>
-                                    <input type="password" class="form-control" placeholder="Contraseña" aria-label="contraseña" value="' . $row_sqlQueryUsers['pwd'] . '" aria-describedby="basic-addon1" name="pwd" id="passW'.$idLogIn.'">
-                                  </div>
-                                  <input type="checkbox" onclick="myFunction'.$idLogIn.'()"> Mostrar Password 
-                                  <script>
-                                  function myFunction'.$idLogIn.'() {
-                                    var x = document.getElementById("passW'.$idLogIn.'");
-                                    if (x.type === "password") {
-                                      x.type = "text";
-                                    } else {
-                                      x.type = "password";
-                                    }
-                                  } 
-                                  </script>
-                                  
-                            </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
-                                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Guardar Cambios</button>
-                              </div>
-                            </form><!--form-->
-                        </div>
-                      </div>
+                    </select>
+
+                    <?php
+                    echo '
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group" disabled>';
+                      echo '
+                      <input type="radio" class="btn-check" value="1" name="btnradio" id="btnradio1" 
+                      ';
+                      if($rowStatus['estatus'] ==  1){
+                        echo 'checked="checked"';
+                      }
+                      echo'
+                      disabled>
+                      <label class="btn btn-outline-success" for="btnradio1"><i class="bi bi-check-lg"></i> Activo</label>
+                    
+                      <input type="radio" class="btn-check" value="2" name="btnradio" id="btnradio2"  
+                      ';
+                      if($rowStatus['estatus'] == 2){
+                        echo 'checked="checked"';
+                      }
+                      echo'
+                      disabled>
+                      <label class="btn btn-outline-danger" for="btnradio2"><i class="bi bi-x-lg"></i> Inactivo</label>
+                      ';
+                    
+                    echo '
                     </div>
-                  }
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-shield-lock-fill"></i></span>
+                    <input type="password" class="form-control" placeholder="Contraseña" aria-label="contraseña" value="' . $rowStatus['pwd'] . '" aria-describedby="basic-addon1" name="pwd" id="passW">
+                  </div>
+                  <input type="checkbox" onclick="myFunction()"> Mostrar Password 
+                  <script>
+                  function myFunction() {
+                    var x = document.getElementById("passW");
+                    if (x.type === "password") {
+                      x.type = "text";
+                    } else {
+                      x.type = "password";
+                    }
+                  } 
+                  </script>
+                  
+            </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
+                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Guardar Cambios</button>
+              </div>
+            </form><!--form-->
+        </div>
+      </div>
+    </div>
+    ';
