@@ -10,16 +10,12 @@ include('qc/qc.php');
 $id = $_POST['id'];
 $pwd = $_POST['pwd'];
 $nombre = $_POST['nombre'];
-/* $perfil = $_POST['perfilselect']; */
-$estatusUsr = $_POST['btnradio'];
 
 date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
 
 $fecha_creacion = strftime("%Y-%m-%d,%H:%M:%S");
 
-
-    /* $sqlinsert= "INSERT INTO asistentes(nombre,apellidos,curp,detalles,cantidad_polvora,entregado) VALUES('$nombre','$apellidos','$curp','$detalles','$cantidad_polvora','$entregado')"; */
     $sqlUpdate ="UPDATE users SET pwd='$pwd', nombre='$nombre' WHERE id='$id'";
     $resultado= $conn->query($sqlUpdate);
 

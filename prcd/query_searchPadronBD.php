@@ -115,13 +115,13 @@ header("content-type: image/jpeg");
       $row_QueryImagen = $resultado_QueryImagen->fetch_assoc();
       
       if($resultado_QueryExpediente){
-        /* $filaA = $resultado_QueryExpediente -> num_rows;
+        $filaA = $resultado_QueryExpediente -> num_rows;
         if ($filaA >= 1){
           $foto = $row_QueryImagen['fotografia'];
         }
         else if ($filaA = 0){
           $foto = "";
-        } */
+        }
         echo '
         <div class="col-md-4">';
         if(isset($foto)){
