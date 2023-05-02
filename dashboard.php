@@ -703,22 +703,21 @@ include('prcd/qc/qc.php');
     }
   }
 
-  // function init() {
-  //   var inputFile = document.getElementById('inputFile1');
-  //   inputFile.addEventListener('change', mostrarImagen, false);
-  // }
+  function init() {
+    var inputFile = document.getElementById('inputFile1');
+    inputFile.addEventListener('change', mostrarImagen, false);
+  }
+  function mostrarImagen(event) {
+  var file = event.target.files[0];
+  var reader = new FileReader();
+    reader.onload = function(event) {
+    var img = document.getElementById('img1');
+    img.src= event.target.result;
+  }
+  reader.readAsDataURL(file);
+  }
 
-  // function mostrarImagen(event) {
-  //   var file = event.target.files[0];
-  //   var reader = new FileReader();
-  //   reader.onload = function(event) {
-  //     var img = document.getElementById('img1');
-  //     img.src= event.target.result;
-  //   }
-  //   reader.readAsDataURL(file);
-  // }
-
-  // window.addEventListener('load', init, false);
+  window.addEventListener('load', init, false);
 
 </script>
 
@@ -741,12 +740,12 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-workspace"></i></span>
-                    <input type="text" class="form-control" placeholder="Usuario" aria-label="usuario" value="<?php echo $usuario?>" aria-describedby="basic-addon1"  name="username" readonly>
+                    <input type="text" class="form-control" placeholder="Usuario" aria-label="usuario" value="<?php echo $usuario?>" aria-describedby="basic-addon1" readonly>
                   </div>
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1" for="inputGroupSelect01" readonly>Perfil</span>
 
-                    <select class="form-select" id="inputGroupSelect01" value="<?php echo $rowPerfil;?>" selected="selected" name="perfilselect" disabled>
+                    <select class="form-select" id="inputGroupSelect01" value="<?php echo $rowPerfil;?>" selected="selected" disabled>
 
                       <option value="<?php echo $rowPerfil['id'];?>" selected="selected" disabled><?php echo $rowPerfil['perfil'];?></option>
 
@@ -756,7 +755,7 @@ include('prcd/qc/qc.php');
                     echo '
                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group" disabled>';
                       echo '
-                      <input type="radio" class="btn-check" value="1" name="btnradio" id="btnradio1" 
+                      <input type="radio" class="btn-check" value="1" id="btnradio1" 
                       ';
                       if($rowStatus['estatus'] ==  1){
                         echo 'checked="checked"';
@@ -765,7 +764,7 @@ include('prcd/qc/qc.php');
                       disabled>
                       <label class="btn btn-outline-success" for="btnradio1"><i class="bi bi-check-lg"></i> Activo</label>
                     
-                      <input type="radio" class="btn-check" value="2" name="btnradio" id="btnradio2"  
+                      <input type="radio" class="btn-check" value="2" id="btnradio2"  
                       ';
                       if($rowStatus['estatus'] == 2){
                         echo 'checked="checked"';
