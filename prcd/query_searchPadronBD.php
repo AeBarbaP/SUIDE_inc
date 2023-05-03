@@ -114,28 +114,36 @@ header("content-type: image/jpeg");
       $resultado_QueryImagen = $conn2->query($QueryImagen);
       $row_QueryImagen = $resultado_QueryImagen->fetch_assoc();
       
-      if($resultado_QueryExpediente){
-        $filaA = $resultado_QueryExpediente -> num_rows;
-        if ($filaA >= 1){
-          $foto = $row_QueryImagen['fotografia'];
+      if($resultado_QueryImagen){
+        $filaA = $resultado_QueryImagen -> num_rows;
+        if ($filaA == 1){
+          $foto = base64_encode($row_QueryImagen['fotografia']);
+          echo '
+          <div class="col-md-4">';
+          if(isset($foto)){
+            echo'
+            <img width="100%" src="data:image/jpg;base64,'.base64_encode($row_QueryImagen['fotografia']).'" style="width:15rem">';
+          }
+          else {
+            echo'
+            <img id="img1" src="img/no_profile.png" width="100%" style="width:15rem">
+            <div class="input-group">
+              <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+            </div>
+            '; 
+          }
         }
-        else if ($filaA = 0){
+        else {
           $foto = "";
-        }
-        echo '
-        <div class="col-md-4">';
-        if(isset($foto)){
           echo'
-          <img width="100%" src="data:image/jpg;base64,'.base64_encode($row_QueryImagen['fotografia']).'" style="width:15rem">';
+          <div class="col-md-4">
+            <img id="img1" src="img/no_profile.png" width="100%" style="width:15rem">
+            <div class="input-group">
+              <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+            </div>
+            ';
         }
-        else if(empty($foto)) {
-          echo'
-          <img id="img1" src="img/no_profile.png" width="100%" style="width:15rem">
-          <div class="input-group">
-            <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-          </div>
-          '; 
-        }
+        
         echo'
         
           
@@ -149,12 +157,12 @@ header("content-type: image/jpeg");
             <p class="card-text">Domicilio: '.$direccion.' '.$numeroCasa.' '.$numeroInterior.'<br>Colonia: '.$colonia.'<br>Localidad: '.$localidad2.'<br>Municipio: '.$municipio2.'<br>Estado: '.$estado2.'<br>C.P.: '.$cp.'</p>
             <p class="card-text">Tipo de Sangre: '.$tipoSangre2.'</p>
             <p class="card-text">Alergias: '.$alergias3.'</p>
-            <select class="form-select mb-3" id="selectentrega" onchange="OcultarInput()" aria-label="Default select example" required>
+            <select class="form-select mb-3 w-100" id="selectentrega" onchange="OcultarInput()" aria-label="Default select example" required>
               <option value="">Selecciona a quien se entrega la credencial</option>
               <option value="1">Usuario</option>
               <option value="2">Otro</option>
             </select>
-            <select class="form-select mb-3" id="selectvigencia" name="vigenciacrd" aria-label="Default select example" required>
+            <select class="form-select mb-3 w-100" id="selectvigencia" name="vigenciacrd" aria-label="Default select example" required>
               <option value="">Selecciona la vigencia</option>
               <option value="1">1 año</option>
               <option value="2">2 años</option>
