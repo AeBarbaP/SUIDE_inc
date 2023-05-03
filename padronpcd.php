@@ -189,7 +189,7 @@ include('prcd/qc/qc.php');
           </ul>
         </div>
       </li>
-      <li class="mb-1 mt-2 ms-2">
+      <li class="mb-1 ms-2">
       <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#credencial-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-person-vcard ms-2 me-2"></i>
           Credenciales
         </a></span>
@@ -230,99 +230,55 @@ include('prcd/qc/qc.php');
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
-        <p class="h3">Bienvenid@</p>
+        <p class="h5">Padrón Estatal de Personas con Discapacidad</p>
       </div>
-      <p class="h6 mb-5  text-muted">Sistema Único de Identificación y Verificación</p>
-      <hr>
-      <h4 class="text-muted mt-4">Últimos documentos generados</h4>
-      <div class="table-responsive">
-            <table class="table table-hover table-bordered table-sm align-middle mt-4">
-              <thead style="background-color:#B8B8B8;" class="text-light align-middle">
-                <tr class="text-center">
-                    <th scope="col">#</th>
-                    <th scope="col">No. de Expediente</th>
-                    <th scope="col">Fecha de Entrega</th>
-                    <th scope="col">Vigencia</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Credencial</th>
-                    <th scope="col">Tarjetón</th>
-                </tr>
-              </thead>
-              <tbody id="myTable">
-                <?php
-                  include('prcd/query.php');
-                  $x = 0;
-                  while ($row_sqlQueryCredencial = $resultadoQueryCredencial->fetch_assoc()) {
-                    $x++;
-                    echo '
-                    <input id="imprime2" value="'.$row_sqlQueryCredencial['id'].'" hidden>
-                    <tr class="text-center bg-white">
-                      <td>' . $x . '</td>
-                      <td>' . $row_sqlQueryCredencial['id_ext'] . '</td>
-                      <td>' . $row_sqlQueryCredencial['fecha_c'] . '</td>
-                      <td>' . $row_sqlQueryCredencial['vigencia_cred'] . '</td>';
-                      $idusers= $row_sqlQueryCredencial['id_users'];
-                      $sqlUser= "SELECT * FROM users WHERE id ='$idusers'";
-                      $resultadoQueryUser = $conn->query($sqlUser);
-                      $row_sqlQueryUser = $resultadoQueryUser->fetch_assoc();
-                      echo '
-                      <td>' . $row_sqlQueryUser['nombre'] . '</td>';
-
-                      if($row_sqlQueryCredencial['entregado_c'] == 1){
-                        echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#CredencialQR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-check text-success"></i></a></td>';
-                      } elseif($row_sqlQueryCredencial['entregado_c'] == 0){
-                        echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-x text-danger"></a></i></td>';
-                      }
-
-                      if($row_sqlQueryCredencial['entregado_t'] == 1){
-                        echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#TarjetonQR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-check text-success"></i></a></td>';
-                      } elseif($row_sqlQueryCredencial['entregado_t'] == 0){
-                        echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-x text-danger"></i></a></td>';
-                      }
-                      echo '
-                    <tr>
-                    <!-- Modal para imprimir credencial-->
-                    <div class="modal fade" id="CredencialQR'.$row_sqlQueryCredencial['id'].'" tabindex="-1" aria-labelledby="QRLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-qr-code"></i> Información QR</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body" style="text-align: center; background-image: url(img/CredencialInclusionFront.jpg); background-repeat: no-repeat;background-attachment: fixed; background-size: cover;" id="div_print'.$row_sqlQueryCredencial['id'].'">
-                          
-                            <br>
-                            <center><h5 style="font-size: 1.5rem"><strong>Número de Expediente:</strong> ' . $row_sqlQueryCredencial['id_ext'] . ' </h5>
-                            <h5 style="font-size: 1.5rem"><strong>Fecha de expedición:</strong> ' . $row_sqlQueryCredencial['fecha_c'] . '</h5>
-                            <h5 style="font-size: 1.5rem"><strong>Expira:</strong> ' . $row_sqlQueryCredencial['vigencia_cred'] . ' </h5>
-                            <h5 style="font-size: 1.5rem"><strong>Atenidod por:</strong> ' . $row_sqlQueryCredencial['id_users'] . '</h5>
-                            <h5 style="font-size: 1.5rem"><strong></strong></h5></center>
-                            <p class="text-center"><img src="prcd/QR/codes/'. $row_sqlQueryCredencial['qr_cred'].'"></p>
-                          </div>
-                          <div class="modal-footer">';?>
-                          <!-- <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('div_print<?php echo $row_sqlQuery['id']?>')"><i class="bi bi-printer-fill"></i> Imprimir</a> -->
-                          <?php echo '
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    ';
-                    
-                  }
-            echo'</table>';
-            ?>
+      <h3 class="text-muted mt-4">Registro</h3>
+      <br>
+<!--       <h4 class="text-muted mt-4">Últimos documentos generados</h4> -->
+      <div class="row">
+        <div class="col-sm-2 justify-content-between align-items-center">
+          <p class="h4">No. Expediente</p>
+          <br>
+          <img id="img1" src="img/no_profile.png" width="100%" style="width:15rem">
+          <div class="input-group">
+            <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
           </div>
+        </div>
+        <div class="col-sm-10">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Datos Generales</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Datos Médicos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Vivienda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Integración Familiar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Referencias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Servicios otorgados</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Documentos</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      
         <!-- Inicia Modal para generar credencial -->
         <div class="modal fade" id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                      <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Generar Credencial con QR</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Generar Credencial con QR4</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body" style="height: 620px;">
@@ -332,7 +288,7 @@ include('prcd/qc/qc.php');
                             </div><!-- input group -->
                             <br>
                             <div class="container text-center">
-                              <div class="card mb-3" style="width: 100%;">
+                              <div class="card mb-3" style="max-width: 100%;">
                               <form action="prcd/generaqrcredencial.php" id="form-id" method="POST"><!--form-->
                                 <div class="row g-0" id="credencial">
                                     
@@ -345,37 +301,12 @@ include('prcd/qc/qc.php');
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             <button type="submit" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd()"><i class="bi bi-save2"></i> Generar Credencial</button>
-                            <button type="button" class="btn btn-primary" id="imprimirc" data-bs-target="#credencialpreview" data-bs-toggle="modal" disabled><i class="bi bi-printer"></i> Imprimir</button>
+                            <button type="button" class="btn btn-primary" id="imprimirc" disabled><i class="bi bi-printer"></i> Imprimir</button>
                           </div><!-- modal footer -->
                         </div><!-- modal content -->
                       </div><!-- modal dialog -->
                     </div><!-- modal -->
-                    <!-- Inicia modal anidado para vista previa de credencial -->
-                    <div class="modal fade" id="credencialpreview" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-                      <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Vista previa</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <div class="row">
-                              <div class="col text-center">
-                                <img src="img/CredencialInclusionFront.jpg" style="max-width: 50%" alt="">
-                                <br>
-                                <img src="img/CredencialInclusionBack.jpg" style="max-width: 50%" alt="">
-                              </div>
-                            </div>  
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button class="btn btn-primary" data-bs-target="#credgen" data-bs-toggle="modal"><i class="bi bi-chevron-double-left me-2"></i>Regresar</button>
-                            <button type="button" class="btn btn-primary" id="imprimirp" ><i class="bi bi-printer"></i> Imprimir</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Termina modal anidado para vista previa de credencial -->
+                    
                     <!-- Termina Modal para generar credencial -->
 
                     <!-- Inicia Modal para generar tarjeton -->
