@@ -130,6 +130,10 @@ include('prcd/qc/qc.php');
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
+      .nav-link {
+        text-decoration: none;
+        color: black;
+      }
     </style>
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
@@ -245,29 +249,110 @@ include('prcd/qc/qc.php');
           </div>
         </div>
         <div class="col-sm-10">
-          <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Datos Generales</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Datos Médicos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Vivienda</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Integración Familiar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Referencias</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Servicios otorgados</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Documentos</a>
-            </li>
-          </ul>
+          <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <button class="nav-link active" id="nav-generales-tab" data-bs-toggle="tab" data-bs-target="#nav-generales" type="button" role="tab" aria-controls="nav-generales" aria-selected="true">Datos Generales</button>
+              <button class="nav-link" id="nav-medicos-tab" data-bs-toggle="tab" data-bs-target="#nav-medicos" type="button" role="tab" aria-controls="nav-medicos" aria-selected="false">Datos Médicos</button>
+              <button class="nav-link" id="nav-vivienda-tab" data-bs-toggle="tab" data-bs-target="#nav-vivienda" type="button" role="tab" aria-controls="nav-vivienda" aria-selected="false">Vivienda</button>
+              <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-integracion" type="button" role="tab" aria-controls="nav-integracion" aria-selected="false">Integración Familiar</button>
+              <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-referencias" type="button" role="tab" aria-controls="nav-referencias" aria-selected="false">Referencias</button>
+              <button class="nav-link" id="nav-servicios-tab" data-bs-toggle="tab" data-bs-target="#nav-integracion" type="button" role="tab" aria-controls="nav-servicios" aria-selected="false">Servicios Otorgados</button>
+              <button class="nav-link" id="nav-docs-tab" data-bs-toggle="tab" data-bs-target="#nav-integracion" type="button" role="tab" aria-controls="nav-docs" aria-selected="false">Documentos</button>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-generales" role="tabpanel" aria-labelledby="nav-generales-tab" tabindex="0">
+            <div class="row g-3 mt-3">
+              <div class="col-sm-4">
+                <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Nombre:</label>
+                <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Nombre del usuario solicitante" required>
+                <div class="invalid-feedback">
+                  * Campo requerido.
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Apellido Paterno:</label>
+                <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Nombre del usuario solicitante" required>
+                <div class="invalid-feedback">
+                  * Campo requerido.
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Apellido Materno:</label>
+                <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Nombre del usuario solicitante" required>
+                <div class="invalid-feedback">
+                  * Campo requerido.
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="mb-3">
+                  <label for="basic-url" class="form-label">Género:</label>
+                  <div class="input-group">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                      <label class="form-check-label" for="inlineRadio1">Mujer</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                      <label class="form-check-label" for="inlineRadio2">Hombre</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                      <label class="form-check-label" for="inlineRadio2">Otro</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-1">
+                <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Edad:</label>
+                <input type="number" class="form-control" id="datos_usr" name="datos_usr" placeholder="" required>
+                <div class="invalid-feedback">
+                  * Campo requerido.
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fecha Nacimiento:</label>
+                <input type="date" class="form-control" id="datos_usr" name="datos_usr" placeholder="" required>
+                <div class="invalid-feedback">
+                  * Campo requerido.
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Lugar Nacimiento:</label>
+                <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Lugar de Nacimiento" required>
+                <div class="invalid-feedback">
+                  * Campo requerido.
+                </div>
+              </div>
+              <div class="col-sm-8">
+                <label for="datos_pc" class="form-label"><i class="bi bi-pc-display"></i> Domicilio:</label>
+                <input type="text" class="form-control" id="datos_pc" name="datos_pc" placeholder="Marca y/o modelo del equipo" required>
+                <div class="invalid-feedback">
+                  * Campo requerido.
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <div class="tab-pane fade" id="nav-medicos" role="tabpanel" aria-labelledby="nav-medicos-tab" tabindex="0">
+              
+            </div>
+            <div class="tab-pane fade" id="nav-vivienda" role="tabpanel" aria-labelledby="nav-vivienda-tab" tabindex="0">
+
+            </div>
+            <div class="tab-pane fade" id="nav-integracion" role="tabpanel" aria-labelledby="nav-integracion-tab" tabindex="0">
+
+            </div>
+            <div class="tab-pane fade" id="nav-referencias" role="tabpanel" aria-labelledby="nav-referencias-tab" tabindex="0">
+
+            </div>
+            <div class="tab-pane fade" id="nav-servicios" role="tabpanel" aria-labelledby="nav-servicios-tab" tabindex="0">
+
+            </div>
+            <div class="tab-pane fade" id="nav-docs" role="tabpanel" aria-labelledby="nav-docs-tab" tabindex="0">
+
+            </div>
+          </div>
         </div>
       </div>
 

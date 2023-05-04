@@ -21,18 +21,26 @@
 include('qc/qc.php');
 include('QR/phpqrcode/qrlib.php'); 
 
-date_default_timezone_set('America/Mexico_City');
+date_default_timezone_set('America/Mazatlan');
 setlocale(LC_TIME, 'es_MX.UTF-8');
 
 $fechaSistema = strftime("%Y-%m-%d,%H:%M:%S");
 
-$marca = $_POST['marca'];
-$modelo = $_POST['modelo'];
-$annio = $_POST['annio'];
-$placas = $_POST['placas'];
-$serie = $_POST['serie'];
-$noChoferes = $_POST['noChoferes'];
-$nombreChoferes = $_POST['nombreChoferes'];
+$nombre = $_POST['nombre'];
+$apellidoPaterno = $_POST['apellidoPaterno'];
+$apellidoMaterno = $_POST['apellidoMaterno'];
+$folio = $_POST['folio'];
+$discapacidad2 = $_POST['discapacidad'];
+$curp = $_POST['curp'];
+$direccion = $_POST['direccion'];
+$numeroCasa = $_POST['numeroCasa'];
+$cp = $_POST['cp'];
+$numeroInterior = $_POST['numeroInterior'];
+$colonia = $_POST['colonia'];
+$municipio2 = $_POST['municipio'];
+$estado2 = $_POST['estado'];
+$tipoSangre2 = $_POST['tipoSangre'];
+$alergias3 = $_POST['alergias'];
 // $entregado = 0; 
 
 function generarCodigo($longitud) {
