@@ -791,16 +791,18 @@ include('prcd/qc/qc.php');
                         <textarea class="form-control mt-2" rows="5" aria-label="With textarea"></textarea>
                       </div>
                     </div>
-
-
-
-
                   </div>
                 </div>
                 
                 <div class="tab-pane fade" id="nav-vivienda" role="tabpanel" aria-labelledby="nav-vivienda-tab" tabindex="0">
+                  <div class="row g-3 ms-4 mt-3" style="width:95%">
 
+
+
+                  
+                  </div>
                 </div>
+
                 <div class="tab-pane fade" id="nav-integracion" role="tabpanel" aria-labelledby="nav-integracion-tab" tabindex="0">
 
                 </div>
