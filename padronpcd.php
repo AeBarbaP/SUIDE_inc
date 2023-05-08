@@ -134,6 +134,13 @@ include('prcd/qc/qc.php');
         text-decoration: none;
         color: black;
       }
+
+      .tab-pane{
+        height:700px;
+        overflow-y: scroll;
+        width:100%;
+      }
+
     </style>
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
@@ -220,8 +227,8 @@ include('prcd/qc/qc.php');
             <li><a href="cuentasusuario.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-people ms-2 me-3"></i>Gestión de usuarios</a></li>
           </ul>
           <li class="border-top my-3"></li>
-      <li class="ms-2 mb-1">
-      <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
+          <li class="ms-2 mb-1">
+          <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
           Cerrar Sesión
           </a></span>
       </li>
@@ -261,9 +268,9 @@ include('prcd/qc/qc.php');
                 <button class="nav-link" id="nav-docs-tab" data-bs-toggle="tab" data-bs-target="#nav-integracion" type="button" role="tab" aria-controls="nav-docs" aria-selected="false">Documentos</button>
               </div>
             </nav>
-            <div class="tab-content scrollspy-example" data-bs-spy="scroll" data-bs-smooth-scroll="true" id="nav-tabContent">
+            <div class="tab-content"  id="nav-tabContent">
               <div class="tab-pane fade show active" id="nav-generales" role="tabpanel" aria-labelledby="nav-generales-tab" tabindex="0">
-                <div class="row g-3 mt-3">
+                <div class="row ms-4 g-3 mt-3" style="width:95%">
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Nombre:</label>
                     <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Nombre(s)" required>
@@ -429,33 +436,368 @@ include('prcd/qc/qc.php');
                     </datalist>
                   </div>
                   <div class="col-sm-4">
-                    <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Profesión u Oficio:</label>
-                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Profesión u Oficio">
-                  </div>
-                  <div class="col-sm-3">
                     <div class="mb-3">
                       <label for="basic-url" class="form-label">Estudia:</label>
                       <div class="input-group">
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                           <label class="form-check-label" for="inlineRadio1">Sí</label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                           <label class="form-check-label" for="inlineRadio2">No</label>
                         </div>
+                        <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Dónde estudia...">
                       </div>
-                      <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Dónde estudia...">
                     </div>
                   </div>
-
-
+                  <div class="col-sm-4">
+                    <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Habilidad:</label>
+                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Habilidad">
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Profesión u Oficio:</label>
+                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Profesión u Oficio">
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="mb-3">
+                      <label for="basic-url" class="form-label">Trabaja:</label>
+                      <div class="input-group">
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <label class="form-check-label" for="inlineRadio1">Sí</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <label class="form-check-label" for="inlineRadio2">No</label>
+                        </div>
+                        <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Dónde trabaja...">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <label for="basic-url" class="form-label">Ingreso mensual:</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">$</span>
+                      <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                      <span class="input-group-text">.00</span>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="col-sm-6">
+                    <div class="mb-3">
+                      <label for="basic-url" class="form-label">Pertenece a alguna Asociación Civil:</label>
+                      <div class="input-group">
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <label class="form-check-label" for="inlineRadio1">Sí</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <label class="form-check-label" for="inlineRadio2">No</label>
+                        </div>
+                        <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Nombre de la AC...">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="mb-3">
+                      <label for="basic-url" class="form-label">Pertenece a algún Sindicato:</label>
+                      <div class="input-group">
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <label class="form-check-label" for="inlineRadio1">Sí</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <label class="form-check-label" for="inlineRadio2">No</label>
+                        </div>
+                        <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Nombre del Sindicato...">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="mb-3">
+                      <label for="basic-url" class="form-label">Pensionado:</label>
+                      <div class="input-group">
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <label class="form-check-label" for="inlineRadio1">Sí</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <label class="form-check-label" for="inlineRadio2">No</label>
+                        </div>
+                        <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Dónde...">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <label for="basic-url" class="form-label">Monto de la Pensión:</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">$</span>
+                      <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                      <span class="input-group-text">.00</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="exampleDataListPeriodo" class="form-label">Periodicidad:</label>
+                    <input class="form-control" list="datalistOptionsPeriodo" id="exampleDataListPeriodo" placeholder="Type to search..." required>
+                    <datalist id="datalistOptionsPeriodo">
+                      <option value="Mensual">
+                      <option value="Bimestral">
+                      <option value="Trimestral">
+                      <option value="Semestral">
+                    </datalist>
+                  </div>
+                  <div class="col-sm-10">
+                    <label for="exampleDataListSS" class="form-label">Tipo de Seguridad Social:</label>
+                    <div class="input-group">
+                      <input class="form-control" list="datalistOptionsSS" id="exampleDataListSS" placeholder="Type to search..." required>
+                      <datalist id="datalistOptionsSS">
+                        <option value="IMSS">
+                        <option value="ISSSTE">
+                        <option value="SSZ">
+                        <option value="Otro">
+                        <option value="Sin Seguridad Social">
+                      </datalist>
+                      <span class="input-group-text"> Especifique: </span>
+                      <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Nombre de la Institución de Seguridad Social">
+                    </div>
+                  </div>
+                  <br>
                 </div>
               </div>
 
                 <div class="tab-pane fade" id="nav-medicos" role="tabpanel" aria-labelledby="nav-medicos-tab" tabindex="0">
-                  
+                  <div class="row g-3 ms-4 mt-3" style="width:95%">
+                    <div class="col-sm-6">
+                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Discapacidad:</label>
+                      <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Discapacidad" required>
+                      <div class="invalid-feedback">
+                        * Campo requerido.
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Grado:</label>
+                      <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Grado" required>
+                      <div class="invalid-feedback">
+                        * Campo requerido.
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <label for="exampleDataListDisc" class="form-label">Tipo de Discapacidad:</label>
+                      <input class="form-control" list="datalistOptionsDisc" id="exampleDataListDisc" placeholder="Type to search..." required>
+                      <datalist id="datalistOptionsDisc">
+                        <option value="Física">
+                        <option value="Intelectual">
+                        <option value="Sensorial">
+                        <option value="Múltiple">
+                      </datalist>
+                      <div class="invalid-feedback">
+                        * Campo requerido.
+                      </div>
+                    </div>
+                    <div class="col-sm-8">
+                      <label for="exampleDataListCausa" class="form-label">Causa:</label>
+                      <div class="input-group">
+                        <input class="form-control" list="datalistOptionsCausa" id="exampleDataListCausa" placeholder="Type to search..." required>
+                        <datalist id="datalistOptionsCausa">
+                          <option value="Congénita">
+                          <option value="Adquirida">
+                          <option value="Accidente">
+                          <option value="Enfermedad">
+                          <option value="Nacimiento">
+                          <option value="Adicción">
+                          <option value="Otra">
+                        </datalist>
+                        <span class="input-group-text"> Especifique: </span>
+                        <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="">
+                      </div>
+                      <div class="invalid-feedback">
+                        * Campo requerido.
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Temporalidad:</label>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Selecciona...</option>
+                        <option value="1">0 - 6 meses</option>
+                        <option value="2">7 - 12 meses</option>
+                        <option value="3">13 - 18 meses</option>
+                        <option value="3">18 meses o más</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-4">
+                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fuente de Valoración:</label>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Selecciona...</option>
+                        <option value="1">IMSS</option>
+                        <option value="2">ISSSTE</option>
+                        <option value="3">SSZ</option>
+                        <option value="4">CREE</option>
+                        <option value="5">Servicios Médicos de la Fuerza Armada</option>
+                        <option value="6">UBR - Unidad Básica de Rehabilitación</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-2">
+                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fecha Valoración:</label>
+                      <input type="date" class="form-control" id="datos_usr" name="datos_usr" placeholder="" required>
+                      <div class="invalid-feedback">
+                        * Campo requerido.
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="mb-3">
+                        <label for="basic-url" class="form-label">Rehabilitación:</label>
+                        <div class="input-group">
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">Sí</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">No</label>
+                          </div>
+                          <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Dónde...">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fecha de Inicio:</label>
+                      <input type="date" class="form-control" id="datos_usr" name="datos_usr" placeholder="" required>
+                      <div class="invalid-feedback">
+                        * Campo requerido.
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Duración:</label>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Selecciona...</option>
+                        <option value="1">0 - 6 meses</option>
+                        <option value="2">7 - 12 meses</option>
+                        <option value="3">13 - 18 meses</option>
+                        <option value="3">18 meses o más</option>
+                      </select>
+                    </div>
+                    <br>
+                    <div class="col-sm-2">
+                      <label for="datos_usr" class="form-label"> Tipo de Sangre:</label>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Selecciona...</option>
+                        <option value="1">A Rh +</option>
+                        <option value="2">A Rh -</option>
+                        <option value="3">AB Rh +</option>
+                        <option value="3">AB Rh -</option>
+                        <option value="3">B Rh +</option>
+                        <option value="3">B Rh -</option>
+                        <option value="3">O Rh +</option>
+                        <option value="3">O Rh -</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-8">
+                      <label for="exampleDataListCausa" class="form-label">¿Tiene cirugías?</label>
+                      <div class="input-group">
+                        <select class="form-select" id="inputGroupSelect02">
+                          <option selected>Selecciona...</option>
+                          <option value="1">Sí</option>
+                          <option value="2">No</option>
+                        </select>
+                        <span class="input-group-text"> Tipo de Cirugía: </span>
+                        <input type="text" class="form-control  w-50" id="datos_usr" name="datos_usr" placeholder="">
+                      </div>
+                      <div class="invalid-feedback">
+                        * Campo requerido.
+                      </div>
+                    </div>
+                    <div class="col-sm-10">
+                      <label for="exampleDataListCausa" class="form-label">¿Usa prótesis u órtesis?</label>
+                      <div class="input-group">
+                        <select class="form-select" id="inputGroupSelect02">
+                          <option selected>Selecciona...</option>
+                          <option value="1">Sí</option>
+                          <option value="2">No</option>
+                        </select>
+                        <span class="input-group-text"> ¿De qué tipo? </span>
+                        <input type="text" class="form-control  w-50" id="datos_usr" name="datos_usr" placeholder="">
+                      </div>
+                      <div class="invalid-feedback">
+                        * Campo requerido.
+                      </div>
+                    </div>
+                    <br>
+                    <div class="col-sm-4">
+                      <label for="datos_usr" class="form-label"> Alergias:</label>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Selecciona...</option>
+                        <option value="1">Alimentaria</option>
+                        <option value="2">Medicamentos</option>
+                        <option value="3">Ambiental</option>
+                      </select>
+                      <select class="form-select" multiple aria-label="multiple select example">
+                        <option selected>Selecciona una o más</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                        <option value="5">Five</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="input-group mt-4">
+                        <span class="input-group-text mt-2">Alergias <br>seleccionadas:</span>
+                        <textarea class="form-control mt-2" rows="5" aria-label="With textarea"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <label for="datos_usr" class="form-label"> Enfermedades:</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" aria-label="Buscar...">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                      </div>
+                      <select class="form-select" multiple aria-label="multiple select example">
+                        <option selected>Selecciona una o más</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                        <option value="5">Five</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="input-group mt-4" style="height:max-content">
+                        <span class="input-group-text mt-2">Enfermedades <br>seleccionadas:</span>
+                        <textarea class="form-control mt-2" rows="5" aria-label="With textarea"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <label for="datos_usr" class="form-label"> Medicamentos:</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" aria-label="Buscar...">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                      </div>
+                      <select class="form-select" multiple aria-label="multiple select example">
+                        <option selected>Selecciona uno o más</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                        <option value="5">Five</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="input-group mt-4" style="height:max-content">
+                        <span class="input-group-text mt-2">Medicamentos <br>seleccionados:</span>
+                        <textarea class="form-control mt-2" rows="5" aria-label="With textarea"></textarea>
+                      </div>
+                    </div>
+
+
+
+
+                  </div>
                 </div>
+                
                 <div class="tab-pane fade" id="nav-vivienda" role="tabpanel" aria-labelledby="nav-vivienda-tab" tabindex="0">
 
                 </div>
