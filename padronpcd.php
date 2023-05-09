@@ -565,7 +565,10 @@ include('prcd/qc/qc.php');
                       <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Nombre de la Institución de Seguridad Social">
                     </div>
                   </div>
-                  <br>
+                  <hr>
+                    <div class="d-grid gap-2 mt-3">
+                      <button class="btn btn-primary" type="submit">Guardar</button>
+                    </div>
                 </div>
               </div>
 
@@ -791,15 +794,151 @@ include('prcd/qc/qc.php');
                         <textarea class="form-control mt-2" rows="5" aria-label="With textarea"></textarea>
                       </div>
                     </div>
+
+                    <hr>
+                    <div class="d-grid gap-2 mt-3">
+                      <button class="btn btn-primary" type="submit">Guardar</button>
+                    </div>
+
                   </div>
                 </div>
                 
                 <div class="tab-pane fade" id="nav-vivienda" role="tabpanel" aria-labelledby="nav-vivienda-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3" style="width:95%">
-
-
-
-                  
+                  <!-- Vivienda -->
+                    <div class="col-sm-12">
+                    <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Vivienda:</label>
+                      <div class="input-group" style="height:max-content">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <label class="form-check-label" for="inlineRadio1">Propia</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <label class="form-check-label" for="inlineRadio2">Prestada</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                          <label class="form-check-label" for="inlineRadio2">Rentada</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-control" type="text" placeholder="Costo/Precio">
+                        </div>
+                        
+                      </div>
+                    </div>
+                  <!-- Vivienda -->
+                  <!-- características -->
+                    <div class="col-sm-12">
+                    <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Características de la vivienda:</label>
+                      <div class="input-group">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <label class="form-check-label" for="inlineRadio1">Casa</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <label class="form-check-label" for="inlineRadio2">Departamento</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                          <label class="form-check-label" for="inlineRadio2">Vecindad</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                          <label class="form-check-label" for="inlineRadio2">Otra:</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-control" type="text" placeholder="Otro">
+                        </div>
+                        
+                      </div>
+                    </div>
+                  <!-- características -->
+                  <!-- habitaciones -->
+                    <div class="col-sm-12">
+                    <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Características de la vivienda:</label>
+                      <div class="input-group">
+                      <div class="form-check form-check-inline">
+                          <input class="form-control" type="text" placeholder="Habitaciones">
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+                            <label class="form-check-label" for="flexCheckDefault1">
+                              Cocina
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
+                            <label class="form-check-label" for="flexCheckDefault2">
+                              Sala
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+                            <label class="form-check-label" for="flexCheckDefault3">
+                              Baño
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
+                            <label class="form-check-label" for="flexCheckDefault4">
+                              Otros:
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-control" type="text" placeholder="Otro">
+                        </div>
+                        
+                      </div>
+                    </div>
+                  <!-- habitaciones -->
+                  <!-- techo -->
+                    <div class="col-sm-12">
+                    <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Techo:</label>
+                      <div class="input-group">
+                      <!-- <div class="form-check form-check-inline">
+                          <input class="form-control" type="text" placeholder="Habitaciones">
+                        </div> -->
+                        <div class="form-check form-check-inline">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+                            <label class="form-check-label" for="flexCheckDefault1">
+                              Cocina
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
+                            <label class="form-check-label" for="flexCheckDefault2">
+                              Sala
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+                            <label class="form-check-label" for="flexCheckDefault3">
+                              Baño
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
+                            <label class="form-check-label" for="flexCheckDefault4">
+                              Otros:
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-control" type="text" placeholder="Otro">
+                        </div>
+                        
+                      </div>
+                    </div>
+                  <!-- techo -->
                   </div>
                 </div>
 
