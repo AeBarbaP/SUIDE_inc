@@ -264,8 +264,8 @@ include('prcd/qc/qc.php');
                 <button class="nav-link" id="nav-vivienda-tab" data-bs-toggle="tab" data-bs-target="#nav-vivienda" type="button" role="tab" aria-controls="nav-vivienda" aria-selected="false">Vivienda</button>
                 <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-integracion" type="button" role="tab" aria-controls="nav-integracion" aria-selected="false">Integración Familiar</button>
                 <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-referencias" type="button" role="tab" aria-controls="nav-referencias" aria-selected="false">Referencias</button>
-                <button class="nav-link" id="nav-servicios-tab" data-bs-toggle="tab" data-bs-target="#nav-integracion" type="button" role="tab" aria-controls="nav-servicios" aria-selected="false">Servicios Otorgados</button>
-                <button class="nav-link" id="nav-docs-tab" data-bs-toggle="tab" data-bs-target="#nav-integracion" type="button" role="tab" aria-controls="nav-docs" aria-selected="false">Documentos</button>
+                <button class="nav-link" id="nav-servicios-tab" data-bs-toggle="tab" data-bs-target="#nav-servicios-otorgados" type="button" role="tab" aria-controls="nav-servicios" aria-selected="false">Servicios Otorgados</button>
+                <button class="nav-link" id="nav-docs-tab" data-bs-toggle="tab" data-bs-target="#nav-docs" type="button" role="tab" aria-controls="nav-docs" aria-selected="false">Documentos</button>
               </div>
             </nav>
             <div class="tab-content"  id="nav-tabContent">
@@ -804,7 +804,7 @@ include('prcd/qc/qc.php');
                 </div>
                 
                 <div class="tab-pane fade" id="nav-vivienda" role="tabpanel" aria-labelledby="nav-vivienda-tab" tabindex="0">
-                  <div class="row g-3 ms-4 mt-3" style="width:95%">
+                  <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                   <!-- Vivienda -->
                     <div class="col-sm-12">
                     <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Vivienda:</label>
@@ -897,9 +897,61 @@ include('prcd/qc/qc.php');
                       </div>
                     </div>
                   <!-- habitaciones -->
-                  <!-- techo -->
-                    <div class="col-sm-12">
+                  
+                  <!-- Vivienda -->
+                  <div class="col-sm-12">
                     <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Techo:</label>
+                      <div class="input-group" style="height:max-content">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <label class="form-check-label" for="inlineRadio1">Lamina</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <label class="form-check-label" for="inlineRadio2">Cemento</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                          <label class="form-check-label" for="inlineRadio2">Otros</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-control" type="text" placeholder="Costo/Precio">
+                        </div>
+                        
+                      </div>
+                    </div>
+                  <!-- Vivienda -->
+                  <!-- Pared -->
+                  <div class="col-sm-12">
+                    <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Pared:</label>
+                      <div class="input-group" style="height:max-content">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <label class="form-check-label" for="inlineRadio1">Block</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <label class="form-check-label" for="inlineRadio2">Ladrillo</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <label class="form-check-label" for="inlineRadio2">Adobe</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                          <label class="form-check-label" for="inlineRadio2">Otros</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-control" type="text" placeholder="Costo/Precio">
+                        </div>
+                        
+                      </div>
+                    </div>
+                  <!-- Vivienda -->
+                  <hr>
+                  <!-- servicios básicos -->
+                  <div class="col-sm-12">
+                    <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Servicios básicos:</label>
                       <div class="input-group">
                       <!-- <div class="form-check form-check-inline">
                           <input class="form-control" type="text" placeholder="Habitaciones">
@@ -908,13 +960,13 @@ include('prcd/qc/qc.php');
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
                             <label class="form-check-label" for="flexCheckDefault1">
-                              Cocina
+                              Agua potable
                             </label>
                           </div>
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
                             <label class="form-check-label" for="flexCheckDefault2">
-                              Sala
+                              Luz eléctrica
                             </label>
                           </div>
                         </div>
@@ -922,7 +974,49 @@ include('prcd/qc/qc.php');
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
                             <label class="form-check-label" for="flexCheckDefault3">
-                              Baño
+                              Drenaje
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
+                            <label class="form-check-label" for="flexCheckDefault4">
+                              Cable
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+                            <label class="form-check-label" for="flexCheckDefault3">
+                              Internet
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
+                            <label class="form-check-label" for="flexCheckDefault4">
+                              Celular
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+                            <label class="form-check-label" for="flexCheckDefault3">
+                              Carro
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
+                            <label class="form-check-label" for="flexCheckDefault4">
+                              Gas
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+                            <label class="form-check-label" for="flexCheckDefault3">
+                              Teléfono
                             </label>
                           </div>
                           <div class="form-check">
@@ -938,23 +1032,193 @@ include('prcd/qc/qc.php');
                         
                       </div>
                     </div>
-                  <!-- techo -->
+                  <!-- servicios básicos -->
+                  <!-- electrodomésticos -->
+                  <div class="col-sm-12 col-md-12">
+                    <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Servicios básicos:</label>
+                      <div class="input-group">
+                      <!-- <div class="form-check form-check-inline">
+                          <input class="form-control" type="text" placeholder="Habitaciones">
+                        </div> -->
+                        <div class="form-check form-check-inline">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+                            <label class="form-check-label" for="flexCheckDefault1">
+                              T.V.
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
+                            <label class="form-check-label" for="flexCheckDefault2">
+                              Lavadora
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+                            <label class="form-check-label" for="flexCheckDefault3">
+                              Estéreo
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
+                            <label class="form-check-label" for="flexCheckDefault4">
+                              Microondas
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+                            <label class="form-check-label" for="flexCheckDefault3">
+                              Computadora
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
+                            <label class="form-check-label" for="flexCheckDefault4">
+                              Licuadora
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+                            <label class="form-check-label" for="flexCheckDefault3">
+                              DVD
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
+                            <label class="form-check-label" for="flexCheckDefault4">
+                              Estufa
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+                            <label class="form-check-label" for="flexCheckDefault3">
+                              Teléfono
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
+                            <label class="form-check-label" for="flexCheckDefault4">
+                              Otros:
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-control" type="text" placeholder="Otro">
+                        </div>
+                        
+                      </div>
+                    </div>
+                  <!-- electrodomésticos -->
+                  <!-- habitaciones -->
+                  <div class="col-sm-12">
+                    <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Personas que dependen económicamente de usted:</label>
+                      <div class="input-group">
+                        <div class="form-check form-check-inline">
+                            <input class="form-control" type="text" placeholder="Personas que dependen económicamente">
+                        </div>
+                      </div>
+                      <br>
+                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> ¿Tiene deudas?:</label>
+                      <div class="input-group">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <label class="form-check-label" for="inlineRadio1">Propia</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <label class="form-check-label" for="inlineRadio2">Prestada</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                          <label class="form-check-label" for="inlineRadio2">Rentada</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                          <input class="form-control" type="text" placeholder="Costo/Precio">
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  <!-- habitaciones -->
+
+                  <hr>
+                    <div class="d-grid gap-2 mt-3">
+                      <button class="btn btn-primary" type="submit">Guardar</button>
+                    </div>
                   </div>
                 </div>
 
                 <div class="tab-pane fade" id="nav-integracion" role="tabpanel" aria-labelledby="nav-integracion-tab" tabindex="0">
+                <!-- integración familiar -->
+                  <div class="col-sm-12 mt-3 p-4">
+                  <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Integración familiar</label>
 
+                  <table class="table table-bordered table-hover text-center">
+                      <thead style="background-color:#6d5973;color:white;">
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Parentesco</th>
+                          <th scope="col">Edad</th>
+                          <th scope="col">Escolaridad</th>
+                          <th scope="col">Profesión</th>
+                          <th scope="col">Discapacidad</th>
+                          <th scope="col">Ingreso</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>Otto</td>
+                          <td>Otto</td>
+                          <td>Otto</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Jacob</td>
+                          <td>Thornton</td>
+                          <td>Thornton</td>
+                          <td>Thornton</td>
+                          <td>Thornton</td>
+                          <td>Thornton</td>
+                          <td>@fat</td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- integración familiar -->
+                    <hr>
+                    <div class="d-grid gap-2 mt-3">
+                      <button class="btn btn-primary" type="button"><i class="bi bi-person-fill-add"></i> Agregar familiar</button>
+                    </div>
+                  </div>
                 </div>
-                <div class="tab-pane fade" id="nav-referencias" role="tabpanel" aria-labelledby="nav-referencias-tab" tabindex="0">
 
-                </div>
-                <div class="tab-pane fade" id="nav-servicios" role="tabpanel" aria-labelledby="nav-servicios-tab" tabindex="0">
+              <div class="tab-pane fade" id="nav-referencias" role="tabpanel" aria-labelledby="nav-referencias-tab" tabindex="0">
+              </div>
 
-                </div>
-                <div class="tab-pane fade" id="nav-docs" role="tabpanel" aria-labelledby="nav-docs-tab" tabindex="0">
+              <div class="tab-pane fade" id="nav-servicios-otorgados" role="tabpanel" aria-labelledby="nav-servicios-tab" tabindex="0">
+              </div>
 
-                </div>
-            </div>
+              <div class="tab-pane fade" id="nav-docs" role="tabpanel" aria-labelledby="nav-docs-tab" tabindex="0">
+    
+              </div>
+
+              </div>
           </div>
         </div>
       </div>
