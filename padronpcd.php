@@ -805,46 +805,49 @@ include('prcd/qc/qc.php');
                 
                 <div class="tab-pane fade" id="nav-vivienda" role="tabpanel" aria-labelledby="nav-vivienda-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
-                  <!-- Vivienda -->
+                    <!-- Vivienda -->
                     <div class="col-sm-12">
-                    <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Vivienda:</label>
+                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Vivienda:</label>
                       <div class="input-group" style="height:max-content">
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                           <label class="form-check-label" for="inlineRadio1">Propia</label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                           <label class="form-check-label" for="inlineRadio2">Prestada</label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
                           <label class="form-check-label" for="inlineRadio2">Rentada</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-control" type="text" placeholder="Costo/Precio">
+                          <div class="input-group mb-3 w-75">
+                            <span class="input-group-text">$</span>
+                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <span class="input-group-text">.00</span>
+                          </div>
                         </div>
-                        
                       </div>
                     </div>
-                  <!-- Vivienda -->
-                  <!-- características -->
+                    <!-- Vivienda -->
+                    <!-- características -->
                     <div class="col-sm-12">
-                    <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Características de la vivienda:</label>
+                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Tipo de vivienda:</label>
                       <div class="input-group">
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                           <label class="form-check-label" for="inlineRadio1">Casa</label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                           <label class="form-check-label" for="inlineRadio2">Departamento</label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
                           <label class="form-check-label" for="inlineRadio2">Vecindad</label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
                           <label class="form-check-label" for="inlineRadio2">Otra:</label>
                         </div>
@@ -854,15 +857,21 @@ include('prcd/qc/qc.php');
                         
                       </div>
                     </div>
-                  <!-- características -->
-                  <!-- habitaciones -->
+                    <!-- características -->
+                    <!-- habitaciones -->
                     <div class="col-sm-12">
-                    <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Características de la vivienda:</label>
+                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Número de habitaciones:</label>
                       <div class="input-group">
-                      <div class="form-check form-check-inline">
-                          <input class="form-control" type="text" placeholder="Habitaciones">
-                        </div>
                         <div class="form-check form-check-inline">
+                          <input class="form-control mt-2" type="number" placeholder="# Habitaciones">
+                        </div>
+                        <div class="form-check mt-3">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
+                          <label class="form-check-label" for="flexCheckDefault2">
+                            Selecciona todo
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline mt-1">
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
                             <label class="form-check-label" for="flexCheckDefault1">
@@ -877,7 +886,7 @@ include('prcd/qc/qc.php');
                           </div>
                         </div>
                         <div class="form-check form-check-inline">
-                          <div class="form-check">
+                          <div class="form-check mt-1">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
                             <label class="form-check-label" for="flexCheckDefault3">
                               Baño
@@ -890,27 +899,27 @@ include('prcd/qc/qc.php');
                             </label>
                           </div>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mt-2">
                           <input class="form-control" type="text" placeholder="Otro">
                         </div>
                         
                       </div>
                     </div>
-                  <!-- habitaciones -->
-                  
-                  <!-- Vivienda -->
-                  <div class="col-sm-12">
-                    <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Techo:</label>
+                    <!-- habitaciones -->
+                    
+                    <!-- Vivienda -->
+                    <div class="col-sm-12">
+                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Techo:</label>
                       <div class="input-group" style="height:max-content">
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                           <label class="form-check-label" for="inlineRadio1">Lamina</label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                           <label class="form-check-label" for="inlineRadio2">Cemento</label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
                           <label class="form-check-label" for="inlineRadio2">Otros</label>
                         </div>
@@ -920,10 +929,10 @@ include('prcd/qc/qc.php');
                         
                       </div>
                     </div>
-                  <!-- Vivienda -->
-                  <!-- Pared -->
-                  <div class="col-sm-12">
-                    <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Pared:</label>
+                    <!-- Vivienda -->
+                    <!-- Pared -->
+                    <div class="col-sm-12">
+                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Pared:</label>
                       <div class="input-group" style="height:max-content">
                         <div class="form-check form-check-inline">
                           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
@@ -947,15 +956,18 @@ include('prcd/qc/qc.php');
                         
                       </div>
                     </div>
-                  <!-- Vivienda -->
-                  <hr>
-                  <!-- servicios básicos -->
-                  <div class="col-sm-12">
-                    <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Servicios básicos:</label>
+                    <!-- Vivienda -->
+                    <hr>
+                    <!-- servicios básicos -->
+                    <div class="col-sm-12">
+                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Servicios básicos:</label>
                       <div class="input-group">
-                      <!-- <div class="form-check form-check-inline">
-                          <input class="form-control" type="text" placeholder="Habitaciones">
-                        </div> -->
+                        <div class="form-check mt-2">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
+                          <label class="form-check-label" for="flexCheckDefault2">
+                            Selecciona todo
+                          </label>
+                        </div>
                         <div class="form-check form-check-inline">
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
@@ -1026,20 +1038,22 @@ include('prcd/qc/qc.php');
                             </label>
                           </div>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mt-2">
                           <input class="form-control" type="text" placeholder="Otro">
                         </div>
-                        
                       </div>
                     </div>
-                  <!-- servicios básicos -->
-                  <!-- electrodomésticos -->
-                  <div class="col-sm-12 col-md-12">
-                    <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Servicios básicos:</label>
+                    <!-- servicios básicos -->
+                    <!-- electrodomésticos -->
+                    <div class="col-sm-12 col-md-12">
+                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Servicios básicos:</label>
                       <div class="input-group">
-                      <!-- <div class="form-check form-check-inline">
-                          <input class="form-control" type="text" placeholder="Habitaciones">
-                        </div> -->
+                      <div class="form-check mt-3">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
+                          <label class="form-check-label" for="flexCheckDefault2">
+                            Seleccionar todo
+                          </label>
+                        </div>
                         <div class="form-check form-check-inline">
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
@@ -1116,13 +1130,13 @@ include('prcd/qc/qc.php');
                         
                       </div>
                     </div>
-                  <!-- electrodomésticos -->
-                  <!-- habitaciones -->
-                  <div class="col-sm-12">
-                    <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Personas que dependen económicamente de usted:</label>
+                    <!-- electrodomésticos -->
+                    <!-- habitaciones -->
+                    <div class="col-sm-12">
+                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Personas que dependen económicamente de usted:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline">
-                            <input class="form-control" type="text" placeholder="Personas que dependen económicamente">
+                            <input class="form-control" type="number" placeholder="Personas que dependen económicamente">
                         </div>
                       </div>
                       <br>
@@ -1140,17 +1154,18 @@ include('prcd/qc/qc.php');
                           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
                           <label class="form-check-label" for="inlineRadio2">Rentada</label>
                         </div>
-
                         <div class="form-check form-check-inline">
-                          <input class="form-control" type="text" placeholder="Costo/Precio">
+                          <div class="input-group w-75">
+                            <span class="input-group-text">$</span>
+                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <span class="input-group-text">.00</span>
+                          </div>
                         </div>
                       </div>
                       
                     </div>
-                  </div>
-                  <!-- habitaciones -->
-
-                  <hr>
+                    <!-- habitaciones -->
+                    <hr>
                     <div class="d-grid gap-2 mt-3">
                       <button class="btn btn-primary" type="submit">Guardar</button>
                     </div>
@@ -1158,65 +1173,175 @@ include('prcd/qc/qc.php');
                 </div>
 
                 <div class="tab-pane fade" id="nav-integracion" role="tabpanel" aria-labelledby="nav-integracion-tab" tabindex="0">
-                <!-- integración familiar -->
-                  <div class="col-sm-12 mt-3 p-4">
-                  <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Integración familiar</label>
-
-                  <table class="table table-bordered table-hover text-center">
-                      <thead style="background-color:#6d5973;color:white;">
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Nombre</th>
-                          <th scope="col">Parentesco</th>
-                          <th scope="col">Edad</th>
-                          <th scope="col">Escolaridad</th>
-                          <th scope="col">Profesión</th>
-                          <th scope="col">Discapacidad</th>
-                          <th scope="col">Ingreso</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>Otto</td>
-                          <td>Otto</td>
-                          <td>Otto</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>Thornton</td>
-                          <td>Thornton</td>
-                          <td>Thornton</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        
-                      </tbody>
-                    </table>
-                  </div>
-                  <!-- integración familiar -->
-                    <hr>
-                    <div class="d-grid gap-2 mt-3">
-                      <button class="btn btn-primary" type="button"><i class="bi bi-person-fill-add"></i> Agregar familiar</button>
+                  <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
+                    <!-- integración familiar -->
+                    <div class="col-sm-12 mt-3 p-4">
+                      <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Integración familiar</label>
+                      <table class="table table-bordered table-hover text-center">
+                        <thead style="background-color:#6d5973;color:white;">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre completo</th>
+                            <th scope="col">Parentesco</th>
+                            <th scope="col">Edad</th>
+                            <th scope="col">Escolaridad</th>
+                            <th scope="col">Profesión</th>
+                            <th scope="col">Discapacidad</th>
+                            <th scope="col">Ingreso</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>Otto</td>
+                            <td>Otto</td>
+                            <td>Otto</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>Thornton</td>
+                            <td>Thornton</td>
+                            <td>Thornton</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <!-- integración familiar -->
+                      <hr>
+                      <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-primary" type="button"><i class="bi bi-person-fill-add"></i> Agregar familiar</button>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-              <div class="tab-pane fade" id="nav-referencias" role="tabpanel" aria-labelledby="nav-referencias-tab" tabindex="0"> 
-              </div>
+                <div class="tab-pane fade" id="nav-referencias" role="tabpanel" aria-labelledby="nav-referencias-tab" tabindex="0"> 
+                  <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
+                    <!-- integración familiar -->
+                    <div class="col-sm-12 mt-3 p-4">
+                      <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Integración familiar</label>
+                      <table class="table table-bordered table-hover text-center">
+                        <thead style="background-color:#6d5973;color:white;">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Parentesco</th>
+                            <th scope="col">Edad</th>
+                            <th scope="col">Escolaridad</th>
+                            <th scope="col">Profesión</th>
+                            <th scope="col">Discapacidad</th>
+                            <th scope="col">Ingreso</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>Otto</td>
+                            <td>Otto</td>
+                            <td>Otto</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>Thornton</td>
+                            <td>Thornton</td>
+                            <td>Thornton</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <!-- integración familiar -->
+                      <hr>
+                      <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-primary" type="button"><i class="bi bi-person-fill-add"></i> Agregar referencia</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-              <div class="tab-pane fade" id="nav-servicios-otorgados" role="tabpanel" aria-labelledby="nav-servicios-tab" tabindex="0">
-              </div>
+                <div class="tab-pane fade" id="nav-servicios-otorgados" role="tabpanel" aria-labelledby="nav-servicios-tab" tabindex="0">
+                  <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
+                    <div class="col-sm-6">
+                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Buscar:</label>
+                      <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="">
+                    </div>
+                    <div class="col-sm-6" >
+                        <div class="form-check mt-4">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <label class="form-check-label" for="inlineRadio1">Solicitud</label>
+                        </div>
+                        
+                        <div class="form-check ">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <label class="form-check-label" for="inlineRadio2">Entrega</label>
+                        </div>
 
-              <div class="tab-pane fade" id="nav-docs" role="tabpanel" aria-labelledby="nav-docs-tab" tabindex="0">
-    
-              </div>
+                    </div>
+                    <div class="col-sm-12 mt-3 p-4">
+                      <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Integración familiar</label>
+                      <table class="table table-bordered table-hover text-center">
+                        <thead style="background-color:#6d5973;color:white;">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Parentesco</th>
+                            <th scope="col">Edad</th>
+                            <th scope="col">Escolaridad</th>
+                            <th scope="col">Profesión</th>
+                            <th scope="col">Discapacidad</th>
+                            <th scope="col">Ingreso</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>Otto</td>
+                            <td>Otto</td>
+                            <td>Otto</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>Thornton</td>
+                            <td>Thornton</td>
+                            <td>Thornton</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <!-- integración familiar -->
+                      <hr>
+                      <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-primary" type="button"><i class="bi bi-person-fill-add"></i> Agregar referencia</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="nav-docs" role="tabpanel" aria-labelledby="nav-docs-tab" tabindex="0">
+                  <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
+
+                  </div>
+                </div>
 
               </div>
           </div>
