@@ -1226,7 +1226,7 @@ include('prcd/qc/qc.php');
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <!-- integración familiar -->
                     <div class="col-sm-12 mt-3 p-4">
-                      <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Integración familiar</label>
+                      <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Referencias</label>
                       <table class="table table-bordered table-hover text-center">
                         <thead style="background-color:#6d5973;color:white;">
                           <tr>
@@ -1318,11 +1318,15 @@ include('prcd/qc/qc.php');
 
                         </tbody>
                       </table>
+
                       <!-- integración familiar -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
                         <button class="btn btn-primary" type="button"><i class="bi bi-file-earmark-text"></i> Agregar solicitud</button>
                       </div>
+
+                    
+
                     </div>
                   </div>
                 </div>
