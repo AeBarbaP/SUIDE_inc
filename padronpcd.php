@@ -71,6 +71,7 @@ include('prcd/qc/qc.php');
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="sidebars.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <!-- <script src="sidebars.js"></script> -->
     <!-- <script src="assets/dist/js/bootstrap.bundle.min.js"></script> -->
 
@@ -1315,22 +1316,16 @@ include('prcd/qc/qc.php');
                             <td>Otto</td>
                             <td><a href=""><i class="bi bi-pencil-square h3"></i></a></td>
                           </tr>
-
                         </tbody>
                       </table>
-
                       <!-- integración familiar -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="button"><i class="bi bi-file-earmark-text"></i> Agregar solicitud</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#solicitudAdd"><i class="bi bi-file-earmark-text"></i> Agregar solicitud</button>
                       </div>
-
-                    
-
                     </div>
                   </div>
                 </div>
-
                 <div class="tab-pane fade" id="nav-docs" role="tabpanel" aria-labelledby="nav-docs-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                   <label for="basic-url" class="form-label h4"><i class="bi bi-files"></i> Requisitos para expediente de Personas con Discapacidad</label>
@@ -1410,115 +1405,224 @@ include('prcd/qc/qc.php');
           </div>
         </div>
       </div>
+      <!-- Modal para agregar solicitud -->
+      <div class="modal fade" id="solicitudAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-plus-lg"></i> Agregar Solicitud</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row g-3">      
+                <div class="col-sm-4">
+                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Folio:</label>
+                  <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="" readonly>
+                </div>
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4">
+                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fecha:</label>
+                  <input type="date" class="form-control" id="datos_usr" name="datos_usr" placeholder="" readonly>
+                  <div class="invalid-feedback">
+                    * Campo requerido.
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div class="">
+                    <label for="basic-url" class="form-label">Tipo de solicitud:</label>
+                    <select class="form-select" aria-label="Default select example" required>
+                      <option selected>Selecciona...</option>
+                      <option value="1">Funcional</option>
+                      <option value="2">Extraordinario</option>
+                      <option value="3">Otro</option>
+                    </select>
+                    <div class="invalid-feedback">
+                    * Campo requerido.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Especifica:</label>
+                  <select class="form-select" aria-label="Default select example" required>
+                    <option selected>Selecciona...</option>
+                    <option value="1">Bastón</option>
+                    <option value="2">Silla de Ruedas</option>
+                    <option value="3">Otro</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    * Campo requerido.
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Costo:</label>
+                  <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <span class="input-group-text">.00</span>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Descripción:</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <div class="invalid-feedback">
+                    * Campo requerido.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary">Agregar Solicitud</button>
+              <button type="button" class="btn btn-success" onclick="swalEntrega()">Entregar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Termina Modal para agregar solicitud -->
+      <!-- Incia script para SWAL (CuteAlert) para generar acta de entrega -->
+      <script>
+        function swalEntrega(){
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+          },
+          buttonsStyling: false
+        })
+        swalWithBootstrapButtons.fire({
+          title: 'Estas seguro?',
+          text: "Se generará el acta de entrega para firma",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Sí, entregar!',
+          cancelButtonText: 'No, cancelar!',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire(
+              'Entregado!',
+              'Se ha generado el Acta de Entrega',
+              'success'
+            ).then(function(){window.location='padronpcd.php';});
+          } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            swalWithBootstrapButtons.fire(
+              'Cancelado',
+              'No se ha generado el Acta de Entrega',
+              'error'
+            )
+          }
+        })
+      }
+      </script>
+      <!-- Termina SWAL (CuteAlert) para generar acta de entrega-->
+      <!-- Inicia Modal para generar credencial -->
+      <div class="modal fade" id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Generar Credencial con QR4</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="height: 620px;">
+              <div class="input-group mb-1 mt-2 w-50">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                <input class="form-control" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+              </div><!-- input group -->
+              <br>
+              <div class="container text-center">
+                <div class="card mb-3" style="max-width: 100%;">
+                <form action="prcd/generaqrcredencial.php" id="form-id" method="POST"><!--form-->
+                  <div class="row g-0" id="credencial">
+                      
+                  </div><!-- row -->
+                </form>
+                </div><!-- card -->
+              </div><!-- container -->
+            </div><!-- modal body -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd()"><i class="bi bi-save2"></i> Generar Credencial</button>
+              <button type="button" class="btn btn-primary" id="imprimirc" disabled><i class="bi bi-printer"></i> Imprimir</button>
+            </div><!-- modal footer -->
+          </div><!-- modal content -->
+        </div><!-- modal dialog -->
+      </div><!-- modal -->
+                  
+      <!-- Termina Modal para generar credencial -->
+      <!-- Inicia Modal para generar tarjeton -->
 
+      <div class="modal fade " id="tarjetongen" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Generar Tarjetón con QR</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="input-group mb-1 mt-2 w-100">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+              </div><!-- input group -->
+              <br>
+              <div class="container text-center">
+                <div class="card mb-3" style="max-width: 100%;">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body text-start" >
+                        <div id = "tarjeton">
 
-      
-        <!-- Inicia Modal para generar credencial -->
-        <div class="modal fade" id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Generar Credencial con QR4</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body" style="height: 620px;">
-                            <div class="input-group mb-1 mt-2 w-50">
-                              <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                              <input class="form-control" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
-                            </div><!-- input group -->
-                            <br>
-                            <div class="container text-center">
-                              <div class="card mb-3" style="max-width: 100%;">
-                              <form action="prcd/generaqrcredencial.php" id="form-id" method="POST"><!--form-->
-                                <div class="row g-0" id="credencial">
-                                    
-                                </div><!-- row -->
-                              </form>
-                              </div><!-- card -->
-                            </div><!-- container -->
-                          </div><!-- modal body -->
-                          
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd()"><i class="bi bi-save2"></i> Generar Credencial</button>
-                            <button type="button" class="btn btn-primary" id="imprimirc" disabled><i class="bi bi-printer"></i> Imprimir</button>
-                          </div><!-- modal footer -->
-                        </div><!-- modal content -->
-                      </div><!-- modal dialog -->
-                    </div><!-- modal -->
-                    
-                    <!-- Termina Modal para generar credencial -->
-
-                    <!-- Inicia Modal para generar tarjeton -->
-
-                    <div class="modal fade " id="tarjetongen" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Generar Tarjetón con QR</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <div class="input-group mb-1 mt-2 w-100">
-                              <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                              <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
-                            </div><!-- input group -->
-                            <br>
-                            <div class="container text-center">
-                              <div class="card mb-3" style="max-width: 100%;">
-                                <div class="row g-0">
-                                  <div class="col-md-4">
-                                    <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
-                                  </div>
-                                  <div class="col-md-8">
-                                    <div class="card-body text-start" >
-                                      <div id = "tarjeton">
-
-                                      </div>
-                                      <hr>
-                                      <h5 class="mb-3">Datos del vehículo</h5>
-                                      <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">Marca</span>
-                                        <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaForm">
-                                      </div>
-                                      <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">Modelo</span>
-                                        <input type="text" class="form-control" placeholder="Modelo" aria-label="modelo" aria-describedby="basic-addon1">
-                                        <span class="input-group-text">Año</span>
-                                        <input type="text" class="form-control" placeholder="Año" aria-label="anio" id="annioForm">
-                                      </div>
-                                      <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">No. de Placas</span>
-                                        <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasForm">
-                                      </div>
-                                      <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-                                        <input type="text" class="form-control" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieForm">
-                                      </div>
-                                      <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">No. de choferes</span>
-                                        <input type="number" class="form-control" placeholder="# de choferes" aria-label="no_choferes" aria-describedby="basic-addon1" id="choferesForm">
-                                      </div>
-                                      <div class="input-group">
-                                        <span class="input-group-text">Nombre(s) del(los)<br>Chofer(es)</span>
-                                        <textarea class="form-control" aria-label="nombres de los choferes"  id="nombresChoferesForm"></textarea>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>  
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" id="habilitaimprimirt" onclick="swaldatostrn()"><i class="bi bi-save2"></i> Generar Tarjetón</button>
-                            <button type="button" class="btn btn-primary" id="imprimirt" disabled><i class="bi bi-printer"></i> Imprimir</button>
-                          </div>
+                        </div>
+                        <hr>
+                        <h5 class="mb-3">Datos del vehículo</h5>
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">Marca</span>
+                          <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaForm">
+                        </div>
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">Modelo</span>
+                          <input type="text" class="form-control" placeholder="Modelo" aria-label="modelo" aria-describedby="basic-addon1">
+                          <span class="input-group-text">Año</span>
+                          <input type="text" class="form-control" placeholder="Año" aria-label="anio" id="annioForm">
+                        </div>
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">No. de Placas</span>
+                          <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasForm">
+                        </div>
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">No. de Serie</span>
+                          <input type="text" class="form-control" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieForm">
+                        </div>
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">No. de choferes</span>
+                          <input type="number" class="form-control" placeholder="# de choferes" aria-label="no_choferes" aria-describedby="basic-addon1" id="choferesForm">
+                        </div>
+                        <div class="input-group">
+                          <span class="input-group-text">Nombre(s) del(los)<br>Chofer(es)</span>
+                          <textarea class="form-control" aria-label="nombres de los choferes"  id="nombresChoferesForm"></textarea>
                         </div>
                       </div>
                     </div>
-                    
-                    <!-- Termina Modal para generar tarjeton -->
+                  </div>
+                </div>
+              </div>
+            </div>  
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" id="habilitaimprimirt" onclick="swaldatostrn()"><i class="bi bi-save2"></i> Generar Tarjetón</button>
+              <button type="button" class="btn btn-primary" id="imprimirt" disabled><i class="bi bi-printer"></i> Imprimir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Termina Modal para generar tarjeton -->
       
     </main>
     <script src="sidebars.js"></script>
