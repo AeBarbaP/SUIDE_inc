@@ -55,6 +55,7 @@ include('prcd/qc/qc.php');
     <title>SUIDEV · Inclusión</title>
 
     <link rel="icon" type="image/png" href="img/inclusion.ico"/>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
@@ -71,8 +72,6 @@ include('prcd/qc/qc.php');
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-
-
 
     <style>
       * {
@@ -210,15 +209,11 @@ include('prcd/qc/qc.php');
       </li>
       <li class="border-top my-3"></li>
       <li class="ms-2 mb-1">
-        <!-- <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-gear-fill ms-2 me-3"></i> Ajustes</a></span> -->
         <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-gear-fill ms-2 me-2"></i>
           Ajustes
         </a></span>
       </li>
       <li class="mb-1"> 
-<!--         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          Ajustes
-        </button> -->
         <div class="collapse" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#editarUser"><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
@@ -241,10 +236,14 @@ include('prcd/qc/qc.php');
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
         <p class="h5"><strong>Padrón Estatal de Personas con Discapacidad</strong></p>
       </div>
-      <h3 class="text-muted mt-4">Nuevo Registro</h3>
-      <br>
-<!--       <h4 class="text-muted mt-4">Últimos documentos generados</h4> -->
+      <h3 class="text-muted mt-4">Actualización de Expediente</h3>
+      <hr>
       <div class="container-fluid">
+        <div class="input-group mb-1 mt-2 w-25">
+            <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+            <input class="form-control" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+          </div><!-- input group -->
+          <br>
         <div class="row">
           <div class="col-sm-2 justify-content-between align-items-center">
             <p class="h4">No. Expediente</p>
@@ -310,36 +309,32 @@ include('prcd/qc/qc.php');
                     </div>
                   </div>
                   <div class="col-sm-1">
-                    <label for="datos_usr" class="form-label">Edad:</label>
+                    <label for="datos_usr" class="form-label"><i class="bi bi-hash"></i> Edad:</label>
                     <input type="number" class="form-control" id="datos_usr" name="datos_usr" placeholder="" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-4">
-                    <label for="datos_usr" class="form-label">CURP:</label>
+                    <label for="datos_usr" class="form-label"><i class="bi bi-person-check"></i> CURP:</label>
                     <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="CURP" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-4">
-                    <label for="datos_usr" class="form-label">RFC:</label>
+                    <label for="datos_usr" class="form-label"><i class="bi bi-person-check"></i> RFC:</label>
                     <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="RFC">
                   </div>
                   <div class="col-sm-2">
-                    <label for="datos_usr" class="form-label"><span class="material-symbols-outlined">
-                    cake
-                    </span> Fecha Nacimiento:</label>
+                    <label for="datos_usr" class="form-label"><i class="bi bi-calendar2-date"></i> Fecha Nacimiento:</label>
                     <input type="date" class="form-control" id="datos_usr" name="datos_usr" placeholder="" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-6">
-                    <label for="datos_usr" class="form-label"><span class="material-symbols-outlined">
-                    home_work
-                    </span> Lugar Nacimiento:</label>
+                    <label for="datos_usr" class="form-label"><i class="bi bi-building"></i> Lugar Nacimiento:</label>
                     <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Lugar de Nacimiento" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
