@@ -53,7 +53,7 @@ include('prcd/qc/qc.php');
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
     <title>SUIDEV · Inclusión</title>
-
+    
     <link rel="icon" type="image/png" href="img/inclusion.ico"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,7 +71,7 @@ include('prcd/qc/qc.php');
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-
+    
 
 
     <style>
@@ -209,16 +209,11 @@ include('prcd/qc/qc.php');
         </div>
       </li>
       <li class="border-top my-3"></li>
-      <li class="ms-2 mb-1">
-        <!-- <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-gear-fill ms-2 me-3"></i> Ajustes</a></span> -->
         <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-gear-fill ms-2 me-2"></i>
           Ajustes
         </a></span>
       </li>
       <li class="mb-1"> 
-<!--         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          Ajustes
-        </button> -->
         <div class="collapse" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#editarUser"><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
@@ -271,21 +266,21 @@ include('prcd/qc/qc.php');
                 <div class="row ms-4 g-3 mt-3" style="width:95%">
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Nombre:</label>
-                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Nombre(s)" required>
+                    <input type="text" class="form-control" id="nombre" name="datos_usr" placeholder="Nombre(s)" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Apellido Paterno:</label>
-                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Apellido Paterno" required>
+                    <input type="text" class="form-control" id="apellidoP" name="datos_usr" placeholder="Apellido Paterno" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Apellido Materno:</label>
-                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Apellido Materno" required>
+                    <input type="text" class="form-control" id="apellidoM" name="datos_usr" placeholder="Apellido Materno" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
@@ -295,15 +290,15 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Género:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="genero" value="Mujer">
                           <label class="form-check-label" for="inlineRadio1">Mujer</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                          <label class="form-check-label" for="inlineRadio2">Hombre</label>
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="genero" value="Hombre">
+                          <label class="form-check-label" for="inlineRadio2"><i class="fa-thin fa-person"></i> Hombre</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="genero" value="Otr@">
                           <label class="form-check-label" for="inlineRadio2">Otro</label>
                         </div>
                       </div>
@@ -311,79 +306,76 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-1">
                     <label for="datos_usr" class="form-label">Edad:</label>
-                    <input type="number" class="form-control" id="datos_usr" name="datos_usr" placeholder="" required>
+                    <input type="number" class="form-control" id="edad" name="datos_usr" placeholder="" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">CURP:</label>
-                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="CURP" required>
+                    <input type="text" class="form-control" id="curp" name="datos_usr" placeholder="CURP" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">RFC:</label>
-                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="RFC">
+                    <input type="text" class="form-control" id="rfc" name="datos_usr" placeholder="RFC">
                   </div>
                   <div class="col-sm-2">
-                    <label for="datos_usr" class="form-label"><span class="material-symbols-outlined">
-                    cake
-                    </span> Fecha Nacimiento:</label>
-                    <input type="date" class="form-control" id="datos_usr" name="datos_usr" placeholder="" required>
+                    <label for="datos_usr" class="form-label">Fecha Nacimiento:</label>
+                    <input type="date" class="form-control" id="fechaNacimiento" name="datos_usr" placeholder="" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-6">
-                    <label for="datos_usr" class="form-label"><span class="material-symbols-outlined">
-                    home_work
-                    </span> Lugar Nacimiento:</label>
-                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Lugar de Nacimiento" required>
+                  <i class="fa-duotone fa-map"></i>   
+                  <label for="datos_usr" class="form-label">Lugar Nacimiento:</label>
+                    <input type="text" class="form-control" id="lugarNacimiento" name="datos_usr" placeholder="Lugar de Nacimiento" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-8">
-                    <label for="datos_pc" class="form-label"><i class="bi bi-pc-display"></i> Domicilio:</label>
-                    <input type="text" class="form-control" id="datos_pc" name="datos_pc" placeholder="Nombre de la calle o vialidad" required>
+                    <label for="datos_pc" class="form-label">Domicilio:</label>
+                    <input type="text" class="form-control" id="domicilio" name="datos_pc" placeholder="Nombre de la calle o vialidad" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-2">
                     <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Núm. Exterior</label>
-                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="# Exterior" required>
+                    <input type="text" class="form-control" id="numExt" name="datos_usr" placeholder="# Exterior" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-2">
                     <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Núm. Interior</label>
-                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="# Interior">
+                    <input type="text" class="form-control" id="numInt" name="datos_usr" placeholder="# Interior">
                   </div>
                   <div class="col-sm-6">
                     <label for="datos_pc" class="form-label"><i class="bi bi-pc-display"></i> Colonia:</label>
-                    <input type="text" class="form-control" id="datos_pc" name="datos_pc" placeholder="Colonia" required>
+                    <input type="text" class="form-control" id="colonia" name="datos_pc" placeholder="Colonia" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Entre vialidades:</label>
-                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Entre vialidades" required>
+                    <input type="text" class="form-control" id="entreVialidades" name="datos_usr" placeholder="Entre vialidades" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-12">
                     <label for="exampleFormControlTextarea1" class="form-label">Descripción o referencia del lugar:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                    <textarea class="form-control" id="descripcionLugar" rows="2"></textarea>
                   </div>
                   <div class="col-sm-6">
                     <label for="exampleDataList" class="form-label">Localidad:</label>
-                    <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search..." required>
+                    <input class="form-control" list="datalistOptions" id="localidad" placeholder="Type to search..." required>
                     <datalist id="datalistOptions">
                       <option value="San Francisco">
                       <option value="New York">
@@ -397,7 +389,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Municipio:</label>
-                    <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search..." required>
+                    <input class="form-control" list="datalistOptions" id="municipio" placeholder="Type to search..." required>
                     <datalist id="datalistOptions">
                       <option value="San Francisco">
                       <option value="New York">
@@ -411,22 +403,22 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-2">
                     <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Código Postal</label>
-                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="C.P." required>
+                    <input type="text" class="form-control" id="codigoPostal" name="datos_usr" placeholder="C.P." required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Teléfono Particular:</label>
-                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Teléfono particular">
+                    <input type="text" class="form-control" id="telFijo" name="datos_usr" placeholder="Teléfono particular">
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Celular:</label>
-                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Celular">
+                    <input type="text" class="form-control" id="celular" name="datos_usr" placeholder="Celular">
                   </div>
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Nivel de Escolaridad:</label>
-                    <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                    <input class="form-control" list="datalistOptions" id="escolaridad" placeholder="Type to search...">
                     <datalist id="datalistOptions">
                       <option value="Sin Escolarizar">
                       <option value="Primaria">
@@ -442,38 +434,38 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Estudia:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="estudia" value="option1">
                           <label class="form-check-label" for="inlineRadio1">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="estudia" value="option2">
                           <label class="form-check-label" for="inlineRadio2">No</label>
                         </div>
-                        <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Dónde estudia...">
+                        <input type="text" class="form-control" id="lugarEstudia" name="datos_usr" placeholder="Dónde estudia...">
                       </div>
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Habilidad:</label>
-                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Habilidad">
+                    <input type="text" class="form-control" id="habilidad" name="datos_usr" placeholder="Habilidad">
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Profesión u Oficio:</label>
-                    <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Profesión u Oficio">
+                    <input type="text" class="form-control" id="profesion" name="datos_usr" placeholder="Profesión u Oficio">
                   </div>
                   <div class="col-sm-4">
                     <div class="mb-3">
                       <label for="basic-url" class="form-label">Trabaja:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="trabaja" value="option1">
                           <label class="form-check-label" for="inlineRadio1">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="trabaja" value="option2">
                           <label class="form-check-label" for="inlineRadio2">No</label>
                         </div>
-                        <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Dónde trabaja...">
+                        <input type="text" class="form-control" id="lugarTrabajo" name="datos_usr" placeholder="Dónde trabaja...">
                       </div>
                     </div>
                   </div>
@@ -481,7 +473,7 @@ include('prcd/qc/qc.php');
                     <label for="basic-url" class="form-label">Ingreso mensual:</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text">$</span>
-                      <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                      <input type="text" class="form-control" id="ingresoMensual" aria-label="Amount (to the nearest dollar)">
                       <span class="input-group-text">.00</span>
                     </div>
                   </div>
@@ -491,14 +483,14 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Pertenece a alguna Asociación Civil:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="asociacion" value="option1">
                           <label class="form-check-label" for="inlineRadio1">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="asociacion" value="option2">
                           <label class="form-check-label" for="inlineRadio2">No</label>
                         </div>
-                        <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="Nombre de la AC...">
+                        <input type="text" class="form-control" id="nombreAC" name="datos_usr" placeholder="Nombre de la AC...">
                       </div>
                     </div>
                   </div>
