@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('#pwdForm').submit(function(e) {
-
+        /* Datos Generales */
         var nombre = document.getElementById('nombre').value;
         var apellidoP = document.getElementById('apellidoP').value;
         var apellidoM = document.getElementById('apellidoM').value;
@@ -38,6 +38,7 @@ $(document).ready(function() {
         var periodo = document.getElementById('periodo').value;
         var seguridadsocial = document.getElementById('seguridadsocial').value;
         var otroSS = document.getElementById('otroSS').value;
+        /* Datos Médicos */
         var discapacidad = document.getElementById('discapacidad').value;
         var gradoDisc = document.getElementById('gradoDisc').value;
         var tipoDisc = document.getElementById('tipoDisc').value;
@@ -62,6 +63,7 @@ $(document).ready(function() {
         var enfermedadesFull = document.getElementById('enfermedadesFull').value;
         var medicamentos = document.getElementById('medicamentos').value;
         var medicamentosFull = document.getElementById('medicamentosFull').value;
+        /* Vivienda */
         var vivienda = document.getElementById('vivienda').value;
         var montoVivienda = document.getElementById('montoVivienda').value;
         var tipoVivienda = document.getElementById('tipoVivienda').value;
@@ -102,6 +104,7 @@ $(document).ready(function() {
         var dependenciaEconomica = document.getElementById('dependenciaEconomica').value;
         var deudas = document.getElementById('deudas').value;
         var deudasInput = document.getElementById('deudasInput').value;
+        /* Integración Familiar */
         var idFam = document.getElementById('idFam').value;
         var nombreFamiliar = document.getElementById('nombreFamiliar').value;
         var parentescoFam = document.getElementById('parentescoFam').value;
@@ -110,6 +113,7 @@ $(document).ready(function() {
         var profesionFam = document.getElementById('profesionFam').value;
         var discapacidadFam = document.getElementById('discapacidadFam').value;
         var ingresoFam = document.getElementById('ingresoFam').value;
+        /* Referencias */
         var idRef = document.getElementById('idRef').value;
         var nombreReferencia = document.getElementById('nombreReferencia').value;
         var parentescoRef = document.getElementById('parentescoRef').value;
@@ -118,6 +122,7 @@ $(document).ready(function() {
         var profesionRef = document.getElementById('profesionRef').value;
         var discapacidadRef = document.getElementById('discapacidadRef').value;
         var ingresoRef = document.getElementById('ingresoRef').value;
+        /* Servicios Otorgados */
         var folioSolicitud = document.getElementById('folioSolicitud').value;
         var fechaSolicitud = document.getElementById('fechaSolicitud').value;
         var tipoSolicitud = document.getElementById('tipoSolicitud').value;
@@ -127,10 +132,11 @@ $(document).ready(function() {
         var articuloSolicitud = document.getElementById('articuloSolicitud').value;
         var cantidadArt = document.getElementById('cantidadArt').value;
         var costoUnitarioArt = document.getElementById('costoUnitarioArt').value;
+        /* Documentos Checklist */
         var checkAllSi = document.getElementById('checkAllSi').value;
         var checkAllNo = document.getElementById('checkAllNo').value;
         var checkAllNA = document.getElementById('checkAllNA').value;
-        var valoracionSi = document.getElementById('valoracionSi').value;
+        var valoracionSi = document.getElementById('valoracionSi').value; /* checks con funcionamiento de radio a partir de aquí*/
         var valoracionNo = document.getElementById('valoracionNo').value;
         var valoracionNA = document.getElementById('valoracionNA').value;
         var actaSi = document.getElementById('actaSi').value;
@@ -150,7 +156,7 @@ $(document).ready(function() {
         var circulacionNA = document.getElementById('circulacionNA').value;
         var ineSi = document.getElementById('ineSi').value;
         var ineNo = document.getElementById('ineNo').value;
-        var inepNA = document.getElementById('ineNA').value;
+        var inepNA = document.getElementById('ineNA').value;/* terminan checks con funcionamiento de radio */
 
 
     })

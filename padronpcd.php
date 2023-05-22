@@ -1166,7 +1166,7 @@ include('prcd/qc/qc.php');
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nombre completo</th>
-                            <th scope="col">Parentesco</th>
+                            <th scope="col">Parentesco</th><!-- select de parentesco -->
                             <th scope="col">Edad</th>
                             <th scope="col">Escolaridad</th>
                             <th scope="col">Profesión</th>
@@ -1216,7 +1216,7 @@ include('prcd/qc/qc.php');
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Parentesco</th>
+                            <th scope="col">Parentesco</th> <!-- select de parentesco -->
                             <th scope="col">Edad</th>
                             <th scope="col">Escolaridad</th>
                             <th scope="col">Profesión</th>
