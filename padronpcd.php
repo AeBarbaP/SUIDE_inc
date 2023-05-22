@@ -1045,7 +1045,7 @@ include('prcd/qc/qc.php');
                       <div class="form-check mt-3">
                           <input class="form-check-input" type="checkbox" value="" id="checkAllElectro">
                           <label class="form-check-label" for="flexCheckDefault2">
-                            Seleccionar todo
+                            Selecciona todo
                           </label>
                         </div>
                         <div class="form-check form-check-inline">
@@ -1316,8 +1316,8 @@ include('prcd/qc/qc.php');
                         <thead style="background-color:darkgray;color:white;">
                           <tr>
                             <th class="align-middle" scope="col">DOCUMENTO</th>
-                            <th scope="col">SI<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></th>
-                            <th scope="col">NO<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></th>
+                            <th scope="col">SI<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkAllSi" value="" aria-label="..."></th>
+                            <th scope="col">NO<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkAllNo" value="" aria-label="..."></th>
                             <th class="align-middle" scope="col">NO APLICA</th>
                             <th class="align-middle" scope="col">ARCHIVO<br><label class="fw-lighter fst-italic lh-1">(PDF o JPG)</label></th>
                           </tr>
@@ -1332,23 +1332,23 @@ include('prcd/qc/qc.php');
                           </tr>
                           <tr>
                             <th scope="row">DOCUMENTO MÉDICO<br><p class="fw-lighter fst-italic">Que indique el tipo y grado de discapacidad, expedido por institución pública de salud.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="valoracionSi" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="valoracionNo" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="valoracionNA" value="" aria-label="..."></td>
                             <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                           </tr>
                           <tr>
                             <th scope="row">COPIA DE ACTA DE NACIMIENTO<br><p class="fw-lighter fst-italic">O documento que acredite la condición jurídica de la persona beneficiaria.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="actaSi" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="actaNo" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="actaNA" value="" aria-label="..."></td>
                             <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                           </tr>
                           <tr>
                             <th scope="row">COPIA DE LA C.U.R.P.</th>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="curpSi" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="curpNo" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="curpNA" value="" aria-label="..."></td>
                             <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                           </tr>
                           <tr>
@@ -1360,23 +1360,23 @@ include('prcd/qc/qc.php');
                           </tr>
                           <tr>
                             <th scope="row">COPIA DE COMPROBANTE DE DOMICILIO<br><p class="fw-lighter fst-italic">Reciente a la apertura o actualización del expediente, no mayor a 90 días.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="comprobanteSi" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="comprobanteNo" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="comprobanteNA" value="" aria-label="..."></td>
                             <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                           </tr>
                           <tr>
                             <th scope="row">DOS FOTOGRAFÍAS<br><p class="fw-lighter fst-italic">En cualquier formato, preferentemente impresas.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="fotosSi" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="fotosNo" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="fotosNA" value="" aria-label="..."></td>
                             <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                           </tr>
                           <tr>
                             <th scope="row">COPIA DE LA TARJETA DE CIRCULACIÓN<br><p class="fw-lighter fst-italic">Del vehículo en el que se traslada la Persona con Discapacidad.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="circulacionSi" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="circulacionSi" value="" aria-label="..."></td>
+                            <td><input class="form-check-input" type="checkbox" id="circulacionSi" value="" aria-label="..."></td>
                             <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                           </tr>
                         </tbody>
