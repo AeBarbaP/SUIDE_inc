@@ -262,10 +262,12 @@ include('prcd/qc/qc.php');
               </div>
             </nav>
             <div class="tab-content"  id="nav-tabContent">
+            <!-- <form action="" id="generalesForm"> -->
               <div class="tab-pane fade show active" id="nav-generales" role="tabpanel" aria-labelledby="nav-generales-tab" tabindex="0">
                 <div class="row ms-4 g-3 mt-3" style="width:95%">
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Nombre:</label>
+                    <form action="" id="generalesForm">
                     <input type="text" class="form-control" id="nombre" name="datos_usr" placeholder="Nombre(s)" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
@@ -544,7 +546,7 @@ include('prcd/qc/qc.php');
                       <option value="Semestral">
                     </datalist>
                   </div>
-                  <div class="col-sm-10">
+                  <div class="col-sm-10 mb-3">
                     <label for="exampleDataListSS" class="form-label">Tipo de Seguridad Social:</label>
                     <div class="input-group">
                       <input class="form-control" list="datalistOptionsSS" id="seguridadsocial" placeholder="Type to search..." required>
@@ -559,13 +561,16 @@ include('prcd/qc/qc.php');
                       <input type="text" class="form-control" id="otroSS" name="datos_usr" placeholder="Nombre de la Institución de Seguridad Social">
                     </div>
                   </div>
-                  <hr>
+                  <br>
                     <div class="d-grid gap-2 mt-3">
                       <button class="btn btn-primary" type="submit">Guardar</button>
+                      </form>
                     </div>
+                    
                 </div>
+              <!-- </form> -->
               </div>
-
+              <!-- <form action="" id="medicosForm"> -->
                 <div class="tab-pane fade" id="nav-medicos" role="tabpanel" aria-labelledby="nav-medicos-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3" style="width:95%">
                     <div class="col-sm-6">
@@ -782,25 +787,25 @@ include('prcd/qc/qc.php');
                         <option value="5">Five</option>
                       </select>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 mb-3">
                       <div class="input-group mt-4" style="height:max-content">
                         <span class="input-group-text mt-2">Medicamentos <br>seleccionados:</span>
                         <textarea class="form-control mt-2" id="medicamentosFull" rows="5" aria-label="With textarea"></textarea>
                       </div>
                     </div>
-
-                    <hr>
+                    <br>
                     <div class="d-grid gap-2 mt-3">
                       <button class="btn btn-primary" type="submit">Guardar</button>
                     </div>
-
                   </div>
+                <!-- </form> -->
                 </div>
                 
                 <div class="tab-pane fade" id="nav-vivienda" role="tabpanel" aria-labelledby="nav-vivienda-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <!-- Vivienda -->
                     <div class="col-sm-12">
+                      <form action="" id="viviendaForm">
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Vivienda:</label>
                       <div class="input-group" style="height:max-content">
                         <div class="form-check form-check-inline mt-2">
@@ -1153,6 +1158,7 @@ include('prcd/qc/qc.php');
                     <div class="d-grid gap-2 mt-3">
                       <button class="btn btn-primary" type="submit">Guardar</button>
                     </div>
+                    </form>
                   </div>
                 </div>
 
@@ -1160,6 +1166,7 @@ include('prcd/qc/qc.php');
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <!-- integración familiar -->
                     <div class="col-sm-12 mt-3 p-4">
+                      <form action="" id="familiaForm">
                       <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Integración familiar</label>
                       <table class="table table-bordered table-hover text-center">
                         <thead style="background-color:#6d5973;color:white;">
@@ -1200,8 +1207,12 @@ include('prcd/qc/qc.php');
                       <!-- integración familiar -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="button"><i class="bi bi-person-fill-add"></i> Agregar familiar</button>
+                        <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#agregarFamiliar"><i class="bi bi-person-fill-add"></i> Agregar familiar</button>
                       </div>
+                      <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-primary" type="submit"><i class="bi bi-save2"></i> Guardar</button>
+                      </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -1250,12 +1261,69 @@ include('prcd/qc/qc.php');
                       <!-- referencias -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="button"><i class="bi bi-person-fill-add"></i> Agregar referencia</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#agregarReferencia"><i class="bi bi-person-fill-add"></i> Agregar referencia</button>
                       </div>
                     </div>
                   </div>
                 </div>
-
+                <!-- Inicia Moda para agregar Referencia en la tab de Referencias -->
+                <div class="modal fade" id="agregarReferencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Agregar Referencia</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="" method="POST"><!--form-->
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+                            <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre completo" aria-describedby="basic-addon1" name="nombre" required>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
+                                <select class="form-select" aria-label="Default select example">
+                                  <option selected>Parentesco...</option>
+                                  <option value="1">Amig@</option>
+                                  <option value="2">Vecin@</option>
+                                  <option value="3">Otr@</option>
+                                  <option value="4">Espos@</option>
+                                  <option value="5">Padre</option>
+                                  <option value="6">Madre</option>
+                                  <option value="7">Herman@</option>
+                                  <option value="8">Tí@</option>
+                                  <option value="9">Sobrin@</option>
+                                  <option value="10">Abuel@</option>
+                                  <option value="11">Prim@</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
+                                <input type="text" class="form-control" placeholder="# de Celular" id="inputGroup01"> <!-- validar solo numeros -->
+                              </div>
+                            </div>
+                          </div>
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
+                            <input type="text" class="form-control" placeholder="Profesión" aria-label="profesion" aria-describedby="basic-addon1">
+                          </div>
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Domicilio</span>
+                            <textarea type="text" class="form-control" placeholder="" aria-label="domicilio" rows="2" aria-describedby="basic-addon1"></textarea>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Agregar</button>
+                          </div>
+                        </form><!--form-->
+                    </div>
+                  </div>
+                </div>
+                <!-- Termina Modal para agregar Referencia en la tab de Referencias -->
                 <div class="tab-pane fade" id="nav-servicios-otorgados" role="tabpanel" aria-labelledby="nav-servicios-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <div class="col-sm-8 ms-3">
@@ -1957,4 +2025,88 @@ include('prcd/qc/qc.php');
         </div>
       </div>
     </div>
-    ';
+    ';?>
+    <!-- Inicia Moda para agregar Familiar en la tab de Integración Familiar -->
+    <div class="modal fade" id="agregarFamiliar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Agregar Familiar</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="" method="POST"><!--form-->
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1" name="nombre" required>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>Parentesco...</option>
+                      <option value="1">Padre</option>
+                      <option value="2">Madre</option>
+                      <option value="3">Herman@</option>
+                      <option value="4">Espos@</option>
+                      <option value="5">Tí@</option>
+                      <option value="6">Sobrin@</option>
+                      <option value="7">Abuel@</option>
+                      <option value="8">Prim@</option>
+                      <option value="8">Otr@</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" >Edad</span>
+                    <input type="number" class="form-control" id="inputGroup01">
+                  </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-mortarboard"></i></span>
+                <select class="form-select" aria-label="Default select example">
+                  <option selected>Nivel de Escolaridad...</option>
+                  <option value="1">Primaria</option>
+                  <option value="2">Secundaria</option>
+                  <option value="3">Preparatoria</option>
+                  <option value="4">Licenciatura</option>
+                  <option value="5">Posgrado</option>
+                </select>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
+                <input type="text" class="form-control" placeholder="Profesión" aria-label="profesion" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Discapacidad</span>
+                <input type="text" class="form-control" placeholder="Discapacidad" aria-label="discapacidad" aria-describedby="basic-addon1">
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                <div class="input-group mb-3">  
+                  <span class="input-group-text">$</span>
+                  <input type="text" class="form-control" placeholder="Ingreso" aria-label="Ingreso mensual">
+                  <span class="input-group-text">.00</span>
+                </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
+                    <input type="text" class="form-control" placeholder="# Teléfono o Celular" id="inputGroup01"> <!-- validar solo numeros -->
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
+                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Agregar</button>
+              </div>
+            </form><!--form-->
+        </div>
+      </div>
+    </div>
+    <!-- Termina Modal para agregar Familiar en la Tab de Integración Familiar -->
+    
+    
