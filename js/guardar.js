@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#pwdForm').submit(function(e) {
+    $('#generalesForm').submit(function(e) {
         /* Datos Generales */
         var nombre = document.getElementById('nombre').value;
         var apellidoP = document.getElementById('apellidoP').value;
@@ -38,7 +38,58 @@ $(document).ready(function() {
         var periodo = document.getElementById('periodo').value;
         var seguridadsocial = document.getElementById('seguridadsocial').value;
         var otroSS = document.getElementById('otroSS').value;
-        /* Datos Médicos */
+
+        e.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            url: '',
+            dataType:'json',
+            data: {
+                nombre:nombre,
+                apellidoP:apellidoP,
+                apellidoM:apellidoM,
+                genero:genero,
+                edad:edad,
+                curp:curp,
+                rfc:rfc,
+                fechaNacimiento:fechaNacimiento,
+                lugarNacimiento:lugarNacimiento,
+                domicilio:domicilio,
+                numExt:numExt,
+                numInt:numInt,
+                colonia:colonia,
+                entreVialidades:entreVialidades,
+                descripcionLugar:descripcionLugar,
+                localidad:localidad,
+                municipio:municipio,
+                codigoPostal:codigoPostal,
+                telFijo:telFijo,
+                celular:celular,
+                escolaridad:escolaridad,
+                estudia:estudia,
+                lugarEstudia:lugarEstudia,
+                habilidad:habilidad,
+                profesion:profesion,
+                trabaja:trabaja,
+                lugarTrabajo:lugarTrabajo,
+                ingresoMensual:ingresoMensual,
+                asociacion:asociacion,
+                nombreAC:nombreAC,
+                sindicato:sindicato,
+                nombreSindicato:nombreSindicato,
+                pension:pension,
+                montoP:montoP,
+                periodo:periodo,
+                seguridadsocial:seguridadsocial,
+                otroSS:otroSS
+            }
+    })
+})
+
+/* Datos Médicos */
+$(document).ready(function() {
+    $('#medicosForm').submit(function(e) {
         var discapacidad = document.getElementById('discapacidad').value;
         var gradoDisc = document.getElementById('gradoDisc').value;
         var tipoDisc = document.getElementById('tipoDisc').value;
@@ -63,7 +114,44 @@ $(document).ready(function() {
         var enfermedadesFull = document.getElementById('enfermedadesFull').value;
         var medicamentos = document.getElementById('medicamentos').value;
         var medicamentosFull = document.getElementById('medicamentosFull').value;
-        /* Vivienda */
+
+        e.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            url: '',
+            dataType:'json',
+            data: {
+                discapacidad:discapacidad,
+                gradoDisc:gradoDisc,
+                tipoDisc:tipoDisc,
+                causaDisc:causaDisc,
+                especifiqueD:especifiqueD,
+                temporalidad:temporalidad,
+                fuente:fuente,
+                fechaValoracion:fechaValoracion,
+                rehabilitacion:rehabilitacion,
+                lugarRehab:lugarRehab,
+                fechaIni:fechaIni,
+                duracion:duracion,
+                tipoSangre:tipoSangre,
+                cirugia:cirugia,
+                tipoCirugia:tipoCirugia,
+                protesis:protesis,
+                tipoProtesis:tipoProtesis,
+                alergias:alergias,
+                tipoAlergia:tipoAlergia,
+                alergiasFull:alergiasFull,
+                enfermedades:enfermedades,
+                enfermedadesFull:enfermedadesFull,
+                medicamentos:medicamentos,
+                medicamentosFull:medicamentosFull
+            }
+    })
+})
+/* Vivienda */
+$(document).ready(function() {
+    $('#viviendaForm').submit(function(e) {
         var vivienda = document.getElementById('vivienda').value;
         var montoVivienda = document.getElementById('montoVivienda').value;
         var tipoVivienda = document.getElementById('tipoVivienda').value;
@@ -104,6 +192,60 @@ $(document).ready(function() {
         var dependenciaEconomica = document.getElementById('dependenciaEconomica').value;
         var deudas = document.getElementById('deudas').value;
         var deudasInput = document.getElementById('deudasInput').value;
+
+        e.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            url: '',
+            dataType:'json',
+            data: {
+                vivienda:vivienda,
+                montoVivienda:montoVivienda,
+                tipoVivienda:tipoVivienda,
+                viviendaOtro:viviendaOtro,
+                numHabitaciones:numHabitaciones,
+                cocina:cocina,
+                sala:sala,
+                bath:bath,
+                otrosRoom:otrosRoom,
+                otroRoomInput:otroRoomInput,
+                techo:techo,
+                otroTecho:otroTecho,
+                pared:pared,
+                otroPared:otroPared,
+                checkAllServices:checkAllServices,
+                agua:agua,
+                luz:luz,
+                drenaje:drenaje,
+                cable:cable,
+                internet:internet,
+                celular:celular,
+                carro:carro,
+                gas:gas,
+                telefono:telefono,
+                otroServicios:otroServicios,
+                otroServiciosInput:otroServiciosInput,
+                checkAllElectro:checkAllElectro,
+                tv:tv,
+                lavadora:lavadora,
+                estereo:estereo,
+                microondas:microondas,
+                computadora:computadora,
+                licuadora:licuadora,
+                dvd:dvd,
+                estufa:estufa,
+                otroElectro:otroElectro,
+                otroElectroInput:otroElectroInput,
+                dependenciaEconomica:dependenciaEconomica,
+                deudas:deudas,
+                deudasInput:deudasInput
+            }
+    })
+})
+
+$(document).ready(function() {
+    $('#familiaForm').submit(function(e) {
         /* Integración Familiar */
         var idFam = document.getElementById('idFam').value;
         var nombreFamiliar = document.getElementById('nombreFamiliar').value;
@@ -113,6 +255,28 @@ $(document).ready(function() {
         var profesionFam = document.getElementById('profesionFam').value;
         var discapacidadFam = document.getElementById('discapacidadFam').value;
         var ingresoFam = document.getElementById('ingresoFam').value;
+
+        e.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            url: '',
+            dataType:'json',
+            data: {
+                idFam:idFam,
+                nombreFamiliar:nombreFamiliar,
+                parentescoFam:parentescoFam,
+                edadFam:edadFam,
+                escolaridadFam:escolaridadFam,
+                profesionFam:profesionFam,
+                discapacidadFam:discapacidadFam,
+                ingresoFam:ingresoFam
+            }
+    })
+})
+
+$(document).ready(function() {
+    $('#referenciasForm').submit(function(e) {
         /* Referencias */
         var idRef = document.getElementById('idRef').value;
         var nombreReferencia = document.getElementById('nombreReferencia').value;
@@ -122,6 +286,28 @@ $(document).ready(function() {
         var profesionRef = document.getElementById('profesionRef').value;
         var discapacidadRef = document.getElementById('discapacidadRef').value;
         var ingresoRef = document.getElementById('ingresoRef').value;
+
+        e.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            url: '',
+            dataType:'json',
+            data: {
+                idRef:idRef,
+                nombreReferencia:nombreReferencia,
+                parentescoRef:parentescoRef,
+                edadRef:edadRef,
+                escolaridadRef:escolaridadRef,
+                profesionRef:profesionRef,
+                discapacidadRef:discapacidadRef,
+                ingresoRef:ingresoRef
+            }
+    })
+})
+
+$(document).ready(function() {
+    $('#serviciosForm').submit(function(e) {
         /* Servicios Otorgados */
         var folioSolicitud = document.getElementById('folioSolicitud').value;
         var fechaSolicitud = document.getElementById('fechaSolicitud').value;
@@ -132,6 +318,11 @@ $(document).ready(function() {
         var articuloSolicitud = document.getElementById('articuloSolicitud').value;
         var cantidadArt = document.getElementById('cantidadArt').value;
         var costoUnitarioArt = document.getElementById('costoUnitarioArt').value;
+    })
+})
+
+$(document).ready(function() {
+    $('#documentosForm').submit(function(e) {
         /* Documentos Checklist */
         var checkAllSi = document.getElementById('checkAllSi').value;
         var checkAllNo = document.getElementById('checkAllNo').value;
@@ -156,8 +347,39 @@ $(document).ready(function() {
         var circulacionNA = document.getElementById('circulacionNA').value;
         var ineSi = document.getElementById('ineSi').value;
         var ineNo = document.getElementById('ineNo').value;
-        var inepNA = document.getElementById('ineNA').value;/* terminan checks con funcionamiento de radio */
+        var ineNA = document.getElementById('ineNA').value;/* terminan checks con funcionamiento de radio */
 
+        e.preventDefault();
 
+        $.ajax({
+            type: "POST",
+            url: '',
+            dataType:'json',
+            data: {
+                checkAllSi:checkAllSi,
+                checkAllNo:checkAllNo,
+                checkAllNA:checkAllNA,
+                valoracionSi:valoracionSi,
+                valoracionNo:valoracionNo,
+                valoracionNA:valoracionNA,
+                actaSi:actaSi,
+                actaNo:actaNo,
+                actaSi:actaSi,
+                curpSi:curpSi,
+                curpNo:curpNo,
+                curpNA:curpNA,
+                comprobanteSi:comprobanteSi,
+                comprobanteNo:comprobanteNo,
+                comprobanteNA:comprobanteNA,
+                fotosSi:fotosSi,
+                fotosNo:fotosNo,
+                fotosSi:fotosSi,
+                circulacionSi:circulacionSi,
+                circulacionNo:circulacionNo,
+                circulacionNA:circulacionNA,
+                ineSi:ineSi,
+                ineNo:ineNo,
+                ineNA:ineNA
+            }
     })
 })
