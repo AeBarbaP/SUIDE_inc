@@ -568,13 +568,12 @@ include('prcd/qc/qc.php');
                     </div>
                     
                 </div>
-              <!-- </form> -->
               </div>
-              <!-- <form action="" id="medicosForm"> -->
                 <div class="tab-pane fade" id="nav-medicos" role="tabpanel" aria-labelledby="nav-medicos-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3" style="width:95%">
                     <div class="col-sm-6">
                       <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Discapacidad:</label>
+                      <form action="" id="medicosForm">
                       <input type="text" class="form-control" id="discapacidad" name="datos_usr" placeholder="Discapacidad" required>
                       <div class="invalid-feedback">
                         * Campo requerido.
@@ -796,11 +795,10 @@ include('prcd/qc/qc.php');
                     <br>
                     <div class="d-grid gap-2 mt-3">
                       <button class="btn btn-primary" type="submit">Guardar</button>
+                      </form>
                     </div>
                   </div>
-                <!-- </form> -->
                 </div>
-                
                 <div class="tab-pane fade" id="nav-vivienda" role="tabpanel" aria-labelledby="nav-vivienda-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <!-- Vivienda -->
@@ -1143,7 +1141,7 @@ include('prcd/qc/qc.php');
                           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="deudas" value="option2">
                           <label class="form-check-label" for="inlineRadio2">No</label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mb-3">
                           <div class="input-group w-75">
                             <span class="input-group-text">$</span>
                             <input type="text" class="form-control" id="deudasInput" aria-label="Amount (to the nearest dollar)">
@@ -1154,11 +1152,11 @@ include('prcd/qc/qc.php');
                       
                     </div>
                     <!-- dependencia económica -->
-                    <hr>
+                    <br>
                     <div class="d-grid gap-2 mt-3">
                       <button class="btn btn-primary" type="submit">Guardar</button>
+                      </form>
                     </div>
-                    </form>
                   </div>
                 </div>
 
@@ -1166,7 +1164,6 @@ include('prcd/qc/qc.php');
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <!-- integración familiar -->
                     <div class="col-sm-12 mt-3 p-4">
-                      <form action="" id="familiaForm">
                       <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Integración familiar</label>
                       <table class="table table-bordered table-hover text-center">
                         <thead style="background-color:#6d5973;color:white;">
@@ -1207,12 +1204,8 @@ include('prcd/qc/qc.php');
                       <!-- integración familiar -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#agregarFamiliar"><i class="bi bi-person-fill-add"></i> Agregar familiar</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#agregarFamiliar"><i class="bi bi-person-fill-add"></i> Agregar familiar</button>
                       </div>
-                      <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="submit"><i class="bi bi-save2"></i> Guardar</button>
-                      </div>
-                      </form>
                     </div>
                   </div>
                 </div>
@@ -1266,64 +1259,6 @@ include('prcd/qc/qc.php');
                     </div>
                   </div>
                 </div>
-                <!-- Inicia Moda para agregar Referencia en la tab de Referencias -->
-                <div class="modal fade" id="agregarReferencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Agregar Referencia</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <form action="" method="POST"><!--form-->
-                          <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
-                            <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre completo" aria-describedby="basic-addon1" name="nombre" required>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
-                                <select class="form-select" aria-label="Default select example">
-                                  <option selected>Parentesco...</option>
-                                  <option value="1">Amig@</option>
-                                  <option value="2">Vecin@</option>
-                                  <option value="3">Otr@</option>
-                                  <option value="4">Espos@</option>
-                                  <option value="5">Padre</option>
-                                  <option value="6">Madre</option>
-                                  <option value="7">Herman@</option>
-                                  <option value="8">Tí@</option>
-                                  <option value="9">Sobrin@</option>
-                                  <option value="10">Abuel@</option>
-                                  <option value="11">Prim@</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
-                                <input type="text" class="form-control" placeholder="# de Celular" id="inputGroup01"> <!-- validar solo numeros -->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
-                            <input type="text" class="form-control" placeholder="Profesión" aria-label="profesion" aria-describedby="basic-addon1">
-                          </div>
-                          <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1">Domicilio</span>
-                            <textarea type="text" class="form-control" placeholder="" aria-label="domicilio" rows="2" aria-describedby="basic-addon1"></textarea>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
-                            <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Agregar</button>
-                          </div>
-                        </form><!--form-->
-                    </div>
-                  </div>
-                </div>
-                <!-- Termina Modal para agregar Referencia en la tab de Referencias -->
                 <div class="tab-pane fade" id="nav-servicios-otorgados" role="tabpanel" aria-labelledby="nav-servicios-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <div class="col-sm-8 ms-3">
@@ -1369,7 +1304,7 @@ include('prcd/qc/qc.php');
                           </tr>
                         </tbody>
                       </table>
-                      <!-- integración familiar -->
+                      <!-- Solicitudes -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
                         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#solicitudAdd"><i class="bi bi-file-earmark-text"></i> Agregar solicitud</button>
@@ -1379,79 +1314,78 @@ include('prcd/qc/qc.php');
                 </div>
                 <div class="tab-pane fade" id="nav-docs" role="tabpanel" aria-labelledby="nav-docs-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
-                  <label for="basic-url" class="form-label h4"><i class="bi bi-files"></i> Requisitos para expediente de Personas con Discapacidad</label>
-                      <table class="table table-bordered table-hover align-middle text-center">
-                        <thead style="background-color:darkgray;color:white;">
-                          <tr>
-                            <th class="align-middle" scope="col">DOCUMENTO</th>
-                            <th scope="col">SI<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkAllSi" value="" aria-label="..."></th>
-                            <th scope="col">NO<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkAllNo" value="" aria-label="..."></th>
-                            <th class="align-middle" scope="col">NO APLICA</th>
-                            <th class="align-middle" scope="col">ARCHIVO<br><label class="fw-lighter fst-italic lh-1">(PDF o JPG)</label></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">HOJA DE REGISTRO<br><p class="fw-lighter fst-italic">Estudio Socioeconómico.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">DOCUMENTO MÉDICO<br><p class="fw-lighter fst-italic">Que indique el tipo y grado de discapacidad, expedido por institución pública de salud.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="valoracionSi" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="valoracionNo" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="valoracionNA" value="" aria-label="..."></td>
-                            <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">COPIA DE ACTA DE NACIMIENTO<br><p class="fw-lighter fst-italic">O documento que acredite la condición jurídica de la persona beneficiaria.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="actaSi" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="actaNo" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="actaNA" value="" aria-label="..."></td>
-                            <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">COPIA DE LA C.U.R.P.</th>
-                            <td><input class="form-check-input" type="checkbox" id="curpSi" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="curpNo" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="curpNA" value="" aria-label="..."></td>
-                            <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">COPIA DE LA IDENTIFICACIÓN OFICIAL DEL BENEFICIARIO<br><p class="fw-lighter fst-italic">Credencial de elector, pasaporte, credencial del INAPAM u otro documento que acredite la identidad del beneficiario.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">COPIA DE COMPROBANTE DE DOMICILIO<br><p class="fw-lighter fst-italic">Reciente a la apertura o actualización del expediente, no mayor a 90 días.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="comprobanteSi" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="comprobanteNo" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="comprobanteNA" value="" aria-label="..."></td>
-                            <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">DOS FOTOGRAFÍAS<br><p class="fw-lighter fst-italic">En cualquier formato, preferentemente impresas.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="fotosSi" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="fotosNo" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="fotosNA" value="" aria-label="..."></td>
-                            <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">COPIA DE LA TARJETA DE CIRCULACIÓN<br><p class="fw-lighter fst-italic">Del vehículo en el que se traslada la Persona con Discapacidad.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="circulacionSi" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="circulacionSi" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="circulacionSi" value="" aria-label="..."></td>
-                            <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
-                          </tr>
-                        </tbody>
-                      </table>
+                    <label for="basic-url" class="form-label h4"><i class="bi bi-files"></i> Requisitos para expediente de Personas con Discapacidad</label>
+                    <table class="table table-bordered table-hover align-middle text-center">
+                      <thead style="background-color:darkgray;color:white;">
+                        <tr>
+                          <th class="align-middle" scope="col">DOCUMENTO</th>
+                          <th scope="col">SI<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkAllSi" value="" aria-label="..."></th>
+                          <th scope="col">NO<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkAllNo" value="" aria-label="..."></th>
+                          <th class="align-middle" scope="col">NO APLICA</th>
+                          <th class="align-middle" scope="col">ARCHIVO<br><label class="fw-lighter fst-italic lh-1">(PDF o JPG)</label></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">HOJA DE REGISTRO<br><p class="fw-lighter fst-italic">Estudio Socioeconómico.</p></th>
+                          <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
+                          <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">DOCUMENTO MÉDICO<br><p class="fw-lighter fst-italic">Que indique el tipo y grado de discapacidad, expedido por institución pública de salud.</p></th>
+                          <td><input class="form-check-input" type="checkbox" id="valoracionSi" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="valoracionNo" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="valoracionNA" value="" aria-label="..."></td>
+                          <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">COPIA DE ACTA DE NACIMIENTO<br><p class="fw-lighter fst-italic">O documento que acredite la condición jurídica de la persona beneficiaria.</p></th>
+                          <td><input class="form-check-input" type="checkbox" id="actaSi" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="actaNo" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="actaNA" value="" aria-label="..."></td>
+                          <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">COPIA DE LA C.U.R.P.</th>
+                          <td><input class="form-check-input" type="checkbox" id="curpSi" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="curpNo" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="curpNA" value="" aria-label="..."></td>
+                          <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">COPIA DE LA IDENTIFICACIÓN OFICIAL DEL BENEFICIARIO<br><p class="fw-lighter fst-italic">Credencial de elector, pasaporte, credencial del INAPAM u otro documento que acredite la identidad del beneficiario.</p></th>
+                          <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
+                          <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">COPIA DE COMPROBANTE DE DOMICILIO<br><p class="fw-lighter fst-italic">Reciente a la apertura o actualización del expediente, no mayor a 90 días.</p></th>
+                          <td><input class="form-check-input" type="checkbox" id="comprobanteSi" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="comprobanteNo" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="comprobanteNA" value="" aria-label="..."></td>
+                          <td><a href=""data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">DOS FOTOGRAFÍAS<br><p class="fw-lighter fst-italic">En cualquier formato, preferentemente impresas.</p></th>
+                          <td><input class="form-check-input" type="checkbox" id="fotosSi" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="fotosNo" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="fotosNA" value="" aria-label="..."></td>
+                          <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">COPIA DE LA TARJETA DE CIRCULACIÓN<br><p class="fw-lighter fst-italic">Del vehículo en el que se traslada la Persona con Discapacidad.</p></th>
+                          <td><input class="form-check-input" type="checkbox" id="circulacionSi" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="circulacionSi" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="circulacionSi" value="" aria-label="..."></td>
+                          <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
-
               </div>
           </div>
         </div>
@@ -2035,7 +1969,7 @@ include('prcd/qc/qc.php');
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="" method="POST"><!--form-->
+            <form action="" id="familiaForm" method="POST">
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
                 <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1" name="nombre" required>
@@ -2103,10 +2037,96 @@ include('prcd/qc/qc.php');
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
                 <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Agregar</button>
               </div>
-            </form><!--form-->
+            </form>
+          </div>
         </div>
       </div>
     </div>
     <!-- Termina Modal para agregar Familiar en la Tab de Integración Familiar -->
     
+    <!-- Inicia Moda para agregar Referencia en la tab de Referencias -->
+    <div class="modal fade" id="agregarReferencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Agregar Referencia</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="" id="referenciasForm">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre completo" aria-describedby="basic-addon1" name="nombre" required>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>Parentesco...</option>
+                      <option value="1">Amig@</option>
+                      <option value="2">Vecin@</option>
+                      <option value="3">Otr@</option>
+                      <option value="4">Espos@</option>
+                      <option value="5">Padre</option>
+                      <option value="6">Madre</option>
+                      <option value="7">Herman@</option>
+                      <option value="8">Tí@</option>
+                      <option value="9">Sobrin@</option>
+                      <option value="10">Abuel@</option>
+                      <option value="11">Prim@</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
+                    <input type="text" class="form-control" placeholder="# de Celular" id="inputGroup01"> <!-- validar solo numeros -->
+                  </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
+                <input type="text" class="form-control" placeholder="Profesión" aria-label="profesion" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Domicilio</span>
+                <textarea type="text" class="form-control" placeholder="" aria-label="domicilio" rows="2" aria-describedby="basic-addon1"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
+                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Agregar</button>
+                </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Termina Modal para agregar Referencia en la tab de Referencias -->
+
+    <!-- Inici Modal para cargar archivo en pdf o jpg en Tab Documentos -->
+
+    <div class="modal fade" id="docUpload" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" oninput="init()" id="inputGroupFile01">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Termina Modal para cargar archivo en pdf o jpg en Tab Documentos -->
     
