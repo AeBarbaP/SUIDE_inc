@@ -70,7 +70,7 @@ function generarCodigo($longitud) {
         Swal.fire({
             icon: "success",
             title: "Registro correcto",
-            footer: "Morismas de Bracho 2022"
+            footer: "SUIDEV"
         }).then(function(){window.location="../home_config.php";});
         </script>';
         }

@@ -23,21 +23,71 @@ $(document).ready(function() {
         var celular = document.getElementById('celular').value;
         var escolaridad = document.getElementById('escolaridad').value;
         var estudia = document.getElementById('estudia').value;
-        var lugarEstudia = document.getElementById('lugarEstudia').value;
+
+        if (estudia == 1){
+            document.getElementById('lugarEstudia').disabled = false;
+            var lugarEstudia = document.getElementById('lugarEstudia').value;
+        } else {
+            document.getElementById('lugarEstudia').disabled = true;
+            var lugarEstudia = "";
+        }
+
+
         var habilidad = document.getElementById('habilidad').value;
         var profesion = document.getElementById('profesion').value;
         var trabaja = document.getElementById('trabaja').value;
-        var lugarTrabajo = document.getElementById('lugarTrabajo').value;
+        
+        if (trabaja == 1){
+            document.getElementById('lugarTrabajo').disabled = false;
+            var lugarTrabajo = document.getElementById('lugarTrabajo').value;
+        } else {
+            document.getElementById('lugarTrabajo').disabled = true;
+            var lugarTrabajo = "";
+        }
+        
         var ingresoMensual = document.getElementById('ingresoMensual').value;
         var asociacion = document.getElementById('asociacion').value;
-        var nombreAC = document.getElementById('nombreAC').value;
+
+        if (asociacion == 1){
+            document.getElementById('nombreAC').disabled = false;
+            var nombreAC = document.getElementById('nombreAC').value;
+        } else {
+            document.getElementById('nombreAC').disabled = true;
+            var nombreAC = "";
+        }
+        
         var sindicato = document.getElementById('sindicato').value;
-        var nombreSindicato = document.getElementById('nombreSindicato').value;
+
+        if (sindicato == 1){
+            document.getElementById('nombreSindicato').disabled = false;
+            var nombreSindicato = document.getElementById('nombreSindicato').value;
+        } else {
+            document.getElementById('nombreSindicato').disabled = true;
+            var nombreSindicato = "";
+        }
+
         var pension = document.getElementById('pension').value;
-        var montoP = document.getElementById('montoP').value;
-        var periodo = document.getElementById('periodo').value;
+
+        if (pension == 1){
+            document.getElementById('montoP').disabled = false;
+            document.getElementById('periodo').disabled = false;
+            var montoP = document.getElementById('montoP').value;
+            var periodo = document.getElementById('periodo').value;
+        } else {
+            document.getElementById('montoP').disabled = true;
+            document.getElementById('periodo').disabled = true;
+            var montoP = "";
+        }
+        
         var seguridadsocial = document.getElementById('seguridadsocial').value;
-        var otroSS = document.getElementById('otroSS').value;
+
+        if (seguridadsocial == 'Otro'){
+            document.getElementById('otroSS').disabled = false;
+            var otroSS = document.getElementById('otroSS').value;
+        } else {
+            document.getElementById('otroSS').disabled = true;
+            var otroSS = "";
+        }
 
         e.preventDefault();
 
@@ -84,6 +134,8 @@ $(document).ready(function() {
                 seguridadsocial:seguridadsocial,
                 otroSS:otroSS
             }
+
+        })
     })
 })
 
@@ -147,6 +199,7 @@ $(document).ready(function() {
                 medicamentos:medicamentos,
                 medicamentosFull:medicamentosFull
             }
+        })
     })
 })
 /* Vivienda */
@@ -241,6 +294,7 @@ $(document).ready(function() {
                 deudas:deudas,
                 deudasInput:deudasInput
             }
+        })
     })
 })
 
@@ -272,6 +326,7 @@ $(document).ready(function() {
                 discapacidadFam:discapacidadFam,
                 ingresoFam:ingresoFam
             }
+        })
     })
 })
 
@@ -303,6 +358,7 @@ $(document).ready(function() {
                 discapacidadRef:discapacidadRef,
                 ingresoRef:ingresoRef
             }
+        })
     })
 })
 
@@ -318,6 +374,26 @@ $(document).ready(function() {
         var articuloSolicitud = document.getElementById('articuloSolicitud').value;
         var cantidadArt = document.getElementById('cantidadArt').value;
         var costoUnitarioArt = document.getElementById('costoUnitarioArt').value;
+
+        e.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            url: '',
+            dataType:'json',
+            data: {
+                folioSolicitud:folioSolicitud,
+                fechaSolicitud:fechaSolicitud,
+                tipoSolicitud:tipoSolicitud,
+                descripcionSolicitud:descripcionSolicitud,
+                estatusSolicitud:estatusSolicitud,
+                fechaEntrega:fechaEntrega,
+                articuloSolicitud:articuloSolicitud,
+                cantidadArt:cantidadArt,
+                costoUnitarioArt:costoUnitarioArt
+            }
+
+        })
     })
 })
 
@@ -381,5 +457,7 @@ $(document).ready(function() {
                 ineNo:ineNo,
                 ineNA:ineNA
             }
+
+        })
     })
 })
