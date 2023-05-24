@@ -436,11 +436,11 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Estudia:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="estudia" value="option1">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="estudia" value="1">
                           <label class="form-check-label" for="inlineRadio1">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="estudia" value="option2">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="estudia" value="0">
                           <label class="form-check-label" for="inlineRadio2">No</label>
                         </div>
                         <input type="text" class="form-control" id="lugarEstudia" name="datos_usr" placeholder="Dónde estudia...">
