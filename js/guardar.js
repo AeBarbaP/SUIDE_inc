@@ -151,14 +151,43 @@ $(document).ready(function() {
         var fuente = document.getElementById('fuente').value;
         var fechaValoracion = document.getElementById('fechaValoracion').value;
         var rehabilitacion = document.getElementById('rehabilitacion').value;
-        var lugarRehab = document.getElementById('lugarRehab').value;
-        var fechaIni = document.getElementById('fechaIni').value;
-        var duracion = document.getElementById('duracion').value;
+        
+        if (rehabilitacion == 1){
+            document.getElementById('lugarRehab').disabled = false;
+            var lugarRehab = document.getElementById('lugarRehab').value;
+            var fechaIni = document.getElementById('fechaIni').value;
+            var duracion = document.getElementById('duracion').value;
+        } else {
+            document.getElementById('lugarRehab').disabled = true;
+            document.getElementById('fechaIni').disabled = true;
+            document.getElementById('duracion').disabled = true;
+            var lugarRehab = "";
+            var fechaIni = "";
+            var duracion = "";
+        }
+        
+
         var tipoSangre = document.getElementById('tipoSangre').value;
         var cirugia = document.getElementById('cirugia').value;
-        var tipoCirugia = document.getElementById('tipoCirugia').value;
+
+        if (cirugia == 1){
+            document.getElementById('tipoCirugia').disabled = false;
+            var tipoCirugia = document.getElementById('tipoCirugia').value;
+        } else {
+            document.getElementById('tipoCirugia').disabled = true;
+            var tipoCirugia = "";
+        }
+
         var protesis = document.getElementById('protesis').value;
-        var tipoProtesis = document.getElementById('tipoProtesis').value;
+
+        if (protesis == 1){
+            document.getElementById('tipoProtesis').disabled = false;
+            var tipoProtesis = document.getElementById('tipoProtesis').value;
+        } else {
+            document.getElementById('tipoProtesis').disabled = true;
+            var tipoProtesis = "";
+        }
+
         var alergias = document.getElementById('alergias').value;
         var tipoAlergia = document.getElementById('tipoAlergia').value;
         var alergiasFull = document.getElementById('alergiasFull').value;
@@ -203,52 +232,71 @@ $(document).ready(function() {
     })
 })
 /* Vivienda */
-$(document).ready(function() {
-    $('#viviendaForm').submit(function(e) {
-        var vivienda = document.getElementById('vivienda').value;
-        var montoVivienda = document.getElementById('montoVivienda').value;
-        var tipoVivienda = document.getElementById('tipoVivienda').value;
-        var viviendaOtro = document.getElementById('viviendaOtro').value;
-        var numHabitaciones = document.getElementById('numHabitaciones').value;
-        var cocina = document.getElementById('cocina').value;
-        var sala = document.getElementById('sala').value;
-        var bath = document.getElementById('bath').value;
-        var otrosRoom = document.getElementById('otroRoom').value;
-        var otroRoomInput = document.getElementById('otroRoomInput').value;
+/* $(document).ready(function(e) { */
+/* function checks(){ */
+    /* $('#viviendaForm').(function(e) { */
+function viviendaOp(x){
+        var vivienda = x;
+
+        if (vivienda == 3){
+            document.getElementById('montoVivienda').disabled = false;
+            
+        } else {
+            document.getElementById('montoVivienda').disabled = true;
+        }
+    }
+
+    function tipoViviendaOp(x){
+        var tipoVivienda = x;
+
+        if (tipoVivienda == 4){
+            document.getElementById('viviendaOtro').disabled = false;
+            
+        } else {
+            document.getElementById('viviendaOtro').disabled = true;
+        }
+    }
+
+    var tipoVivienda = document.getElementById('tipoVivienda').value;
+    var viviendaOtro = document.getElementById('viviendaOtro').value;
+    var numHabitaciones = document.getElementById('numHabitaciones').value;
+        
+
         var techo = document.getElementById('techo').value;
-        var otroTecho = document.getElementById('otroTecho').value;
+
+        if (techo == 3){
+            document.getElementById('otroTecho').disabled = false;
+            var otroTecho = document.getElementById('otroTecho').value;
+        } else {
+            document.getElementById('otroTecho').disabled = true;
+            var otroTecho = "";
+        }
+
         var pared = document.getElementById('pared').value;
-        var otroPared = document.getElementById('otroPared').value;
-        var checkAllServices = document.getElementById('checkAllServices').value;
-        var agua = document.getElementById('agua').value;
-        var luz = document.getElementById('luz').value;
-        var drenaje = document.getElementById('drenaje').value;
-        var cable = document.getElementById('cable').value;
-        var internet = document.getElementById('internet').value;
-        var celular = document.getElementById('celular').value;
-        var carro = document.getElementById('carro').value;
-        var gas = document.getElementById('gas').value;
-        var telefono = document.getElementById('telefono').value;
-        var otroServicios = document.getElementById('otroServicios').value;
-        var otroServiciosInput = document.getElementById('otroServiciosInput').value;
-        var checkAllElectro = document.getElementById('checkAllElectro').value;
-        var tv = document.getElementById('tv').value;
-        var lavadora = document.getElementById('lavadora').value;
-        var estereo = document.getElementById('estereo').value;
-        var microondas = document.getElementById('microondas').value;
-        var computadora = document.getElementById('computadora').value;
-        var licuadora = document.getElementById('licuadora').value;
-        var dvd = document.getElementById('dvd').value;
-        var estufa = document.getElementById('estufa').value;
-        var otroElectro = document.getElementById('otroElectro').value;
-        var otroElectroInput = document.getElementById('otroElectroInput').value;
+
+        if (pared == 4){
+            document.getElementById('otroPared').disabled = false;
+            var otroPared = document.getElementById('otroPared').value;
+        } else {
+            document.getElementById('otroPared').disabled = true;
+            var otroPared = "";
+        }
+
+        
         var dependenciaEconomica = document.getElementById('dependenciaEconomica').value;
         var deudas = document.getElementById('deudas').value;
-        var deudasInput = document.getElementById('deudasInput').value;
+    
+        if (deudas == 1){
+            document.getElementById('deudasInput').disabled = false;
+            var deudasInput = document.getElementById('deudasInput').value;
+        } else {
+            document.getElementById('deudasInput').disabled = true;
+            var deudasInput = "";
+        }
 
-        e.preventDefault();
+/*         e.preventDefault(); */
 
-        $.ajax({
+        /* $.ajax({
             type: "POST",
             url: '',
             dataType:'json',
@@ -258,6 +306,7 @@ $(document).ready(function() {
                 tipoVivienda:tipoVivienda,
                 viviendaOtro:viviendaOtro,
                 numHabitaciones:numHabitaciones,
+                checkAllRooms:checkAllRooms,
                 cocina:cocina,
                 sala:sala,
                 bath:bath,
@@ -294,9 +343,106 @@ $(document).ready(function() {
                 deudas:deudas,
                 deudasInput:deudasInput
             }
-        })
-    })
-})
+        }) */
+    /* }) */
+/* }*/
+
+function roomsCheck(){
+    var checkAllRooms = document.getElementById('checkAllRooms');
+
+        if (checkAllRooms.checked){
+            document.getElementById('cocina').checked = true;
+            document.getElementById('sala').checked = true;
+            document.getElementById('bath').checked = true;
+
+        } else {
+            document.getElementById('cocina').checked = false;
+            document.getElementById('sala').checked = false;
+            document.getElementById('bath').checked = false;
+
+        }
+}
+function otrosRoom(){
+    var otroRoom = document.getElementById('otroRoom');
+
+        if (otroRoom.checked){
+            document.getElementById('otroRoomInput').disabled = false;
+        } else {
+            document.getElementById('otroRoomInput').disabled = true;
+        }
+}
+
+function servicios(){
+var checkAllServices = document.getElementById('checkAllServices');
+
+        if (checkAllServices.checked){
+            document.getElementById('agua').checked = true;
+            document.getElementById('luz').checked = true;
+            document.getElementById('drenaje').checked = true;
+            document.getElementById('cable').checked = true;
+            document.getElementById('internet').checked = true;
+            document.getElementById('checkCelular').checked = true;
+            document.getElementById('carro').checked = true;
+            document.getElementById('gas').checked = true;
+            document.getElementById('telefono').checked = true;
+        } else {
+            document.getElementById('agua').checked = false;
+            document.getElementById('luz').checked = false;
+            document.getElementById('drenaje').checked = false;
+            document.getElementById('cable').checked = false;
+            document.getElementById('internet').checked = false;
+            document.getElementById('checkCelular').checked = false;
+            document.getElementById('carro').checked = false;
+            document.getElementById('gas').checked = false;
+            document.getElementById('telefono').checked = false;
+        }
+    }
+
+    function otroServicio(){
+        var otroServicios = document.getElementById('otroServicios');
+/*         var otroServiciosInput = document.getElementById('otroServiciosInput'); */
+        if (otroServicios.checked){
+            document.getElementById('otroServiciosInput').disabled = false;
+/*             var otroServiciosInput = document.getElementById('otroServiciosInput').value; */
+        } else {
+            document.getElementById('otroServiciosInput').disabled = true;
+/*             var otroServiciosInput = ""; */
+        }
+    }
+
+function electrodomesticos(){
+    var checkAllElectro = document.getElementById('checkAllElectro');
+
+    if (checkAllElectro.checked){
+        document.getElementById('tv').checked = true;
+        document.getElementById('lavadora').checked = true;
+        document.getElementById('estereo').checked = true;
+        document.getElementById('microondas').checked = true;
+        document.getElementById('computadora').checked = true;
+        document.getElementById('licuadora').checked = true;
+        document.getElementById('dvd').checked = true;
+        document.getElementById('estufa').checked = true;
+    } else {
+        document.getElementById('tv').checked = false;
+        document.getElementById('lavadora').checked = false;
+        document.getElementById('estereo').checked = false;
+        document.getElementById('microondas').checked = false;
+        document.getElementById('computadora').checked = false;
+        document.getElementById('licuadora').checked = false;
+        document.getElementById('dvd').checked = false;
+        document.getElementById('estufa').checked = false;
+    }
+}
+
+function otroElectros(){
+    var otroElectro = document.getElementById('otroElectro');
+
+    if (otroElectro.checked){
+        document.getElementById('otroElectroInput').disabled = false;
+    } else {
+        document.getElementById('otroElectroInput').disabled = true;
+    }
+}
 
 $(document).ready(function() {
     $('#familiaForm').submit(function(e) {
@@ -403,27 +549,179 @@ $(document).ready(function() {
         var checkAllSi = document.getElementById('checkAllSi').value;
         var checkAllNo = document.getElementById('checkAllNo').value;
         var checkAllNA = document.getElementById('checkAllNA').value;
-        var valoracionSi = document.getElementById('valoracionSi').value; /* checks con funcionamiento de radio a partir de aquí*/
+
+        var valoracionSi = document.getElementById('valoracionSi').value;
         var valoracionNo = document.getElementById('valoracionNo').value;
         var valoracionNA = document.getElementById('valoracionNA').value;
+        
+        if (valoracionSi = checked){
+            document.getElementById('valoracionNo').checked = false;
+            document.getElementById('valoracionNA').checked = false;
+        } 
+        if (valoracionNo = checked){
+            document.getElementById('valoracionSi').checked = false;
+            document.getElementById('valoracionNA').checked = false;
+        } 
+        if (valoracionNA = checked){
+            document.getElementById('valoracionNo').checked = false;
+            document.getElementById('valoracionSi').checked = false;
+        } 
+        
         var actaSi = document.getElementById('actaSi').value;
         var actaNo = document.getElementById('actaNo').value;
-        var actaSi = document.getElementById('actaNA').value;
+        var actaNA = document.getElementById('actaNA').value;
+        
+        if (actaSi.checked){
+            document.getElementById('actaNo').checked = false;
+            document.getElementById('actaNA').checked = false;
+        } 
+        if (actaNo.checked){
+            document.getElementById('actaSi').checked = false;
+            document.getElementById('actaNA').checked = false;
+        } 
+        if (actaNA.checked){
+            document.getElementById('actaNo').checked = false;
+            document.getElementById('actaSi').checked = false;
+        } 
+        
         var curpSi = document.getElementById('curpSi').value;
         var curpNo = document.getElementById('curpNo').value;
         var curpNA = document.getElementById('curpNA').value;
+        
+        if (curpSi.checked){
+            document.getElementById('curpNo').checked = false;
+            document.getElementById('curpNA').checked = false;
+        } 
+        if (curpNo.checked){
+            document.getElementById('curpSi').checked = false;
+            document.getElementById('curpNA').checked = false;
+        } 
+        if (curpNA.checked){
+            document.getElementById('curpNo').checked = false;
+            document.getElementById('curpSi').checked = false;
+        } 
+        
         var comprobanteSi = document.getElementById('comprobanteSi').value;
         var comprobanteNo = document.getElementById('comprobanteNo').value;
         var comprobanteNA = document.getElementById('comprobanteNA').value;
+        
+        if (comprobanteSi.checked){
+            document.getElementById('comprobanteNo').checked = false;
+            document.getElementById('comprobanteNA').checked = false;
+        } 
+        if (comprobanteNo.checked){
+            document.getElementById('comprobanteSi').checked = false;
+            document.getElementById('comprobanteNA').checked = false;
+        } 
+        if (comprobanteNA.checked){
+            document.getElementById('comprobanteNo').checked = false;
+            document.getElementById('comprobanteSi').checked = false;
+        } 
+        
         var fotosSi = document.getElementById('fotosSi').value;
         var fotosNo = document.getElementById('fotosNo').value;
-        var fotosSi = document.getElementById('fotosNA').value;
+        var fotosNA = document.getElementById('fotosNA').value;
+
+        if (fotosSi.checked){
+            document.getElementById('fotosNo').checked = false;
+            document.getElementById('fotosNA').checked = false;
+        } 
+        if (fotosNo.checked){
+            document.getElementById('fotosSi').checked = false;
+            document.getElementById('fotosNA').checked = false;
+        } 
+        if (fotosNA.checked){
+            document.getElementById('fotosNo').checked = false;
+            document.getElementById('fotosSi').checked = false;
+        }
+
         var circulacionSi = document.getElementById('circulacionSi').value;
         var circulacionNo = document.getElementById('circulacionNo').value;
         var circulacionNA = document.getElementById('circulacionNA').value;
+
+        if (circulacionSi.checked){
+            document.getElementById('circulacionNo').checked = false;
+            document.getElementById('circulacionNA').checked = false;
+        } 
+        if (circulacionNo.checked){
+            document.getElementById('circulacionSi').checked = false;
+            document.getElementById('circulacionNA').checked = false;
+        } 
+        if (circulacionNA.checked){
+            document.getElementById('circulacionNo').checked = false;
+            document.getElementById('circulacionSi').checked = false;
+        }
+
         var ineSi = document.getElementById('ineSi').value;
         var ineNo = document.getElementById('ineNo').value;
         var ineNA = document.getElementById('ineNA').value;/* terminan checks con funcionamiento de radio */
+
+        if (ineSi.checked){
+            document.getElementById('ineNo').checked = false;
+            document.getElementById('ineNA').checked = false;
+        } 
+        if (circulacionNo.checked){
+            document.getElementById('ineSi').checked = false;
+            document.getElementById('ineNA').checked = false;
+        } 
+        if (ineNA.checked){
+            document.getElementById('ineNo').checked = false;
+            document.getElementById('ineSi').checked = false;
+        }
+        
+        if (checkAllSi.checked){
+            document.getElementById('valoracionSi').checked = true;
+            document.getElementById('actaSi').checked = true;
+            document.getElementById('curpSi').checked = true;
+            document.getElementById('comprobanteSi').checked = true;
+            document.getElementById('fotosSi').checked = true;
+            document.getElementById('circulacionSi').checked = true;
+            document.getElementById('ineSi').checked = true;
+        } else {
+            document.getElementById('valoracionSi').checked = false;
+            document.getElementById('actaSi').checked = false;
+            document.getElementById('curpSi').checked = false;
+            document.getElementById('comprobanteSi').checked = false;
+            document.getElementById('fotosSi').checked = false;
+            document.getElementById('circulacionSi').checked = false;
+            document.getElementById('ineSi').checked = false;
+        }
+
+        if (checkAllNo.checked){
+            document.getElementById('valoracionNo').checked = true;
+            document.getElementById('actaNo').checked = true;
+            document.getElementById('curpNo').checked = true;
+            document.getElementById('comprobanteNo').checked = true;
+            document.getElementById('fotosNo').checked = true;
+            document.getElementById('circulacionNo').checked = true;
+            document.getElementById('ineNo').checked = true;
+        } else {
+            document.getElementById('valoracionNo').checked = false;
+            document.getElementById('actaNo').checked = false;
+            document.getElementById('curpNo').checked = false;
+            document.getElementById('comprobanteNo').checked = false;
+            document.getElementById('fotosNo').checked = false;
+            document.getElementById('circulacionNo').checked = false;
+            document.getElementById('ineNo').checked = false;
+        }
+
+        if (checkAllNA.checked){
+            document.getElementById('valoracionNA').checked = true;
+            document.getElementById('actaNA').checked = true;
+            document.getElementById('curpNA').checked = true;
+            document.getElementById('comprobanteNA').checked = true;
+            document.getElementById('fotosNA').checked = true;
+            document.getElementById('circulacionNA').checked = true;
+            document.getElementById('ineNA').checked = true;
+        } else {
+            document.getElementById('valoracionNA').checked = false;
+            document.getElementById('actaNA').checked = false;
+            document.getElementById('curpNA').checked = false;
+            document.getElementById('comprobanteNA').checked = false;
+            document.getElementById('fotosNA').checked = false;
+            document.getElementById('circulacionNA').checked = false;
+            document.getElementById('ineNA').checked = false;
+        }
 
         e.preventDefault();
 
@@ -440,7 +738,7 @@ $(document).ready(function() {
                 valoracionNA:valoracionNA,
                 actaSi:actaSi,
                 actaNo:actaNo,
-                actaSi:actaSi,
+                actaNA:actaNA,
                 curpSi:curpSi,
                 curpNo:curpNo,
                 curpNA:curpNA,
@@ -449,7 +747,7 @@ $(document).ready(function() {
                 comprobanteNA:comprobanteNA,
                 fotosSi:fotosSi,
                 fotosNo:fotosNo,
-                fotosSi:fotosSi,
+                fotosNA:fotosNA,
                 circulacionSi:circulacionSi,
                 circulacionNo:circulacionNo,
                 circulacionNA:circulacionNA,
