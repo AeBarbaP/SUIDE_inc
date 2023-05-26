@@ -23,71 +23,14 @@ $(document).ready(function() {
         var celular = document.getElementById('celular').value;
         var escolaridad = document.getElementById('escolaridad').value;
         var estudia = document.getElementById('estudia').value;
-
-        if (estudia == 1){
-            document.getElementById('lugarEstudia').disabled = false;
-            var lugarEstudia = document.getElementById('lugarEstudia').value;
-        } else {
-            document.getElementById('lugarEstudia').disabled = true;
-            var lugarEstudia = "";
-        }
-
-
         var habilidad = document.getElementById('habilidad').value;
         var profesion = document.getElementById('profesion').value;
         var trabaja = document.getElementById('trabaja').value;
-        
-        if (trabaja == 1){
-            document.getElementById('lugarTrabajo').disabled = false;
-            var lugarTrabajo = document.getElementById('lugarTrabajo').value;
-        } else {
-            document.getElementById('lugarTrabajo').disabled = true;
-            var lugarTrabajo = "";
-        }
-        
         var ingresoMensual = document.getElementById('ingresoMensual').value;
         var asociacion = document.getElementById('asociacion').value;
-
-        if (asociacion == 1){
-            document.getElementById('nombreAC').disabled = false;
-            var nombreAC = document.getElementById('nombreAC').value;
-        } else {
-            document.getElementById('nombreAC').disabled = true;
-            var nombreAC = "";
-        }
-        
         var sindicato = document.getElementById('sindicato').value;
-
-        if (sindicato == 1){
-            document.getElementById('nombreSindicato').disabled = false;
-            var nombreSindicato = document.getElementById('nombreSindicato').value;
-        } else {
-            document.getElementById('nombreSindicato').disabled = true;
-            var nombreSindicato = "";
-        }
-
         var pension = document.getElementById('pension').value;
-
-        if (pension == 1){
-            document.getElementById('montoP').disabled = false;
-            document.getElementById('periodo').disabled = false;
-            var montoP = document.getElementById('montoP').value;
-            var periodo = document.getElementById('periodo').value;
-        } else {
-            document.getElementById('montoP').disabled = true;
-            document.getElementById('periodo').disabled = true;
-            var montoP = "";
-        }
-        
         var seguridadsocial = document.getElementById('seguridadsocial').value;
-
-        if (seguridadsocial == 'Otro'){
-            document.getElementById('otroSS').disabled = false;
-            var otroSS = document.getElementById('otroSS').value;
-        } else {
-            document.getElementById('otroSS').disabled = true;
-            var otroSS = "";
-        }
 
         e.preventDefault();
 
@@ -139,6 +82,146 @@ $(document).ready(function() {
     })
 })
 
+function estudiaOp(x){
+    var estudia = x;
+
+    if (estudia == 1){
+        document.getElementById('lugarEstudia').disabled = false;
+        
+    } else {
+        document.getElementById('lugarEstudia').disabled = true;
+    }
+}
+function trabajaOp(x){
+    var trabaja = x;
+
+    if (trabaja == 1){
+        document.getElementById('lugarTrabajo').disabled = false;
+        document.getElementById('ingresoMensual').disabled = false;
+    } else {
+        document.getElementById('lugarTrabajo').disabled = true;
+        document.getElementById('ingresoMensual').disabled = true;
+    }
+}
+function asociacionOp(x){
+    var asociacion = x;
+
+    if (asociacion == 1){
+        document.getElementById('nombreAC').disabled = false;
+    } else {
+        document.getElementById('nombreAC').disabled = true;
+    }
+}
+function sindicatoOp(x){
+    var sindicato = x;
+
+    if (sindicato == 1){
+        document.getElementById('nombreSindicato').disabled = false;
+    } else {
+        document.getElementById('nombreSindicato').disabled = true;
+    }
+}
+function pensionOp(x){
+    var pension = x;
+
+    if (pension == 1){
+        document.getElementById('instPension').disabled = false;
+        document.getElementById('montoP').disabled = false;
+        document.getElementById('periodo').disabled = false;
+    } else {
+        document.getElementById('instPension').disabled = true;
+        document.getElementById('montoP').disabled = true;
+        document.getElementById('periodo').disabled = true;
+    }
+}
+function seguridadOp(x){
+    var seguridadsocial = x;
+
+    if (seguridadsocial == 5){
+        document.getElementById('otroSS').disabled = false;
+    } else {
+        document.getElementById('otroSS').disabled = true;
+    }
+}
+
+function causaDiscOp(x){
+    var causaDisc = x;
+
+    if (causaDisc == 7){
+        document.getElementById('especifiqueD').disabled = false;
+    } else {
+        document.getElementById('especifiqueD').disabled = true;
+    }
+}
+
+function cirugiasOp(x){
+    var cirugia = x;
+
+    if (cirugia == 1){
+        document.getElementById('tipoCirugia').disabled = false;
+    } else {
+        document.getElementById('tipoCirugia').disabled = true;
+    }
+}
+
+function protesisOp(x){
+    var protesis = x;
+
+    if (protesis == 1){
+        document.getElementById('tipoProtesis').disabled = false;
+    } else {
+        document.getElementById('tipoProtesis').disabled = true;
+    }
+}
+function rehabOp(x){
+    var rehabilitacion = x;
+
+    if (rehabilitacion == 1){
+        document.getElementById('lugarRehab').disabled = false;
+    } else {
+        document.getElementById('lugarRehab').disabled = true;
+    }
+}
+function deudasOp(x){
+    var deudas = x;
+
+    if (deudas == 1){
+        document.getElementById('deudasInput').disabled = false;
+    } else {
+        document.getElementById('deudasInput').disabled = true;
+    }
+}
+function viviendaOp(x){
+    var vivienda = x;
+
+    if (vivienda == 3){
+        document.getElementById('montoVivienda').disabled = false;
+        
+    } else {
+        document.getElementById('montoVivienda').disabled = true;
+    }
+}
+
+function tipoViviendaOp(x){
+    var tipoVivienda = x;
+
+    if (tipoVivienda == 4){
+        document.getElementById('viviendaOtro').disabled = false;
+        
+    } else {
+        document.getElementById('viviendaOtro').disabled = true;
+    }
+}
+function techoOp(x){
+    var techo = x;
+
+    if (techo == 3){
+        document.getElementById('otroTecho').disabled = false;
+    } else {
+        document.getElementById('otroTecho').disabled = true;
+    }
+}
+
 /* Datos Médicos */
 $(document).ready(function() {
     $('#medicosForm').submit(function(e) {
@@ -151,43 +234,9 @@ $(document).ready(function() {
         var fuente = document.getElementById('fuente').value;
         var fechaValoracion = document.getElementById('fechaValoracion').value;
         var rehabilitacion = document.getElementById('rehabilitacion').value;
-        
-        if (rehabilitacion == 1){
-            document.getElementById('lugarRehab').disabled = false;
-            var lugarRehab = document.getElementById('lugarRehab').value;
-            var fechaIni = document.getElementById('fechaIni').value;
-            var duracion = document.getElementById('duracion').value;
-        } else {
-            document.getElementById('lugarRehab').disabled = true;
-            document.getElementById('fechaIni').disabled = true;
-            document.getElementById('duracion').disabled = true;
-            var lugarRehab = "";
-            var fechaIni = "";
-            var duracion = "";
-        }
-        
-
         var tipoSangre = document.getElementById('tipoSangre').value;
         var cirugia = document.getElementById('cirugia').value;
-
-        if (cirugia == 1){
-            document.getElementById('tipoCirugia').disabled = false;
-            var tipoCirugia = document.getElementById('tipoCirugia').value;
-        } else {
-            document.getElementById('tipoCirugia').disabled = true;
-            var tipoCirugia = "";
-        }
-
         var protesis = document.getElementById('protesis').value;
-
-        if (protesis == 1){
-            document.getElementById('tipoProtesis').disabled = false;
-            var tipoProtesis = document.getElementById('tipoProtesis').value;
-        } else {
-            document.getElementById('tipoProtesis').disabled = true;
-            var tipoProtesis = "";
-        }
-
         var alergias = document.getElementById('alergias').value;
         var tipoAlergia = document.getElementById('tipoAlergia').value;
         var alergiasFull = document.getElementById('alergiasFull').value;
@@ -231,68 +280,16 @@ $(document).ready(function() {
         })
     })
 })
-/* Vivienda */
-/* $(document).ready(function(e) { */
-/* function checks(){ */
-    /* $('#viviendaForm').(function(e) { */
-function viviendaOp(x){
-        var vivienda = x;
 
-        if (vivienda == 3){
-            document.getElementById('montoVivienda').disabled = false;
-            
-        } else {
-            document.getElementById('montoVivienda').disabled = true;
-        }
-    }
 
-    function tipoViviendaOp(x){
-        var tipoVivienda = x;
-
-        if (tipoVivienda == 4){
-            document.getElementById('viviendaOtro').disabled = false;
-            
-        } else {
-            document.getElementById('viviendaOtro').disabled = true;
-        }
-    }
-
+    
     var tipoVivienda = document.getElementById('tipoVivienda').value;
     var viviendaOtro = document.getElementById('viviendaOtro').value;
     var numHabitaciones = document.getElementById('numHabitaciones').value;
-        
-
-        var techo = document.getElementById('techo').value;
-
-        if (techo == 3){
-            document.getElementById('otroTecho').disabled = false;
-            var otroTecho = document.getElementById('otroTecho').value;
-        } else {
-            document.getElementById('otroTecho').disabled = true;
-            var otroTecho = "";
-        }
-
-        var pared = document.getElementById('pared').value;
-
-        if (pared == 4){
-            document.getElementById('otroPared').disabled = false;
-            var otroPared = document.getElementById('otroPared').value;
-        } else {
-            document.getElementById('otroPared').disabled = true;
-            var otroPared = "";
-        }
-
-        
-        var dependenciaEconomica = document.getElementById('dependenciaEconomica').value;
-        var deudas = document.getElementById('deudas').value;
-    
-        if (deudas == 1){
-            document.getElementById('deudasInput').disabled = false;
-            var deudasInput = document.getElementById('deudasInput').value;
-        } else {
-            document.getElementById('deudasInput').disabled = true;
-            var deudasInput = "";
-        }
+    var techo = document.getElementById('techo').value;
+    var pared = document.getElementById('pared').value;
+    var dependenciaEconomica = document.getElementById('dependenciaEconomica').value;
+    var deudas = document.getElementById('deudas').value;
 
 /*         e.preventDefault(); */
 
