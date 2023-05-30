@@ -72,6 +72,7 @@ include('prcd/qc/qc.php');
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <script src="js/guardar.js"></script>
+    <script src="js/validate.js"></script>
 
 
     <style>
@@ -184,6 +185,7 @@ include('prcd/qc/qc.php');
         </a></span>
         <div class="collapse" id="padron-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="padronpcdfull.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-inboxes ms-2 me-3"></i> Padrón PCD</a></li>
             <li><a href="padronpcd.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-folder-plus ms-2 me-3"></i> Agregar nuevo</a></li>
             <li><a href="padronpcdActualizar.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-journals ms-2 me-3"></i> Actualizar expediente</a></li>
             

@@ -27,11 +27,46 @@ setlocale(LC_TIME, 'es_MX.UTF-8');
 $fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
 
 $nombre = $_POST['nombre'];
-$apellidos = $_POST['apellidos'];
-$cantidad_polvora = $_POST['cantidad_polvora'];
+$apellidoP = $_POST['apellido_p'];
+$apellidoM = $_POST['apellido_m'];
+$genero = $_POST['genero'];
+$edad = $_POST['edad'];
+$edo_civil = $_POST['edo_civil'];
 $curp = $_POST['curp'];
-$detalles = $_POST['detalles'];
-$entregado = 0; 
+$rfc = $_POST['rfc'];
+$fechaNacimiento = $_POST['f_nacimiento'];
+$lugarNacimiento = $_POST['lugar_nacimiento'];
+$domicilio = $_POST['domicilio'];
+$numExt = $_POST['no_ext'];
+$numInt = $_POST['no-int'];
+$colonia = $_POST['colonia'];
+$entreVialidades = $_POST['entre_vialidades'];
+$descripcionLugar = $_POST['descr_referencias'];
+$localidad = $_POST['localidad'];
+$municipio = $_POST['municipio'];
+$codigoPostal = $_POST['cp'];
+$telFijo = $_POST['telefono_part'];
+$celular = $_POST['telefono_cel'];
+$escolaridad = $_POST['escolaridad'];
+$estudia = $_POST['estudia'];
+$estudiaLugar = $_POST['estudia_donde'];
+$habilidad = $_POST['estudia_habilidad'];
+$profesion = $_POST['profesión'];
+$trabaja = $_POST['trabaja'];
+$trabajaLugar = $_POST['trabaja_donde'];
+$ingresoMensual = $_POST['trabaja_ingresos'];
+$asociacion = $_POST['asoc_civil'];
+$asociacion_nombre = $_POST['asoc_cual'];
+$sindicato = $_POST['sindicato'];
+$nombreSindicato = $_POST['sindicato_cual'];
+$pension = $_POST['pensionado'];
+$pensionInst = $_POST['pensionado_donde'];
+$pensionMonto = $_POST['pension_monto'];
+$pensionTemporalidad = $_POST['pension_temporalidad'];
+$seguridadsocial = $_POST['seguridad_social'];
+$seguridadsocial = $_POST['seguridad_social_donde'];
+
+
 
 function generarCodigo($longitud) {
     $key = '';

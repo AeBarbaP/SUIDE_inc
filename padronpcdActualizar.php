@@ -73,6 +73,7 @@ include('prcd/qc/qc.php');
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <script src="js/guardar.js"></script>
+    <script src="js/validate.js"></script>
 
     <style>
       * {
@@ -180,6 +181,7 @@ include('prcd/qc/qc.php');
         </a></span>
         <div class="collapse" id="padron-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="padronpcdfull.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-inboxes ms-2 me-3"></i> Padrón PCD</a></li>
             <li><a href="padronpcd.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-folder-plus ms-2 me-3"></i> Agregar nuevo</a></li>
             <li><a href="padronpcdActualizar.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-journals ms-2 me-3"></i> Actualizar expediente</a></li>
             
@@ -234,17 +236,18 @@ include('prcd/qc/qc.php');
     </nav>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
-        <p class="h5"><strong>Padrón Estatal de Personas con Discapacidad</strong></p>
-      </div>
+      <!-- <p class="h5"><strong>Padrón Estatal de Personas con Discapacidad</strong></p> -->
       <h3 class="text-muted mt-4">Actualización de Expediente</h3>
-      <hr>
+      <div class="input-group mb-5 mt-2">
+          <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+          <input class="form-control" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+        </div><!-- input group -->
+      <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 "> -->
+        <!-- <p class="h5"><strong>Padrón Estatal de Personas con Discapacidad</strong></p> -->
+      <!-- </div> -->
+      <!-- <h3 class="text-muted mt-4">Actualización de Expediente</h3> -->
+      <!-- <hr> -->
       <div class="container-fluid">
-        <div class="input-group mb-1 mt-2 w-25">
-            <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-            <input class="form-control" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
-          </div><!-- input group -->
-          <br>
         <div class="row">
           <div class="col-sm-2 justify-content-between align-items-center">
             <p class="h4">No. Expediente</p>
@@ -252,6 +255,11 @@ include('prcd/qc/qc.php');
             <img id="img1" src="img/no_profile.png" width="100%" style="width:14rem">
             <div class="input-group">
               <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+            </div>
+            <br>
+            <img id="img1" src="img/no_qr.png" width="100%" style="width:14rem">
+            <div class="d-grid gap-2">
+              <button type="button" class="btn btn-light">Generar QR</button>
             </div>
           </div>
           <div class="col-sm-10">
@@ -1305,7 +1313,7 @@ include('prcd/qc/qc.php');
                             <td>Otto</td>
                             <td>Otto</td>
                             <td><a href=""><i class="bi bi-file-earmark-text h5"></i></a></td>
-                            <td><a href=""><i class="bi bi-arrow-clockwise h5"></i></a></td>
+                            <td><a href="" data-bs-toggle="modal" data-bs-target="#solicitudEdit"><i class="bi bi-arrow-clockwise h5"></i></a></td>
                           </tr>
                         </tbody>
                       </table>
