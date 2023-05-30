@@ -153,9 +153,21 @@ include('prcd/qc/qc.php');
       <hr>      
       <div class="flex-shrink-0 p-2 bg-white" style="width: 100%;">
     
-    <ul class="list-unstyled ps-0 mt-3">
+      <ul class="list-unstyled ps-0 mt-3">
       <li class="ms-2 mb-1">
-        <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
+        <span class="d-inline-flex"><a href="dashboard.php" id="linkHome" class="link-dark"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
+      </li>
+      <li class="mb-1 mt-2">
+      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-inboxes ms-3 me-2"></i>
+          Padrón PCD
+        </a></span>
+        <div class="collapse" id="padron-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="padronpcd.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-folder-plus ms-2 me-3"></i> Agregar nuevo</a></li>
+            <li><a href="padronpcdActualizar.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-journals ms-2 me-3"></i> Actualizar expediente</a></li>
+            
+          </ul>
+        </div>
       </li>
       <li class="mb-1 mt-2">
       <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-person-badge ms-3 me-2"></i>
@@ -180,24 +192,19 @@ include('prcd/qc/qc.php');
         </div>
       </li>
       <li class="border-top my-3"></li>
-      <li class="ms-2 mb-1">
-        <!-- <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-gear-fill ms-2 me-3"></i> Ajustes</a></span> -->
         <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-gear-fill ms-2 me-2"></i>
           Ajustes
         </a></span>
       </li>
       <li class="mb-1"> 
-<!--         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          Ajustes
-        </button> -->
         <div class="collapse" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li class="list-group-item disabled"><a class="link-secondary d-inline-flex text-decoration-none rounded" readonly><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#editarUser"><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
             <li><a href="cuentasusuario.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-people ms-2 me-3"></i>Gestión de usuarios</a></li>
           </ul>
           <li class="border-top my-3"></li>
-      <li class="ms-2 mb-1">
-      <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
+          <li class="ms-2 mb-1">
+          <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
           Cerrar Sesión
           </a></span>
       </li>
