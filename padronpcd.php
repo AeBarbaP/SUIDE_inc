@@ -248,9 +248,14 @@ include('prcd/qc/qc.php');
           <div class="col-sm-2 justify-content-between align-items-center">
             <p class="h4">No. Expediente</p>
             <br>
-            <img id="img1" src="img/no_profile.png" width="100%" style="width:15rem">
+            <img id="img1" src="img/no_profile.png" width="100%" style="width:14rem">
             <div class="input-group">
               <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+            </div>
+            <br>
+            <img id="img1" src="img/no_qr.png" width="100%" style="width:14rem">
+            <div class="d-grid gap-2">
+              <button type="button" class="btn btn-light">Generar QR</button>
             </div>
           </div>
           <div class="col-sm-10">
@@ -1291,6 +1296,7 @@ include('prcd/qc/qc.php');
                             <th scope="col">Descripción</th>
                             <th scope="col">Estatus</th>
                             <th scope="col">Fecha Entrega</th>
+                            <th scope="col">Acta Entrega</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -1301,6 +1307,7 @@ include('prcd/qc/qc.php');
                             <td>Otto</td>
                             <td>Otto</td>
                             <td>Otto</td>
+                            <td><a href=""><i class="bi bi-file-earmark-text"></i></a></td>
                           </tr>
                         </tbody>
                       </table>
@@ -1384,23 +1391,34 @@ include('prcd/qc/qc.php');
                         </tr>
                       </tbody>
                     </table>
+                    <div class="d-grid gap-2">
+                      <button class="btn btn-primary btn-lg" type="button">Imprimir formato...</button>
+                    </div>
                   </div>
                 </div>
                 <div class="tab-pane fade show active" id="nav-formato" role="tabpanel" aria-labelledby="nav-formato-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <label for="basic-url" class="form-label h4"><i class="bi bi-files"></i> Impresión de formatos:</label>
-                    <div class="col-md-4">
-                      <a href="" id="impresion"><img src="img/Registro.jpg" class="rounded mx-auto d-block" style="width: 85%;" alt="..."></a>
+                    <div class="col-md-6 d-flex justify-content-center mt-3">
+                      <div class="card" style="width: 18rem;">
+                        <img src="img/Registro.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Formato de Registro</h5>
+                          <a href="#" class="btn btn-primary">Imprimir</a>
+                        </div>
+                      </div>  
                     </div>
-                    <div class="col-md-4">
-                      <a href="" id="impresion"><img src="img/Documentos.jpg" class="rounded mx-auto d-block" style="width: 85%;" alt="..."></a>
-                    </div>
-                    <div class="col-md-4">
-                      <a href="" id="impresion"><img src="img/Responsiva.jpg" class="rounded mx-auto d-block" style="width: 85%;" alt="..."></a>
+                    <div class="col-md-6 d-flex justify-content-center">
+                      <div class="card" style="width: 18rem;">
+                        <img src="img/Responsiva.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Acta Responsiva</h5>
+                          <a href="#" class="btn btn-primary">Imprimir</a>
+                        </div>
+                      </div>  
                     </div>
                   </div>
                 </div>
-
               </div>
           </div>
         </div>
