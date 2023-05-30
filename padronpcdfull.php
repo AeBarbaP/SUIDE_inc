@@ -33,6 +33,14 @@ include('prcd/qc/qc.php');
     $id = $_SESSION['id'];
     $perfil = $_SESSION['perfil'];
     $nombre = $_SESSION['nombre'];
+    
+    $sqlStatus = "SELECT * FROM users WHERE id ='$id'";
+    $resultadoStatus = $conn->query($sqlStatus);
+    $rowStatus = $resultadoStatus->fetch_assoc();
+
+    $sqlPerfil="SELECT * FROM perfiles_usr WHERE id='$perfil'";
+    $resultadoPerfil = $conn->query($sqlPerfil);
+    $rowPerfil=$resultadoPerfil->fetch_assoc();
 
 ?>
 
@@ -53,9 +61,7 @@ include('prcd/qc/qc.php');
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-    <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script>
@@ -63,10 +69,8 @@ include('prcd/qc/qc.php');
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="sidebars.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-    <!-- <script src="sidebars.js"></script> -->
-    <!-- <script src="assets/dist/js/bootstrap.bundle.min.js"></script> -->
-
-    <!-- <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 
     <style>
       body {
@@ -153,16 +157,17 @@ include('prcd/qc/qc.php');
       <hr>      
       <div class="flex-shrink-0 p-2 bg-white" style="width: 100%;">
     
-      <ul class="list-unstyled ps-0 mt-3">
+    <ul class="list-unstyled ps-0 mt-3">
       <li class="ms-2 mb-1">
         <span class="d-inline-flex"><a href="dashboard.php" id="linkHome" class="link-dark"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
       </li>
       <li class="mb-1 mt-2">
-      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="padronpcdfull.php" id="linkHome" class="link-dark"><i class="bi bi-inboxes ms-3 me-2"></i>
+      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-inboxes ms-3 me-2"></i>
           Padrón PCD
         </a></span>
         <div class="collapse" id="padron-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="padronpcdfull.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-inboxes ms-2 me-3"></i> Padrón PCD</a></li>
             <li><a href="padronpcd.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-folder-plus ms-2 me-3"></i> Agregar nuevo</a></li>
             <li><a href="padronpcdActualizar.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-journals ms-2 me-3"></i> Actualizar expediente</a></li>
             
@@ -181,7 +186,7 @@ include('prcd/qc/qc.php');
           </ul>
         </div>
       </li>
-      <li class="mb-1 ms-2">
+      <li class="mb-1 mt-2 ms-2">
       <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#credencial-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-person-vcard ms-2 me-2"></i>
           Credenciales
         </a></span>
@@ -192,6 +197,7 @@ include('prcd/qc/qc.php');
         </div>
       </li>
       <li class="border-top my-3"></li>
+      <li class="ms-2 mb-1">
         <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-gear-fill ms-2 me-2"></i>
           Ajustes
         </a></span>
@@ -203,8 +209,8 @@ include('prcd/qc/qc.php');
             <li><a href="cuentasusuario.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-people ms-2 me-3"></i>Gestión de usuarios</a></li>
           </ul>
           <li class="border-top my-3"></li>
-          <li class="ms-2 mb-1">
-          <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
+      <li class="ms-2 mb-1">
+      <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
           Cerrar Sesión
           </a></span>
       </li>
@@ -217,227 +223,227 @@ include('prcd/qc/qc.php');
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
-        <p class="h3">Bienvenid@</p>
-        
+        <p class="h3">Padrón de Personas con Discapacidad</p>
       </div>
-      <p class="h6 mb-4 text-muted">Sistema Único de Identificación y Verificación</p>
+      <!-- <p class="h6 mb-5  text-muted">Sistema Único de Identificación y Verificación</p> -->
       <hr>
-      <div class="container-fluid">
-        <div class="row justify-content-between">
-          <div class="col-6 mt-3">
-            <h4 class="text-muted">Gestión de usuarios SUIDEV</h4>
-          </div>
-          <div class="col-6 mt-3 text-end">
-            <div class="btn-group" role="group" aria-label="Basic outlined example">
-              <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#agregar"><i class="bi bi-person-plus-fill"></i> Nuevo</button>
-              <button class="btn btn-outline-secondary dropdown-toggle btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-list"></i> Listas de Usuarios
-              </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" style="font-size:small" href="#">Activos</a></li>
-                  <li><a class="dropdown-item" style="font-size:small" href="#">Inactivos</a></li>
-                </ul>
-            </div>
-          </div>
-        </div> 
-        <br>
-        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar usuario...">
-        <datalist id="datalistOptions">
-          <option value="San Francisco">
-          <option value="New York">
-          <option value="Seattle">
-          <option value="Los Angeles">
-          <option value="Chicago">
-        </datalist>
-        
-      
-      <div class="table-responsive mt-3">
+      <!-- <h4 class="text-muted mt-4">Últimos documentos generados</h4> -->
+      <div class="table-responsive">
             <table class="table table-hover table-bordered table-sm align-middle mt-4">
               <thead style="background-color:#B8B8B8;" class="text-light align-middle">
                 <tr class="text-center">
-                    <th scope="col">No.</th>
+                    <th scope="col">Fotografía</th>
+                    <th scope="col"># Expediente</th>
                     <th scope="col">Nombre Completo</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Perfil</th>
-                    <th scope="col">Fecha creación</th>
-                    <th scope="col">Último LogIn</th>
+                    <th scope="col">Tipo Discapacidad</th>
+                    <th scope="col">Municipio</th>
                     <th scope="col">Estatus</th>
-                    <th scope="col">Editar</th>
+                    <th scope="col">Credencial</th>
+                    <th scope="col">Tarjetón</th>
+                    <th scope="col">Actualizar</th>
                 </tr>
               </thead>
               <tbody id="myTable">
                 <?php
                   include('prcd/query.php');
                   $x = 0;
-                  while ($row_sqlQueryUsers = $resultadoQueryUsers->fetch_assoc()) {
+                  while ($row_sqlQueryCredencial = $resultadoQueryCredencial->fetch_assoc()) {
                     $x++;
                     echo '
-                    <input id="imprime2" value="'.$row_sqlQueryUsers['id'].'" hidden>
+                    <input id="imprime2" value="'.$row_sqlQueryCredencial['id'].'" hidden>
                     <tr class="text-center bg-white">
                       <td>' . $x . '</td>
-                      <td>' . $row_sqlQueryUsers['nombre'] . '</td>
-                      <td>' . $row_sqlQueryUsers['username'] . '</td>
-                      <td>' . $row_sqlQueryUsers['perfil'] . '</td>
-                      <td>' . $row_sqlQueryUsers['fecha_creacion'].'</td>';
-                      $idLogIn = $row_sqlQueryUsers['id'];
-                      include ('prcd/querylogs.php');
-                      $rowLogIn = $resultadoLogIn->fetch_assoc();
-                      
-                      if(!empty($rowLogIn['fecha_iniciosesion'])) {
-                        echo'
-                          <td>' .$rowLogIn['fecha_iniciosesion'].'</td>';
-                      }
-                          else{
-                            echo '<td>Usuario nuevo</td>';
-                            }
+                      <td>' . $row_sqlQueryCredencial['id_ext'] . '</td>
+                      <td>' . $row_sqlQueryCredencial['fecha_c'] . '</td>
+                      <td>' . $row_sqlQueryCredencial['vigencia_cred'] . '</td>';
+                      $idusers= $row_sqlQueryCredencial['id_users'];
+                      $sqlUser= "SELECT * FROM users WHERE id ='$idusers'";
+                      $resultadoQueryUser = $conn->query($sqlUser);
+                      $row_sqlQueryUser = $resultadoQueryUser->fetch_assoc();
                       echo '
-                      <td>' . $row_sqlQueryUsers['estatus'] . '</td>
-                      ';
+                      <td>' . $row_sqlQueryUser['nombre'] . '</td>';
 
-                      echo '<td><span class="badge text-bg-secondary" type="button" data-bs-toggle="modal" data-bs-target="#editar'.$row_sqlQueryUsers['id'].'"><i class="bi bi-pencil-square"></i> Editar</span></td>
-                      ';
+                      if($row_sqlQueryCredencial['entregado_c'] == 1){
+                        echo '
+                        <td><a href="data-bs-toggle="modal" data-bs-target="#CredencialQR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-check text-success"></i></a></td>';
+                      } elseif($row_sqlQueryCredencial['entregado_c'] == 0){
+                        echo '
+                        <td><a href="data-bs-toggle="modal" data-bs-target="#'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-x text-danger"></a></i></td>';
+                      }
+
+                      if($row_sqlQueryCredencial['entregado_t'] == 1){
+                        echo '
+                        <td><a href="data-bs-toggle="modal" data-bs-target="#TarjetonQR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-check text-success"></i></a></td>';
+                      } elseif($row_sqlQueryCredencial['entregado_t'] == 0){
+                        echo '
+                        <td><a href="data-bs-toggle="modal" data-bs-target="#'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-x text-danger"></i></a></td>';
+                      }
                       echo '
                     <tr>
+                    <!-- Modal para imprimir credencial-->
+                    <div class="modal fade" id="CredencialQR'.$row_sqlQueryCredencial['id'].'" tabindex="-1" aria-labelledby="QRLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-qr-code"></i> Información QR</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body" style="text-align: center; background-image: url(img/CredencialInclusionFront.jpg); background-repeat: no-repeat;background-attachment: fixed; background-size: cover;" id="div_print'.$row_sqlQueryCredencial['id'].'">
+                          
+                            <br>
+                            <center><h5 style="font-size: 1.5rem"><strong>Número de Expediente:</strong> ' . $row_sqlQueryCredencial['id_ext'] . ' </h5>
+                            <h5 style="font-size: 1.5rem"><strong>Fecha de expedición:</strong> ' . $row_sqlQueryCredencial['fecha_c'] . '</h5>
+                            <h5 style="font-size: 1.5rem"><strong>Expira:</strong> ' . $row_sqlQueryCredencial['vigencia_cred'] . ' </h5>
+                            <h5 style="font-size: 1.5rem"><strong>Atenidod por:</strong> ' . $row_sqlQueryCredencial['id_users'] . '</h5>
+                            <h5 style="font-size: 1.5rem"><strong></strong></h5></center>
+                            <p class="text-center"><img src="prcd/QR/codes/'. $row_sqlQueryCredencial['qr_cred'].'"></p>
+                          </div>
+                          <div class="modal-footer">';?>
+                          <!-- <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('div_print<?php echo $row_sqlQuery['id']?>')"><i class="bi bi-printer-fill"></i> Imprimir</a> -->
+                          <?php echo '
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    ';
                     
-                    <!-- Inicia Modal editar-->
-                    <div class="modal fade" id="editar'.$row_sqlQueryUsers['id'].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Editar Usuario</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <form action="prcd/actualizaruser.php" method="POST"><!--form-->
-                                  <input name="id" value="'.$row_sqlQueryUsers['id'].'" hidden>
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
-                                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" value="' . $row_sqlQueryUsers['nombre'] . '" aria-describedby="basic-addon1" name="nombre" required>
-                                  </div>
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-workspace"></i></span>
-                                    <input type="text" class="form-control" placeholder="Usuario" aria-label="usuario" value="' . $row_sqlQueryUsers['username'] . '" aria-describedby="basic-addon1"  name="username" readonly>
-                                  </div>
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1" for="inputGroupSelect01">Perfil</span>
-                                    ';
-                                    $idPerfil=$row_sqlQueryUsers['perfil'];
-                                    $sqlPerfil="SELECT * FROM perfiles_usr WHERE id='$idPerfil'";
-                                    $resultadoPerfil = $conn->query($sqlPerfil);
-                                    $rowPerfil=$resultadoPerfil->fetch_assoc();
-
-
-                                    echo '
-                                    <select class="form-select" id="inputGroupSelect01" value="' . $row_sqlQueryUsers['perfil'] . '" selected="selected" name="perfilselect">';
-                                    ?>
-                                      
-                                      <option value="<?php echo $rowPerfil['id'];?>" selected="selected" disabled><?php echo $rowPerfil['perfil'];?></option>
-                                      <option value="1">Administrador</option>
-                                      <option value="2">Usuario</option>
-                                    </select>
-
-                                    <?php
-                                    echo '
-                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">';
-                                    $idId =$rowPerfil['id'];
-                                    $estatusUsr=$row_sqlQueryUsers['estatus'];
-              
-                                      echo '
-
-                                      <input type="radio" class="btn-check" value="1" name="btnradio" id="btnradio1'.$idLogIn.'" 
-                                      ';
-                                      if($estatusUsr ==  1){
-                                        echo 'checked="checked"';
-                                      }
-                                      echo'
-                                      >
-                                      <label class="btn btn-outline-success" for="btnradio1'.$idLogIn.'"><i class="bi bi-check-lg"></i> Activo</label>
-                                    
-                                      <input type="radio" class="btn-check" value="2" name="btnradio" id="btnradio2'.$idLogIn.'"  
-                                      ';
-                                      if($estatusUsr == 2){
-                                        echo 'checked="checked"';
-                                      }
-                                      echo'
-                                      >
-                                      <label class="btn btn-outline-danger" for="btnradio2'.$idLogIn.'"><i class="bi bi-x-lg"></i> Inactivo</label>
-                                      ';
-                                    
-                                    echo '
-                                    </div>
-                                  </div>
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-shield-lock-fill"></i></span>
-                                    <input type="password" class="form-control" placeholder="Contraseña" aria-label="contraseña" value="' . $row_sqlQueryUsers['pwd'] . '" aria-describedby="basic-addon1" name="pwd" id="passW'.$idLogIn.'">
-                                  </div>
-                                  <input type="checkbox" onclick="myFunction'.$idLogIn.'()"> Mostrar Password 
-                                  <script>
-                                  function myFunction'.$idLogIn.'() {
-                                    var x = document.getElementById("passW'.$idLogIn.'");
-                                    if (x.type === "password") {
-                                      x.type = "text";
-                                    } else {
-                                      x.type = "password";
-                                    }
-                                  } 
-                                  </script>
-                                  
-                            </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
-                                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Guardar Cambios</button>
-                              </div>
-                            </form><!--form-->
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Inicia Modal agregar-->
-                    <div class="modal fade" id="agregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Agregar Usuario</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <form action="prcd/guardarusr.php" method="POST"><!--form-->
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
-                                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1" name="nombre" required>
-                                  </div>
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-workspace"></i></span>
-                                    <input type="text" class="form-control" placeholder="Usuario" aria-label="usuario" aria-describedby="basic-addon1"  name="username" required>
-                                  </div>
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1" for="inputGroupSelect01">Perfil</span>
-                                    <select class="form-select" id="inputGroupSelect01" name="perfil" required>
-                                      <option selected>Elige...</option>
-                                      <option value="1">Administrador</option>
-                                      <option value="2">Usuario</option>
-                                    </select>
-                                  </div>
-                                  <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-shield-lock-fill"></i></span>
-                                    <input type="text" class="form-control" placeholder="Contraseña" aria-label="contraseña" aria-describedby="basic-addon1"  name="pwd" required>
-                                  </div>
-                                  
-                            </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
-                                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Guardar Cambios</button>
-                              </div>
-                            </form><!--form-->
-                        </div>
-                      </div>
-                    </div>
-                  
-                    ';}
+                  }
             echo'</table>';
             ?>
           </div>
-          </div>
+        <!-- Inicia Modal para generar credencial -->
+        <div class="modal fade" id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Generar Credencial con QR</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body" style="height: 620px;">
+                            <div class="input-group mb-1 mt-2 w-50">
+                              <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                              <input class="form-control" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+                            </div><!-- input group -->
+                            <br>
+                            <div class="container text-center">
+                              <div class="card mb-3" style="width: 100%;">
+                              <form action="prcd/generaqrcredencial.php" id="form-id" method="POST"><!--form-->
+                                <div class="row g-0" id="credencial">
+                                    
+                                </div><!-- row -->
+                              </form>
+                              </div><!-- card -->
+                            </div><!-- container -->
+                          </div><!-- modal body -->
+                          
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd()"><i class="bi bi-save2"></i> Generar Credencial</button>
+                            <button type="button" class="btn btn-primary" id="imprimirc" data-bs-target="#credencialpreview" data-bs-toggle="modal" disabled><i class="bi bi-printer"></i> Imprimir</button>
+                          </div><!-- modal footer -->
+                        </div><!-- modal content -->
+                      </div><!-- modal dialog -->
+                    </div><!-- modal -->
+                    <!-- Inicia modal anidado para vista previa de credencial -->
+                    <div class="modal fade" id="credencialpreview" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                      <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Vista previa</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="row">
+                              <div class="col text-center">
+                                <img src="img/CredencialInclusionFront.jpg" style="max-width: 50%" alt="">
+                                <br>
+                                <img src="img/CredencialInclusionBack.jpg" style="max-width: 50%" alt="">
+                              </div>
+                            </div>  
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button class="btn btn-primary" data-bs-target="#credgen" data-bs-toggle="modal"><i class="bi bi-chevron-double-left me-2"></i>Regresar</button>
+                            <button type="button" class="btn btn-primary" id="imprimirp" ><i class="bi bi-printer"></i> Imprimir</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Termina modal anidado para vista previa de credencial -->
+                    <!-- Termina Modal para generar credencial -->
+
+                    <!-- Inicia Modal para generar tarjeton -->
+
+                    <div class="modal fade " id="tarjetongen" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Generar Tarjetón con QR</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="input-group mb-1 mt-2 w-100">
+                              <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                              <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+                            </div><!-- input group -->
+                            <br>
+                            <div class="container text-center">
+                              <div class="card mb-3" style="max-width: 100%;">
+                                <div class="row g-0">
+                                  <div class="col-md-4">
+                                    <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
+                                  </div>
+                                  <div class="col-md-8">
+                                    <div class="card-body text-start" >
+                                      <div id = "tarjeton">
+
+                                      </div>
+                                      <hr>
+                                      <h5 class="mb-3">Datos del vehículo</h5>
+                                      <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">Marca</span>
+                                        <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaForm">
+                                      </div>
+                                      <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">Modelo</span>
+                                        <input type="text" class="form-control" placeholder="Modelo" aria-label="modelo" aria-describedby="basic-addon1">
+                                        <span class="input-group-text">Año</span>
+                                        <input type="text" class="form-control" placeholder="Año" aria-label="anio" id="annioForm">
+                                      </div>
+                                      <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">No. de Placas</span>
+                                        <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasForm">
+                                      </div>
+                                      <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">No. de Serie</span>
+                                        <input type="text" class="form-control" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieForm">
+                                      </div>
+                                      <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1">No. de choferes</span>
+                                        <input type="number" class="form-control" placeholder="# de choferes" aria-label="no_choferes" aria-describedby="basic-addon1" id="choferesForm">
+                                      </div>
+                                      <div class="input-group">
+                                        <span class="input-group-text">Nombre(s) del(los)<br>Chofer(es)</span>
+                                        <textarea class="form-control" aria-label="nombres de los choferes"  id="nombresChoferesForm"></textarea>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>  
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" id="habilitaimprimirt" onclick="swaldatostrn()"><i class="bi bi-save2"></i> Generar Tarjetón</button>
+                            <button type="button" class="btn btn-primary" id="imprimirt" disabled><i class="bi bi-printer"></i> Imprimir</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Termina Modal para generar tarjeton -->
+      
     </main>
     <script src="sidebars.js"></script>
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -689,21 +695,103 @@ include('prcd/qc/qc.php');
     }
   }
 
-  // function init() {
-  //   var inputFile = document.getElementById('inputFile1');
-  //   inputFile.addEventListener('change', mostrarImagen, false);
-  // }
+  function init() {
+    var inputFile = document.getElementById('inputFile1');
+    inputFile.addEventListener('change', mostrarImagen, false);
+  }
+  function mostrarImagen(event) {
+  var file = event.target.files[0];
+  var reader = new FileReader();
+    reader.onload = function(event) {
+    var img = document.getElementById('img1');
+    img.src= event.target.result;
+  }
+  reader.readAsDataURL(file);
+  }
 
-  // function mostrarImagen(event) {
-  //   var file = event.target.files[0];
-  //   var reader = new FileReader();
-  //   reader.onload = function(event) {
-  //     var img = document.getElementById('img1');
-  //     img.src= event.target.result;
-  //   }
-  //   reader.readAsDataURL(file);
-  // }
-
-  // window.addEventListener('load', init, false);
+  window.addEventListener('load', init, false);
 
 </script>
+
+<!-- Inicia Modal editar-->
+
+
+<div class="modal fade" id="editarUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Editar Usuario</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="prcd/actualizaruseractivo.php" method="POST"><!--form-->
+                  <input name="id" value="<?php echo $id?>" hidden>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" value="<?php echo $nombre?>" aria-describedby="basic-addon1" name="nombre" required>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-workspace"></i></span>
+                    <input type="text" class="form-control" placeholder="Usuario" aria-label="usuario" value="<?php echo $usuario?>" aria-describedby="basic-addon1" readonly>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" for="inputGroupSelect01" readonly>Perfil</span>
+
+                    <select class="form-select" id="inputGroupSelect01" value="<?php echo $rowPerfil;?>" selected="selected" disabled>
+
+                      <option value="<?php echo $rowPerfil['id'];?>" selected="selected" disabled><?php echo $rowPerfil['perfil'];?></option>
+
+                    </select>
+
+                    <?php
+                    echo '
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group" disabled>';
+                      echo '
+                      <input type="radio" class="btn-check" value="1" id="btnradio1" 
+                      ';
+                      if($rowStatus['estatus'] ==  1){
+                        echo 'checked="checked"';
+                      }
+                      echo'
+                      disabled>
+                      <label class="btn btn-outline-success" for="btnradio1"><i class="bi bi-check-lg"></i> Activo</label>
+                    
+                      <input type="radio" class="btn-check" value="2" id="btnradio2"  
+                      ';
+                      if($rowStatus['estatus'] == 2){
+                        echo 'checked="checked"';
+                      }
+                      echo'
+                      disabled>
+                      <label class="btn btn-outline-danger" for="btnradio2"><i class="bi bi-x-lg"></i> Inactivo</label>
+                      ';
+                    
+                    echo '
+                    </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-shield-lock-fill"></i></span>
+                    <input type="password" class="form-control" placeholder="Contraseña" aria-label="contraseña" value="' . $rowStatus['pwd'] . '" aria-describedby="basic-addon1" name="pwd" id="passW">
+                  </div>
+                  <input type="checkbox" onclick="myFunction()"> Mostrar Password 
+                  <script>
+                  function myFunction() {
+                    var x = document.getElementById("passW");
+                    if (x.type === "password") {
+                      x.type = "text";
+                    } else {
+                      x.type = "password";
+                    }
+                  } 
+                  </script>
+                  
+            </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
+                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Guardar Cambios</button>
+              </div>
+            </form><!--form-->
+        </div>
+      </div>
+    </div>
+    ';
