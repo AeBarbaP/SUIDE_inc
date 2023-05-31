@@ -148,7 +148,7 @@ include('prcd/qc/qc.php');
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body onload="checks()">
+  <body>
     
 <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
@@ -464,7 +464,7 @@ include('prcd/qc/qc.php');
                           <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaNo" value="0">
                           <label class="form-check-label" for="estudia">No</label>
                         </div>
-                        <input type="text" class="form-control" id="lugarEstudia" name="datos_usr" placeholder="Dónde estudia..." disabled>
+                        <input type="text" class="form-control" id="lugarEstudia" name="lugarEstudia" placeholder="Dónde estudia..." disabled>
                       </div>
                     </div>
                   </div>
@@ -481,11 +481,11 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Trabaja:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="trabajaOp(this.value)" name="trabaja" id="trabaja" value="1">
+                          <input class="form-check-input" type="radio" onclick="trabajaOp(this.value)" name="trabaja" id="trabajaSi" value="1">
                           <label class="form-check-label" for="trabaja">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="trabajaOp(this.value)" name="trabaja" id="trabaja" value="0">
+                          <input class="form-check-input" type="radio" onclick="trabajaOp(this.value)" name="trabaja" id="trabajaNo" value="0">
                           <label class="form-check-label" for="trabaja">No</label>
                         </div>
                         <input type="text" class="form-control" id="lugarTrabajo" name="lugarTrabajo" placeholder="Dónde trabaja..." disabled>
@@ -506,11 +506,11 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Pertenece a alguna Asociación Civil:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="asociacionOp(this.value)" name="asociacion" id="asociacion" value="1">
+                          <input class="form-check-input" type="radio" onclick="asociacionOp(this.value)" name="asociacion" id="asociacionSi" value="1">
                           <label class="form-check-label" for="inlineRadio1">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="asociacionOp(this.value)" name="asociacion" id="asociacion" value="0">
+                          <input class="form-check-input" type="radio" onclick="asociacionOp(this.value)" name="asociacion" id="asociacionNo" value="0">
                           <label class="form-check-label" for="inlineRadio2">No</label>
                         </div>
                         <input type="text" class="form-control" id="nombreAC" name="datos_usr" placeholder="Nombre de la AC..." disabled>
@@ -522,11 +522,11 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Pertenece a algún Sindicato:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="sindicatoOp(this.value)" name="sindicato" id="sindicato" value="1">
+                          <input class="form-check-input" type="radio" onclick="sindicatoOp(this.value)" name="sindicato" id="sindicatoSi" value="1">
                           <label class="form-check-label" for="sindicato">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="sindicatoOp(this.value)" name="sindicato" id="sindicato" value="2">
+                          <input class="form-check-input" type="radio" onclick="sindicatoOp(this.value)" name="sindicato" id="sindicatoNo" value="2">
                           <label class="form-check-label" for="sindicato">No</label>
                         </div>
                         <input type="text" class="form-control" id="nombreSindicato" name="datos_usr" placeholder="Nombre del Sindicato..." disabled>
@@ -538,11 +538,11 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Pensionado:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="pensionOp(this.value)" name="pension" id="pension" value="1">
+                          <input class="form-check-input" type="radio" onclick="pensionOp(this.value)" name="pension" id="pensionSi" value="1">
                           <label class="form-check-label" for="inlineRadio1">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="pensionOp(this.value)" name="pension" id="pension" value="0">
+                          <input class="form-check-input" type="radio" onclick="pensionOp(this.value)" name="pension" id="pensionNo" value="0">
                           <label class="form-check-label" for="inlineRadio2">No</label>
                         </div>
                         <input type="text" class="form-control" id="instPension" name="datos_usr" placeholder="Dónde..." disabled>
@@ -570,7 +570,7 @@ include('prcd/qc/qc.php');
                   <div class="col-sm-10 mb-3">
                     <label for="exampleDataListSS" class="form-label">Tipo de Seguridad Social:</label>
                     <div class="input-group">
-                      <select class="form-select" onchange="seguridadOp(this.value)" aria-label="Default select example">
+                      <select class="form-select" id="seguridadsocial" onchange="seguridadOp(this.value)" aria-label="Default select example">
                         <option selected>Selecciona...</option>
                         <option value="1">IMSS</option>
                         <option value="2">ISSSTE</option>
