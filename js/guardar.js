@@ -6,6 +6,7 @@ $(document).ready(function() {
         var apellidoM = document.getElementById('apellidoM').value;
         var genero = document.getElementById('genero').value;
         var edad = document.getElementById('edad').value;
+        var edoCivil = document.getElementById('edoCivil').value;
         var curp = document.getElementById('curp').value;
         var rfc = document.getElementById('rfc').value;
         var fechaNacimiento = document.getElementById('fechaNacimiento').value;
@@ -23,6 +24,8 @@ $(document).ready(function() {
         var celular = document.getElementById('celular').value;
         var escolaridad = document.getElementById('escolaridad').value;
         var estudia = document.getElementById('estudia').value;
+        var estudiaSi = document.getElementById('estudiaSi').value;
+        var estudiaNo = document.getElementById('estudiaNo').value;
         var estudiaLugar = document.getElementById('lugarEstudia').value;
         var habilidad = document.getElementById('habilidad').value;
         var profesion = document.getElementById('profesion').value;
@@ -34,7 +37,43 @@ $(document).ready(function() {
         var sindicato = document.getElementById('sindicato').value;
         var nombreSindicato = document.getElementById('nombreSindicato').value;
         var pension = document.getElementById('pension').value;
+        var pensionInst = document.getElementById('instPension').value;
+        var pensionMonto = document.getElementById('montoP').value;
+        var pensionTemporalidad = document.getElementById('periodo').value;
         var seguridadsocial = document.getElementById('seguridadsocial').value;
+        var otroSS = document.getElementById('otroSS').value;
+
+
+        if(estudiaSi.checked){
+            var estudia = 1;
+        }
+        else if (estudiaNo.checked){
+            var estudia = 0;
+        }
+        if(trabaja.checked){
+            var trabaja = 1;
+        }
+        else{
+            var trabaja = 0;
+        }
+        if(asociacion.checked){
+            var asociacion = 1;
+        }
+        else{
+            var asociacion = 0;
+        }
+        if(sindicato.checked){
+            var sindicato = 1;
+        }
+        else{
+            var sindicato = 0;
+        }
+        if(pension.checked){
+            var pension = 1;
+        }
+        else if (){
+            var pension = 0;
+        }
 
         e.preventDefault();
 
@@ -48,6 +87,7 @@ $(document).ready(function() {
                 apellidoM:apellidoM,
                 genero:genero,
                 edad:edad,
+                edoCivil:edoCivil,
                 curp:curp,
                 rfc:rfc,
                 fechaNacimiento:fechaNacimiento,
@@ -79,9 +119,36 @@ $(document).ready(function() {
                 montoP:montoP,
                 periodo:periodo,
                 seguridadsocial:seguridadsocial,
-                otroSS:otroSS
+                otroSS:otroSS,
+                estudiaLugar:estudiaLugar,
+                trabajaLugar:trabajaLugar,
+                pensionInst:pensionInst,
+                pensionMonto:pensionMonto,
+                pensionTemporalidad:pensionTemporalidad
+            },
+            success: function(response){
+                var jsonData = JSON.parse(JSON.stringify(response));
+                
+                var verificador = jsonData.succes;
+                if (verificador == 1){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Datos Generales han sido guardados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+                else if (verificador == 2){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Datos Generales NO han sido guardados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
             }
-
         })
     })
 })
