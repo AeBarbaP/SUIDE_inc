@@ -351,6 +351,16 @@ include('prcd/qc/qc.php');
                       * Campo requerido.
                     </div>
                   </div>
+                  <div class="col-sm-4">
+                    <label for="edoCivil" class="form-label">Estado Civil:</label>
+                    <select class="form-select" id="edoCivil" aria-label="Default select example">
+                      <option selected>Selecciona...</option>
+                      <option value="1">Solter@</option>
+                      <option value="2">Casad@</option>
+                      <option value="3">Divorciad@</option>
+                      <option value="4">Viud@</option>
+                    </select>
+                  </div>
                   <div class="col-sm-8">
                     <label for="datos_pc" class="form-label">Domicilio:</label>
                     <input type="text" class="form-control" id="domicilio" name="datos_pc" placeholder="Nombre de la calle o vialidad" required>
@@ -391,11 +401,11 @@ include('prcd/qc/qc.php');
                     <label for="exampleDataList" class="form-label">Localidad:</label>
                     <input class="form-control" list="datalistOptions" id="localidad" placeholder="Type to search..." required>
                     <datalist id="datalistOptions">
-                      <option value="San Francisco">
-                      <option value="New York">
-                      <option value="Seattle">
-                      <option value="Los Angeles">
-                      <option value="Chicago">
+                      <option value="1">Santa Mónica</option>
+                      <option value="Nueva Alianza ">
+                      <option value="La Manga">
+                      <option value="Noria de Agostadero (El Agostadero)">
+                      <option value="El Porvenir">
                     </datalist>
                     <div class="invalid-feedback">
                       * Campo requerido.
@@ -403,13 +413,13 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Municipio:</label>
-                    <input class="form-control" list="datalistOptions" id="municipio" placeholder="Type to search..." required>
-                    <datalist id="datalistOptions">
-                      <option value="San Francisco">
-                      <option value="New York">
-                      <option value="Seattle">
-                      <option value="Los Angeles">
-                      <option value="Chicago">
+                    <input class="form-control" list="datalistOptions2" id="municipio" placeholder="Type to search..." required>
+                    <datalist id="datalistOptions2">
+                      <option value="1">Calera</option>
+                      <option value="2">Pinos</option>
+                      <option value="Río Grande">
+                      <option value="Zacatecas">
+                      <option value="Fresnillo">
                     </datalist>
                     <div class="invalid-feedback">
                       * Campo requerido.
@@ -447,11 +457,11 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Estudia:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudia" value="1">
+                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaSi" value="1">
                           <label class="form-check-label" for="estudia">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudia" value="0">
+                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaNo" value="0">
                           <label class="form-check-label" for="estudia">No</label>
                         </div>
                         <input type="text" class="form-control" id="lugarEstudia" name="datos_usr" placeholder="Dónde estudia..." disabled>
