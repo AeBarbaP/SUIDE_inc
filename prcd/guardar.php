@@ -152,10 +152,17 @@ VALUES(
 $resultado= $conn->query($sqlinsert);
 
 if ($resultado) {
-    echo json_encode(array('success'=>1));
+    echo json_encode(array(
+        'success'=>1
+    ));
 }
 else {
-    echo json_encode(array('success'=>2));
+    $error = $conn->error;
+    echo json_encode(array(
+        'success'=>2,
+        'error'=>$error
+    ));
+
 }
 
 ?>
