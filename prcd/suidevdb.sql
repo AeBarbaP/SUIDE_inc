@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2023 at 10:21 PM
+-- Generation Time: Jun 01, 2023 at 07:44 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -61,6 +61,10 @@ CREATE TABLE `datos_generales` (
   `asoc_cual` varchar(100) NOT NULL,
   `pensionado` int(11) NOT NULL,
   `pensionado_donde` varchar(100) NOT NULL,
+  `pension_monto` int(11) NOT NULL,
+  `pension_temporalidad` varchar(20) NOT NULL,
+  `sindicato` int(11) NOT NULL,
+  `sindicato_cual` varchar(100) NOT NULL,
   `seguridad_social` int(11) NOT NULL,
   `seguridad_social_donde` varchar(100) NOT NULL,
   `seguridad_social_otro` varchar(100) NOT NULL
@@ -103,6 +107,30 @@ CREATE TABLE `datos_medicos` (
 --
 
 CREATE TABLE `documentos` (
+  `id` int(11) NOT NULL,
+  `id_ext` varchar(50) NOT NULL,
+  `concatenado_id` varchar(50) NOT NULL,
+  `qr_cred` varchar(100) NOT NULL,
+  `qr_tarjeton` varchar(100) NOT NULL,
+  `entregado_c` int(10) NOT NULL,
+  `fecha_c` date DEFAULT NULL,
+  `entregado_t` int(10) DEFAULT NULL,
+  `fecha_t` date DEFAULT NULL,
+  `vigencia_cred` date DEFAULT NULL,
+  `vigencia_tarjeton` date DEFAULT NULL,
+  `id_users` int(15) NOT NULL,
+  `recibe` varchar(50) NOT NULL,
+  `folio_cred` int(10) DEFAULT NULL,
+  `folio_tarj` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `documentos_list`
+--
+
+CREATE TABLE `documentos_list` (
   `id` int(11) NOT NULL,
   `id_ext` int(11) NOT NULL,
   `doc_medico` varchar(50) NOT NULL,
@@ -191,7 +219,29 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (22, 1, '2022-12-08 14:22:19', NULL),
 (23, 1, '2022-12-09 16:05:41', NULL),
 (24, 2, '2022-12-13 15:53:56', NULL),
-(25, 2, NULL, '2022-12-13 16:22:08');
+(25, 2, NULL, '2022-12-13 16:22:08'),
+(26, 1, '2023-05-12 09:20:17', NULL),
+(27, 1, NULL, '2023-05-12 09:20:43'),
+(28, 1, '2023-05-12 09:20:47', NULL),
+(29, 0, NULL, '2023-05-12 13:40:01'),
+(30, 1, '2023-05-12 13:40:05', NULL),
+(31, 0, NULL, '2023-05-12 14:11:08'),
+(32, 1, '2023-05-12 14:11:13', NULL),
+(33, 0, NULL, '2023-05-12 14:18:52'),
+(34, 0, NULL, '2023-05-12 14:18:54'),
+(35, 1, '2023-05-12 14:19:08', NULL),
+(36, 0, NULL, '2023-05-17 12:53:24'),
+(37, 1, '2023-05-17 12:53:51', NULL),
+(38, 1, '2023-05-18 11:26:08', NULL),
+(39, 1, '2023-05-19 08:38:17', NULL),
+(40, 1, '2023-05-22 11:58:31', NULL),
+(41, 1, '2023-05-23 10:01:52', NULL),
+(42, 1, '2023-05-24 12:35:11', NULL),
+(43, 1, '2023-05-25 10:51:06', NULL),
+(44, 1, '2023-05-26 08:14:18', NULL),
+(45, 1, '2023-05-30 08:39:13', NULL),
+(46, 1, '2023-05-31 09:29:15', NULL),
+(47, 0, NULL, '2023-05-31 13:11:59');
 
 -- --------------------------------------------------------
 
@@ -376,9 +426,9 @@ ALTER TABLE `datos_medicos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `documentos`
+-- Indexes for table `documentos_list`
 --
-ALTER TABLE `documentos`
+ALTER TABLE `documentos_list`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -458,9 +508,9 @@ ALTER TABLE `datos_medicos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `documentos`
+-- AUTO_INCREMENT for table `documentos_list`
 --
-ALTER TABLE `documentos`
+ALTER TABLE `documentos_list`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -479,7 +529,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `perfiles_usr`
