@@ -97,7 +97,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: "POST",
-            url: '',
+            url: 'prcd/guardar.php',
             dataType:'json',
             data: {
                 nombre:nombre,
