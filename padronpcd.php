@@ -1432,6 +1432,7 @@ include('prcd/qc/qc.php');
                   </div>
                 </div>
               </div>
+            </div>
           </div>
         </div>
       </div>

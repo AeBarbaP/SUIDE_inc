@@ -1,25 +1,5 @@
 <?php
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-?>
-
-<html>
-    <header>
-        <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="QR/ajax_generate_code.js"></script>
-        <script src="print.js" type="text/javascript"></script>
-    </header>
-<body>
-
-<?php
 include('qc/qc.php');
-include('QR/phpqrcode/qrlib.php'); 
 
 date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
@@ -31,7 +11,7 @@ $apellidoP = $_POST['apellido_p'];
 $apellidoM = $_POST['apellido_m'];
 $genero = $_POST['genero'];
 $edad = $_POST['edad'];
-$edo_civil = $_POST['edo_civil'];
+$edoCivil = $_POST['edo_civil'];
 $curp = $_POST['curp'];
 $rfc = $_POST['rfc'];
 $fechaNacimiento = $_POST['f_nacimiento'];
@@ -69,51 +49,51 @@ $otroSS = $_POST['seguridad_social_donde'];
 
 $sqlinsert= "INSERT INTO datos_generales (
     nombre,
-    apellidoP,
-    apellidoM,
+    apellido_p,
+    apellido_m,
     genero,
     edad,
     edo_civil,
     curp,
     rfc,
-    fechaNacimiento,
-    lugarNacimiento,
+    f_nacimiento,
+    lugar_nacimiento,
     domicilio,
-    numExt,
-    numInt,
+    no_ext,
+    no_int,
     colonia,
-    entreVialidades,
-    descripcionLugar,
+    entre_vialidades,
+    descr_referencias,
     localidad,
     municipio,
-    codigoPostal,
-    telFijo,
-    celular,
+    cp,
+    telefono_part,
+    telefono_cel,
     escolaridad,
     estudia,
-    estudiaLugar,
-    habilidad,
-    profesion,
+    estudia_donde,
+    estudia_habilidad,
+    profesión,
     trabaja,
-    trabajaLugar,
-    ingresoMensual,
-    asociacion,
-    asociacion_nombre,
+    trabaja_donde,
+    trabaja_ingresos,
+    asoc_civil,
+    asoc_cual,
     sindicato,
-    nombreSindicato,
-    pension,
-    pensionInst,
-    pensionMonto,
-    pensionTemporalidad,
-    seguridadsocial,
-    otroSS)
+    sindicato_cual,
+    pensionado,
+    pensionado_donde,
+    pension_monto,
+    pension_temporalidad,
+    seguridad_social,
+    seguridad_social_donde)
 VALUES(
     '$nombre',
     '$apellidoP',
     '$apellidoM',
     '$genero',
     '$edad',
-    '$edo_civil',
+    '$edoCivil',
     '$curp',
     '$rfc',
     '$fechaNacimiento',
@@ -166,6 +146,3 @@ else {
 }
 
 ?>
-    
-</body>
-</html>
