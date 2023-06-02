@@ -279,7 +279,7 @@ include('prcd/qc/qc.php');
                 <div class="row ms-4 g-3 mt-3" style="width:95%">
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Nombre:</label>
-                    <form action="" id="generalesForm">
+                    <form id="generalesForm">
                     <input type="text" class="form-control" id="nombre" name="datos_usr" placeholder="Nombre(s)" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
@@ -304,11 +304,11 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Género:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="genero" id="genero" value="Mujer">
+                          <input class="form-check-input" type="radio" name="genero" id="generoF" value="Mujer">
                           <label class="form-check-label" for="inlineRadio1">Mujer</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="genero" id="genero" value="Hombre">
+                          <input class="form-check-input" type="radio" name="genero" id="generoM" value="Hombre">
                           <label class="form-check-label" for="inlineRadio2"><i class="fa-thin fa-person"></i> Hombre</label>
                         </div>
                         <div class="form-check form-check-inline">
@@ -1408,7 +1408,7 @@ include('prcd/qc/qc.php');
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane fade show active" id="nav-formato" role="tabpanel" aria-labelledby="nav-formato-tab" tabindex="0">
+                <div class="tab-pane fade " id="nav-formato" role="tabpanel" aria-labelledby="nav-formato-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <label for="basic-url" class="form-label h4"><i class="bi bi-files"></i> Impresión de formatos:</label>
                     <div class="col-md-6 d-flex justify-content-center mt-3">

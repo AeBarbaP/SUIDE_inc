@@ -22,63 +22,16 @@ $(document).ready(function() {
         var telFijo = document.getElementById('telFijo').value;
         var celular = document.getElementById('celular').value;
         var escolaridad = document.getElementById('escolaridad').value;
-        var estudia = document.getElementById('estudia').value;
+        var estudia = document.getElementById('estudia');
         var habilidad = document.getElementById('habilidad').value;
         var profesion = document.getElementById('profesion').value;
-        var trabaja = document.getElementById('trabaja').value;
+        var trabaja = document.getElementById('trabaja');
         var ingresoMensual = document.getElementById('ingresoMensual').value;
-        var asociacion = document.getElementById('asociacion').value;
-        var sindicato = document.getElementById('sindicato').value;
-        var pension = document.getElementById('pension').value;
+        var asociacion = document.getElementById('asociacion');
+        var sindicato = document.getElementById('sindicato');
+        var pension = document.getElementById('pension');
         var seguridadsocial = document.getElementById('seguridadsocial').value;
 
-        e.preventDefault();
-
-        $.ajax({
-            type: "POST",
-            url: '',
-            dataType:'json',
-            data: {
-                nombre:nombre,
-                apellidoP:apellidoP,
-                apellidoM:apellidoM,
-                genero:genero,
-                edad:edad,
-                curp:curp,
-                rfc:rfc,
-                fechaNacimiento:fechaNacimiento,
-                lugarNacimiento:lugarNacimiento,
-                domicilio:domicilio,
-                numExt:numExt,
-                numInt:numInt,
-                colonia:colonia,
-                entreVialidades:entreVialidades,
-                descripcionLugar:descripcionLugar,
-                localidad:localidad,
-                municipio:municipio,
-                codigoPostal:codigoPostal,
-                telFijo:telFijo,
-                celular:celular,
-                escolaridad:escolaridad,
-                estudia:estudia,
-                lugarEstudia:lugarEstudia,
-                habilidad:habilidad,
-                profesion:profesion,
-                trabaja:trabaja,
-                lugarTrabajo:lugarTrabajo,
-                ingresoMensual:ingresoMensual,
-                asociacion:asociacion,
-                nombreAC:nombreAC,
-                sindicato:sindicato,
-                nombreSindicato:nombreSindicato,
-                pension:pension,
-                montoP:montoP,
-                periodo:periodo,
-                seguridadsocial:seguridadsocial,
-                otroSS:otroSS
-            }
-
-        })
     })
 })
 
@@ -223,9 +176,9 @@ function techoOp(x){
 }
 
 /* Datos Médicos */
-$(document).ready(function() {
-    $('#medicosForm').submit(function(e) {
-        var discapacidad = document.getElementById('discapacidad').value;
+/* $(document).ready(function() {
+    $('#medicosForm').submit(function(e) { */
+        /* var discapacidad = document.getElementById('discapacidad').value;
         var gradoDisc = document.getElementById('gradoDisc').value;
         var tipoDisc = document.getElementById('tipoDisc').value;
         var causaDisc = document.getElementById('causaDisc').value;
@@ -243,9 +196,9 @@ $(document).ready(function() {
         var enfermedades = document.getElementById('enfermedades').value;
         var enfermedadesFull = document.getElementById('enfermedadesFull').value;
         var medicamentos = document.getElementById('medicamentos').value;
-        var medicamentosFull = document.getElementById('medicamentosFull').value;
+        var medicamentosFull = document.getElementById('medicamentosFull').value; */
 
-        e.preventDefault();
+        /* e.preventDefault();
 
         $.ajax({
             type: "POST",
@@ -277,19 +230,19 @@ $(document).ready(function() {
                 medicamentos:medicamentos,
                 medicamentosFull:medicamentosFull
             }
-        })
-    })
+        }) */
+/*     })
 })
-
+ */
 
     
-    var tipoVivienda = document.getElementById('tipoVivienda').value;
+   /*  var tipoVivienda = document.getElementById('tipoVivienda').value;
     var viviendaOtro = document.getElementById('viviendaOtro').value;
     var numHabitaciones = document.getElementById('numHabitaciones').value;
     var techo = document.getElementById('techo').value;
     var pared = document.getElementById('pared').value;
     var dependenciaEconomica = document.getElementById('dependenciaEconomica').value;
-    var deudas = document.getElementById('deudas').value;
+    var deudas = document.getElementById('deudas').value; */
 
 /*         e.preventDefault(); */
 
@@ -441,19 +394,19 @@ function otroElectros(){
     }
 }
 
-$(document).ready(function() {
-    $('#familiaForm').submit(function(e) {
+/* $(document).ready(function() {
+    $('#familiaForm').submit(function(e) { */
         /* Integración Familiar */
-        var idFam = document.getElementById('idFam').value;
+/*         var idFam = document.getElementById('idFam').value;
         var nombreFamiliar = document.getElementById('nombreFamiliar').value;
         var parentescoFam = document.getElementById('parentescoFam').value;
         var edadFam = document.getElementById('edadFam').value;
         var escolaridadFam = document.getElementById('escolaridadFam').value;
         var profesionFam = document.getElementById('profesionFam').value;
         var discapacidadFam = document.getElementById('discapacidadFam').value;
-        var ingresoFam = document.getElementById('ingresoFam').value;
+        var ingresoFam = document.getElementById('ingresoFam').value; */
 
-        e.preventDefault();
+        /* e.preventDefault();
 
         $.ajax({
             type: "POST",
@@ -471,21 +424,21 @@ $(document).ready(function() {
             }
         })
     })
-})
+}) */
 
-$(document).ready(function() {
-    $('#referenciasForm').submit(function(e) {
+/* $(document).ready(function() {
+    $('#referenciasForm').submit(function(e) { */
         /* Referencias */
-        var idRef = document.getElementById('idRef').value;
+        /* var idRef = document.getElementById('idRef').value;
         var nombreReferencia = document.getElementById('nombreReferencia').value;
         var parentescoRef = document.getElementById('parentescoRef').value;
         var edadRef = document.getElementById('edadRef').value;
         var escolaridadRef = document.getElementById('escolaridadRef').value;
         var profesionRef = document.getElementById('profesionRef').value;
         var discapacidadRef = document.getElementById('discapacidadRef').value;
-        var ingresoRef = document.getElementById('ingresoRef').value;
+        var ingresoRef = document.getElementById('ingresoRef').value; */
 
-        e.preventDefault();
+        /* e.preventDefault();
 
         $.ajax({
             type: "POST",
@@ -503,12 +456,12 @@ $(document).ready(function() {
             }
         })
     })
-})
+}) */
 
-$(document).ready(function() {
-    $('#serviciosForm').submit(function(e) {
+/* $(document).ready(function() {
+    $('#serviciosForm').submit(function(e) { */
         /* Servicios Otorgados */
-        var folioSolicitud = document.getElementById('folioSolicitud').value;
+ /*        var folioSolicitud = document.getElementById('folioSolicitud').value;
         var fechaSolicitud = document.getElementById('fechaSolicitud').value;
         var tipoSolicitud = document.getElementById('tipoSolicitud').value;
         var descripcionSolicitud = document.getElementById('descripcionSolicitud').value;
@@ -516,9 +469,9 @@ $(document).ready(function() {
         var fechaEntrega = document.getElementById('fechaEntrega').value;
         var articuloSolicitud = document.getElementById('articuloSolicitud').value;
         var cantidadArt = document.getElementById('cantidadArt').value;
-        var costoUnitarioArt = document.getElementById('costoUnitarioArt').value;
+        var costoUnitarioArt = document.getElementById('costoUnitarioArt').value; */
 
-        e.preventDefault();
+        /* e.preventDefault();
 
         $.ajax({
             type: "POST",
@@ -539,19 +492,19 @@ $(document).ready(function() {
         })
     })
 })
-
-$(document).ready(function() {
-    $('#documentosForm').submit(function(e) {
+ */
+/* $(document).ready(function() {
+    $('#documentosForm').submit(function(e) { */
         /* Documentos Checklist */
-        var checkAllSi = document.getElementById('checkAllSi').value;
+/*         var checkAllSi = document.getElementById('checkAllSi').value;
         var checkAllNo = document.getElementById('checkAllNo').value;
         var checkAllNA = document.getElementById('checkAllNA').value;
 
         var valoracionSi = document.getElementById('valoracionSi').value;
         var valoracionNo = document.getElementById('valoracionNo').value;
         var valoracionNA = document.getElementById('valoracionNA').value;
-        
-        if (valoracionSi = checked){
+         */
+        /* if (valoracionSi = checked){
             document.getElementById('valoracionNo').checked = false;
             document.getElementById('valoracionNA').checked = false;
         } 
@@ -614,8 +567,8 @@ $(document).ready(function() {
             document.getElementById('comprobanteNo').checked = false;
             document.getElementById('comprobanteSi').checked = false;
         } 
-        
-        var fotosSi = document.getElementById('fotosSi').value;
+         */
+        /* var fotosSi = document.getElementById('fotosSi').value;
         var fotosNo = document.getElementById('fotosNo').value;
         var fotosNA = document.getElementById('fotosNA').value;
 
@@ -630,13 +583,13 @@ $(document).ready(function() {
         if (fotosNA.checked){
             document.getElementById('fotosNo').checked = false;
             document.getElementById('fotosSi').checked = false;
-        }
-
+        } */
+/* 
         var circulacionSi = document.getElementById('circulacionSi').value;
         var circulacionNo = document.getElementById('circulacionNo').value;
-        var circulacionNA = document.getElementById('circulacionNA').value;
+        var circulacionNA = document.getElementById('circulacionNA').value; */
 
-        if (circulacionSi.checked){
+        /* if (circulacionSi.checked){
             document.getElementById('circulacionNo').checked = false;
             document.getElementById('circulacionNA').checked = false;
         } 
@@ -648,12 +601,12 @@ $(document).ready(function() {
             document.getElementById('circulacionNo').checked = false;
             document.getElementById('circulacionSi').checked = false;
         }
-
-        var ineSi = document.getElementById('ineSi').value;
+ */
+       /*  var ineSi = document.getElementById('ineSi').value;
         var ineNo = document.getElementById('ineNo').value;
-        var ineNA = document.getElementById('ineNA').value;/* terminan checks con funcionamiento de radio */
+        var ineNA = document.getElementById('ineNA').value; *//* terminan checks con funcionamiento de radio */
 
-        if (ineSi.checked){
+        /* if (ineSi.checked){
             document.getElementById('ineNo').checked = false;
             document.getElementById('ineNA').checked = false;
         } 
@@ -755,4 +708,4 @@ $(document).ready(function() {
 
         })
     })
-})
+}) */

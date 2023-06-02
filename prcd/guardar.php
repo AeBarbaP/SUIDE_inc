@@ -7,44 +7,44 @@ setlocale(LC_TIME, 'es_MX.UTF-8');
 $fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
 
 $nombre = $_POST['nombre'];
-$apellidoP = $_POST['apellido_p'];
-$apellidoM = $_POST['apellido_m'];
+$apellidoP = $_POST['apellidoP'];
+$apellidoM = $_POST['apellidoM'];
 $genero = $_POST['genero'];
 $edad = $_POST['edad'];
-$edoCivil = $_POST['edo_civil'];
+$edoCivil = $_POST['edoCivil'];
 $curp = $_POST['curp'];
 $rfc = $_POST['rfc'];
-$fechaNacimiento = $_POST['f_nacimiento'];
-$lugarNacimiento = $_POST['lugar_nacimiento'];
+$fechaNacimiento = $_POST['fechaNacimiento'];
+$lugarNacimiento = $_POST['lugarNacimiento'];
 $domicilio = $_POST['domicilio'];
-$numExt = $_POST['no_ext'];
-$numInt = $_POST['no_int'];
+$numExt = $_POST['numExt'];
+$numInt = $_POST['numInt'];
 $colonia = $_POST['colonia'];
-$entreVialidades = $_POST['entre_vialidades'];
-$descripcionLugar = $_POST['descr_referencias'];
+$entreVialidades = $_POST['entreVialidades'];
+$descripcionLugar = $_POST['descripcionLugar'];
 $localidad = $_POST['localidad'];
 $municipio = $_POST['municipio'];
-$codigoPostal = $_POST['cp'];
-$telFijo = $_POST['telefono_part'];
-$celular = $_POST['telefono_cel'];
+$codigoPostal = $_POST['codigoPostal'];
+$telFijo = $_POST['telFijo'];
+$celular = $_POST['celular'];
 $escolaridad = $_POST['escolaridad'];
 $estudia = $_POST['estudia'];
-$estudiaLugar = $_POST['estudia_donde'];
-$habilidad = $_POST['estudia_habilidad'];
-$profesion = $_POST['profesión'];
+$estudiaLugar = $_POST['estudiaLugar'];
+$habilidad = $_POST['habilidad'];
+$profesion = $_POST['profesion'];
 $trabaja = $_POST['trabaja'];
-$trabajaLugar = $_POST['trabaja_donde'];
-$ingresoMensual = $_POST['trabaja_ingresos'];
-$asociacion = $_POST['asoc_civil'];
-$asociacion_nombre = $_POST['asoc_cual'];
+$trabajaLugar = $_POST['trabajaLugar'];
+$ingresoMensual = $_POST['ingresoMensual'];
+$asociacion = $_POST['asociacion'];
+$nombreAC = $_POST['nombreAC'];
 $sindicato = $_POST['sindicato'];
-$nombreSindicato = $_POST['sindicato_cual'];
-$pension = $_POST['pensionado'];
-$pensionInst = $_POST['pensionado_donde'];
-$pensionMonto = $_POST['pension_monto'];
-$pensionTemporalidad = $_POST['pension_temporalidad'];
-$seguridadsocial = $_POST['seguridad_social'];
-$otroSS = $_POST['seguridad_social_donde'];
+$nombreSindicato = $_POST['nombreSindicato'];
+$pension = $_POST['pension'];
+$pensionInst = $_POST['pensionInst'];
+$pensionMonto = $_POST['pensionMonto'];
+$pensionTemporalidad = $_POST['pensionTemporalidad'];
+$seguridadsocial = $_POST['seguridadsocial'];
+$otroSS = $_POST['otroSS'];
 
 
 $sqlinsert= "INSERT INTO datos_generales (
@@ -77,7 +77,7 @@ $sqlinsert= "INSERT INTO datos_generales (
     trabaja,
     trabaja_donde,
     trabaja_ingresos,
-    asoc_civil,
+    asoc_civ,
     asoc_cual,
     sindicato,
     sindicato_cual,
@@ -118,7 +118,7 @@ VALUES(
     '$trabajaLugar',
     '$ingresoMensual',
     '$asociacion',
-    '$asociacion_nombre',
+    '$nombreAC',
     '$sindicato',
     '$nombreSindicato',
     '$pension',
@@ -126,7 +126,7 @@ VALUES(
     '$pensionMonto',
     '$pensionTemporalidad',
     '$seguridadsocial',
-    '$seguridadsocial'
+    '$otroSS'
 )";
 
 $resultado= $conn->query($sqlinsert);
@@ -138,6 +138,7 @@ if ($resultado) {
 }
 else {
     $error = $conn->error;
+    echo $error;
     echo json_encode(array(
         'success'=>2,
         'error'=>$error

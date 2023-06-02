@@ -1,13 +1,13 @@
 $(document).ready(function() {
     $('#generalesForm').submit(function(e) {
         
-        e.preventDefault();
-        
         /* Datos Generales */
         var nombre = document.getElementById('nombre').value;
         var apellidoP = document.getElementById('apellidoP').value;
         var apellidoM = document.getElementById('apellidoM').value;
-        var genero = document.getElementById('genero').value;
+        var generoF = document.getElementById('generoF');
+        var generoM = document.getElementById('generoM');
+        var generoO = document.getElementById('generoO');
         var edad = document.getElementById('edad').value;
         var edoCivil = document.getElementById('edoCivil').value;
         var curp = document.getElementById('curp').value;
@@ -43,6 +43,15 @@ $(document).ready(function() {
         var otroSS = document.getElementById('otroSS').value;
 
 
+        if(generoF.checked){
+            var genero = 1;
+        }
+        else if (generoM.checked){
+            var genero = 0;
+        }
+        else if (generoO.checked){
+            var genero = 2;
+        }
         if(estudiaSi.checked){
             var estudia = 1;
             var estudiaLugar = document.getElementById('lugarEstudia').value;
@@ -94,51 +103,51 @@ $(document).ready(function() {
             document.getElementById('montoP').required = false;
             document.getElementById('periodo').required = false;
         }
-
+        /* e.preventDefault(); */
         $.ajax({
             type: "POST",
             url: 'prcd/guardar.php',
             dataType:'json',
             data: {
                 nombre:nombre,
-                apellidoP:apellido_p,
-                apellidoM:apellido_m,
+                apellidoP:apellidoP,
+                apellidoM:apellidoM,
                 genero:genero,
                 edad:edad,
-                edoCivil:edo_civil,
+                edoCivil:edoCivil,
                 curp:curp,
                 rfc:rfc,
-                fechaNacimiento:f_nacimiento,
-                lugarNacimiento:lugar_nacimiento,
+                fechaNacimiento:fechaNacimiento,
+                lugarNacimiento:lugarNacimiento,
                 domicilio:domicilio,
-                numExt:no_ext,
-                numInt:no_int,
+                numExt:numExt,
+                numInt:numInt,
                 colonia:colonia,
-                entreVialidades:entre_vialidades,
-                descripcionLugar:descr_referencias,
+                entreVialidades:entreVialidades,
+                descripcionLugar:descripcionLugar,
                 localidad:localidad,
                 municipio:municipio,
-                codigoPostal:cp,
-                telFijo:telefono_part,
-                celular:telefono_cel,
+                codigoPostal:codigoPostal,
+                telFijo:telFijo,
+                celular:celular,
                 escolaridad:escolaridad,
                 estudia:estudia,
-                estudiaLugar:estudia_donde,
-                habilidad:estudia_habilidad,
-                profesion:profesión,
+                estudiaLugar:estudiaLugar,
+                habilidad:habilidad,
+                profesion:profesion,
                 trabaja:trabaja,
-                trabajaLugar:trabaja_donde,
-                ingresoMensual:trabaja_ingresos,
-                asociacion:asoc_civil,
-                asociacion_nombre:asoc_cual,
+                trabajaLugar:trabajaLugar,
+                ingresoMensual:ingresoMensual,
+                asociacion:asociacion,
+                nombreAC:nombreAC,
                 sindicato:sindicato,
-                nombreSindicato:sindicato_cual,
-                pension:pensionado,
-                pensionInst:pensionado_donde,
-                pensionMonto:pension_monto,
-                pensionTemporalidad:pension_temporalidad,
-                seguridadsocial:seguridad_social,
-                otroSS:seguridad_social_donde,
+                nombreSindicato:nombreSindicato,
+                pension:pension,
+                pensionInst:pensionInst,
+                pensionMonto:pensionMonto,
+                pensionTemporalidad:pensionTemporalidad,
+                seguridadsocial:seguridadsocial,
+                otroSS:otroSS,
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
@@ -164,7 +173,9 @@ $(document).ready(function() {
                     })
                 }
             }
-        })
+        });
+        e.preventDefault();
+
     })
 })
 
