@@ -153,7 +153,7 @@ $(document).ready(function() {
                 var jsonData = JSON.parse(JSON.stringify(response));
                 
                 var verificador = jsonData.succes;
-                if (verificador == 1){
+                if (verificador = 1){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -161,9 +161,18 @@ $(document).ready(function() {
                         showConfirmButton: false,
                         timer: 1500
                     })
+                    document.getElementById('img1').hidden = true;
+                    var texto = 'BAPA821212MJCRNN04';
+                    var qrcode = new QRCode(document.getElementById("imgQR"), {
+                        text: texto,
+                        width: 250,
+                        height: 250,
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
+                    document.getElementById('nav-medicos-tab').disabled = false;
+                    document.getElementById('nav-generales-tab').disabled = true;
                 }
-                else if (verificador == 2){
-                    console.log(jsonData.error);
+                else if (verificador = 2){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'error',
