@@ -1402,7 +1402,7 @@ include('prcd/qc/qc.php');
                       </div>
                   </div>
                 </div>
-                <div class="tab-pane fade show active" id="nav-formato" role="tabpanel" aria-labelledby="nav-formato-tab" tabindex="0">
+                <div class="tab-pane fade" id="nav-formato" role="tabpanel" aria-labelledby="nav-formato-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <label for="basic-url" class="form-label h4"><i class="bi bi-files"></i> Impresión de formatos:</label>
                     <div class="col-md-6 d-flex justify-content-center mt-3">
