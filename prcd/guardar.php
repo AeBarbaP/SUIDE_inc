@@ -25,6 +25,7 @@ $descripcionLugar = $_POST['descripcionLugar'];
 $localidad = $_POST['localidad'];
 $municipio = $_POST['municipio'];
 $codigoPostal = $_POST['codigoPostal'];
+$correo = $_POST['correo'];
 $telFijo = $_POST['telFijo'];
 $celular = $_POST['celular'];
 $escolaridad = $_POST['escolaridad'];
@@ -67,6 +68,7 @@ $sqlinsert= "INSERT INTO datos_generales (
     localidad,
     municipio,
     cp,
+    correo,
     telefono_part,
     telefono_cel,
     escolaridad,
@@ -107,6 +109,7 @@ VALUES(
     '$localidad',
     '$municipio',
     '$codigoPostal',
+    '$correo',
     '$telFijo',
     '$celular',
     '$escolaridad',

@@ -266,17 +266,16 @@ include('prcd/qc/qc.php');
             <nav>
               <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <button class="nav-link active" id="nav-generales-tab" data-bs-toggle="tab" data-bs-target="#nav-generales" type="button" role="tab" aria-controls="nav-generales" aria-selected="true">Datos Generales</button>
-                <button class="nav-link" id="nav-medicos-tab" data-bs-toggle="tab" data-bs-target="#nav-medicos" type="button" role="tab" aria-controls="nav-medicos" aria-selected="false" disabled>Datos Médicos</button>
-                <button class="nav-link" id="nav-vivienda-tab" data-bs-toggle="tab" data-bs-target="#nav-vivienda" type="button" role="tab" aria-controls="nav-vivienda" aria-selected="false" disabled>Vivienda</button>
-                <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-integracion" type="button" role="tab" aria-controls="nav-integracion" aria-selected="false" disabled>Integración Familiar</button>
-                <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-referencias" type="button" role="tab" aria-controls="nav-referencias" aria-selected="false" disabled>Referencias</button>
-                <button class="nav-link" id="nav-servicios-tab" data-bs-toggle="tab" data-bs-target="#nav-servicios-otorgados" type="button" role="tab" aria-controls="nav-servicios" aria-selected="false" disabled>Servicios Otorgados</button>
-                <button class="nav-link" id="nav-docs-tab" data-bs-toggle="tab" data-bs-target="#nav-docs" type="button" role="tab" aria-controls="nav-docs" aria-selected="false" disabled>Documentos</button>
-                <button class="nav-link" id="nav-formato-tab" data-bs-toggle="tab" data-bs-target="#nav-formato" type="button" role="tab" aria-controls="nav-formato" aria-selected="false" disabled>Imprimir Formato</button>
+                <button class="nav-link" id="nav-medicos-tab" data-bs-toggle="tab" data-bs-target="#nav-medicos" type="button" role="tab" aria-controls="nav-medicos" aria-selected="false" >Datos Médicos</button>
+                <button class="nav-link" id="nav-vivienda-tab" data-bs-toggle="tab" data-bs-target="#nav-vivienda" type="button" role="tab" aria-controls="nav-vivienda" aria-selected="false" >Vivienda</button>
+                <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-integracion" type="button" role="tab" aria-controls="nav-integracion" aria-selected="false" >Integración Familiar</button>
+                <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-referencias" type="button" role="tab" aria-controls="nav-referencias" aria-selected="false" >Referencias</button>
+                <button class="nav-link" id="nav-servicios-tab" data-bs-toggle="tab" data-bs-target="#nav-servicios-otorgados" type="button" role="tab" aria-controls="nav-servicios" aria-selected="false" >Servicios Otorgados</button>
+                <button class="nav-link" id="nav-docs-tab" data-bs-toggle="tab" data-bs-target="#nav-docs" type="button" role="tab" aria-controls="nav-docs" aria-selected="false" >Documentos</button>
+                <button class="nav-link" id="nav-formato-tab" data-bs-toggle="tab" data-bs-target="#nav-formato" type="button" role="tab" aria-controls="nav-formato" aria-selected="false" >Imprimir Formato</button>
               </div>
             </nav>
             <div class="tab-content"  id="nav-tabContent">
-            <!-- <form action="" id="generalesForm"> -->
               <div class="tab-pane fade show active" id="nav-generales" role="tabpanel" aria-labelledby="nav-generales-tab" tabindex="0">
                 <div class="row ms-4 g-3 mt-3" style="width:95%">
                   <div class="col-sm-4">
@@ -433,6 +432,18 @@ include('prcd/qc/qc.php');
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Correo Electróncio:</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">@</span>
+                      <input type="email" id="correo" class="form-control" placeholder="e-mail" aria-label="e-mail" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="invalid-feedback">
+                      * Campo requerido.
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Teléfono Particular:</label>
@@ -676,11 +687,11 @@ include('prcd/qc/qc.php');
                         <label for="basic-url" class="form-label">Rehabilitación:</label>
                         <div class="input-group">
                           <div class="form-check form-check-inline mt-2">
-                            <input class="form-check-input" type="radio" name="rehabilitacion" id="rehabilitacion" onclick="rehabOp(this.value)" value="1">
+                            <input class="form-check-input" type="radio" name="rehabilitacion" id="rehabilitacionSi" onclick="rehabOp(this.value)" value="1">
                             <label class="form-check-label" for="rehabilitacion1">Sí</label>
                           </div>
                           <div class="form-check form-check-inline mt-2">
-                            <input class="form-check-input" type="radio" name="rehabilitacion" id="rehabilitacion" onclick="rehabOp(this.value)" value="2">
+                            <input class="form-check-input" type="radio" name="rehabilitacion" id="rehabilitacionNo" onclick="rehabOp(this.value)" value="2">
                             <label class="form-check-label" for="rehabilitacion2">No</label>
                           </div>
                           <input type="text" class="form-control" id="lugarRehab" name="rehabilitacion" placeholder="Dónde..." disabled>
@@ -689,7 +700,7 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-2">
                       <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fecha de Inicio:</label>
-                      <input type="date" class="form-control" id="fechaIni" name="datos_usr" placeholder="" required>
+                      <input type="date" class="form-control" id="fechaIni" name="fechaini" placeholder="" required>
                       <div class="invalid-feedback">
                         * Campo requerido.
                       </div>
@@ -752,13 +763,14 @@ include('prcd/qc/qc.php');
                     <br>
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Alergias:</label>
-                      <select class="form-select" id="alergias" aria-label="Default select example">
+                      <select class="form-select" id="alergias" onchange="alergiasOp(this.value)" aria-label="Default select example">
                         <option selected>Selecciona...</option>
+                        <option value="0">Ninguna</option>
                         <option value="1">Alimentaria</option>
                         <option value="2">Medicamentos</option>
                         <option value="3">Ambiental</option>
                       </select>
-                      <select class="form-select" id="tipoAlergia" multiple aria-label="multiple select example">
+                      <select class="form-select" id="tipoAlergia" multiple aria-label="multiple select example" disabled>
                         <option selected>Selecciona una o más</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -770,7 +782,7 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-6">
                       <div class="input-group mt-4">
                         <span class="input-group-text mt-2">Alergias <br>seleccionadas:</span>
-                        <textarea class="form-control mt-2" rows="5" id="alergiasFull" aria-label="With textarea"></textarea>
+                        <textarea class="form-control mt-2" rows="5" id="alergiasFull" aria-label="With textarea" disabled></textarea>
                       </div>
                     </div>
                     <div class="col-sm-4">
@@ -779,7 +791,7 @@ include('prcd/qc/qc.php');
                         <input type="text" class="form-control" id="enfermedadesSearch" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
-                      <select class="form-select" id="enfermedades" multiple aria-label="multiple select example">
+                      <select class="form-select" id="enfermedades" onchange="enfermedadesOp(this.value)" multiple aria-label="multiple select example">
                         <option selected>Selecciona una o más</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -791,7 +803,7 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-6">
                       <div class="input-group mt-4" style="height:max-content">
                         <span class="input-group-text mt-2">Enfermedades <br>seleccionadas:</span>
-                        <textarea class="form-control mt-2" id="enfermedadesFull" rows="5" aria-label="With textarea"></textarea>
+                        <textarea class="form-control mt-2" id="enfermedadesFull" rows="5" aria-label="With textarea" disabled></textarea>
                       </div>
                     </div>
                     <div class="col-sm-4">
@@ -800,7 +812,7 @@ include('prcd/qc/qc.php');
                         <input type="text" class="form-control" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
-                      <select class="form-select" id="medicamentos" multiple aria-label="multiple select example">
+                      <select class="form-select" id="medicamentos" onchange="medicamentosOp(this.value)" multiple aria-label="multiple select example">
                         <option selected>Selecciona uno o más</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -812,7 +824,7 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-6 mb-3">
                       <div class="input-group mt-4" style="height:max-content">
                         <span class="input-group-text mt-2">Medicamentos <br>seleccionados:</span>
-                        <textarea class="form-control mt-2" id="medicamentosFull" rows="5" aria-label="With textarea"></textarea>
+                        <textarea class="form-control mt-2" id="medicamentosFull" rows="5" aria-label="With textarea" disabled></textarea>
                       </div>
                     </div>
                     <br>

@@ -23,6 +23,7 @@ $(document).ready(function() {
         var localidad = document.getElementById('localidad').value;
         var municipio = document.getElementById('municipio').value;
         var codigoPostal = document.getElementById('codigoPostal').value;
+        var correo = document.getElementById('correo').value;
         var telFijo = document.getElementById('telFijo').value;
         var celular = document.getElementById('celular').value;
         var escolaridad = document.getElementById('escolaridad').value;
@@ -41,7 +42,6 @@ $(document).ready(function() {
         var pensionNo = document.getElementById('pensionNo');
         var seguridadsocial = document.getElementById('seguridadsocial').value;
         var otroSS = document.getElementById('otroSS').value;
-
 
         if(generoF.checked){
             var genero = 1;
@@ -103,7 +103,7 @@ $(document).ready(function() {
             document.getElementById('montoP').required = false;
             document.getElementById('periodo').required = false;
         }
-        /* e.preventDefault(); */
+
         $.ajax({
             type: "POST",
             url: 'prcd/guardar.php',
@@ -128,6 +128,7 @@ $(document).ready(function() {
                 localidad:localidad,
                 municipio:municipio,
                 codigoPostal:codigoPostal,
+                correo:correo,
                 telFijo:telFijo,
                 celular:celular,
                 escolaridad:escolaridad,
@@ -148,6 +149,112 @@ $(document).ready(function() {
                 pensionTemporalidad:pensionTemporalidad,
                 seguridadsocial:seguridadsocial,
                 otroSS:otroSS,
+            },
+            success: function(response){
+                var jsonData = JSON.parse(JSON.stringify(response));
+                
+                var verificador = jsonData.succes;
+                if (verificador = 1){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Datos Generales han sido guardados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    document.getElementById('img1').hidden = true;
+                    var texto = 'BAPA821212MJCRNN04';
+                    var qrcode = new QRCode(document.getElementById("imgQR"), {
+                        text: texto,
+                        width: 250,
+                        height: 250,
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
+                    document.getElementById('nav-medicos-tab').disabled = false;
+                    document.getElementById('nav-generales-tab').disabled = true;
+                }
+                else if (verificador = 2){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Datos Generales NO han sido guardados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            }
+        });
+        e.preventDefault();
+
+    })
+})
+$(document).ready(function() {
+    $('#medicosForm').submit(function(e) {
+        
+        /* Datos Médicos */
+        var discapacidad = document.getElementById('discapacidad').value;
+        var gradoDisc = document.getElementById('gradoDisc').value;
+        var tipoDisc = document.getElementById('tipoDisc').value;
+        var causaDisc = document.getElementById('causaDisc').value;
+        var especifiqueD = document.getElementById('especifiqueD').value;
+        var temporalidad = document.getElementById('temporalidad').value;
+        var fuente = document.getElementById('fuente').value;
+        var fechaValoracion = document.getElementById('fechaValoracion').value;
+        var rehabilitacionSi = document.getElementById('rehabilitacion');
+        var rehabilitacionNo = document.getElementById('rehabilitacion');
+        var tipoSangre = document.getElementById('tipoSangre').value;
+        var cirugia = document.getElementById('cirugia').value;
+        var protesis = document.getElementById('protesis').value;
+        var alergias = document.getElementById('alergias').value;
+        var alergiasFull = document.getElementById('alergiasFull').value;
+        var enfermedades = document.getElementById('enfermedades').value;
+        var enfermedadesFull = document.getElementById('enfermedadesFull').value;
+        var medicamentos = document.getElementById('medicamentos').value;
+        var medicamentosFull = document.getElementById('medicamentosFull').value;
+
+        if(rehabilitacionSi.checked){
+            var rehabilitacion = 1;
+            var lugarRehab = document.getElementById('lugarRehab').value;
+            var fechaIni = document.getElementById('fechaIni').value;
+            var duracion = document.getElementById('duracion').value;
+            document.getElementById('lugarRehab').required = true;
+            document.getElementById('fechaIni').required = true;
+            document.getElementById('duracion').required = true;
+        }
+        else if (rehabilitacionNo.checked){
+            var rehabilitacion = 0;
+            var lugarRehab = 0;
+            var fechaIni = 0;
+            var duracion = 0;
+            document.getElementById('lugarRehab').required = false;
+        }
+        
+        $.ajax({
+            type: "POST",
+            url: 'prcd/guardar.php',
+            dataType:'json',
+            data: {
+                discapacidad:discapacidad,
+                gradoDisc:gradoDisc,
+                tipoDisc:tipoDisc,
+                causaDisc:causaDisc,
+                especifiqueD:especifiqueD,
+                temporalidad:temporalidad,
+                fuente:fuente,
+                fechaValoracion:fechaValoracion,
+                rehabilitacion:rehabilitacion,
+                lugarRehab:lugarRehab,
+                fechaIni:fechaIni,
+                duracion:duracion,
+                tipoSangre:tipoSangre,
+                cirugia:cirugia,
+                protesis:protesis,
+                alergias:alergias,
+                alergiasFull:alergiasFull,
+                enfermedades:enfermedades,
+                enfermedadesFull:enfermedadesFull,
+                medicamentos:medicamentos,
+                medicamentosFull:medicamentosFull
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
