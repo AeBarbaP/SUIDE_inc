@@ -1,39 +1,3 @@
-$(document).ready(function() {
-    $('#generalesForm').submit(function(e) {
-        /* Datos Generales */
-        var nombre = document.getElementById('nombre').value;
-        var apellidoP = document.getElementById('apellidoP').value;
-        var apellidoM = document.getElementById('apellidoM').value;
-        var genero = document.getElementById('genero').value;
-        var edad = document.getElementById('edad').value;
-        var curp = document.getElementById('curp').value;
-        var rfc = document.getElementById('rfc').value;
-        var fechaNacimiento = document.getElementById('fechaNacimiento').value;
-        var lugarNacimiento = document.getElementById('lugarNacimiento').value;
-        var domicilio = document.getElementById('domicilio').value;
-        var numExt = document.getElementById('numExt').value;
-        var numInt = document.getElementById('numInt').value;
-        var colonia = document.getElementById('colonia').value;
-        var entreVialidades = document.getElementById('entreVialidades').value;
-        var descripcionLugar = document.getElementById('descripcionLugar').value;
-        var localidad = document.getElementById('localidad').value;
-        var municipio = document.getElementById('municipio').value;
-        var codigoPostal = document.getElementById('codigoPostal').value;
-        var telFijo = document.getElementById('telFijo').value;
-        var celular = document.getElementById('celular').value;
-        var escolaridad = document.getElementById('escolaridad').value;
-        var estudia = document.getElementById('estudia');
-        var habilidad = document.getElementById('habilidad').value;
-        var profesion = document.getElementById('profesion').value;
-        var trabaja = document.getElementById('trabaja');
-        var ingresoMensual = document.getElementById('ingresoMensual').value;
-        var asociacion = document.getElementById('asociacion');
-        var sindicato = document.getElementById('sindicato');
-        var pension = document.getElementById('pension');
-        var seguridadsocial = document.getElementById('seguridadsocial').value;
-
-    })
-})
 
 function estudiaOp(x){
     var estudia = x;
@@ -135,6 +99,7 @@ function rehabOp(x){
         document.getElementById('lugarRehab').disabled = true;
     }
 }
+
 function deudasOp(x){
     var deudas = x;
 
@@ -172,6 +137,51 @@ function techoOp(x){
         document.getElementById('otroTecho').disabled = false;
     } else {
         document.getElementById('otroTecho').disabled = true;
+    }
+}
+
+function alergiasOp(x){
+    var alergia = x;
+    console.log(x);
+
+    if(alergia == 1){
+        document.getElementById('tipoAlergia').disabled = false;
+        document.getElementById('alergiasFull').disabled = false;
+        document.getElementById('tipoAlergia').required = true;
+        document.getElementById('alergiasFull').required = true;
+    } else if(alergia == 2){
+        document.getElementById('tipoAlergia').disabled = false;
+        document.getElementById('alergiasFull').disabled = false;
+        document.getElementById('tipoAlergia').required = true;
+        document.getElementById('alergiasFull').required = true;
+    } else if(alergia == 3){
+        document.getElementById('tipoAlergia').disabled = false;
+        document.getElementById('alergiasFull').disabled = false;
+        document.getElementById('tipoAlergia').required = true;
+        document.getElementById('alergiasFull').required = true;
+    } else if (alergia == 0){
+        document.getElementById('tipoAlergia').disabled = true;
+        document.getElementById('alergiasFull').disabled = true;
+    }
+}
+function enfermedadesOp(x){
+    var enfermedad = x;
+
+    if(enfermedad == null){
+        document.getElementById('enfermedadesFull').disabled = true;
+    } else {
+        document.getElementById('enfermedadesFull').disabled = false;
+        document.getElementById('enfermedadesFull').required = true;
+    }
+}
+function medicamentosOp(x){
+    var medicamento = x;
+
+    if(medicamento == null){
+        document.getElementById('medicamentosFull').disabled = true;
+    } else {
+        document.getElementById('medicamentosFull').disabled = false;
+        document.getElementById('medicamentosFull').required = true;
     }
 }
 
