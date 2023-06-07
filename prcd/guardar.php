@@ -136,7 +136,8 @@ $resultado= $conn->query($sqlinsert);
 
 if ($resultado) {
     echo json_encode(array(
-        'success'=>1
+        'success'=>1,
+        'curp'=>$curp
     ));
 }
 else {
@@ -148,5 +149,3 @@ else {
     ));
 
 }
-
-?>
