@@ -152,7 +152,7 @@ $(document).ready(function() {
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
-                
+                var curpSaved = jsonData.curp;
                 var verificador = jsonData.succes;
                 if (verificador = 1){
                     Swal.fire({
@@ -172,6 +172,7 @@ $(document).ready(function() {
                     });
                     document.getElementById('nav-medicos-tab').disabled = false;
                     document.getElementById('nav-generales-tab').disabled = true;
+                    document.getElementById('curp_exp').value = curpSaved;
                 }
                 else if (verificador = 2){
                     Swal.fire({
@@ -192,6 +193,7 @@ $(document).ready(function() {
     $('#medicosForm').submit(function(e) {
         
         /* Datos Médicos */
+        var curp_exp = document.getElementById('curp_exp').value;
         var discapacidad = document.getElementById('discapacidad').value;
         var gradoDisc = document.getElementById('gradoDisc').value;
         var tipoDisc = document.getElementById('tipoDisc').value;
@@ -204,7 +206,9 @@ $(document).ready(function() {
         var rehabilitacionNo = document.getElementById('rehabilitacion');
         var tipoSangre = document.getElementById('tipoSangre').value;
         var cirugia = document.getElementById('cirugia').value;
+        var tipoCirugia = document.getElementById('tipoCirugia').value;
         var protesis = document.getElementById('protesis').value;
+        var tipoProtesis = document.getElementById('tipoProtesis').value;
         var alergias = document.getElementById('alergias').value;
         var alergiasFull = document.getElementById('alergiasFull').value;
         var enfermedades = document.getElementById('enfermedades').value;
@@ -231,9 +235,10 @@ $(document).ready(function() {
         
         $.ajax({
             type: "POST",
-            url: 'prcd/guardar.php',
+            url: 'prcd/guardarmedicos.php',
             dataType:'json',
             data: {
+                curp_exp:curp_exp,
                 discapacidad:discapacidad,
                 gradoDisc:gradoDisc,
                 tipoDisc:tipoDisc,
@@ -248,7 +253,9 @@ $(document).ready(function() {
                 duracion:duracion,
                 tipoSangre:tipoSangre,
                 cirugia:cirugia,
+                tipoCirugia:tipoCirugia,
                 protesis:protesis,
+                tipoProtesis:tipoProtesis,
                 alergias:alergias,
                 alergiasFull:alergiasFull,
                 enfermedades:enfermedades,
@@ -264,26 +271,19 @@ $(document).ready(function() {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: 'Datos Generales han sido guardados',
+                        title: 'Datos Médicos han sido guardados',
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    document.getElementById('img1').hidden = true;
-                    var texto = 'BAPA821212MJCRNN04';
-                    var qrcode = new QRCode(document.getElementById("imgQR"), {
-                        text: texto,
-                        width: 250,
-                        height: 250,
-                        correctLevel: QRCode.CorrectLevel.H
-                    });
-                    document.getElementById('nav-medicos-tab').disabled = false;
+                    document.getElementById('nav-medicos-tab').disabled = true;
                     document.getElementById('nav-generales-tab').disabled = true;
+                    document.getElementById('nav-vivienda-tab').disabled = false;
                 }
                 else if (verificador = 2){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'error',
-                        title: 'Datos Generales NO han sido guardados',
+                        title: 'Datos Médicos NO han sido guardados',
                         showConfirmButton: false,
                         timer: 1500
                     })

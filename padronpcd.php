@@ -607,7 +607,8 @@ include('prcd/qc/qc.php');
                   <div class="row g-3 ms-4 mt-3" style="width:95%">
                     <div class="col-sm-6">
                       <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Discapacidad:</label>
-                      <form action="" id="medicosForm">
+                      <form id="medicosForm">
+                      <input type="text" id="curp_exp" hidden>
                       <input type="text" class="form-control" id="discapacidad" name="datos_usr" placeholder="Discapacidad" required>
                       <div class="invalid-feedback">
                         * Campo requerido.

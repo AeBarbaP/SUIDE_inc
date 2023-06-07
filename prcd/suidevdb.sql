@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2023 at 10:39 PM
+-- Generation Time: Jun 07, 2023 at 10:33 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -47,6 +47,7 @@ CREATE TABLE `datos_generales` (
   `municipio` int(11) NOT NULL,
   `cp` int(11) NOT NULL,
   `telefono_part` varchar(20) NOT NULL,
+  `correo` varchar(100) DEFAULT NULL,
   `telefono_cel` varchar(20) NOT NULL,
   `escolaridad` int(11) NOT NULL,
   `profesión` varchar(50) NOT NULL,
@@ -75,27 +76,10 @@ CREATE TABLE `datos_generales` (
 -- Dumping data for table `datos_generales`
 --
 
-INSERT INTO `datos_generales` (`id`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `localidad`, `municipio`, `cp`, `telefono_part`, `telefono_cel`, `escolaridad`, `profesión`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `sindicato`, `sindicato_cual`, `seguridad_social`, `seguridad_social_donde`, `seguridad_social_otro`) VALUES
-(1, '', '', '', 0, 0, 0, '0000-00-00', '0', '', '', '', '', '', '', 0, 0, 0, '', '', 0, '', '', '', 0, '', '', '', '0', '', 0, '', 0, '', 0, '', 0, '', 0, '', ''),
-(2, '', '', '', 0, 0, 0, '0000-00-00', '0', '', '', '', '', '', '', 0, 0, 0, '', '', 0, '', '', '', 0, '', '', '', '0', '', 0, '', 0, '', 0, '', 0, '', 0, '', ''),
-(3, 'Ana', 'Barba', 'Pinedo', 1, 40, 2, '1982-12-12', '0', 'de la Colina', 'A', '218', 'Loma Bonita', 'UAZ y Villas Universidad', 'Reja', 1, 1, 98160, '4921587935', '4921587935', 5, 'Ingeniero', 'BAPA821212MJCRNN04', 'BAPA821212N84', 1, 'UAZ', 'Programador', '1', '0', '1800', 1, 'AC', 1, 'ISSSTE', 1, 'Mensual', 1, 'SUTSEMOP', 5, 'jid', ''),
-(4, '', '', '', 0, 0, 0, '0000-00-00', '0', '', '', '', '', '', '', 0, 0, 0, '', '', 0, '', '', '', 0, '', '', '', '0', '', 0, '', 0, '', 0, '', 0, '', 0, '', ''),
-(5, 'Luis', 'González', 'Álvarez', 0, 37, 2, '1985-11-08', '0', 'de la Colina', 'A', '218', 'Loma Bonita', 'UAZ y Villas Universidad', 'Gris', 1, 1, 98160, '4921587935', '4925833614', 6, 'Ingeniero', 'GOAL851108HZSNLS01', 'GOAL851108XXX', 1, 'Academia', 'Hablar', '1', '0', '25000', 1, 'GOAsc', 0, '', 0, '', 1, 'GOSin', 5, 'INBURSA', ''),
-(6, 'Dinorah', 'López', 'Hernández', 1, 37, 1, '1985-11-11', '0', 'gs', '5', '5', 'fs', 'gfda', 'stg', 1, 1, 98160, '58', '8', 1, 'f', 'd', 'd', 1, 'f', 'f', '1', '0', '4', 1, 'gfd', 1, 'jgds', 5, 'Mensual', 1, 'ogfis', 5, 'fisg', ''),
-(7, '', '', '', 0, 0, 0, '0000-00-00', '0', '', '', '', '', '', '', 0, 0, 0, '', '', 0, '', '', '', 0, '', '', '', '0', '', 0, '', 0, '', 0, '', 0, '', 0, '', ''),
-(8, 'Dinorah', 'López', 'Hernández', 1, 37, 1, '1985-11-11', 'Zacatecas', 'gs', '5', '5', 'fs', 'gfda', 'stg', 1, 1, 98160, '58', '8', 1, 'f', 'd', 'd', 1, 'f', 'f', '1', 'dsgsoi', '4', 1, 'gfd', 1, 'jgds', 5, 'Mensual', 1, 'ogfis', 5, 'fisg', NULL),
-(9, 'Dinorah', 'López', 'Hernández', 1, 37, 1, '1985-11-11', 'Zacatecas', 'gs', '5', '5', 'fs', 'gfda', 'stg', 1, 1, 98160, '58', '8', 1, 'f', 'd', 'd', 1, 'f', 'f', '1', 'dsgsoi', '40000', 1, 'gfd', 1, 'jgds', 5000, 'Mensual', 1, 'ogfis', 5, 'fisg', NULL),
-(10, 'Dinorah', 'López', 'Hernández', 1, 37, 1, '1985-11-11', 'Zacatecas', 'gs', '5', '5', 'fs', 'gfda', 'stg', 1, 1, 98160, '58', '8', 1, 'f', 'd', 'd', 1, 'f', 'f', '1', 'dsgsoi', '40000', 1, 'gfd', 1, 'jgds', 5000, 'Mensual', 1, 'ogfis', 5, 'fisg', NULL),
-(11, 'Mariana', 'González', 'Barba', 1, 3, 1, '2020-04-21', 'Guadalajara Jalisco', 'de la Colina', 'a', '218', 'Loma Bonita', 'Ninguna', 'REJA', 1, 1, 98160, '4921587935', '4921587935', 1, 'NADA', 'gdsdshrgdea', 'bhdfsyhred', 1, 'CENDI', 'HABLAR', '1', 'FDSYRE', '1000', 1, 'BGDFSYRE', 1, 'NJHTRSUTRD', 1500, 'Trimestral', 1, 'NGFDUTRDF', 5, 'GFDSYHJREIS', NULL),
-(12, 'Mariana', 'González', 'Barba', 1, 3, 1, '2020-04-21', 'Guadalajara Jalisco', 'de la Colina', 'a', '218', 'Loma Bonita', 'Ninguna', 'REJA', 1, 1, 98160, '4921587935', '4921587935', 1, 'NADA', 'gdsdshrgdea', 'bhdfsyhred', 1, 'CENDI', 'HABLAR', '1', 'FDSYRE', '1000', 1, 'BGDFSYRE', 1, 'NJHTRSUTRD', 1500, 'Trimestral', 1, 'NGFDUTRDF', 5, 'GFDSYHJREIS', NULL),
-(13, 'gfda', 'ghfdas', 'grea', 1, 5, 1, '0768-05-05', 'gdrsa', 'gdfayhr', '58', '5', 'ryghesy6re', 'hftredaq', 'hyrea', 1, 1, 57, '7858', '87878', 1, 'hgfsjutr', 'hgfds', 'fdrs', 1, 'htswea', 'treawty4re', '1', ' dasyhreas', '458', 1, 'GRFEDAYREA', 1, ' YHRTDSEKI ', 678621, 'Mensual', 1, 'HJURTSEU5RT', 5, 'HBTFDTSJUTRFXDS', NULL),
-(14, 'gfda', 'ghfdas', 'grea', 1, 5, 1, '0768-05-05', 'gdrsa', 'gdfayhr', '58', '5', 'ryghesy6re', 'hftredaq', 'hyrea', 1, 1, 57, '7858', '87878', 1, 'hgfsjutr', 'hgfds', 'fdrs', 1, 'htswea', 'treawty4re', '1', ' dasyhreas', '458', 1, 'GRFEDAYREA', 1, ' YHRTDSEKI ', 678621, 'Mensual', 1, 'HJURTSEU5RT', 5, 'HBTFDTSJUTRFXDS', NULL),
-(15, 'GYREASHJUTRFDSJUITGS', 'HNJGTDSKJIBTG CDFXREJUTIDF', 'JHGDKTYRDS', 1, 87, 1, '2542-12-05', 'GDSAYGERA', 'GDATGEWSAGEDS', '68', '748', 'HDRFSHURTE', 'HTRSEDSHB', 'HBNGFSUHJRTES|', 1, 1, 7485, '4921587935', '798678', 2, 'RDOAI', 'GDAYHURES', 'MJFSYRES', 1, 'GFDSQ', 'TGYREDAS', '1', 'BHFDGSYRE', '57', 1, 'HTRESYURT|', 1, 'HNJTHRSWYUREZS', 486, 'GRFEDSYHURES', 1, ' YRGEWSJUTRS|', 5, 'GFDSYHRES', NULL),
-(16, 'GYREASHJUTRFDSJUITGS', 'HNJGTDSKJIBTG CDFXREJUTIDF', 'JHGDKTYRDS', 1, 87, 1, '2542-12-05', 'GDSAYGERA', 'GDATGEWSAGEDS', '68', '748', 'HDRFSHURTE', 'HTRSEDSHB', 'HBNGFSUHJRTES|', 1, 1, 7485, '4921587935', '798678', 2, 'RDOAI', 'GDAYHURES', 'MJFSYRES', 1, 'GFDSQ', 'TGYREDAS', '1', 'BHFDGSYRE', '57', 1, 'HTRESYURT|', 1, 'HNJTHRSWYUREZS', 486, 'GRFEDSYHURES', 1, ' YRGEWSJUTRS|', 5, 'GFDSYHRES', NULL),
-(17, 'Ana Elisa', 'Barba', 'Pinedo', 1, 40, 2, '1982-12-12', 'Guadalajara Jalisco', 'de la Colina', 'A', '218', 'Loma Bonita', 'Ninguna', 'reja', 1, 1, 98160, '4921568974', '4921001418', 5, 'Ingeniero', 'BAPA821212MJCRNN04', 'BAPA821212N84', 1, 'UAZ', 'Programador', '1', 'INCLUSION', '25000', 1, 'AC', 1, 'SEGOB', 10000, 'Mensual', 1, 'SUTSEMOP', 5, 'GNP', NULL),
-(18, 'Mariana', 'González', 'Barba', 1, 3, 1, '2020-04-21', 'Guadalajara Jalisco', 'de la Colina', 'a', '218', 'Loma Bonita', 'Ninguna', 'REJA', 1, 1, 98160, '4921587935', '4921587935', 1, 'NADA', 'gdsdshrgdea', 'bhdfsyhred', 1, 'CENDI', 'HABLAR', '1', 'FDSYRE', '1000', 1, 'BGDFSYRE', 1, 'NJHTRSUTRD', 1500, 'Trimestral', 1, 'NGFDUTRDF', 5, 'GFDSYHJREIS', NULL),
-(19, 'Rodolfo', 'Leaños', 'Villegas', 0, 41, 3, '1981-09-24', 'Zacatecas', 'Calle 2', 'A', '15', 'Valle Real', 'Ninguna', 'Ninguna', 1, 1, 98160, '4927951930', '4927951930', 6, 'Ingeniero', 'LEVJ810924HZSLS04', 'LEVJ8109248K3', 1, 'UAZ', 'Programador', '1', 'INJUVENTUD', '25000', 1, 'ARPIZ', 1, 'ISSSTE', 7000, 'Mensual', 1, 'SUTSEMOP', 5, 'GNP', NULL),
-(20, 'grosautgryhewi', 'grioahgueiwla', 'ghrueioa', 1, 8, 1, '0586-12-31', 'ghdshyrea', 'gfshrea', '6q', '5', 'fdzshryfdezs', 'fdsyrea', 'gdsaygtew', 1, 1, 98160, '78645674', '46876874', 2, 'htre', 'grfeatgfewa', 'greqaygr4ew', 1, 'grew', 'hres', '1', 'nhgkiuyfq', '748', 1, 'hgfdjutrs', 1, 'mjytdokityg', 14586, 'Bimestral', 1, 'ykjyfdokityu', 5, 'MJHGCDTFG', NULL);
+INSERT INTO `datos_generales` (`id`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `localidad`, `municipio`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `profesión`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `sindicato`, `sindicato_cual`, `seguridad_social`, `seguridad_social_donde`, `seguridad_social_otro`) VALUES
+(26, 'Ana Elisa', 'Barba', 'Pinedo', 1, 40, 2, '1982-12-12', 'Guadalajara Jalisco', 'de la Colina', 'A', '218', 'Loma Bonita', 'Ninguna', 'Reja blanca', 1, 1, 98160, '4921586748', 'aebarbap@gmail.com', '4921001418', 5, 'Ingeniero', 'BAPA821212MJCRNN04', 'BAPA821212N84', 1, 'UAZ', 'Programador', '1', 'INCLUSION', '18000', 1, 'AC', 1, 'SEGOB', 2500, 'Bimestral', 1, 'SUTSEMOP', 1, '', NULL),
+(27, 'dsatguew', 'gteqyg', 'ghuisa', 1, 45, 1, '1111-11-11', 'gs<aa', 'bfdzs', '6', '498', 'sfdsate', 'gosa89', 'gdsagdis', 1, 1, 456, '456', 'gdages@etsaw.com', '4567', 1, 'yghrtsd1', 'difusoap', 'vgfia', 1, 'hfds|', 'gfdagyw|', '1', 'bhtrjwirt|', '752', 1, 'bhfdshdfx', 1, 'hrfdshn', 454, 'Bimestral', 1, 'hgrdfsahjd', 5, 'gfdsaye', NULL),
+(28, 'dsatguew', 'gteqyg', 'ghuisa', 1, 45, 1, '1111-11-11', 'gs<aa', 'bfdzs', '6', '498', 'sfdsate', 'gosa89', 'gdsagdis', 1, 1, 456, '456', 'gdages@etsaw.com', '4567', 1, 'yghrtsd1', 'difusoap', 'vgfia', 1, 'hfds|', 'gfdagyw|', '1', 'bhtrjwirt|', '752', 1, 'bhfdshdfx', 1, 'hrfdshn', 454, 'Bimestral', 1, 'hgrdfsahjd', 5, 'gfdsaye', NULL);
 
 -- --------------------------------------------------------
 
@@ -105,6 +89,7 @@ INSERT INTO `datos_generales` (`id`, `nombre`, `apellido_p`, `apellido_m`, `gene
 
 CREATE TABLE `datos_medicos` (
   `id` int(11) NOT NULL,
+  `curp` varchar(20) NOT NULL,
   `discapacidad` varchar(50) NOT NULL,
   `grado_discapacidad` int(11) NOT NULL,
   `tipo_discapacidad` int(11) NOT NULL,
@@ -116,16 +101,27 @@ CREATE TABLE `datos_medicos` (
   `rehabilitacion` int(11) NOT NULL,
   `rehabilitacion_donde` varchar(50) NOT NULL,
   `rehabilitacion_inicio` date NOT NULL,
-  `rehabilitacion_fin` date NOT NULL,
+  `rehabilitacion_duracion` varchar(50) NOT NULL,
   `tipo_sangre` int(11) NOT NULL,
   `cirugias` int(11) NOT NULL,
   `tipo_cirugias` varchar(100) NOT NULL,
-  `enfermedades` int(11) NOT NULL,
-  `medicamentos` int(11) NOT NULL,
-  `alergias` int(11) NOT NULL,
   `protesis` int(11) NOT NULL,
-  `protesis_tipo` varchar(50) NOT NULL
+  `protesis_tipo` varchar(50) NOT NULL,
+  `alergias` int(11) NOT NULL,
+  `alergias_cual` varchar(500) NOT NULL,
+  `enfermedades` int(11) NOT NULL,
+  `enfermedades_cual` varchar(500) NOT NULL,
+  `medicamentos` int(11) NOT NULL,
+  `medicamentos_cual` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `datos_medicos`
+--
+
+INSERT INTO `datos_medicos` (`id`, `curp`, `discapacidad`, `grado_discapacidad`, `tipo_discapacidad`, `causa`, `causa_otro`, `temporalidad`, `valoracion`, `fuente_valoracion`, `rehabilitacion`, `rehabilitacion_donde`, `rehabilitacion_inicio`, `rehabilitacion_duracion`, `tipo_sangre`, `cirugias`, `tipo_cirugias`, `protesis`, `protesis_tipo`, `alergias`, `alergias_cual`, `enfermedades`, `enfermedades_cual`, `medicamentos`, `medicamentos_cual`) VALUES
+(1, '', '', 0, 0, 0, '', 0, 0, 0, 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, ''),
+(2, '', '', 0, 0, 0, '', 0, 0, 0, 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -271,7 +267,11 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (47, 0, NULL, '2023-05-31 13:11:59'),
 (48, 1, '2023-06-01 12:51:46', NULL),
 (49, 1, '2023-06-02 08:33:51', NULL),
-(50, 0, NULL, '2023-06-02 10:45:59');
+(50, 0, NULL, '2023-06-02 10:45:59'),
+(51, 1, '2023-06-06 10:33:13', NULL),
+(52, 0, NULL, '2023-06-06 13:04:23'),
+(53, 1, '2023-06-07 09:09:02', NULL),
+(54, 1, '2023-06-07 09:54:46', NULL);
 
 -- --------------------------------------------------------
 
@@ -529,13 +529,13 @@ ALTER TABLE `vivienda`
 -- AUTO_INCREMENT for table `datos_generales`
 --
 ALTER TABLE `datos_generales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `datos_medicos`
 --
 ALTER TABLE `datos_medicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `documentos_list`
@@ -559,7 +559,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `perfiles_usr`
