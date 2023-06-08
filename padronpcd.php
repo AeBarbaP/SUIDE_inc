@@ -608,7 +608,7 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-6">
                       <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Discapacidad:</label>
                       <form id="medicosForm">
-                      <input type="text" id="curp_exp" hidden>
+                      <input type="text" id="curp_exp">
                       <input type="text" class="form-control" id="discapacidad" name="datos_usr" placeholder="Discapacidad" required>
                       <div class="invalid-feedback">
                         * Campo requerido.
@@ -688,11 +688,11 @@ include('prcd/qc/qc.php');
                         <label for="basic-url" class="form-label">Rehabilitación:</label>
                         <div class="input-group">
                           <div class="form-check form-check-inline mt-2">
-                            <input class="form-check-input" type="radio" name="rehabilitacion" id="rehabilitacionSi" onclick="rehabOp(this.value)" value="1">
+                            <input class="form-check-input" type="radio" name="rehabilitacionSi" id="rehabilitacionSi" onclick="rehabOp(this.value)" value="1">
                             <label class="form-check-label" for="rehabilitacion1">Sí</label>
                           </div>
                           <div class="form-check form-check-inline mt-2">
-                            <input class="form-check-input" type="radio" name="rehabilitacion" id="rehabilitacionNo" onclick="rehabOp(this.value)" value="2">
+                            <input class="form-check-input" type="radio" name="rehabilitacionNo" id="rehabilitacionNo" onclick="rehabOp(this.value)" value="2">
                             <label class="form-check-label" for="rehabilitacion2">No</label>
                           </div>
                           <input type="text" class="form-control" id="lugarRehab" name="rehabilitacion" placeholder="Dónde..." disabled>
