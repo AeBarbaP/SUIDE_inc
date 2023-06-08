@@ -191,7 +191,6 @@ $(document).ready(function() {
 })
 $(document).ready(function() {
     $('#medicosForm').submit(function(e) {
-        
         /* Datos Médicos */
         var curp_exp = document.getElementById('curp_exp').value;
         var discapacidad = document.getElementById('discapacidad').value;
@@ -202,8 +201,8 @@ $(document).ready(function() {
         var temporalidad = document.getElementById('temporalidad').value;
         var fuente = document.getElementById('fuente').value;
         var fechaValoracion = document.getElementById('fechaValoracion').value;
-        var rehabilitacionSi = document.getElementById('rehabilitacion');
-        var rehabilitacionNo = document.getElementById('rehabilitacion');
+        var rehabilitacionSi = document.getElementById('rehabilitacionSi');
+        var rehabilitacionNo = document.getElementById('rehabilitacionNo');
         var tipoSangre = document.getElementById('tipoSangre').value;
         var cirugia = document.getElementById('cirugia').value;
         var tipoCirugia = document.getElementById('tipoCirugia').value;
@@ -265,8 +264,9 @@ $(document).ready(function() {
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
-                
+
                 var verificador = jsonData.succes;
+
                 if (verificador = 1){
                     Swal.fire({
                         position: 'top-end',
