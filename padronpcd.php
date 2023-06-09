@@ -661,7 +661,8 @@ include('prcd/qc/qc.php');
                         <option value="1">0 - 6 meses</option>
                         <option value="2">7 - 12 meses</option>
                         <option value="3">13 - 18 meses</option>
-                        <option value="3">18 meses o más</option>
+                        <option value="4">18 meses o más</option>
+                        <option value="5">Permanente</option>
                       </select>
                     </div>
                     <div class="col-sm-4">
@@ -783,7 +784,30 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-6">
                       <div class="input-group mt-4">
                         <span class="input-group-text mt-2">Alergias <br>seleccionadas:</span>
-                        <textarea class="form-control mt-2" rows="5" id="alergiasFull" aria-label="With textarea" disabled></textarea>
+<!--                         <textarea class="form-control mt-2" rows="5" id="alergiasFull" aria-label="With textarea" disabled>
+
+                        </textarea> -->
+                        <div contenteditable="true" class="editable" id="divEditable">
+                        </div>
+                        <input type="button" onclick="addA();" value="añadir">
+                      <script>
+
+                        function addA() {
+
+                          var textarea = document.getElementById("divEditable");
+                          textarea.innerHTML += '<span class="badge rounded-pill text-bg-secondary">Secondary <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></span> ';
+
+                          }
+                      </script>
+                      <style>
+                        div.editable {
+                          width: 300px;
+                          height: 100px;
+                          border: 1px solid #ccc;
+                          padding: 5px;
+                          overflow: auto;
+                        }
+                      </style>
                       </div>
                     </div>
                     <div class="col-sm-4">
