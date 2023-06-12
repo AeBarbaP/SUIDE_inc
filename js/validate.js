@@ -168,9 +168,9 @@ function enfermedadesOp(x){
     var enfermedad = x;
 
     if(enfermedad == null){
-        document.getElementById('enfermedadesFull').disabled = true;
+        document.getElementById('enfermedadesFull').readonly = true;
     } else {
-        document.getElementById('enfermedadesFull').disabled = false;
+        document.getElementById('enfermedadesFull').readonly = false;
         document.getElementById('enfermedadesFull').required = true;
     }
 }
