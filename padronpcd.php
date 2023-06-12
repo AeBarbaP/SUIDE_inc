@@ -398,15 +398,15 @@ include('prcd/qc/qc.php');
                     <label for="exampleFormControlTextarea1" class="form-label">Descripción o referencia del lugar:</label>
                     <textarea class="form-control" id="descripcionLugar" rows="2"></textarea>
                   </div>
-                  <div class="col-sm-6">
-                    <label for="exampleDataList" class="form-label">Localidad:</label>
-                    <input class="form-control" list="datalistOptions" id="localidad" placeholder="Type to search..." required>
+                  <div class="col-sm-4">
+                    <label for="exampleDataList" class="form-label">Estado:</label>
+                    <input class="form-control" list="datalistOptions" id="estado" placeholder="Buscar..." required>
                     <datalist id="datalistOptions">
-                      <option value="1">Santa Mónica</option>
-                      <option value="Nueva Alianza ">
-                      <option value="La Manga">
-                      <option value="Noria de Agostadero (El Agostadero)">
-                      <option value="El Porvenir">
+                      <option value="Zacatecas">Zacatecas</option>
+                      <option value="Aguascalientes">Aguascalientes</option>
+                      <option value="Durango">Durango</option>
+                      <option value="Coahuila">Coahuila</option>
+                      <option value="Jalisco">Jalisco</option>
                     </datalist>
                     <div class="invalid-feedback">
                       * Campo requerido.
@@ -414,8 +414,36 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Municipio:</label>
-                    <input class="form-control" list="datalistOptions2" id="municipio" placeholder="Type to search..." required>
-                    <datalist id="datalistOptions2">
+                    <input class="form-control" list="datalistOptionsMpios" id="municipio" placeholder="Buscar..." required>
+                    <datalist id="datalistOptionsMpios">
+                      <option value="Zacatecas">Zacatecas</option>
+                      <option value="Guadalupe">Guadalupe</option>
+                      <option value="Río Grande">
+                      <option value="Zacatecas">
+                      <option value="Fresnillo">
+                    </datalist>
+                    <div class="invalid-feedback">
+                      * Campo requerido.
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="exampleDataList" class="form-label">Localidad:</label>
+                    <input class="form-control" list="datalistOptionsLoca" id="localidad" placeholder="Buscar..." required>
+                    <datalist id="datalistOptionsLoca">
+                      <option value="1">Calera</option>
+                      <option value="2">Pinos</option>
+                      <option value="Río Grande">
+                      <option value="Zacatecas">
+                      <option value="Fresnillo">
+                    </datalist>
+                    <div class="invalid-feedback">
+                      * Campo requerido.
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="exampleDataList" class="form-label">Asentamiento:</label>
+                    <input class="form-control" list="datalistOptionsAse" id="asentamiento" placeholder="Buscar..." required>
+                    <datalist id="datalistOptionsAse">
                       <option value="1">Calera</option>
                       <option value="2">Pinos</option>
                       <option value="Río Grande">
@@ -442,8 +470,6 @@ include('prcd/qc/qc.php');
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
-                  </div>
-                  <div class="col-sm-6">
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Teléfono Particular:</label>
@@ -572,13 +598,14 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="exampleDataListPeriodo" class="form-label">Periodicidad:</label>
-                    <input class="form-control" list="datalistOptionsPeriodo" id="periodo" placeholder="Escribe para buscar..." disabled>
-                    <datalist id="datalistOptionsPeriodo">
-                      <option value="Mensual">
-                      <option value="Bimestral">
-                      <option value="Trimestral">
-                      <option value="Semestral">
-                    </datalist>
+                    <select class="form-select" aria-label="Default select example" id="periodo" disabled>
+                      <option selected>Selecciona...</option>
+                      <option value="1">Mensual</option>
+                      <option value="2">Bimestral</option>
+                      <option value="3">Trimestral</option>
+                      <option value="4">Cuatrimestral</option>
+                      <option value="5">Semestral</option>
+                    </select>
                   </div>
                   <div class="col-sm-10 mb-3">
                     <label for="exampleDataListSS" class="form-label">Tipo de Seguridad Social:</label>
@@ -751,7 +778,6 @@ include('prcd/qc/qc.php');
                       <label for="exampleDataListCausa" class="form-label">¿Usa prótesis u órtesis?</label>
                       <div class="input-group">
                         <select class="form-select" id="protesis" onchange="protesisOp(this.value)">
-                          <option selected>Selecciona...</option>
                           <option value="1">Sí</option>
                           <option value="2">No</option>
                         </select>
@@ -772,42 +798,45 @@ include('prcd/qc/qc.php');
                         <option value="2">Medicamentos</option>
                         <option value="3">Ambiental</option>
                       </select>
-                      <select class="form-select" id="tipoAlergia" multiple aria-label="multiple select example" disabled>
-                        <option selected>Selecciona una o más</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                        <option value="4">Four</option>
-                        <option value="5">Five</option>
+                      <select class="form-select" id="tipoAlergia" multiple aria-label="multiple select example" onclick="addA(this.value);" disabled>
+                        <option value="One">One</option>
+                        <option value="Two">Two</option>
+                        <option value="Three">Three</option>
+                        <option value="Four">Four</option>
+                        <option value="Five">Five</option>
                       </select>
                     </div>
                     <div class="col-sm-6">
                       <div class="input-group mt-4">
-                        <span class="input-group-text mt-2">Alergias <br>seleccionadas:</span>
-<!--                         <textarea class="form-control mt-2" rows="5" id="alergiasFull" aria-label="With textarea" disabled>
-
-                        </textarea> -->
-                        <div contenteditable="true" class="editable" id="divEditable">
+                        <span class="input-group-text mt-2" height="auto">Alergias <br>seleccionadas:</span>
+                        <div contenteditable="false" class="editable form-control mt-2" id="alergiasFull">
                         </div>
-                        <input type="button" onclick="addA();" value="añadir">
-                      <script>
-
-                        function addA() {
-
-                          var textarea = document.getElementById("divEditable");
-                          textarea.innerHTML += '<span class="badge rounded-pill text-bg-secondary">Secondary <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></span> ';
-
+                        <script>
+                          function addA(val) {
+                            var textarea = document.getElementById("alergiasFull");
+                            if (val==null || val ==""){
+                              console.log('sin valor');
+                            } else{
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'">'+val+' <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              document.getElementById(val).setAttribute('onclick',"removeA('"+val+"')");
+                              document.querySelector('#tipoAlergia option[value='+val+']').remove();
+                            }
                           }
-                      </script>
-                      <style>
-                        div.editable {
-                          width: 300px;
-                          height: 100px;
-                          border: 1px solid #ccc;
-                          padding: 5px;
-                          overflow: auto;
-                        }
-                      </style>
+                          function removeA(val) {
+                            console.log(val);
+                            document.getElementById(val).remove();
+                            $('#tipoAlergia').append("<option value='"+val+"'>"+val+"</option>");
+                            }
+                        </script>
+                        <style>
+                          div.editable {
+                            width: 300px;
+                            height: 150px;
+                            border: 1px solid #ccc;
+                            padding: 4px;
+                            overflow: auto;
+                          }
+                        </style>
                       </div>
                     </div>
                     <div class="col-sm-4">
@@ -816,19 +845,36 @@ include('prcd/qc/qc.php');
                         <input type="text" class="form-control" id="enfermedadesSearch" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
-                      <select class="form-select" id="enfermedades" onchange="enfermedadesOp(this.value)" multiple aria-label="multiple select example">
-                        <option selected>Selecciona una o más</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                        <option value="4">Four</option>
-                        <option value="5">Five</option>
+                      <select class="form-select" id="enfermedades" onclick="addB(this.value)" onselect="enfermedadesOp(this.value)" multiple aria-label="multiple select example">
+                        <option value="One">One</option>
+                        <option value="Two">Two</option>
+                        <option value="Three">Three</option>
+                        <option value="Four">Four</option>
+                        <option value="Five">Five</option>
                       </select>
                     </div>
                     <div class="col-sm-6">
                       <div class="input-group mt-4" style="height:max-content">
                         <span class="input-group-text mt-2">Enfermedades <br>seleccionadas:</span>
-                        <textarea class="form-control mt-2" id="enfermedadesFull" rows="5" aria-label="With textarea" disabled></textarea>
+                        <div contenteditable="false" class="editable form-control mt-2" id="enfermedadesFull">
+                        </div>
+                        <script>
+                          function addB(val) {
+                            var textarea = document.getElementById("enfermedadesFull");
+                            if (val==null || val ==""){
+                              console.log('sin valor');
+                            } else{
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'">'+val+' <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              document.getElementById(val).setAttribute('onclick',"removeB('"+val+"')");
+                              document.querySelector('#enfermedades option[value='+val+']').remove();
+                            }
+                          }
+                          function removeB(val) {
+                            console.log(val);
+                            document.getElementById(val).remove();
+                            $('#enfermedades').append("<option value='"+val+"'>"+val+"</option>");
+                            }
+                        </script>
                       </div>
                     </div>
                     <div class="col-sm-4">
@@ -837,19 +883,36 @@ include('prcd/qc/qc.php');
                         <input type="text" class="form-control" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
-                      <select class="form-select" id="medicamentos" onchange="medicamentosOp(this.value)" multiple aria-label="multiple select example">
-                        <option selected>Selecciona uno o más</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                        <option value="4">Four</option>
-                        <option value="5">Five</option>
+                      <select class="form-select" id="medicamentos" onclick="addC(this.value)" onchange="medicamentosOp(this.value)" multiple aria-label="multiple select example">
+                        <option value="One">One</option>
+                        <option value="Two">Two</option>
+                        <option value="Three">Three</option>
+                        <option value="Four">Four</option>
+                        <option value="Five">Five</option>
                       </select>
                     </div>
                     <div class="col-sm-6 mb-3">
                       <div class="input-group mt-4" style="height:max-content">
                         <span class="input-group-text mt-2">Medicamentos <br>seleccionados:</span>
-                        <textarea class="form-control mt-2" id="medicamentosFull" rows="5" aria-label="With textarea" disabled></textarea>
+                        <div contenteditable="false" class="editable form-control mt-2" id="medicamentosFull">
+                        </div>
+                        <script>
+                          function addC(val) {
+                            var textarea = document.getElementById("medicamentosFull");
+                            if (val==null || val ==""){
+                              console.log('sin valor');
+                            } else{
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'">'+val+' <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              document.getElementById(val).setAttribute('onclick',"removeC('"+val+"')");
+                              document.querySelector('#medicamentos option[value='+val+']').remove();
+                            }
+                          }
+                          function removeC(val) {
+                            console.log(val);
+                            document.getElementById(val).remove();
+                            $('#medicamentos').append("<option value='"+val+"'>"+val+"</option>");
+                            }
+                        </script>
                       </div>
                     </div>
                     <br>
