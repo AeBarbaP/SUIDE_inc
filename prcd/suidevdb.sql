@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2023 at 10:24 PM
+-- Generation Time: Jun 13, 2023 at 10:24 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -20,6 +20,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `suidevdb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `alergias`
+--
+
+CREATE TABLE `alergias` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `tipo` int(11) NOT NULL COMMENT '1 - Alimentaria\r\n2 - Medicamentos\r\n3 - Ambiental'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `alergias`
+--
+
+INSERT INTO `alergias` (`id`, `nombre`, `tipo`) VALUES
+(1, '(APLV) Alergia a la Proteína de la Leche de Vaca', 1),
+(2, 'Ciprofloxacino', 2),
+(3, 'Cacahuate', 1),
+(4, 'Penicilina', 2),
+(5, 'Polvo', 3),
+(6, 'Mezquite', 3),
+(7, 'Sol', 3);
 
 -- --------------------------------------------------------
 
@@ -1967,6 +1992,31 @@ CREATE TABLE `documentos_list` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `enfermedades`
+--
+
+CREATE TABLE `enfermedades` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `enfermedades`
+--
+
+INSERT INTO `enfermedades` (`id`, `nombre`) VALUES
+(1, 'Amiloidosis Cardiaca'),
+(2, 'Insuficiencia Renal'),
+(3, 'Colitis Ulcerosa'),
+(4, 'Gastritis'),
+(5, 'Síndrome de Chron'),
+(6, 'Diabetes'),
+(7, 'Hipertensión'),
+(8, 'Artritis Reumatoide');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `integracion`
 --
 
@@ -2074,7 +2124,33 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (56, 1, '2023-06-09 08:53:19', NULL),
 (57, 1, '2023-06-12 08:27:22', NULL),
 (58, 1, '2023-06-12 12:37:38', NULL),
-(59, 0, NULL, '2023-06-12 13:22:59');
+(59, 0, NULL, '2023-06-12 13:22:59'),
+(60, 0, NULL, '2023-06-13 11:23:50'),
+(61, 1, '2023-06-13 11:23:54', NULL),
+(62, 0, NULL, '2023-06-13 14:47:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medicamentos`
+--
+
+CREATE TABLE `medicamentos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `medicamentos`
+--
+
+INSERT INTO `medicamentos` (`id`, `nombre`) VALUES
+(1, 'Losartan'),
+(2, 'Metocarbamol'),
+(3, 'Insulina'),
+(4, 'Amlodipino'),
+(5, 'CBD'),
+(6, 'Diazepam');
 
 -- --------------------------------------------------------
 
@@ -2248,6 +2324,12 @@ CREATE TABLE `vivienda` (
 --
 
 --
+-- Indexes for table `alergias`
+--
+ALTER TABLE `alergias`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `asentamientos`
 --
 ALTER TABLE `asentamientos`
@@ -2272,6 +2354,12 @@ ALTER TABLE `documentos_list`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `enfermedades`
+--
+ALTER TABLE `enfermedades`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `integracion`
 --
 ALTER TABLE `integracion`
@@ -2287,6 +2375,12 @@ ALTER TABLE `log_entregas`
 -- Indexes for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `medicamentos`
+--
+ALTER TABLE `medicamentos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2336,6 +2430,12 @@ ALTER TABLE `vivienda`
 --
 
 --
+-- AUTO_INCREMENT for table `alergias`
+--
+ALTER TABLE `alergias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `asentamientos`
 --
 ALTER TABLE `asentamientos`
@@ -2360,6 +2460,12 @@ ALTER TABLE `documentos_list`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `enfermedades`
+--
+ALTER TABLE `enfermedades`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `integracion`
 --
 ALTER TABLE `integracion`
@@ -2375,7 +2481,13 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+
+--
+-- AUTO_INCREMENT for table `medicamentos`
+--
+ALTER TABLE `medicamentos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `perfiles_usr`
