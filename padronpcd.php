@@ -716,12 +716,12 @@ include('prcd/qc/qc.php');
                         <label for="basic-url" class="form-label">Rehabilitación:</label>
                         <div class="input-group">
                           <div class="form-check form-check-inline mt-2">
-                            <input class="form-check-input" type="radio" name="rehabilitacionSi" id="rehabilitacionSi" onclick="rehabOp(this.value)" value="1">
-                            <label class="form-check-label" for="rehabilitacion1">Sí</label>
+                            <input class="form-check-input" type="radio" name="rehabilitacion" id="rehabilitacionSi" onclick="rehabOp(this.value)" value="1">
+                            <label class="form-check-label" for="rehabilitacion">Sí</label>
                           </div>
                           <div class="form-check form-check-inline mt-2">
-                            <input class="form-check-input" type="radio" name="rehabilitacionNo" id="rehabilitacionNo" onclick="rehabOp(this.value)" value="2">
-                            <label class="form-check-label" for="rehabilitacion2">No</label>
+                            <input class="form-check-input" type="radio" name="rehabilitacion" id="rehabilitacionNo" onclick="rehabOp(this.value)" value="2">
+                            <label class="form-check-label" for="rehabilitacion">No</label>
                           </div>
                           <input type="text" class="form-control" id="lugarRehab" name="rehabilitacion" placeholder="Dónde..." disabled>
                         </div>
@@ -729,14 +729,14 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-2">
                       <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fecha de Inicio:</label>
-                      <input type="date" class="form-control" id="fechaIni" name="fechaini" placeholder="" required>
+                      <input type="date" class="form-control" id="fechaIni" name="fechaini" placeholder="" required disabled>
                       <div class="invalid-feedback">
                         * Campo requerido.
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Duración:</label>
-                      <select class="form-select" id="duracion" aria-label="Default select example">
+                      <select class="form-select" id="duracion" aria-label="Default select example" disabled>
                         <option selected>Selecciona...</option>
                         <option value="1">0 - 6 meses</option>
                         <option value="2">7 - 12 meses</option>
@@ -792,40 +792,84 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Alergias:</label>
                       <select class="form-select" id="alergias" onchange="alergiasOp(this.value)" aria-label="Default select example">
-                        <option selected>Selecciona...</option>
                         <option value="0">Ninguna</option>
                         <option value="1">Alimentaria</option>
                         <option value="2">Medicamentos</option>
                         <option value="3">Ambiental</option>
                       </select>
                       <select class="form-select" id="tipoAlergia" multiple aria-label="multiple select example" onclick="addA(this.value);" disabled>
-                        <option value="One">One</option>
-                        <option value="Two">Two</option>
-                        <option value="Three">Three</option>
-                        <option value="Four">Four</option>
-                        <option value="Five">Five</option>
+                        <option value="0" data-bs-toggle="modal" data-bs-target="#alergiaModal">Otra</option>
+                        <option value="One" name="valido">One</option>
+                        <option value="Two" name="valido">Two</option>
+                        <option value="Three" name="valido">Three</option>
+                        <option value="Four" name="valido">Four</option>
+                        <option value="Five" name="valido">Five</option>
                       </select>
                     </div>
+                    <!-- Modal para agregar alergia -->
+                    <div class="modal fade" id="alergiaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar alergia</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="input-group">
+                              <span class="input-group-text"> Alergia:</span>
+                              <input type="text" class="form-control  w-50" id="alergiaInput" name="alergiaInput" value="" placeholder="">
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" onclick="addInput()" data-bs-dismiss="modal">Agregar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Termina modal para agregar alergia -->
                     <div class="col-sm-6">
                       <div class="input-group mt-4">
                         <span class="input-group-text mt-2" height="auto">Alergias <br>seleccionadas:</span>
                         <div contenteditable="false" class="editable form-control mt-2" id="alergiasFull">
                         </div>
                         <script>
+
                           function addA(val) {
                             var textarea = document.getElementById("alergiasFull");
-                            if (val==null || val ==""){
+                            if (val==null || val =="" || val == 0){
                               console.log('sin valor');
                             } else{
                               textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'">'+val+' <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeA('"+val+"')");
+                              document.getElementById(val).setAttribute('name',"'"+val+"'");
                               document.querySelector('#tipoAlergia option[value='+val+']').remove();
                             }
                           }
+                          function addInput() {
+                            var val = document.getElementById("alergiaInput").value;
+                            var textarea = document.getElementById("alergiasFull");
+                            //if (val==null || val =="" || val == 0){
+                              //console.log('sin valor');
+                            //} else{
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'">'+val+' <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              document.getElementById(val).setAttribute('onclick',"removeA('"+val+"')");
+                              //document.querySelector('#tipoAlergia option[value='+val+']').remove();
+                              document.getElementById("alergiaInput").value ="";
+                           // }
+                          }
                           function removeA(val) {
                             console.log(val);
-                            document.getElementById(val).remove();
-                            $('#tipoAlergia').append("<option value='"+val+"'>"+val+"</option>");
+                            var nameInput = document.getElementById(val).getAttribute("name");
+                            if (nameInput){
+                              document.getElementById(val).remove();
+                              $('#tipoAlergia').append("<option value='"+val+"'>"+val+"</option>");
+                            }
+                            else{
+                              console.log("Nada");
+                              document.getElementById(val).remove();
+
+                            }
                             }
                         </script>
                         <style>
@@ -925,26 +969,46 @@ include('prcd/qc/qc.php');
                 <div class="tab-pane fade" id="nav-vivienda" role="tabpanel" aria-labelledby="nav-vivienda-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <!-- Vivienda -->
-                    <div class="col-sm-12">
+                    <div class="col-sm-7">
                       <form action="" id="viviendaForm">
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Vivienda:</label>
                       <div class="input-group" style="height:max-content">
                         <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="vivienda" value="1">
-                          <label class="form-check-label" for="vivienda1">Propia</label>
+                          <label class="form-check-label" for="vivienda">Propia</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="vivienda" value="2">
-                          <label class="form-check-label" for="vivienda2">Prestada</label>
+                          <label class="form-check-label" for="vivienda">Prestada</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="vivienda" value="3">
-                          <label class="form-check-label" for="vivienda3">Rentada</label>
+                          <label class="form-check-label" for="vivienda">Rentada</label>
                         </div>
                         <div class="form-check form-check-inline">
                           <div class="input-group mb-3 w-75">
                             <span class="input-group-text">$</span>
                             <input type="text" class="form-control" id="montoVivienda" aria-label="Amount (to the nearest dollar)" disabled>
+                            <span class="input-group-text">.00</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-5">
+                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> La está págando:</label>
+                      <div class="input-group" style="height:max-content">
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" onclick="viviendaDOp(this.value)" name="viviendaP" id="viviendaP" value="1">
+                          <label class="form-check-label" for="viviendaP">Sí</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" onclick="viviendaDOp(this.value)" name="viviendaP" id="viviendaP" value="2">
+                          <label class="form-check-label" for="viviendaP">No</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <div class="input-group mb-3 w-75">
+                            <span class="input-group-text">$</span>
+                            <input type="text" class="form-control" id="costoVivienda" aria-label="Amount (to the nearest dollar)" disabled>
                             <span class="input-group-text">.00</span>
                           </div>
                         </div>
@@ -972,7 +1036,7 @@ include('prcd/qc/qc.php');
                           <label class="form-check-label" for="tipoVivienda4">Otra:</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-control" id="viviendaOtro" type="text" placeholder="Otro" disabled>
+                          <input class="form-control" id="viviendaOtro" type="text" placeholder="Especifique..." disabled>
                         </div>
                       </div>
                     </div>
@@ -1019,7 +1083,7 @@ include('prcd/qc/qc.php');
                           </div>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-control" type="text" id="otroRoomInput" placeholder="Otro" disabled>
+                          <input class="form-control" type="text" id="otroRoomInput" placeholder="Especifique..." disabled>
                         </div>
                         
                       </div>
@@ -1040,10 +1104,10 @@ include('prcd/qc/qc.php');
                         </div>
                         <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="techo" value="3">
-                          <label class="form-check-label" for="techo3">Otros</label>
+                          <label class="form-check-label" for="techo3">Otro</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-control" type="text" id="otroTecho" placeholder="" disabled>
+                          <input class="form-control" type="text" id="otroTecho" placeholder="Especifique..." disabled>
                         </div>
                         
                       </div>
@@ -1053,24 +1117,24 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-12">
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Pared:</label>
                       <div class="input-group" style="height:max-content">
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="pared" id="pared" value="1">
-                          <label class="form-check-label" for="inlineRadio1">Block</label>
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="pared" value="1">
+                          <label class="form-check-label" for="pared">Block</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="pared" value="2">
+                          <label class="form-check-label" for="pared">Ladrillo</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="pared" value="3">
+                          <label class="form-check-label" for="pared">Adobe</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="pared" value="4">
+                          <label class="form-check-label" for="pared">Otro</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="pared" id="pared" value="2">
-                          <label class="form-check-label" for="inlineRadio2">Ladrillo</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="pared" id="pared" value="3">
-                          <label class="form-check-label" for="inlineRadio2">Adobe</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="pared" id="otro" value="4">
-                          <label class="form-check-label" for="inlineRadio2">Otros</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-control" id="otroPared" type="text" placeholder="Costo/Precio">
+                          <input class="form-control" id="otroPared" type="text" placeholder="Especifique..." disabled>
                         </div>
                         
                       </div>
@@ -1158,7 +1222,7 @@ include('prcd/qc/qc.php');
                           </div>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-control" id="otroServiciosInput" type="text" placeholder="Otro" disabled>
+                          <input class="form-control" id="otroServiciosInput" type="text" placeholder="Especifique..." disabled>
                         </div>
                       </div>
                     </div>
@@ -1238,7 +1302,7 @@ include('prcd/qc/qc.php');
                           </div>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-control" id="otroElectroInput" type="text" placeholder="Otro" disabled>
+                          <input class="form-control" id="otroElectroInput" type="text" placeholder="Especifique..." disabled>
                         </div>
                         
                       </div>
@@ -1255,18 +1319,18 @@ include('prcd/qc/qc.php');
                       <br>
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> ¿Tiene deudas?:</label>
                       <div class="input-group">
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" id="deudas" onclick="deudasOp(this.value)" type="radio" name="deudas" value="1">
                           <label class="form-check-label" for="deudas1">Sí</label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" onclick="deudasOp(this.value)"  name="deudas" id="deudas" value="0">
                           <label class="form-check-label" for="deudas2">No</label>
                         </div>
                         <div class="form-check form-check-inline mb-3">
                           <div class="input-group w-75">
                             <span class="input-group-text">$</span>
-                            <input type="text" class="form-control" id="deudasInput" aria-label="Monto..." disabled>
+                            <input type="text" class="form-control" id="deudasInput" aria-label="Monto" placeholder="Monto Deuda" disabled>
                             <span class="input-group-text">.00</span>
                           </div>
                         </div>
@@ -2360,4 +2424,3 @@ include('prcd/qc/qc.php');
 
 
     <!-- Termina Modal para cargar archivo en pdf o jpg en Tab Documentos -->
-    

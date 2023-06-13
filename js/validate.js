@@ -95,8 +95,12 @@ function rehabOp(x){
 
     if (rehabilitacion == 1){
         document.getElementById('lugarRehab').disabled = false;
+        document.getElementById('fechaIni').disabled = false;
+        document.getElementById('duracion').disabled = false;
     } else {
         document.getElementById('lugarRehab').disabled = true;
+        document.getElementById('fechaIni').disabled = true;
+        document.getElementById('duracion').disabled = true;
     }
 }
 
@@ -119,6 +123,16 @@ function viviendaOp(x){
         document.getElementById('montoVivienda').disabled = true;
     }
 }
+function viviendaDOp(x){
+    var viviendaPD = x;
+
+    if (viviendaPD == 1){
+        document.getElementById('costoVivienda').disabled = false;
+        
+    } else {
+        document.getElementById('costoVivienda').disabled = true;
+    }
+}
 
 function tipoViviendaOp(x){
     var tipoVivienda = x;
@@ -137,6 +151,15 @@ function techoOp(x){
         document.getElementById('otroTecho').disabled = false;
     } else {
         document.getElementById('otroTecho').disabled = true;
+    }
+}
+function paredOp(x){
+    var pared = x;
+
+    if (pared == 4){
+        document.getElementById('otroPared').disabled = false;
+    } else {
+        document.getElementById('otroPared').disabled = true;
     }
 }
 
