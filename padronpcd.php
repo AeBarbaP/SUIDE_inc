@@ -831,34 +831,52 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-6">
                       <div class="input-group mt-4">
                         <span class="input-group-text mt-2" height="auto">Alergias <br>seleccionadas:</span>
-                        <div contenteditable="false" class="editable form-control mt-2" id="alergiasFull">
+                        <div contenteditable="false" class="editable form-control mt-2 alergiasFull" id="alergiasFull">
                         </div>
                         <script>
 
                           function addA(val) {
+                            var p2;
+                            var numero = ""; //remover al momento de programar guardar
+                           
+
                             var textarea = document.getElementById("alergiasFull");
                             if (val==null || val =="" || val == 0){
                               console.log('sin valor');
                             } else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'">'+val+' <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeA('"+val+"')");
                               document.getElementById(val).setAttribute('name',"'"+val+"'");
                               document.querySelector('#tipoAlergia option[value='+val+']').remove();
+                              
+                              //remover al momento de programar guardar
+                              const paragraphs = document.querySelectorAll('[class="valorFull"]');
+                              paragraphs.forEach(p => numero = numero + p.id +', ');
+                              numero = numero.slice(0, numero.length - 2);
+                              console.log(numero);
                             }
                           }
                           function addInput() {
+                            var numero = "";//remover al momento de programar guardar
                             var val = document.getElementById("alergiaInput").value;
                             var textarea = document.getElementById("alergiasFull");
                             //if (val==null || val =="" || val == 0){
                               //console.log('sin valor');
                             //} else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'">'+val+' <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeA('"+val+"')");
                               //document.querySelector('#tipoAlergia option[value='+val+']').remove();
                               document.getElementById("alergiaInput").value ="";
+
+                              //remover al momento de programar guardar          
+                              const paragraphs = document.querySelectorAll('[class="valorFull"]');
+                              paragraphs.forEach(p => numero = numero + p.id +', ');
+                              numero = numero.slice(0, numero.length - 2);
+                              console.log(numero);
                            // }
                           }
                           function removeA(val) {
+                            var numero = ""; //remover al momento de programar guardar
                             console.log(val);
                             var nameInput = document.getElementById(val).getAttribute("name");
                             if (nameInput){
@@ -870,6 +888,11 @@ include('prcd/qc/qc.php');
                               document.getElementById(val).remove();
 
                             }
+                            //remover al momento de programar guardar
+                              const paragraphs = document.querySelectorAll('[class="valorFull"]');
+                              paragraphs.forEach(p => numero = numero + p.id +', ');
+                              numero = numero.slice(0, numero.length - 2);
+                              console.log(numero);
                             }
                         </script>
                         <style>
@@ -1020,20 +1043,21 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Tipo de vivienda:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoVivienda1" value="1">
-                          <label class="form-check-label" for="tipoVivienda1">Casa</label>
+                          
+                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoVivienda" value="1">
+                          <label class="form-check-label" for="tipoVivienda">Casa</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoVivienda1" value="2">
-                          <label class="form-check-label" for="tipoVivienda2">Departamento</label>
+                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoVivienda" value="2">
+                          <label class="form-check-label" for="tipoVivienda">Departamento</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoVivienda3" value="3">
-                          <label class="form-check-label" for="tipoVivienda3">Vecindad</label>
+                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoVivienda" value="3">
+                          <label class="form-check-label" for="tipoVivienda">Vecindad</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoVivienda4" value="4">
-                          <label class="form-check-label" for="tipoVivienda4">Otra:</label>
+                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoVivienda" value="4">
+                          <label class="form-check-label" for="tipoVivienda">Otra:</label>
                         </div>
                         <div class="form-check form-check-inline">
                           <input class="form-control" id="viviendaOtro" type="text" placeholder="Especifique..." disabled>
@@ -1095,19 +1119,19 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Techo:</label>
                       <div class="input-group" style="height:max-content">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="techo" value="1">
-                          <label class="form-check-label" for="techo1">Lamina</label>
+                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="lamina" value="1">
+                          <label class="form-check-label" for="techo">Lamina</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="techo" value="2">
-                          <label class="form-check-label" for="techo2">Cemento</label>
+                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="cemento" value="2">
+                          <label class="form-check-label" for="techo">Cemento</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="techo" value="3">
-                          <label class="form-check-label" for="techo3">Otro</label>
+                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="otroTecho" value="3">
+                          <label class="form-check-label" for="techo">Otro</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-control" type="text" id="otroTecho" placeholder="Especifique..." disabled>
+                          <input class="form-control" type="text" id="otroTechoInput" placeholder="Especifique..." disabled>
                         </div>
                         
                       </div>
@@ -1118,23 +1142,23 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Pared:</label>
                       <div class="input-group" style="height:max-content">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="pared" value="1">
+                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="block" value="1">
                           <label class="form-check-label" for="pared">Block</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="pared" value="2">
+                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="ladrillo" value="2">
                           <label class="form-check-label" for="pared">Ladrillo</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="pared" value="3">
+                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="adobe" value="3">
                           <label class="form-check-label" for="pared">Adobe</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="pared" value="4">
+                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="otroPared" value="4">
                           <label class="form-check-label" for="pared">Otro</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-control" id="otroPared" type="text" placeholder="Especifique..." disabled>
+                          <input class="form-control" id="otroParedInput" type="text" placeholder="Especifique..." disabled>
                         </div>
                         
                       </div>

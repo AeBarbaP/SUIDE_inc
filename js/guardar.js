@@ -192,6 +192,7 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#medicosForm').submit(function(e) {
         /* Datos Médicos */
+        /* var concatenado1 = document.querySelectorAll('#alergiasFull.badge').getAttribute('id'); */
         var curp_exp = document.getElementById('curp_exp').value;
         var discapacidad = document.getElementById('discapacidad').value;
         var gradoDisc = document.getElementById('gradoDisc').value;
@@ -235,6 +236,110 @@ $(document).ready(function() {
         $.ajax({
             type: "POST",
             url: 'prcd/guardarmedicos.php',
+            dataType:'json',
+            data: {
+                curp_exp:curp_exp,
+                discapacidad:discapacidad,
+                gradoDisc:gradoDisc,
+                tipoDisc:tipoDisc,
+                causaDisc:causaDisc,
+                especifiqueD:especifiqueD,
+                temporalidad:temporalidad,
+                fuente:fuente,
+                fechaValoracion:fechaValoracion,
+                rehabilitacion:rehabilitacion,
+                lugarRehab:lugarRehab,
+                fechaIni:fechaIni,
+                duracion:duracion,
+                tipoSangre:tipoSangre,
+                cirugia:cirugia,
+                tipoCirugia:tipoCirugia,
+                protesis:protesis,
+                tipoProtesis:tipoProtesis,
+                alergias:alergias,
+                alergiasFull:alergiasFull,
+                enfermedades:enfermedades,
+                enfermedadesFull:enfermedadesFull,
+                medicamentos:medicamentos,
+                medicamentosFull:medicamentosFull
+            },
+            success: function(response){
+                var jsonData = JSON.parse(JSON.stringify(response));
+
+                var verificador = jsonData.succes;
+
+                if (verificador = 1){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Datos Médicos han sido guardados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    document.getElementById('nav-medicos-tab').disabled = true;
+                    document.getElementById('nav-generales-tab').disabled = true;
+                    document.getElementById('nav-vivienda-tab').disabled = false;
+                }
+                else if (verificador = 2){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Datos Médicos NO han sido guardados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            }
+        });
+        e.preventDefault();
+
+    })
+})
+
+
+$(document).ready(function() {
+    $('#viviendaForm').submit(function(e) {
+        /* Datos Médicos */
+        var curp_exp = document.getElementById('curp_exp').value;
+        var vivienda = document.getElementById('vivienda').value;
+        var montoVivienda = document.getElementById('montoVivienda').value;
+        var viviendaP = document.getElementById('viviendaP').value;
+        var tipoVivienda = document.getElementById('tipoVivienda').value;
+        var numHabitaciones = document.getElementById('numHabitaciones').value;
+        var cocina = document.getElementById('cocina').value;
+        var sala = document.getElementById('sala').value;
+        var bath = document.getElementById('bath').value;
+        var otroRoom = document.getElementById('otroRoom');
+        var otroRoomInput = document.getElementById('otroRoomInput');
+        var lamina = document.getElementById('lamina').value;
+        var cemento = document.getElementById('cemento').value;
+        var otroTecho = document.getElementById('otroTecho').value;
+        var block = document.getElementById('protesis').value;
+        var ladrillo = document.getElementById('tipoProtesis').value;
+        var adobe = document.getElementById('alergias').value;
+        var otroPared = document.getElementById('alergiasFull').value;
+        var otroParedInput = document.getElementById('enfermedades').value;
+        var enfermedadesFull = document.getElementById('enfermedadesFull').value;
+        var medicamentos = document.getElementById('medicamentos').value;
+        var medicamentosFull = document.getElementById('medicamentosFull').value;
+
+        if(lamina.checked){
+            var techo = 1;
+            
+        }
+        else if (cemento.checked){
+            var techo = 2;
+            
+        }
+        else if (otroTecho.checked){
+            var techo = 3;
+            var otroTechoInput = document.getElementById('otroTechoInput').value;
+            
+        }
+        
+        $.ajax({
+            type: "POST",
+            url: 'prcd/guardarvivienda.php',
             dataType:'json',
             data: {
                 curp_exp:curp_exp,
