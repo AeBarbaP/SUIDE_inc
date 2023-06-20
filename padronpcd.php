@@ -791,7 +791,7 @@ include('prcd/qc/qc.php');
                     <br>
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Alergias:</label>
-                      <select class="form-select" id="alergias" onchange="alergiasOp(this.value)" aria-label="Default select example">
+                      <select class="form-select" id="alergias" onchange="alergiasOp(this.value); queryTabAlergias(this.value)" aria-label="Default select example">
                         <option value="0">Ninguna</option>
                         <option value="1">Alimentaria</option>
                         <option value="2">Medicamentos</option>
@@ -838,7 +838,7 @@ include('prcd/qc/qc.php');
                           function addA(val) {
                             var p2;
                             var numero = ""; //remover al momento de programar guardar
-                           
+                          
 
                             var textarea = document.getElementById("alergiasFull");
                             if (val==null || val =="" || val == 0){

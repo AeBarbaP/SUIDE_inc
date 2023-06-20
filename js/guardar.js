@@ -296,6 +296,20 @@ $(document).ready(function() {
     })
 })
 
+function queryTabAlergias(x){
+    var alergias = x;
+    $.ajax({
+        type: "POST",
+        url: 'prcd/guardarmedicos.php',
+        dataType:'json',
+        data: {
+            alergias:alergias
+        },
+        success: function(response){
+            
+        }
+    });
+}
 
 $(document).ready(function() {
     $('#viviendaForm').submit(function(e) {
