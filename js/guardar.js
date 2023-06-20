@@ -300,13 +300,13 @@ function queryTabAlergias(x){
     var alergias = x;
     $.ajax({
         type: "POST",
-        url: 'prcd/guardarmedicos.php',
-        dataType:'json',
+        url: 'prcd/queryAlergias.php',
+        dataType:'html',
         data: {
             alergias:alergias
         },
-        success: function(response){
-            
+        success: function(data){
+            $('#tipoAlergia').fadeIn(1000).html(data);
         }
     });
 }
