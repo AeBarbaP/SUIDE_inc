@@ -791,7 +791,7 @@ include('prcd/qc/qc.php');
                     <br>
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Alergias:</label>
-                      <select class="form-select" id="alergias" onchange="alergiasOp(this.value); queryTabAlergias(this.value)" aria-label="Default select example">
+                      <select class="form-select" id="alergias" onchange="alergiasOp(this.value);queryTabAlergias(this.value)" aria-label="Default select example">
                         <option value="0">Ninguna</option>
                         <option value="1">Alimentaria</option>
                         <option value="2">Medicamentos</option>
@@ -799,11 +799,6 @@ include('prcd/qc/qc.php');
                       </select>
                       <select class="form-select" id="tipoAlergia" multiple aria-label="multiple select example" onclick="addA(this.value);" disabled>
                         <option value="0" data-bs-toggle="modal" data-bs-target="#alergiaModal">Otra</option>
-                        <option value="One" name="valido">One</option>
-                        <option value="Two" name="valido">Two</option>
-                        <option value="Three" name="valido">Three</option>
-                        <option value="Four" name="valido">Four</option>
-                        <option value="Five" name="valido">Five</option>
                       </select>
                     </div>
                     <!-- Modal para agregar alergia -->
