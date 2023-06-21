@@ -311,6 +311,21 @@ function queryTabAlergias(x){
     });
 }
 
+function buscarMedicamento(){
+    var medicamento = document.getElementById('buscarMed').value;
+    $.ajax({
+        type: "POST",
+        url: 'prcd/queryMedicamentos.php',
+        dataType:'html',
+        data: {
+            medicamento:medicamento
+        },
+        success: function(data){
+            $('#medicamentos').fadeIn(1000).html(data);
+        }
+    });
+}
+
 $(document).ready(function() {
     $('#viviendaForm').submit(function(e) {
         /* Datos Médicos */

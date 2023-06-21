@@ -798,7 +798,7 @@ include('prcd/qc/qc.php');
                         <option value="3">Ambiental</option>
                       </select>
                       <select class="form-select" id="tipoAlergia" multiple aria-label="multiple select example" onclick="addA(this.value);" disabled>
-                        <option value="0" data-bs-toggle="modal" data-bs-target="#alergiaModal">Otra</option>
+                        
                       </select>
                     </div>
                     <!-- Modal para agregar alergia -->
@@ -926,31 +926,40 @@ include('prcd/qc/qc.php');
                             if (val==null || val ==""){
                               console.log('sin valor');
                             } else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'">'+val+' <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span class="valorEFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeB('"+val+"')");
                               document.querySelector('#enfermedades option[value='+val+']').remove();
                             }
                           }
                           function removeB(val) {
+                            var numero = ""; //remover al momento de programar guardar
                             console.log(val);
-                            document.getElementById(val).remove();
-                            $('#enfermedades').append("<option value='"+val+"'>"+val+"</option>");
+                            var nameInput = document.getElementById(val).getAttribute("name");
+                            if (nameInput){
+                              document.getElementById(val).remove();
+                              $('#enfermedades').append("<option value='"+val+"'>"+val+"</option>");
                             }
+                            else{
+                              console.log("Nada");
+                              document.getElementById(val).remove();
+  
+                            }
+                            //remover al momento de programar guardar
+                              const paragraphs = document.querySelectorAll('[class="valorEFull"]');
+                              paragraphs.forEach(p => numero = numero + p.id +', ');
+                              numero = numero.slice(0, numero.length - 2);
+                              console.log(numero);
+                          }
                         </script>
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Medicamentos:</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" aria-label="Buscar...">
+                        <input type="text" class="form-control" id="buscarMed" oninput="buscarMedicamento()" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
                       <select class="form-select" id="medicamentos" onclick="addC(this.value)" onchange="medicamentosOp(this.value)" multiple aria-label="multiple select example">
-                        <option value="One">One</option>
-                        <option value="Two">Two</option>
-                        <option value="Three">Three</option>
-                        <option value="Four">Four</option>
-                        <option value="Five">Five</option>
                       </select>
                     </div>
                     <div class="col-sm-6 mb-3">
@@ -964,16 +973,29 @@ include('prcd/qc/qc.php');
                             if (val==null || val ==""){
                               console.log('sin valor');
                             } else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'">'+val+' <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span class="valorMFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeC('"+val+"')");
                               document.querySelector('#medicamentos option[value='+val+']').remove();
                             }
                           }
                           function removeC(val) {
+                            var numero = ""; //remover al momento de programar guardar
                             console.log(val);
-                            document.getElementById(val).remove();
-                            $('#medicamentos').append("<option value='"+val+"'>"+val+"</option>");
+                            var nameInput = document.getElementById(val).getAttribute("name");
+                            if (nameInput){
+                              document.getElementById(val).remove();
+                              $('#medicamentos').append("<option value='"+val+"'>"+val+"</option>");
                             }
+                            else{
+                              console.log("Nada");
+                              document.getElementById(val).remove();
+                            }
+                            //remover al momento de programar guardar
+                              const paragraphs = document.querySelectorAll('[class="valorMFull"]');
+                              paragraphs.forEach(p => numero = numero + p.id +', ');
+                              numero = numero.slice(0, numero.length - 2);
+                              console.log(numero);
+                          }
                         </script>
                       </div>
                     </div>
