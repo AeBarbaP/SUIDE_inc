@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2023 at 10:24 PM
+-- Generation Time: Jun 21, 2023 at 10:22 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -38,13 +38,31 @@ CREATE TABLE `alergias` (
 --
 
 INSERT INTO `alergias` (`id`, `nombre`, `tipo`) VALUES
-(1, '(APLV) Alergia a la Proteína de la Leche de Vaca', 1),
+(1, 'APLV Alergia a la Proteína de la Leche de Vaca', 1),
 (2, 'Ciprofloxacino', 2),
 (3, 'Cacahuate', 1),
 (4, 'Penicilina', 2),
 (5, 'Polvo', 3),
 (6, 'Mezquite', 3),
-(7, 'Sol', 3);
+(7, 'Sol', 3),
+(8, 'Huevo', 1),
+(9, 'Nuez', 1),
+(10, 'Soya', 1),
+(11, 'Pescado', 1),
+(12, 'Mariscos', 1),
+(13, 'Trigo', 1),
+(14, 'Frutas amarillas', 1),
+(15, 'Frutos rojos', 1),
+(16, 'Moho', 3),
+(17, 'Césped', 3),
+(18, 'Frío', 3),
+(19, 'Calor', 3),
+(20, 'Sulfametoxazol-trimetoprima', 2),
+(21, 'Eritromicina-sulfisoxazol', 2),
+(22, 'Gliburida', 2),
+(23, 'Glimepirida', 2),
+(24, 'Celecoxib', 2),
+(25, 'Sumatriptán', 2);
 
 -- --------------------------------------------------------
 
@@ -1944,7 +1962,8 @@ INSERT INTO `datos_medicos` (`id`, `curp`, `discapacidad`, `grado_discapacidad`,
 (3, 'prueba', 'gfd', 0, 0, 0, '', 0, 0, 2025, 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, ''),
 (4, 'guiw', 'j', 0, 0, 0, '', 0, 0, 2023, 0, '', '0000-00-00', '', 0, 0, '', 0, '', 1, 'bh', 2, 'hn', 3, 'vc'),
 (5, 'j', 's', 0, 1, 7, 'j', 3, 2, 2023, 1, 'd', '2023-07-10', '2', 1, 1, 'f', 1, 'g', 1, 'd', 1, 'f', 1, 'd'),
-(6, 'GOBM200421MJCNRRA8', 's', 0, 1, 7, 'g', 1, 1, 2022, 1, 'g', '2022-07-08', '1', 1, 1, 'g', 1, 'tg', 1, 'g', 1, 'g', 1, 'bv');
+(6, 'GOBM200421MJCNRRA8', 's', 0, 1, 7, 'g', 1, 1, 2022, 1, 'g', '2022-07-08', '1', 1, 1, 'g', 1, 'tg', 1, 'g', 1, 'g', 1, 'bv'),
+(7, '', '', 0, 0, 0, '', 0, 0, 0, 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -2127,7 +2146,16 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (59, 0, NULL, '2023-06-12 13:22:59'),
 (60, 0, NULL, '2023-06-13 11:23:50'),
 (61, 1, '2023-06-13 11:23:54', NULL),
-(62, 0, NULL, '2023-06-13 14:47:29');
+(62, 0, NULL, '2023-06-13 14:47:29'),
+(63, 1, '2023-06-14 08:33:26', NULL),
+(64, 0, NULL, '2023-06-19 13:08:45'),
+(65, 1, '2023-06-19 13:08:51', NULL),
+(66, 0, NULL, '2023-06-20 12:44:27'),
+(67, 1, '2023-06-20 12:44:34', NULL),
+(68, 0, NULL, '2023-06-20 15:02:58'),
+(69, 0, NULL, '2023-06-21 12:34:05'),
+(70, 1, '2023-06-21 12:34:26', NULL),
+(71, 0, NULL, '2023-06-21 14:11:09');
 
 -- --------------------------------------------------------
 
@@ -2433,7 +2461,7 @@ ALTER TABLE `vivienda`
 -- AUTO_INCREMENT for table `alergias`
 --
 ALTER TABLE `alergias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `asentamientos`
@@ -2451,7 +2479,7 @@ ALTER TABLE `datos_generales`
 -- AUTO_INCREMENT for table `datos_medicos`
 --
 ALTER TABLE `datos_medicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `documentos_list`
@@ -2481,7 +2509,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `medicamentos`
