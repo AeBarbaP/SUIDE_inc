@@ -971,6 +971,7 @@ include('prcd/qc/qc.php');
                         <span class="input-group-text mt-2">Medicamentos <br>seleccionados:</span>
                         <div contenteditable="false" class="editable form-control mt-2" id="medicamentosFull">
                         </div>
+                        <input type="text" id="numeroC">
                         <script>
                           function addC(val) {
                             var p2;
@@ -985,9 +986,10 @@ include('prcd/qc/qc.php');
                             }
                             //remover al momento de programar guardar
                             const paragraphs = document.querySelectorAll('[class="valorMFull"]');
-                            paragraphs.forEach(p => numeroC = numeroC + p.id +', ');
+                            paragraphs.forEach(p2 => numeroC = numeroC + p2.id +', ');
                             numeroC = numeroC.slice(0, numeroC.length - 2);
                             console.log(numeroC);
+                            /* document.getElementById('numeroC').value = numeroC; */
                           }
                           function removeC(val) {
                             var numeroC = ""; //remover al momento de programar guardar
@@ -1006,6 +1008,7 @@ include('prcd/qc/qc.php');
                               paragraphs.forEach(p => numeroC = numeroC + p.id +', ');
                               numeroC = numeroC.slice(0, numeroC.length - 2);
                               console.log(numeroC);
+                              /* document.getElementById('numeroC').value = numeroC; */
                           }
                         </script>
                       </div>
