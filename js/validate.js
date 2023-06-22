@@ -170,18 +170,12 @@ function alergiasOp(x){
     if(alergia == 1){
         document.getElementById('tipoAlergia').disabled = false;
         document.getElementById('alergiasFull').disabled = false;
-        document.getElementById('tipoAlergia').required = true;
-        document.getElementById('alergiasFull').required = true;
     } else if(alergia == 2){
         document.getElementById('tipoAlergia').disabled = false;
         document.getElementById('alergiasFull').disabled = false;
-        document.getElementById('tipoAlergia').required = true;
-        document.getElementById('alergiasFull').required = true;
     } else if(alergia == 3){
         document.getElementById('tipoAlergia').disabled = false;
         document.getElementById('alergiasFull').disabled = false;
-        document.getElementById('tipoAlergia').required = true;
-        document.getElementById('alergiasFull').required = true;
     } else if (alergia == 0){
         document.getElementById('tipoAlergia').disabled = true;
         document.getElementById('alergiasFull').disabled = true;

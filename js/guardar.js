@@ -210,11 +210,15 @@ $(document).ready(function() {
         var protesis = document.getElementById('protesis').value;
         var tipoProtesis = document.getElementById('tipoProtesis').value;
         var alergias = document.getElementById('alergias').value;
-        var alergiasFull = document.getElementById('alergiasFull').value;
+        //var alergiasFull = document.getElementById('alergiasFull').value;
         var enfermedades = document.getElementById('enfermedades').value;
-        var enfermedadesFull = document.getElementById('enfermedadesFull').value;
+        //var enfermedadesFull = document.getElementById('enfermedadesFull').value;
         var medicamentos = document.getElementById('medicamentos').value;
-        var medicamentosFull = document.getElementById('medicamentosFull').value;
+        //var medicamentosFull = document.getElementById('medicamentosFull').value;
+        if (alergias > 0){
+            var alergiasFull 
+
+        }
 
         if(rehabilitacionSi.checked){
             var rehabilitacion = 1;

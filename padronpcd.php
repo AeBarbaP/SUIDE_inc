@@ -778,6 +778,7 @@ include('prcd/qc/qc.php');
                       <label for="exampleDataListCausa" class="form-label">¿Usa prótesis u órtesis?</label>
                       <div class="input-group">
                         <select class="form-select" id="protesis" onchange="protesisOp(this.value)">
+                          <option selected>Selecciona...</option>
                           <option value="1">Sí</option>
                           <option value="2">No</option>
                         </select>
@@ -798,7 +799,6 @@ include('prcd/qc/qc.php');
                         <option value="3">Ambiental</option>
                       </select>
                       <select class="form-select" id="tipoAlergia" multiple aria-label="multiple select example" onclick="addA(this.value);" disabled>
-                        
                       </select>
                     </div>
                     <!-- Modal para agregar alergia -->
@@ -832,9 +832,7 @@ include('prcd/qc/qc.php');
 
                           function addA(val) {
                             var p2;
-                            var numero = ""; //remover al momento de programar guardar
-                          
-
+                            var numeroA = ""; //remover al momento de programar guardar
                             var textarea = document.getElementById("alergiasFull");
                             if (val==null || val =="" || val == 0){
                               console.log('sin valor');
@@ -846,13 +844,13 @@ include('prcd/qc/qc.php');
                               
                               //remover al momento de programar guardar
                               const paragraphs = document.querySelectorAll('[class="valorFull"]');
-                              paragraphs.forEach(p => numero = numero + p.id +', ');
-                              numero = numero.slice(0, numero.length - 2);
-                              console.log(numero);
+                              paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
+                              numeroA = numeroA.slice(0, numeroA.length - 2);
+                              console.log(numeroA);
                             }
                           }
                           function addInput() {
-                            var numero = "";//remover al momento de programar guardar
+                            var numeroA = "";//remover al momento de programar guardar
                             var val = document.getElementById("alergiaInput").value;
                             var textarea = document.getElementById("alergiasFull");
                             //if (val==null || val =="" || val == 0){
@@ -865,9 +863,9 @@ include('prcd/qc/qc.php');
 
                               //remover al momento de programar guardar          
                               const paragraphs = document.querySelectorAll('[class="valorFull"]');
-                              paragraphs.forEach(p => numero = numero + p.id +', ');
-                              numero = numero.slice(0, numero.length - 2);
-                              console.log(numero);
+                              paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
+                              numeroA = numeroA.slice(0, numeroA.length - 2);
+                              console.log(numeroA);
                            // }
                           }
                           function removeA(val) {
@@ -885,9 +883,9 @@ include('prcd/qc/qc.php');
                             }
                             //remover al momento de programar guardar
                               const paragraphs = document.querySelectorAll('[class="valorFull"]');
-                              paragraphs.forEach(p => numero = numero + p.id +', ');
-                              numero = numero.slice(0, numero.length - 2);
-                              console.log(numero);
+                              paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
+                              numeroA = numeroA.slice(0, numeroA.length - 2);
+                              console.log(numeroA);
                             }
                         </script>
                         <style>
@@ -918,17 +916,25 @@ include('prcd/qc/qc.php');
                         </div>
                         <script>
                           function addB(val) {
+                            var p2;
+                            var numeroB = ""; //remover al momento de programar guardar
                             var textarea = document.getElementById("enfermedadesFull");
-                            if (val==null || val ==""){
+                            if (val==null || val =="" || val == 0){
                               console.log('sin valor');
-                            } else{
+                            } else {
                               textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span class="valorEFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeB('"+val+"')");
                               document.querySelector('#enfermedades option[value='+val+']').remove();
                             }
+                            //remover al momento de programar guardar
+                            const paragraphs = document.querySelectorAll('[class="valorEFull"]');
+                            paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
+                            numeroB = numeroB.slice(0, numeroB.length - 2);
+                            console.log(numeroB);
                           }
+                          
                           function removeB(val) {
-                            var numero = ""; //remover al momento de programar guardar
+                            var numeroB = ""; //remover al momento de programar guardar
                             console.log(val);
                             var nameInput = document.getElementById(val).getAttribute("name");
                             if (nameInput){
@@ -942,9 +948,9 @@ include('prcd/qc/qc.php');
                             }
                             //remover al momento de programar guardar
                               const paragraphs = document.querySelectorAll('[class="valorEFull"]');
-                              paragraphs.forEach(p => numero = numero + p.id +', ');
-                              numero = numero.slice(0, numero.length - 2);
-                              console.log(numero);
+                              paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
+                              numeroB = numeroB.slice(0, numeroB.length - 2);
+                              console.log(numeroB);
                           }
                         </script>
                       </div>
@@ -967,6 +973,8 @@ include('prcd/qc/qc.php');
                         </div>
                         <script>
                           function addC(val) {
+                            var p2;
+                            var numeroC = ""; //remover al momento de programar guardar
                             var textarea = document.getElementById("medicamentosFull");
                             if (val==null || val ==""){
                               console.log('sin valor');
@@ -975,9 +983,14 @@ include('prcd/qc/qc.php');
                               document.getElementById(val).setAttribute('onclick',"removeC('"+val+"')");
                               document.querySelector('#medicamentos option[value='+val+']').remove();
                             }
+                            //remover al momento de programar guardar
+                            const paragraphs = document.querySelectorAll('[class="valorMFull"]');
+                            paragraphs.forEach(p => numeroC = numeroC + p.id +', ');
+                            numeroC = numeroC.slice(0, numeroC.length - 2);
+                            console.log(numeroC);
                           }
                           function removeC(val) {
-                            var numero = ""; //remover al momento de programar guardar
+                            var numeroC = ""; //remover al momento de programar guardar
                             console.log(val);
                             var nameInput = document.getElementById(val).getAttribute("name");
                             if (nameInput){
@@ -990,9 +1003,9 @@ include('prcd/qc/qc.php');
                             }
                             //remover al momento de programar guardar
                               const paragraphs = document.querySelectorAll('[class="valorMFull"]');
-                              paragraphs.forEach(p => numero = numero + p.id +', ');
-                              numero = numero.slice(0, numero.length - 2);
-                              console.log(numero);
+                              paragraphs.forEach(p => numeroC = numeroC + p.id +', ');
+                              numeroC = numeroC.slice(0, numeroC.length - 2);
+                              console.log(numeroC);
                           }
                         </script>
                       </div>
