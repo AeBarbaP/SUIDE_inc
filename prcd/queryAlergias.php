@@ -1,6 +1,6 @@
 <?php
 // if (isset($POST['text'])){
-
+    
     include('qc/qc.php');
 
     $alergias = $_POST['alergias'];

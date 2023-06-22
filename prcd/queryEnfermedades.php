@@ -3,8 +3,8 @@
 
     include('qc/qc.php');
 
-    $medicamento = $_POST['medicamento'];
-    $Query = "SELECT * FROM medicamentos WHERE nombre LIKE '%$medicamento%'" ;
+    $enfermedad = $_POST['enfermedad'];
+    $Query = "SELECT * FROM enfermedades WHERE nombre LIKE '%$enfermedad%'" ;
     $resultado_Query = $conn->query($Query);
     $filas = $resultado_Query->num_rows;
     while ($row_sql_catalogo = $resultado_Query->fetch_assoc()){
@@ -15,7 +15,7 @@
     if ($fila == 0){
         echo'
             <script>
-                document.getElementById("nohay").innerHTML = "No se encontró el medicamento, da Enter para agregar"
+                document.getElementById("noesta").innerHTML = "No se encontró la enfermedad, da Enter para agregar"
             </script>
         ';
     }

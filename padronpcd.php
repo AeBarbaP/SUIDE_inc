@@ -904,16 +904,12 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Enfermedades:</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" id="enfermedadesSearch" aria-label="Buscar...">
+                        <input type="text" class="form-control" id="enfermedadesSearch" oninput="buscarEnfermedad()" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
                       <select class="form-select" id="enfermedades" onclick="addB(this.value)" onselect="enfermedadesOp(this.value)" multiple aria-label="multiple select example">
-                        <option value="One">One</option>
-                        <option value="Two">Two</option>
-                        <option value="Three">Three</option>
-                        <option value="Four">Four</option>
-                        <option value="Five">Five</option>
                       </select>
+                      <div class="form-text" style="color:red" id="noesta"></div>
                     </div>
                     <div class="col-sm-6">
                       <div class="input-group mt-4" style="height:max-content">
@@ -952,6 +948,7 @@ include('prcd/qc/qc.php');
                           }
                         </script>
                       </div>
+                      
                     </div>
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Medicamentos:</label>
@@ -961,6 +958,7 @@ include('prcd/qc/qc.php');
                       </div>
                       <select class="form-select" id="medicamentos" onclick="addC(this.value)" onchange="medicamentosOp(this.value)" multiple aria-label="multiple select example">
                       </select>
+                      <div class="form-text" style="color:red" id="nohay"></div>
                     </div>
                     <div class="col-sm-6 mb-3">
                       <div class="input-group mt-4" style="height:max-content">
