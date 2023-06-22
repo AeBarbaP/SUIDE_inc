@@ -310,6 +310,20 @@ function queryTabAlergias(x){
         }
     });
 }
+function buscarEnfermedad(){
+    var enfermedad = document.getElementById('enfermedadesSearch').value;
+    $.ajax({
+        type: "POST",
+        url: 'prcd/queryEnfermedades.php',
+        dataType:'html',
+        data: {
+            enfermedad:enfermedad
+        },
+        success: function(data){
+            $('#enfermedades').fadeIn(1000).html(data);
+        }
+    });
+}
 
 function buscarMedicamento(){
     var medicamento = document.getElementById('buscarMed').value;
