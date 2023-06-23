@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2023 at 10:22 PM
+-- Generation Time: Jun 23, 2023 at 10:28 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -1928,13 +1928,13 @@ CREATE TABLE `datos_medicos` (
   `id` int(11) NOT NULL,
   `curp` varchar(20) NOT NULL,
   `discapacidad` varchar(50) NOT NULL,
-  `grado_discapacidad` int(11) NOT NULL,
+  `grado_discapacidad` varchar(50) NOT NULL,
   `tipo_discapacidad` int(11) NOT NULL,
   `causa` int(11) NOT NULL,
-  `causa_otro` varchar(100) NOT NULL,
+  `causa_otro` varchar(100) DEFAULT NULL,
   `temporalidad` int(11) NOT NULL,
   `valoracion` int(11) NOT NULL,
-  `fuente_valoracion` int(11) NOT NULL,
+  `fecha_valoracion` date NOT NULL,
   `rehabilitacion` int(11) NOT NULL,
   `rehabilitacion_donde` varchar(50) NOT NULL,
   `rehabilitacion_inicio` date NOT NULL,
@@ -1956,14 +1956,19 @@ CREATE TABLE `datos_medicos` (
 -- Dumping data for table `datos_medicos`
 --
 
-INSERT INTO `datos_medicos` (`id`, `curp`, `discapacidad`, `grado_discapacidad`, `tipo_discapacidad`, `causa`, `causa_otro`, `temporalidad`, `valoracion`, `fuente_valoracion`, `rehabilitacion`, `rehabilitacion_donde`, `rehabilitacion_inicio`, `rehabilitacion_duracion`, `tipo_sangre`, `cirugias`, `tipo_cirugias`, `protesis`, `protesis_tipo`, `alergias`, `alergias_cual`, `enfermedades`, `enfermedades_cual`, `medicamentos`, `medicamentos_cual`) VALUES
-(1, '', '', 0, 0, 0, '', 0, 0, 0, 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, ''),
-(2, '', '', 0, 0, 0, '', 0, 0, 0, 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, ''),
-(3, 'prueba', 'gfd', 0, 0, 0, '', 0, 0, 2025, 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, ''),
-(4, 'guiw', 'j', 0, 0, 0, '', 0, 0, 2023, 0, '', '0000-00-00', '', 0, 0, '', 0, '', 1, 'bh', 2, 'hn', 3, 'vc'),
-(5, 'j', 's', 0, 1, 7, 'j', 3, 2, 2023, 1, 'd', '2023-07-10', '2', 1, 1, 'f', 1, 'g', 1, 'd', 1, 'f', 1, 'd'),
-(6, 'GOBM200421MJCNRRA8', 's', 0, 1, 7, 'g', 1, 1, 2022, 1, 'g', '2022-07-08', '1', 1, 1, 'g', 1, 'tg', 1, 'g', 1, 'g', 1, 'bv'),
-(7, '', '', 0, 0, 0, '', 0, 0, 0, 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, '');
+INSERT INTO `datos_medicos` (`id`, `curp`, `discapacidad`, `grado_discapacidad`, `tipo_discapacidad`, `causa`, `causa_otro`, `temporalidad`, `valoracion`, `fecha_valoracion`, `rehabilitacion`, `rehabilitacion_donde`, `rehabilitacion_inicio`, `rehabilitacion_duracion`, `tipo_sangre`, `cirugias`, `tipo_cirugias`, `protesis`, `protesis_tipo`, `alergias`, `alergias_cual`, `enfermedades`, `enfermedades_cual`, `medicamentos`, `medicamentos_cual`) VALUES
+(1, '', '', '0', 0, 0, '', 0, 0, '0000-00-00', 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, ''),
+(2, '', '', '0', 0, 0, '', 0, 0, '0000-00-00', 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, ''),
+(3, 'prueba', 'gfd', '0', 0, 0, '', 0, 0, '0000-00-00', 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, ''),
+(4, 'guiw', 'j', '0', 0, 0, '', 0, 0, '0000-00-00', 0, '', '0000-00-00', '', 0, 0, '', 0, '', 1, 'bh', 2, 'hn', 3, 'vc'),
+(5, 'j', 's', '0', 1, 7, 'j', 3, 2, '0000-00-00', 1, 'd', '2023-07-10', '2', 1, 1, 'f', 1, 'g', 1, 'd', 1, 'f', 1, 'd'),
+(6, 'GOBM200421MJCNRRA8', 's', '0', 1, 7, 'g', 1, 1, '0000-00-00', 1, 'g', '2022-07-08', '1', 1, 1, 'g', 1, 'tg', 1, 'g', 1, 'g', 1, 'bv'),
+(7, '', '', '0', 0, 0, '', 0, 0, '0000-00-00', 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, ''),
+(8, 'PRUEBA', 'motora', '0', 1, 7, 'itra', 5, 1, '0000-00-00', 1, 'f', '2023-08-23', '2', 1, 1, 'cadera', 1, 'cadera', 3, '', 0, '', 0, ''),
+(9, 'PRUEBA', 'motora', '0', 1, 7, 'g', 5, 1, '0000-00-00', 1, 're', '2023-07-23', '3', 1, 1, 't', 1, 'r', 1, '', 0, '', 0, ''),
+(10, 'BAPA', 'Síndrome de Aspergel', 'uno', 2, 7, 'parto', 1, 5, '0000-00-00', 1, 'CREE', '2023-07-23', '1', 5, 1, 'Rodilla', 1, 'Rodilla', 3, 'Cacahuate, Huevo, Nuez, Penicilina, Sol, Polvo', 0, 'Gastritis, Diabetes, Hipertensi�n', 0, 'Insulina, Losartan, Metocarbamol, CBD'),
+(11, 'INC', 'Multiple', 'mucho', 4, 7, 'parto', 1, 4, '2023-07-22', 1, 'CREE', '2023-07-26', '1', 5, 1, 'Vesícula, apéndice', 1, 'rodilla completa', 1, 'Cacahuate, Mariscos, Trigo', 0, 'Enfermedades no reportadas', 0, 'Enfermedades no reportadas'),
+(12, 'ROJO', 'una', 'uno', 4, 1, '', 1, 1, '2022-07-22', 1, 'CREE', '2023-05-22', '1', 1, 1, 'hfd', 1, 'fdsa', 1, 'Cacahuate, Huevo, Nuez, Penicilina, Sol', 1, 'Gastritis, Diabetes, Hipertensi�n', 1, 'Metocarbamol, Diazepam, Losartan, Insulina');
 
 -- --------------------------------------------------------
 
@@ -2155,7 +2160,10 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (68, 0, NULL, '2023-06-20 15:02:58'),
 (69, 0, NULL, '2023-06-21 12:34:05'),
 (70, 1, '2023-06-21 12:34:26', NULL),
-(71, 0, NULL, '2023-06-21 14:11:09');
+(71, 0, NULL, '2023-06-21 14:11:09'),
+(72, 1, '2023-06-22 10:40:31', NULL),
+(73, 1, '2023-06-22 13:51:12', NULL),
+(74, 1, '2023-06-23 10:22:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -2317,14 +2325,16 @@ CREATE TABLE `vivienda` (
   `vivienda_pagando` int(11) NOT NULL,
   `monto_pagando` int(11) NOT NULL,
   `caracteristicas` int(11) NOT NULL,
-  `caracteristicas_otro` varchar(50) NOT NULL,
+  `caracteristicas_otro` varchar(50) DEFAULT NULL,
   `num_habitaciones` int(11) NOT NULL,
   `vivienda_cocia` int(11) NOT NULL,
   `vivienda_sala` int(11) NOT NULL,
   `vivienda_banio` int(11) NOT NULL,
-  `vivienda_otros` varchar(100) NOT NULL,
+  `vivienda_otros` varchar(100) DEFAULT NULL,
   `techo` int(11) NOT NULL,
-  `techo_otro` varchar(100) NOT NULL,
+  `techo_otro` varchar(100) DEFAULT NULL,
+  `pared` int(11) NOT NULL,
+  `pared_otro` varchar(100) DEFAULT NULL,
   `serv_basicos_agua` int(11) NOT NULL,
   `serv_basicos_luz` int(11) NOT NULL,
   `serv_basicos_drenaje` int(11) NOT NULL,
@@ -2334,6 +2344,7 @@ CREATE TABLE `vivienda` (
   `serv_basicos_carro` int(11) NOT NULL,
   `serv_basicos_gas` int(11) NOT NULL,
   `serv_basicos_telefono` int(11) NOT NULL,
+  `serv_basicos_otro` varchar(100) DEFAULT NULL,
   `electrodomesticos_tv` int(11) NOT NULL,
   `electrodomesticos_lavadora` int(11) NOT NULL,
   `electrodomesticos_estereo` int(11) NOT NULL,
@@ -2342,10 +2353,18 @@ CREATE TABLE `vivienda` (
   `electrodomesticos_licuadora` int(11) NOT NULL,
   `electrodomesticos_dvd` int(11) NOT NULL,
   `electrodomesticos_estufa` int(11) NOT NULL,
+  `electrodomesticos_otro` varchar(100) DEFAULT NULL,
   `personas_dependen` int(11) NOT NULL,
   `deudas` int(11) NOT NULL,
-  `deudas_cuanto` varchar(20) NOT NULL
+  `deudas_cuanto` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `vivienda`
+--
+
+INSERT INTO `vivienda` (`id`, `curp`, `vivienda`, `vivienda_renta`, `vivienda_pagando`, `monto_pagando`, `caracteristicas`, `caracteristicas_otro`, `num_habitaciones`, `vivienda_cocia`, `vivienda_sala`, `vivienda_banio`, `vivienda_otros`, `techo`, `techo_otro`, `pared`, `pared_otro`, `serv_basicos_agua`, `serv_basicos_luz`, `serv_basicos_drenaje`, `serv_basicos_cable`, `serv_basicos_internet`, `serv_basicos_celular`, `serv_basicos_carro`, `serv_basicos_gas`, `serv_basicos_telefono`, `serv_basicos_otro`, `electrodomesticos_tv`, `electrodomesticos_lavadora`, `electrodomesticos_estereo`, `electrodomesticos_microondas`, `electrodomesticos_computadora`, `electrodomesticos_licuadora`, `electrodomesticos_dvd`, `electrodomesticos_estufa`, `electrodomesticos_otro`, `personas_dependen`, `deudas`, `deudas_cuanto`) VALUES
+(1, '', 0, 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, '');
 
 --
 -- Indexes for dumped tables
@@ -2479,7 +2498,7 @@ ALTER TABLE `datos_generales`
 -- AUTO_INCREMENT for table `datos_medicos`
 --
 ALTER TABLE `datos_medicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `documentos_list`
@@ -2509,7 +2528,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `medicamentos`
@@ -2557,7 +2576,7 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT for table `vivienda`
 --
 ALTER TABLE `vivienda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

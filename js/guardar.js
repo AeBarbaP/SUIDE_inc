@@ -210,16 +210,9 @@ $(document).ready(function() {
         var protesis = document.getElementById('protesis').value;
         var tipoProtesis = document.getElementById('tipoProtesis').value;
         var alergias = document.getElementById('alergias').value;
-        //var alergiasFull = document.getElementById('alergiasFull').value;
-        var enfermedades = document.getElementById('enfermedades').value;
-        //var enfermedadesFull = document.getElementById('enfermedadesFull').value;
-        var medicamentos = document.getElementById('medicamentos').value;
-        //var medicamentosFull = document.getElementById('medicamentosFull').value;
-        if (alergias > 0){
-            var alergiasFull 
-
-        }
-
+        var enfermedadesFull = document.getElementById('numeroB').value;
+        var medicamentosFull = document.getElementById('numeroC').value;
+        
         if(rehabilitacionSi.checked){
             var rehabilitacion = 1;
             var lugarRehab = document.getElementById('lugarRehab').value;
@@ -235,6 +228,27 @@ $(document).ready(function() {
             var fechaIni = 0;
             var duracion = 0;
             document.getElementById('lugarRehab').required = false;
+        }
+        if (alergias == 0){
+            var alergiasFull = "Sin alergias";
+        }
+        else if (alergias > 0){
+            alergias = 1
+            var alergiasFull = document.getElementById('numeroA').value;
+        }
+        if (enfermedadesFull == ""){
+            var enfermedades = 0;
+            enfermedadesFull = "Enfermedades no reportadas";
+        }
+        else if (enfermedadesFull != ""){
+            var enfermedades = 1;
+        }
+        if (medicamentosFull == ""){
+            var medicamentos = 0;
+            medicamentosFull = "Enfermedades no reportadas";
+        }
+        else if (medicamentosFull != ""){
+            var medicamentos = 1;
         }
         
         $.ajax({
@@ -283,6 +297,7 @@ $(document).ready(function() {
                     document.getElementById('nav-medicos-tab').disabled = true;
                     document.getElementById('nav-generales-tab').disabled = true;
                     document.getElementById('nav-vivienda-tab').disabled = false;
+                    document.getElementById('guardarMedicosbtn').disabled = true;
                 }
                 else if (verificador = 2){
                     Swal.fire({
@@ -346,43 +361,247 @@ function buscarMedicamento(){
 
 $(document).ready(function() {
     $('#viviendaForm').submit(function(e) {
+
+        /* e.preventDefault(); */
         /* Datos Médicos */
         var curp_exp = document.getElementById('curp_exp').value;
-        var vivienda = document.getElementById('vivienda').value;
-        var montoVivienda = document.getElementById('montoVivienda').value;
-        var viviendaP = document.getElementById('viviendaP').value;
-        var tipoVivienda = document.getElementById('tipoVivienda').value;
+        var viviendaPro = document.getElementById('viviendaPro');
+        var viviendaPre = document.getElementById('viviendaPre');
+        var viviendaRe = document.getElementById('viviendaRe');
+        var viviendaDebeSi = document.getElementById('viviendaPSi');
+        var viviendaDebeNo = document.getElementById('viviendaPNo');
+        var tipoViviendaC = document.getElementById('tipoViviendaC');
+        var tipoViviendaD = document.getElementById('tipoViviendaD');
+        var tipoViviendaV = document.getElementById('tipoViviendaV');
+        var tipoViviendaO = document.getElementById('tipoViviendaO');
         var numHabitaciones = document.getElementById('numHabitaciones').value;
         var cocina = document.getElementById('cocina').value;
         var sala = document.getElementById('sala').value;
         var bath = document.getElementById('bath').value;
         var otroRoom = document.getElementById('otroRoom');
-        var otroRoomInput = document.getElementById('otroRoomInput');
-        var lamina = document.getElementById('lamina').value;
-        var cemento = document.getElementById('cemento').value;
-        var otroTecho = document.getElementById('otroTecho').value;
-        var block = document.getElementById('protesis').value;
-        var ladrillo = document.getElementById('tipoProtesis').value;
-        var adobe = document.getElementById('alergias').value;
-        var otroPared = document.getElementById('alergiasFull').value;
-        var otroParedInput = document.getElementById('enfermedades').value;
-        var enfermedadesFull = document.getElementById('enfermedadesFull').value;
-        var medicamentos = document.getElementById('medicamentos').value;
-        var medicamentosFull = document.getElementById('medicamentosFull').value;
-
-        if(lamina.checked){
+        var lamina = document.getElementById('lamina');
+        var cemento = document.getElementById('cemento');
+        var otrosTecho = document.getElementById('otroTecho');
+        var block = document.getElementById('block');
+        var ladrillo = document.getElementById('ladrillo');
+        var adobe = document.getElementById('adobe');
+        var otrosPared = document.getElementById('otroPared');
+        var agua = document.getElementById('agua');
+        var luz = document.getElementById('luz');
+        var drenaje = document.getElementById('drenaje');
+        var cable = document.getElementById('cable');
+        var internet = document.getElementById('internet');
+        var celular = document.getElementById('celular');
+        var carro = document.getElementById('carro');
+        var gas = document.getElementById('gas');
+        var telefono = document.getElementById('telefono');
+        var tv = document.getElementById('tv');
+        var lavadora = document.getElementById('lavadora');
+        var estereo = document.getElementById('estereo');
+        var microondas = document.getElementById('microondas');
+        var computadora = document.getElementById('computadora');
+        var licuadora = document.getElementById('licuadora');
+        var dvd = document.getElementById('dvd');
+        var estufa = document.getElementById('estufa');
+        var otroElectro = document.getElementById('otroElectro');
+        var dependientes = document.getElementById('dependenciaEconomica');
+        var deudasSi = document.getElementById('deudasSi');
+        var deudasNo = document.getElementById('deudasNo');
+        
+        
+        
+        if(viviendaPro.checked){
+            var vivienda = 1;
+            var montoRenta = 0;
+        }
+        else if (viviendaPre.checked){
+            var vivienda = 2;
+            var montoRenta = 0;
+        }
+        else if (viviendaRe.checked){
+            var vivienda = 3;
+            var montoRenta = document.getElementById('montoVivienda').value;
+        }
+        if(viviendaDebeSi.checked){
+            var viviendaDebe = 1;
+            var costoVivienda = document.getElementById('costoVivienda').value;
+        }
+        else if (viviendaDebeNo.checked){
+            var viviendaDebe = 1;
+            var costoVivienda = 0;
+        }
+        if(tipoViviendaC.checked){
+            var tipoVivienda = 1;
+            var viviendaOtro = 0;
+        }
+        else if (tipoViviendaD.checked){
+            var tipoVivienda = 2;
+            var viviendaOtro = 0;
+        }
+        else if (tipoViviendaV.checked){
+            var tipoVivienda = 3;
+            var viviendaOtro = 0;
+        }
+        else if (tipoViviendaO.checked){
+            var tipoVivienda = 3;
+            var viviendaOtro = document.getElementById('viviendaOtro').value;
+        }
+        if (cocina.checked){
+            var cocinav = 1;
+        } else {
+            var cocinav = 0;
+        }
+        if (sala.checked){
+            var salav = 1;
+        } else {
+            var salav = 0;
+        }
+        if (bath.checked){
+            var bathv = 1;
+        } else {
+            var bathv = 0;
+        }
+        if (otroRoom.checked){
+            var otroRoomv = 1;
+            var otroRoomInput = document.getElementById('otroRoomInput').value;
+        }
+        else{
+            var otroRoomv = 0;
+            var otroRoomInput = 0;
+        }
+        if (lamina.checked){
             var techo = 1;
-            
-        }
-        else if (cemento.checked){
+        } else if (cemento.checked){
             var techo = 2;
-            
-        }
-        else if (otroTecho.checked){
+        } else if (otrosTecho.checked){
             var techo = 3;
             var otroTechoInput = document.getElementById('otroTechoInput').value;
-            
+        } else {
+            var otroTechoc = 0;
+            var otroTechoInput = 0;
         }
+        if (block.checked){
+            var pared = 1;
+        } else if (ladrillo.checked){
+            var pared = 2;
+        } else if (adobe.checked){
+            var pared = 3;
+        } else if (otrosPared.checked){
+            var pared = 4;
+            var otroParedInput = document.getElementById('enfermedades').value;
+        } else {
+            var otroParedc = 0;
+            var otroParedInput = 0;
+        }
+        if (agua.checked){
+            var aguac = 1;
+        } else {
+            var aguac = 0;
+        }
+        if (luz.checked){
+            var luzc = 1;
+        } else {
+            var luzc = 0;
+        }
+        if (drenaje.checked){
+            var drenajec = 1;
+        } else {
+            var drenajec = 0;
+        }
+        if (cable.checked){
+            var cablec = 1;
+        } else {
+            var cablec = 0;
+        }
+        if (internet.checked){
+            var internetc = 1;
+        } else {
+            var internetc = 0;
+        }
+        if (celular.checked){
+            var celularc = 1;
+        } else {
+            var celularc = 0;
+        }
+        if (carro.checked){
+            var carroc = 1;
+        } else {
+            var carroc = 0;
+        }
+        if (gas.checked){
+            var gasc = 1;
+        } else {
+            var gasc = 0;
+        }
+        if (telefono.checked){
+            var telefonoc = 1;
+        } else {
+            var telefonoc = 0;
+        }
+        if (otroServicios.checked){
+            var otroServiciosc = 1;
+            var otroServiciosInput = document.getElementById('otroServicios').value;
+        } else {
+            var otroServiciosc = 0;
+            var otroServiciosInput = 0;
+        }
+        if (tv.checked){
+            var tvc = 1;
+        } else {
+            var tvc = 0;
+        }
+        if (lavadora.checked){
+            var lavadorac = 1;
+        } else {
+            var lavadorac = 0;
+        }
+        if (estereo.checked){
+            var estereoc = 1;
+        } else {
+            var estereoc = 0;
+        }
+        if (microondas.checked){
+            var microondasc = 1;
+        } else {
+            var microondasc = 0;
+        }
+        if (computadora.checked){
+            var computadorac = 1;
+        } else {
+            var computadorac = 0;
+        }
+        if (licuadora.checked){
+            var licuadorac = 1;
+        } else {
+            var licuadorac = 0;
+        }
+        if (dvd.checked){
+            var dvdc = 1;
+        } else {
+            var dvdc = 0;
+        }
+        if (estufa.checked){
+            var estufac = 1;
+        } else {
+            var estufac = 0;
+        }
+        if (otroElectro.checked){
+            var otroElectroc = 1;
+            var otroElectroInput = document.getElementById('otroElectroInput').value;
+        } else {
+            var otroElectroc = 0;
+            var otroElectroInput = 0;
+        }
+        if (deudasSi.checked){
+            var deudas = 1;
+            var deudasInput = document.getElementById('deudasInput').value;
+        }
+        if (deudasNo.checked) {
+            var deudas = 0;
+            var deudasInput = 0;
+        }
+        
+        
         
         $.ajax({
             type: "POST",
@@ -390,59 +609,72 @@ $(document).ready(function() {
             dataType:'json',
             data: {
                 curp_exp:curp_exp,
-                discapacidad:discapacidad,
-                gradoDisc:gradoDisc,
-                tipoDisc:tipoDisc,
-                causaDisc:causaDisc,
-                especifiqueD:especifiqueD,
-                temporalidad:temporalidad,
-                fuente:fuente,
-                fechaValoracion:fechaValoracion,
-                rehabilitacion:rehabilitacion,
-                lugarRehab:lugarRehab,
-                fechaIni:fechaIni,
-                duracion:duracion,
-                tipoSangre:tipoSangre,
-                cirugia:cirugia,
-                tipoCirugia:tipoCirugia,
-                protesis:protesis,
-                tipoProtesis:tipoProtesis,
-                alergias:alergias,
-                alergiasFull:alergiasFull,
-                enfermedades:enfermedades,
-                enfermedadesFull:enfermedadesFull,
-                medicamentos:medicamentos,
-                medicamentosFull:medicamentosFull
+                vivienda:vivienda,
+                montoRenta:montoRenta,
+                viviendaDebe:viviendaDebe,
+                costoVivienda:costoVivienda,
+                tipoVivienda:tipoVivienda,
+                viviendaOtro:viviendaOtro,
+                numHabitaciones:numHabitaciones,
+                cocinav:cocinav,
+                salav:salav,
+                bathv:bathv,
+                otroRoomInput:otroRoomInput,
+                techo:techo,
+                otroTechoInput:otroTechoInput,
+                pared:pared,
+                otroParedInput:otroParedInput,
+                aguac:aguac,
+                luzc:luzc,
+                drenajec:drenajec,
+                cablec:cablec,
+                internetc:internetc,
+                celularc:celularc,
+                carroc:carroc,
+                gasc:gasc,
+                telefonoc:telefonoc,
+                otroServiciosInput:otroServiciosInput,
+                tvc:tvc,
+                lavadorac:lavadorac,
+                estereoc:estereoc,
+                microondasc:microondasc,
+                computadorac:computadorac,
+                licuadorac:licuadorac,
+                dvdc:dvdc,
+                estufac:estufac,
+                otroElectroInput:otroElectroInput,
+                dependientes:dependientes,
+                deudas:deudas,
+                deudasInput:deudasInput
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
 
-                var verificador = jsonData.succes;
+                var verificador = jsonData.success;
 
                 if (verificador = 1){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: 'Datos Médicos han sido guardados',
+                        title: 'Datos de Vivienda han sido guardados',
                         showConfirmButton: false,
                         timer: 1500
                     })
                     document.getElementById('nav-medicos-tab').disabled = true;
                     document.getElementById('nav-generales-tab').disabled = true;
-                    document.getElementById('nav-vivienda-tab').disabled = false;
+                    document.getElementById('nav-vivienda-tab').disabled = true;
                 }
                 else if (verificador = 2){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'error',
-                        title: 'Datos Médicos NO han sido guardados',
+                        title: 'Datos de Vivienda NO han sido guardados',
                         showConfirmButton: false,
                         timer: 1500
                     })
                 }
             }
         });
-        e.preventDefault();
 
     })
 })

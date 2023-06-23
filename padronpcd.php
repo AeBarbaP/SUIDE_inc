@@ -685,11 +685,11 @@ include('prcd/qc/qc.php');
                       <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Temporalidad:</label>
                       <select class="form-select" id="temporalidad" aria-label="Default select example">
                         <option selected>Selecciona...</option>
-                        <option value="1">0 - 6 meses</option>
-                        <option value="2">7 - 12 meses</option>
-                        <option value="3">13 - 18 meses</option>
-                        <option value="4">18 meses o más</option>
-                        <option value="5">Permanente</option>
+                        <option value="1">Permanente</option>
+                        <option value="2">0 - 6 meses</option>
+                        <option value="3">7 - 12 meses</option>
+                        <option value="4">13 - 18 meses</option>
+                        <option value="5">18 meses o más</option>
                       </select>
                     </div>
                     <div class="col-sm-4">
@@ -741,7 +741,7 @@ include('prcd/qc/qc.php');
                         <option value="1">0 - 6 meses</option>
                         <option value="2">7 - 12 meses</option>
                         <option value="3">13 - 18 meses</option>
-                        <option value="3">18 meses o más</option>
+                        <option value="4">18 meses o más</option>
                       </select>
                     </div>
                     <br>
@@ -752,11 +752,11 @@ include('prcd/qc/qc.php');
                         <option value="1">A Rh +</option>
                         <option value="2">A Rh -</option>
                         <option value="3">AB Rh +</option>
-                        <option value="3">AB Rh -</option>
-                        <option value="3">B Rh +</option>
-                        <option value="3">B Rh -</option>
-                        <option value="3">O Rh +</option>
-                        <option value="3">O Rh -</option>
+                        <option value="4">AB Rh -</option>
+                        <option value="5">B Rh +</option>
+                        <option value="6">B Rh -</option>
+                        <option value="7">O Rh +</option>
+                        <option value="8">O Rh -</option>
                       </select>
                     </div>
                     <div class="col-sm-8">
@@ -827,9 +827,9 @@ include('prcd/qc/qc.php');
                       <div class="input-group mt-4">
                         <span class="input-group-text mt-2" height="auto">Alergias <br>seleccionadas:</span>
                         <div contenteditable="false" class="editable form-control mt-2 alergiasFull" id="alergiasFull">
+                          <input type="text" id="numeroA" hidden>
                         </div>
                         <script>
-
                           function addA(val) {
                             var p2;
                             var numeroA = ""; //remover al momento de programar guardar
@@ -847,6 +847,7 @@ include('prcd/qc/qc.php');
                               paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
                               numeroA = numeroA.slice(0, numeroA.length - 2);
                               console.log(numeroA);
+                              document.getElementById('numeroA').value = numeroA;
                             }
                           }
                           function addInput() {
@@ -866,6 +867,7 @@ include('prcd/qc/qc.php');
                               paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
                               numeroA = numeroA.slice(0, numeroA.length - 2);
                               console.log(numeroA);
+                              document.getElementById('numeroA').value = numeroA;
                            // }
                           }
                           function removeA(val) {
@@ -886,6 +888,7 @@ include('prcd/qc/qc.php');
                               paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
                               numeroA = numeroA.slice(0, numeroA.length - 2);
                               console.log(numeroA);
+                              document.getElementById('numeroA').value = numeroA;
                             }
                         </script>
                         <style>
@@ -913,6 +916,7 @@ include('prcd/qc/qc.php');
                       <div class="input-group mt-4" style="height:max-content">
                         <span class="input-group-text mt-2">Enfermedades <br>seleccionadas:</span>
                         <div contenteditable="false" class="editable form-control mt-2" id="enfermedadesFull">
+                          <input type="text" id="numeroB" hidden>
                         </div>
                         <script>
                           function addB(val) {
@@ -922,8 +926,9 @@ include('prcd/qc/qc.php');
                             if (val==null || val =="" || val == 0){
                               console.log('sin valor');
                             } else {
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span class="valorEFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorEFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeB('"+val+"')");
+                              document.getElementById(val).setAttribute('name',"'"+val+"'");
                               document.querySelector('#enfermedades option[value='+val+']').remove();
                             }
                             //remover al momento de programar guardar
@@ -931,6 +936,7 @@ include('prcd/qc/qc.php');
                             paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
                             numeroB = numeroB.slice(0, numeroB.length - 2);
                             console.log(numeroB);
+                            document.getElementById('numeroB').value = numeroB;
                           }
                           
                           function removeB(val) {
@@ -951,6 +957,7 @@ include('prcd/qc/qc.php');
                               paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
                               numeroB = numeroB.slice(0, numeroB.length - 2);
                               console.log(numeroB);
+                              document.getElementById('numeroB').value = numeroB;
                           }
                         </script>
                       </div>
@@ -970,8 +977,8 @@ include('prcd/qc/qc.php');
                       <div class="input-group mt-4" style="height:max-content">
                         <span class="input-group-text mt-2">Medicamentos <br>seleccionados:</span>
                         <div contenteditable="false" class="editable form-control mt-2" id="medicamentosFull">
+                          <input type="text" id="numeroC" hidden>
                         </div>
-                        <input type="text" id="numeroC">
                         <script>
                           function addC(val) {
                             var p2;
@@ -980,7 +987,7 @@ include('prcd/qc/qc.php');
                             if (val==null || val ==""){
                               console.log('sin valor');
                             } else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span class="valorMFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorMFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeC('"+val+"')");
                               document.querySelector('#medicamentos option[value='+val+']').remove();
                             }
@@ -989,7 +996,7 @@ include('prcd/qc/qc.php');
                             paragraphs.forEach(p2 => numeroC = numeroC + p2.id +', ');
                             numeroC = numeroC.slice(0, numeroC.length - 2);
                             console.log(numeroC);
-                            /* document.getElementById('numeroC').value = numeroC; */
+                            document.getElementById('numeroC').value = numeroC;
                           }
                           function removeC(val) {
                             var numeroC = ""; //remover al momento de programar guardar
@@ -1015,7 +1022,7 @@ include('prcd/qc/qc.php');
                     </div>
                     <br>
                     <div class="d-grid gap-2 mt-3">
-                      <button class="btn btn-primary" type="submit">Guardar</button>
+                      <button class="btn btn-primary" type="submit" id="guardarMedicosbtn">Guardar</button>
                       </form>
                     </div>
                   </div>
@@ -1028,15 +1035,15 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Vivienda:</label>
                       <div class="input-group" style="height:max-content">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="vivienda" value="1">
+                          <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="viviendaPro" value="1">
                           <label class="form-check-label" for="vivienda">Propia</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="vivienda" value="2">
+                          <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="viviendaPre" value="2">
                           <label class="form-check-label" for="vivienda">Prestada</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="vivienda" value="3">
+                          <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="viviendaRe" value="3">
                           <label class="form-check-label" for="vivienda">Rentada</label>
                         </div>
                         <div class="form-check form-check-inline">
@@ -1052,11 +1059,11 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> La está págando:</label>
                       <div class="input-group" style="height:max-content">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="viviendaDOp(this.value)" name="viviendaP" id="viviendaP" value="1">
+                          <input class="form-check-input" type="radio" onclick="viviendaDOp(this.value)" name="viviendaP" id="viviendaPSi" value="1">
                           <label class="form-check-label" for="viviendaP">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="viviendaDOp(this.value)" name="viviendaP" id="viviendaP" value="2">
+                          <input class="form-check-input" type="radio" onclick="viviendaDOp(this.value)" name="viviendaP" id="viviendaPNo" value="2">
                           <label class="form-check-label" for="viviendaP">No</label>
                         </div>
                         <div class="form-check form-check-inline">
@@ -1075,19 +1082,19 @@ include('prcd/qc/qc.php');
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
                           
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoVivienda" value="1">
+                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaC" value="1">
                           <label class="form-check-label" for="tipoVivienda">Casa</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoVivienda" value="2">
+                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaD" value="2">
                           <label class="form-check-label" for="tipoVivienda">Departamento</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoVivienda" value="3">
+                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaV" value="3">
                           <label class="form-check-label" for="tipoVivienda">Vecindad</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoVivienda" value="4">
+                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaO" value="4">
                           <label class="form-check-label" for="tipoVivienda">Otra:</label>
                         </div>
                         <div class="form-check form-check-inline">
@@ -1375,11 +1382,11 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> ¿Tiene deudas?:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" id="deudas" onclick="deudasOp(this.value)" type="radio" name="deudas" value="1">
+                          <input class="form-check-input" id="deudasSi" onclick="deudasOp(this.value)" type="radio" name="deudas" value="1">
                           <label class="form-check-label" for="deudas1">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="deudasOp(this.value)"  name="deudas" id="deudas" value="0">
+                          <input class="form-check-input" type="radio" onclick="deudasOp(this.value)"  name="deudas" id="deudasNo" value="0">
                           <label class="form-check-label" for="deudas2">No</label>
                         </div>
                         <div class="form-check form-check-inline mb-3">

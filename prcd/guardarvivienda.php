@@ -7,29 +7,46 @@ setlocale(LC_TIME, 'es_MX.UTF-8');
 $fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
 
 $curp_exp = $_POST['curp_exp'];
-$discapacidad = $_POST['discapacidad'];
-$gradoDisc = $_POST['gradoDisc'];
-$tipoDisc = $_POST['tipoDisc'];
-$causaDisc = $_POST['causaDisc'];
-$especifiqueD = $_POST['especifiqueD'];
-$temporalidad = $_POST['temporalidad'];
-$fuente = $_POST['fuente'];
-$fechaValoracion = $_POST['fechaValoracion'];
-$rehabilitacion = $_POST['rehabilitacion'];
-$lugarRehab = $_POST['lugarRehab'];
-$fechaIni = $_POST['fechaIni'];
-$duracion = $_POST['duracion'];
-$tipoSangre = $_POST['tipoSangre'];
-$cirugia = $_POST['cirugia'];
-$tipoCirugia = $_POST['tipoCirugia'];
-$protesis = $_POST['protesis'];
-$tipoProtesis = $_POST['tipoProtesis'];
-$alergias = $_POST['alergias'];
-$alergiasFull = $_POST['alergiasFull'];
-$enfermedades = $_POST['enfermedades'];
-$enfermedadesFull = $_POST['enfermedadesFull'];
-$medicamentos = $_POST['medicamentos'];
-$medicamentosFull = $_POST['medicamentosFull'];
+$vivienda = $POST['vivienda'];
+$montoRenta = $POST['montoRenta'];
+$viviendaDebe = $POST['viviendaDebe'];
+$costoVivienda = $POST['costoVivienda'];
+$tipoVivienda = $POST['tipoVivienda'];
+$viviendaOtro = $POST['viviendaOtro'];
+$numHabitaciones = $POST['numHabitaciones'];
+$cocinav = $POST['cocinav'];
+$salav = $POST['salav'];
+$bathv = $POST['bathv'];
+$otroRoomv = $POST['otroRoomv'];
+$otroRoomInput = $POST['otroRoomInput'];
+$techo = $POST['techo'];
+$otroTechoInput = $POST['otroTechoInput'];
+$pared = $POST['pared'];
+$otroParedInput = $POST['otroParedInput'];
+$aguac = $POST['aguac'];
+$luzc = $POST['luzc'];
+$drenajec = $POST['drenajec'];
+$cablec = $POST['cablec'];
+$internetc = $POST['internetc'];
+$celularc = $POST['celularc'];
+$carroc = $POST['carroc'];
+$gasc = $POST['gasc'];
+$telefonoc = $POST['telefonoc'];
+$otroServiciosc = $POST['otroServiciosc'];
+$otroServiciosInput = $POST['otroServiciosInput'];
+$tvc = $POST['tvc'];
+$lavadorac = $POST['lavadorac'];
+$estereoc = $POST['estereoc'];
+$microondasc = $POST['microondasc'];
+$computadorac = $POST['computadorac'];
+$licuadorac = $POST['licuadorac'];
+$dvdc = $POST['dvdc'];
+$estufac = $POST['estufac'];
+$otroElectroc = $POST['otroElectroc'];
+$otroElectroInput = $POST['otroElectroInput'];
+$dependientes = $POST['dependientes'];
+$deudas = $POST['deudas'];
+$deudasInput = $POST['deudasInput'];
 
 $sqlinsert= "INSERT INTO vivienda (
     curp,
@@ -46,6 +63,8 @@ $sqlinsert= "INSERT INTO vivienda (
     vivienda_otros,
     techo,
     techo_otro,
+    pared,
+    pared_otro,
     serv_basicos_agua,
     serv_basicos_luz,
     serv_basicos_drenaje,
@@ -55,6 +74,7 @@ $sqlinsert= "INSERT INTO vivienda (
     serv_basicos_carro,
     serv_basicos_gas,
     serv_basicos_telefono,
+    serv_basicos_otro,
     electrodomesticos_tv,
     electrodomesticos_lavadora,
     electrodomesticos_estereo,
@@ -63,35 +83,50 @@ $sqlinsert= "INSERT INTO vivienda (
     electrodomesticos_licuadora,
     electrodomesticos_dvd,
     electrodomesticos_estufa,
+    electrodomesticos_otro,
     personas_dependen,
     deudas,
     deudas_cuanto
     )
 VALUES(
     '$curp_exp',
-    '$discapacidad',
-    '$gradoDisc',
-    '$tipoDisc',
-    '$causaDisc',
-    '$especifiqueD',
-    '$temporalidad',
-    '$fuente',
-    '$fechaValoracion',
-    '$rehabilitacion',
-    '$lugarRehab',
-    '$fechaIni',
-    '$duracion',
-    '$tipoSangre',
-    '$cirugia',
-    '$tipoCirugia',
-    '$protesis',
-    '$tipoProtesis',
-    '$alergias',
-    '$alergiasFull',
-    '$enfermedades',
-    '$enfermedadesFull',
-    '$medicamentos',
-    '$medicamentosFull'
+    '$vivienda',
+    '$montoRenta',
+    '$viviendaDebe',
+    '$costoVivienda',
+    '$tipoVivienda',
+    '$viviendaOtro',
+    '$numHabitaciones',
+    '$cocinav',
+    '$salav',
+    '$bathv',
+    '$otroRoomInput',
+    '$techo',
+    '$otroTechoInput',
+    '$pared',
+    '$otroParedInput',
+    '$aguac',
+    '$luzc',
+    '$drenajec',
+    '$cablec',
+    '$internetc',
+    '$celularc',
+    '$carroc',
+    '$gasc',
+    '$telefonoc',
+    '$otroServiciosInput',
+    '$tvc',
+    '$lavadorac',
+    '$estereoc',
+    '$microondasc',
+    '$computadorac',
+    '$licuadorac',
+    '$dvdc',
+    '$estufac',
+    '$otroElectroInput',
+    '$dependientes',
+    '$deudas',
+    '$deudasInput'
 )";
 
 $resultado= $conn->query($sqlinsert);
