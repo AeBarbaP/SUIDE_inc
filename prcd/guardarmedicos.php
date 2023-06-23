@@ -40,7 +40,7 @@ $sqlinsert= "INSERT INTO datos_medicos (
     causa_otro,
     temporalidad,
     valoracion,
-    fuente_valoracion,
+    fecha_valoracion,
     rehabilitacion,
     rehabilitacion_donde,
     rehabilitacion_inicio,

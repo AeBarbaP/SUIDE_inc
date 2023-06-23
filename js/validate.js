@@ -148,18 +148,18 @@ function techoOp(x){
     var techo = x;
 
     if (techo == 3){
-        document.getElementById('otroTecho').disabled = false;
+        document.getElementById('otroTechoInput').disabled = false;
     } else {
-        document.getElementById('otroTecho').disabled = true;
+        document.getElementById('otroTechoInput').disabled = true;
     }
 }
 function paredOp(x){
     var pared = x;
 
     if (pared == 4){
-        document.getElementById('otroPared').disabled = false;
+        document.getElementById('otroParedInput').disabled = false;
     } else {
-        document.getElementById('otroPared').disabled = true;
+        document.getElementById('otroParedInput').disabled = true;
     }
 }
 
