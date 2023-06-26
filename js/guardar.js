@@ -192,7 +192,6 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#medicosForm').submit(function(e) {
         /* Datos Médicos */
-        /* var concatenado1 = document.querySelectorAll('#alergiasFull.badge').getAttribute('id'); */
         var curp_exp = document.getElementById('curp_exp').value;
         var discapacidad = document.getElementById('discapacidad').value;
         var gradoDisc = document.getElementById('gradoDisc').value;
@@ -359,10 +358,10 @@ function buscarMedicamento(){
     });
 }
 
+/* function guardarvivienda(){ */
 $(document).ready(function() {
-    $('#viviendaForm').submit(function(e) {
+    $("#Formvivienda").submit(function(e) {
 
-        /* e.preventDefault(); */
         /* Datos Médicos */
         var curp_exp = document.getElementById('curp_exp').value;
         var viviendaPro = document.getElementById('viviendaPro');
@@ -375,9 +374,9 @@ $(document).ready(function() {
         var tipoViviendaV = document.getElementById('tipoViviendaV');
         var tipoViviendaO = document.getElementById('tipoViviendaO');
         var numHabitaciones = document.getElementById('numHabitaciones').value;
-        var cocina = document.getElementById('cocina').value;
-        var sala = document.getElementById('sala').value;
-        var bath = document.getElementById('bath').value;
+        var cocina = document.getElementById('cocina');
+        var sala = document.getElementById('sala');
+        var bath = document.getElementById('bath');
         var otroRoom = document.getElementById('otroRoom');
         var lamina = document.getElementById('lamina');
         var cemento = document.getElementById('cemento');
@@ -395,6 +394,7 @@ $(document).ready(function() {
         var carro = document.getElementById('carro');
         var gas = document.getElementById('gas');
         var telefono = document.getElementById('telefono');
+        var otroServicios = document.getElementById('otroServicios');
         var tv = document.getElementById('tv');
         var lavadora = document.getElementById('lavadora');
         var estereo = document.getElementById('estereo');
@@ -404,7 +404,7 @@ $(document).ready(function() {
         var dvd = document.getElementById('dvd');
         var estufa = document.getElementById('estufa');
         var otroElectro = document.getElementById('otroElectro');
-        var dependientes = document.getElementById('dependenciaEconomica');
+        var dependientes = document.getElementById('dependenciaEconomica').value;
         var deudasSi = document.getElementById('deudasSi');
         var deudasNo = document.getElementById('deudasNo');
         
@@ -427,7 +427,7 @@ $(document).ready(function() {
             var costoVivienda = document.getElementById('costoVivienda').value;
         }
         else if (viviendaDebeNo.checked){
-            var viviendaDebe = 1;
+            var viviendaDebe = 0;
             var costoVivienda = 0;
         }
         if(tipoViviendaC.checked){
@@ -462,11 +462,9 @@ $(document).ready(function() {
             var bathv = 0;
         }
         if (otroRoom.checked){
-            var otroRoomv = 1;
             var otroRoomInput = document.getElementById('otroRoomInput').value;
         }
         else{
-            var otroRoomv = 0;
             var otroRoomInput = 0;
         }
         if (lamina.checked){
@@ -477,7 +475,6 @@ $(document).ready(function() {
             var techo = 3;
             var otroTechoInput = document.getElementById('otroTechoInput').value;
         } else {
-            var otroTechoc = 0;
             var otroTechoInput = 0;
         }
         if (block.checked){
@@ -488,9 +485,8 @@ $(document).ready(function() {
             var pared = 3;
         } else if (otrosPared.checked){
             var pared = 4;
-            var otroParedInput = document.getElementById('enfermedades').value;
+            var otroParedInput = document.getElementById('otroParedInput').value;
         } else {
-            var otroParedc = 0;
             var otroParedInput = 0;
         }
         if (agua.checked){
@@ -539,10 +535,8 @@ $(document).ready(function() {
             var telefonoc = 0;
         }
         if (otroServicios.checked){
-            var otroServiciosc = 1;
-            var otroServiciosInput = document.getElementById('otroServicios').value;
+            var otroServiciosInput = document.getElementById('otroServiciosInput').value;
         } else {
-            var otroServiciosc = 0;
             var otroServiciosInput = 0;
         }
         if (tv.checked){
@@ -586,10 +580,8 @@ $(document).ready(function() {
             var estufac = 0;
         }
         if (otroElectro.checked){
-            var otroElectroc = 1;
             var otroElectroInput = document.getElementById('otroElectroInput').value;
         } else {
-            var otroElectroc = 0;
             var otroElectroInput = 0;
         }
         if (deudasSi.checked){
@@ -600,13 +592,11 @@ $(document).ready(function() {
             var deudas = 0;
             var deudasInput = 0;
         }
-        
-        
-        
         $.ajax({
             type: "POST",
             url: 'prcd/guardarvivienda.php',
             dataType:'json',
+            async: true,
             data: {
                 curp_exp:curp_exp,
                 vivienda:vivienda,
@@ -649,9 +639,9 @@ $(document).ready(function() {
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
-
+                
                 var verificador = jsonData.success;
-
+                
                 if (verificador = 1){
                     Swal.fire({
                         position: 'top-end',
@@ -663,6 +653,10 @@ $(document).ready(function() {
                     document.getElementById('nav-medicos-tab').disabled = true;
                     document.getElementById('nav-generales-tab').disabled = true;
                     document.getElementById('nav-vivienda-tab').disabled = true;
+                    document.getElementById('guardarBTNpadron').disabled = true;
+
+
+                    
                 }
                 else if (verificador = 2){
                     Swal.fire({
@@ -675,7 +669,6 @@ $(document).ready(function() {
                 }
             }
         });
-
+        e.preventDefault();
     })
 })
-

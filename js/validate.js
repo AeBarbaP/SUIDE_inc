@@ -203,58 +203,6 @@ function medicamentosOp(x){
 }
 
 
-/*         e.preventDefault(); */
-
-        /* $.ajax({
-            type: "POST",
-            url: '',
-            dataType:'json',
-            data: {
-                vivienda:vivienda,
-                montoVivienda:montoVivienda,
-                tipoVivienda:tipoVivienda,
-                viviendaOtro:viviendaOtro,
-                numHabitaciones:numHabitaciones,
-                checkAllRooms:checkAllRooms,
-                cocina:cocina,
-                sala:sala,
-                bath:bath,
-                otrosRoom:otrosRoom,
-                otroRoomInput:otroRoomInput,
-                techo:techo,
-                otroTecho:otroTecho,
-                pared:pared,
-                otroPared:otroPared,
-                checkAllServices:checkAllServices,
-                agua:agua,
-                luz:luz,
-                drenaje:drenaje,
-                cable:cable,
-                internet:internet,
-                celular:celular,
-                carro:carro,
-                gas:gas,
-                telefono:telefono,
-                otroServicios:otroServicios,
-                otroServiciosInput:otroServiciosInput,
-                checkAllElectro:checkAllElectro,
-                tv:tv,
-                lavadora:lavadora,
-                estereo:estereo,
-                microondas:microondas,
-                computadora:computadora,
-                licuadora:licuadora,
-                dvd:dvd,
-                estufa:estufa,
-                otroElectro:otroElectro,
-                otroElectroInput:otroElectroInput,
-                dependenciaEconomica:dependenciaEconomica,
-                deudas:deudas,
-                deudasInput:deudasInput
-            }
-        }) */
-    /* }) */
-/* }*/
 
 function roomsCheck(){
     var checkAllRooms = document.getElementById('checkAllRooms');

@@ -1031,7 +1031,7 @@ include('prcd/qc/qc.php');
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <!-- Vivienda -->
                     <div class="col-sm-7">
-                      <form action="" id="viviendaForm">
+                      <form id="Formvivienda">
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Vivienda:</label>
                       <div class="input-group" style="height:max-content">
                         <div class="form-check form-check-inline mt-2">
@@ -1402,7 +1402,8 @@ include('prcd/qc/qc.php');
                     <!-- dependencia económica -->
                     <br>
                     <div class="d-grid gap-2 mt-3">
-                      <button class="btn btn-primary" type="submit">Guardar</button>
+                      <button class="btn btn-primary" type="submit" id="guardarBTNpadron">Guardar</button>
+                      <!-- <button class="btn btn-primary" type="submit">Guardar</button> -->
                       </form>
                     </div>
                   </div>
