@@ -2300,15 +2300,15 @@ include('prcd/qc/qc.php');
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
                     <select class="form-select" id="parentescoFam" aria-label="Default select example">
                       <option selected>Parentesco...</option>
-                      <option value="1">Padre</option>
-                      <option value="2">Madre</option>
-                      <option value="3">Herman@</option>
-                      <option value="4">Espos@</option>
-                      <option value="5">Tí@</option>
-                      <option value="6">Sobrin@</option>
-                      <option value="7">Abuel@</option>
-                      <option value="8">Prim@</option>
-                      <option value="9">Otr@</option>
+                      <option value="Padre">Padre</option>
+                      <option value="Madre">Madre</option>
+                      <option value="Herman@">Herman@</option>
+                      <option value="Espos@">Espos@</option>
+                      <option value="Tí@">Tí@</option>
+                      <option value="Sobrin@">Sobrin@</option>
+                      <option value="Abuel@">Abuel@</option>
+                      <option value="Prim@">Prim@</option>
+                      <option value="Otr@">Otr@</option>
                     </select>
                   </div>
                 </div>
@@ -2323,11 +2323,11 @@ include('prcd/qc/qc.php');
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-mortarboard"></i></span>
                 <select class="form-select" id="escolaridadFam" aria-label="Default select example">
                   <option selected>Nivel de Escolaridad...</option>
-                  <option value="1">Primaria</option>
-                  <option value="2">Secundaria</option>
-                  <option value="3">Preparatoria</option>
-                  <option value="4">Licenciatura</option>
-                  <option value="5">Posgrado</option>
+                  <option value="Primaria">Primaria</option>
+                  <option value="Secundaria">Secundaria</option>
+                  <option value="Preparatoria">Preparatoria</option>
+                  <option value="Licenciatura">Licenciatura</option>
+                  <option value="Posgrado">Posgrado</option>
                 </select>
               </div>
               <div class="input-group mb-3">
@@ -2390,17 +2390,17 @@ include('prcd/qc/qc.php');
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
                     <select class="form-select" id="parentescoRef" aria-label="Default select example">
                       <option selected>Parentesco...</option>
-                      <option value="1">Amig@</option>
-                      <option value="2">Vecin@</option>
-                      <option value="3">Otr@</option>
-                      <option value="4">Espos@</option>
-                      <option value="5">Padre</option>
-                      <option value="6">Madre</option>
-                      <option value="7">Herman@</option>
-                      <option value="8">Tí@</option>
-                      <option value="9">Sobrin@</option>
-                      <option value="10">Abuel@</option>
-                      <option value="11">Prim@</option>
+                      <option value="Amig@">Amig@</option>
+                      <option value="Vecin@">Vecin@</option>
+                      <option value="Otr@">Otr@</option>
+                      <option value="Espos@">Espos@</option>
+                      <option value="Padre">Padre</option>
+                      <option value="Madre">Madre</option>
+                      <option value="Herman@">Herman@</option>
+                      <option value="Tí@">Tí@</option>
+                      <option value="Sobrin@">Sobrin@</option>
+                      <option value="Abuel@">Abuel@</option>
+                      <option value="Prim@">Prim@</option>
                     </select>
                   </div>
                 </div>
