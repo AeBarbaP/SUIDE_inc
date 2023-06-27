@@ -301,37 +301,7 @@ function otroElectros(){
     }
 }
 
-/* $(document).ready(function() {
-    $('#familiaForm').submit(function(e) { */
-        /* Integración Familiar */
-/*         var idFam = document.getElementById('idFam').value;
-        var nombreFamiliar = document.getElementById('nombreFamiliar').value;
-        var parentescoFam = document.getElementById('parentescoFam').value;
-        var edadFam = document.getElementById('edadFam').value;
-        var escolaridadFam = document.getElementById('escolaridadFam').value;
-        var profesionFam = document.getElementById('profesionFam').value;
-        var discapacidadFam = document.getElementById('discapacidadFam').value;
-        var ingresoFam = document.getElementById('ingresoFam').value; */
 
-        /* e.preventDefault();
-
-        $.ajax({
-            type: "POST",
-            url: '',
-            dataType:'json',
-            data: {
-                idFam:idFam,
-                nombreFamiliar:nombreFamiliar,
-                parentescoFam:parentescoFam,
-                edadFam:edadFam,
-                escolaridadFam:escolaridadFam,
-                profesionFam:profesionFam,
-                discapacidadFam:discapacidadFam,
-                ingresoFam:ingresoFam
-            }
-        })
-    })
-}) */
 
 /* $(document).ready(function() {
     $('#referenciasForm').submit(function(e) { */
