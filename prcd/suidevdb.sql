@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2023 at 10:28 PM
+-- Generation Time: Jun 27, 2023 at 10:27 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -2041,21 +2041,58 @@ INSERT INTO `enfermedades` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `funcionales`
+--
+
+CREATE TABLE `funcionales` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `precio_compra` int(11) NOT NULL,
+  `fecha_compra` date NOT NULL,
+  `cantidad_compra` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `integracion`
 --
 
 CREATE TABLE `integracion` (
   `id` int(11) NOT NULL,
-  `id_ext` int(11) NOT NULL,
+  `curp` varchar(20) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `parentesco` int(11) NOT NULL,
+  `parentesco` varchar(20) NOT NULL,
   `edad` int(11) NOT NULL,
-  `escolaridad` int(11) NOT NULL,
-  `profesion_oficio` int(11) NOT NULL,
-  `discapacidad` int(11) NOT NULL,
-  `discapacidad_tipo` varchar(50) NOT NULL,
-  `ingreso` varchar(20) NOT NULL
+  `escolaridad` varchar(20) NOT NULL,
+  `profesion_oficio` varchar(50) NOT NULL,
+  `discapacidad` varchar(50) NOT NULL,
+  `ingreso` varchar(20) NOT NULL,
+  `telcel` int(10) NOT NULL,
+  `correoe` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `integracion`
+--
+
+INSERT INTO `integracion` (`id`, `curp`, `nombre`, `parentesco`, `edad`, `escolaridad`, `profesion_oficio`, `discapacidad`, `ingreso`, `telcel`, `correoe`) VALUES
+(1, '', '', '0', 0, '0', '', '', '', 0, ''),
+(2, 'jrshut', 'jtrs', '4', 34, '3', 'hfds', 'dsh', '54754', 865, 'gdfag@ge.com'),
+(3, 'jrshut', 'hgds', '1', 3, '2', 'hfds', 'hdrfs', '558', 57, 'a@a.a'),
+(4, 'jrshut', 'gdfx', '1', 56, '4', 'fhjgf', 'djd', '56435', 65486, 'gdfag@ge.com'),
+(5, 'ruigi', 'gfda', '2', 54, '4', 'gdsa', 'gdfa', '5658', 6876, 'a@a.a'),
+(6, '65485', 'hfds', 'Madre', 45, 'Licenciatura', 'dyhs', 'hfds', '7805', 6548760, 'gdfag@ge.com'),
+(7, 'rt6578', 'df', 'Tí@', 45, 'Preparatoria', 'hngfs', 'hgfs', '5658', 648659, 'a@a.a'),
+(8, 'lkji', 'hdfh', 'Herman@', 23, 'Preparatoria', 'dhdsh', 'hds', '0', 67537, 'a@a.a'),
+(9, 'dredh', '56dhfds', 'Madre', 53, 'Preparatoria', 'gdsag', 'fdsa', '0', 44664, 'a@a.a'),
+(10, 'dredh', 'stfsju', 'Espos@', 34, 'Licenciatura', 'jgfds', 'hgf', '4574', 687548, 'a@a.a'),
+(11, 'gjtfui', 'dsay', 'Espos@', 75, 'Secundaria', 'gfxd', 'hjg', '6789', 4567890, 'a@a.a'),
+(12, '59wghksx', 'gdsa', 'Herman@', 17, 'Preparatoria', 'ghfdzxs', 'hgfs', '0', 67434758, 'a@a.a'),
+(13, '59wghksx', 'hgf', 'Madre', 45, 'Licenciatura', 'hds', 'hgfs', '56748', 7586594, 'gdfag@ge.com'),
+(14, '59wghksx', 'hiop', 'Padre', 56, 'Posgrado', 'carpintero', 'gdsa', '49552', 495218796, 'a@a.a'),
+(15, '59wghksx', 'oisa', 'Madre', 34, 'Preparatoria', 'casa', 'gdsag', '0', 7482855, 'a@a.a'),
+(16, '59wghksx', 'gfda', 'Espos@', 49, 'Licenciatura', 'hfds', 'hgdfs', '45788', 43763, 'gdfag@ge.com');
 
 -- --------------------------------------------------------
 
@@ -2163,7 +2200,9 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (71, 0, NULL, '2023-06-21 14:11:09'),
 (72, 1, '2023-06-22 10:40:31', NULL),
 (73, 1, '2023-06-22 13:51:12', NULL),
-(74, 1, '2023-06-23 10:22:28', NULL);
+(74, 1, '2023-06-23 10:22:28', NULL),
+(75, 1, '2023-06-26 08:28:38', NULL),
+(76, 1, '2023-06-27 08:57:05', NULL);
 
 -- --------------------------------------------------------
 
@@ -2242,13 +2281,28 @@ CREATE TABLE `prestamo` (
 
 CREATE TABLE `referencias` (
   `id` int(11) NOT NULL,
-  `id_ext` int(11) NOT NULL,
+  `curp` varchar(20) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `parentesco` int(11) NOT NULL,
-  `direccion` varchar(100) NOT NULL,
-  `profesion_oficio` int(11) NOT NULL,
-  `celular` varchar(20) NOT NULL
+  `parentesco` varchar(20) NOT NULL,
+  `celular` int(11) NOT NULL,
+  `profesion_oficio` varchar(100) NOT NULL,
+  `direccion` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `referencias`
+--
+
+INSERT INTO `referencias` (`id`, `curp`, `nombre`, `parentesco`, `celular`, `profesion_oficio`, `direccion`) VALUES
+(1, '', '', '0', 0, '', ''),
+(2, 'yurtsu', 'tfdjfd', '1', 7548, 'hgfsj', 'djygdk'),
+(3, 'ruigi', 'gdfsa', '1', 436, 'hgfs', 'gfdjfd'),
+(4, '65485', 'gudjutr', 'Otr@', 58655, 'bvcxshn', 'nvxjgf'),
+(5, 'gjtfui', 'drydh', 'Otr@', 547548, 'bcdhgf', 'cxnhgfx'),
+(6, '59wghksx', 'fhdshjtfds', 'Otr@', 5547478, 'ghf', 'hfdsjtfsk'),
+(7, '59wghksx', 'Guillermo', 'Amig@', 596786, 'siguy', 'gudfaisyh'),
+(8, '59wghksx', 'Edurne', 'Vecin@', 548655, 'fdshe', 'dghlih'),
+(9, '59wghksx', 'Inclusion', 'Vecin@', 57282, 'gdfh', 'hjkiuu');
 
 -- --------------------------------------------------------
 
@@ -2258,10 +2312,10 @@ CREATE TABLE `referencias` (
 
 CREATE TABLE `servicios` (
   `id` int(11) NOT NULL,
-  `id_ext` int(11) NOT NULL,
-  `solicitud` int(11) NOT NULL,
+  `curp` varchar(20) NOT NULL,
+  `solicitud_folio` varchar(15) NOT NULL,
   `fecha_solicitud` date NOT NULL,
-  `descripcion` varchar(100) NOT NULL,
+  `tipo_solicitud` varchar(100) NOT NULL,
   `estatus_s` int(11) NOT NULL,
   `fecha_entrega` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2320,7 +2374,7 @@ CREATE TABLE `vehiculos` (
 CREATE TABLE `vivienda` (
   `id` int(11) NOT NULL,
   `curp` varchar(20) NOT NULL,
-  `vivienda` int(11) NOT NULL,
+  `vivienda` varchar(11) NOT NULL,
   `vivienda_renta` int(11) NOT NULL,
   `vivienda_pagando` int(11) NOT NULL,
   `monto_pagando` int(11) NOT NULL,
@@ -2364,7 +2418,51 @@ CREATE TABLE `vivienda` (
 --
 
 INSERT INTO `vivienda` (`id`, `curp`, `vivienda`, `vivienda_renta`, `vivienda_pagando`, `monto_pagando`, `caracteristicas`, `caracteristicas_otro`, `num_habitaciones`, `vivienda_cocia`, `vivienda_sala`, `vivienda_banio`, `vivienda_otros`, `techo`, `techo_otro`, `pared`, `pared_otro`, `serv_basicos_agua`, `serv_basicos_luz`, `serv_basicos_drenaje`, `serv_basicos_cable`, `serv_basicos_internet`, `serv_basicos_celular`, `serv_basicos_carro`, `serv_basicos_gas`, `serv_basicos_telefono`, `serv_basicos_otro`, `electrodomesticos_tv`, `electrodomesticos_lavadora`, `electrodomesticos_estereo`, `electrodomesticos_microondas`, `electrodomesticos_computadora`, `electrodomesticos_licuadora`, `electrodomesticos_dvd`, `electrodomesticos_estufa`, `electrodomesticos_otro`, `personas_dependen`, `deudas`, `deudas_cuanto`) VALUES
-(1, '', 0, 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, '');
+(1, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(2, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(3, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(4, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(5, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(6, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(7, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(8, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(9, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(10, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(11, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(12, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(13, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(14, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(15, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(16, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(17, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(18, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(19, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(20, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(21, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(22, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(23, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(24, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(25, 'vgfdhay', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(26, 'vgfdhay', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(27, 'ngjfs', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(28, 'ngjfs', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(29, 'jgdkyt', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(30, 'gudfhasg', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(31, 'htfsju', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(32, 'xcx', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(33, 'sdfdsf', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(34, 'sdfdsf', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(35, 'sdfdsf', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
+(36, 'sd', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '0', 0, '0', 1, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', 0, 1, ''),
+(37, 'csdvsdvf11', '2', 0, 0, 0, 1, '0', 0, 0, 0, 0, '0', 0, '0', 3, '', 1, 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', 0, 0, '0'),
+(38, 'fhfhfhf7777', '1', 0, 1, 2, 3, '2', 2, 1, 1, 1, '2', 3, '2', 4, '2', 1, 1, 1, 1, 1, 0, 1, 1, 1, '2', 1, 1, 1, 1, 1, 1, 1, 1, '2', 2, 1, '2|'),
+(39, 'fhfhfhf7777', '1', 0, 1, 2, 3, '2', 2, 1, 1, 1, '2', 3, '2', 4, '2', 1, 1, 1, 1, 1, 0, 1, 1, 1, '2', 1, 1, 1, 1, 1, 1, 1, 1, '2', 2, 1, '2'),
+(40, 'fhfhfhf7777', '1', 0, 1, 2, 3, '2', 2, 1, 1, 1, '2', 3, '2', 4, '2', 1, 1, 1, 1, 1, 0, 1, 1, 1, '2', 1, 1, 1, 1, 1, 1, 1, 1, '2', 2, 1, '2'),
+(41, 'fdsfdsfdsf4444', '3', 3, 1, 3, 3, '3', 3, 1, 1, 1, '3', 3, '3', 4, '3', 1, 1, 1, 1, 1, 0, 1, 1, 1, '3', 1, 1, 1, 1, 1, 1, 1, 1, '3', 3, 1, '3'),
+(42, 'fdsfdsfdsf4444', '3', 3, 1, 3, 3, '3', 3, 1, 1, 1, '3', 3, '3', 4, '3', 1, 1, 1, 1, 1, 0, 1, 1, 1, '3', 1, 1, 1, 1, 1, 1, 1, 1, '3', 3, 1, '3'),
+(43, 'fdsfdsfdsf4444', '3', 3, 1, 3, 3, '3', 3, 1, 1, 1, '3', 3, '3', 4, '3', 1, 1, 1, 1, 1, 0, 1, 1, 1, '3', 1, 1, 1, 1, 1, 1, 1, 1, '3', 3, 1, '3'),
+(44, 'zxcxz', '3', 9, 1, 9, 3, '9', 9, 1, 1, 1, '9', 3, '9', 4, '9', 1, 1, 1, 1, 1, 0, 1, 1, 1, '9', 1, 1, 1, 1, 1, 1, 1, 1, '9', 9, 1, '9'),
+(45, 'zxcxz', '3', 9, 1, 9, 3, '9', 9, 1, 1, 1, '9', 3, '9', 4, '9', 1, 1, 1, 1, 1, 0, 1, 1, 1, '9', 1, 1, 1, 1, 1, 1, 1, 1, '9', 9, 1, '9');
 
 --
 -- Indexes for dumped tables
@@ -2404,6 +2502,12 @@ ALTER TABLE `documentos_list`
 -- Indexes for table `enfermedades`
 --
 ALTER TABLE `enfermedades`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `funcionales`
+--
+ALTER TABLE `funcionales`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2513,10 +2617,16 @@ ALTER TABLE `enfermedades`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `funcionales`
+--
+ALTER TABLE `funcionales`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `integracion`
 --
 ALTER TABLE `integracion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `log_entregas`
@@ -2528,7 +2638,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `medicamentos`
@@ -2552,7 +2662,7 @@ ALTER TABLE `prestamo`
 -- AUTO_INCREMENT for table `referencias`
 --
 ALTER TABLE `referencias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `servicios`
@@ -2576,7 +2686,7 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT for table `vivienda`
 --
 ALTER TABLE `vivienda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

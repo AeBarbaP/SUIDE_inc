@@ -25,10 +25,10 @@ $filaVar = $resultadoVariable->num_rows;
                 <td>'.$rowVar['parentesco'].'</td>
                 <td>'.$rowVar['edad'].'</td>
                 <td>'.$rowVar['escolaridad'].'</td>
-                <td>'.$rowVar['profesion'].'</td>
+                <td>'.$rowVar['profesion_oficio'].'</td>
                 <td>'.$rowVar['discapacidad'].'</td>
                 <td>'.$rowVar['ingreso'].'</td>
-                <td>'.$rowVar['email'].'</td>
+                <td>'.$rowVar['correoe'].'</td>
                 <td>';
                 ?>
                 <a href="https://web.whatsapp.com/send/?phone=<?php echo $rowVar['telcel'] ?>" target="_blank" class="btn btn bg-success"><i class="bi bi-whatsapp text-light"></i></a>

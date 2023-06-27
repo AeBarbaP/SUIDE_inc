@@ -1442,7 +1442,7 @@ include('prcd/qc/qc.php');
                   </div>
                 </div>
 
-                <div class="tab-pane fade" id="nav-referencias" role="tabpanel" aria-labelledby="nav-referencias-tab" tabindex="0" onload="showMeRef()"> 
+                <div class="tab-pane fade" id="nav-referencias" role="tabpanel" aria-labelledby="nav-referencias-tab" tabindex="0"> 
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <!-- referencias -->
                     <div class="col-sm-12 mt-3 p-4">
@@ -1639,34 +1639,34 @@ include('prcd/qc/qc.php');
               <div class="row g-3">      
                 <div class="col-sm-4">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Folio:</label>
-                  <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="" disabled>
+                  <input type="text" class="form-control" id="folioSolicitud" name="folio" placeholder="" disabled>
                 </div>
                 <div class="col-sm-4">
                 </div>
                 <div class="col-sm-4">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fecha:</label>
-                  <input type="date" class="form-control" id="datos_usr" name="datos_usr" placeholder="" disabled>
+                  <input type="date" class="form-control" id="fechaSolicitud" name="datos_usr" placeholder="" disabled>
                   <div class="invalid-feedback">
                     * Campo requerido.
                   </div>
                 </div>
-                <div class="col-sm-5">
+                <div class="col-sm-3">
                   <div class="">
                     <label for="basic-url" class="form-label">Tipo de solicitud:</label>
-                    <select class="form-select" aria-label="Default select example" required>
+                    <select class="form-select" id="tipoSolicitud" aria-label="Default select example" required>
                       <option selected>Selecciona...</option>
-                      <option value="1">Funcional</option>
-                      <option value="2">Extraordinario</option>
-                      <option value="3">Otro</option>
+                      <option value="Funcional">Funcional</option>
+                      <option value="Extraordinario">Extraordinario</option>
+                      <option value="Otro">Otro</option>
                     </select>
                     <div class="invalid-feedback">
                     * Campo requerido.
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Especifica:</label>
-                  <select class="form-select" aria-label="Default select example" required>
+                  <select class="form-select" id="articuloSolicitud" aria-label="Default select example" required>
                     <option selected>Selecciona...</option>
                     <option value="1">Bastón</option>
                     <option value="2">Silla de Ruedas</option>
@@ -1676,19 +1676,47 @@ include('prcd/qc/qc.php');
                     * Campo requerido.
                   </div>
                 </div>
+                <div class="col-sm-2">
+                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Cantidad:</label>
+                  <input type="text" class="form-control" id="cantidadArt" name="folio" placeholder="">
+                </div>
                 <div class="col-sm-3">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Costo:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <input type="text" class="form-control" id="costoSolicitud" aria-label="Amount (to the nearest dollar)">
                     <span class="input-group-text">.00</span>
+                  </div>
+                </div>
+                <div class="col-sm-1">
+                  <label for="datos_usr" class="form-label text-light">.</label>
+                  <div class="input-group">
+                    <button class="btn btn-primary"><i class="bi bi-plus-circle"></i></button>
                   </div>
                 </div>
                 <div class="col-sm-12">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Descripción:</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                  <div class="invalid-feedback">
-                    * Campo requerido.
+                  <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Cantidad</th>
+                          <th scope="col">Descripción</th>
+                          <th scope="col">Costo Unitario</th>
+                          <th scope="col">Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -2361,7 +2389,7 @@ include('prcd/qc/qc.php');
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
-                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Agregar</button>
+                <button type="submit" class="btn btn-primary" onclick="showMeFam()" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Agregar</button>
               </div>
             </form>
           </div>
@@ -2421,7 +2449,7 @@ include('prcd/qc/qc.php');
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
-                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Agregar</button>
+                <button type="submit" class="btn btn-primary" onclick="showMeRef()" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Agregar</button>
                 </form>
               </div>
           </div>

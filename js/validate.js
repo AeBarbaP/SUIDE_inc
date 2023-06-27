@@ -301,42 +301,6 @@ function otroElectros(){
     }
 }
 
-
-/* $(document).ready(function() {
-    $('#serviciosForm').submit(function(e) { */
-        /* Servicios Otorgados */
- /*        var folioSolicitud = document.getElementById('folioSolicitud').value;
-        var fechaSolicitud = document.getElementById('fechaSolicitud').value;
-        var tipoSolicitud = document.getElementById('tipoSolicitud').value;
-        var descripcionSolicitud = document.getElementById('descripcionSolicitud').value;
-        var estatusSolicitud = document.getElementById('estatusSolicitud').value;
-        var fechaEntrega = document.getElementById('fechaEntrega').value;
-        var articuloSolicitud = document.getElementById('articuloSolicitud').value;
-        var cantidadArt = document.getElementById('cantidadArt').value;
-        var costoUnitarioArt = document.getElementById('costoUnitarioArt').value; */
-
-        /* e.preventDefault();
-
-        $.ajax({
-            type: "POST",
-            url: '',
-            dataType:'json',
-            data: {
-                folioSolicitud:folioSolicitud,
-                fechaSolicitud:fechaSolicitud,
-                tipoSolicitud:tipoSolicitud,
-                descripcionSolicitud:descripcionSolicitud,
-                estatusSolicitud:estatusSolicitud,
-                fechaEntrega:fechaEntrega,
-                articuloSolicitud:articuloSolicitud,
-                cantidadArt:cantidadArt,
-                costoUnitarioArt:costoUnitarioArt
-            }
-
-        })
-    })
-})
- */
 /* $(document).ready(function() {
     $('#documentosForm').submit(function(e) { */
         /* Documentos Checklist */
