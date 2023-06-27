@@ -654,8 +654,6 @@ $(document).ready(function() {
                     document.getElementById('nav-generales-tab').disabled = true;
                     document.getElementById('nav-vivienda-tab').disabled = true;
                     document.getElementById('guardarBTNpadron').disabled = true;
-
-
                     
                 }
                 else if (verificador = 2){
@@ -672,3 +670,78 @@ $(document).ready(function() {
         e.preventDefault();
     })
 })
+
+$(document).ready(function() {
+    $('#familiaForm').submit(function(e) {
+        /* Integración Familiar */
+        var curp_exp = document.getElementById('curp_exp').value;
+        var nombreFamiliar = document.getElementById('nombreFamiliar').value;
+        var parentescoFam = document.getElementById('parentescoFam').value;
+        var edadFam = document.getElementById('edadFam').value;
+        var escolaridadFam = document.getElementById('escolaridadFam').value;
+        var profesionFam = document.getElementById('profesionFam').value;
+        var discapacidadFam = document.getElementById('discapacidadFam').value;
+        var ingresoFam = document.getElementById('ingresoFam').value;
+        var telFam = document.getElementById('telFam').value;
+        var emailFam = document.getElementById('emailFam').value;
+        
+        $.ajax({
+            type: "POST",
+            url: 'prcd/guardarFamilia.php',
+            dataType:'json',
+            data: {
+                curp_exp,
+                nombreFamiliar:nombreFamiliar,
+                parentescoFam:parentescoFam,
+                edadFam:edadFam,
+                escolaridadFam:escolaridadFam,
+                profesionFam:profesionFam,
+                discapacidadFam:discapacidadFam,
+                ingresoFam:ingresoFam,
+                telFam:telFam,
+                emailFam:emailFam
+            },
+            success: function(response){
+                var jsonData = JSON.parse(JSON.stringify(response));
+                
+                var verificador = jsonData.success;
+                if (verificador = 1){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Datos del Familiar han sido guardados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    showMe();
+                    
+                }
+                else if (verificador = 2){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Datos del Familiar NO han sido guardados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            }
+        })
+        e.preventDefault();
+    })
+})
+
+function showMe(){
+    var curp_exp = document.getElementById('curp_exp').value;
+    $.ajax({
+        type: "POST",
+        url: 'query/queryFamilia.php',
+        dataType:'HTML',
+        data: {
+            curp_exp
+        },
+        success: function(response){
+            $('#familiares').fadeIn(1000).html(data);
+        }
+    });
+}
