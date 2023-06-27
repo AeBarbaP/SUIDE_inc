@@ -714,7 +714,7 @@ $(document).ready(function() {
                         timer: 1500
                     })
                     showMe();
-                    
+
                 }
                 else if (verificador = 2){
                     Swal.fire({
@@ -731,7 +731,7 @@ $(document).ready(function() {
     })
 })
 
-function showMe(){
+function showMeFam(){
     var curp_exp = document.getElementById('curp_exp').value;
     $.ajax({
         type: "POST",
@@ -741,7 +741,72 @@ function showMe(){
             curp_exp
         },
         success: function(response){
-            $('#familiares').fadeIn(1000).html(data);
+            $('#familiaresTab').fadeIn(1000).html(data);
+        }
+    });
+}
+
+$(document).ready(function() {
+    $('#referenciasForm').submit(function(e) { 
+        /* Referencias */
+        var curp_exp = document.getElementById('curp_exp').value;
+        var nombreReferencia = document.getElementById('nombreReferencia').value;
+        var parentescoRef = document.getElementById('parentescoRef').value;
+        var telRef = document.getElementById('telRef').value;
+        var profesionRef = document.getElementById('profesionRef').value;
+        var domicilioRef = document.getElementById('domicilioRef').value;
+
+        $.ajax({
+            type: "POST",
+            url: 'prcd/guardarReferencia.php',
+            dataType:'json',
+            data: {
+                curp_exp:curp_exp,
+                nombreReferencia:nombreReferencia,
+                parentescoRef:parentescoRef,
+                telRef:telRef,
+                profesionRef:profesionRef,
+                domicilioRef:domicilioRef
+            },
+            success: function(response){
+                var jsonData = JSON.parse(JSON.stringify(response));
+                
+                var verificador = jsonData.success;
+                if (verificador = 1){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Datos de Referencia han sido guardados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+                else if (verificador = 2){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Datos de Referencia NO han sido guardados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            }
+        })
+        e.preventDefault();
+    })
+})
+
+function showMeRef(){
+    var curp_exp = document.getElementById('curp_exp').value;
+    $.ajax({
+        type: "POST",
+        url: 'query/queryReferencias.php',
+        dataType:'HTML',
+        data: {
+            curp_exp
+        },
+        success: function(response){
+            $('#referenciasTab').fadeIn(1000).html(data);
         }
     });
 }

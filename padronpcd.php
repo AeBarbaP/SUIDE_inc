@@ -1409,7 +1409,7 @@ include('prcd/qc/qc.php');
                   </div>
                 </div>
 
-                <div class="tab-pane fade" id="nav-integracion" role="tabpanel" aria-labelledby="nav-integracion-tab" tabindex="0" onload="showMe()">
+                <div class="tab-pane fade" id="nav-integracion" role="tabpanel" aria-labelledby="nav-integracion-tab" tabindex="0" onload="showMeFam()">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <!-- integración familiar -->
                     <div class="col-sm-12 mt-3 p-4">
@@ -1426,10 +1426,10 @@ include('prcd/qc/qc.php');
                             <th scope="col">Discapacidad</th>
                             <th scope="col">Ingreso</th>
                             <th scope="col"><small><i class="bi bi-envelope"></i> Email</small></th>
-                            <th scope="col"><small><i class="bi bi-whatsapp"></i> WhatsApp</small></th>
+                            <th scope="col"><small><i class="bi bi-whatsapp"></i> Teléfono</small></th>
                           </tr>
                         </thead>
-                        <tbody id="familiares" class="text-center">
+                        <tbody id="familiaresTab" class="text-center">
                           
                         </tbody>
                       </table>
@@ -1442,7 +1442,7 @@ include('prcd/qc/qc.php');
                   </div>
                 </div>
 
-                <div class="tab-pane fade" id="nav-referencias" role="tabpanel" aria-labelledby="nav-referencias-tab" tabindex="0"> 
+                <div class="tab-pane fade" id="nav-referencias" role="tabpanel" aria-labelledby="nav-referencias-tab" tabindex="0" onload="showMeRef()"> 
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <!-- referencias -->
                     <div class="col-sm-12 mt-3 p-4">
@@ -1453,34 +1453,13 @@ include('prcd/qc/qc.php');
                             <th scope="col">#</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Parentesco</th> <!-- select de parentesco -->
-                            <th scope="col">Edad</th>
-                            <th scope="col">Escolaridad</th>
                             <th scope="col">Profesión</th>
-                            <th scope="col">Discapacidad</th>
-                            <th scope="col">Ingreso</th>
+                            <th scope="col">Domicilio</th>
+                            <th scope="col"><small><i class="bi bi-whatsapp"></i> Teléfono</small></th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>Thornton</td>
-                            <td>Thornton</td>
-                            <td>Thornton</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
+                        <tbody id="referenciasTab" class="text-center">
+
                         </tbody>
                       </table>
                       <!-- referencias -->
@@ -2400,16 +2379,16 @@ include('prcd/qc/qc.php');
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="" id="referenciasForm">
+            <form id="referenciasForm">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
-                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre completo" aria-describedby="basic-addon1" name="nombre" required>
+                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre completo" id="nombreReferencia" aria-describedby="basic-addon1" name="nombre" required>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" id="parentescoRef" aria-label="Default select example">
                       <option selected>Parentesco...</option>
                       <option value="1">Amig@</option>
                       <option value="2">Vecin@</option>
@@ -2428,21 +2407,21 @@ include('prcd/qc/qc.php');
                 <div class="col-md-6">
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
-                    <input type="text" class="form-control" placeholder="# de Celular" id="inputGroup01"> <!-- validar solo numeros -->
+                    <input type="text" class="form-control" placeholder="# de Celular" id="telRef"> <!-- validar solo numeros -->
                   </div>
                 </div>
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
-                <input type="text" class="form-control" placeholder="Profesión" aria-label="profesion" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Profesión" aria-label="profesion" id="profesionRef" aria-describedby="basic-addon1">
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Domicilio</span>
-                <textarea type="text" class="form-control" placeholder="" aria-label="domicilio" rows="2" aria-describedby="basic-addon1"></textarea>
+                <textarea type="text" class="form-control" placeholder="" aria-label="domicilio" id="domicilioRef" rows="2" aria-describedby="basic-addon1"></textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
-                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Agregar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Agregar</button>
                 </form>
               </div>
           </div>

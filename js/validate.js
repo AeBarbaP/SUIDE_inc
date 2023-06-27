@@ -302,39 +302,6 @@ function otroElectros(){
 }
 
 
-
-/* $(document).ready(function() {
-    $('#referenciasForm').submit(function(e) { */
-        /* Referencias */
-        /* var idRef = document.getElementById('idRef').value;
-        var nombreReferencia = document.getElementById('nombreReferencia').value;
-        var parentescoRef = document.getElementById('parentescoRef').value;
-        var edadRef = document.getElementById('edadRef').value;
-        var escolaridadRef = document.getElementById('escolaridadRef').value;
-        var profesionRef = document.getElementById('profesionRef').value;
-        var discapacidadRef = document.getElementById('discapacidadRef').value;
-        var ingresoRef = document.getElementById('ingresoRef').value; */
-
-        /* e.preventDefault();
-
-        $.ajax({
-            type: "POST",
-            url: '',
-            dataType:'json',
-            data: {
-                idRef:idRef,
-                nombreReferencia:nombreReferencia,
-                parentescoRef:parentescoRef,
-                edadRef:edadRef,
-                escolaridadRef:escolaridadRef,
-                profesionRef:profesionRef,
-                discapacidadRef:discapacidadRef,
-                ingresoRef:ingresoRef
-            }
-        })
-    })
-}) */
-
 /* $(document).ready(function() {
     $('#serviciosForm').submit(function(e) { */
         /* Servicios Otorgados */
