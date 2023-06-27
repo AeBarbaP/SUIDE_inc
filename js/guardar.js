@@ -706,6 +706,15 @@ $(document).ready(function() {
                 
                 var verificador = jsonData.success;
                 if (verificador = 1){
+                    document.getElementById('nombreFamiliar').value = "";
+                    document.getElementById('parentescoFam').value = "";
+                    document.getElementById('edadFam').value = "";
+                    document.getElementById('escolaridadFam').value = "";
+                    document.getElementById('profesionFam').value = "";
+                    document.getElementById('discapacidadFam').value = "";
+                    document.getElementById('ingresoFam').value = "";
+                    document.getElementById('telFam').value = "";
+                    document.getElementById('emailFam').value = "";
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -713,8 +722,6 @@ $(document).ready(function() {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    showMe();
-
                 }
                 else if (verificador = 2){
                     Swal.fire({
@@ -741,7 +748,7 @@ function showMeFam(){
             curp_exp
         },
         success: function(response){
-            $('#familiaresTab').fadeIn(1000).html(data);
+            $('#familiaresTab').fadeIn(1000).html(response);
         }
     });
 }
@@ -755,7 +762,7 @@ $(document).ready(function() {
         var telRef = document.getElementById('telRef').value;
         var profesionRef = document.getElementById('profesionRef').value;
         var domicilioRef = document.getElementById('domicilioRef').value;
-
+        
         $.ajax({
             type: "POST",
             url: 'prcd/guardarReferencia.php',
@@ -773,6 +780,11 @@ $(document).ready(function() {
                 
                 var verificador = jsonData.success;
                 if (verificador = 1){
+                    document.getElementById('nombreReferencia').value = "";
+                    document.getElementById('parentescoRef').value = "";
+                    document.getElementById('telRef').value = "";
+                    document.getElementById('profesionRef').value = "";
+                    document.getElementById('domicilioRef').value = "";
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -806,7 +818,43 @@ function showMeRef(){
             curp_exp
         },
         success: function(response){
-            $('#referenciasTab').fadeIn(1000).html(data);
+            $('#referenciasTab').fadeIn(1000).html(response);
         }
     });
 }
+
+
+$(document).ready(function() {
+    $('#serviciosForm').submit(function(e) {
+        /* Servicios Otorgados */
+        var folioSolicitud = document.getElementById('folioSolicitud').value;
+        var fechaSolicitud = document.getElementById('fechaSolicitud').value;
+        var tipoSolicitud = document.getElementById('tipoSolicitud').value;
+        var descripcionSolicitud = document.getElementById('descripcionSolicitud').value;
+        var estatusSolicitud = document.getElementById('estatusSolicitud').value;
+        var articuloSolicitud = document.getElementById('articuloSolicitud').value;
+        var cantidadArt = document.getElementById('cantidadArt').value;
+        var costoSolicitud = document.getElementById('costoSolicitud').value;
+        var fechaEntrega = document.getElementById('fechaEntrega').value;
+
+        e.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            url: '',
+            dataType:'json',
+            data: {
+                folioSolicitud:folioSolicitud,
+                fechaSolicitud:fechaSolicitud,
+                tipoSolicitud:tipoSolicitud,
+                descripcionSolicitud:descripcionSolicitud,
+                estatusSolicitud:estatusSolicitud,
+                fechaEntrega:fechaEntrega,
+                articuloSolicitud:articuloSolicitud,
+                cantidadArt:cantidadArt,
+                costoSolicitud:costoSolicitud
+            }
+
+        })
+    })
+})
