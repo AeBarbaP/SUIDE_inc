@@ -1,3 +1,7 @@
+function fecha(){
+    const hoy = fecha.getDate();
+}
+
 $(document).ready(function() {
     $('#generalesForm').submit(function(e) {
         
@@ -779,7 +783,7 @@ $(document).ready(function() {
                 var jsonData = JSON.parse(JSON.stringify(response));
                 
                 var verificador = jsonData.success;
-                if (verificador = 1){
+                if (verificador == 1){
                     document.getElementById('nombreReferencia').value = "";
                     document.getElementById('parentescoRef').value = "";
                     document.getElementById('telRef').value = "";
@@ -793,7 +797,7 @@ $(document).ready(function() {
                         timer: 1500
                     })
                 }
-                else if (verificador = 2){
+                else if (verificador == 2){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'error',
@@ -825,7 +829,7 @@ function showMeRef(){
 
 
 $(document).ready(function() {
-    $('#serviciosForm').submit(function(e) {
+    $('#formSolicitudes').submit(function(e) {
         /* Servicios Otorgados */
         var folioSolicitud = document.getElementById('folioSolicitud').value;
         var fechaSolicitud = document.getElementById('fechaSolicitud').value;
@@ -858,3 +862,73 @@ $(document).ready(function() {
         })
     })
 })
+function queryTabFuncionales(x){
+    var apoyo = x;
+    
+    $.ajax({
+        type: "POST",
+        url: 'query/queryFuncionales.php',
+        dataType:'html',
+        data: {
+            apoyo:apoyo
+        },
+        success: function(data){
+            if(apoyo = 1){
+                $('#articuloSolicitud').fadeIn(1000).html(data);
+            }
+        }
+    });
+}
+function queryCosto(x){
+    var articulo = document.getElementById('articuloSolicitud').value;
+    var cantidad = x;
+    
+    $.ajax({
+        type: "POST",
+        url: 'query/queryCostos.php',
+        dataType:'json',
+        data: {
+            articulo:articulo,
+            cantidad:cantidad
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var verificador = jsonData.estatus;
+            if (verificador == 1){
+                document.getElementById('divTag').hidden = false;
+                document.getElementById('disponible1').setAttribute('style','color:green');
+                document.getElementById('disponible').setAttribute('style','color:green');
+                document.getElementById('disponible').innerHTML = jsonData.cantidad;
+                var variable1 = jsonData.costo;
+                var variable2 = document.getElementById('cantidadArt').value;
+                var multiplicacion = variable1 * variable2;
+                document.getElementById('costoSolicitud').value = multiplicacion;
+                document.getElementById('agregarItem').disabled = false;
+            } else {
+                document.getElementById('divTag').hidden = false;
+                document.getElementById('disponible1').setAttribute('style','color:red');
+                document.getElementById('disponible').setAttribute('style','color:red');
+                document.getElementById('disponible').innerHTML = jsonData.cantidad;
+                document.getElementById('agregarItem').disabled = true;
+                document.getElementById('costoSolicitud').value = 0;
+            }
+        }
+    });
+}
+function queryTabExtraordinarios(x){
+    var apoyo = x;
+    
+    $.ajax({
+        type: "POST",
+        url: 'query/queryExtraordinarios.php',
+        dataType:'html',
+        data: {
+            apoyo:apoyo
+        },
+        success: function(data){
+            if(apoyo = 1){
+                $('#articuloSolicitud').fadeIn(1000).html(data);
+            }
+        }
+    });
+}
