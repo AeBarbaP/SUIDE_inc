@@ -1516,7 +1516,7 @@ include('prcd/qc/qc.php');
                       <!-- Solicitudes -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#solicitudAdd"><i class="bi bi-file-earmark-text"></i> Agregar solicitud</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#solicitudAdd" onclick="folioApoyo()"><i class="bi bi-file-earmark-text"></i> Agregar solicitud</button>
                       </div>
                     </div>
                   </div>
@@ -1638,8 +1638,8 @@ include('prcd/qc/qc.php');
               <form id="formSolicitudes">   
               <div class="row g-3">   
                 <div class="col-sm-4">
-                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Folio:</label>
-                  <input type="text" class="form-control" id="folioSolicitud" name="folio" placeholder="" disabled>
+                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Folio: </label>
+                  <div id="folioLabel"></div>
                 </div>
                 <div class="col-sm-4">
                 </div>
@@ -1684,7 +1684,7 @@ include('prcd/qc/qc.php');
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Costo:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" id="costoSolicitud" aria-label="Amount (to the nearest dollar)">
+                    <input type="text" class="form-control" id="costoSolicitud" aria-label="Amount (to the nearest dollar)" readonly>
                     <span class="input-group-text">.00</span>
                   </div>
                 </div>

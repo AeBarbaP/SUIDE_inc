@@ -1010,3 +1010,23 @@ function refresh(){
         }
     });
 }
+
+function folioApoyo(){
+    var valor = 1;
+    
+    $.ajax({
+        type: "POST",
+        url: 'query/queryFolioApoyo.php',
+        dataType:'html',
+        data: {
+            valor:valor
+        },
+        success: function(data){
+            $('#folioLabel').fadeIn(1000).html(data);
+            var fecha = new Date();
+            document.getElementById('fechaSolicitud').value = fecha.toISOString().slice(0,10);;
+            //alert('Se agregó nuevo apoyo extraordinario al catálogo');
+
+        }
+    });
+}
