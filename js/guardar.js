@@ -1,6 +1,6 @@
-function fecha(){
+/* function fecha(){
     const hoy = fecha.getDate();
-}
+} */
 
 $(document).ready(function() {
     $('#generalesForm').submit(function(e) {
@@ -863,22 +863,91 @@ $(document).ready(function() {
     })
 })
 function queryTabFuncionales(x){
-    var apoyo = x;
+    var solicitud = x;
     
-    $.ajax({
-        type: "POST",
-        url: 'query/queryFuncionales.php',
-        dataType:'html',
-        data: {
-            apoyo:apoyo
-        },
-        success: function(data){
-            if(apoyo = 1){
+    if(solicitud == 1){
+        document.getElementById('descripcionFuncional').removeAttribute('style');
+        document.getElementById('cantidadFuncional').removeAttribute('style');
+        document.getElementById('costoFuncional').removeAttribute('style');
+        document.getElementById('btnFuncK').removeAttribute('style');
+        document.getElementById('descripcionExtra').setAttribute('style','display: none');
+        document.getElementById('costoExtra').setAttribute('style','display: none');
+        document.getElementById('btnExtra').setAttribute('style','display: none');
+        document.getElementById('descripcionOtro').setAttribute('style','display: none');
+        document.getElementById('montoOtro').setAttribute('style','display: none');
+        document.getElementById('btnOtro').setAttribute('style','display: none');
+        $.ajax({
+            type: "POST",
+            url: 'query/queryFuncionales.php',
+            dataType:'html',
+            data: {
+                solicitud:solicitud
+            },
+            success: function(data){
                 $('#articuloSolicitud').fadeIn(1000).html(data);
             }
-        }
-    });
+        });
+    } else if (solicitud == 2){
+        document.getElementById('descripcionExtra').removeAttribute('style');
+        document.getElementById('costoExtra').removeAttribute('style');
+        document.getElementById('btnExtra').removeAttribute('style');
+        document.getElementById('descripcionFuncional').setAttribute('style','display: none');
+        document.getElementById('cantidadFuncional').setAttribute('style','display: none');
+        document.getElementById('costoFuncional').setAttribute('style','display: none');
+        document.getElementById('btnFuncK').setAttribute('style','display: none');
+        document.getElementById('descripcionOtro').setAttribute('style','display: none');
+        document.getElementById('montoOtro').setAttribute('style','display: none');
+        document.getElementById('btnOtro').setAttribute('style','display: none');
+        $.ajax({
+            type: "POST",
+            url: 'query/queryFuncionales.php',
+            dataType:'html',
+            data: {
+                solicitud:solicitud
+            },
+            success: function(data){
+                $('#extraSolicitud').fadeIn(1000).html(data);
+            }
+        });
+    } else if(solicitud == 3){
+        document.getElementById('descripcionOtro').removeAttribute('style');
+        document.getElementById('montoOtro').removeAttribute('style');
+        document.getElementById('btnOtro').removeAttribute('style');
+        document.getElementById('descripcionExtra').setAttribute('style','display: none');
+        document.getElementById('costoExtra').setAttribute('style','display: none');
+        document.getElementById('btnExtra').setAttribute('style','display: none');
+        document.getElementById('descripcionFuncional').setAttribute('style','display: none');
+        document.getElementById('cantidadFuncional').setAttribute('style','display: none');
+        document.getElementById('costoFuncional').setAttribute('style','display: none');
+        document.getElementById('btnFuncK').setAttribute('style','display: none');
+        $.ajax({
+            type: "POST",
+            url: 'query/queryFuncionales.php',
+            dataType:'html',
+            data: {
+                solicitud:solicitud
+            },
+            success: function(data){
+                $('#otroSolicitud').fadeIn(1000).html(data);
+            }
+        });
+    }
 }
+
+function limpiarModalSolicitud(){
+    document.getElementById('tipoSolicitud').value = "Selecciona...";
+    document.getElementById('descripcionOtro').setAttribute('style','display: none');
+    document.getElementById('montoOtro').setAttribute('style','display: none');
+    document.getElementById('btnOtro').setAttribute('style','display: none');
+    document.getElementById('descripcionExtra').setAttribute('style','display: none');
+    document.getElementById('costoExtra').setAttribute('style','display: none');
+    document.getElementById('btnExtra').setAttribute('style','display: none');
+    document.getElementById('descripcionFuncional').setAttribute('style','display: none');
+    document.getElementById('cantidadFuncional').setAttribute('style','display: none');
+    document.getElementById('costoFuncional').setAttribute('style','display: none');
+    document.getElementById('btnFuncK').setAttribute('style','display: none');
+}
+
 function queryCosto(x){
     var articulo = document.getElementById('articuloSolicitud').value;
     var cantidad = x;
@@ -915,20 +984,29 @@ function queryCosto(x){
         }
     });
 }
-function queryTabExtraordinarios(x){
-    var apoyo = x;
+function refresh(){
+    var valor = document.getElementById('descripcionInput').value;
     
     $.ajax({
         type: "POST",
         url: 'query/queryExtraordinarios.php',
         dataType:'html',
         data: {
-            apoyo:apoyo
+            valor:valor
         },
         success: function(data){
-            if(apoyo = 1){
-                $('#articuloSolicitud').fadeIn(1000).html(data);
-            }
+            document.getElementById('otroSolicitud').innerHTML="";
+            $('#otroSolicitud').fadeIn(1000).html(data);
+            //alert('Se agregó nuevo apoyo extraordinario al catálogo');
+
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Se agregó nuevo apoyo extraordinario al catálogo',
+                showConfirmButton: false,
+                timer: 1500
+              })
+
         }
     });
 }
