@@ -1030,3 +1030,70 @@ function folioApoyo(){
         }
     });
 }
+
+function guardarSolicitud(){
+    var tipoSolicitud = document.getElementById('tipoSolicitud').value;
+    var fechaSolicitud = document.getElementById('fechaSolicitud').value;
+    var folioSolicitud = document.getElementById('folioSolicitud').value;
+
+    var articuloSolicitud = document.getElementById('articuloSolicitud').value;
+    var cantidadArt = document.getElementById('cantidadArt').value;
+    var costoSolicitud = document.getElementById('costoSolicitud').value;
+
+    var extraSolicitud = document.getElementById('extraSolicitud').value;
+    var costoSolicitudExtra = document.getElementById('costoSolicitudExtra').value;
+
+    var otroSolicitud = document.getElementById('otroSolicitud').value;
+    var costoSolicitudOtro = document.getElementById('costoSolicitudOtro').value;
+
+    $.ajax({
+        type: "POST",
+        url: 'query/queryFolioApoyo.php',
+        dataType:'json',
+        data: {
+            tipoSolicitud:tipoSolicitud,
+            fechaSolicitud:fechaSolicitud,
+            folioSolicitud:folioSolicitud,
+            articuloSolicitud:articuloSolicitud,
+            cantidadArt:cantidadArt,
+            costoSolicitud:costoSolicitud,
+            extraSolicitud:extraSolicitud,
+            costoSolicitudExtra:costoSolicitudExtra,
+            otroSolicitud:otroSolicitud,
+            costoSolicitudOtro:costoSolicitudOtro
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+                
+                var verificador = jsonData.success;
+                if (verificador == 1){
+                    document.getElementById('nombreReferencia').value = "";
+                    document.getElementById('parentescoRef').value = "";
+                    document.getElementById('telRef').value = "";
+                    document.getElementById('profesionRef').value = "";
+                    document.getElementById('domicilioRef').value = "";
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Datos de Referencia han sido guardados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+                else if (verificador == 2){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Datos de Referencia NO han sido guardados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+
+        }
+    });
+
+
+
+
+}
