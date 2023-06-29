@@ -148,8 +148,7 @@ include('prcd/qc/qc.php');
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body onload="fecha()">
-    
+  <body>
   <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -1628,7 +1627,7 @@ include('prcd/qc/qc.php');
         </div>
       </div>
       <!-- Modal para agregar solicitud -->
-      <div class="modal fade" id="solicitudAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="solicitudAdd" data-bs-backdrop="static" data-bs-keyboard="false"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
@@ -1667,7 +1666,7 @@ include('prcd/qc/qc.php');
                 </div>
                 <div class="col-sm-8">
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-6" id="descripcionFuncional" style="display: none;">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Especifica:</label>
                   <select class="form-select" id="articuloSolicitud" aria-label="Default select example" required>
                     <option selected>Selecciona...</option>
@@ -1677,11 +1676,11 @@ include('prcd/qc/qc.php');
                     * Campo requerido.
                   </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-2" id="cantidadFuncional" style="display: none;">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Cantidad:</label>
                   <input type="text" class="form-control" oninput="queryCosto(this.value)" id="cantidadArt" name="folio" placeholder="">
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3" id="costoFuncional" style="display: none;">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Costo:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
@@ -1689,16 +1688,22 @@ include('prcd/qc/qc.php');
                     <span class="input-group-text">.00</span>
                   </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-1" id="btnFuncK" style="display: none;">
+                  <label for="datos_usr" class="form-label text-light">.</label>
+                  <div class="input-group">
+                    <button class="btn btn-primary" type="button" id="agregarItemFunc"><i class="bi bi-plus-circle"></i></button>
+                  </div>
+                </div>
+                <div class="col-sm-8" id="descripcionExtra" style="display: none;">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Especifica:</label>
-                  <select class="form-select" id="extraSolicitud" aria-label="Default select example" required>
+                  <select class="form-select" id="extraSolicitud"  aria-label="Default select example" required>
                     <option selected>Selecciona...</option>
                   </select>
                   <div class="invalid-feedback">
                     * Campo requerido.
                   </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3" id="costoExtra" style="display: none;">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Monto solicitado:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
@@ -1706,22 +1711,23 @@ include('prcd/qc/qc.php');
                     <span class="input-group-text">.00</span>
                   </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-1" id="btnExtra" style="display: none;">
+                  <label for="datos_usr" class="form-label text-light">.</label>
+                  <div class="input-group">
+                    <button class="btn btn-primary" type="button" id="agregarItemExtra"><i class="bi bi-plus-circle"></i></button>
+                  </div>
+                </div>
+                <div class="col-sm-8" id="descripcionOtro" style="display: none;">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Especifica:</label>
-                  <select class="form-select" id="articuloSolicitud" aria-label="Default select example" required>
+                  <select class="form-select" id="otroSolicitud" aria-label="Default select example" required>
                     <option selected>Selecciona...</option>
                   </select>
-                  <div class="form-text" id="divTag" hidden><span id="disponible1"> Piezas disponibles </span><strong><span id="disponible"></span></strong></div>
                   <div class="invalid-feedback">
                     * Campo requerido.
                   </div>
                 </div>
-                <div class="col-sm-2">
-                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Cantidad:</label>
-                  <input type="text" class="form-control" oninput="queryCosto(this.value)" id="cantidadArt" name="folio" placeholder="">
-                </div>
-                <div class="col-sm-3">
-                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Costo:</label>
+                <div class="col-sm-3" id="montoOtro" style="display: none;">
+                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Monto Solicitado:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
                     <input type="text" class="form-control" id="costoSolicitud" aria-label="Amount (to the nearest dollar)">
@@ -1729,10 +1735,10 @@ include('prcd/qc/qc.php');
                   </div>
                 </div>
                 </form>
-                <div class="col-sm-1">
+                <div class="col-sm-1" id="btnOtro" style="display: none;">
                   <label for="datos_usr" class="form-label text-light">.</label>
                   <div class="input-group">
-                    <button class="btn btn-primary" type="button" id="agregarItem"><i class="bi bi-plus-circle"></i></button>
+                    <button class="btn btn-primary" type="button" id="agregarItemOtro"><i class="bi bi-plus-circle"></i></button>
                   </div>
                 </div>
                 <div class="col-sm-12">
@@ -1748,14 +1754,7 @@ include('prcd/qc/qc.php');
                           <th scope="col">Total</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
+                      <tbody id="tablaNuevaSolicitud">
                       </tbody>
                     </table>
                   </div>
@@ -1763,7 +1762,7 @@ include('prcd/qc/qc.php');
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiarModalSolicitud()">Cancelar</button>
               <button type="button" class="btn btn-primary" disabled>Agregar Solicitud</button>
               <button type="button" class="btn btn-success" onclick="swalEntrega()" disabled>Entregar</button>
             </div>
@@ -2010,6 +2009,29 @@ include('prcd/qc/qc.php');
       <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script> -->
   </body>
 </html>
+
+<!-- Modal para agregar descripcion -->
+<div class="modal fade" id="descripcionModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Especifique...</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <label class="input-group-text"> Descripción del apoyo solicitado:</label>
+          <input type="text" class="form-control  w-50" id="descripcionInput" name="alergiaInput" value="" placeholder="">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> -->
+        <button type="button" class="btn btn-primary" onclick="refresh()" data-bs-target="#solicitudAdd" data-bs-toggle="modal">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Termina modal para agregar descripcion -->
 
 <script>
 
