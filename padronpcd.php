@@ -1836,47 +1836,7 @@ include('prcd/qc/qc.php');
           </div>
         </div>
       </div>
-      <!-- Termina Modal para editar solicitud -->
 
-      <!-- Incia script para SWAL (CuteAlert) para generar acta de entrega -->
-      <script>
-        function swalEntrega(){
-        const swalWithBootstrapButtons = Swal.mixin({
-          customClass: {
-            confirmButton: 'btn btn-success',
-            cancelButton: 'btn btn-danger'
-          },
-          buttonsStyling: false
-        })
-        swalWithBootstrapButtons.fire({
-          title: 'Estas seguro?',
-          text: "Se generará el acta de entrega para firma",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonText: 'Sí, entregar!',
-          cancelButtonText: 'No, cancelar!',
-          reverseButtons: true
-        }).then((result) => {
-          if (result.isConfirmed) {
-            swalWithBootstrapButtons.fire(
-              'Entregado!',
-              'Se ha generado el Acta de Entrega',
-              'success'
-            ).then(function(){window.location='padronpcd.php';});
-          } else if (
-            /* Read more about handling dismissals below */
-            result.dismiss === Swal.DismissReason.cancel
-          ) {
-            swalWithBootstrapButtons.fire(
-              'Cancelado',
-              'No se ha generado el Acta de Entrega',
-              'error'
-            )
-          }
-        })
-      }
-      </script>
-      <!-- Termina SWAL (CuteAlert) para generar acta de entrega-->
       <!-- Inicia Modal para generar credencial -->
       <div class="modal fade" id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
