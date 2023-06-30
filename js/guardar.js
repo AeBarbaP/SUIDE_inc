@@ -1074,12 +1074,12 @@ function guardarSolicitud(){
     else if (costoSolicitudOtro != "" || costoSolicitudOtro != null){
         var monto_solicitud = costoSolicitudOtro;
     }
-
+    var tablaSolicitud = document.getElementById('tablaSolicitud')
 
     $.ajax({
         type: "POST",
         url: 'query/queryGuardarApoyo.php',
-        dataType:'html',
+        dataType:'json',
         data: {
             curp_exp:curp_exp,
             tipoSolicitud:tipoSolicitud,
@@ -1088,14 +1088,44 @@ function guardarSolicitud(){
             detalleSolicitud:detalleSolicitud,
             cantidadArt:cantidadArt,
             unitario:unitario,
-            monto_solicitud:monto_solicitud,
+            monto_solicitud:monto_solicitud
         },
         success: function(data){
-            $('#tablaNuevaSolicitud').fadeIn(1000).html(data);
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var verificador = jsonData.success;
+            if (verificador == 1) {
+                mostrarTabla();
+                
+            } else if (verificador == 0){
+                alert('no muestra tabla');
+            }
+
+/*             document.getElementById('btnEntregaApoyo').disabled = false;
+            $('#NuevaSolicitud').fadeIn(1000).html(data); */
+            //refresh('#tablaSolicitud');
+            //$('#tablaSolicitud').load('#tablaSolicitud');
+        }
+
+    });
+    //tablaSolicitud.ajax.reload();
+
+
+
+
+}
+function mostrarTabla(){
+    var folioSolicitud = document.getElementById('folioSolicitud').value;
+
+    $.ajax({
+        type: "POST",
+        url: 'query/queryTablaApoyo.php',
+        dataType:'html',
+        data: {
+            folioSolicitud:folioSolicitud
+        },
+        success: function(data){
+            $('#NuevaSolicitud').fadeIn(1000).html(data);
         }
     });
-
-
-
 
 }

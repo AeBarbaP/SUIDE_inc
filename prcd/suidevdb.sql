@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2023 at 06:24 PM
+-- Generation Time: Jun 30, 2023 at 09:33 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -2061,7 +2061,10 @@ INSERT INTO `extraordinarios` (`id`, `nombre`) VALUES
 (5, 'Gastos Funerarios'),
 (9, 'Otro tipo de apoyo extraordinario'),
 (10, 'Otro 2'),
-(11, 'MIRA ANNY');
+(11, 'MIRA ANNY'),
+(12, ''),
+(13, ''),
+(14, '');
 
 -- --------------------------------------------------------
 
@@ -2409,6 +2412,7 @@ CREATE TABLE `servicios` (
   `cantidad` int(11) DEFAULT NULL,
   `monto_unitario` varchar(7) NOT NULL,
   `monto_solicitud` int(11) NOT NULL,
+  `autorizacion` varchar(50) DEFAULT NULL,
   `fecha_entrega` date DEFAULT NULL,
   `monto_entregado` int(11) DEFAULT NULL,
   `estatus_s` int(11) DEFAULT NULL
@@ -2418,10 +2422,54 @@ CREATE TABLE `servicios` (
 -- Dumping data for table `servicios`
 --
 
-INSERT INTO `servicios` (`id`, `curp`, `folio_solicitud`, `fecha_solicitud`, `tipo_solicitud`, `detalle_solicitud`, `cantidad`, `monto_unitario`, `monto_solicitud`, `fecha_entrega`, `monto_entregado`, `estatus_s`) VALUES
-(2, 'jgfdki', '1', '2023-06-30', 0, '9', 1, '416', 416, NULL, NULL, NULL),
-(3, 'ghfujity', '1', '2023-06-30', 0, '9', 1, '416', 416, NULL, NULL, NULL),
-(4, 'iuyo', '1', '2023-06-30', 0, '10', 1, '3699', 3699, NULL, NULL, NULL);
+INSERT INTO `servicios` (`id`, `curp`, `folio_solicitud`, `fecha_solicitud`, `tipo_solicitud`, `detalle_solicitud`, `cantidad`, `monto_unitario`, `monto_solicitud`, `autorizacion`, `fecha_entrega`, `monto_entregado`, `estatus_s`) VALUES
+(2, 'jgfdki', '1', '2023-06-30', 0, '9', 1, '416', 416, NULL, NULL, NULL, NULL),
+(3, 'ghfujity', '1', '2023-06-30', 0, '9', 1, '416', 416, NULL, NULL, NULL, NULL),
+(4, 'iuyo', '1', '2023-06-30', 0, '10', 1, '3699', 3699, NULL, NULL, NULL, NULL),
+(5, 'hgfdsurt', '1', '2023-06-30', 0, '10', 1, '3699', 3699, NULL, NULL, NULL, NULL),
+(6, 'tyyut', '1', '2023-06-30', 0, '10', 1, '3699', 3699, NULL, NULL, NULL, NULL),
+(7, 'utr', '1', '2023-06-30', 0, '10', 2, '3699', 7398, NULL, NULL, NULL, NULL),
+(8, '', '1', '2023-06-30', 0, '9', 1, '416', 416, NULL, NULL, NULL, NULL),
+(9, 'gyjj', '1', '2023-06-30', 0, '20', 1, '9213', 9213, NULL, NULL, NULL, NULL),
+(10, 'jytiy', '1', '2023-06-30', 0, '2', 1, '624', 624, NULL, NULL, NULL, NULL),
+(11, '', '1', '2023-06-30', 0, '16', 1, '65', 65, NULL, NULL, NULL, NULL),
+(12, 'hfdj', '1', '2023-06-30', 0, '17', 1, '68', 68, NULL, NULL, NULL, NULL),
+(13, 'hju', '1', '2023-06-30', 0, '2', 1, '624', 624, NULL, NULL, NULL, NULL),
+(14, '', '1', '2023-06-30', 0, '1', 1, '737', 737, NULL, NULL, NULL, NULL),
+(15, '', '1', '2023-06-30', 0, '1', 5, '737', 3685, NULL, NULL, NULL, NULL),
+(16, '', '1', '2023-06-30', 0, '2', 1, '624', 624, NULL, NULL, NULL, NULL),
+(17, 'yjfj', '1', '2023-06-30', 0, '2', 1, '624', 624, NULL, NULL, NULL, NULL),
+(18, 'itydi', '1', '2023-06-30', 0, '14', 1, '68', 68, NULL, NULL, NULL, NULL),
+(19, 'ytrsu', '1', '2023-06-30', 0, '11', 1, '704', 704, NULL, NULL, NULL, NULL),
+(20, 'hfds', '1', '2023-06-30', 0, '3', 1, '1146', 1146, NULL, NULL, NULL, NULL),
+(21, 'utfiy', '1', '2023-06-30', 0, '4', 4, '1869', 7476, NULL, NULL, NULL, NULL),
+(22, 'jgdiy', '1', '2023-06-30', 0, '15', 1, '68', 68, NULL, NULL, NULL, NULL),
+(23, 'jfd', '1', '2023-06-30', 0, '10', 1, '3699', 3699, NULL, NULL, NULL, NULL),
+(24, 'ytrs', '1', '2023-06-30', 0, '9', 1, '416', 416, NULL, NULL, NULL, NULL),
+(25, 'jgfk', '1', '2023-06-30', 0, '9', 1, '416', 416, NULL, NULL, NULL, NULL),
+(26, 'hyu', '1', '2023-06-30', 0, '8', 1, '303', 303, NULL, NULL, NULL, NULL),
+(27, 'yrjf', '1', '2023-06-30', 0, '4', 1, '1869', 1869, NULL, NULL, NULL, NULL),
+(28, 'dh', '1', '2023-06-30', 0, '9', 1, '416', 416, NULL, NULL, NULL, NULL),
+(29, 'fjgf', '1', '2023-06-30', 0, '9', 1, '416', 416, NULL, NULL, NULL, NULL),
+(30, 'jghd', '1', '2023-06-30', 0, '10', 1, '3699', 3699, NULL, NULL, NULL, NULL),
+(31, 'dfshj', '1', '2023-06-30', 0, '9', 1, '416', 416, NULL, NULL, NULL, NULL),
+(32, 'hgfs', '1', '2023-06-30', 0, '9', 1, '416', 416, NULL, NULL, NULL, NULL),
+(33, 'hfds', '1', '2023-06-30', 0, '1', 2, '737', 1474, NULL, NULL, NULL, NULL),
+(34, 'yt', '1', '2023-06-30', 0, '10', 2, '3699', 7398, NULL, NULL, NULL, NULL),
+(35, 'gji', '1', '2023-06-30', 0, '9', 1, '416', 416, NULL, NULL, NULL, NULL),
+(36, 'jgfdu', '1', '2023-06-30', 0, '8', 1, '303', 303, NULL, NULL, NULL, NULL),
+(37, 'jgfdu', '1', '2023-06-30', 0, '8', 1, '303', 303, NULL, NULL, NULL, NULL),
+(38, 'jgfdu', '1', '2023-06-30', 0, '8', 1, '303', 303, NULL, NULL, NULL, NULL),
+(39, 'hgs', '1', '2023-06-30', 0, '5', 1, '624', 624, NULL, NULL, NULL, NULL),
+(40, 'dut', 'INC-2023-40', '2023-06-30', 1, '10', 1, '3699', 3699, NULL, NULL, NULL, NULL),
+(41, 'yhfgyhj', 'INC-2023-41', '2023-06-30', 1, '8', 1, '303', 303, NULL, NULL, NULL, NULL),
+(42, '', 'INC-2023-42', '2023-06-30', 1, '9', 1, '416', 416, NULL, NULL, NULL, NULL),
+(43, 'yhrd', 'INC-2023-43', '2023-06-30', 1, '10', 1, '3699', 3699, NULL, NULL, NULL, NULL),
+(44, 'yhrd', 'INC-2023-43', '2023-06-30', 1, '30', 2, '185', 370, NULL, NULL, NULL, NULL),
+(45, 'yhrd', 'INC-2023-43', '2023-06-30', 1, '32', 1, '293', 293, NULL, NULL, NULL, NULL),
+(46, 'yhrd', 'INC-2023-43', '2023-06-30', 1, '22', 1, '5978', 5978, NULL, NULL, NULL, NULL),
+(47, 'yhrd', 'INC-2023-43', '2023-06-30', 1, '12', 1, '439', 439, NULL, NULL, NULL, NULL),
+(48, 'yhrd', 'INC-2023-43', '2023-06-30', 1, '29', 1, '205', 205, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2735,7 +2783,7 @@ ALTER TABLE `enfermedades`
 -- AUTO_INCREMENT for table `extraordinarios`
 --
 ALTER TABLE `extraordinarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `funcionales`
@@ -2795,7 +2843,7 @@ ALTER TABLE `referencias`
 -- AUTO_INCREMENT for table `servicios`
 --
 ALTER TABLE `servicios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `users`
