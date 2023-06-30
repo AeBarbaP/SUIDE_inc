@@ -876,6 +876,7 @@ function queryTabFuncionales(x){
         document.getElementById('descripcionOtro').setAttribute('style','display: none');
         document.getElementById('montoOtro').setAttribute('style','display: none');
         document.getElementById('btnOtro').setAttribute('style','display: none');
+        document.getElementById('tipoSolicitud').disabled = true;
         $.ajax({
             type: "POST",
             url: 'query/queryFuncionales.php',
@@ -898,6 +899,7 @@ function queryTabFuncionales(x){
         document.getElementById('descripcionOtro').setAttribute('style','display: none');
         document.getElementById('montoOtro').setAttribute('style','display: none');
         document.getElementById('btnOtro').setAttribute('style','display: none');
+        document.getElementById('tipoSolicitud').disabled = true;
         $.ajax({
             type: "POST",
             url: 'query/queryFuncionales.php',
@@ -920,6 +922,7 @@ function queryTabFuncionales(x){
         document.getElementById('cantidadFuncional').setAttribute('style','display: none');
         document.getElementById('costoFuncional').setAttribute('style','display: none');
         document.getElementById('btnFuncK').setAttribute('style','display: none');
+        document.getElementById('tipoSolicitud').disabled = true;
         $.ajax({
             type: "POST",
             url: 'query/queryFuncionales.php',
@@ -936,6 +939,7 @@ function queryTabFuncionales(x){
 
 function limpiarModalSolicitud(){
     document.getElementById('tipoSolicitud').value = "Selecciona...";
+    document.getElementById('tipoSolicitud').disabled = false;
     document.getElementById('descripcionOtro').setAttribute('style','display: none');
     document.getElementById('montoOtro').setAttribute('style','display: none');
     document.getElementById('btnOtro').setAttribute('style','display: none');
@@ -972,13 +976,14 @@ function queryCosto(x){
                 var variable2 = document.getElementById('cantidadArt').value;
                 var multiplicacion = variable1 * variable2;
                 document.getElementById('costoSolicitud').value = multiplicacion;
-                document.getElementById('agregarItem').disabled = false;
+                document.getElementById('inputUnitario').value = variable1;
+                document.getElementById('agregarItemFunc').disabled = false;
             } else {
                 document.getElementById('divTag').hidden = false;
                 document.getElementById('disponible1').setAttribute('style','color:red');
                 document.getElementById('disponible').setAttribute('style','color:red');
                 document.getElementById('disponible').innerHTML = jsonData.cantidad;
-                document.getElementById('agregarItem').disabled = true;
+                document.getElementById('agregarItemFunc').disabled = true;
                 document.getElementById('costoSolicitud').value = 0;
             }
         }
@@ -1032,64 +1037,61 @@ function folioApoyo(){
 }
 
 function guardarSolicitud(){
+    var curp_exp = document.getElementById('curp_exp').value;
+    var unitario = document.getElementById('inputUnitario').value;
+
     var tipoSolicitud = document.getElementById('tipoSolicitud').value;
     var fechaSolicitud = document.getElementById('fechaSolicitud').value;
     var folioSolicitud = document.getElementById('folioSolicitud').value;
 
+
     var articuloSolicitud = document.getElementById('articuloSolicitud').value;
-    var cantidadArt = document.getElementById('cantidadArt').value;
-    var costoSolicitud = document.getElementById('costoSolicitud').value;
-
     var extraSolicitud = document.getElementById('extraSolicitud').value;
-    var costoSolicitudExtra = document.getElementById('costoSolicitudExtra').value;
-
     var otroSolicitud = document.getElementById('otroSolicitud').value;
+    
+    var cantidadArt = document.getElementById('cantidadArt').value;
+
+    var costoSolicitud = document.getElementById('costoSolicitud').value;
+    var costoSolicitudExtra = document.getElementById('costoSolicitudExtra').value;
     var costoSolicitudOtro = document.getElementById('costoSolicitudOtro').value;
+
+    if (articuloSolicitud != "" || articuloSolicitud != null){
+        var detalleSolicitud = articuloSolicitud;
+    }
+    else if (extraSolicitud != "" || extraSolicitud != null){
+        var detalleSolicitud = extraSolicitud;
+    }
+    else if (otroSolicitud != "" || otroSolicitud != null){
+        var detalleSolicitud = otroSolicitud;
+    }
+
+    if (costoSolicitud != "" || costoSolicitud != null){
+        var monto_solicitud = costoSolicitud;
+    }
+    else if (costoSolicitudExtra != "" || costoSolicitudExtra != null){
+        var monto_solicitud = costoSolicitudExtra;
+    }
+    else if (costoSolicitudOtro != "" || costoSolicitudOtro != null){
+        var monto_solicitud = costoSolicitudOtro;
+    }
+
 
     $.ajax({
         type: "POST",
-        url: 'query/queryFolioApoyo.php',
-        dataType:'json',
+        url: 'query/queryGuardarApoyo.php',
+        dataType:'html',
         data: {
+            curp_exp:curp_exp,
             tipoSolicitud:tipoSolicitud,
             fechaSolicitud:fechaSolicitud,
             folioSolicitud:folioSolicitud,
-            articuloSolicitud:articuloSolicitud,
+            detalleSolicitud:detalleSolicitud,
             cantidadArt:cantidadArt,
-            costoSolicitud:costoSolicitud,
-            extraSolicitud:extraSolicitud,
-            costoSolicitudExtra:costoSolicitudExtra,
-            otroSolicitud:otroSolicitud,
-            costoSolicitudOtro:costoSolicitudOtro
+            unitario:unitario,
+            monto_solicitud:monto_solicitud,
         },
         success: function(data){
-            var jsonData = JSON.parse(JSON.stringify(data));
-                
-                var verificador = jsonData.success;
-                if (verificador == 1){
-                    document.getElementById('nombreReferencia').value = "";
-                    document.getElementById('parentescoRef').value = "";
-                    document.getElementById('telRef').value = "";
-                    document.getElementById('profesionRef').value = "";
-                    document.getElementById('domicilioRef').value = "";
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Datos de Referencia han sido guardados',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
-                else if (verificador == 2){
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'error',
-                        title: 'Datos de Referencia NO han sido guardados',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
-
+            $('#tablaNuevaSolicitud').fadeIn(1000).html(data);
         }
     });
 

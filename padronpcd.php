@@ -1679,6 +1679,7 @@ include('prcd/qc/qc.php');
                 <div class="col-sm-2" id="cantidadFuncional" style="display: none;">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Cantidad:</label>
                   <input type="text" class="form-control" oninput="queryCosto(this.value)" id="cantidadArt" name="folio" placeholder="">
+                  <input type="text" id="inputUnitario" hidden>
                 </div>
                 <div class="col-sm-3" id="costoFuncional" style="display: none;">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Costo:</label>
@@ -1691,7 +1692,7 @@ include('prcd/qc/qc.php');
                 <div class="col-sm-1" id="btnFuncK" style="display: none;">
                   <label for="datos_usr" class="form-label text-light">.</label>
                   <div class="input-group">
-                    <button class="btn btn-primary" type="button" id="agregarItemFunc"><i class="bi bi-plus-circle"></i></button>
+                    <button class="btn btn-primary" type="button" onclick="guardarSolicitud()" id="agregarItemFunc"><i class="bi bi-plus-circle"></i></button>
                   </div>
                 </div>
                 <div class="col-sm-8" id="descripcionExtra" style="display: none;">
@@ -1707,7 +1708,7 @@ include('prcd/qc/qc.php');
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Monto solicitado:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" id="costoSolicitud" aria-label="Amount (to the nearest dollar)">
+                    <input type="text" class="form-control" id="costoSolicitudExtra" aria-label="Amount (to the nearest dollar)">
                     <span class="input-group-text">.00</span>
                   </div>
                 </div>
@@ -1730,7 +1731,7 @@ include('prcd/qc/qc.php');
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Monto Solicitado:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" id="costoSolicitud" aria-label="Amount (to the nearest dollar)">
+                    <input type="text" class="form-control" id="costoSolicitudOtro" aria-label="Amount (to the nearest dollar)">
                     <span class="input-group-text">.00</span>
                   </div>
                 </div>

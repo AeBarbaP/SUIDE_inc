@@ -25,5 +25,5 @@ $mes = substr($fecha_entrega, 5, 2);
         echo '
         <input type="text" class="form-control" id="folioSolicitud" name="folio" placeholder="" disabled value="'.$concatenado.'">
         ';
-   
+
     ?>
