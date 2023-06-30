@@ -1488,7 +1488,7 @@ include('prcd/qc/qc.php');
 
                     </div>
                     <div class="col-sm-12 mt-3 p-4">
-                      <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Solicitudes y Servicios</label>
+                      <label for="basic-url" class="form-label h4"><i class="bi bi-files"></i> Solicitudes y Servicios</label>
                       <table class="table table-bordered table-hover text-center">
                         <thead style="background-color:#6d5973;color:white;">
                           <tr>
@@ -1497,6 +1497,7 @@ include('prcd/qc/qc.php');
                             <th scope="col">Tipo de solicitud</th>
                             <th scope="col">Descripción</th>
                             <th scope="col">Estatus</th>
+                            <th scope="col">Actualizar</th>
                             <th scope="col">Fecha Entrega</th>
                             <th scope="col">Acta Entrega</th>
                           </tr>
@@ -1508,6 +1509,7 @@ include('prcd/qc/qc.php');
                             <td>Otto</td>
                             <td>Otto</td>
                             <td>Otto</td>
+                            <td><a href="" data-bs-toggle="modal" data-bs-target="#solicitudEdit"><i class="bi bi-arrow-clockwise"></i></a></td>
                             <td>Otto</td>
                             <td><a href=""><i class="bi bi-file-earmark-text"></i></a></td>
                           </tr>
@@ -1744,8 +1746,9 @@ include('prcd/qc/qc.php');
                 </div>
                 <div class="col-sm-12">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Descripción:</label>
-                  <div class="table-responsive">
-                    <table class="table table-striped table-hover">
+                  <!-- <div id="NuevaSolicitud"></div> -->
+                  <div class="table-responsive" id="tablaSolicitud">
+                    <table class="table table-striped table-hover text-center">
                       <thead>
                         <tr>
                           <th scope="col">#</th>
@@ -1755,7 +1758,7 @@ include('prcd/qc/qc.php');
                           <th scope="col">Total</th>
                         </tr>
                       </thead>
-                      <tbody id="tablaNuevaSolicitud">
+                      <tbody id="NuevaSolicitud">
                       </tbody>
                     </table>
                   </div>
@@ -1765,7 +1768,7 @@ include('prcd/qc/qc.php');
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiarModalSolicitud()">Cancelar</button>
               <button type="button" class="btn btn-primary" disabled>Agregar Solicitud</button>
-              <button type="button" class="btn btn-success" onclick="swalEntrega()" disabled>Entregar</button>
+              <button type="button" class="btn btn-success" id="btnEntregaApoyo" onclick="swalEntrega()" disabled>Entregar</button>
             </div>
           </div>
         </div>
@@ -1800,20 +1803,6 @@ include('prcd/qc/qc.php');
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fecha de autorización:</label>
                   <input type="date" class="form-control" id="fechaSolicitud" name="fechaSolicitud" placeholder="">
                 </div>
-                <!--<div class="col-sm-4">
-                  <div class="">
-                    <label for="basic-url" class="form-label">Tipo de solicitud:</label>
-                    <select class="form-select" aria-label="Default select example" disabled>
-                      <option selected>Selecciona...</option>
-                      <option value="1">Funcional</option>
-                      <option value="2">Extraordinario</option>
-                      <option value="3">Otro</option>
-                    </select>
-                    <div class="invalid-feedback">
-                    * Campo requerido.
-                    </div>
-                  </div> 
-                </div>-->
                 <div class="col-sm-8">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Solicitud recibida:</label>
                   <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="solicitud" disabled><!-- detalles de lo solicitado desde la tabla -->
@@ -1838,16 +1827,11 @@ include('prcd/qc/qc.php');
                     <span class="input-group-text">.00</span>
                   </div>
                 </div>
-<!--                 <div class="col-sm-12">
-                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Observaciones:</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                </div> -->
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
               <button type="button" class="btn btn-primary">Actualizar Solicitud</button>
-              <button type="button" class="btn btn-success" onclick="swalEntrega()">Entregar</button>
             </div>
           </div>
         </div>

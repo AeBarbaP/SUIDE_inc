@@ -23,9 +23,9 @@
     )
     VALUES (
         '$curp',
-        '$tipoSolicitud',
-        '$fechaSolicitud',
         '$folioSolicitud',
+        '$fechaSolicitud',
+        '$tipoSolicitud',
         '$detalleSolicitud',
         '$cantidadArt',
         '$unitario',
@@ -36,33 +36,11 @@
     $resultado_QueryInsert = $conn->query($QueryInsert);
 
     if ($resultado_QueryInsert){
-        $Query = "SELECT * FROM servicios WHERE folio_solicitud = '$folioSolicitud'";
-        $resultado_Query = $conn->query($Query);
-        
-        while ($row_sql_catalogo = $resultado_Query->fetch_assoc()){
-            echo '
-                <tr>
-                    <td>'.$row_sql_catalogo['cantidad'].'</td>
-                    <td>'.$row_sql_catalogo['detalle_solicitud'].'</td>
-                    <td>'.$row_sql_catalogo['monto_unitario'].'</td>
-                    <td>'.$row_sql_catalogo['monto_solicitud'].'</td>
-                </tr>
-            ';
-        }
-        echo "
-        <script>
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Se agregó nuevo apoyo extraordinario al catálogo',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        </script>
-        ";
+        echo json_encode(array('success'=>1));
+
     } else {
         $error = $conn->error;
-        echo $error;
+        echo json_encode(array('success'=>0,'error'=>$error));
     }
 
     
