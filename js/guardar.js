@@ -1099,18 +1099,11 @@ function guardarSolicitud(){
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
-
-/*             document.getElementById('btnEntregaApoyo').disabled = false;
-            $('#NuevaSolicitud').fadeIn(1000).html(data); */
-            //refresh('#tablaSolicitud');
-            //$('#tablaSolicitud').load('#tablaSolicitud');
+            document.getElementById('btnEntregaApoyo').disabled = false;
         }
 
     });
     //tablaSolicitud.ajax.reload();
-
-
-
 
 }
 function mostrarTabla(){
@@ -1128,4 +1121,59 @@ function mostrarTabla(){
         }
     });
 
+}
+
+function swalEntrega(){
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+    swalWithBootstrapButtons.fire({
+        title: 'Estas seguro?',
+        text: "Se generará el acta de entrega para firma",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, entregar!',
+        cancelButtonText: 'No, cancelar!',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: "POST",
+                url: 'prcd/actualizarStatus.php',
+                dataType:'json',
+                data: {
+                    folioSolicitud:folioSolicitud
+                },
+                success: function(data){
+                    var jsonData = JSON.parse(JSON.stringify(data));
+                    var verificador = jsonData.success;
+                    if (verificador == 1) {
+                        swalWithBootstrapButtons.fire(
+                            'Entregado!',
+                            'Se ha generado el Acta de Entrega',
+                            'success'
+                        );
+                        
+                    } else if (verificador == 0){
+                        alert('no muestra tabla');
+                    }
+                    document.getElementById('btnEntregaApoyo').disabled = false;
+                }
+            });
+
+        } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+            ) {
+            swalWithBootstrapButtons.fire(
+                'Cancelado',
+                'No se ha generado el Acta de Entrega',
+                'error'
+            )
+        }
+    })
 }
