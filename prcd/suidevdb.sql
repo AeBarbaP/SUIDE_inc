@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 27, 2023 at 10:27 PM
+-- Generation Time: Jun 30, 2023 at 06:24 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -2041,6 +2041,31 @@ INSERT INTO `enfermedades` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `extraordinarios`
+--
+
+CREATE TABLE `extraordinarios` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `extraordinarios`
+--
+
+INSERT INTO `extraordinarios` (`id`, `nombre`) VALUES
+(1, 'Prótesis'),
+(2, 'Órtesis'),
+(3, 'Cirugía'),
+(4, 'Viáticos'),
+(5, 'Gastos Funerarios'),
+(9, 'Otro tipo de apoyo extraordinario'),
+(10, 'Otro 2'),
+(11, 'MIRA ANNY');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `funcionales`
 --
 
@@ -2051,6 +2076,44 @@ CREATE TABLE `funcionales` (
   `fecha_compra` date NOT NULL,
   `cantidad_compra` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `funcionales`
+--
+
+INSERT INTO `funcionales` (`id`, `nombre`, `precio_compra`, `fecha_compra`, `cantidad_compra`) VALUES
+(1, 'Andadera Caminadora Plegable Mixta Cromada', 737, '2023-06-01', 15),
+(2, 'Andadera Nacional Plegadiza Económica', 624, '2023-06-01', 15),
+(3, 'Andadera Importada 2 en 1', 1146, '2023-06-01', 10),
+(4, 'Andadera Plegadiza con asiento de tela', 1869, '2023-06-01', 10),
+(5, 'Andadera Plegable de Aluminio', 624, '2023-06-01', 15),
+(6, 'Bastón de Aluminio Importado base grande', 386, '2023-06-01', 15),
+(7, 'Bastón Importado con Puño Francés de Madera', 272, '2023-06-01', 10),
+(8, 'Bastón Nacional de Aluminio Cuatro Apoyos Base Chica Puño Interrogación Suave', 303, '2023-06-01', 15),
+(9, 'Bastón para invidente importado', 416, '2023-06-01', 15),
+(10, 'Caminadora con freno, asiento y canastilla', 3699, '2023-06-01', 10),
+(11, 'Muleta de Aluminio Canadiense', 704, '2023-06-01', 15),
+(12, 'Muleta de aluminio importada', 439, '2023-06-01', 20),
+(13, 'Muleta de aluminio importada infantil', 439, '2023-06-01', 10),
+(14, 'Puños para muleta', 68, '2023-06-01', 20),
+(15, 'Regatón axileras para muletas', 68, '2023-06-01', 20),
+(16, 'Regatones Magnum', 65, '2023-06-01', 20),
+(17, 'Regatones para andadera', 68, '2023-06-01', 20),
+(18, 'Regaton para bastón', 49, '2023-06-01', 15),
+(19, 'Carriola Buggy PCI', 22999, '2023-06-15', 5),
+(20, 'Crio M', 9213, '2023-06-15', 25),
+(21, 'Silla de Ruedas Económica Ortomove BME46', 2599, '2023-06-15', 20),
+(22, 'Silla de ruedas Everest con elevapiernas', 5978, '2023-06-15', 20),
+(23, 'Silla De Ruedas Plegable Negro Resistente Lenivé Lenivé Rued-01', 1799, '2023-06-15', 25),
+(24, 'Silla de Ruedas Onof ONSR-6C Plegable Uso Rudo', 2499, '2023-06-15', 20),
+(25, 'Silla de Ruedas para Adulto Medical Store para Parálisis con Llantas Traseras de 19 Pulgadas', 12069, '2023-06-15', 5),
+(26, 'Silla de Ruedas Infantil Mobicare Amarilla', 3999, '2023-06-15', 25),
+(27, 'Silla de Ruedas Infantil Medical Store para Parálisis con Llantas Traseras de 15 Pulgadas', 13063, '2023-06-15', 15),
+(28, 'Silla de Ruedas Kabal Standard Infantil JE 36', 5846, '2023-06-15', 20),
+(29, 'Pañal predoblado DIAPRO', 205, '2023-06-04', 50),
+(30, 'Depend Pañal Para Adulto Nocturno Mediano', 185, '2023-06-04', 50),
+(31, 'Diapro Pañales Para Adulto Anatómicos Mediano', 115, '2023-06-04', 50),
+(32, 'Toallas Húmedas Member\'s Mark para Adulto 240 p', 293, '2023-06-04', 50);
 
 -- --------------------------------------------------------
 
@@ -2202,7 +2265,12 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (73, 1, '2023-06-22 13:51:12', NULL),
 (74, 1, '2023-06-23 10:22:28', NULL),
 (75, 1, '2023-06-26 08:28:38', NULL),
-(76, 1, '2023-06-27 08:57:05', NULL);
+(76, 1, '2023-06-27 08:57:05', NULL),
+(77, 1, '2023-06-28 08:34:24', NULL),
+(78, 1, '2023-06-29 09:52:56', NULL),
+(79, 0, NULL, '2023-06-29 13:30:10'),
+(80, 1, '2023-06-30 08:50:14', NULL),
+(81, 0, NULL, '2023-06-30 10:43:04');
 
 -- --------------------------------------------------------
 
@@ -2226,6 +2294,27 @@ INSERT INTO `medicamentos` (`id`, `nombre`) VALUES
 (4, 'Amlodipino'),
 (5, 'CBD'),
 (6, 'Diazepam');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `otros_apoyos`
+--
+
+CREATE TABLE `otros_apoyos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `otros_apoyos`
+--
+
+INSERT INTO `otros_apoyos` (`id`, `nombre`) VALUES
+(1, 'Proyecto Productivo'),
+(2, 'Beca'),
+(3, 'Accesibilidad'),
+(5, 'Aparatos Auditivos');
 
 -- --------------------------------------------------------
 
@@ -2313,12 +2402,26 @@ INSERT INTO `referencias` (`id`, `curp`, `nombre`, `parentesco`, `celular`, `pro
 CREATE TABLE `servicios` (
   `id` int(11) NOT NULL,
   `curp` varchar(20) NOT NULL,
-  `solicitud_folio` varchar(15) NOT NULL,
+  `folio_solicitud` varchar(20) NOT NULL,
   `fecha_solicitud` date NOT NULL,
-  `tipo_solicitud` varchar(100) NOT NULL,
-  `estatus_s` int(11) NOT NULL,
-  `fecha_entrega` date NOT NULL
+  `tipo_solicitud` int(11) NOT NULL,
+  `detalle_solicitud` varchar(100) NOT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `monto_unitario` varchar(7) NOT NULL,
+  `monto_solicitud` int(11) NOT NULL,
+  `fecha_entrega` date DEFAULT NULL,
+  `monto_entregado` int(11) DEFAULT NULL,
+  `estatus_s` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `servicios`
+--
+
+INSERT INTO `servicios` (`id`, `curp`, `folio_solicitud`, `fecha_solicitud`, `tipo_solicitud`, `detalle_solicitud`, `cantidad`, `monto_unitario`, `monto_solicitud`, `fecha_entrega`, `monto_entregado`, `estatus_s`) VALUES
+(2, 'jgfdki', '1', '2023-06-30', 0, '9', 1, '416', 416, NULL, NULL, NULL),
+(3, 'ghfujity', '1', '2023-06-30', 0, '9', 1, '416', 416, NULL, NULL, NULL),
+(4, 'iuyo', '1', '2023-06-30', 0, '10', 1, '3699', 3699, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2505,6 +2608,12 @@ ALTER TABLE `enfermedades`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `extraordinarios`
+--
+ALTER TABLE `extraordinarios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `funcionales`
 --
 ALTER TABLE `funcionales`
@@ -2532,6 +2641,12 @@ ALTER TABLE `log_usrlogin`
 -- Indexes for table `medicamentos`
 --
 ALTER TABLE `medicamentos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `otros_apoyos`
+--
+ALTER TABLE `otros_apoyos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2617,10 +2732,16 @@ ALTER TABLE `enfermedades`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `extraordinarios`
+--
+ALTER TABLE `extraordinarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `funcionales`
 --
 ALTER TABLE `funcionales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `integracion`
@@ -2638,13 +2759,19 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `medicamentos`
 --
 ALTER TABLE `medicamentos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `otros_apoyos`
+--
+ALTER TABLE `otros_apoyos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `perfiles_usr`
@@ -2668,7 +2795,7 @@ ALTER TABLE `referencias`
 -- AUTO_INCREMENT for table `servicios`
 --
 ALTER TABLE `servicios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
