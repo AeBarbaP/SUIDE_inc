@@ -118,7 +118,11 @@ include('prcd/qc/qc.php');
         height: 2.75rem;
         overflow-y: hidden;
       }
-
+      .table-wrapper {
+        max-height: 100px;
+        overflow: auto;
+        display:inline-block;
+      }
       .nav-scroller .nav {
         display: flex;
         flex-wrap: nowrap;
@@ -1441,26 +1445,28 @@ include('prcd/qc/qc.php');
                   </div>
                 </div>
 
-                <div class="tab-pane fade" id="nav-referencias" role="tabpanel" aria-labelledby="nav-referencias-tab" tabindex="0"> 
+                <div class="tab-pane fade" id="nav-referencias" role="tabpanel" aria-labelledby="nav-referencias-tab" tabindex="0" onload="guardarSolicitudCompleta()"> 
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <!-- referencias -->
                     <div class="col-sm-12 mt-3 p-4">
                       <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Referencias</label>
-                      <table class="table table-bordered table-hover text-center">
-                        <thead style="background-color:#6d5973;color:white;">
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Parentesco</th> <!-- select de parentesco -->
-                            <th scope="col">Profesión</th>
-                            <th scope="col">Domicilio</th>
-                            <th scope="col"><small><i class="bi bi-whatsapp"></i> Teléfono</small></th>
-                          </tr>
-                        </thead>
-                        <tbody id="referenciasTab" class="text-center">
+                      <div class="table-wrapper">
+                        <table class="table table-bordered table-hover text-center">
+                          <thead style="background-color:#6d5973;color:white;">
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Nombre</th>
+                              <th scope="col">Parentesco</th> <!-- select de parentesco -->
+                              <th scope="col">Profesión</th>
+                              <th scope="col">Domicilio</th>
+                              <th scope="col"><small><i class="bi bi-whatsapp"></i> Teléfono</small></th>
+                            </tr>
+                          </thead>
+                          <tbody id="referenciasTab" class="text-center">
 
-                        </tbody>
-                      </table>
+                          </tbody>
+                        </table>
+                      </div>
                       <!-- referencias -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
@@ -1469,9 +1475,10 @@ include('prcd/qc/qc.php');
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane fade" id="nav-servicios-otorgados" role="tabpanel" aria-labelledby="nav-servicios-tab" tabindex="0">
+                <div class="tab-pane fade" id="nav-servicios-otorgados" role="tabpanel" aria-labelledby="nav-servicios-tab" tabindex="0" onload="mostrarTablaServicios()">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <div class="col-sm-8 ms-3">
+                      <input type="text" id="serviciosExp" value="curp_exp" hidden>
                       <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Buscar:</label>
                       <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="">
                     </div>
@@ -1502,17 +1509,8 @@ include('prcd/qc/qc.php');
                             <th scope="col">Acta Entrega</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td><a href="" data-bs-toggle="modal" data-bs-target="#solicitudEdit"><i class="bi bi-arrow-clockwise"></i></a></td>
-                            <td>Otto</td>
-                            <td><a href=""><i class="bi bi-file-earmark-text"></i></a></td>
-                          </tr>
+                        <tbody id="tablaServicios">
+                         
                         </tbody>
                       </table>
                       <!-- Solicitudes -->
@@ -1694,7 +1692,7 @@ include('prcd/qc/qc.php');
                 <div class="col-sm-1" id="btnFuncK" style="display: none;">
                   <label for="datos_usr" class="form-label text-light">.</label>
                   <div class="input-group">
-                    <button class="btn btn-primary" type="button" onclick="guardarSolicitud()" id="agregarItemFunc"><i class="bi bi-plus-circle"></i></button>
+                    <button class="btn btn-primary" type="button" onclick="guardarSolicitud();guardarSolicitudCompleta()" id="agregarItemFunc"><i class="bi bi-plus-circle"></i></button>
                   </div>
                 </div>
                 <div class="col-sm-8" id="descripcionExtra" style="display: none;">
