@@ -1010,7 +1010,7 @@ function refresh(){
                 title: 'Se agregó nuevo apoyo extraordinario al catálogo',
                 showConfirmButton: false,
                 timer: 1500
-              })
+            })
 
         }
     });
@@ -1074,7 +1074,43 @@ function guardarSolicitud(){
     else if (costoSolicitudOtro != "" || costoSolicitudOtro != null){
         var monto_solicitud = costoSolicitudOtro;
     }
-    var tablaSolicitud = document.getElementById('tablaSolicitud')
+    
+    $.ajax({
+        type: "POST",
+        url: 'query/queryGuardarApoyo.php',
+        dataType:'json',
+        data: {
+            curp_exp:curp_exp,
+            tipoSolicitud:tipoSolicitud,
+            fechaSolicitud:fechaSolicitud,
+            folioSolicitud:folioSolicitud,
+            detalleSolicitud:detalleSolicitud,
+            cantidadArt:cantidadArt,
+            unitario:unitario,
+            monto_solicitud:monto_solicitud
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var verificador = jsonData.success;
+            if (verificador == 1) {
+                mostrarTabla();
+                
+            } else if (verificador == 0){
+                alert('no muestra tabla');
+            }
+            document.getElementById('btnEntregaApoyo').disabled = false;
+        }
+
+    });
+    //tablaSolicitud.ajax.reload();
+
+}
+function guardarSolicitudCompleta(){
+    var curp_exp = document.getElementById('curp_exp').value;
+
+    var tipoSolicitud = document.getElementById('tipoSolicitud').value;
+    var fechaSolicitud = document.getElementById('fechaSolicitud').value;
+    var folioSolicitud = document.getElementById('folioSolicitud').value;
 
     $.ajax({
         type: "POST",
@@ -1141,32 +1177,16 @@ function swalEntrega(){
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
-            $.ajax({
-                type: "POST",
-                url: 'prcd/actualizarStatus.php',
-                dataType:'json',
-                data: {
-                    folioSolicitud:folioSolicitud
-                },
-                success: function(data){
-                    var jsonData = JSON.parse(JSON.stringify(data));
-                    var verificador = jsonData.success;
-                    if (verificador == 1) {
-                        swalWithBootstrapButtons.fire(
-                            'Entregado!',
-                            'Se ha generado el Acta de Entrega',
-                            'success'
-                        );
-                        
-                    } else if (verificador == 0){
-                        alert('no muestra tabla');
-                    }
-                    document.getElementById('btnEntregaApoyo').disabled = false;
-                }
-            });
-
+            swalWithBootstrapButtons.fire(
+                'Entregado!',
+                'Se ha generado el Acta de Entrega',
+                'success'
+                );
+                flagEntrega();
+                mostrarTablaServicios();
+                document.getElementById('btnEntregaApoyo').disabled = false;
         } else if (
-            /* Read more about handling dismissals below */
+                /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
             ) {
             swalWithBootstrapButtons.fire(
@@ -1174,6 +1194,46 @@ function swalEntrega(){
                 'No se ha generado el Acta de Entrega',
                 'error'
             )
-        }
+        }           
     })
+}
+function flagEntrega(){
+    var folioSolicitud = document.getElementById('folioSolicitud').value;
+    var montoEntrega = document.getElementById('costoSolicitud').value;
+
+    $.ajax({
+        type: "POST",
+        url: 'prcd/actualizarStatus.php',
+        dataType:'json',
+        data: {
+            folioSolicitud:folioSolicitud,
+            montoEntrega:montoEntrega
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var verificador = jsonData.success;
+            if (verificador == 1) {
+                console.log('flag actualizado');
+            } else if (verificador == 0){
+                console.log('no muestra tabla');
+            }
+        }
+    });
+}
+
+function mostrarTablaServicios(){
+    var curp = document.getElementById('curp_exp').value;
+
+    $.ajax({
+        type: "POST",
+        url: 'query/querySolicitudes.php',
+        dataType:'html',
+        data: {
+            curp:curp
+        },
+        success: function(data){
+            $('#tablaServicios').fadeIn(1000).html(data);
+        }
+    });
+
 }

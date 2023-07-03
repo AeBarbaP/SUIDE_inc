@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2023 at 09:33 PM
+-- Generation Time: Jul 03, 2023 at 10:24 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -2273,7 +2273,8 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (78, 1, '2023-06-29 09:52:56', NULL),
 (79, 0, NULL, '2023-06-29 13:30:10'),
 (80, 1, '2023-06-30 08:50:14', NULL),
-(81, 0, NULL, '2023-06-30 10:43:04');
+(81, 0, NULL, '2023-06-30 10:43:04'),
+(82, 1, '2023-07-03 11:02:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -2469,7 +2470,57 @@ INSERT INTO `servicios` (`id`, `curp`, `folio_solicitud`, `fecha_solicitud`, `ti
 (45, 'yhrd', 'INC-2023-43', '2023-06-30', 1, '32', 1, '293', 293, NULL, NULL, NULL, NULL),
 (46, 'yhrd', 'INC-2023-43', '2023-06-30', 1, '22', 1, '5978', 5978, NULL, NULL, NULL, NULL),
 (47, 'yhrd', 'INC-2023-43', '2023-06-30', 1, '12', 1, '439', 439, NULL, NULL, NULL, NULL),
-(48, 'yhrd', 'INC-2023-43', '2023-06-30', 1, '29', 1, '205', 205, NULL, NULL, NULL, NULL);
+(48, 'yhrd', 'INC-2023-43', '2023-06-30', 1, '29', 1, '205', 205, NULL, NULL, NULL, NULL),
+(49, 'yuu', 'INC-2023-49', '2023-06-30', 1, '10', 1, '3699', 3699, NULL, NULL, NULL, NULL),
+(50, 'htuy', 'INC-2023-50', '2023-06-30', 1, '31', 2, '115', 230, NULL, NULL, NULL, NULL),
+(51, '', 'INC-2023-51', '2023-07-03', 1, '1', 1, '737', 737, NULL, NULL, NULL, NULL),
+(52, '', 'INC-2023-52', '2023-07-03', 1, '10', 1, '3699', 3699, NULL, NULL, NULL, NULL),
+(53, '', 'INC-2023-53', '2023-07-03', 1, '8', 1, '303', 303, NULL, NULL, NULL, NULL),
+(54, '', 'INC-2023-54', '2023-07-03', 1, '10', 1, '3699', 3699, NULL, NULL, NULL, NULL),
+(55, '', 'INC-2023-55', '2023-07-03', 1, '3', 1, '3699', 3699, NULL, NULL, NULL, NULL),
+(56, '', 'INC-2023-56', '2023-07-03', 1, '9', 1, '416', 416, NULL, NULL, NULL, NULL),
+(57, '', 'INC-2023-57', '2023-07-03', 1, '9', 1, '416', 416, NULL, NULL, NULL, NULL),
+(58, '', 'INC-2023-58', '2023-07-03', 1, '20', 1, '9213', 9213, NULL, NULL, NULL, NULL),
+(59, '', 'INC-2023-59', '2023-07-03', 1, '9', 1, '416', 416, NULL, NULL, NULL, NULL),
+(60, '', 'INC-2023-60', '2023-07-03', 1, '9', 1, '416', 416, NULL, NULL, NULL, 1),
+(61, '', 'INC-2023-61', '2023-07-03', 1, '7', 1, '272', 272, NULL, '2023-07-03', 272, 1),
+(62, '', 'INC-2023-62', '2023-07-03', 1, '8', 3, '303', 909, NULL, '2023-07-03', 909, 1),
+(63, '', 'INC-2023-63', '2023-07-03', 1, '7', 3, '272', 816, NULL, '2023-07-03', 816, 1),
+(64, '', 'INC-2023-64', '2023-07-03', 1, '7', 2, '272', 544, NULL, '2023-07-03', 544, 1),
+(65, '', 'INC-2023-65', '2023-07-03', 1, '2', 3, '624', 1872, NULL, '2023-07-03', 1872, 1),
+(66, '', 'INC-2023-66', '2023-07-03', 1, '6', 2, '386', 772, NULL, '2023-07-03', 772, 1),
+(67, '', 'INC-2023-67', '2023-07-03', 1, '3', 2, '1146', 2292, NULL, '2023-07-03', 2292, 1),
+(68, '', 'INC-2023-68', '2023-07-03', 1, '6', 1, '386', 386, NULL, '2023-07-03', 386, 1),
+(69, 'adfadasdasd', 'INC-2023-69', '2023-07-03', 1, '6', 3, '386', 1158, NULL, '2023-07-03', 303, 1),
+(70, 'adfadasdasd', 'INC-2023-69', '2023-07-03', 1, '3', 3, '1146', 3438, NULL, '2023-07-03', 303, 1),
+(71, 'adfadasdasd', 'INC-2023-69', '2023-07-03', 1, '8', 1, '303', 303, NULL, '2023-07-03', 303, 1),
+(72, 'xcvvcxvsd', 'INC-2023-72', '2023-07-03', 1, '6', 3, '386', 1158, NULL, '2023-07-03', 1158, 1),
+(73, 'xcvvcxvsd', 'INC-2023-72', '2023-07-03', 1, '7', 3, '386', 1158, NULL, '2023-07-03', 1158, 1),
+(74, 'ROJO', 'INC-2023-74', '2023-07-03', 1, '13', 4, '439', 1756, NULL, '2023-07-03', 1756, 1),
+(75, '333', 'INC-2023-75', '2023-07-03', 1, '7', 3, '272', 816, NULL, '2023-07-03', 816, 1),
+(76, '333', 'INC-2023-76', '2023-07-03', 1, '6', 2, '386', 772, NULL, '2023-07-03', 772, 1),
+(77, '333', 'INC-2023-76', '2023-07-03', 1, '3', 2, '386', 772, NULL, '2023-07-03', 772, 1),
+(78, '333', 'INC-2023-76', '2023-07-03', 1, '12', 2, '386', 772, NULL, '2023-07-03', 772, 1),
+(79, '333', 'INC-2023-76', '2023-07-03', 1, '2', 2, '386', 772, NULL, '2023-07-03', 772, 1),
+(80, '333', 'INC-2023-80', '2023-07-03', 1, '2', 2, '624', 1248, NULL, NULL, NULL, NULL),
+(81, '333', 'INC-2023-81', '2023-07-03', 1, '1', 1, '737', 737, NULL, '2023-07-03', 737, 1),
+(82, '333', 'INC-2023-82', '2023-07-03', 1, '2', 1, '624', 624, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `solicitud`
+--
+
+CREATE TABLE `solicitud` (
+  `id` int(11) NOT NULL,
+  `folio_solicitud` varchar(20) NOT NULL,
+  `cup` varchar(20) NOT NULL,
+  `tipo` int(11) NOT NULL,
+  `fecha_solicitud` datetime NOT NULL,
+  `entrega` datetime NOT NULL,
+  `estatus` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2722,6 +2773,12 @@ ALTER TABLE `servicios`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `solicitud`
+--
+ALTER TABLE `solicitud`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -2807,7 +2864,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `medicamentos`
@@ -2843,7 +2900,13 @@ ALTER TABLE `referencias`
 -- AUTO_INCREMENT for table `servicios`
 --
 ALTER TABLE `servicios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+
+--
+-- AUTO_INCREMENT for table `solicitud`
+--
+ALTER TABLE `solicitud`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
