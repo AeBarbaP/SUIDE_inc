@@ -2,9 +2,12 @@
 
     include('../prcd/qc/qc.php');
     $curp = $_POST['curp'];
+
     $sql = "SELECT * FROM servicios WHERE curp = '$curp'";
     $resultadoSQL = $conn->query($sql);
     $filas = $resultadoSQL->num_rows;
+
+
 
     if($filas > 0){
         while($rowSQL=$resultadoSQL->fetch_assoc()){
@@ -13,7 +16,7 @@
                     <td>'.$rowSQL['folio_solicitud'].'</td>
                     <td>'.$rowSQL['fecha_solicitud'].'</td>
                     <td>'.$rowSQL['tipo_solicitud'].'</td>
-                    <td>'.$rowSQL['estatus_s'].'</td>
+                    <td>'.$rowSQL['total_solicitud'].'</td>
                     <td>'.$rowSQL['estatus_s'].'</td>
                     <td>'.$rowSQL['fecha_entrega'].'</td>
                     <td><i class="bi bi-pencil-square"></i> Actualizar</td>
