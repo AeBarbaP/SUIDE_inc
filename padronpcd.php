@@ -1502,15 +1502,15 @@ include('prcd/qc/qc.php');
                             <th scope="col"># Folio</th>
                             <th scope="col">Fecha Solicitud</th>
                             <th scope="col">Tipo de solicitud</th>
-                            <th scope="col">Descripción</th>
+                            <th scope="col">Monto Solicitud</th>
                             <th scope="col">Estatus</th>
-                            <th scope="col">Actualizar</th>
                             <th scope="col">Fecha Entrega</th>
+                            <th scope="col">Actualizar</th>
                             <th scope="col">Acta Entrega</th>
                           </tr>
                         </thead>
                         <tbody id="tablaServicios">
-                         
+                        
                         </tbody>
                       </table>
                       <!-- Solicitudes -->
@@ -1632,7 +1632,7 @@ include('prcd/qc/qc.php');
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-plus-lg"></i> Agregar Solicitud</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="limpiarModalSolicitud()" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <form id="formSolicitudes">   
@@ -1715,7 +1715,7 @@ include('prcd/qc/qc.php');
                 <div class="col-sm-1" id="btnExtra" style="display: none;">
                   <label for="datos_usr" class="form-label text-light">.</label>
                   <div class="input-group">
-                    <button class="btn btn-primary" type="button" id="agregarItemExtra"><i class="bi bi-plus-circle"></i></button>
+                    <button class="btn btn-primary" type="button" id="agregarItemExtra" onclick="guardarSolicitudExtra()"><i class="bi bi-plus-circle"></i></button>
                   </div>
                 </div>
                 <div class="col-sm-8" id="descripcionOtro" style="display: none;">
@@ -1739,7 +1739,7 @@ include('prcd/qc/qc.php');
                 <div class="col-sm-1" id="btnOtro" style="display: none;">
                   <label for="datos_usr" class="form-label text-light">.</label>
                   <div class="input-group">
-                    <button class="btn btn-primary" type="button" id="agregarItemOtro"><i class="bi bi-plus-circle"></i></button>
+                    <button class="btn btn-primary" type="button" id="agregarItemOtro" onclick="guardarSolicitud()"><i class="bi bi-plus-circle"></i></button>
                   </div>
                 </div>
                 <div class="col-sm-12">
@@ -1765,7 +1765,7 @@ include('prcd/qc/qc.php');
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiarModalSolicitud()">Cancelar</button>
-              <button type="button" class="btn btn-primary" disabled>Agregar Solicitud</button>
+              <button type="button" class="btn btn-primary" id="btnlistaEspera" disabled>Agregar Solicitud</button>
               <button type="button" class="btn btn-success" id="btnEntregaApoyo" onclick="swalEntrega()" disabled>Entregar</button>
             </div>
           </div>
@@ -1962,10 +1962,10 @@ include('prcd/qc/qc.php');
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="input-group">
-          <label class="input-group-text"> Descripción del apoyo solicitado:</label>
-          <input type="text" class="form-control  w-50" id="descripcionInput" name="alergiaInput" value="" placeholder="">
-        </div>
+        <label> Descripción del apoyo solicitado:</label>
+        <input type="text" class="form-control" id="descripcionInput" name="alergiaInput" value="" placeholder="">
+<!--         <div class="input-group">
+        </div> -->
       </div>
       <div class="modal-footer">
         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> -->

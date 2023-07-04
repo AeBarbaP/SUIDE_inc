@@ -950,6 +950,13 @@ function limpiarModalSolicitud(){
     document.getElementById('cantidadFuncional').setAttribute('style','display: none');
     document.getElementById('costoFuncional').setAttribute('style','display: none');
     document.getElementById('btnFuncK').setAttribute('style','display: none');
+    document.getElementById('NuevaSolicitud').setAttribute('style','display: none');
+    document.getElementById('cantidadArt').value = "";
+    document.getElementById('costoSolicitud').value = "";
+    document.getElementById('costoSolicitudExtra').value = "";
+    document.getElementById('costoSolicitudOtro').value = "";
+    document.getElementById('divTag').innerHTML = "";
+
 }
 
 function queryCosto(x){
@@ -1043,37 +1050,9 @@ function guardarSolicitud(){
     var tipoSolicitud = document.getElementById('tipoSolicitud').value;
     var fechaSolicitud = document.getElementById('fechaSolicitud').value;
     var folioSolicitud = document.getElementById('folioSolicitud').value;
-
-
-    var articuloSolicitud = document.getElementById('articuloSolicitud').value;
-    var extraSolicitud = document.getElementById('extraSolicitud').value;
-    var otroSolicitud = document.getElementById('otroSolicitud').value;
-    
+    var detalleSolicitud = document.getElementById('articuloSolicitud').value;
     var cantidadArt = document.getElementById('cantidadArt').value;
-
-    var costoSolicitud = document.getElementById('costoSolicitud').value;
-    var costoSolicitudExtra = document.getElementById('costoSolicitudExtra').value;
-    var costoSolicitudOtro = document.getElementById('costoSolicitudOtro').value;
-
-    if (articuloSolicitud != "" || articuloSolicitud != null){
-        var detalleSolicitud = articuloSolicitud;
-    }
-    else if (extraSolicitud != "" || extraSolicitud != null){
-        var detalleSolicitud = extraSolicitud;
-    }
-    else if (otroSolicitud != "" || otroSolicitud != null){
-        var detalleSolicitud = otroSolicitud;
-    }
-
-    if (costoSolicitud != "" || costoSolicitud != null){
-        var monto_solicitud = costoSolicitud;
-    }
-    else if (costoSolicitudExtra != "" || costoSolicitudExtra != null){
-        var monto_solicitud = costoSolicitudExtra;
-    }
-    else if (costoSolicitudOtro != "" || costoSolicitudOtro != null){
-        var monto_solicitud = costoSolicitudOtro;
-    }
+    var monto_solicitud = document.getElementById('costoSolicitud').value;
     
     $.ajax({
         type: "POST",
@@ -1102,8 +1081,82 @@ function guardarSolicitud(){
         }
 
     });
-    //tablaSolicitud.ajax.reload();
+}
+function guardarSolicitudExtra(){
+    var curp_exp = document.getElementById('curp_exp').value;
+    var tipoSolicitud = document.getElementById('tipoSolicitud').value;
+    var fechaSolicitud = document.getElementById('fechaSolicitud').value;
+    var folioSolicitud = document.getElementById('folioSolicitud').value;
+    var extraSolicitud = document.getElementById('extraSolicitud').value;
+    var costoSolicitudExtra = document.getElementById('costoSolicitudExtra').value;
+    var cantidadArt = 1;
+    var unitario = costoSolicitudExtra;
+    
+    $.ajax({
+        type: "POST",
+        url: 'query/queryGuardarApoyoExtra.php',
+        dataType:'json',
+        data: {
+            curp_exp:curp_exp,
+            tipoSolicitud:tipoSolicitud,
+            fechaSolicitud:fechaSolicitud,
+            folioSolicitud:folioSolicitud,
+            extraSolicitud:extraSolicitud,
+            cantidadArt:cantidadArt,
+            unitario:unitario,
+            costoSolicitudExtra:costoSolicitudExtra
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var verificador = jsonData.success;
+            if (verificador == 1) {
+                mostrarTabla();
+                
+            } else if (verificador == 0){
+                alert('no muestra tabla');
+            }
+            document.getElementById('btnlistaEspera').disabled = false;
+        }
 
+    });
+}
+function guardarSolicitudOtros(){
+    var curp_exp = document.getElementById('curp_exp').value;
+    var tipoSolicitud = document.getElementById('tipoSolicitud').value;
+    var fechaSolicitud = document.getElementById('fechaSolicitud').value;
+    var folioSolicitud = document.getElementById('folioSolicitud').value;
+    var otroSolicitud = document.getElementById('otroSolicitud').value;
+    var costoSolicitudOtro = document.getElementById('costoSolicitudOtro').value;
+    var cantidadArt = 1;
+    var unitario = costoSolicitudOtro;
+    
+    $.ajax({
+        type: "POST",
+        url: 'query/queryGuardarApoyoOtro.php',
+        dataType:'json',
+        data: {
+            curp_exp:curp_exp,
+            tipoSolicitud:tipoSolicitud,
+            fechaSolicitud:fechaSolicitud,
+            folioSolicitud:folioSolicitud,
+            otroSolicitud:otroSolicitud,
+            cantidadArt:cantidadArt,
+            unitario:unitario,
+            costoSolicitudOtro:costoSolicitudOtro
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var verificador = jsonData.success;
+            if (verificador == 1) {
+                mostrarTabla();
+                
+            } else if (verificador == 0){
+                alert('no muestra tabla');
+            }
+            document.getElementById('btnlistaEspera').disabled = false;
+        }
+
+    });
 }
 function guardarSolicitudCompleta(){
     var curp_exp = document.getElementById('curp_exp').value;
@@ -1144,13 +1197,15 @@ function guardarSolicitudCompleta(){
 }
 function mostrarTabla(){
     var folioSolicitud = document.getElementById('folioSolicitud').value;
+    var tipoSolicitud = document.getElementById('tipoSolicitud').value;
 
     $.ajax({
         type: "POST",
         url: 'query/queryTablaApoyo.php',
         dataType:'html',
         data: {
-            folioSolicitud:folioSolicitud
+            folioSolicitud:folioSolicitud,
+            tipoSolicitud:tipoSolicitud
         },
         success: function(data){
             $('#NuevaSolicitud').fadeIn(1000).html(data);
