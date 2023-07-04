@@ -956,7 +956,8 @@ function limpiarModalSolicitud(){
     document.getElementById('costoSolicitudExtra').value = "";
     document.getElementById('costoSolicitudOtro').value = "";
     document.getElementById('divTag').innerHTML = "";
-
+    document.getElementById('btnlistaEspera').disabled = true;
+    document.getElementById('btnEntregaApoyo').disabled = true;
 }
 
 function queryCosto(x){
@@ -1160,35 +1161,28 @@ function guardarSolicitudOtros(){
 }
 function guardarSolicitudCompleta(){
     var curp_exp = document.getElementById('curp_exp').value;
-
     var tipoSolicitud = document.getElementById('tipoSolicitud').value;
     var fechaSolicitud = document.getElementById('fechaSolicitud').value;
     var folioSolicitud = document.getElementById('folioSolicitud').value;
-
+    
     $.ajax({
         type: "POST",
-        url: 'query/queryGuardarApoyo.php',
+        url: 'prcd/guardarSolicitudFull.php',
         dataType:'json',
         data: {
             curp_exp:curp_exp,
             tipoSolicitud:tipoSolicitud,
             fechaSolicitud:fechaSolicitud,
-            folioSolicitud:folioSolicitud,
-            detalleSolicitud:detalleSolicitud,
-            cantidadArt:cantidadArt,
-            unitario:unitario,
-            monto_solicitud:monto_solicitud
+            folioSolicitud:folioSolicitud
         },
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));
             var verificador = jsonData.success;
             if (verificador == 1) {
-                mostrarTabla();
-                
+                mostrarTablaServicios();
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
-            document.getElementById('btnEntregaApoyo').disabled = false;
         }
 
     });
@@ -1232,14 +1226,14 @@ function swalEntrega(){
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
+            flagEntrega();
+            mostrarTablaServicios();
+            document.getElementById('btnEntregaApoyo').disabled = false;
             swalWithBootstrapButtons.fire(
                 'Entregado!',
                 'Se ha generado el Acta de Entrega',
                 'success'
                 );
-                flagEntrega();
-                mostrarTablaServicios();
-                document.getElementById('btnEntregaApoyo').disabled = false;
         } else if (
                 /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
@@ -1253,16 +1247,18 @@ function swalEntrega(){
     })
 }
 function flagEntrega(){
+    var tipo = document.getElementById('tipoSolicitud').value;
+    var curp_exp = document.getElementById('curp_exp').value;
     var folioSolicitud = document.getElementById('folioSolicitud').value;
-    var montoEntrega = document.getElementById('costoSolicitud').value;
 
     $.ajax({
         type: "POST",
         url: 'prcd/actualizarStatus.php',
         dataType:'json',
         data: {
+            curp_exp,
             folioSolicitud:folioSolicitud,
-            montoEntrega:montoEntrega
+            tipo:tipo
         },
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));
@@ -1278,6 +1274,7 @@ function flagEntrega(){
 
 function mostrarTablaServicios(){
     var curp = document.getElementById('curp_exp').value;
+    
 
     $.ajax({
         type: "POST",

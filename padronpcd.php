@@ -1692,7 +1692,7 @@ include('prcd/qc/qc.php');
                 <div class="col-sm-1" id="btnFuncK" style="display: none;">
                   <label for="datos_usr" class="form-label text-light">.</label>
                   <div class="input-group">
-                    <button class="btn btn-primary" type="button" onclick="guardarSolicitud();guardarSolicitudCompleta()" id="agregarItemFunc"><i class="bi bi-plus-circle"></i></button>
+                    <button class="btn btn-primary" type="button" onclick="guardarSolicitud()" id="agregarItemFunc"><i class="bi bi-plus-circle"></i></button>
                   </div>
                 </div>
                 <div class="col-sm-8" id="descripcionExtra" style="display: none;">
@@ -1739,7 +1739,7 @@ include('prcd/qc/qc.php');
                 <div class="col-sm-1" id="btnOtro" style="display: none;">
                   <label for="datos_usr" class="form-label text-light">.</label>
                   <div class="input-group">
-                    <button class="btn btn-primary" type="button" id="agregarItemOtro" onclick="guardarSolicitud()"><i class="bi bi-plus-circle"></i></button>
+                    <button class="btn btn-primary" type="button" id="agregarItemOtro" onclick="guardarSolicitudOtros()"><i class="bi bi-plus-circle"></i></button>
                   </div>
                 </div>
                 <div class="col-sm-12">
@@ -1765,7 +1765,7 @@ include('prcd/qc/qc.php');
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiarModalSolicitud()">Cancelar</button>
-              <button type="button" class="btn btn-primary" id="btnlistaEspera" disabled>Agregar Solicitud</button>
+              <button type="button" class="btn btn-primary" id="btnlistaEspera" onclick="guardarSolicitudCompleta()" disabled>Agregar Solicitud</button>
               <button type="button" class="btn btn-success" id="btnEntregaApoyo" onclick="swalEntrega()" disabled>Entregar</button>
             </div>
           </div>
