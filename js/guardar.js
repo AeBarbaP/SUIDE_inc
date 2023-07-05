@@ -322,7 +322,7 @@ function queryTabAlergias(x){
     var alergias = x;
     $.ajax({
         type: "POST",
-        url: 'prcd/queryAlergias.php',
+        url: 'query/queryAlergias.php',
         dataType:'html',
         data: {
             alergias:alergias
@@ -336,7 +336,7 @@ function buscarEnfermedad(){
     var enfermedad = document.getElementById('enfermedadesSearch').value;
     $.ajax({
         type: "POST",
-        url: 'prcd/queryEnfermedades.php',
+        url: 'query/queryEnfermedades.php',
         dataType:'html',
         data: {
             enfermedad:enfermedad
@@ -351,7 +351,7 @@ function buscarMedicamento(){
     var medicamento = document.getElementById('buscarMed').value;
     $.ajax({
         type: "POST",
-        url: 'prcd/queryMedicamentos.php',
+        url: 'query/queryMedicamentos.php',
         dataType:'html',
         data: {
             medicamento:medicamento
@@ -960,6 +960,20 @@ function limpiarModalSolicitud(){
     document.getElementById('btnEntregaApoyo').disabled = true;
 }
 
+function limpiaInputsFunc(){
+    document.getElementById('cantidadArt').value = "";
+    document.getElementById('costoSolicitud').value = "";
+    document.getElementById('divTag').hidden = true;
+}
+
+function limpiarInputsExtra(){
+    document.getElementById('costoSolicitudExtra').value = "";
+}
+
+function limpiarInputsOtro(){
+    document.getElementById('costoSolicitudOtro').value = "";
+}
+
 function queryCosto(x){
     var articulo = document.getElementById('articuloSolicitud').value;
     var cantidad = x;
@@ -1057,7 +1071,7 @@ function guardarSolicitud(){
     
     $.ajax({
         type: "POST",
-        url: 'query/queryGuardarApoyo.php',
+        url: 'prcd/guardarApoyo.php',
         dataType:'json',
         data: {
             curp_exp:curp_exp,
@@ -1095,7 +1109,7 @@ function guardarSolicitudExtra(){
     
     $.ajax({
         type: "POST",
-        url: 'query/queryGuardarApoyoExtra.php',
+        url: 'prcd/guardarApoyoExtra.php',
         dataType:'json',
         data: {
             curp_exp:curp_exp,
@@ -1133,7 +1147,7 @@ function guardarSolicitudOtros(){
     
     $.ajax({
         type: "POST",
-        url: 'query/queryGuardarApoyoOtro.php',
+        url: 'prcd/guardarApoyoOtro.php',
         dataType:'json',
         data: {
             curp_exp:curp_exp,
@@ -1233,7 +1247,9 @@ function swalEntrega(){
                 'Entregado!',
                 'Se ha generado el Acta de Entrega',
                 'success'
-                );
+            );
+            $("#solicitudAdd").modal('hide');
+            limpiarModalSolicitud();
         } else if (
                 /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
@@ -1256,13 +1272,15 @@ function flagEntrega(){
         url: 'prcd/actualizarStatus.php',
         dataType:'json',
         data: {
-            curp_exp,
+            curp_exp:curp_exp,
             folioSolicitud:folioSolicitud,
             tipo:tipo
         },
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));
             var verificador = jsonData.success;
+            var monto = jsonData.monto;
+            console.log(monto);
             if (verificador == 1) {
                 console.log('flag actualizado');
             } else if (verificador == 0){
