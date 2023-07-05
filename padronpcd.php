@@ -1417,25 +1417,27 @@ include('prcd/qc/qc.php');
                     <!-- integración familiar -->
                     <div class="col-sm-12 mt-3 p-4">
                       <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Integración familiar</label>
-                      <table class="table table-bordered table-hover text-center">
-                        <thead style="background-color:#6d5973;color:white;">
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nombre completo</th>
-                            <th scope="col">Parentesco</th><!-- select de parentesco -->
-                            <th scope="col">Edad</th>
-                            <th scope="col">Escolaridad</th>
-                            <th scope="col">Profesión</th>
-                            <th scope="col">Discapacidad</th>
-                            <th scope="col">Ingreso</th>
-                            <th scope="col"><small><i class="bi bi-envelope"></i> Email</small></th>
-                            <th scope="col"><small><i class="bi bi-whatsapp"></i> Teléfono</small></th>
-                          </tr>
-                        </thead>
-                        <tbody id="familiaresTab" class="text-center">
-                          
-                        </tbody>
-                      </table>
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-hover text-center">
+                          <thead style="background-color:#6d5973;color:white;">
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Nombre completo</th>
+                              <th scope="col">Parentesco</th><!-- select de parentesco -->
+                              <th scope="col">Edad</th>
+                              <th scope="col">Escolaridad</th>
+                              <th scope="col">Profesión</th>
+                              <th scope="col">Discapacidad</th>
+                              <th scope="col">Ingreso</th>
+                              <th scope="col"><small><i class="bi bi-envelope"></i> Email</small></th>
+                              <th scope="col"><small><i class="bi bi-whatsapp"></i> Teléfono</small></th>
+                            </tr>
+                          </thead>
+                          <tbody id="familiaresTab" class="text-center">
+                            
+                          </tbody>
+                        </table>
+                      </div>  
                       <!-- integración familiar -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
@@ -1450,7 +1452,7 @@ include('prcd/qc/qc.php');
                     <!-- referencias -->
                     <div class="col-sm-12 mt-3 p-4">
                       <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Referencias</label>
-                      <div class="table-wrapper">
+                      <div class="table-responsive">
                         <table class="table table-bordered table-hover text-center">
                           <thead style="background-color:#6d5973;color:white;">
                             <tr>
@@ -1475,44 +1477,28 @@ include('prcd/qc/qc.php');
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane fade" id="nav-servicios-otorgados" role="tabpanel" aria-labelledby="nav-servicios-tab" tabindex="0" onload="mostrarTablaServicios()">
+                <div class="tab-pane fade" id="nav-servicios-otorgados" role="tabpanel" aria-labelledby="nav-servicios-tab" tabindex="0" onclick="mostrarTablaServicios()">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
-                    <div class="col-sm-8 ms-3">
-                      <input type="text" id="serviciosExp" value="curp_exp" hidden>
-                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Buscar:</label>
-                      <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="">
-                    </div>
-                    <div class="col-sm-3" >
-                        <div class="form-check mt-4">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" selected>
-                          <label class="form-check-label" for="inlineRadio1">En lista de espera</label>
-                        </div>
-                        
-                        <div class="form-check ">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                          <label class="form-check-label" for="inlineRadio2">Entregado(s)</label>
-                        </div>
-
-                    </div>
                     <div class="col-sm-12 mt-3 p-4">
                       <label for="basic-url" class="form-label h4"><i class="bi bi-files"></i> Solicitudes y Servicios</label>
-                      <table class="table table-bordered table-hover text-center">
-                        <thead style="background-color:#6d5973;color:white;">
-                          <tr>
-                            <th scope="col"># Folio</th>
-                            <th scope="col">Fecha Solicitud</th>
-                            <th scope="col">Tipo de solicitud</th>
-                            <th scope="col">Monto Solicitud</th>
-                            <th scope="col">Estatus</th>
-                            <th scope="col">Fecha Entrega</th>
-                            <th scope="col">Actualizar</th>
-                            <th scope="col">Acta Entrega</th>
-                          </tr>
-                        </thead>
-                        <tbody id="tablaServicios">
-                        
-                        </tbody>
-                      </table>
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-hover text-center">
+                          <thead style="background-color:#6d5973;color:white;">
+                            <tr>
+                              <th scope="col"># Folio</th>
+                              <th scope="col">Fecha Solicitud</th>
+                              <th scope="col">Tipo de solicitud</th>
+                              <th scope="col">Monto Solicitud</th>
+                              <th scope="col">Estatus</th>
+                              <th scope="col">Fecha Entrega</th>
+                              <th scope="col">Acta Entrega</th>
+                            </tr>
+                          </thead>
+                          <tbody id="tablaServicios">
+                          
+                          </tbody>
+                        </table>
+                      </div>
                       <!-- Solicitudes -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
@@ -1528,8 +1514,8 @@ include('prcd/qc/qc.php');
                       <thead style="background-color:darkgray;color:white;">
                         <tr>
                           <th class="align-middle" scope="col">DOCUMENTO</th>
-                          <th scope="col">SI<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkAllSi" value="" aria-label="..."></th>
-                          <th scope="col">NO<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkAllNo" value="" aria-label="..."></th>
+                          <th scope="col">SI<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkAllSi" value="" onchange="checkAll1()" aria-label="..."></th>
+                          <th scope="col">NO<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkAllNo" value="" onchange="checkAll2()" aria-label="..."></th>
                           <th class="align-middle" scope="col">NO APLICA</th>
                           <th class="align-middle" scope="col">ARCHIVO<br><label class="fw-lighter fst-italic lh-1">(PDF o JPG)</label></th>
                         </tr>
@@ -1537,58 +1523,58 @@ include('prcd/qc/qc.php');
                       <tbody>
                         <tr>
                           <th scope="row">HOJA DE REGISTRO<br><p class="fw-lighter fst-italic">Estudio Socioeconómico.</p></th>
-                          <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="registroSi" value="" onclick="valoracionCheck(1)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="registroNo" value="" onclick="valoracionCheck(2)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="registroNA" value="" onclick="valoracionCheck(3)" aria-label="..."></td>
                           <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">DOCUMENTO MÉDICO<br><p class="fw-lighter fst-italic">Que indique el tipo y grado de discapacidad, expedido por institución pública de salud.</p></th>
-                          <td><input class="form-check-input" type="checkbox" id="valoracionSi" value="" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="valoracionNo" value="" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="valoracionNA" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="valoracionSi" value="" onclick="valoracionCheck(4)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="valoracionNo" value="" onclick="valoracionCheck(5)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="valoracionNA" value="" onclick="valoracionCheck(6)" aria-label="..."></td>
                           <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE ACTA DE NACIMIENTO<br><p class="fw-lighter fst-italic">O documento que acredite la condición jurídica de la persona beneficiaria.</p></th>
-                          <td><input class="form-check-input" type="checkbox" id="actaSi" value="" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="actaNo" value="" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="actaNA" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="actaSi" value="" onclick="valoracionCheck(7)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="actaNo" value="" onclick="valoracionCheck(8)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="actaNA" value="" onclick="valoracionCheck(9)" aria-label="..."></td>
                           <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE LA C.U.R.P.</th>
-                          <td><input class="form-check-input" type="checkbox" id="curpSi" value="" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="curpNo" value="" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="curpNA" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="curpSi" value="" onclick="valoracionCheck(10)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="curpNo" value="" onclick="valoracionCheck(11)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="curpNA" value="" onclick="valoracionCheck(12)" aria-label="..."></td>
                           <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE LA IDENTIFICACIÓN OFICIAL DEL BENEFICIARIO<br><p class="fw-lighter fst-italic">Credencial de elector, pasaporte, credencial del INAPAM u otro documento que acredite la identidad del beneficiario.</p></th>
-                          <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="ineSi" value="" onclick="valoracionCheck(13)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="ineNo" value="" onclick="valoracionCheck(14)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="ineNA" value="" onclick="valoracionCheck(15)" aria-label="..."></td>
                           <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE COMPROBANTE DE DOMICILIO<br><p class="fw-lighter fst-italic">Reciente a la apertura o actualización del expediente, no mayor a 90 días.</p></th>
-                          <td><input class="form-check-input" type="checkbox" id="comprobanteSi" value="" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="comprobanteNo" value="" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="comprobanteNA" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="comprobanteSi" value="" onclick="valoracionCheck(16)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="comprobanteNo" value="" onclick="valoracionCheck(17)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="comprobanteNA" value="" onclick="valoracionCheck(18)" aria-label="..."></td>
                           <td><a href=""data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">DOS FOTOGRAFÍAS<br><p class="fw-lighter fst-italic">En cualquier formato, preferentemente impresas.</p></th>
-                          <td><input class="form-check-input" type="checkbox" id="fotosSi" value="" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="fotosNo" value="" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="fotosNA" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="fotosSi" value="" onclick="valoracionCheck(19)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="fotosNo" value="" onclick="valoracionCheck(20)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="fotosNA" value="" onclick="valoracionCheck(21)" aria-label="..."></td>
                           <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE LA TARJETA DE CIRCULACIÓN<br><p class="fw-lighter fst-italic">Del vehículo en el que se traslada la Persona con Discapacidad.</p></th>
-                          <td><input class="form-check-input" type="checkbox" id="circulacionSi" value="" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="circulacionSi" value="" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="circulacionSi" value="" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="circulacionSi" value="" onclick="valoracionCheck(22)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="circulacionNo" value="" onclick="valoracionCheck(23)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="circulacionNA" value="" onclick="valoracionCheck(24)" aria-label="..."></td>
                           <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                       </tbody>
@@ -1668,7 +1654,7 @@ include('prcd/qc/qc.php');
                 </div>
                 <div class="col-sm-6" id="descripcionFuncional" style="display: none;">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Especifica:</label>
-                  <select class="form-select" id="articuloSolicitud" aria-label="Default select example" required>
+                  <select class="form-select" id="articuloSolicitud" onchange="limpiaInputsFunc()" aria-label="Default select example" required>
                     <option selected>Selecciona...</option>
                   </select>
                   <div class="form-text" id="divTag" hidden><span id="disponible1"> Piezas disponibles </span><strong><span id="disponible"></span></strong></div>
@@ -1697,7 +1683,7 @@ include('prcd/qc/qc.php');
                 </div>
                 <div class="col-sm-8" id="descripcionExtra" style="display: none;">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Especifica:</label>
-                  <select class="form-select" id="extraSolicitud"  aria-label="Default select example" required>
+                  <select class="form-select" id="extraSolicitud" onchange="limpiaInputsExtra()" aria-label="Default select example" required>
                     <option selected>Selecciona...</option>
                   </select>
                   <div class="invalid-feedback">
@@ -1720,7 +1706,7 @@ include('prcd/qc/qc.php');
                 </div>
                 <div class="col-sm-8" id="descripcionOtro" style="display: none;">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Especifica:</label>
-                  <select class="form-select" id="otroSolicitud" aria-label="Default select example" required>
+                  <select class="form-select" id="otroSolicitud" onchange="limpiaInputsOtro()" aria-label="Default select example" required>
                     <option selected>Selecciona...</option>
                   </select>
                   <div class="invalid-feedback">
