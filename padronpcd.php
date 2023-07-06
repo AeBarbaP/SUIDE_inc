@@ -143,6 +143,11 @@ include('prcd/qc/qc.php');
         overflow-y: scroll;
         width:100%;
       }
+      .card-body #cardPrestamo {
+        height:700px;
+        overflow-y: scroll;
+        width:100%;
+      }
       
       #impresion:hover{
         transform: scale(0.5);
@@ -201,8 +206,8 @@ include('prcd/qc/qc.php');
         </a></span>
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetongen"><i class="bi bi-bookmark-plus ms-2 me-3"></i> Tarjetón de padrón</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-tag ms-2 me-3"></i> Préstamo</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetongen"><i class="bi bi-bookmark-plus ms-2 me-3"></i> Tarjetón de Padrón</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo"><i class="bi bi-tag ms-2 me-3"></i> Tarjeton de Préstamo</a></li>
             
           </ul>
         </div>
@@ -1526,56 +1531,56 @@ include('prcd/qc/qc.php');
                           <td><input class="form-check-input" type="checkbox" id="registroSi" value="" onclick="valoracionCheck(1)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="registroNo" value="" onclick="valoracionCheck(2)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="registroNA" value="" onclick="valoracionCheck(3)" aria-label="..."></td>
-                          <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                          <td><a href="" id="registroDoc" data-bs-toggle="modal" data-bs-target="#docUpload1"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">DOCUMENTO MÉDICO<br><p class="fw-lighter fst-italic">Que indique el tipo y grado de discapacidad, expedido por institución pública de salud.</p></th>
                           <td><input class="form-check-input" type="checkbox" id="valoracionSi" value="" onclick="valoracionCheck(4)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="valoracionNo" value="" onclick="valoracionCheck(5)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="valoracionNA" value="" onclick="valoracionCheck(6)" aria-label="..."></td>
-                          <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                          <td><a href="" id="valoracionDoc" data-bs-toggle="modal" data-bs-target="#docUpload2"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE ACTA DE NACIMIENTO<br><p class="fw-lighter fst-italic">O documento que acredite la condición jurídica de la persona beneficiaria.</p></th>
                           <td><input class="form-check-input" type="checkbox" id="actaSi" value="" onclick="valoracionCheck(7)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="actaNo" value="" onclick="valoracionCheck(8)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="actaNA" value="" onclick="valoracionCheck(9)" aria-label="..."></td>
-                          <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                          <td><a href="" id="actaDoc" data-bs-toggle="modal" data-bs-target="#docUpload3"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE LA C.U.R.P.</th>
                           <td><input class="form-check-input" type="checkbox" id="curpSi" value="" onclick="valoracionCheck(10)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="curpNo" value="" onclick="valoracionCheck(11)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="curpNA" value="" onclick="valoracionCheck(12)" aria-label="..."></td>
-                          <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                          <td><a href="" id="curpDoc" data-bs-toggle="modal" data-bs-target="#docUpload4"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE LA IDENTIFICACIÓN OFICIAL DEL BENEFICIARIO<br><p class="fw-lighter fst-italic">Credencial de elector, pasaporte, credencial del INAPAM u otro documento que acredite la identidad del beneficiario.</p></th>
                           <td><input class="form-check-input" type="checkbox" id="ineSi" value="" onclick="valoracionCheck(13)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="ineNo" value="" onclick="valoracionCheck(14)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="ineNA" value="" onclick="valoracionCheck(15)" aria-label="..."></td>
-                          <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                          <td><a href="" id="ineDoc" data-bs-toggle="modal" data-bs-target="#docUpload5"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE COMPROBANTE DE DOMICILIO<br><p class="fw-lighter fst-italic">Reciente a la apertura o actualización del expediente, no mayor a 90 días.</p></th>
                           <td><input class="form-check-input" type="checkbox" id="comprobanteSi" value="" onclick="valoracionCheck(16)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="comprobanteNo" value="" onclick="valoracionCheck(17)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="comprobanteNA" value="" onclick="valoracionCheck(18)" aria-label="..."></td>
-                          <td><a href=""data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                          <td><a href="" id="comprobanteDoc" data-bs-toggle="modal" data-bs-target="#docUpload6"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">DOS FOTOGRAFÍAS<br><p class="fw-lighter fst-italic">En cualquier formato, preferentemente impresas.</p></th>
                           <td><input class="form-check-input" type="checkbox" id="fotosSi" value="" onclick="valoracionCheck(19)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="fotosNo" value="" onclick="valoracionCheck(20)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="fotosNA" value="" onclick="valoracionCheck(21)" aria-label="..."></td>
-                          <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                          <td></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE LA TARJETA DE CIRCULACIÓN<br><p class="fw-lighter fst-italic">Del vehículo en el que se traslada la Persona con Discapacidad.</p></th>
                           <td><input class="form-check-input" type="checkbox" id="circulacionSi" value="" onclick="valoracionCheck(22)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="circulacionNo" value="" onclick="valoracionCheck(23)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="circulacionNA" value="" onclick="valoracionCheck(24)" aria-label="..."></td>
-                          <td><a href="" data-bs-toggle="modal" data-bs-target="#docUpload"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                          <td><a href="" id="circulacionDoc" data-bs-toggle="modal" data-bs-target="#docUpload7"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -1938,6 +1943,209 @@ include('prcd/qc/qc.php');
       <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script> -->
   </body>
 </html>
+
+<!-- Inicia Modal para generar tarjeton de préstamo-->
+
+<div class="modal fade " id="tarjetonPrestamo" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-plus h2"></i> Tarjetón de Préstamo con QR</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                            <!-- <div class="input-group mb-1 mt-2 w-100">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+              </div>
+              <br> -->
+              <div class="container text-center">
+                <div class="card mb-3" style="max-width: 100%;">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body text-start" id="cardPrestamo">
+                        <div id = "tarjeton">
+                          <h5 class="mb-3"><i class="bi bi-person"></i> Datos del Usuario</h5>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Apellido Paterno</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apPaterno">
+                                <span class="input-group-text" id="basic-addon1">Apellido Materno</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apMaterno">
+                              </div>  
+                            </div>
+<!--                             <div class="col-md-6">
+                              <div class="input-group mb-3">
+                              </div>  
+                            </div> -->
+                            <div class="col-md-12">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Nombre (s)</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp">
+                              </div>  
+                            </div>
+                            <div class="col-md-6">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">CURP</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
+                              </div>  
+                            </div>
+                            <div class="col-md-6">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Clave INE / Folio ID:</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
+                              </div>  
+                            </div>
+                            <div class="col-md-4">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Teléfono:</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
+                              </div>  
+                            </div>
+                            <div class="col-md-8">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Correo-e:</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
+                              </div>  
+                            </div>
+                            <h5 class="mb-3"><i class="bi bi-house-door"></i> Domicilio</h5>
+                            <div class="col-md-6">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Calle:</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="calleTemp">
+                              </div>  
+                            </div>
+                            <div class="col-md-3">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">No. Int.:</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="intTemp">
+                              </div>  
+                            </div>
+                            <div class="col-md-3">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">No. Ext.:</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="extTemp">
+                              </div>  
+                            </div>
+                            <div class="col-md-9">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Colonia:</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="coloniaTemp">
+                              </div>  
+                            </div>
+                            <div class="col-md-3">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">C.P.:</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="referenciaTemp">
+                              </div>  
+                            </div>
+                            <div class="col-md-4">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Estado:</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="estadoTemp">
+                              </div>  
+                            </div>
+                            <div class="col-md-4">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Municipio:</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="municipioTemp">
+                              </div>  
+                            </div>
+                            <div class="col-md-4">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Localidad:</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="localidadTemp">
+                              </div>  
+                            </div>
+                            <h5 class="mb-3"><i class="bi bi-heart-pulse"></i> Valoración Médica:</h5>
+                            <div class="col-md-8">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Diagnóstico:</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="dxTemp">
+                              </div>  
+                            </div>
+                            <div class="col-md-4">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar2-week"></i></span>
+                                <select class="form-select" id="inputGroupSelect02">
+                                  <option selected>Temporalidad...</option>
+                                  <option value="1">0 - 3 meses</option>
+                                  <option value="2">4 - 6 meses</option>
+                                  <option value="3">7 - 11 meses</option>
+                                  <option value="4">12 meses o más</option>
+                                </select>
+                              </div>  
+                            </div>
+                            <div class="col-md-6">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Médico:</span>
+                                <input type="text" class="form-control" placeholder="Nombre del médico" aria-label="" aria-describedby="basic-addon1" id="medicoTemp">
+                              </div>  
+                            </div>
+                            <div class="col-md-6">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Institución:</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="institucionTemp">
+                              </div>  
+                            </div>
+                            <div class="col-md-8">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Fecha de expedición:</span>
+                                <input type="date" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaValTemp">
+                              </div>  
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
+                        <h5 class="mb-3"><i class="bi bi-car-front-fill"></i> Datos del vehículo</h5>
+                        <div class="col-md-12">
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Marca</span>
+                            <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaForm">
+                            <span class="input-group-text" id="basic-addon1">Modelo</span>
+                            <input type="text" class="form-control" placeholder="Modelo" aria-label="modelo" aria-describedby="basic-addon1">
+                            <span class="input-group-text">Año</span>
+                            <input type="text" class="form-control" placeholder="Año" aria-label="anio" id="annioForm">
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">No. de Placas</span>
+                            <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasForm">
+                            <span class="input-group-text" id="basic-addon1">No. de Serie</span>
+                            <input type="text" class="form-control" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieForm">
+                          </div>
+                        </div>
+                        <div class="input-group mb-3">
+                        </div>
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">No. de choferes</span>
+                          <input type="number" class="form-control" placeholder="# de choferes" aria-label="no_choferes" aria-describedby="basic-addon1" id="choferesForm">
+                        </div>
+                        <div class="input-group">
+                          <span class="input-group-text">Nombre(s) del(los)<br>Chofer(es)</span>
+                          <textarea class="form-control" aria-label="nombres de los choferes"  id="nombresChoferesForm"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>  
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" id="habilitaimprimirt" onclick="swaldatostrn()"><i class="bi bi-save2"></i> Generar Tarjetón</button>
+              <button type="button" class="btn btn-primary" id="imprimirt" disabled><i class="bi bi-printer"></i> Imprimir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Termina Modal para generar tarjeton de préstamo-->
 
 <!-- Modal para agregar descripcion -->
 <div class="modal fade" id="descripcionModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -2450,9 +2658,9 @@ include('prcd/qc/qc.php');
     </div>
     <!-- Termina Modal para agregar Referencia en la tab de Referencias -->
 
-    <!-- Inici Modal para cargar archivo en pdf o jpg en Tab Documentos -->
+    <!-- Inician Modales para cargar archivos en pdf o jpg en Tab Documentos -->
 
-    <div class="modal fade" id="docUpload" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="docUpload1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -2462,16 +2670,136 @@ include('prcd/qc/qc.php');
           <div class="modal-body">
 
             <div class="input-group mb-3">
-              <input type="file" class="form-control" oninput="init()" id="inputGroupFile01">
+              <input type="file" class="form-control" id="registroUp">
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary">Subir Archivo</button>
+            <button type="button" class="btn btn-primary" onclick="uploadFile(1,curp_exp)" data-bs-dismiss="modal">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="docUpload2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" id="valoracionUp">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="uploadFile(2,curp_exp)" data-bs-dismiss="modal">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="docUpload3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" id="actaUp">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="uploadFile(3,curp_exp)" data-bs-dismiss="modal">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="docUpload4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" id="curpUp">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="uploadFile(4,curp_exp)" data-bs-dismiss="modal">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="docUpload5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" id="idUp">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="uploadFile(5,curp_exp)" data-bs-dismiss="modal">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="docUpload6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" id="comprobanteUp">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="uploadFile(6,curp_exp)" data-bs-dismiss="modal">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="docUpload7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" id="circulacionUp">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="uploadFile(7,curp_exp)" data-bs-dismiss="modal">Subir Archivo</button>
           </div>
         </div>
       </div>
     </div>
 
 
-    <!-- Termina Modal para cargar archivo en pdf o jpg en Tab Documentos -->
+    <!-- Terminan Modales para cargar archivo en pdf o jpg en Tab Documentos -->
