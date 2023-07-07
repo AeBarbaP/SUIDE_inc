@@ -143,7 +143,7 @@ include('prcd/qc/qc.php');
         overflow-y: scroll;
         width:100%;
       }
-      .card-body #cardPrestamo {
+      #cardPrestamo.card-body  {
         height:700px;
         overflow-y: scroll;
         width:100%;
@@ -1961,11 +1961,11 @@ include('prcd/qc/qc.php');
               <br> -->
               <div class="container text-center">
                 <div class="card mb-3" style="max-width: 100%;">
-                  <div class="row g-0">
-                    <div class="col-md-4">
+                  <div class="row g-0 align-items-center">
+                    <div class="col-md-3">
                       <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                       <div class="card-body text-start" id="cardPrestamo">
                         <div id = "tarjeton">
                           <h5 class="mb-3"><i class="bi bi-person"></i> Datos del Usuario</h5>
@@ -1978,99 +1978,63 @@ include('prcd/qc/qc.php');
                                 <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apMaterno">
                               </div>  
                             </div>
-<!--                             <div class="col-md-6">
-                              <div class="input-group mb-3">
-                              </div>  
-                            </div> -->
                             <div class="col-md-12">
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Nombre (s)</span>
                                 <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp">
                               </div>  
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">CURP</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-6">
-                              <div class="input-group mb-3">
+                                <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
                                 <span class="input-group-text" id="basic-addon1">Clave INE / Folio ID:</span>
                                 <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
                               </div>  
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-12">
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Teléfono:</span>
                                 <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-8">
-                              <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Correo-e:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
+                                <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
                               </div>  
                             </div>
                             <h5 class="mb-3"><i class="bi bi-house-door"></i> Domicilio</h5>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Calle:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="calleTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-3">
-                              <div class="input-group mb-3">
+                                <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="calleTemp">
                                 <span class="input-group-text" id="basic-addon1">No. Int.:</span>
                                 <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="intTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-3">
-                              <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">No. Ext.:</span>
                                 <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="extTemp">
                               </div>  
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-12">
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Colonia:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="coloniaTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-3">
-                              <div class="input-group mb-3">
+                                <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="coloniaTemp">
                                 <span class="input-group-text" id="basic-addon1">C.P.:</span>
                                 <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="referenciaTemp">
                               </div>  
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-12">
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Estado:</span>
                                 <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="estadoTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-4">
-                              <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Municipio:</span>
                                 <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="municipioTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-4">
-                              <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Localidad:</span>
                                 <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="localidadTemp">
                               </div>  
                             </div>
                             <h5 class="mb-3"><i class="bi bi-heart-pulse"></i> Valoración Médica:</h5>
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Diagnóstico:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="dxTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-4">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar2-week"></i></span>
+                                <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="dxTemp">
+                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-clock-history"></i></span>
                                 <select class="form-select" id="inputGroupSelect02">
                                   <option selected>Temporalidad...</option>
                                   <option value="1">0 - 3 meses</option>
@@ -2080,21 +2044,21 @@ include('prcd/qc/qc.php');
                                 </select>
                               </div>  
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                               <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Médico:</span>
-                                <input type="text" class="form-control" placeholder="Nombre del médico" aria-label="" aria-describedby="basic-addon1" id="medicoTemp">
+                                <span class="input-group-text" id="basic-addon1">Nombre del Médico:</span>
+                                <input type="text" class="form-control" placeholder="Nombre del Médico que lo expide" aria-label="" aria-describedby="basic-addon1" id="medicoTemp">
                               </div>  
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Institución:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="institucionTemp">
+                                <input type="text" class="form-control" placeholder="Nombre de la Institución donde se expide" aria-label="" aria-describedby="basic-addon1" id="institucionTemp">
                               </div>  
                             </div>
                             <div class="col-md-8">
                               <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Fecha de expedición:</span>
+                                <span class="input-group-text" id="basic-addon1">Fecha de valoración:</span>
                                 <input type="date" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaValTemp">
                               </div>  
                             </div>
@@ -2105,30 +2069,45 @@ include('prcd/qc/qc.php');
                         <div class="col-md-12">
                           <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Marca</span>
-                            <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaForm">
+                            <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaTempForm">
                             <span class="input-group-text" id="basic-addon1">Modelo</span>
-                            <input type="text" class="form-control" placeholder="Modelo" aria-label="modelo" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="Modelo" aria-label="modelo" id="modeloTempForm" aria-describedby="basic-addon1">
                             <span class="input-group-text">Año</span>
-                            <input type="text" class="form-control" placeholder="Año" aria-label="anio" id="annioForm">
+                            <input type="text" class="form-control" placeholder="Año" aria-label="anio" id="annioTempForm">
                           </div>
                         </div>
                         <div class="col-md-12">
                           <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">No. de Placas</span>
-                            <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasForm">
+                            <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasTempForm">
                             <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-                            <input type="text" class="form-control" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieForm">
+                            <input type="text" class="form-control" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieTempForm">
                           </div>
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="col-md-12">
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Tarjeta de Circulación</span>
+                            <input type="text" class="form-control" placeholder="# Tarjeta de Circulación" aria-label="" aria-describedby="basic-addon1" id="circulacionTempForm">
+                          </div>
                         </div>
-                        <div class="input-group mb-3">
-                          <span class="input-group-text" id="basic-addon1">No. de choferes</span>
-                          <input type="number" class="form-control" placeholder="# de choferes" aria-label="no_choferes" aria-describedby="basic-addon1" id="choferesForm">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                          <button class="btn btn-primary me-md-2" type="button"><i class="bi bi-plus-lg"></i> Agregar</button>
                         </div>
-                        <div class="input-group">
-                          <span class="input-group-text">Nombre(s) del(los)<br>Chofer(es)</span>
-                          <textarea class="form-control" aria-label="nombres de los choferes"  id="nombresChoferesForm"></textarea>
+                        <hr>
+                        <div class="table-responsive text-center">
+                          <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Marca</th>
+                                <th scope="col">Modelo</th>
+                                <th scope="col"># de Placa</th>
+                              </tr>
+                            </thead>
+                            <tbody id="vehiculosTemp">
+                              
+                            </tbody>
+                          </table>
                         </div>
                       </div>
                     </div>
