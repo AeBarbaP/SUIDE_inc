@@ -1950,7 +1950,7 @@ include('prcd/qc/qc.php');
         <div class="modal-dialog modal-dialog-centered modal-xl">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-plus h2"></i> Tarjetón de Préstamo con QR</h5>
+              <h5 class="modal-title" id="exampleModalLabel"><strong><i class="bi bi-plus h2"></i> Tarjetón de Préstamo con QR</strong></h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -1967,7 +1967,7 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-md-9">
                       <div class="card-body text-start" id="cardPrestamo">
-                        <div id = "tarjeton">
+                        <div id = "tarjetonPrestamo">
                           <h5 class="mb-3"><i class="bi bi-person"></i> Datos del Usuario</h5>
                           <div class="row">
                             <div class="col-md-12">
@@ -2089,6 +2089,15 @@ include('prcd/qc/qc.php');
                             <span class="input-group-text" id="basic-addon1">Tarjeta de Circulación</span>
                             <input type="text" class="form-control" placeholder="# Tarjeta de Circulación" aria-label="" aria-describedby="basic-addon1" id="circulacionTempForm">
                           </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="input-group mb-3">
+                            <span class="input-group-text">Vehículo extranjero</span>
+                            <div class="input-group-text">
+                              <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                            </div>
+                            <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguro" disabled>
+                          </div>  
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                           <button class="btn btn-primary me-md-2" type="button"><i class="bi bi-plus-lg"></i> Agregar</button>
