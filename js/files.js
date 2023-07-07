@@ -3,6 +3,7 @@ function _(el) {
   }
   
   function uploadFile(doc,idUsr) {
+    document.getElementById('file'+doc).setAttribute("onchange",""+doc+","+idUsr+"");
     var file = _("file"+doc).files[0];
     var documento = doc;
     var idUsuario = idUsr;

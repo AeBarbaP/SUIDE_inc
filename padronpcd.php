@@ -1863,10 +1863,10 @@ include('prcd/qc/qc.php');
       <!-- Inicia Modal para generar tarjeton -->
 
       <div class="modal fade " id="tarjetongen" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Generar Tarjetón con QR</h5>
+              <h5 class="modal-title" id="exampleModalLabel"><strong><i class="bi bi-plus"></i> Generar Tarjetón con QR</strong></h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -1957,10 +1957,6 @@ include('prcd/qc/qc.php');
   </div>
 </div>
 
-
-
-      <!-- <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script> -->
   </body>
 </html>
 
@@ -1974,11 +1970,6 @@ include('prcd/qc/qc.php');
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                            <!-- <div class="input-group mb-1 mt-2 w-100">
-                <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
-              </div>
-              <br> -->
               <div class="container text-center">
                 <div class="card mb-3" style="max-width: 100%;">
                   <div class="row g-0 align-items-center">
@@ -2676,18 +2667,28 @@ include('prcd/qc/qc.php');
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-
             <div class="input-group mb-3">
               <input type="file" class="form-control" id="registroUp">
             </div>
+
+            <form id="upload_form" enctype="multipart/form-data" method="post">';
+              <input type="file" name="file1" id="file1" accept="application/pdf" class="h6 w-100 mt-3"><br>
+              <div class="progress" role="progressbar" aria-label="Info striped example" aria-valuemin="0" aria-valuemax="100">
+                <progress class="progress-bar progress-bar-striped bg-info" id="progressBar1" value="0" max="100" style="height: 20px"></progress>
+              </div>
+              <small id="status1"></small>
+              <p id="loaded_n_total1"></p>
+            </form>
+          
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="uploadFile(1,curp_exp)" data-bs-dismiss="modal">Subir Archivo</button>
+            <button type="button" class="btn btn-primary" onclick="uploadFile(1,curp_exp)">Subir Archivo</button>
           </div>
         </div>
       </div>
     </div>
+
     <div class="modal fade" id="docUpload2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -2696,10 +2697,21 @@ include('prcd/qc/qc.php');
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-
             <div class="input-group mb-3">
               <input type="file" class="form-control" id="valoracionUp">
             </div>
+
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file2" id="file2" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
+                <progress class="progress-bar progress-bar" style="background-color:#917799" id="progressBar2" value="0" max="100"></progress>
+              </div>
+              <small id="status2"></small>
+              <p id="loaded_n_total2"></p>
+            </form>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
@@ -2708,6 +2720,7 @@ include('prcd/qc/qc.php');
         </div>
       </div>
     </div>
+
     <div class="modal fade" id="docUpload3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -2716,10 +2729,21 @@ include('prcd/qc/qc.php');
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-
             <div class="input-group mb-3">
               <input type="file" class="form-control" id="actaUp">
             </div>
+
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file3" id="file3" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
+                <progress class="progress-bar progress-bar" style="background-color:#917799" id="progressBar3" value="0" max="100"></progress>
+              </div>
+              <small id="status3"></small>
+              <p id="loaded_n_total3"></p>
+            </form>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
@@ -2728,6 +2752,7 @@ include('prcd/qc/qc.php');
         </div>
       </div>
     </div>
+
     <div class="modal fade" id="docUpload4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -2736,10 +2761,21 @@ include('prcd/qc/qc.php');
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-
             <div class="input-group mb-3">
               <input type="file" class="form-control" id="curpUp">
             </div>
+
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file4" id="file4" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
+                <progress class="progress-bar progress-bar" style="background-color:#917799" id="progressBar4" value="0" max="100"></progress>
+              </div>
+              <small id="status4"></small>
+              <p id="loaded_n_total4"></p>
+            </form>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
@@ -2748,6 +2784,7 @@ include('prcd/qc/qc.php');
         </div>
       </div>
     </div>
+
     <div class="modal fade" id="docUpload5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -2756,10 +2793,21 @@ include('prcd/qc/qc.php');
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-
             <div class="input-group mb-3">
               <input type="file" class="form-control" id="idUp">
             </div>
+
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file5" id="file5" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
+                <progress class="progress-bar progress-bar" style="background-color:#917799" id="progressBar5" value="0" max="100"></progress>
+              </div>
+              <small id="status5"></small>
+              <p id="loaded_n_total5"></p>
+            </form>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
@@ -2768,6 +2816,7 @@ include('prcd/qc/qc.php');
         </div>
       </div>
     </div>
+
     <div class="modal fade" id="docUpload6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -2776,34 +2825,54 @@ include('prcd/qc/qc.php');
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-
             <div class="input-group mb-3">
               <input type="file" class="form-control" id="comprobanteUp">
             </div>
+
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file6" id="file6" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
+                <progress class="progress-bar progress-bar" style="background-color:#917799" id="progressBar6" value="0" max="100"></progress>
+              </div>
+              <small id="status6"></small>
+              <p id="loaded_n_total6"></p>
+            </form>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="uploadFile(6,curp_exp)" data-bs-dismiss="modal">Subir Archivo</button>
+            <button type="button" class="btn btn-primary" onclick="uploadFile(6,curp_exp)">Subir Archivo</button>
           </div>
         </div>
       </div>
     </div>
+
     <div class="modal fade" id="docUpload7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel"><strong><i class="bi bi-cloud-arrow-up h2"></i> Subir Tarjeta de Circulación</strong></h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
+            
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file7" id="file7" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
+                <progress class="progress-bar progress-bar" style="background-color:#917799" id="progressBar7" value="0" max="100"></progress>
+              </div>
+              <small id="status7"></small>
+              <p id="loaded_n_total7"></p>
+            </form>
 
-            <div class="input-group mb-3">
-              <input type="file" class="form-control" id="circulacionUp">
-            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="uploadFile(7,curp_exp)" data-bs-dismiss="modal">Subir Archivo</button>
+            <button type="button" class="btn btn-primary" onclick="uploadFile(7,curp_exp)">Subir Archivo</button>
           </div>
         </div>
       </div>
