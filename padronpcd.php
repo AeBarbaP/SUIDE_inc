@@ -1906,13 +1906,33 @@ include('prcd/qc/qc.php');
                           <span class="input-group-text" id="basic-addon1">No. de Serie</span>
                           <input type="text" class="form-control" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieForm">
                         </div>
-                        <div class="input-group mb-3">
-                          <span class="input-group-text" id="basic-addon1">No. de choferes</span>
-                          <input type="number" class="form-control" placeholder="# de choferes" aria-label="no_choferes" aria-describedby="basic-addon1" id="choferesForm">
+                        <div class="col-md-12">
+                          <div class="input-group mb-3">
+                            <span class="input-group-text">Vehículo extranjero</span>
+                            <div class="input-group-text">
+                              <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                            </div>
+                            <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguro" disabled>
+                          </div>  
                         </div>
-                        <div class="input-group">
-                          <span class="input-group-text">Nombre(s) del(los)<br>Chofer(es)</span>
-                          <textarea class="form-control" aria-label="nombres de los choferes"  id="nombresChoferesForm"></textarea>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                          <button class="btn btn-primary me-md-2" type="button"><i class="bi bi-plus-lg"></i> Agregar</button>
+                        </div>
+                        <hr>
+                        <div class="table-responsive text-center">
+                          <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Marca</th>
+                                <th scope="col">Modelo</th>
+                                <th scope="col"># de Placa</th>
+                              </tr>
+                            </thead>
+                            <tbody id="vehiculosTemp">
+                              
+                            </tbody>
+                          </table>
                         </div>
                       </div>
                     </div>
