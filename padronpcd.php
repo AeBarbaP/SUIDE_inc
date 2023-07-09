@@ -2668,12 +2668,11 @@ include('prcd/qc/qc.php');
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="input-group mb-3">
-              <input type="file" class="form-control" id="registroUp">
-            </div>
-
+            
             <form id="upload_form" enctype="multipart/form-data" method="post">
-              <input type="file" name="file1" id="file1" accept="application/pdf" class="h6 w-100 mt-3"><br>
+              <div class="input-group mb-3">
+                <input type="file" name="file1" id="file1" accept="application/pdf" class="form-control">
+              </div>
               <div class="progress" role="progressbar" aria-label="Info example" aria-valuemin="0" aria-valuemax="100">
                 <progress class="progress-bar progress-bar" style="background-color:#917799" id="progressBar1" value="0" max="100" style="height: 20px"></progress>
               </div>
