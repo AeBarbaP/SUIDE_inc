@@ -73,6 +73,7 @@ include('prcd/qc/qc.php');
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <script src="js/guardar.js"></script>
     <script src="js/validate.js"></script>
+    <script src="js/files.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <style>
@@ -2671,7 +2672,7 @@ include('prcd/qc/qc.php');
               <input type="file" class="form-control" id="registroUp">
             </div>
 
-            <form id="upload_form" enctype="multipart/form-data" method="post">';
+            <form id="upload_form" enctype="multipart/form-data" method="post">
               <input type="file" name="file1" id="file1" accept="application/pdf" class="h6 w-100 mt-3"><br>
               <div class="progress" role="progressbar" aria-label="Info example" aria-valuemin="0" aria-valuemax="100">
                 <progress class="progress-bar progress-bar" style="background-color:#917799" id="progressBar1" value="0" max="100" style="height: 20px"></progress>
