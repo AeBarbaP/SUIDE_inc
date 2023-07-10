@@ -74,6 +74,7 @@ include('prcd/qc/qc.php');
     <script src="js/guardar.js"></script>
     <script src="js/validate.js"></script>
     <script src="js/files.js"></script>
+    <script src="js/estados.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <style>
@@ -410,12 +411,8 @@ include('prcd/qc/qc.php');
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Estado:</label>
                     <input class="form-control" list="datalistOptions" id="estado" placeholder="Buscar..." required>
-                    <datalist id="datalistOptions">
-                      <option value="Zacatecas">Zacatecas</option>
-                      <option value="Aguascalientes">Aguascalientes</option>
-                      <option value="Durango">Durango</option>
-                      <option value="Coahuila">Coahuila</option>
-                      <option value="Jalisco">Jalisco</option>
+                    <datalist id="estadosList">
+
                     </datalist>
                     <div class="invalid-feedback">
                       * Campo requerido.
@@ -453,11 +450,6 @@ include('prcd/qc/qc.php');
                     <label for="exampleDataList" class="form-label">Asentamiento:</label>
                     <input class="form-control" list="datalistOptionsAse" id="asentamiento" placeholder="Buscar..." required>
                     <datalist id="datalistOptionsAse">
-                      <option value="1">Calera</option>
-                      <option value="2">Pinos</option>
-                      <option value="Río Grande">
-                      <option value="Zacatecas">
-                      <option value="Fresnillo">
                     </datalist>
                     <div class="invalid-feedback">
                       * Campo requerido.
@@ -1457,7 +1449,7 @@ include('prcd/qc/qc.php');
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <!-- referencias -->
                     <div class="col-sm-12 mt-3 p-4">
-                      <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Referencias</label>
+                      <label for="basic-url" class="form-label h4"><i class="bi bi-person-lines-fill"></i> Referencias</label>
                       <div class="table-responsive">
                         <table class="table table-bordered table-hover text-center">
                           <thead style="background-color:#6d5973;color:white;">
@@ -1515,7 +1507,7 @@ include('prcd/qc/qc.php');
                 </div>
                 <div class="tab-pane fade" id="nav-docs" role="tabpanel" aria-labelledby="nav-docs-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
-                    <label for="basic-url" class="form-label h4"><i class="bi bi-files"></i> Requisitos para expediente de Personas con Discapacidad</label>
+                    <label for="basic-url" class="form-label h4"><i class="bi bi-list-check"></i> Requisitos para expediente de Personas con Discapacidad</label>
                     <table class="table table-bordered table-hover align-middle text-center">
                       <thead style="background-color:darkgray;color:white;">
                         <tr>
@@ -1532,42 +1524,49 @@ include('prcd/qc/qc.php');
                           <td><input class="form-check-input" type="checkbox" id="registroSi" value="" onclick="valoracionCheck(1)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="registroNo" value="" onclick="valoracionCheck(2)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="registroNA" value="" onclick="valoracionCheck(3)" aria-label="..."></td>
-                          <td><a href="" id="registroDoc" data-bs-toggle="modal" data-bs-target="#docUpload1"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                          <td><a href="" id="registroDoc1" data-bs-toggle="modal" data-bs-target="#docUpload1"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">DOCUMENTO MÉDICO<br><p class="fw-lighter fst-italic">Que indique el tipo y grado de discapacidad, expedido por institución pública de salud.</p></th>
                           <td><input class="form-check-input" type="checkbox" id="valoracionSi" value="" onclick="valoracionCheck(4)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="valoracionNo" value="" onclick="valoracionCheck(5)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="valoracionNA" value="" onclick="valoracionCheck(6)" aria-label="..."></td>
-                          <td><a href="" id="valoracionDoc" data-bs-toggle="modal" data-bs-target="#docUpload2"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                          <td><a href="" id="registroDoc2" data-bs-toggle="modal" data-bs-target="#docUpload2"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE ACTA DE NACIMIENTO<br><p class="fw-lighter fst-italic">O documento que acredite la condición jurídica de la persona beneficiaria.</p></th>
                           <td><input class="form-check-input" type="checkbox" id="actaSi" value="" onclick="valoracionCheck(7)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="actaNo" value="" onclick="valoracionCheck(8)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="actaNA" value="" onclick="valoracionCheck(9)" aria-label="..."></td>
-                          <td><a href="" id="actaDoc" data-bs-toggle="modal" data-bs-target="#docUpload3"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                          <td><a href="" id="registroDoc3" data-bs-toggle="modal" data-bs-target="#docUpload3"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE LA C.U.R.P.</th>
                           <td><input class="form-check-input" type="checkbox" id="curpSi" value="" onclick="valoracionCheck(10)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="curpNo" value="" onclick="valoracionCheck(11)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="curpNA" value="" onclick="valoracionCheck(12)" aria-label="..."></td>
-                          <td><a href="" id="curpDoc" data-bs-toggle="modal" data-bs-target="#docUpload4"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                          <td><a href="" id="registroDoc4" data-bs-toggle="modal" data-bs-target="#docUpload4"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE LA IDENTIFICACIÓN OFICIAL DEL BENEFICIARIO<br><p class="fw-lighter fst-italic">Credencial de elector, pasaporte, credencial del INAPAM u otro documento que acredite la identidad del beneficiario.</p></th>
                           <td><input class="form-check-input" type="checkbox" id="ineSi" value="" onclick="valoracionCheck(13)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="ineNo" value="" onclick="valoracionCheck(14)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="ineNA" value="" onclick="valoracionCheck(15)" aria-label="..."></td>
-                          <td><a href="" id="ineDoc" data-bs-toggle="modal" data-bs-target="#docUpload5"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                          <td><a href="" id="registroDoc5" data-bs-toggle="modal" data-bs-target="#docUpload5"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE COMPROBANTE DE DOMICILIO<br><p class="fw-lighter fst-italic">Reciente a la apertura o actualización del expediente, no mayor a 90 días.</p></th>
                           <td><input class="form-check-input" type="checkbox" id="comprobanteSi" value="" onclick="valoracionCheck(16)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="comprobanteNo" value="" onclick="valoracionCheck(17)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="comprobanteNA" value="" onclick="valoracionCheck(18)" aria-label="..."></td>
-                          <td><a href="" id="comprobanteDoc" data-bs-toggle="modal" data-bs-target="#docUpload6"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                          <td><a href="" id="registroDoc6" data-bs-toggle="modal" data-bs-target="#docUpload6"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">COPIA DE LA TARJETA DE CIRCULACIÓN<br><p class="fw-lighter fst-italic">Del vehículo en el que se traslada la Persona con Discapacidad.</p></th>
+                          <td><input class="form-check-input" type="checkbox" id="circulacionSi" value="" onclick="valoracionCheck(22)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="circulacionNo" value="" onclick="valoracionCheck(23)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="circulacionNA" value="" onclick="valoracionCheck(24)" aria-label="..."></td>
+                          <td><a href="" id="registroDoc7" data-bs-toggle="modal" data-bs-target="#docUpload7"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">DOS FOTOGRAFÍAS<br><p class="fw-lighter fst-italic">En cualquier formato, preferentemente impresas.</p></th>
@@ -1575,13 +1574,6 @@ include('prcd/qc/qc.php');
                           <td><input class="form-check-input" type="checkbox" id="fotosNo" value="" onclick="valoracionCheck(20)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="fotosNA" value="" onclick="valoracionCheck(21)" aria-label="..."></td>
                           <td></td>
-                        </tr>
-                        <tr>
-                          <th scope="row">COPIA DE LA TARJETA DE CIRCULACIÓN<br><p class="fw-lighter fst-italic">Del vehículo en el que se traslada la Persona con Discapacidad.</p></th>
-                          <td><input class="form-check-input" type="checkbox" id="circulacionSi" value="" onclick="valoracionCheck(22)" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="circulacionNo" value="" onclick="valoracionCheck(23)" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="circulacionNA" value="" onclick="valoracionCheck(24)" aria-label="..."></td>
-                          <td><a href="" id="circulacionDoc" data-bs-toggle="modal" data-bs-target="#docUpload7"><i class="bi bi-cloud-arrow-up h2"></i></a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -1832,7 +1824,7 @@ include('prcd/qc/qc.php');
         <div class="modal-dialog modal-dialog-centered modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Generar Credencial con QR4</h5>
+              <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-vcard"></i> Generar Credencial con QR</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="height: 620px;">
@@ -1845,7 +1837,7 @@ include('prcd/qc/qc.php');
                 <div class="card mb-3" style="max-width: 100%;">
                 <form action="prcd/generaqrcredencial.php" id="form-id" method="POST"><!--form-->
                   <div class="row g-0" id="credencial">
-                      
+                    
                   </div><!-- row -->
                 </form>
                 </div><!-- card -->
@@ -2673,17 +2665,18 @@ include('prcd/qc/qc.php');
               <div class="input-group mb-3">
                 <input type="file" name="file1" id="file1" accept="application/pdf" class="form-control">
               </div>
-              <div class="progress" role="progressbar" aria-label="Info example" aria-valuemin="0" aria-valuemax="100">
-                <progress class="progress-bar progress-bar" style="background-color:#917799" id="progressBar1" value="0" max="100" style="height: 20px"></progress>
+              <div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" value="0">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar1" value="0" max="100" style="height: 20px">
+                  <p id="loaded_n_total1"></p>
+                </div>
               </div>
               <small id="status1"></small>
-              <p id="loaded_n_total1"></p>
             </form>
           
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="uploadFile(1,curp_exp)">Subir Archivo</button>
+            <button type="button" class="btn btn-primary" id="btnModal1" onclick="uploadFile(1)">Subir Archivo</button>
           </div>
         </div>
       </div>
@@ -2697,25 +2690,22 @@ include('prcd/qc/qc.php');
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="input-group mb-3">
-              <input type="file" class="form-control" id="valoracionUp">
-            </div>
-
             <form id="upload_form" enctype="multipart/form-data" method="post">
               <div class="input-group mb-3">
                 <input type="file" class="form-control" name="file2" id="file2" accept="application/pdf">
               </div>
-              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
-                <progress class="progress-bar progress-bar" style="background-color:#917799" id="progressBar2" value="0" max="100"></progress>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar2" value="0" max="100">
+                  <p id="loaded_n_total2"></p>
+                </div>
               </div>
               <small id="status2"></small>
-              <p id="loaded_n_total2"></p>
             </form>
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="uploadFile(2,curp_exp)" data-bs-dismiss="modal">Subir Archivo</button>
+            <button type="button" class="btn btn-primary" id="btnModal2" onclick="uploadFile(2)">Subir Archivo</button>
           </div>
         </div>
       </div>
@@ -2737,17 +2727,18 @@ include('prcd/qc/qc.php');
               <div class="input-group mb-3">
                 <input type="file" class="form-control" name="file3" id="file3" accept="application/pdf">
               </div>
-              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
-                <progress class="progress-bar progress-bar" style="background-color:#917799" id="progressBar3" value="0" max="100"></progress>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar3" value="0" max="100">
+                  <p id="loaded_n_total3"></p>
+                </div>
               </div>
               <small id="status3"></small>
-              <p id="loaded_n_total3"></p>
             </form>
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="uploadFile(3,curp_exp)" data-bs-dismiss="modal">Subir Archivo</button>
+            <button type="button" class="btn btn-primary" id="btnModal3" onclick="uploadFile(3)" >Subir Archivo</button>
           </div>
         </div>
       </div>
@@ -2761,25 +2752,22 @@ include('prcd/qc/qc.php');
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="input-group mb-3">
-              <input type="file" class="form-control" id="curpUp">
-            </div>
-
             <form id="upload_form" enctype="multipart/form-data" method="post">
               <div class="input-group mb-3">
                 <input type="file" class="form-control" name="file4" id="file4" accept="application/pdf">
               </div>
-              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
-                <progress class="progress-bar progress-bar" style="background-color:#917799" id="progressBar4" value="0" max="100"></progress>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria.valuenow="0" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar4" value="0" max="100">
+                  <p id="loaded_n_total4"></p>
+                </div>
               </div>
               <small id="status4"></small>
-              <p id="loaded_n_total4"></p>
             </form>
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="uploadFile(4,curp_exp)" data-bs-dismiss="modal">Subir Archivo</button>
+            <button type="button" class="btn btn-primary" id="btnModal4" onclick="uploadFile(4)">Subir Archivo</button>
           </div>
         </div>
       </div>
@@ -2793,25 +2781,22 @@ include('prcd/qc/qc.php');
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="input-group mb-3">
-              <input type="file" class="form-control" id="idUp">
-            </div>
-
             <form id="upload_form" enctype="multipart/form-data" method="post">
               <div class="input-group mb-3">
                 <input type="file" class="form-control" name="file5" id="file5" accept="application/pdf">
               </div>
-              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
-                <progress class="progress-bar progress-bar" style="background-color:#917799" id="progressBar5" value="0" max="100"></progress>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar5" value="0" max="100">
+                  <p id="loaded_n_total5"></p>
+                </div>
               </div>
               <small id="status5"></small>
-              <p id="loaded_n_total5"></p>
             </form>
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="uploadFile(5,curp_exp)" data-bs-dismiss="modal">Subir Archivo</button>
+            <button type="button" class="btn btn-primary" id="btnModal5" onclick="uploadFile(5)">Subir Archivo</button>
           </div>
         </div>
       </div>
@@ -2825,25 +2810,22 @@ include('prcd/qc/qc.php');
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="input-group mb-3">
-              <input type="file" class="form-control" id="comprobanteUp">
-            </div>
-
             <form id="upload_form" enctype="multipart/form-data" method="post">
               <div class="input-group mb-3">
                 <input type="file" class="form-control" name="file6" id="file6" accept="application/pdf">
               </div>
-              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
-                <progress class="progress-bar progress-bar" style="background-color:#917799" id="progressBar6" value="0" max="100"></progress>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar6" value="0" max="100">
+                  <p id="loaded_n_total6"></p>
+                </div>
               </div>
               <small id="status6"></small>
-              <p id="loaded_n_total6"></p>
             </form>
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="uploadFile(6,curp_exp)">Subir Archivo</button>
+            <button type="button" class="btn btn-primary" id="btnModal6" onclick="uploadFile(6)">Subir Archivo</button>
           </div>
         </div>
       </div>
@@ -2857,22 +2839,22 @@ include('prcd/qc/qc.php');
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            
             <form id="upload_form" enctype="multipart/form-data" method="post">
               <div class="input-group mb-3">
                 <input type="file" class="form-control" name="file7" id="file7" accept="application/pdf">
               </div>
-              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
-                <progress class="progress-bar progress-bar" style="background-color:#917799" id="progressBar7" value="0" max="100"></progress>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar7" value="0" max="100">
+                  <small id="status7"></small>
+                </div>
               </div>
-              <small id="status7"></small>
               <p id="loaded_n_total7"></p>
             </form>
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="uploadFile(7,curp_exp)">Subir Archivo</button>
+            <button type="button" class="btn btn-primary" id="btnModal7" onclick="uploadFile(7)">Subir Archivo</button>
           </div>
         </div>
       </div>
