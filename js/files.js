@@ -2,8 +2,8 @@ function _(el) {
     return document.getElementById(el);
   }
   
-  function uploadFile(doc,idUsr) {
-    document.getElementById('file'+doc).setAttribute("onchange",""+doc+","+idUsr+"");
+  function uploadFile(doc) {
+    var idUsr = document.getElementById('curp_exp').value;
     var file = _("file"+doc).files[0];
     var documento = doc;
     var idUsuario = idUsr;
@@ -38,9 +38,11 @@ function _(el) {
       
       function completeHandler(event) {
         _("status"+doc).innerHTML = event.target.responseText;
-        _("progressBar"+doc).value = 0; //wil clear progress bar after successful upload
+        _("progressBar"+doc).value = 100; //wil clear progress bar after successful upload
           _("file"+doc).style.display='none';
           _("progressBar"+doc).style.display='none';
+        document.getElementById('registroDoc'+doc).hidden = true;
+        document.getElementById('btnModal'+doc).disabled = true;
       }
       
       function errorHandler(event) {

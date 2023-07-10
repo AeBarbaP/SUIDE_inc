@@ -32,8 +32,18 @@ $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
     
     $ruta = "docs_expedientes/". $link .'_'. $idUsr .'.'.$extension;
     // $sqlinsert= "UPDATE documentos SET link4='$ruta_pptx' WHERE id_usr='$curp'";
-    $sqlInsert= "INSERT INTO documentos (documento,id_ext,link,fecha) 
-    VALUES('$doc','$idUsr','$ruta','$fecha_sistema')";
+    $sqlInsert= "INSERT INTO documentos_list (
+        curp,
+        tipo_doc,
+        ruta_doc,
+        fecha
+        ) 
+    VALUES(
+        '$idUsr',
+        '$doc',
+        '$ruta',
+        '$fecha_sistema'
+        )";
     $resultado= $conn->query($sqlInsert);
     
     
