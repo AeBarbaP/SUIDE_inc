@@ -71,11 +71,15 @@ include('prcd/qc/qc.php');
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="js/guardar.js"></script>
     <script src="js/validate.js"></script>
     <script src="js/files.js"></script>
     <script src="js/estados.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="js/municipios.js"></script>
+    <script src="js/localidades.js"></script>
+    <script src="js/asentamientos.js"></script>
 
     <style>
       * {
@@ -159,7 +163,7 @@ include('prcd/qc/qc.php');
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body>
+  <body onload="estadosSelect()">
   <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -410,8 +414,26 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Estado:</label>
-                    <input class="form-control" list="datalistOptions" id="estado" placeholder="Buscar..." required>
-                    <datalist id="estadosList">
+                    <select class="form-select" id="estadosList" onchange="municipiosSelect(this.value)" aria-label="Default select example">
+      
+                    </select>
+                    <div class="invalid-feedback">
+                      * Campo requerido.
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="exampleDataList" class="form-label">Municipio:</label>
+                    <select class="form-select" id="municipiosList" onchange="localidadesSelect(this.value)">
+
+                    </select>
+                    <div class="invalid-feedback">
+                      * Campo requerido.
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="exampleDataList" class="form-label">Localidad:</label>
+                    <input class="form-control" list="localidadesList" id="localidades" placeholder="Buscar..." required>
+                    <datalist id="localidadesList" onloadeddata="asentamientosSelect(this.value)">
 
                     </datalist>
                     <div class="invalid-feedback">
@@ -419,37 +441,9 @@ include('prcd/qc/qc.php');
                     </div>
                   </div>
                   <div class="col-sm-4">
-                    <label for="exampleDataList" class="form-label">Municipio:</label>
-                    <input class="form-control" list="datalistOptionsMpios" id="municipio" placeholder="Buscar..." required>
-                    <datalist id="datalistOptionsMpios">
-                      <option value="Zacatecas">Zacatecas</option>
-                      <option value="Guadalupe">Guadalupe</option>
-                      <option value="Río Grande">
-                      <option value="Zacatecas">
-                      <option value="Fresnillo">
-                    </datalist>
-                    <div class="invalid-feedback">
-                      * Campo requerido.
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <label for="exampleDataList" class="form-label">Localidad:</label>
-                    <input class="form-control" list="datalistOptionsLoca" id="localidad" placeholder="Buscar..." required>
-                    <datalist id="datalistOptionsLoca">
-                      <option value="1">Calera</option>
-                      <option value="2">Pinos</option>
-                      <option value="Río Grande">
-                      <option value="Zacatecas">
-                      <option value="Fresnillo">
-                    </datalist>
-                    <div class="invalid-feedback">
-                      * Campo requerido.
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Asentamiento:</label>
-                    <input class="form-control" list="datalistOptionsAse" id="asentamiento" placeholder="Buscar..." required>
-                    <datalist id="datalistOptionsAse">
+                    <input class="form-control" list="asentamientosList" id="asentamiento" placeholder="Buscar..." required>
+                    <datalist id="asentamientosList">
                     </datalist>
                     <div class="invalid-feedback">
                       * Campo requerido.
