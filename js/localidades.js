@@ -1,16 +1,16 @@
-function estadosSelect(){
-        var x = 1;
+function localidadesSelect(x){
+        var cveMunicipio = x;
         $.ajax({
             type:"POST",
-            url:"query/queryEstado.php",
+            url:"query/queryLocalidades.php",
             data:{
-                x:x
+                cveMunicipio:cveMunicipio
             },
             dataType: "html",
             cache: false,
                 success: function(response)
                 { 
-                $('#estadosList').fadeIn(1000).html(response);
+                $('#localidadesList').fadeIn(1000).html(response);
                 }
             });
     }

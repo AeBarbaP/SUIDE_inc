@@ -1,16 +1,18 @@
-function estadosSelect(){
-        var x = 1;
+
+
+function municipiosSelect(x){
+        var cveEstado = x;
         $.ajax({
             type:"POST",
-            url:"query/queryEstado.php",
+            url:"query/queryMunicipio.php",
             data:{
-                x:x
+                cveEstado:cveEstado
             },
             dataType: "html",
             cache: false,
                 success: function(response)
                 { 
-                $('#estadosList').fadeIn(1000).html(response);
+                $('#municipiosList').fadeIn(1000).html(response);
                 }
             });
     }
