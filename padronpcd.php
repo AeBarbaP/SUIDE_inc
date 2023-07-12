@@ -432,8 +432,8 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Localidad:</label>
-                    <input class="form-control" list="localidadesList" id="localidades" placeholder="Buscar..." required>
-                    <datalist id="localidadesList" onloadeddata="asentamientosSelect(this.value)">
+                    <input class="form-control" list="localidadesList" id="localidades" placeholder="Buscar..." onchange="asentamientosSelect(this.value)" required>
+                    <datalist id="localidadesList">
 
                     </datalist>
                     <div class="invalid-feedback">
@@ -444,6 +444,7 @@ include('prcd/qc/qc.php');
                     <label for="exampleDataList" class="form-label">Asentamiento:</label>
                     <input class="form-control" list="asentamientosList" id="asentamiento" placeholder="Buscar..." required>
                     <datalist id="asentamientosList">
+                      
                     </datalist>
                     <div class="invalid-feedback">
                       * Campo requerido.
