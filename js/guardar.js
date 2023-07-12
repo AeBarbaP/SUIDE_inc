@@ -24,8 +24,10 @@ $(document).ready(function() {
         var colonia = document.getElementById('colonia').value;
         var entreVialidades = document.getElementById('entreVialidades').value;
         var descripcionLugar = document.getElementById('descripcionLugar').value;
-        var localidad = document.getElementById('localidad').value;
-        var municipio = document.getElementById('municipio').value;
+        var estado = document.getElementById('estadosList').value;
+        var municipio = document.getElementById('municipiosList').value;
+        var localidad = document.getElementById('localidades').value;
+        var asentamiento = document.getElementById('asentamiento').value;
         var codigoPostal = document.getElementById('codigoPostal').value;
         var correo = document.getElementById('correo').value;
         var telFijo = document.getElementById('telFijo').value;
@@ -63,6 +65,7 @@ $(document).ready(function() {
         }
         else if (estudiaNo.checked){
             var estudia = 0;
+            estudiaLugar = "N/A";
             document.getElementById('lugarEstudia').required = false;
         }
         if(trabajaSi.checked){
@@ -72,6 +75,7 @@ $(document).ready(function() {
         }
         else if (trabajaNo.checked){
             var trabaja = 0;
+            var trabajaLugar = "N/A";
             document.getElementById('lugarTrabajo').required = false;
         }
         if(asociacionSi.checked){
@@ -81,6 +85,7 @@ $(document).ready(function() {
         }
         else if(asociacionNo.checked){
             var asociacion = 0;
+            var nombreAC = "N/A";
             document.getElementById('nombreAC').required = false;
         }
         if(sindicatoSi.checked){
@@ -90,6 +95,7 @@ $(document).ready(function() {
         }
         else if(sindicatoNo.checked){
             var sindicato = 0;
+            var nombreSindicato = "N/A";
             document.getElementById('nombreSindicato').required = false;
         }
         if(pensionSi.checked){
@@ -103,6 +109,9 @@ $(document).ready(function() {
         }
         else if (pensionNo.checked){
             var pension = 0;
+            var pensionInst = "N/A";
+            var pensionMonto = 0;
+            var pensionTemporalidad = "N/A";
             document.getElementById('instPension').required = false;
             document.getElementById('montoP').required = false;
             document.getElementById('periodo').required = false;
@@ -129,8 +138,10 @@ $(document).ready(function() {
                 colonia:colonia,
                 entreVialidades:entreVialidades,
                 descripcionLugar:descripcionLugar,
-                localidad:localidad,
+                estado:estado,
                 municipio:municipio,
+                localidad:localidad,
+                asentamiento:asentamiento,
                 codigoPostal:codigoPostal,
                 correo:correo,
                 telFijo:telFijo,
@@ -159,6 +170,7 @@ $(document).ready(function() {
                 var verificador = jsonData.succes;
                 var curpSaved = jsonData.curp;
                 if (verificador = 1){
+                    document.getElementById('btnGuardarGeneral').disabled=true;
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',

@@ -1,6 +1,9 @@
 
 
 function municipiosSelect(x){
+        document.getElementById('municipiosList').value = "";
+        document.getElementById('localidades').value = "";
+        document.getElementById('asentamiento').value = "";
         var cveEstado = x;
         $.ajax({
             type:"POST",
