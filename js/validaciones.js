@@ -2,14 +2,14 @@
  
 $(document).ready(function() {	
     $('#curp').on('blur', function() {
-        $('#result-username2').html('<img src="img/loader.gif" />').fadeOut(1000);
+        // $('#result-username2').html('<img src="img/loader.gif" />').fadeOut(1000);
 
         var username = $(this).val();		
         var dataString = 'username='+username;
 
         $.ajax({
             type: "POST",
-            url: "prcd/verficacion.php",
+            url: "query/verficacion.php",
             data: dataString,
             success: function(data) {
                 $('#result-username2').fadeIn(1000).html(data);
@@ -33,6 +33,7 @@ function curp2date(curp) {
     resultado.classList.add("ok");
     // resultado.innerText = "Su edad es: " + edad + " años.";
     document.getElementById("edad").value = edad;
+    console.log(edad);
   }
   
   function calcularEdad(fecha) {
@@ -47,13 +48,12 @@ function curp2date(curp) {
     return edad;
   }
 
-
   //   VALIDACIÓN CURP
-
     function validarInput(input) {
-        var curp = input.value.toUpperCase();
-            // resultado = document.getElementById("result-username"),
-            // valido = "No válido";
+        var curp = input.value.toUpperCase(),
+                resultado = document.getElementById("result-username"),
+                valido = "No válido";
+                
             
         if (curpValida(curp)) {
             alert('CURP Válido');
@@ -64,7 +64,6 @@ function curp2date(curp) {
             document.getElementById('btnGuardarGeneral').disabled=true;
 
         }
-            
     }
     function curpValida(curp) {
         var re = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0\d|1[0-2])(?:[0-2]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/,
