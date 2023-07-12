@@ -80,6 +80,7 @@ include('prcd/qc/qc.php');
     <script src="js/municipios.js"></script>
     <script src="js/localidades.js"></script>
     <script src="js/asentamientos.js"></script>
+    <script src="js/validaciones.js"></script>
 
     <style>
       * {
@@ -327,7 +328,7 @@ include('prcd/qc/qc.php');
                           <label class="form-check-label" for="inlineRadio2"><i class="fa-thin fa-person"></i> Hombre</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="genero" id="genero" value="Otr@">
+                          <input class="form-check-input" type="radio" name="genero" id="generoO" value="Otro">
                           <label class="form-check-label" for="inlineRadio2">Otro</label>
                         </div>
                       </div>
@@ -342,7 +343,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">CURP:</label>
-                    <input type="text" class="form-control" id="curp" name="datos_usr" placeholder="CURP" required>
+                    <input type="text" class="form-control" id="curp" name="datos_usr" placeholder="CURP" oninput="validarInput()" onkeyup="javascript:this.value=this.value.toUpperCase();" oninput="curp2date(this)" onblur="validarInput(this);" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
@@ -423,7 +424,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Municipio:</label>
-                    <select class="form-select" id="municipiosList" onchange="localidadesSelect(this.value)">
+                    <select class="form-select" id="municipiosList" onchange="localidadesSelect(this.value)" required>
 
                     </select>
                     <div class="invalid-feedback">
@@ -620,7 +621,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <br>
                     <div class="d-grid gap-2 mt-3">
-                      <button class="btn btn-primary" type="submit">Guardar</button>
+                      <button class="btn btn-primary" type="submit" id="btnGuardarGeneral">Guardar</button>
                       </form>
                     </div>
                     

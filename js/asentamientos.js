@@ -10,6 +10,7 @@ $("#localidades").on('input', function () {
 
 
 function asentamientosSelect(x){
+        document.getElementById('asentamiento').value = "";
         var cveLocalidad = x;
         $.ajax({
             type:"POST",

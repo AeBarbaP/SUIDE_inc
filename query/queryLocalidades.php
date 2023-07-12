@@ -5,13 +5,23 @@ $municipio = $_POST['cveMunicipio'];
 
 $var = "SELECT * FROM catlocalidades WHERE claveLocalidad LIKE '$municipio%' ORDER BY nombreLocalidad ASC";
 $resultadoVariable = $conn->query($var);
+$filas = $resultadoVariable->num_rows;
 
-echo '
-<option value="Select">Selecciona...</option>
-';
-while ($rowLocalidad = $resultadoVariable->fetch_assoc()){
+if($fila > 1){
+
     echo '
-    <option value="'.$rowLocalidad['nombreLocalidad'].'" aria-label="'.$rowLocalidad['claveLocalidad'].'">'.$rowLocalidad['nombreLocalidad'].'</option>
+    <option value="Select">Selecciona...</option>
+    ';
+    while ($rowLocalidad = $resultadoVariable->fetch_assoc()){
+        echo '
+        <option value="'.$rowLocalidad['nombreLocalidad'].'" aria-label="'.$rowLocalidad['claveLocalidad'].'">'.$rowLocalidad['nombreLocalidad'].'</option>
+        ';
+    }
+}
+else{
+    echo '
+    <option value="Select">Selecciona...</option>
+    <option value="Sin registro">Sin registro</option>
     ';
 }
 ?>

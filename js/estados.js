@@ -1,5 +1,6 @@
 function estadosSelect(){
         var x = 1;
+        
         $.ajax({
             type:"POST",
             url:"query/queryEstado.php",
