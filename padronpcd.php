@@ -335,18 +335,19 @@ include('prcd/qc/qc.php');
                     </div>
                   </div>
                   <div class="col-sm-1">
-                    <label for="datos_usr" class="form-label">Edad:</label>
-                    <input type="number" class="form-control" id="edad" name="datos_usr" placeholder="" required>
+                    <label for="edad" class="form-label">Edad:</label>
+                    <input type="text" class="form-control" id="edad" name="datos_usr" placeholder="" disabled>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">CURP:</label>
-                    <input type="text" class="form-control" id="curp" name="datos_usr" placeholder="CURP" oninput="validarInput()" onkeyup="javascript:this.value=this.value.toUpperCase();" oninput="curp2date(this)" onblur="validarInput(this);" required>
+                    <input type="text" class="form-control" id="curp" name="datos_usr" placeholder="CURP" onkeyup="javascript:this.value=this.value.toUpperCase();" oninput="curp2date(this); validarInput()" onblur="validarInput(this);" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
+                    <div id="result-username2"></div>
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">RFC:</label>
