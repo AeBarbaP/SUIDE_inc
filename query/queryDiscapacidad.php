@@ -1,15 +1,12 @@
+
 <?php
 include('../prcd/qc/qc.php');
 
 $disc = $_POST['disc'];
 
-$var = "SELECT * FROM discapacidades ORDER BY nombre ASC";
+$var = "SELECT * FROM discapacidades WHERE tipo = '$disc' ORDER BY nombre ASC";
 $resultadoVariable = $conn->query($var);
 $filas = $resultadoVariable->num_rows;
-
-echo '
-        <option value="" aria-label="Selecciona...">Selecciona...</option>
-        ';
 
 if($filas > 1){
     while ($rowDiscapacidad = $resultadoVariable->fetch_assoc()){
