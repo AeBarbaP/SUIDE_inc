@@ -51,10 +51,9 @@ function curp2date(curp) {
   //   VALIDACIÓN CURP
     function validarInput(input) {
         var curp = input.value.toUpperCase(),
-                resultado = document.getElementById("result-username"),
-                valido = "No válido";
-                
-            
+            resultado = document.getElementById("result-username"),
+            valido = "No válido";
+
         if (curpValida(curp)) {
             alert('CURP Válido');
             document.getElementById('btnGuardarGeneral').disabled=false;
@@ -91,3 +90,7 @@ function curp2date(curp) {
         return true; //Validado
     }
 
+function cortarRFC(curp){
+    var rfcCutted = curp.substr(0,10);
+    document.getElementById('rfcCut').innerHTML = rfcCutted;
+}

@@ -68,6 +68,7 @@ include('prcd/qc/qc.php');
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="sidebars.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
@@ -81,6 +82,7 @@ include('prcd/qc/qc.php');
     <script src="js/localidades.js"></script>
     <script src="js/asentamientos.js"></script>
     <script src="js/validaciones.js"></script>
+    <script src="js/discapacidades.js"></script>
 
     <style>
       * {
@@ -343,7 +345,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">CURP:</label>
-                    <input type="text" class="form-control" id="curp" name="datos_usr" placeholder="CURP" onkeyup="javascript:this.value=this.value.toUpperCase();" oninput="curp2date(this); validarInput()" onblur="validarInput(this);" required>
+                    <input type="text" class="form-control" id="curp" name="datos_usr" placeholder="CURP" onkeyup="javascript:this.value=this.value.toUpperCase();" oninput="curp2date(this); validarInput()" onblur="validarInput(this);" onchange="cortarRFC(this.value)" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
@@ -351,7 +353,10 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">RFC:</label>
-                    <input type="text" class="form-control" id="rfc" name="datos_usr" placeholder="RFC">
+                    <div class="input-group">
+                      <span class="input-group-text w-50" id="rfcCut"></span>
+                      <input type="text" class="form-control" id="rfcHomo" aria-describedby="basic-addon3 basic-addon4">
+                    </div>
                   </div>
                   <div class="col-sm-2">
                     <label for="datos_usr" class="form-label">Fecha Nacimiento:</label>
@@ -633,15 +638,14 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-6">
                       <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Discapacidad:</label>
                       <form id="medicosForm">
-                      <input type="text" id="curp_exp">
-                      <input type="text" class="form-control" id="discapacidad" name="datos_usr" placeholder="Discapacidad" required>
-                      <div class="invalid-feedback">
-                        * Campo requerido.
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Grado:</label>
-                      <input type="text" class="form-control" id="gradoDisc" name="datos_usr" placeholder="Grado" required>
+                      <input type="text" id="curp_exp" hidden>
+                      <!-- <select class="form-control selectpicker" placeholder="Buscar Discapacidad..." data-show-subtext="true" data-live-search="true" name="discapacidad" id="discapacidadList" onclick="dicapacidadTab()">
+                      
+                        </select> -->
+                      <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..." onclick="dicapacidadTab()" required>
+                      <datalist id="discapacidadList">
+
+                      </datalist>
                       <div class="invalid-feedback">
                         * Campo requerido.
                       </div>
@@ -655,6 +659,13 @@ include('prcd/qc/qc.php');
                         <option value="3">Sensorial</option>
                         <option value="4">Múltiple</option>
                       </select>
+                      <div class="invalid-feedback">
+                        * Campo requerido.
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Grado:</label>
+                      <input type="text" class="form-control" id="gradoDisc" name="datos_usr" placeholder="Grado" required>
                       <div class="invalid-feedback">
                         * Campo requerido.
                       </div>
@@ -690,7 +701,7 @@ include('prcd/qc/qc.php');
                         <option value="5">18 meses o más</option>
                       </select>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                       <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fuente de Valoración:</label>
                       <select class="form-select" id="fuente" aria-label="Default select example">
                         <option selected>Selecciona...</option>
@@ -702,7 +713,7 @@ include('prcd/qc/qc.php');
                         <option value="6">UBR - Unidad Básica de Rehabilitación</option>
                       </select>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fecha Valoración:</label>
                       <input type="date" class="form-control" id="fechaValoracion" name="datos_usr" placeholder="" required>
                       <div class="invalid-feedback">

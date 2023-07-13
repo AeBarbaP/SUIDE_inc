@@ -3,11 +3,11 @@ include('../prcd/qc/qc.php');
 
 $municipio = $_POST['cveMunicipio'];
 
-$var = "SELECT * FROM catlocalidades WHERE claveLocalidad LIKE '$municipio%' ORDER BY nombreLocalidad ASC";
+$var = "SELECT * FROM catlocalidades WHERE claveLocalidad LIKE '%$municipio%' ORDER BY nombreLocalidad ASC";
 $resultadoVariable = $conn->query($var);
 $filas = $resultadoVariable->num_rows;
 
-if($fila > 1){
+if($filas > 1){
 
     echo '
     <option value="Select">Selecciona...</option>

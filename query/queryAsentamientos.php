@@ -7,7 +7,7 @@ $var = "SELECT * FROM asentamientos WHERE localidad LIKE '%$cveLocalidad%'";
 $resultadoVariable = $conn->query($var);
 $filas = $resultadoVariable->num_rows;
 
-if($fila > 1){
+if($filas > 1){
 
     while ($rowLocalidad = $resultadoVariable->fetch_assoc()){
         echo '
@@ -15,7 +15,6 @@ if($fila > 1){
         ';
     }
 }
-
 else{
     echo '
     <option value="Select">Selecciona...</option>

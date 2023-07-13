@@ -1,7 +1,7 @@
 <?php
 // if (isset($POST['text'])){
 
-    include('qc/qc.php');
+    include('../prcd/qc/qc.php');
 
     $enfermedad = $_POST['enfermedad'];
     $Query = "SELECT * FROM enfermedades WHERE nombre LIKE '%$enfermedad%'" ;
