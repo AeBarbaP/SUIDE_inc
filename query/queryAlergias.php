@@ -1,7 +1,7 @@
 <?php
 // if (isset($POST['text'])){
     
-    include('qc/qc.php');
+    include('../prcd/qc/qc.php');
 
     $alergias = $_POST['alergias'];
     $Query = "SELECT * FROM alergias WHERE tipo = '$alergias'" ;

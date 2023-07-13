@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 13-07-2023 a las 00:11:30
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 7.4.28
+-- Host: 127.0.0.1
+-- Generation Time: Jul 13, 2023 at 08:05 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,23 +18,23 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `suidevdb`
+-- Database: `suidevdb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `alergias`
+-- Table structure for table `alergias`
 --
 
 CREATE TABLE `alergias` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `tipo` int(11) NOT NULL COMMENT '1 - Alimentaria\r\n2 - Medicamentos\r\n3 - Ambiental'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `alergias`
+-- Dumping data for table `alergias`
 --
 
 INSERT INTO `alergias` (`id`, `nombre`, `tipo`) VALUES
@@ -67,7 +67,7 @@ INSERT INTO `alergias` (`id`, `nombre`, `tipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `asentamientos`
+-- Table structure for table `asentamientos`
 --
 
 CREATE TABLE `asentamientos` (
@@ -76,10 +76,10 @@ CREATE TABLE `asentamientos` (
   `municipio` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `localidad` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `asentamiento` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `asentamientos`
+-- Dumping data for table `asentamientos`
 --
 
 INSERT INTO `asentamientos` (`id`, `id_asentamiento`, `municipio`, `localidad`, `asentamiento`) VALUES
@@ -1843,7 +1843,7 @@ INSERT INTO `asentamientos` (`id`, `id_asentamiento`, `municipio`, `localidad`, 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `catestados`
+-- Table structure for table `catestados`
 --
 
 CREATE TABLE `catestados` (
@@ -1851,10 +1851,10 @@ CREATE TABLE `catestados` (
   `claveEstado` varchar(10) NOT NULL COMMENT 'Clave del Estado de la República',
   `nombreEstado` varchar(120) NOT NULL COMMENT 'Nombre del Estado de la República',
   `estadoActivo` tinyint(1) NOT NULL COMMENT 'Estatus del registro \n[0|1]\n0 => Inactivo\n1 => Activo'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catálogo de Estados:\nEstructura en la cual se guarda la información referente a los Estados';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Catálogo de Estados:\nEstructura en la cual se guarda la información referente a los Estados';
 
 --
--- Volcado de datos para la tabla `catestados`
+-- Dumping data for table `catestados`
 --
 
 INSERT INTO `catestados` (`id`, `claveEstado`, `nombreEstado`, `estadoActivo`) VALUES
@@ -1867,7 +1867,7 @@ INSERT INTO `catestados` (`id`, `claveEstado`, `nombreEstado`, `estadoActivo`) V
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `catlocalidades`
+-- Table structure for table `catlocalidades`
 --
 
 CREATE TABLE `catlocalidades` (
@@ -1876,10 +1876,10 @@ CREATE TABLE `catlocalidades` (
   `nombreLocalidad` varchar(120) NOT NULL COMMENT 'Nombre de la Localidad correspondiente al Municipio al cual pertenece',
   `localidadActivo` tinyint(1) NOT NULL COMMENT 'Estatus del registro \n[0|1]\n0 => Inactivo\n1 => Activo',
   `idCatMunicipio` int(11) UNSIGNED NOT NULL COMMENT 'Relación con la Tabla Municipios, permite identificar a cual  pertenece la Localidad'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catálogo de Localidades:\nEstructura en la cual se guarda la información referente a las Localidades de un Municipio';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Catálogo de Localidades:\nEstructura en la cual se guarda la información referente a las Localidades de un Municipio';
 
 --
--- Volcado de datos para la tabla `catlocalidades`
+-- Dumping data for table `catlocalidades`
 --
 
 INSERT INTO `catlocalidades` (`id`, `claveLocalidad`, `nombreLocalidad`, `localidadActivo`, `idCatMunicipio`) VALUES
@@ -9665,7 +9665,7 @@ INSERT INTO `catlocalidades` (`id`, `claveLocalidad`, `nombreLocalidad`, `locali
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `catmunicipios`
+-- Table structure for table `catmunicipios`
 --
 
 CREATE TABLE `catmunicipios` (
@@ -9674,10 +9674,10 @@ CREATE TABLE `catmunicipios` (
   `nombreMunicipio` varchar(120) NOT NULL COMMENT 'Nombre del Municipio correspondiente al Estado al cual se encuentra referenciado',
   `municipioActivo` tinyint(1) NOT NULL COMMENT 'Estatus del registro \n[0|1]\n0 => Inactivo\n1 => Activo',
   `idCatEstado` int(11) UNSIGNED NOT NULL COMMENT 'Relación con la Tabla Estados, permite identificar a cual de los Estados pertenece el Municipio'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catálogo de Municipios:\nEstructura en la cual se guarda la información referente a los Municipios';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Catálogo de Municipios:\nEstructura en la cual se guarda la información referente a los Municipios';
 
 --
--- Volcado de datos para la tabla `catmunicipios`
+-- Dumping data for table `catmunicipios`
 --
 
 INSERT INTO `catmunicipios` (`id`, `claveMunicipio`, `nombreMunicipio`, `municipioActivo`, `idCatEstado`) VALUES
@@ -9762,63 +9762,63 @@ INSERT INTO `catmunicipios` (`id`, `claveMunicipio`, `nombreMunicipio`, `municip
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `datos_generales`
+-- Table structure for table `datos_generales`
 --
 
 CREATE TABLE `datos_generales` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `apellido_p` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `apellido_m` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellido_p` varchar(50) NOT NULL,
+  `apellido_m` varchar(50) NOT NULL,
   `genero` int(11) NOT NULL,
   `edad` int(11) NOT NULL,
   `edo_civil` int(11) NOT NULL,
   `f_nacimiento` date NOT NULL,
-  `lugar_nacimiento` varchar(200) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Estados',
-  `domicilio` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `no_int` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `no_ext` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `colonia` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `entre_vialidades` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `descr_referencias` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `estado` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `lugar_nacimiento` varchar(200) NOT NULL COMMENT 'Estados',
+  `domicilio` varchar(100) NOT NULL,
+  `no_int` varchar(10) NOT NULL,
+  `no_ext` varchar(10) NOT NULL,
+  `colonia` varchar(100) NOT NULL,
+  `entre_vialidades` varchar(100) NOT NULL,
+  `descr_referencias` varchar(200) NOT NULL,
+  `estado` varchar(100) NOT NULL,
   `municipio` int(11) NOT NULL,
-  `localidad` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `asentamiento` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `localidad` varchar(100) NOT NULL,
+  `asentamiento` varchar(100) NOT NULL,
   `cp` int(11) NOT NULL,
-  `telefono_part` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `correo` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `telefono_cel` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `telefono_part` varchar(20) NOT NULL,
+  `correo` varchar(100) DEFAULT NULL,
+  `telefono_cel` varchar(20) NOT NULL,
   `escolaridad` int(11) NOT NULL,
-  `profesión` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `curp` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `rfc` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `profesión` varchar(50) NOT NULL,
+  `curp` varchar(30) NOT NULL,
+  `rfc` varchar(30) NOT NULL,
   `estudia` int(11) NOT NULL,
-  `estudia_donde` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `estudia_habilidad` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `trabaja` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `trabaja_donde` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `trabaja_ingresos` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `estudia_donde` varchar(100) NOT NULL,
+  `estudia_habilidad` varchar(100) NOT NULL,
+  `trabaja` varchar(100) NOT NULL,
+  `trabaja_donde` varchar(100) NOT NULL,
+  `trabaja_ingresos` varchar(10) NOT NULL,
   `asoc_civ` int(11) NOT NULL,
-  `asoc_cual` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `asoc_cual` varchar(100) NOT NULL,
   `pensionado` int(11) NOT NULL,
-  `pensionado_donde` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `pensionado_donde` varchar(100) NOT NULL,
   `pension_monto` int(11) NOT NULL,
-  `pension_temporalidad` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `pension_temporalidad` varchar(20) NOT NULL,
   `sindicato` int(11) NOT NULL,
-  `sindicato_cual` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `sindicato_cual` varchar(100) NOT NULL,
   `seguridad_social` int(11) NOT NULL,
-  `seguridad_social_donde` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `seguridad_social_otro` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
+  `seguridad_social_donde` varchar(100) NOT NULL,
+  `seguridad_social_otro` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `datos_generales`
+-- Dumping data for table `datos_generales`
 --
 
 INSERT INTO `datos_generales` (`id`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `estado`, `municipio`, `localidad`, `asentamiento`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `profesión`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `sindicato`, `sindicato_cual`, `seguridad_social`, `seguridad_social_donde`, `seguridad_social_otro`) VALUES
-(26, 'Ana Elisa', 'Barba', 'Pinedo', 1, 40, 2, '1982-12-12', 'Guadalajara Jalisco', 'de la Colina', 'A', '218', 'Loma Bonita', 'Ninguna', 'Reja blanca', '', 1, '1', '', 98160, '4921586748', 'aebarbap@gmail.com', '4921001418', 5, 'Ingeniero', 'BAPA821212MJCRNN04', 'BAPA821212N84', 1, 'UAZ', 'Programador', '1', 'INCLUSION', '18000', 1, 'AC', 1, 'SEGOB', 2500, 'Bimestral', 1, 'SUTSEMOP', 1, '', NULL),
-(27, 'dsatguew', 'gteqyg', 'ghuisa', 1, 45, 1, '1111-11-11', 'gs<aa', 'bfdzs', '6', '498', 'sfdsate', 'gosa89', 'gdsagdis', '', 1, '1', '', 456, '456', 'gdages@etsaw.com', '4567', 1, 'yghrtsd1', 'LEVJ810924HZSXLS04', 'vgfia', 1, 'hfds|', 'gfdagyw|', '1', 'bhtrjwirt|', '752', 1, 'bhfdshdfx', 1, 'hrfdshn', 454, 'Bimestral', 1, 'hgrdfsahjd', 5, 'gfdsaye', NULL),
+(26, 'Ana Elisa', 'Barba', 'Pinedo', 1, 40, 2, '1982-12-12', 'Guadalajara Jalisco', 'de la Colina', 'A', '218', 'Loma Bonita', 'Ninguna', 'Reja blanca', '', 1, '1', '', 98160, '4921586748', 'aebarbap@gmail.com', '4921001418', 5, 'Ingeniero', 'BAPA821212MJCRNN05', 'BAPA821212N84', 1, 'UAZ', 'Programador', '1', 'INCLUSION', '18000', 1, 'AC', 1, 'SEGOB', 2500, 'Bimestral', 1, 'SUTSEMOP', 1, '', NULL),
+(27, 'dsatguew', 'gteqyg', 'ghuisa', 1, 45, 1, '1111-11-11', 'gs<aa', 'bfdzs', '6', '498', 'sfdsate', 'gosa89', 'gdsagdis', '', 1, '1', '', 456, '456', 'gdages@etsaw.com', '4567', 1, 'yghrtsd1', 'LEVJ810924HZSXLS03', 'vgfia', 1, 'hfds|', 'gfdagyw|', '1', 'bhtrjwirt|', '752', 1, 'bhfdshdfx', 1, 'hrfdshn', 454, 'Bimestral', 1, 'hgrdfsahjd', 5, 'gfdsaye', NULL),
 (28, 'dsatguew', 'gteqyg', 'ghuisa', 1, 45, 1, '1111-11-11', 'gs<aa', 'bfdzs', '6', '498', 'sfdsate', 'gosa89', 'gdsagdis', '', 1, '1', '', 456, '456', 'gdages@etsaw.com', '4567', 1, 'yghrtsd1', 'difusoap', 'vgfia', 1, 'hfds|', 'gfdagyw|', '1', 'bhtrjwirt|', '752', 1, 'bhfdshdfx', 1, 'hrfdshn', 454, 'Bimestral', 1, 'hgrdfsahjd', 5, 'gfdsaye', NULL),
 (29, 'gdfagius', 'gdoapyhuk', 'hbfdsouh', 1, 55, 1, '2022-05-07', 'sgfdsaygh', 'fgdstliohjuohñi', '7', '548', 'gdsuojlkdm', 'hgfoxdiugy', 'hyuipñaklshnj', '', 1, '1', '', 1, '98160', 'DGAGREAOI@GFDSOGHRE.com', '98160', 1, 'urtw', 'gfdagewsvfdsa688', 'grdszdsg5785fs', 1, 'hgfrs', 'jui', '1', 'yrer', '58', 1, 'gdfijuoslu|', 1, 'bnuoisolito', 7857, 'Mensual', 1, 'kliyhoih', 1, '', NULL),
 (30, 'io', 'oi', 'oi', 1, 58, 1, '2018-05-07', 'i', 'ol', '4', '4', 'kji', '4', 'l', '', 1, '1', '', 9, '1', 'n@n.n', '1', 1, 'j ', 'o', 'o', 1, 'hj', 'h', '1', 'k', '7897536', 1, 'h', 1, 'k', 786, 'Mensual', 1, 'j', 1, '', NULL),
@@ -9837,44 +9837,45 @@ INSERT INTO `datos_generales` (`id`, `nombre`, `apellido_p`, `apellido_m`, `gene
 (43, 'df', 'd', 'g', 1, 3, 1, '2018-08-09', 'TF', 'GDF', '6', '5', 'H', 'G', 'HDFA', '', 1, '1', '', 5, '58', 'NY@NY.com', '8', 1, 'H', 'N', 'H', 1, 'GWS', 'GHRE', '1', 'HFD', '896', 1, 'NJ', 1, 'HTGF', 8, 'Mensual', 1, 'JTG', 5, 'HFD', NULL),
 (44, 'dgs', 'gfda', 'hdfs', 1, 4, 1, '2020-04-21', 'kls', 'gd', '5', '5s', 'g', 'h', 't', '', 1, '1', '', 8, '5', 'n@n.n', '5', 1, 'g', 'GOBM200421MJCNRRA8', 'df', 1, 'g', 'g', '1', 'gw', '8', 1, 'h', 1, 'gh', 5, 'Mensual', 1, 'gy', 5, 'se', NULL),
 (45, 'Jesusrlv 9', 'Jesusrlv 9', 'Jesusrlv 9', 0, 42, 3, '2023-07-06', 'Zacatecas', 'MACBook PRO', '12', '12', 'MACBook', 'YX', 'YX', '32', 32056, 'Sin registro', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '323223', 6, 'programación', 'w', 'w', 1, 'itz', 'programación', '1', 'GODEZAC', '40000', 1, 'Jesusrlv 9', 1, 'Anny B', 100000, '1', 1, 'Jesusrlv 9', 1, '', NULL),
-(46, 'YX', 'YX', '12', 2, 2, 1, '2023-07-14', 'Zacatecas', 'MACBook', '12', '12', 'MackBook PRO', 'YX', 'dwsds', '32', 32018, 'Sin registro', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '3223232', 4, 'programación', 'YX', 'YX', 0, 'N/A', 'programación', '0', 'N/A', '', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', 3, '', NULL);
+(46, 'YX', 'YX', '12', 2, 2, 1, '2023-07-14', 'Zacatecas', 'MACBook', '12', '12', 'MackBook PRO', 'YX', 'dwsds', '32', 32018, 'Sin registro', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '3223232', 4, 'programación', 'YX', 'YX', 0, 'N/A', 'programación', '0', 'N/A', '', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', 3, '', NULL),
+(47, 'Ana Elisa', 'Barba', 'Pinedo', 1, 40, 2, '1982-12-12', 'Guadalajara Jalisco', 'de la Colina', 'A', '218', 'Loma Bonita', 'UAZ y Villas Universidad', 'Frente a UAZ Siglo XXI', '32', 32056, 'LOMA BONITA', 'Sin registro', 98160, '4921587935', 'aebarbap@gmail.com', '4921001418', 5, 'Ingeniero', 'BAPA821212MJCRNN04', 'BAPA821212N84', 1, 'UAZ', 'Programador', '1', 'INCLUSION', '22000', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', 1, '', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `datos_medicos`
+-- Table structure for table `datos_medicos`
 --
 
 CREATE TABLE `datos_medicos` (
   `id` int(11) NOT NULL,
-  `curp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `discapacidad` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `grado_discapacidad` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `curp` varchar(20) NOT NULL,
+  `discapacidad` varchar(50) NOT NULL,
+  `grado_discapacidad` varchar(50) NOT NULL,
   `tipo_discapacidad` int(11) NOT NULL,
   `causa` int(11) NOT NULL,
-  `causa_otro` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `causa_otro` varchar(100) DEFAULT NULL,
   `temporalidad` int(11) NOT NULL,
   `valoracion` int(11) NOT NULL,
   `fecha_valoracion` date NOT NULL,
   `rehabilitacion` int(11) NOT NULL,
-  `rehabilitacion_donde` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `rehabilitacion_donde` varchar(50) NOT NULL,
   `rehabilitacion_inicio` date NOT NULL,
-  `rehabilitacion_duracion` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `rehabilitacion_duracion` varchar(50) NOT NULL,
   `tipo_sangre` int(11) NOT NULL,
   `cirugias` int(11) NOT NULL,
-  `tipo_cirugias` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `tipo_cirugias` varchar(100) NOT NULL,
   `protesis` int(11) NOT NULL,
-  `protesis_tipo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `protesis_tipo` varchar(50) NOT NULL,
   `alergias` int(11) NOT NULL,
-  `alergias_cual` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `alergias_cual` varchar(500) NOT NULL,
   `enfermedades` int(11) NOT NULL,
-  `enfermedades_cual` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `enfermedades_cual` varchar(500) NOT NULL,
   `medicamentos` int(11) NOT NULL,
-  `medicamentos_cual` varchar(500) COLLATE utf8_unicode_ci NOT NULL
+  `medicamentos_cual` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `datos_medicos`
+-- Dumping data for table `datos_medicos`
 --
 
 INSERT INTO `datos_medicos` (`id`, `curp`, `discapacidad`, `grado_discapacidad`, `tipo_discapacidad`, `causa`, `causa_otro`, `temporalidad`, `valoracion`, `fecha_valoracion`, `rehabilitacion`, `rehabilitacion_donde`, `rehabilitacion_inicio`, `rehabilitacion_duracion`, `tipo_sangre`, `cirugias`, `tipo_cirugias`, `protesis`, `protesis_tipo`, `alergias`, `alergias_cual`, `enfermedades`, `enfermedades_cual`, `medicamentos`, `medicamentos_cual`) VALUES
@@ -9894,7 +9895,67 @@ INSERT INTO `datos_medicos` (`id`, `curp`, `discapacidad`, `grado_discapacidad`,
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `documentos`
+-- Table structure for table `discapacidades`
+--
+
+CREATE TABLE `discapacidades` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(150) NOT NULL,
+  `tipo` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `discapacidades`
+--
+
+INSERT INTO `discapacidades` (`id`, `nombre`, `tipo`) VALUES
+(1, 'Sin datos', 'Sin datos'),
+(2, 'Acondroplasia', 'Física'),
+(3, 'Motora', 'Física'),
+(4, 'Síndrome de Guillain Barré', 'Física'),
+(5, 'Retraso Psicomotor', 'Física'),
+(6, 'Esclerosis Múltiple', 'Física'),
+(7, 'Espondilitis Anquilosante', 'Física'),
+(8, 'Mielomeningocele', 'Física'),
+(9, 'Uniparesia / Monoparesia', 'Física'),
+(10, 'Cuadriparesia', 'Física'),
+(11, 'Amputación', 'Física'),
+(12, 'Secuela de Poliomielitis', 'Física'),
+(13, 'Enfermedad Articular Degenerativa', 'Física'),
+(14, 'Cuadriplejia', 'Física'),
+(15, 'Hemiplejia', 'Física'),
+(16, 'Paraparesia', 'Física'),
+(17, 'Distrofia Muscular', 'Fisica'),
+(18, 'Paraplejia', 'Física'),
+(19, 'Hemimelia', 'Física'),
+(20, 'Sin Datos', 'Sin Datos'),
+(21, 'Hipoacusia', 'Sensorial'),
+(22, 'Mudez', 'Sensorial'),
+(23, 'Problemas para la Comunicación', 'Intelectual'),
+(24, 'Ceguera Total', 'Sensorial'),
+(25, 'Débil Visual', 'Sensorial'),
+(26, 'Sordo Ciego', 'Múltiple'),
+(27, 'Sin Datos', 'Sin datos'),
+(28, 'Sin Datos', 'Sin datos'),
+(29, 'Autismo - Trastorno Generalizado del Desarrollo no Especificado', 'Intelectual'),
+(30, 'Autismo - Síndrome de Heller', 'Intelectual'),
+(31, 'Síndrome de Down', 'Intelectual'),
+(32, 'Deficiencia Mental', 'Intelectual'),
+(33, 'Parálisis Cerebral', 'Múltiple'),
+(34, 'Lento Aprendizaje', 'Intelectual'),
+(35, 'Microcefalia', 'Intelectual'),
+(36, 'Daño Neurológico', 'Intelectual'),
+(37, 'Autismo', 'Intelectual'),
+(38, 'Autismo - Síndrome de Aspergel', 'Intelectual'),
+(39, 'Autismo - Síndrome de Rett', 'Intelectual'),
+(40, 'Múltiple', 'Múltiple'),
+(41, 'Senectud con Discapacidad', 'Física'),
+(42, 'Síndrome de West', 'Física');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `documentos`
 --
 
 CREATE TABLE `documentos` (
@@ -9913,40 +9974,40 @@ CREATE TABLE `documentos` (
   `recibe` varchar(50) NOT NULL,
   `folio_cred` int(10) DEFAULT NULL,
   `folio_tarj` int(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `documentos_list`
+-- Table structure for table `documentos_list`
 --
 
 CREATE TABLE `documentos_list` (
   `id` int(11) NOT NULL,
   `id_ext` int(11) NOT NULL,
-  `doc_medico` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `doc_acta_nac` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `doc_curp` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `doc_ine` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `doc_comp_dom` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `doc_tarjeta` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `doc_foto1` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `doc_foto2` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `doc_medico` varchar(50) NOT NULL,
+  `doc_acta_nac` varchar(50) NOT NULL,
+  `doc_curp` varchar(50) NOT NULL,
+  `doc_ine` varchar(50) NOT NULL,
+  `doc_comp_dom` varchar(50) NOT NULL,
+  `doc_tarjeta` varchar(50) NOT NULL,
+  `doc_foto1` varchar(50) NOT NULL,
+  `doc_foto2` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `enfermedades`
+-- Table structure for table `enfermedades`
 --
 
 CREATE TABLE `enfermedades` (
   `id` int(11) NOT NULL,
   `nombre` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `enfermedades`
+-- Dumping data for table `enfermedades`
 --
 
 INSERT INTO `enfermedades` (`id`, `nombre`) VALUES
@@ -9962,16 +10023,16 @@ INSERT INTO `enfermedades` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `extraordinarios`
+-- Table structure for table `extraordinarios`
 --
 
 CREATE TABLE `extraordinarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `extraordinarios`
+-- Dumping data for table `extraordinarios`
 --
 
 INSERT INTO `extraordinarios` (`id`, `nombre`) VALUES
@@ -9990,7 +10051,7 @@ INSERT INTO `extraordinarios` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `funcionales`
+-- Table structure for table `funcionales`
 --
 
 CREATE TABLE `funcionales` (
@@ -9999,10 +10060,10 @@ CREATE TABLE `funcionales` (
   `precio_compra` int(11) NOT NULL,
   `fecha_compra` date NOT NULL,
   `cantidad_compra` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `funcionales`
+-- Dumping data for table `funcionales`
 --
 
 INSERT INTO `funcionales` (`id`, `nombre`, `precio_compra`, `fecha_compra`, `cantidad_compra`) VALUES
@@ -10042,25 +10103,25 @@ INSERT INTO `funcionales` (`id`, `nombre`, `precio_compra`, `fecha_compra`, `can
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `integracion`
+-- Table structure for table `integracion`
 --
 
 CREATE TABLE `integracion` (
   `id` int(11) NOT NULL,
-  `curp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `nombre` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `parentesco` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `curp` varchar(20) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `parentesco` varchar(20) NOT NULL,
   `edad` int(11) NOT NULL,
-  `escolaridad` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `profesion_oficio` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `discapacidad` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `ingreso` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `escolaridad` varchar(20) NOT NULL,
+  `profesion_oficio` varchar(50) NOT NULL,
+  `discapacidad` varchar(50) NOT NULL,
+  `ingreso` varchar(20) NOT NULL,
   `telcel` int(10) NOT NULL,
-  `correoe` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
+  `correoe` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `integracion`
+-- Dumping data for table `integracion`
 --
 
 INSERT INTO `integracion` (`id`, `curp`, `nombre`, `parentesco`, `edad`, `escolaridad`, `profesion_oficio`, `discapacidad`, `ingreso`, `telcel`, `correoe`) VALUES
@@ -10084,7 +10145,7 @@ INSERT INTO `integracion` (`id`, `curp`, `nombre`, `parentesco`, `edad`, `escola
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `log_entregas`
+-- Table structure for table `log_entregas`
 --
 
 CREATE TABLE `log_entregas` (
@@ -10094,12 +10155,12 @@ CREATE TABLE `log_entregas` (
   `id_users` int(10) NOT NULL,
   `id_documentos` varchar(10) NOT NULL,
   `tipo_entrega` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `log_usrlogin`
+-- Table structure for table `log_usrlogin`
 --
 
 CREATE TABLE `log_usrlogin` (
@@ -10107,10 +10168,10 @@ CREATE TABLE `log_usrlogin` (
   `id_usr` int(11) NOT NULL,
   `fecha_iniciosesion` datetime DEFAULT NULL,
   `fecha_cierresesion` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `log_usrlogin`
+-- Dumping data for table `log_usrlogin`
 --
 
 INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierresesion`) VALUES
@@ -10199,21 +10260,23 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (83, 1, '2023-07-04 08:50:51', NULL),
 (84, 0, NULL, '2023-07-04 15:00:26'),
 (85, 0, NULL, '2023-07-11 13:45:53'),
-(86, 1, '2023-07-11 13:45:59', NULL);
+(86, 1, '2023-07-11 13:45:59', NULL),
+(87, 0, NULL, '2023-07-13 09:49:45'),
+(88, 0, NULL, '2023-07-13 12:05:22');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `medicamentos`
+-- Table structure for table `medicamentos`
 --
 
 CREATE TABLE `medicamentos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `medicamentos`
+-- Dumping data for table `medicamentos`
 --
 
 INSERT INTO `medicamentos` (`id`, `nombre`) VALUES
@@ -10227,16 +10290,16 @@ INSERT INTO `medicamentos` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `otros_apoyos`
+-- Table structure for table `otros_apoyos`
 --
 
 CREATE TABLE `otros_apoyos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `otros_apoyos`
+-- Dumping data for table `otros_apoyos`
 --
 
 INSERT INTO `otros_apoyos` (`id`, `nombre`) VALUES
@@ -10248,16 +10311,16 @@ INSERT INTO `otros_apoyos` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `perfiles_usr`
+-- Table structure for table `perfiles_usr`
 --
 
 CREATE TABLE `perfiles_usr` (
   `id` int(11) NOT NULL,
   `perfil` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `perfiles_usr`
+-- Dumping data for table `perfiles_usr`
 --
 
 INSERT INTO `perfiles_usr` (`id`, `perfil`) VALUES
@@ -10267,7 +10330,7 @@ INSERT INTO `perfiles_usr` (`id`, `perfil`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `prestamo`
+-- Table structure for table `prestamo`
 --
 
 CREATE TABLE `prestamo` (
@@ -10289,26 +10352,26 @@ CREATE TABLE `prestamo` (
   `id_users` int(11) NOT NULL,
   `qr_prestamo` varchar(100) NOT NULL,
   `entregado` int(1) NOT NULL COMMENT '1 Beneficiario\r\n2 Familiar\r\n3 Enlace Municipal'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `referencias`
+-- Table structure for table `referencias`
 --
 
 CREATE TABLE `referencias` (
   `id` int(11) NOT NULL,
-  `curp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `nombre` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `parentesco` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `curp` varchar(20) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `parentesco` varchar(20) NOT NULL,
   `celular` int(11) NOT NULL,
-  `profesion_oficio` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `direccion` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+  `profesion_oficio` varchar(100) NOT NULL,
+  `direccion` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `referencias`
+-- Dumping data for table `referencias`
 --
 
 INSERT INTO `referencias` (`id`, `curp`, `nombre`, `parentesco`, `celular`, `profesion_oficio`, `direccion`) VALUES
@@ -10325,27 +10388,27 @@ INSERT INTO `referencias` (`id`, `curp`, `nombre`, `parentesco`, `celular`, `pro
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `servicios`
+-- Table structure for table `servicios`
 --
 
 CREATE TABLE `servicios` (
   `id` int(11) NOT NULL,
-  `curp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `folio_solicitud` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `curp` varchar(20) NOT NULL,
+  `folio_solicitud` varchar(20) NOT NULL,
   `fecha_solicitud` date NOT NULL,
   `tipo_solicitud` int(11) NOT NULL,
-  `detalle_solicitud` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `detalle_solicitud` varchar(100) NOT NULL,
   `cantidad` int(11) DEFAULT NULL,
   `monto_unitario` double NOT NULL,
   `monto_solicitud` double NOT NULL,
-  `autorizacion` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `autorizacion` varchar(50) DEFAULT NULL,
   `fecha_entrega` date DEFAULT NULL,
   `monto_entregado` double DEFAULT NULL,
   `estatus_s` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `servicios`
+-- Dumping data for table `servicios`
 --
 
 INSERT INTO `servicios` (`id`, `curp`, `folio_solicitud`, `fecha_solicitud`, `tipo_solicitud`, `detalle_solicitud`, `cantidad`, `monto_unitario`, `monto_solicitud`, `autorizacion`, `fecha_entrega`, `monto_entregado`, `estatus_s`) VALUES
@@ -10481,7 +10544,7 @@ INSERT INTO `servicios` (`id`, `curp`, `folio_solicitud`, `fecha_solicitud`, `ti
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `solicitud`
+-- Table structure for table `solicitud`
 --
 
 CREATE TABLE `solicitud` (
@@ -10493,12 +10556,12 @@ CREATE TABLE `solicitud` (
   `fecha_solicitud` datetime NOT NULL,
   `entrega` datetime NOT NULL,
   `estatus` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -10509,10 +10572,10 @@ CREATE TABLE `users` (
   `nombre` varchar(80) NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `estatus` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `pwd`, `perfil`, `nombre`, `fecha_creacion`, `estatus`) VALUES
@@ -10526,7 +10589,7 @@ INSERT INTO `users` (`id`, `username`, `pwd`, `perfil`, `nombre`, `fecha_creacio
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `vehiculos`
+-- Table structure for table `vehiculos`
 --
 
 CREATE TABLE `vehiculos` (
@@ -10538,32 +10601,32 @@ CREATE TABLE `vehiculos` (
   `annio` int(4) NOT NULL,
   `no_placas` varchar(10) NOT NULL,
   `chofer` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `vivienda`
+-- Table structure for table `vivienda`
 --
 
 CREATE TABLE `vivienda` (
   `id` int(11) NOT NULL,
-  `curp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `vivienda` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `curp` varchar(20) NOT NULL,
+  `vivienda` varchar(11) NOT NULL,
   `vivienda_renta` int(11) NOT NULL,
   `vivienda_pagando` int(11) NOT NULL,
   `monto_pagando` int(11) NOT NULL,
   `caracteristicas` int(11) NOT NULL,
-  `caracteristicas_otro` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `caracteristicas_otro` varchar(50) DEFAULT NULL,
   `num_habitaciones` int(11) NOT NULL,
   `vivienda_cocia` int(11) NOT NULL,
   `vivienda_sala` int(11) NOT NULL,
   `vivienda_banio` int(11) NOT NULL,
-  `vivienda_otros` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `vivienda_otros` varchar(100) DEFAULT NULL,
   `techo` int(11) NOT NULL,
-  `techo_otro` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `techo_otro` varchar(100) DEFAULT NULL,
   `pared` int(11) NOT NULL,
-  `pared_otro` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pared_otro` varchar(100) DEFAULT NULL,
   `serv_basicos_agua` int(11) NOT NULL,
   `serv_basicos_luz` int(11) NOT NULL,
   `serv_basicos_drenaje` int(11) NOT NULL,
@@ -10573,7 +10636,7 @@ CREATE TABLE `vivienda` (
   `serv_basicos_carro` int(11) NOT NULL,
   `serv_basicos_gas` int(11) NOT NULL,
   `serv_basicos_telefono` int(11) NOT NULL,
-  `serv_basicos_otro` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `serv_basicos_otro` varchar(100) DEFAULT NULL,
   `electrodomesticos_tv` int(11) NOT NULL,
   `electrodomesticos_lavadora` int(11) NOT NULL,
   `electrodomesticos_estereo` int(11) NOT NULL,
@@ -10582,14 +10645,14 @@ CREATE TABLE `vivienda` (
   `electrodomesticos_licuadora` int(11) NOT NULL,
   `electrodomesticos_dvd` int(11) NOT NULL,
   `electrodomesticos_estufa` int(11) NOT NULL,
-  `electrodomesticos_otro` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `electrodomesticos_otro` varchar(100) DEFAULT NULL,
   `personas_dependen` int(11) NOT NULL,
   `deudas` int(11) NOT NULL,
-  `deudas_cuanto` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL
+  `deudas_cuanto` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `vivienda`
+-- Dumping data for table `vivienda`
 --
 
 INSERT INTO `vivienda` (`id`, `curp`, `vivienda`, `vivienda_renta`, `vivienda_pagando`, `monto_pagando`, `caracteristicas`, `caracteristicas_otro`, `num_habitaciones`, `vivienda_cocia`, `vivienda_sala`, `vivienda_banio`, `vivienda_otros`, `techo`, `techo_otro`, `pared`, `pared_otro`, `serv_basicos_agua`, `serv_basicos_luz`, `serv_basicos_drenaje`, `serv_basicos_cable`, `serv_basicos_internet`, `serv_basicos_celular`, `serv_basicos_carro`, `serv_basicos_gas`, `serv_basicos_telefono`, `serv_basicos_otro`, `electrodomesticos_tv`, `electrodomesticos_lavadora`, `electrodomesticos_estereo`, `electrodomesticos_microondas`, `electrodomesticos_computadora`, `electrodomesticos_licuadora`, `electrodomesticos_dvd`, `electrodomesticos_estufa`, `electrodomesticos_otro`, `personas_dependen`, `deudas`, `deudas_cuanto`) VALUES
@@ -10640,261 +10703,273 @@ INSERT INTO `vivienda` (`id`, `curp`, `vivienda`, `vivienda_renta`, `vivienda_pa
 (45, 'zxcxz', '3', 9, 1, 9, 3, '9', 9, 1, 1, 1, '9', 3, '9', 4, '9', 1, 1, 1, 1, 1, 0, 1, 1, 1, '9', 1, 1, 1, 1, 1, 1, 1, 1, '9', 9, 1, '9');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `alergias`
+-- Indexes for table `alergias`
 --
 ALTER TABLE `alergias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `asentamientos`
+-- Indexes for table `asentamientos`
 --
 ALTER TABLE `asentamientos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `datos_generales`
+-- Indexes for table `datos_generales`
 --
 ALTER TABLE `datos_generales`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `datos_medicos`
+-- Indexes for table `datos_medicos`
 --
 ALTER TABLE `datos_medicos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `documentos_list`
+-- Indexes for table `discapacidades`
+--
+ALTER TABLE `discapacidades`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `documentos_list`
 --
 ALTER TABLE `documentos_list`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `enfermedades`
+-- Indexes for table `enfermedades`
 --
 ALTER TABLE `enfermedades`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `extraordinarios`
+-- Indexes for table `extraordinarios`
 --
 ALTER TABLE `extraordinarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `funcionales`
+-- Indexes for table `funcionales`
 --
 ALTER TABLE `funcionales`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `integracion`
+-- Indexes for table `integracion`
 --
 ALTER TABLE `integracion`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `log_entregas`
+-- Indexes for table `log_entregas`
 --
 ALTER TABLE `log_entregas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `log_usrlogin`
+-- Indexes for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `medicamentos`
+-- Indexes for table `medicamentos`
 --
 ALTER TABLE `medicamentos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `otros_apoyos`
+-- Indexes for table `otros_apoyos`
 --
 ALTER TABLE `otros_apoyos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `perfiles_usr`
+-- Indexes for table `perfiles_usr`
 --
 ALTER TABLE `perfiles_usr`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `prestamo`
+-- Indexes for table `prestamo`
 --
 ALTER TABLE `prestamo`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `referencias`
+-- Indexes for table `referencias`
 --
 ALTER TABLE `referencias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `servicios`
+-- Indexes for table `servicios`
 --
 ALTER TABLE `servicios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `solicitud`
+-- Indexes for table `solicitud`
 --
 ALTER TABLE `solicitud`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `vehiculos`
+-- Indexes for table `vehiculos`
 --
 ALTER TABLE `vehiculos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `vivienda`
+-- Indexes for table `vivienda`
 --
 ALTER TABLE `vivienda`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `alergias`
+-- AUTO_INCREMENT for table `alergias`
 --
 ALTER TABLE `alergias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT de la tabla `asentamientos`
+-- AUTO_INCREMENT for table `asentamientos`
 --
 ALTER TABLE `asentamientos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1755;
 
 --
--- AUTO_INCREMENT de la tabla `datos_generales`
+-- AUTO_INCREMENT for table `datos_generales`
 --
 ALTER TABLE `datos_generales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
--- AUTO_INCREMENT de la tabla `datos_medicos`
+-- AUTO_INCREMENT for table `datos_medicos`
 --
 ALTER TABLE `datos_medicos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT de la tabla `documentos_list`
+-- AUTO_INCREMENT for table `discapacidades`
+--
+ALTER TABLE `discapacidades`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT for table `documentos_list`
 --
 ALTER TABLE `documentos_list`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `enfermedades`
+-- AUTO_INCREMENT for table `enfermedades`
 --
 ALTER TABLE `enfermedades`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de la tabla `extraordinarios`
+-- AUTO_INCREMENT for table `extraordinarios`
 --
 ALTER TABLE `extraordinarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT de la tabla `funcionales`
+-- AUTO_INCREMENT for table `funcionales`
 --
 ALTER TABLE `funcionales`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT de la tabla `integracion`
+-- AUTO_INCREMENT for table `integracion`
 --
 ALTER TABLE `integracion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT de la tabla `log_entregas`
+-- AUTO_INCREMENT for table `log_entregas`
 --
 ALTER TABLE `log_entregas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `log_usrlogin`
+-- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
--- AUTO_INCREMENT de la tabla `medicamentos`
+-- AUTO_INCREMENT for table `medicamentos`
 --
 ALTER TABLE `medicamentos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de la tabla `otros_apoyos`
+-- AUTO_INCREMENT for table `otros_apoyos`
 --
 ALTER TABLE `otros_apoyos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `perfiles_usr`
+-- AUTO_INCREMENT for table `perfiles_usr`
 --
 ALTER TABLE `perfiles_usr`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `prestamo`
+-- AUTO_INCREMENT for table `prestamo`
 --
 ALTER TABLE `prestamo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `referencias`
+-- AUTO_INCREMENT for table `referencias`
 --
 ALTER TABLE `referencias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT de la tabla `servicios`
+-- AUTO_INCREMENT for table `servicios`
 --
 ALTER TABLE `servicios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
--- AUTO_INCREMENT de la tabla `solicitud`
+-- AUTO_INCREMENT for table `solicitud`
 --
 ALTER TABLE `solicitud`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de la tabla `vehiculos`
+-- AUTO_INCREMENT for table `vehiculos`
 --
 ALTER TABLE `vehiculos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `vivienda`
+-- AUTO_INCREMENT for table `vivienda`
 --
 ALTER TABLE `vivienda`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;

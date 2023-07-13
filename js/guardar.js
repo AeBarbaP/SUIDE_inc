@@ -15,7 +15,9 @@ $(document).ready(function() {
         var edad = document.getElementById('edad').value;
         var edoCivil = document.getElementById('edoCivil').value;
         var curp = document.getElementById('curp').value;
-        var rfc = document.getElementById('rfc').value;
+        var rfcCutted = curp.substr(0,10);
+        var rfcHomo = document.getElementById('rfcHomo').value;
+        var rfc = rfcCutted + rfcHomo;
         var fechaNacimiento = document.getElementById('fechaNacimiento').value;
         var lugarNacimiento = document.getElementById('lugarNacimiento').value;
         var domicilio = document.getElementById('domicilio').value;
