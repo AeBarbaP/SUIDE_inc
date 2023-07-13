@@ -1,7 +1,6 @@
 
-function dicapacidadTab(){
-
-        var disc = 1;
+function discapacidadTab(x){
+        var disc = x;
         $.ajax({
             type:"POST",
             url:"query/queryDiscapacidad.php",

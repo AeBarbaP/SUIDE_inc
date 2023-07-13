@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2023 at 08:05 PM
+-- Generation Time: Jul 13, 2023 at 10:33 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -57,12 +57,96 @@ INSERT INTO `alergias` (`id`, `nombre`, `tipo`) VALUES
 (17, 'Césped', 3),
 (18, 'Frío', 3),
 (19, 'Calor', 3),
-(20, 'Sulfametoxazol-trimetoprima', 2),
+(20, 'Sulfametoxazol-trimetoprima (Bactrim)', 2),
 (21, 'Eritromicina-sulfisoxazol', 2),
 (22, 'Gliburida', 2),
 (23, 'Glimepirida', 2),
 (24, 'Celecoxib', 2),
-(25, 'Sumatriptán', 2);
+(25, 'Sumatriptán', 2),
+(26, 'Dipirona', 2),
+(27, 'Amikacina', 2),
+(28, 'Naproxeno', 2),
+(29, 'Diclofenaco', 2),
+(30, 'Piroxicam', 2),
+(31, 'Sulfas', 2),
+(32, 'Ácido Acetil Salicilico', 2),
+(33, 'Lamictal', 2),
+(34, 'Gentamicina', 2),
+(35, 'Sedalmerk', 2),
+(36, 'Alopurinol', 2),
+(37, 'Ranitidina', 2),
+(38, 'Cefalexina', 2),
+(39, 'Paracetamol', 2),
+(40, 'Neomelubrina', 2),
+(41, 'Anestecias y derivados', 2),
+(42, 'Metronidazol', 2),
+(43, 'Cálcio', 2),
+(44, 'Clonixinato de Lisina', 2),
+(45, 'Isasorbida', 2),
+(46, 'Dicloxacilina', 2),
+(47, 'Picaduras de Insectos', 3),
+(48, 'Clorfenamina Compuesta', 2),
+(49, 'Ketorolaco', 2),
+(50, 'Lamotrigina', 2),
+(51, 'Clobazam', 2),
+(52, 'Antihistamínicos', 2),
+(53, 'Clonazepam', 2),
+(54, 'Tetraciclina', 2),
+(55, 'Desenfriol', 2),
+(56, 'Metamizol Sódico', 2),
+(57, 'Salbutamol', 2),
+(58, 'Cefazolina', 2),
+(59, 'Lidocaina', 2),
+(60, 'Nalbufina', 2),
+(61, 'Eritromicina', 2),
+(62, 'Metropolol', 2),
+(63, 'Ibuprofeno', 2),
+(64, 'Ciclosporina', 2),
+(65, 'Captopril', 2),
+(66, 'Carbamazepina', 2),
+(67, 'Vitaminas', 2),
+(68, 'Dextropropoxifeno', 2),
+(69, 'Cefotaxima', 2),
+(70, 'Exoladina', 2),
+(71, 'Ácido Fólico', 2),
+(72, 'Complejo B', 2),
+(73, 'Bromocriptina', 2),
+(74, 'Metoclopramida', 2),
+(75, 'Acetadiazol', 2),
+(76, 'Bicalutamida (Casodex)', 2),
+(77, 'Propofol', 2),
+(78, 'Fenitoína', 2),
+(79, 'Difenhidramina', 2),
+(80, 'Difenidol', 2),
+(81, 'Insulina', 2),
+(82, 'Amoxicilina', 2),
+(83, 'Ceftriaxona', 2),
+(84, 'Saridon (Paracetamol + Propifenazona)', 2),
+(85, 'Fluoresceína (colorante)', 1),
+(86, 'Topiramato', 2),
+(87, 'Sulindaco', 0),
+(88, 'Gabapentina', 2),
+(89, 'Indometacina', 2),
+(90, 'Sultamicilina', 2),
+(91, 'Buscapina', 2),
+(92, 'Cortisona', 2),
+(93, 'Benzonatato', 2),
+(94, 'Espironolactona', 2),
+(95, 'Furosemida', 2),
+(96, 'Esteroides', 2),
+(97, 'Xilocaina', 2),
+(98, 'Res', 1),
+(99, 'Manteca', 1),
+(100, 'Mantequilla', 1),
+(101, 'Miel de Abeja', 1),
+(102, 'Pollo', 1),
+(103, 'Hígado de Res', 1),
+(104, 'Víceras de Pollo', 1),
+(105, 'Cerdo', 1),
+(106, 'Margarina', 1),
+(107, 'Alka-Seltzer', 2),
+(108, 'Ambroxol', 2),
+(109, 'Antifludez', 2);
 
 -- --------------------------------------------------------
 
@@ -9767,6 +9851,7 @@ INSERT INTO `catmunicipios` (`id`, `claveMunicipio`, `nombreMunicipio`, `municip
 
 CREATE TABLE `datos_generales` (
   `id` int(11) NOT NULL,
+  `numExpediente` varchar(15) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `apellido_p` varchar(50) NOT NULL,
   `apellido_m` varchar(50) NOT NULL,
@@ -9816,29 +9901,28 @@ CREATE TABLE `datos_generales` (
 -- Dumping data for table `datos_generales`
 --
 
-INSERT INTO `datos_generales` (`id`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `estado`, `municipio`, `localidad`, `asentamiento`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `profesión`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `sindicato`, `sindicato_cual`, `seguridad_social`, `seguridad_social_donde`, `seguridad_social_otro`) VALUES
-(26, 'Ana Elisa', 'Barba', 'Pinedo', 1, 40, 2, '1982-12-12', 'Guadalajara Jalisco', 'de la Colina', 'A', '218', 'Loma Bonita', 'Ninguna', 'Reja blanca', '', 1, '1', '', 98160, '4921586748', 'aebarbap@gmail.com', '4921001418', 5, 'Ingeniero', 'BAPA821212MJCRNN05', 'BAPA821212N84', 1, 'UAZ', 'Programador', '1', 'INCLUSION', '18000', 1, 'AC', 1, 'SEGOB', 2500, 'Bimestral', 1, 'SUTSEMOP', 1, '', NULL),
-(27, 'dsatguew', 'gteqyg', 'ghuisa', 1, 45, 1, '1111-11-11', 'gs<aa', 'bfdzs', '6', '498', 'sfdsate', 'gosa89', 'gdsagdis', '', 1, '1', '', 456, '456', 'gdages@etsaw.com', '4567', 1, 'yghrtsd1', 'LEVJ810924HZSXLS03', 'vgfia', 1, 'hfds|', 'gfdagyw|', '1', 'bhtrjwirt|', '752', 1, 'bhfdshdfx', 1, 'hrfdshn', 454, 'Bimestral', 1, 'hgrdfsahjd', 5, 'gfdsaye', NULL),
-(28, 'dsatguew', 'gteqyg', 'ghuisa', 1, 45, 1, '1111-11-11', 'gs<aa', 'bfdzs', '6', '498', 'sfdsate', 'gosa89', 'gdsagdis', '', 1, '1', '', 456, '456', 'gdages@etsaw.com', '4567', 1, 'yghrtsd1', 'difusoap', 'vgfia', 1, 'hfds|', 'gfdagyw|', '1', 'bhtrjwirt|', '752', 1, 'bhfdshdfx', 1, 'hrfdshn', 454, 'Bimestral', 1, 'hgrdfsahjd', 5, 'gfdsaye', NULL),
-(29, 'gdfagius', 'gdoapyhuk', 'hbfdsouh', 1, 55, 1, '2022-05-07', 'sgfdsaygh', 'fgdstliohjuohñi', '7', '548', 'gdsuojlkdm', 'hgfoxdiugy', 'hyuipñaklshnj', '', 1, '1', '', 1, '98160', 'DGAGREAOI@GFDSOGHRE.com', '98160', 1, 'urtw', 'gfdagewsvfdsa688', 'grdszdsg5785fs', 1, 'hgfrs', 'jui', '1', 'yrer', '58', 1, 'gdfijuoslu|', 1, 'bnuoisolito', 7857, 'Mensual', 1, 'kliyhoih', 1, '', NULL),
-(30, 'io', 'oi', 'oi', 1, 58, 1, '2018-05-07', 'i', 'ol', '4', '4', 'kji', '4', 'l', '', 1, '1', '', 9, '1', 'n@n.n', '1', 1, 'j ', 'o', 'o', 1, 'hj', 'h', '1', 'k', '7897536', 1, 'h', 1, 'k', 786, 'Mensual', 1, 'j', 1, '', NULL),
-(31, 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, '5', 'u', 'kj', 0, '', '4', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
-(32, 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, '5', 'u', 'kj', 0, '', '4', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
-(33, 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, '5', 'u', 'kj', 0, '', '4', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
-(34, 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, '5', 'u', 'kj', 0, '', '4', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
-(35, 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, '5', 'u', 'kj', 0, '', '4', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
-(36, 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, 'v', 'u', 'kj', 0, '', 'v', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
-(37, 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, 'v', 'u', 'kj', 1, 'h', 'v', '1', 't', '25', 1, 'g', 1, 'g', 4, 'Mensual', 0, '', 5, 'f', NULL),
-(38, 'NY', 'NY', 'NY', 1, 54, 1, '1969-06-08', 'USA', 'NYQ', '5', '45', 'NY', 'NY', 'NY', '', 1, '1', '', 4896, '98160', 'NY@NY.com', '4921587935', 1, 'NY', 'NY', 'NY', 1, 'NY', 'NY', '1', 'NY', '15685', 1, 'NY', 1, 'NY', 14968, 'Trimestral', 1, 'NY', 5, 'NY', NULL),
-(39, 'NY', 'NY', 'NY', 1, 54, 1, '1969-06-08', 'USA', 'NYQ', '5', '45', 'NY', 'NY', 'NY', '', 1, '1', '', 4896, '98160', 'NY@NY.com', '4921587935', 1, 'NY', 'NY', 'NY', 1, 'NY', 'NY', '1', 'NY', '15685', 1, 'NY', 1, 'NY', 14968, 'Trimestral', 1, 'NY', 5, 'NY', NULL),
-(40, 'js', 'jgdos', 'o', 0, 4, 1, '2024-07-10', 'ju', 'sa', '8', '5', 'oi', 'bg', 'g', '', 1, '1', '', 98, '1', 'gdages@etsaw.com', '1', 1, 'fdrs', 'j', 'k', 1, 'g', 'f', '1', 'f', '9f', 1, 'f', 1, 'f', 4, 'Mensual', 1, 'd', 5, 'e', NULL),
-(41, 'df', 'd', 'g', 1, 3, 1, '2018-08-09', 'TF', 'GDF', '6', '5', 'H', 'G', 'HDFA', '', 1, '1', '', 5, '58', 'NY@NY.com', '8', 1, 'H', 'N', 'H', 1, 'GWS', 'GHRE', '1', 'HFD', '896', 1, 'NJ', 1, 'HTGF', 8, 'Mensual', 1, 'JTG', 5, 'HFD', NULL),
-(42, 'df', 'd', 'g', 1, 3, 1, '2018-08-09', 'TF', 'GDF', '6', '5', 'H', 'G', 'HDFA', '', 1, '1', '', 5, '58', 'NY@NY.com', '8', 1, 'H', 'N', 'H', 1, 'GWS', 'GHRE', '1', 'HFD', '896', 1, 'NJ', 1, 'HTGF', 8, 'Mensual', 1, 'JTG', 5, 'HFD', NULL),
-(43, 'df', 'd', 'g', 1, 3, 1, '2018-08-09', 'TF', 'GDF', '6', '5', 'H', 'G', 'HDFA', '', 1, '1', '', 5, '58', 'NY@NY.com', '8', 1, 'H', 'N', 'H', 1, 'GWS', 'GHRE', '1', 'HFD', '896', 1, 'NJ', 1, 'HTGF', 8, 'Mensual', 1, 'JTG', 5, 'HFD', NULL),
-(44, 'dgs', 'gfda', 'hdfs', 1, 4, 1, '2020-04-21', 'kls', 'gd', '5', '5s', 'g', 'h', 't', '', 1, '1', '', 8, '5', 'n@n.n', '5', 1, 'g', 'GOBM200421MJCNRRA8', 'df', 1, 'g', 'g', '1', 'gw', '8', 1, 'h', 1, 'gh', 5, 'Mensual', 1, 'gy', 5, 'se', NULL),
-(45, 'Jesusrlv 9', 'Jesusrlv 9', 'Jesusrlv 9', 0, 42, 3, '2023-07-06', 'Zacatecas', 'MACBook PRO', '12', '12', 'MACBook', 'YX', 'YX', '32', 32056, 'Sin registro', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '323223', 6, 'programación', 'w', 'w', 1, 'itz', 'programación', '1', 'GODEZAC', '40000', 1, 'Jesusrlv 9', 1, 'Anny B', 100000, '1', 1, 'Jesusrlv 9', 1, '', NULL),
-(46, 'YX', 'YX', '12', 2, 2, 1, '2023-07-14', 'Zacatecas', 'MACBook', '12', '12', 'MackBook PRO', 'YX', 'dwsds', '32', 32018, 'Sin registro', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '3223232', 4, 'programación', 'YX', 'YX', 0, 'N/A', 'programación', '0', 'N/A', '', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', 3, '', NULL),
-(47, 'Ana Elisa', 'Barba', 'Pinedo', 1, 40, 2, '1982-12-12', 'Guadalajara Jalisco', 'de la Colina', 'A', '218', 'Loma Bonita', 'UAZ y Villas Universidad', 'Frente a UAZ Siglo XXI', '32', 32056, 'LOMA BONITA', 'Sin registro', 98160, '4921587935', 'aebarbap@gmail.com', '4921001418', 5, 'Ingeniero', 'BAPA821212MJCRNN04', 'BAPA821212N84', 1, 'UAZ', 'Programador', '1', 'INCLUSION', '22000', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', 1, '', NULL);
+INSERT INTO `datos_generales` (`id`, `numExpediente`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `estado`, `municipio`, `localidad`, `asentamiento`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `profesión`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `sindicato`, `sindicato_cual`, `seguridad_social`, `seguridad_social_donde`, `seguridad_social_otro`) VALUES
+(27, '', 'dsatguew', 'gteqyg', 'ghuisa', 1, 45, 1, '1111-11-11', 'gs<aa', 'bfdzs', '6', '498', 'sfdsate', 'gosa89', 'gdsagdis', '', 1, '1', '', 456, '456', 'gdages@etsaw.com', '4567', 1, 'yghrtsd1', 'LEVJ810924HZSXLS03', 'vgfia', 1, 'hfds|', 'gfdagyw|', '1', 'bhtrjwirt|', '752', 1, 'bhfdshdfx', 1, 'hrfdshn', 454, 'Bimestral', 1, 'hgrdfsahjd', 5, 'gfdsaye', NULL),
+(28, '', 'dsatguew', 'gteqyg', 'ghuisa', 1, 45, 1, '1111-11-11', 'gs<aa', 'bfdzs', '6', '498', 'sfdsate', 'gosa89', 'gdsagdis', '', 1, '1', '', 456, '456', 'gdages@etsaw.com', '4567', 1, 'yghrtsd1', 'difusoap', 'vgfia', 1, 'hfds|', 'gfdagyw|', '1', 'bhtrjwirt|', '752', 1, 'bhfdshdfx', 1, 'hrfdshn', 454, 'Bimestral', 1, 'hgrdfsahjd', 5, 'gfdsaye', NULL),
+(29, '', 'gdfagius', 'gdoapyhuk', 'hbfdsouh', 1, 55, 1, '2022-05-07', 'sgfdsaygh', 'fgdstliohjuohñi', '7', '548', 'gdsuojlkdm', 'hgfoxdiugy', 'hyuipñaklshnj', '', 1, '1', '', 1, '98160', 'DGAGREAOI@GFDSOGHRE.com', '98160', 1, 'urtw', 'gfdagewsvfdsa688', 'grdszdsg5785fs', 1, 'hgfrs', 'jui', '1', 'yrer', '58', 1, 'gdfijuoslu|', 1, 'bnuoisolito', 7857, 'Mensual', 1, 'kliyhoih', 1, '', NULL),
+(30, '', 'io', 'oi', 'oi', 1, 58, 1, '2018-05-07', 'i', 'ol', '4', '4', 'kji', '4', 'l', '', 1, '1', '', 9, '1', 'n@n.n', '1', 1, 'j ', 'o', 'o', 1, 'hj', 'h', '1', 'k', '7897536', 1, 'h', 1, 'k', 786, 'Mensual', 1, 'j', 1, '', NULL),
+(31, '', 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, '5', 'u', 'kj', 0, '', '4', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
+(32, '', 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, '5', 'u', 'kj', 0, '', '4', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
+(33, '', 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, '5', 'u', 'kj', 0, '', '4', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
+(34, '', 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, '5', 'u', 'kj', 0, '', '4', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
+(35, '', 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, '5', 'u', 'kj', 0, '', '4', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
+(36, '', 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, 'v', 'u', 'kj', 0, '', 'v', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
+(37, '', 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, 'v', 'u', 'kj', 1, 'h', 'v', '1', 't', '25', 1, 'g', 1, 'g', 4, 'Mensual', 0, '', 5, 'f', NULL),
+(38, '', 'NY', 'NY', 'NY', 1, 54, 1, '1969-06-08', 'USA', 'NYQ', '5', '45', 'NY', 'NY', 'NY', '', 1, '1', '', 4896, '98160', 'NY@NY.com', '4921587935', 1, 'NY', 'NY', 'NY', 1, 'NY', 'NY', '1', 'NY', '15685', 1, 'NY', 1, 'NY', 14968, 'Trimestral', 1, 'NY', 5, 'NY', NULL),
+(39, '', 'NY', 'NY', 'NY', 1, 54, 1, '1969-06-08', 'USA', 'NYQ', '5', '45', 'NY', 'NY', 'NY', '', 1, '1', '', 4896, '98160', 'NY@NY.com', '4921587935', 1, 'NY', 'NY', 'NY', 1, 'NY', 'NY', '1', 'NY', '15685', 1, 'NY', 1, 'NY', 14968, 'Trimestral', 1, 'NY', 5, 'NY', NULL),
+(40, '', 'js', 'jgdos', 'o', 0, 4, 1, '2024-07-10', 'ju', 'sa', '8', '5', 'oi', 'bg', 'g', '', 1, '1', '', 98, '1', 'gdages@etsaw.com', '1', 1, 'fdrs', 'j', 'k', 1, 'g', 'f', '1', 'f', '9f', 1, 'f', 1, 'f', 4, 'Mensual', 1, 'd', 5, 'e', NULL),
+(41, '', 'df', 'd', 'g', 1, 3, 1, '2018-08-09', 'TF', 'GDF', '6', '5', 'H', 'G', 'HDFA', '', 1, '1', '', 5, '58', 'NY@NY.com', '8', 1, 'H', 'N', 'H', 1, 'GWS', 'GHRE', '1', 'HFD', '896', 1, 'NJ', 1, 'HTGF', 8, 'Mensual', 1, 'JTG', 5, 'HFD', NULL),
+(42, '', 'df', 'd', 'g', 1, 3, 1, '2018-08-09', 'TF', 'GDF', '6', '5', 'H', 'G', 'HDFA', '', 1, '1', '', 5, '58', 'NY@NY.com', '8', 1, 'H', 'N', 'H', 1, 'GWS', 'GHRE', '1', 'HFD', '896', 1, 'NJ', 1, 'HTGF', 8, 'Mensual', 1, 'JTG', 5, 'HFD', NULL),
+(43, '', 'df', 'd', 'g', 1, 3, 1, '2018-08-09', 'TF', 'GDF', '6', '5', 'H', 'G', 'HDFA', '', 1, '1', '', 5, '58', 'NY@NY.com', '8', 1, 'H', 'N', 'H', 1, 'GWS', 'GHRE', '1', 'HFD', '896', 1, 'NJ', 1, 'HTGF', 8, 'Mensual', 1, 'JTG', 5, 'HFD', NULL),
+(44, '', 'dgs', 'gfda', 'hdfs', 1, 4, 1, '2020-04-21', 'kls', 'gd', '5', '5s', 'g', 'h', 't', '', 1, '1', '', 8, '5', 'n@n.n', '5', 1, 'g', 'GOBM200421MJCNRRA8', 'df', 1, 'g', 'g', '1', 'gw', '8', 1, 'h', 1, 'gh', 5, 'Mensual', 1, 'gy', 5, 'se', NULL),
+(45, '', 'Jesusrlv 9', 'Jesusrlv 9', 'Jesusrlv 9', 0, 42, 3, '2023-07-06', 'Zacatecas', 'MACBook PRO', '12', '12', 'MACBook', 'YX', 'YX', '32', 32056, 'Sin registro', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '323223', 6, 'programación', 'w', 'w', 1, 'itz', 'programación', '1', 'GODEZAC', '40000', 1, 'Jesusrlv 9', 1, 'Anny B', 100000, '1', 1, 'Jesusrlv 9', 1, '', NULL),
+(46, '', 'YX', 'YX', '12', 2, 2, 1, '2023-07-14', 'Zacatecas', 'MACBook', '12', '12', 'MackBook PRO', 'YX', 'dwsds', '32', 32018, 'Sin registro', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '3223232', 4, 'programación', 'YX', 'YX', 0, 'N/A', 'programación', '0', 'N/A', '', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', 3, '', NULL),
+(48, '32115', 'Ana Elisa', 'Barba', 'Pinedo', 1, 40, 2, '1982-12-12', 'Guadalajara Jalisco', 'de la Colina', 'A', '218', 'Loma Bonita', 'UAZ y Villas Universidad', 'Reja blanca', '32', 32056, 'ZACATECAS', 'Loma Bonita', 98160, '4921561846', 'aebarbap@gmail.com', '4921001418', 5, 'Ingeniero', 'BAPA821212MJCRNN04', 'BAPA821212N84', 0, 'N/A', 'Programador', '1', 'INCLUSION', '22000', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', 1, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -10846,7 +10930,7 @@ ALTER TABLE `vivienda`
 -- AUTO_INCREMENT for table `alergias`
 --
 ALTER TABLE `alergias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `asentamientos`
@@ -10858,7 +10942,7 @@ ALTER TABLE `asentamientos`
 -- AUTO_INCREMENT for table `datos_generales`
 --
 ALTER TABLE `datos_generales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `datos_medicos`

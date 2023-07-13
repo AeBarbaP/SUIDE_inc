@@ -83,6 +83,7 @@ include('prcd/qc/qc.php');
     <script src="js/asentamientos.js"></script>
     <script src="js/validaciones.js"></script>
     <script src="js/discapacidades.js"></script>
+    <script src="js/numeroExpediente.js"></script>
 
     <style>
       * {
@@ -266,6 +267,7 @@ include('prcd/qc/qc.php');
         <div class="row">
           <div class="col-sm-2 justify-content-between align-items-center">
             <p class="h4">No. Expediente</p>
+            <span id="numeroExpediente"></span>
             <br>
             <img id="profile" src="img/no_profile.png" width="100%" style="width:14rem">
             <div class="input-group">
@@ -345,7 +347,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">CURP:</label>
-                    <input type="text" class="form-control" id="curp" name="datos_usr" placeholder="CURP" onkeyup="javascript:this.value=this.value.toUpperCase();" oninput="curp2date(this); validarInput()" onblur="validarInput(this);" onchange="cortarRFC(this.value)" required>
+                    <input type="text" class="form-control" id="curp" name="datos_usr" placeholder="CURP" onkeyup="javascript:this.value=this.value.toUpperCase();" onchange="curp2date(this); validarInput(this); cortarRFC(this.value)" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
@@ -635,30 +637,29 @@ include('prcd/qc/qc.php');
               </div>
                 <div class="tab-pane fade" id="nav-medicos" role="tabpanel" aria-labelledby="nav-medicos-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3" style="width:95%">
-                    <div class="col-sm-6">
-                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Discapacidad:</label>
+                    <div class="col-sm-4">
                       <form id="medicosForm">
-                      <input type="text" id="curp_exp" hidden>
-                      <!-- <select class="form-control selectpicker" placeholder="Buscar Discapacidad..." data-show-subtext="true" data-live-search="true" name="discapacidad" id="discapacidadList" onclick="dicapacidadTab()">
-                      
-                        </select> -->
-                      <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..." onclick="dicapacidadTab()" required>
-                      <datalist id="discapacidadList">
-
-                      </datalist>
+                      <label for="exampleDataListDisc" class="form-label">Tipo de Discapacidad:</label>
+                      <select class="form-select" id="tipoDisc" onchange="discapacidadTab(this.value)" aria-label="Default select example">
+                        <option selected>Selecciona...</option>
+                        <option value="Física">Física</option>
+                        <option value="Intelectual">Intelectual</option>
+                        <option value="Sensorial">Sensorial</option>
+                        <option value="Múltiple">Múltiple</option>
+                      </select>
                       <div class="invalid-feedback">
                         * Campo requerido.
                       </div>
                     </div>
-                    <div class="col-sm-4">
-                      <label for="exampleDataListDisc" class="form-label">Tipo de Discapacidad:</label>
-                      <select class="form-select" id="tipoDisc" aria-label="Default select example">
-                        <option selected>Selecciona...</option>
-                        <option value="1">Física</option>
-                        <option value="2">Intelectual</option>
-                        <option value="3">Sensorial</option>
-                        <option value="4">Múltiple</option>
-                      </select>
+                    <div class="col-sm-6">
+                      <label for="datos_usr" class="form-label">Discapacidad:</label>
+                      <input type="text" id="curp_exp" hidden>
+                      <!-- <select class="discapacidadList form-control selectpicker" placeholder="Buscar Discapacidad..." data-show-subtext="true" data-live-search="true" name="discapacidad" id="discapacidadList" onclick="dicapacidadTab()">
+                      </select> -->
+                      <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..." onchange="numExpGenerator(this.value)" required>
+                      <datalist id="discapacidadList">
+
+                      </datalist>
                       <div class="invalid-feedback">
                         * Campo requerido.
                       </div>
