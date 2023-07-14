@@ -8,14 +8,15 @@ $var = "SELECT * FROM datos_generales WHERE curp = '$curp'";
 $resultadoVariable = $conn->query($var);
 $rowVariable = $resultadoVariable->fetch_assoc();
 
-$numMpio = $rowVariable['municipio'];
+$numMpioV = $rowVariable['municipio'];
+$numMpio = substr($numMpioV,3,2);
 $idExp = $rowVariable['id'];
 
-$numExpediente = 'C-'+$numMpio+$cveDiscapacidad+'-'+$idExp;
+$numExpediente = 'C-'.$numMpio.$cveDiscapacidad.'-'.$idExp;
 
 $sql = "UPDATE datos_generales SET numExpediente = '$numExpediente' WHERE id = '$idExp'";
 $resultadoSql = $conn->query($sql);
-$rowSql = $resultadoSql->fetch_assoc();
+/* $rowSql = $resultadoSql->fetch_assoc(); */
 
 echo '
     <label>'.$numExpediente.'</label>
