@@ -107,5 +107,11 @@ function _(el2) {
       }
     
   }
+
+  //valores de checks
+function valoresCheck(tipoCheck){
+  
+
+}
   
   
