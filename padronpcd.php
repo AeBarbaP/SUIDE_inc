@@ -266,8 +266,8 @@ include('prcd/qc/qc.php');
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-2 justify-content-between align-items-center">
-            <p class="h4">No. Expediente</p>
-            <span id="numeroExpediente"></span>
+            <p class="h5">No. Expediente</p>
+            <strong><span class="h4" id="numeroExpediente"></span></strong>
             <br>
             <img id="profile" src="img/no_profile.png" width="100%" style="width:14rem">
             <div class="input-group">
@@ -298,7 +298,7 @@ include('prcd/qc/qc.php');
               <div class="tab-pane fade show active" id="nav-generales" role="tabpanel" aria-labelledby="nav-generales-tab" tabindex="0">
                 <div class="row ms-4 g-3 mt-3" style="width:95%">
                   <div class="col-sm-4">
-                    <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Nombre:</label>
+                    <label for="datos_usr" class="form-label">Nombre:</label>
                     <form id="generalesForm">
                     <input type="text" class="form-control" id="nombre" name="datos_usr" placeholder="Nombre(s)" required>
                     <div class="invalid-feedback">
@@ -306,14 +306,14 @@ include('prcd/qc/qc.php');
                     </div>
                   </div>
                   <div class="col-sm-4">
-                    <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Apellido Paterno:</label>
+                    <label for="datos_usr" class="form-label">Apellido Paterno:</label>
                     <input type="text" class="form-control" id="apellidoP" name="datos_usr" placeholder="Apellido Paterno" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-4">
-                    <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Apellido Materno:</label>
+                    <label for="datos_usr" class="form-label">Apellido Materno:</label>
                     <input type="text" class="form-control" id="apellidoM" name="datos_usr" placeholder="Apellido Materno" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
@@ -329,7 +329,7 @@ include('prcd/qc/qc.php');
                         </div>
                         <div class="form-check form-check-inline">
                           <input class="form-check-input" type="radio" name="genero" id="generoM" value="Hombre">
-                          <label class="form-check-label" for="inlineRadio2"><i class="fa-thin fa-person"></i> Hombre</label>
+                          <label class="form-check-label" for="inlineRadio2">Hombre</label>
                         </div>
                         <div class="form-check form-check-inline">
                           <input class="form-check-input" type="radio" name="genero" id="generoO" value="Otro">
@@ -367,8 +367,7 @@ include('prcd/qc/qc.php');
                       * Campo requerido.
                     </div>
                   </div>
-                  <div class="col-sm-6">
-                  <i class="fa-duotone fa-map"></i>   
+                  <div class="col-sm-6">   
                   <label for="datos_usr" class="form-label">Lugar Nacimiento:</label>
                     <input type="text" class="form-control" id="lugarNacimiento" name="datos_usr" placeholder="Lugar de Nacimiento" required>
                     <div class="invalid-feedback">
@@ -393,25 +392,25 @@ include('prcd/qc/qc.php');
                     </div>
                   </div>
                   <div class="col-sm-2">
-                    <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Núm. Exterior</label>
+                    <label for="datos_usr" class="form-label">Núm. Exterior</label>
                     <input type="text" class="form-control" id="numExt" name="datos_usr" placeholder="# Exterior" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-2">
-                    <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Núm. Interior</label>
+                    <label for="datos_usr" class="form-label">Núm. Interior</label>
                     <input type="text" class="form-control" id="numInt" name="datos_usr" placeholder="# Interior">
                   </div>
                   <div class="col-sm-6">
-                    <label for="datos_pc" class="form-label"><i class="bi bi-pc-display"></i> Colonia:</label>
+                    <label for="datos_pc" class="form-label">Colonia:</label>
                     <input type="text" class="form-control" id="colonia" name="datos_pc" placeholder="Colonia" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-6">
-                    <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Entre vialidades:</label>
+                    <label for="datos_usr" class="form-label">Entre vialidades:</label>
                     <input type="text" class="form-control" id="entreVialidades" name="datos_usr" placeholder="Entre vialidades" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
@@ -460,14 +459,14 @@ include('prcd/qc/qc.php');
                     </div>
                   </div>
                   <div class="col-sm-2">
-                    <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Código Postal</label>
+                    <label for="datos_usr" class="form-label">Código Postal</label>
                     <input type="text" class="form-control" id="codigoPostal" name="datos_usr" placeholder="C.P." required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-6">
-                    <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Correo Electróncio:</label>
+                    <label for="datos_usr" class="form-label">Correo Electróncio:</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">@</span>
                       <input type="email" id="correo" class="form-control" placeholder="e-mail" aria-label="e-mail" aria-describedby="basic-addon1">
@@ -477,11 +476,11 @@ include('prcd/qc/qc.php');
                     </div>
                   </div>
                   <div class="col-sm-4">
-                    <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Teléfono Particular:</label>
+                    <label for="datos_usr" class="form-label">Teléfono Particular:</label>
                     <input type="text" class="form-control" id="telFijo" name="datos_usr" placeholder="Teléfono particular">
                   </div>
                   <div class="col-sm-4">
-                    <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Celular:</label>
+                    <label for="datos_usr" class="form-label">Celular:</label>
                     <input type="text" class="form-control" id="celular" name="datos_usr" placeholder="Celular">
                   </div>
                   <div class="col-sm-4">
@@ -513,11 +512,11 @@ include('prcd/qc/qc.php');
                     </div>
                   </div>
                   <div class="col-sm-4">
-                    <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Habilidad:</label>
+                    <label for="datos_usr" class="form-label">Habilidad:</label>
                     <input type="text" class="form-control" id="habilidad" name="datos_usr" placeholder="Habilidad">
                   </div>
                   <div class="col-sm-4">
-                    <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Profesión u Oficio:</label>
+                    <label for="datos_usr" class="form-label">Profesión u Oficio:</label>
                     <input type="text" class="form-control" id="profesion" name="datos_usr" placeholder="Profesión u Oficio">
                   </div>
                   <div class="col-sm-4">
@@ -665,7 +664,7 @@ include('prcd/qc/qc.php');
                       </div>
                     </div>
                     <div class="col-sm-2">
-                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Grado:</label>
+                      <label for="datos_usr" class="form-label">Grado:</label>
                       <input type="text" class="form-control" id="gradoDisc" name="datos_usr" placeholder="Grado" required>
                       <div class="invalid-feedback">
                         * Campo requerido.
@@ -692,7 +691,7 @@ include('prcd/qc/qc.php');
                       </div>
                     </div>
                     <div class="col-sm-4">
-                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Temporalidad:</label>
+                      <label for="datos_usr" class="form-label">Temporalidad:</label>
                       <select class="form-select" id="temporalidad" aria-label="Default select example">
                         <option selected>Selecciona...</option>
                         <option value="1">Permanente</option>
@@ -703,7 +702,7 @@ include('prcd/qc/qc.php');
                       </select>
                     </div>
                     <div class="col-sm-6">
-                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fuente de Valoración:</label>
+                      <label for="datos_usr" class="form-label">Fuente de Valoración:</label>
                       <select class="form-select" id="fuente" aria-label="Default select example">
                         <option selected>Selecciona...</option>
                         <option value="1">IMSS</option>
@@ -715,7 +714,7 @@ include('prcd/qc/qc.php');
                       </select>
                     </div>
                     <div class="col-sm-4">
-                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fecha Valoración:</label>
+                      <label for="datos_usr" class="form-label">Fecha Valoración:</label>
                       <input type="date" class="form-control" id="fechaValoracion" name="datos_usr" placeholder="" required>
                       <div class="invalid-feedback">
                         * Campo requerido.
@@ -738,14 +737,14 @@ include('prcd/qc/qc.php');
                       </div>
                     </div>
                     <div class="col-sm-2">
-                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fecha de Inicio:</label>
+                      <label for="datos_usr" class="form-label">Fecha de Inicio:</label>
                       <input type="date" class="form-control" id="fechaIni" name="fechaini" placeholder="" required disabled>
                       <div class="invalid-feedback">
                         * Campo requerido.
                       </div>
                     </div>
                     <div class="col-sm-4">
-                      <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Duración:</label>
+                      <label for="datos_usr" class="form-label">Duración:</label>
                       <select class="form-select" id="duracion" aria-label="Default select example" disabled>
                         <option selected>Selecciona...</option>
                         <option value="1">0 - 6 meses</option>
