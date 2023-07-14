@@ -487,8 +487,10 @@ $(document).ready(function() {
         }
         if (lamina.checked){
             var techo = 1;
+            var otroTechoInput = 0;
         } else if (cemento.checked){
             var techo = 2;
+            var otroTechoInput = 0;
         } else if (otrosTecho.checked){
             var techo = 3;
             var otroTechoInput = document.getElementById('otroTechoInput').value;
@@ -497,10 +499,13 @@ $(document).ready(function() {
         }
         if (block.checked){
             var pared = 1;
+            var otroParedInput = 0;
         } else if (ladrillo.checked){
             var pared = 2;
+            var otroParedInput = 0;
         } else if (adobe.checked){
             var pared = 3;
+            var otroParedInput = 0;
         } else if (otrosPared.checked){
             var pared = 4;
             var otroParedInput = document.getElementById('otroParedInput').value;
@@ -763,7 +768,7 @@ function showMeFam(){
         url: 'query/queryFamilia.php',
         dataType:'HTML',
         data: {
-            curp_exp
+            curp_exp:curp_exp
         },
         success: function(response){
             $('#familiaresTab').fadeIn(1000).html(response);
@@ -833,7 +838,7 @@ function showMeRef(){
         url: 'query/queryReferencias.php',
         dataType:'HTML',
         data: {
-            curp_exp
+            curp_exp:curp_exp
         },
         success: function(response){
             $('#referenciasTab').fadeIn(1000).html(response);

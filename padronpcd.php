@@ -652,7 +652,7 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-6">
                       <label for="datos_usr" class="form-label">Discapacidad:</label>
-                      <input type="text" id="curp_exp" hidden>
+                      <input type="text" id="curp_exp">
                       <!-- <select class="discapacidadList form-control selectpicker" placeholder="Buscar Discapacidad..." data-show-subtext="true" data-live-search="true" name="discapacidad" id="discapacidadList" onclick="dicapacidadTab()">
                       </select> -->
                       <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..." onchange="numExpGenerator(this.value)" required>
@@ -1418,7 +1418,7 @@ include('prcd/qc/qc.php');
                   </div>
                 </div>
 
-                <div class="tab-pane fade" id="nav-integracion" role="tabpanel" aria-labelledby="nav-integracion-tab" tabindex="0" onload="showMeFam()">
+                <div class="tab-pane fade" id="nav-integracion" role="tabpanel" aria-labelledby="nav-integracion-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <!-- integración familiar -->
                     <div class="col-sm-12 mt-3 p-4">
@@ -1447,13 +1447,13 @@ include('prcd/qc/qc.php');
                       <!-- integración familiar -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#agregarFamiliar"><i class="bi bi-person-fill-add"></i> Agregar familiar</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" onclick="showMeFam()"data-bs-target="#agregarFamiliar" ><i class="bi bi-person-fill-add"></i> Agregar familiar</button>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div class="tab-pane fade" id="nav-referencias" role="tabpanel" aria-labelledby="nav-referencias-tab" tabindex="0" onload="guardarSolicitudCompleta()"> 
+                <div class="tab-pane fade" id="nav-referencias" role="tabpanel" aria-labelledby="nav-referencias-tab" tabindex="0"> 
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <!-- referencias -->
                     <div class="col-sm-12 mt-3 p-4">
@@ -1478,12 +1478,12 @@ include('prcd/qc/qc.php');
                       <!-- referencias -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#agregarReferencia"><i class="bi bi-person-fill-add"></i> Agregar referencia</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#agregarReferencia" onclick="showMeRef()"><i class="bi bi-person-fill-add"></i> Agregar referencia</button>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane fade" id="nav-servicios-otorgados" role="tabpanel" aria-labelledby="nav-servicios-tab" tabindex="0" onclick="mostrarTablaServicios()">
+                <div class="tab-pane fade" id="nav-servicios-otorgados" role="tabpanel" aria-labelledby="nav-servicios-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <div class="col-sm-12 mt-3 p-4">
                       <label for="basic-url" class="form-label h4"><i class="bi bi-files"></i> Solicitudes y Servicios</label>
@@ -1508,7 +1508,7 @@ include('prcd/qc/qc.php');
                       <!-- Solicitudes -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#solicitudAdd" onclick="folioApoyo()"><i class="bi bi-file-earmark-text"></i> Agregar solicitud</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#solicitudAdd" onclick="folioApoyo(); mostrarTablaServicios()"><i class="bi bi-file-earmark-text"></i> Agregar solicitud</button>
                       </div>
                     </div>
                   </div>
@@ -1586,7 +1586,7 @@ include('prcd/qc/qc.php');
                       </tbody>
                     </table>
                     <div class="d-grid gap-2">
-                      <button class="btn btn-primary btn-lg" type="button">Imprimir formato...</button>
+                      <button class="btn btn-primary btn-lg" onclick="saveFlags()" type="button">Imprimir formato...</button>
                     </div>
                   </div>
                 </div>
