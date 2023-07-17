@@ -41,8 +41,10 @@ function _(el) {
         _("progressBar"+doc).value = 100; //wil clear progress bar after successful upload
           _("file"+doc).style.display='none';
           _("progressBar"+doc).style.display='none';
-        document.getElementById('registroDoc'+doc).hidden = true;
+        document.getElementById('registroDoc'+doc).disabled = true;
+        document.getElementById('registroDoc'+doc).setAttribute('style','color: #59c965')
         document.getElementById('btnModal'+doc).disabled = true;
+        $(".bloqueo"+doc).attr("disabled", true);
       }
       
       function errorHandler(event) {
@@ -106,12 +108,7 @@ function _(el2) {
         _("statusEditar"+doc).innerHTML = "Fallo en la subida";
       }
     
+
   }
 
-  //valores de checks
-function valoresCheck(tipoCheck){
-  
-
-}
-  
   

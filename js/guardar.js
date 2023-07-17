@@ -190,6 +190,8 @@ $(document).ready(function() {
                     document.getElementById('nav-medicos-tab').disabled = false;
                     document.getElementById('nav-generales-tab').disabled = true;
                     document.getElementById('curp_exp').value = curpSaved;
+                    /* var curpExp = document.getElementById('curp_exp').value;
+                    document.getElementById('buttonCheck').setAttribute('href','prcd/checkListPDF.php?curp='+curpExp); */
                 }
                 else if (verificador = 2){
                     Swal.fire({
