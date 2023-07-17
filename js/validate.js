@@ -303,78 +303,113 @@ function otroElectros(){
 
 function valoracionCheck(x){
     var num = x;
-
+    console.log(num);
     if (num == 1){
         document.getElementById('checkAllNo').checked = false;
         document.getElementById('registroNo').checked = false;
         document.getElementById('registroNA').checked = false;
+        var checkSi = document.getElementById('registroSi');
+        if (checkSi.checked) {
+            document.getElementById('registroDoc1').disabled = false;
+        } else {
+            document.getElementById('registroDoc1').disabled = true;
+        }
     } else if ( num == 2){
         document.getElementById('checkAllSi').checked = false;
         document.getElementById('registroSi').checked = false;
         document.getElementById('registroNA').checked = false;
+        document.getElementById('registroDoc1').disabled = true;
     } else if (num ==3){
         document.getElementById('checkAllNo').checked = false;
         document.getElementById('checkAllSi').checked = false;
         document.getElementById('registroSi').checked = false;
         document.getElementById('registroNo').checked = false;
-        document.getElementById('valoracionDoc').disabled = true;
+        document.getElementById('registroDoc1').disabled = true;
     } else if (num ==4){
         document.getElementById('checkAllNo').checked = false;
         document.getElementById('valoracionNo').checked = false;
         document.getElementById('valoracionNA').checked = false;
-        /* document.getElementById('valoracionNA').checked = true; */
+        var checkSi1 = document.getElementById('valoracionSi');
+        if (checkSi1.checked) {
+            document.getElementById('registroDoc2').disabled = false;
+        } else {
+            document.getElementById('registroDoc2').disabled = true;
+        }
     } else if (num ==5){
         document.getElementById('checkAllSi').checked = false;
         document.getElementById('valoracionSi').checked = false;
         document.getElementById('valoracionNA').checked = false;
+        document.getElementById('registroDoc2').disabled = true;
     } else if (num ==6){
         document.getElementById('checkAllSi').checked = false;
         document.getElementById('checkAllNo').checked = false;
         document.getElementById('valoracionSi').checked = false;
         document.getElementById('valoracionNo').checked = false;
-        document.getElementById('valoracionDoc').disabled = true;
+        document.getElementById('registroDoc2').disabled = true;
     } else if (num ==7){
         document.getElementById('checkAllNo').checked = false;
         document.getElementById('actaNo').checked = false;
         document.getElementById('actaNA').checked = false;
+        var checkSi2 = document.getElementById('actaSi');
+        if (checkSi2.checked) {
+            document.getElementById('registroDoc3').disabled = false;
+        } else {
+            document.getElementById('registroDoc3').disabled = true;
+        }
     } else if (num == 8){
         document.getElementById('checkAllSi').checked = false;
         document.getElementById('actaSi').checked = false;
         document.getElementById('actaNA').checked = false;
+        document.getElementById('registroDoc3').disabled = true;
     } else if ( num == 9){
         document.getElementById('checkAllSi').checked = false;
         document.getElementById('checkAllNo').checked = false;
         document.getElementById('actaSi').checked = false;
         document.getElementById('actaNo').checked = false;
-        document.getElementById('actaDoc').disabled = true;
+        document.getElementById('registroDoc3').disabled = true;
     } else if (num ==10){
         document.getElementById('checkAllNo').checked = false;
         document.getElementById('curpNo').checked = false;
         document.getElementById('curpNA').checked = false;
+        var checkSi3 = document.getElementById('curpSi');
+        if (checkSi3.checked) {
+            document.getElementById('registroDoc4').disabled = false;
+        } else {
+            document.getElementById('registroDoc4').disabled = true;
+        }
     } else if (num ==11){
         document.getElementById('checkAllSi').checked = false;
         document.getElementById('curpSi').checked = false;
         document.getElementById('curpNA').checked = false;
+        document.getElementById('registroDoc4').disabled = true;
     } else if (num ==12){
         document.getElementById('checkAllSi').checked = false;
         document.getElementById('checkAllNo').checked = false;
         document.getElementById('curpNo').checked = false;
         document.getElementById('curpSi').checked = false;
-        document.getElementById('curpDoc').disabled = true;
+        document.getElementById('registroDoc4').disabled = true;
     } else if (num ==16){
         document.getElementById('checkAllNo').checked = false;
         document.getElementById('comprobanteNo').checked = false;
         document.getElementById('comprobanteNA').checked = false;
+        document.getElementById('registroDoc6').disabled = false;
+        var checkSi5 = document.getElementById('comprobanteSi');
+        if (checkSi5.checked) {
+            document.getElementById('registroDoc6').disabled = false;
+        } else {
+            document.getElementById('registroDoc6').disabled = true;
+        }
     } else if (num ==17){
         document.getElementById('checkAllSi').checked = false;
         document.getElementById('comprobanteSi').checked = false;
         document.getElementById('comprobanteNA').checked = false;
+        document.getElementById('registroDoc6').disabled = true;
     } else if (num == 18){
         document.getElementById('checkAllSi').checked = false;
         document.getElementById('checkAllNo').checked = false;
         document.getElementById('comprobanteNo').checked = false;
         document.getElementById('comprobanteSi').checked = false;
-        document.getElementById('comprobanteDoc').disabled = true;
+        document.getElementById('registroDoc6').disabled = true;
     } else if (num ==19){
         document.getElementById('checkAllNo').checked = false;
         document.getElementById('fotosNo').checked = false;
@@ -392,30 +427,45 @@ function valoracionCheck(x){
         document.getElementById('checkAllNo').checked = false;
         document.getElementById('circulacionNo').checked = false;
         document.getElementById('circulacionNA').checked = false;
+        document.getElementById('registroDoc7').disabled = false;
+        var checkSi6 = document.getElementById('circulacionSi');
+        if (checkSi6.checked) {
+            document.getElementById('registroDoc7').disabled = false;
+        } else {
+            document.getElementById('registroDoc7').disabled = true;
+        }
     } else if (num ==23){
         document.getElementById('checkAllSi').checked = false;
         document.getElementById('circulacionSi').checked = false;
         document.getElementById('circulacionNA').checked = false;
+        document.getElementById('registroDoc7').disabled = true;
     } else if (num ==24){
         document.getElementById('checkAllSi').checked = false;
         document.getElementById('checkAllNo').checked = false;
         document.getElementById('circulacionNo').checked = false;
         document.getElementById('circulacionSi').checked = false;
-        document.getElementById('circulacionDoc').disabled = true;
+        document.getElementById('registroDoc7').disabled = true;
     } else if (num ==13){
         document.getElementById('checkAllNo').checked = false;
         document.getElementById('ineNo').checked = false;
         document.getElementById('ineNA').checked = false;
+        var checkSi4 = document.getElementById('ineSi');
+        if (checkSi4.checked) {
+            document.getElementById('registroDoc5').disabled = false;
+        } else {
+            document.getElementById('registroDoc5').disabled = true;
+        }
     } else if (num ==14){
         document.getElementById('checkAllSi').checked = false;
         document.getElementById('ineSi').checked = false;
         document.getElementById('ineNA').checked = false;
+        document.getElementById('registroDoc5').disabled = true;
     } else if (num ==15){
         document.getElementById('checkAllSi').checked = false;
         document.getElementById('checkAllNo').checked = false;
         document.getElementById('ineNo').checked = false;
         document.getElementById('ineSi').checked = false;
-        document.getElementById('ineDoc').readonly = true;
+        document.getElementById('registroDoc5').disabled = true;
     }
 }
     
@@ -433,6 +483,13 @@ function valoracionCheck(x){
             document.getElementById('fotosSi').checked = true;
             document.getElementById('circulacionSi').checked = true;
             document.getElementById('ineSi').checked = true;
+            document.getElementById('registroDoc1').disabled = false;
+            document.getElementById('registroDoc2').disabled = false;
+            document.getElementById('registroDoc3').disabled = false;
+            document.getElementById('registroDoc4').disabled = false;
+            document.getElementById('registroDoc5').disabled = false;
+            document.getElementById('registroDoc6').disabled = false;
+            document.getElementById('registroDoc7').disabled = false;
         } else {
             document.getElementById('checkAllNo').checked = false;
             document.getElementById('registroSi').checked = false;
@@ -451,6 +508,13 @@ function valoracionCheck(x){
             document.getElementById('fotosNA').checked = false;
             document.getElementById('circulacionNA').checked = false;
             document.getElementById('ineNA').checked = false;
+            document.getElementById('registroDoc1').disabled = true;
+            document.getElementById('registroDoc2').disabled = true;
+            document.getElementById('registroDoc3').disabled = true;
+            document.getElementById('registroDoc4').disabled = true;
+            document.getElementById('registroDoc5').disabled = true;
+            document.getElementById('registroDoc6').disabled = true;
+            document.getElementById('registroDoc7').disabled = true;
         }
     }
     function checkAll2() {
@@ -467,6 +531,13 @@ function valoracionCheck(x){
             document.getElementById('fotosNo').checked = true;
             document.getElementById('circulacionNo').checked = true;
             document.getElementById('ineNo').checked = true;
+            document.getElementById('registroDoc1').disabled = true;
+            document.getElementById('registroDoc2').disabled = true;
+            document.getElementById('registroDoc3').disabled = true;
+            document.getElementById('registroDoc4').disabled = true;
+            document.getElementById('registroDoc5').disabled = true;
+            document.getElementById('registroDoc6').disabled = true;
+            document.getElementById('registroDoc7').disabled = true;
         } else {
             document.getElementById('checkAllSi').checked = false;
             document.getElementById('registroNo').checked = false;
@@ -485,6 +556,13 @@ function valoracionCheck(x){
             document.getElementById('fotosNA').checked = false;
             document.getElementById('circulacionNA').checked = false;
             document.getElementById('ineNA').checked = false;
+            document.getElementById('registroDoc1').disabled = true;
+            document.getElementById('registroDoc2').disabled = true;
+            document.getElementById('registroDoc3').disabled = true;
+            document.getElementById('registroDoc4').disabled = true;
+            document.getElementById('registroDoc5').disabled = true;
+            document.getElementById('registroDoc6').disabled = true;
+            document.getElementById('registroDoc7').disabled = true;
         }
     }
     /* function checkAll3(){
