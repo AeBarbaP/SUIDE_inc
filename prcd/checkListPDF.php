@@ -8,131 +8,50 @@ ini_set('memory_limit', '2048M');
 
 include('qc/qc.php');
 
-$folio = $_REQUEST['curp'];
-$internet = 0;
-$inst_periferico = 0;
-$limp_equipo = 0;
-$tec_mouse = 0;
-$falla_monitor = 0;
-$otra1 = 0;
-$act_office = 0;
-$activar_so = 0;
-$actualizar_sw = 0;
-$formateo_completo = 0;
-$limpieza_virus = 0;
-$instalar_sw = 0;
-$otra_sw = 0;
-$escanear = 0;
-$printcolor = 0;
-$rw_cd = 0;
-$web = 0;
-$otra_2 = 0;
+$curp = $_REQUEST['curp'];
 
-$sql = "SELECT * FROM bitacora WHERE folio = '$folio'";
+$sql = "SELECT * FROM documentos_list WHERE curp = '$curp'";
 $resultadoSql = $conn->query($sql);
 $rowSQL = $resultadoSql->fetch_assoc();
 
-$sql2 = "SELECT * FROM observaciones WHERE folio = '$folio'";
-$resultadoSql2 = $conn->query($sql2);
-/* $rowSQL2 = $resultadoSql2->fetch_assoc(); */
-
-while ($rowSQL2 = $resultadoSql2->fetch_assoc()){
-  if ($rowSQL2['sub_cat']==1){
-    $internet = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $internet = "";
-  }
-  if ($rowSQL2['sub_cat']==2){
-    $inst_periferico = $rowSQL2['observaciones_dti'];
-  }   else if ($rowSQL2['sub_cat']== null){
-    $inst_periferico = "";
-  }
-  if ($rowSQL2['sub_cat']==3){
-    $limp_equipo = $rowSQL2['observaciones_dti'];
-  }   else if ($rowSQL2['sub_cat']== null){
-    $limp_equipo = "";
-  }
-  if ($rowSQL2['sub_cat']==4){
-    $tec_mouse = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $tec_mouse = "";
-  }
-  if ($rowSQL2['sub_cat']==5){
-    $falla_monitor = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $falla_monitor = "";
-  }
-  if ($rowSQL2['sub_cat']==6){
-    $otra1 = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $otra1 = "";
-  }
-  if ($rowSQL2['sub_cat']==7){
-    $act_office = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $act_office = "";
-  }
-  if ($rowSQL2['sub_cat']==8){
-    $activar_so = $rowSQL2['observaciones_dti'];
-  }   else if ($rowSQL2['sub_cat']== null){
-    $activar_so = "";
-  }
-  if ($rowSQL2['sub_cat']==9){
-    $actualizar_sw = $rowSQL2['observaciones_dti'];
-  }   else if ($rowSQL2['sub_cat']== null){
-    $actualizar_sw = "";
-  }
-  if ($rowSQL2['sub_cat']==10){
-    $formateo_completo = $rowSQL2['observaciones_dti'];
-  }   else if ($rowSQL2['sub_cat']== null){
-    $formateo_completo = "";
-  }
-  if ($rowSQL2['sub_cat']==11){
-    $limpieza_virus = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $limpieza_virus = "";
-  }
-    if ($rowSQL2['sub_cat']==12){
-    $instalar_sw = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $instalar_sw = "";
-  }
-    if ($rowSQL2['sub_cat']==13){
-    $otra_sw = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $otra_sw = "";
-  }
-    if ($rowSQL2['sub_cat']==14){
-    $escanear = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $escanear = "";
-  }
-    if ($rowSQL2['sub_cat']==15){
-    $printcolor = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $printcolor = "";
-  }
-    if ($rowSQL2['sub_cat']==16){
-    $rw_cd = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $rw_cd = "";
-  }
-    if ($rowSQL2['sub_cat']==17){
-    $web = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $web = "";
-  }
-    if ($rowSQL2['sub_cat']==18){
-    $otra_2 = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $otra_2 = "";
-  }
-/*   echo '
-  <script>
-  console.log('.$rowSQL2['observaciones_dti'].');
-  </script>
-  '; */
+while ($rowSQL = $resultadoSql2->fetch_assoc()){
+    if ($rowSQL['tipo_doc']==1){
+        $doc1 = 1;
+    }  else if ($rowSQL['tipo_doc']== null){
+        $doc1 = "";
+    }
+    if ($rowSQL['tipo_doc']==2){
+        $doc2 = 2;
+    }  else if ($rowSQL['tipo_doc']== null){
+        $doc2 = "";
+    }
+    if ($rowSQL['tipo_doc']==1){
+        $doc3 = 1;
+    }  else if ($rowSQL['tipo_doc']== null){
+        $doc3 = "";
+    }
+    if ($rowSQL['tipo_doc']==1){
+        $doc4 = 1;
+    }  else if ($rowSQL['tipo_doc']== null){
+        $doc4 = "";
+    }
+    if ($rowSQL['tipo_doc']==1){
+        $doc5 = 1;
+    }  else if ($rowSQL['tipo_doc']== null){
+        $doc5 = "";
+    }
+    if ($rowSQL['tipo_doc']==1){
+        $doc6 = 1;
+    }  else if ($rowSQL['tipo_doc']== null){
+        $doc6 = "";
+    }
+    if ($rowSQL['tipo_doc']==1){
+        $doc7 = 1;
+    }  else if ($rowSQL['tipo_doc']== null){
+        $doc7 = "";
+    }
 }
+
 require('prcd/fpdf/fpdf.php');
 class PDF extends FPDF
 {
@@ -141,7 +60,7 @@ function Header()
 {
     // Logo
 
-    $this->Image('img/logo_completo.jpg',72,15,63);
+    $this->Image('img/logos.jpg',0,10,63);
     // Arial bold 15
     $this->SetFont('Arial','B',15);
     // Movernos a la derecha
@@ -169,27 +88,27 @@ $pdf->AddPage();
 $pdf->SetFont('Arial','B',10);
 $pdf->Multicell(190,8,utf8_decode('
 
-DEPARTAMENTO DE TECNOLOGÍAS DE LA INFORMACIÓN'),0,'C',0);
+DIRECCIÓN DE ATENCIÓN PRIORITARIA A PERSONAS CON DISCAPACIDAD'),0,'C',0);
 $pdf->SetFont('Arial','B',8);
 
-$pdf->Multicell(190,5,utf8_decode('FORMATO DE SERVICIO, APOYO Y/O SOPORTE TÉCNICO'),0,'C',0);
+$pdf->Multicell(190,5,utf8_decode('REQUISITOS PARA EXPEDIENTES DE PERSONAS CON DISCAPACIDAD'),0,'C',0);
 $pdf->Ln();
 $pdf->Ln();
-$pdf->SetFont('Arial','B',10);
+/* $pdf->SetFont('Arial','B',10);
 $pdf->Cell(151,5,'',0,0);
 $pdf->Cell(40,5,'Fecha',1,0,'C');
 $pdf->Ln();
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(151,8,'Zacatecas, Zac., a ',0,'R',0);
-$pdf->Cell(40,8,$rowSQL['fecha'],1,0,'C');
-$pdf->Ln();
+$pdf->Cell(151,8,,0,'R',0);
+$pdf->Cell(40,8,,1,0,'C');
+$pdf->Ln(); */
 $pdf->SetFont('Arial','B',10);
 $pdf->SetFillColor(93,109,126);
-$pdf->Cell(100,5,'Datos del equipo',1,0,'C');
-$pdf->Cell(91,5,'Folio',1,0,'C');
+$pdf->Cell(100,5,'Expediente No.',1,0,'C');
+$pdf->Cell(91,5,'Fecha',1,0,'C');
 $pdf->Ln();
 $pdf->Cell(100,18,$rowSQL['datos_pc'],1,0,'C');
-$pdf->Cell(91,18,$rowSQL['folio'],1,0,'C');
+$pdf->Cell(91,18,'Zacatecas, Zac., a '.$rowSQL['fecha'],1,0,'C');
 $pdf->Ln();
 $pdf->Cell(191,8,'MANTENIMIENTO PREVENTIVO/CORRECTIVO DE HARDWARE',1,0,'C');
 $pdf->Ln();
