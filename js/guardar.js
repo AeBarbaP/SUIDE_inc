@@ -1109,52 +1109,84 @@ function PreguardarSolicitud(){
         },
         success: function(data){
             $('#NuevaSolicitud').fadeIn(1000).append(data);
+            document.getElementById('btnEntregaApoyo').disabled = false;
             // var tabla = document.getElementById("NuevaSolicitud");
             // tabla.innerHTML = 
         }
 
     });
 }
-
+// $(document).on("click", "#btnEntregaApoyo", function() { 
 function guardarSolicitud(){
-    var curp_exp = document.getElementById('curp_exp').value;
-    var unitario = document.getElementById('inputUnitario').value;
+    // var curp_exp = document.getElementById('curp_exp').value;
+    // var unitario = document.getElementById('inputUnitario').value;
 
-    var tipoSolicitud = document.getElementById('tipoSolicitud').value;
-    var fechaSolicitud = document.getElementById('fechaSolicitud').value;
-    var folioSolicitud = document.getElementById('folioSolicitud').value;
-    var detalleSolicitud = document.getElementById('articuloSolicitud').value;
-    var cantidadArt = document.getElementById('cantidadArt').value;
-    var monto_solicitud = document.getElementById('costoSolicitud').value;
+    // var tipoSolicitud = document.getElementById('tipoSolicitud').value;
+    // var fechaSolicitud = document.getElementById('fechaSolicitud').value;
+    // var folioSolicitud = document.getElementById('folioSolicitud').value;
+    // var detalleSolicitud = document.getElementById('articuloSolicitud').value;
+    // var cantidadArt = document.getElementById('cantidadArt').value;
+    // var monto_solicitud = document.getElementById('costoSolicitud').value;
     
-    $.ajax({
-        type: "POST",
-        url: 'prcd/guardarApoyo.php',
-        dataType:'json',
-        data: {
-            curp_exp:curp_exp,
-            tipoSolicitud:tipoSolicitud,
-            fechaSolicitud:fechaSolicitud,
-            folioSolicitud:folioSolicitud,
-            detalleSolicitud:detalleSolicitud,
-            cantidadArt:cantidadArt,
-            unitario:unitario,
-            monto_solicitud:monto_solicitud
-        },
-        success: function(data){
-            var jsonData = JSON.parse(JSON.stringify(data));
-            var verificador = jsonData.success;
-            if (verificador == 1) {
-                mostrarTabla();
+    // $.ajax({
+    //     type: "POST",
+    //     url: 'prcd/guardarApoyo.php',
+    //     dataType:'json',
+    //     data: {
+    //         curp_exp:curp_exp,
+    //         tipoSolicitud:tipoSolicitud,
+    //         fechaSolicitud:fechaSolicitud,
+    //         folioSolicitud:folioSolicitud,
+    //         detalleSolicitud:detalleSolicitud,
+    //         cantidadArt:cantidadArt,
+    //         unitario:unitario,
+    //         monto_solicitud:monto_solicitud
+    //     },
+    //     success: function(data){
+    //         var jsonData = JSON.parse(JSON.stringify(data));
+    //         var verificador = jsonData.success;
+    //         if (verificador == 1) {
+    //             mostrarTabla();
                 
-            } else if (verificador == 0){
-                alert('no muestra tabla');
-            }
-            document.getElementById('btnEntregaApoyo').disabled = false;
-        }
+    //         } else if (verificador == 0){
+    //             alert('no muestra tabla');
+    //         }
+    //         document.getElementById('btnEntregaApoyo').disabled = false;
+    //     }
 
+    // });
+    $('table #tablaPre tr').each(function () {
+        
+        var x = $(this).find('td').eq(0).html();
+        var cantidad = $(this).find('td').eq(1).html();
+        var descripcion = $(this).find('td').eq(2).html();
+        var costo = $(this).find('td').eq(3).html();
+        var total = $(this).find('td').eq(4).html();
+        var curp_exp = document.getElementById('curp_exp').value;
+        var tipoSolicitud = document.getElementById('tipoSolicitud').value;
+
+        
+        $.ajax({
+            // async: false,
+            type: "POST",
+            url: "prcd/guardarApoyo.php",
+            data: "&tipoSolicitud" + tipoSolicitud + "&curp_exp" + curp_exp + "&cantidad=" + cantidad + "&descripcion=" + descripcion + "&costo=" + costo + "&total=" + total,
+            data: {valores: valores},
+            success: function (data) {
+                var jsonData = JSON.parse(JSON.stringify(data));
+                var verificador = jsonData.success;
+                if (verificador == 1) {                    
+                } else if (verificador == 0){
+                    alert('no muestra tabla');
+                }
+                document.getElementById('btnEntregaApoyo').disabled = false;
+        
+                }
+        });
     });
+// });
 }
+
 function guardarSolicitudExtra(){
     var curp_exp = document.getElementById('curp_exp').value;
     var tipoSolicitud = document.getElementById('tipoSolicitud').value;
@@ -1281,6 +1313,7 @@ function mostrarTabla(){
 }
 
 function swalEntrega(){
+    
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-success',
@@ -1297,6 +1330,7 @@ function swalEntrega(){
         cancelButtonText: 'No, cancelar!',
         reverseButtons: true
     }).then((result) => {
+
         if (result.isConfirmed) {
             flagEntrega();
             mostrarTablaServicios();
