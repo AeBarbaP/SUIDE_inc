@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2023 at 10:33 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 7.4.33
+-- Generation Time: Jul 18, 2023 at 09:21 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `alergias` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `tipo` int(11) NOT NULL COMMENT '1 - Alimentaria\r\n2 - Medicamentos\r\n3 - Ambiental'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `alergias`
@@ -160,7 +160,7 @@ CREATE TABLE `asentamientos` (
   `municipio` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `localidad` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `asentamiento` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `asentamientos`
@@ -1935,7 +1935,7 @@ CREATE TABLE `catestados` (
   `claveEstado` varchar(10) NOT NULL COMMENT 'Clave del Estado de la República',
   `nombreEstado` varchar(120) NOT NULL COMMENT 'Nombre del Estado de la República',
   `estadoActivo` tinyint(1) NOT NULL COMMENT 'Estatus del registro \n[0|1]\n0 => Inactivo\n1 => Activo'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Catálogo de Estados:\nEstructura en la cual se guarda la información referente a los Estados';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catálogo de Estados:\nEstructura en la cual se guarda la información referente a los Estados';
 
 --
 -- Dumping data for table `catestados`
@@ -1960,7 +1960,7 @@ CREATE TABLE `catlocalidades` (
   `nombreLocalidad` varchar(120) NOT NULL COMMENT 'Nombre de la Localidad correspondiente al Municipio al cual pertenece',
   `localidadActivo` tinyint(1) NOT NULL COMMENT 'Estatus del registro \n[0|1]\n0 => Inactivo\n1 => Activo',
   `idCatMunicipio` int(11) UNSIGNED NOT NULL COMMENT 'Relación con la Tabla Municipios, permite identificar a cual  pertenece la Localidad'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Catálogo de Localidades:\nEstructura en la cual se guarda la información referente a las Localidades de un Municipio';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catálogo de Localidades:\nEstructura en la cual se guarda la información referente a las Localidades de un Municipio';
 
 --
 -- Dumping data for table `catlocalidades`
@@ -9758,7 +9758,7 @@ CREATE TABLE `catmunicipios` (
   `nombreMunicipio` varchar(120) NOT NULL COMMENT 'Nombre del Municipio correspondiente al Estado al cual se encuentra referenciado',
   `municipioActivo` tinyint(1) NOT NULL COMMENT 'Estatus del registro \n[0|1]\n0 => Inactivo\n1 => Activo',
   `idCatEstado` int(11) UNSIGNED NOT NULL COMMENT 'Relación con la Tabla Estados, permite identificar a cual de los Estados pertenece el Municipio'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Catálogo de Municipios:\nEstructura en la cual se guarda la información referente a los Municipios';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catálogo de Municipios:\nEstructura en la cual se guarda la información referente a los Municipios';
 
 --
 -- Dumping data for table `catmunicipios`
@@ -9851,78 +9851,52 @@ INSERT INTO `catmunicipios` (`id`, `claveMunicipio`, `nombreMunicipio`, `municip
 
 CREATE TABLE `datos_generales` (
   `id` int(11) NOT NULL,
-  `numExpediente` varchar(15) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `apellido_p` varchar(50) NOT NULL,
-  `apellido_m` varchar(50) NOT NULL,
+  `numExpediente` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_registro` datetime NOT NULL,
+  `nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `apellido_p` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `apellido_m` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `genero` int(11) NOT NULL,
   `edad` int(11) NOT NULL,
   `edo_civil` int(11) NOT NULL,
   `f_nacimiento` date NOT NULL,
-  `lugar_nacimiento` varchar(200) NOT NULL COMMENT 'Estados',
-  `domicilio` varchar(100) NOT NULL,
-  `no_int` varchar(10) NOT NULL,
-  `no_ext` varchar(10) NOT NULL,
-  `colonia` varchar(100) NOT NULL,
-  `entre_vialidades` varchar(100) NOT NULL,
-  `descr_referencias` varchar(200) NOT NULL,
-  `estado` varchar(100) NOT NULL,
+  `lugar_nacimiento` varchar(200) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Estados',
+  `domicilio` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `no_int` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `no_ext` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `colonia` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `entre_vialidades` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `descr_referencias` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `estado` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `municipio` int(11) NOT NULL,
-  `localidad` varchar(100) NOT NULL,
-  `asentamiento` varchar(100) NOT NULL,
+  `localidad` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `asentamiento` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `cp` int(11) NOT NULL,
-  `telefono_part` varchar(20) NOT NULL,
-  `correo` varchar(100) DEFAULT NULL,
-  `telefono_cel` varchar(20) NOT NULL,
+  `telefono_part` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `correo` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `telefono_cel` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `escolaridad` int(11) NOT NULL,
-  `profesión` varchar(50) NOT NULL,
-  `curp` varchar(30) NOT NULL,
-  `rfc` varchar(30) NOT NULL,
+  `profesión` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `curp` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `rfc` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `estudia` int(11) NOT NULL,
-  `estudia_donde` varchar(100) NOT NULL,
-  `estudia_habilidad` varchar(100) NOT NULL,
-  `trabaja` varchar(100) NOT NULL,
-  `trabaja_donde` varchar(100) NOT NULL,
-  `trabaja_ingresos` varchar(10) NOT NULL,
+  `estudia_donde` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `estudia_habilidad` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `trabaja` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `trabaja_donde` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `trabaja_ingresos` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `asoc_civ` int(11) NOT NULL,
-  `asoc_cual` varchar(100) NOT NULL,
+  `asoc_cual` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `pensionado` int(11) NOT NULL,
-  `pensionado_donde` varchar(100) NOT NULL,
+  `pensionado_donde` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `pension_monto` int(11) NOT NULL,
-  `pension_temporalidad` varchar(20) NOT NULL,
+  `pension_temporalidad` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `sindicato` int(11) NOT NULL,
-  `sindicato_cual` varchar(100) NOT NULL,
+  `sindicato_cual` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `seguridad_social` int(11) NOT NULL,
-  `seguridad_social_donde` varchar(100) NOT NULL,
-  `seguridad_social_otro` varchar(100) DEFAULT NULL
+  `seguridad_social_donde` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `seguridad_social_otro` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `datos_generales`
---
-
-INSERT INTO `datos_generales` (`id`, `numExpediente`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `estado`, `municipio`, `localidad`, `asentamiento`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `profesión`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `sindicato`, `sindicato_cual`, `seguridad_social`, `seguridad_social_donde`, `seguridad_social_otro`) VALUES
-(27, '', 'dsatguew', 'gteqyg', 'ghuisa', 1, 45, 1, '1111-11-11', 'gs<aa', 'bfdzs', '6', '498', 'sfdsate', 'gosa89', 'gdsagdis', '', 1, '1', '', 456, '456', 'gdages@etsaw.com', '4567', 1, 'yghrtsd1', 'LEVJ810924HZSXLS03', 'vgfia', 1, 'hfds|', 'gfdagyw|', '1', 'bhtrjwirt|', '752', 1, 'bhfdshdfx', 1, 'hrfdshn', 454, 'Bimestral', 1, 'hgrdfsahjd', 5, 'gfdsaye', NULL),
-(28, '', 'dsatguew', 'gteqyg', 'ghuisa', 1, 45, 1, '1111-11-11', 'gs<aa', 'bfdzs', '6', '498', 'sfdsate', 'gosa89', 'gdsagdis', '', 1, '1', '', 456, '456', 'gdages@etsaw.com', '4567', 1, 'yghrtsd1', 'difusoap', 'vgfia', 1, 'hfds|', 'gfdagyw|', '1', 'bhtrjwirt|', '752', 1, 'bhfdshdfx', 1, 'hrfdshn', 454, 'Bimestral', 1, 'hgrdfsahjd', 5, 'gfdsaye', NULL),
-(29, '', 'gdfagius', 'gdoapyhuk', 'hbfdsouh', 1, 55, 1, '2022-05-07', 'sgfdsaygh', 'fgdstliohjuohñi', '7', '548', 'gdsuojlkdm', 'hgfoxdiugy', 'hyuipñaklshnj', '', 1, '1', '', 1, '98160', 'DGAGREAOI@GFDSOGHRE.com', '98160', 1, 'urtw', 'gfdagewsvfdsa688', 'grdszdsg5785fs', 1, 'hgfrs', 'jui', '1', 'yrer', '58', 1, 'gdfijuoslu|', 1, 'bnuoisolito', 7857, 'Mensual', 1, 'kliyhoih', 1, '', NULL),
-(30, '', 'io', 'oi', 'oi', 1, 58, 1, '2018-05-07', 'i', 'ol', '4', '4', 'kji', '4', 'l', '', 1, '1', '', 9, '1', 'n@n.n', '1', 1, 'j ', 'o', 'o', 1, 'hj', 'h', '1', 'k', '7897536', 1, 'h', 1, 'k', 786, 'Mensual', 1, 'j', 1, '', NULL),
-(31, '', 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, '5', 'u', 'kj', 0, '', '4', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
-(32, '', 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, '5', 'u', 'kj', 0, '', '4', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
-(33, '', 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, '5', 'u', 'kj', 0, '', '4', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
-(34, '', 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, '5', 'u', 'kj', 0, '', '4', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
-(35, '', 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, '5', 'u', 'kj', 0, '', '4', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
-(36, '', 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, 'v', 'u', 'kj', 0, '', 'v', '0', '', '', 0, '', 0, '', 0, '', 0, '', 1, '', NULL),
-(37, '', 'j', 'j', 'j', 1, 4, 1, '2021-05-09', 'kj', 'h', '5', '5', 'hj', 'j', 'jvid', '', 1, '1', '', 5, '14', 'n@n.n', '4', 1, 'v', 'u', 'kj', 1, 'h', 'v', '1', 't', '25', 1, 'g', 1, 'g', 4, 'Mensual', 0, '', 5, 'f', NULL),
-(38, '', 'NY', 'NY', 'NY', 1, 54, 1, '1969-06-08', 'USA', 'NYQ', '5', '45', 'NY', 'NY', 'NY', '', 1, '1', '', 4896, '98160', 'NY@NY.com', '4921587935', 1, 'NY', 'NY', 'NY', 1, 'NY', 'NY', '1', 'NY', '15685', 1, 'NY', 1, 'NY', 14968, 'Trimestral', 1, 'NY', 5, 'NY', NULL),
-(39, '', 'NY', 'NY', 'NY', 1, 54, 1, '1969-06-08', 'USA', 'NYQ', '5', '45', 'NY', 'NY', 'NY', '', 1, '1', '', 4896, '98160', 'NY@NY.com', '4921587935', 1, 'NY', 'NY', 'NY', 1, 'NY', 'NY', '1', 'NY', '15685', 1, 'NY', 1, 'NY', 14968, 'Trimestral', 1, 'NY', 5, 'NY', NULL),
-(40, '', 'js', 'jgdos', 'o', 0, 4, 1, '2024-07-10', 'ju', 'sa', '8', '5', 'oi', 'bg', 'g', '', 1, '1', '', 98, '1', 'gdages@etsaw.com', '1', 1, 'fdrs', 'j', 'k', 1, 'g', 'f', '1', 'f', '9f', 1, 'f', 1, 'f', 4, 'Mensual', 1, 'd', 5, 'e', NULL),
-(41, '', 'df', 'd', 'g', 1, 3, 1, '2018-08-09', 'TF', 'GDF', '6', '5', 'H', 'G', 'HDFA', '', 1, '1', '', 5, '58', 'NY@NY.com', '8', 1, 'H', 'N', 'H', 1, 'GWS', 'GHRE', '1', 'HFD', '896', 1, 'NJ', 1, 'HTGF', 8, 'Mensual', 1, 'JTG', 5, 'HFD', NULL),
-(42, '', 'df', 'd', 'g', 1, 3, 1, '2018-08-09', 'TF', 'GDF', '6', '5', 'H', 'G', 'HDFA', '', 1, '1', '', 5, '58', 'NY@NY.com', '8', 1, 'H', 'N', 'H', 1, 'GWS', 'GHRE', '1', 'HFD', '896', 1, 'NJ', 1, 'HTGF', 8, 'Mensual', 1, 'JTG', 5, 'HFD', NULL),
-(43, '', 'df', 'd', 'g', 1, 3, 1, '2018-08-09', 'TF', 'GDF', '6', '5', 'H', 'G', 'HDFA', '', 1, '1', '', 5, '58', 'NY@NY.com', '8', 1, 'H', 'N', 'H', 1, 'GWS', 'GHRE', '1', 'HFD', '896', 1, 'NJ', 1, 'HTGF', 8, 'Mensual', 1, 'JTG', 5, 'HFD', NULL),
-(44, '', 'dgs', 'gfda', 'hdfs', 1, 4, 1, '2020-04-21', 'kls', 'gd', '5', '5s', 'g', 'h', 't', '', 1, '1', '', 8, '5', 'n@n.n', '5', 1, 'g', 'GOBM200421MJCNRRA8', 'df', 1, 'g', 'g', '1', 'gw', '8', 1, 'h', 1, 'gh', 5, 'Mensual', 1, 'gy', 5, 'se', NULL),
-(45, '', 'Jesusrlv 9', 'Jesusrlv 9', 'Jesusrlv 9', 0, 42, 3, '2023-07-06', 'Zacatecas', 'MACBook PRO', '12', '12', 'MACBook', 'YX', 'YX', '32', 32056, 'Sin registro', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '323223', 6, 'programación', 'w', 'w', 1, 'itz', 'programación', '1', 'GODEZAC', '40000', 1, 'Jesusrlv 9', 1, 'Anny B', 100000, '1', 1, 'Jesusrlv 9', 1, '', NULL),
-(46, '', 'YX', 'YX', '12', 2, 2, 1, '2023-07-14', 'Zacatecas', 'MACBook', '12', '12', 'MackBook PRO', 'YX', 'dwsds', '32', 32018, 'Sin registro', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '3223232', 4, 'programación', 'YX', 'YX', 0, 'N/A', 'programación', '0', 'N/A', '', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', 3, '', NULL),
-(48, '32115', 'Ana Elisa', 'Barba', 'Pinedo', 1, 40, 2, '1982-12-12', 'Guadalajara Jalisco', 'de la Colina', 'A', '218', 'Loma Bonita', 'UAZ y Villas Universidad', 'Reja blanca', '32', 32056, 'ZACATECAS', 'Loma Bonita', 98160, '4921561846', 'aebarbap@gmail.com', '4921001418', 5, 'Ingeniero', 'BAPA821212MJCRNN04', 'BAPA821212N84', 0, 'N/A', 'Programador', '1', 'INCLUSION', '22000', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', 1, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -9932,30 +9906,30 @@ INSERT INTO `datos_generales` (`id`, `numExpediente`, `nombre`, `apellido_p`, `a
 
 CREATE TABLE `datos_medicos` (
   `id` int(11) NOT NULL,
-  `curp` varchar(20) NOT NULL,
-  `discapacidad` varchar(50) NOT NULL,
-  `grado_discapacidad` varchar(50) NOT NULL,
+  `curp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `discapacidad` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `grado_discapacidad` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `tipo_discapacidad` int(11) NOT NULL,
   `causa` int(11) NOT NULL,
-  `causa_otro` varchar(100) DEFAULT NULL,
+  `causa_otro` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `temporalidad` int(11) NOT NULL,
   `valoracion` int(11) NOT NULL,
   `fecha_valoracion` date NOT NULL,
   `rehabilitacion` int(11) NOT NULL,
-  `rehabilitacion_donde` varchar(50) NOT NULL,
+  `rehabilitacion_donde` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `rehabilitacion_inicio` date NOT NULL,
-  `rehabilitacion_duracion` varchar(50) NOT NULL,
+  `rehabilitacion_duracion` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `tipo_sangre` int(11) NOT NULL,
   `cirugias` int(11) NOT NULL,
-  `tipo_cirugias` varchar(100) NOT NULL,
+  `tipo_cirugias` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `protesis` int(11) NOT NULL,
-  `protesis_tipo` varchar(50) NOT NULL,
+  `protesis_tipo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `alergias` int(11) NOT NULL,
-  `alergias_cual` varchar(500) NOT NULL,
+  `alergias_cual` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `enfermedades` int(11) NOT NULL,
-  `enfermedades_cual` varchar(500) NOT NULL,
+  `enfermedades_cual` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `medicamentos` int(11) NOT NULL,
-  `medicamentos_cual` varchar(500) NOT NULL
+  `medicamentos_cual` varchar(500) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -9974,7 +9948,8 @@ INSERT INTO `datos_medicos` (`id`, `curp`, `discapacidad`, `grado_discapacidad`,
 (9, 'PRUEBA', 'motora', '0', 1, 7, 'g', 5, 1, '0000-00-00', 1, 're', '2023-07-23', '3', 1, 1, 't', 1, 'r', 1, '', 0, '', 0, ''),
 (10, 'BAPA', 'Síndrome de Aspergel', 'uno', 2, 7, 'parto', 1, 5, '0000-00-00', 1, 'CREE', '2023-07-23', '1', 5, 1, 'Rodilla', 1, 'Rodilla', 3, 'Cacahuate, Huevo, Nuez, Penicilina, Sol, Polvo', 0, 'Gastritis, Diabetes, Hipertensi�n', 0, 'Insulina, Losartan, Metocarbamol, CBD'),
 (11, 'INC', 'Multiple', 'mucho', 4, 7, 'parto', 1, 4, '2023-07-22', 1, 'CREE', '2023-07-26', '1', 5, 1, 'Vesícula, apéndice', 1, 'rodilla completa', 1, 'Cacahuate, Mariscos, Trigo', 0, 'Enfermedades no reportadas', 0, 'Enfermedades no reportadas'),
-(12, 'ROJO', 'una', 'uno', 4, 1, '', 1, 1, '2022-07-22', 1, 'CREE', '2023-05-22', '1', 1, 1, 'hfd', 1, 'fdsa', 1, 'Cacahuate, Huevo, Nuez, Penicilina, Sol', 1, 'Gastritis, Diabetes, Hipertensi�n', 1, 'Metocarbamol, Diazepam, Losartan, Insulina');
+(12, 'ROJO', 'una', 'uno', 4, 1, '', 1, 1, '2022-07-22', 1, 'CREE', '2023-05-22', '1', 1, 1, 'hfd', 1, 'fdsa', 1, 'Cacahuate, Huevo, Nuez, Penicilina, Sol', 1, 'Gastritis, Diabetes, Hipertensi�n', 1, 'Metocarbamol, Diazepam, Losartan, Insulina'),
+(13, 'BAPA821212MJCRNN04', '10-Cuadriparesia', 'x', 0, 3, '', 1, 1, '2023-07-12', 0, '0', '0000-00-00', '0', 1, 2, '', 2, '', 1, 'APLV Alergia a la Proteína de la Leche de Vaca, Ciprofloxacino, Sulfametoxazol-trimetoprima (Bactrim), Polvo, Moho', 0, 'Enfermedades no reportadas', 1, 'Diazepam, CBD');
 
 -- --------------------------------------------------------
 
@@ -9986,7 +9961,7 @@ CREATE TABLE `discapacidades` (
   `id` int(11) NOT NULL,
   `nombre` varchar(150) NOT NULL,
   `tipo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `discapacidades`
@@ -10058,7 +10033,7 @@ CREATE TABLE `documentos` (
   `recibe` varchar(50) NOT NULL,
   `folio_cred` int(10) DEFAULT NULL,
   `folio_tarj` int(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -10069,14 +10044,14 @@ CREATE TABLE `documentos` (
 CREATE TABLE `documentos_list` (
   `id` int(11) NOT NULL,
   `id_ext` int(11) NOT NULL,
-  `doc_medico` varchar(50) NOT NULL,
-  `doc_acta_nac` varchar(50) NOT NULL,
-  `doc_curp` varchar(50) NOT NULL,
-  `doc_ine` varchar(50) NOT NULL,
-  `doc_comp_dom` varchar(50) NOT NULL,
-  `doc_tarjeta` varchar(50) NOT NULL,
-  `doc_foto1` varchar(50) NOT NULL,
-  `doc_foto2` varchar(50) NOT NULL
+  `doc_medico` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `doc_acta_nac` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `doc_curp` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `doc_ine` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `doc_comp_dom` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `doc_tarjeta` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `doc_foto1` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `doc_foto2` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -10088,7 +10063,7 @@ CREATE TABLE `documentos_list` (
 CREATE TABLE `enfermedades` (
   `id` int(11) NOT NULL,
   `nombre` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `enfermedades`
@@ -10113,7 +10088,7 @@ INSERT INTO `enfermedades` (`id`, `nombre`) VALUES
 CREATE TABLE `extraordinarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `extraordinarios`
@@ -10144,7 +10119,7 @@ CREATE TABLE `funcionales` (
   `precio_compra` int(11) NOT NULL,
   `fecha_compra` date NOT NULL,
   `cantidad_compra` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `funcionales`
@@ -10192,16 +10167,16 @@ INSERT INTO `funcionales` (`id`, `nombre`, `precio_compra`, `fecha_compra`, `can
 
 CREATE TABLE `integracion` (
   `id` int(11) NOT NULL,
-  `curp` varchar(20) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `parentesco` varchar(20) NOT NULL,
+  `curp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `nombre` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `parentesco` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `edad` int(11) NOT NULL,
-  `escolaridad` varchar(20) NOT NULL,
-  `profesion_oficio` varchar(50) NOT NULL,
-  `discapacidad` varchar(50) NOT NULL,
-  `ingreso` varchar(20) NOT NULL,
+  `escolaridad` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `profesion_oficio` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `discapacidad` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `ingreso` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `telcel` int(10) NOT NULL,
-  `correoe` varchar(50) DEFAULT NULL
+  `correoe` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -10239,7 +10214,20 @@ CREATE TABLE `log_entregas` (
   `id_users` int(10) NOT NULL,
   `id_documentos` varchar(10) NOT NULL,
   `tipo_entrega` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `log_updates`
+--
+
+CREATE TABLE `log_updates` (
+  `id` int(11) NOT NULL,
+  `curp` varchar(20) NOT NULL,
+  `fecha_lastupdate` datetime NOT NULL,
+  `user` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -10252,7 +10240,7 @@ CREATE TABLE `log_usrlogin` (
   `id_usr` int(11) NOT NULL,
   `fecha_iniciosesion` datetime DEFAULT NULL,
   `fecha_cierresesion` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `log_usrlogin`
@@ -10346,7 +10334,13 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (85, 0, NULL, '2023-07-11 13:45:53'),
 (86, 1, '2023-07-11 13:45:59', NULL),
 (87, 0, NULL, '2023-07-13 09:49:45'),
-(88, 0, NULL, '2023-07-13 12:05:22');
+(88, 0, NULL, '2023-07-13 12:05:22'),
+(89, 1, '2023-07-13 20:09:07', NULL),
+(90, 0, NULL, '2023-07-13 20:13:12'),
+(91, 1, '2023-07-15 12:48:20', NULL),
+(92, 1, NULL, '2023-07-15 13:35:30'),
+(93, 1, '2023-07-15 13:35:41', NULL),
+(94, 1, '2023-07-18 00:44:31', NULL);
 
 -- --------------------------------------------------------
 
@@ -10357,7 +10351,7 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 CREATE TABLE `medicamentos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `medicamentos`
@@ -10380,7 +10374,7 @@ INSERT INTO `medicamentos` (`id`, `nombre`) VALUES
 CREATE TABLE `otros_apoyos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `otros_apoyos`
@@ -10401,7 +10395,7 @@ INSERT INTO `otros_apoyos` (`id`, `nombre`) VALUES
 CREATE TABLE `perfiles_usr` (
   `id` int(11) NOT NULL,
   `perfil` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `perfiles_usr`
@@ -10436,7 +10430,7 @@ CREATE TABLE `prestamo` (
   `id_users` int(11) NOT NULL,
   `qr_prestamo` varchar(100) NOT NULL,
   `entregado` int(1) NOT NULL COMMENT '1 Beneficiario\r\n2 Familiar\r\n3 Enlace Municipal'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -10446,12 +10440,12 @@ CREATE TABLE `prestamo` (
 
 CREATE TABLE `referencias` (
   `id` int(11) NOT NULL,
-  `curp` varchar(20) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `parentesco` varchar(20) NOT NULL,
+  `curp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `nombre` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `parentesco` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `celular` int(11) NOT NULL,
-  `profesion_oficio` varchar(100) NOT NULL,
-  `direccion` varchar(200) NOT NULL
+  `profesion_oficio` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `direccion` varchar(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -10477,15 +10471,15 @@ INSERT INTO `referencias` (`id`, `curp`, `nombre`, `parentesco`, `celular`, `pro
 
 CREATE TABLE `servicios` (
   `id` int(11) NOT NULL,
-  `curp` varchar(20) NOT NULL,
-  `folio_solicitud` varchar(20) NOT NULL,
+  `curp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `folio_solicitud` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `fecha_solicitud` date NOT NULL,
   `tipo_solicitud` int(11) NOT NULL,
-  `detalle_solicitud` varchar(100) NOT NULL,
+  `detalle_solicitud` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `cantidad` int(11) DEFAULT NULL,
   `monto_unitario` double NOT NULL,
   `monto_solicitud` double NOT NULL,
-  `autorizacion` varchar(50) DEFAULT NULL,
+  `autorizacion` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `fecha_entrega` date DEFAULT NULL,
   `monto_entregado` double DEFAULT NULL,
   `estatus_s` int(11) DEFAULT NULL
@@ -10640,7 +10634,7 @@ CREATE TABLE `solicitud` (
   `fecha_solicitud` datetime NOT NULL,
   `entrega` datetime NOT NULL,
   `estatus` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -10656,7 +10650,7 @@ CREATE TABLE `users` (
   `nombre` varchar(80) NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `estatus` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
@@ -10685,7 +10679,7 @@ CREATE TABLE `vehiculos` (
   `annio` int(4) NOT NULL,
   `no_placas` varchar(10) NOT NULL,
   `chofer` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -10695,22 +10689,22 @@ CREATE TABLE `vehiculos` (
 
 CREATE TABLE `vivienda` (
   `id` int(11) NOT NULL,
-  `curp` varchar(20) NOT NULL,
-  `vivienda` varchar(11) NOT NULL,
+  `curp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `vivienda` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
   `vivienda_renta` int(11) NOT NULL,
   `vivienda_pagando` int(11) NOT NULL,
   `monto_pagando` int(11) NOT NULL,
   `caracteristicas` int(11) NOT NULL,
-  `caracteristicas_otro` varchar(50) DEFAULT NULL,
+  `caracteristicas_otro` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `num_habitaciones` int(11) NOT NULL,
   `vivienda_cocia` int(11) NOT NULL,
   `vivienda_sala` int(11) NOT NULL,
   `vivienda_banio` int(11) NOT NULL,
-  `vivienda_otros` varchar(100) DEFAULT NULL,
+  `vivienda_otros` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `techo` int(11) NOT NULL,
-  `techo_otro` varchar(100) DEFAULT NULL,
+  `techo_otro` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `pared` int(11) NOT NULL,
-  `pared_otro` varchar(100) DEFAULT NULL,
+  `pared_otro` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `serv_basicos_agua` int(11) NOT NULL,
   `serv_basicos_luz` int(11) NOT NULL,
   `serv_basicos_drenaje` int(11) NOT NULL,
@@ -10720,7 +10714,7 @@ CREATE TABLE `vivienda` (
   `serv_basicos_carro` int(11) NOT NULL,
   `serv_basicos_gas` int(11) NOT NULL,
   `serv_basicos_telefono` int(11) NOT NULL,
-  `serv_basicos_otro` varchar(100) DEFAULT NULL,
+  `serv_basicos_otro` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `electrodomesticos_tv` int(11) NOT NULL,
   `electrodomesticos_lavadora` int(11) NOT NULL,
   `electrodomesticos_estereo` int(11) NOT NULL,
@@ -10729,10 +10723,10 @@ CREATE TABLE `vivienda` (
   `electrodomesticos_licuadora` int(11) NOT NULL,
   `electrodomesticos_dvd` int(11) NOT NULL,
   `electrodomesticos_estufa` int(11) NOT NULL,
-  `electrodomesticos_otro` varchar(100) DEFAULT NULL,
+  `electrodomesticos_otro` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `personas_dependen` int(11) NOT NULL,
   `deudas` int(11) NOT NULL,
-  `deudas_cuanto` varchar(20) DEFAULT NULL
+  `deudas_cuanto` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -10740,51 +10734,7 @@ CREATE TABLE `vivienda` (
 --
 
 INSERT INTO `vivienda` (`id`, `curp`, `vivienda`, `vivienda_renta`, `vivienda_pagando`, `monto_pagando`, `caracteristicas`, `caracteristicas_otro`, `num_habitaciones`, `vivienda_cocia`, `vivienda_sala`, `vivienda_banio`, `vivienda_otros`, `techo`, `techo_otro`, `pared`, `pared_otro`, `serv_basicos_agua`, `serv_basicos_luz`, `serv_basicos_drenaje`, `serv_basicos_cable`, `serv_basicos_internet`, `serv_basicos_celular`, `serv_basicos_carro`, `serv_basicos_gas`, `serv_basicos_telefono`, `serv_basicos_otro`, `electrodomesticos_tv`, `electrodomesticos_lavadora`, `electrodomesticos_estereo`, `electrodomesticos_microondas`, `electrodomesticos_computadora`, `electrodomesticos_licuadora`, `electrodomesticos_dvd`, `electrodomesticos_estufa`, `electrodomesticos_otro`, `personas_dependen`, `deudas`, `deudas_cuanto`) VALUES
-(1, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(2, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(3, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(4, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(5, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(6, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(7, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(8, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(9, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(10, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(11, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(12, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(13, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(14, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(15, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(16, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(17, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(18, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(19, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(20, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(21, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(22, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(23, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(24, '', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(25, 'vgfdhay', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(26, 'vgfdhay', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(27, 'ngjfs', '0', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(28, 'ngjfs', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(29, 'jgdkyt', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(30, 'gudfhasg', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(31, 'htfsju', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(32, 'xcx', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(33, 'sdfdsf', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(34, 'sdfdsf', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(35, 'sdfdsf', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, ''),
-(36, 'sd', '', 0, 0, 0, 0, '', 0, 0, 0, 0, '0', 0, '0', 1, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', 0, 1, ''),
-(37, 'csdvsdvf11', '2', 0, 0, 0, 1, '0', 0, 0, 0, 0, '0', 0, '0', 3, '', 1, 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', 0, 0, '0'),
-(38, 'fhfhfhf7777', '1', 0, 1, 2, 3, '2', 2, 1, 1, 1, '2', 3, '2', 4, '2', 1, 1, 1, 1, 1, 0, 1, 1, 1, '2', 1, 1, 1, 1, 1, 1, 1, 1, '2', 2, 1, '2|'),
-(39, 'fhfhfhf7777', '1', 0, 1, 2, 3, '2', 2, 1, 1, 1, '2', 3, '2', 4, '2', 1, 1, 1, 1, 1, 0, 1, 1, 1, '2', 1, 1, 1, 1, 1, 1, 1, 1, '2', 2, 1, '2'),
-(40, 'fhfhfhf7777', '1', 0, 1, 2, 3, '2', 2, 1, 1, 1, '2', 3, '2', 4, '2', 1, 1, 1, 1, 1, 0, 1, 1, 1, '2', 1, 1, 1, 1, 1, 1, 1, 1, '2', 2, 1, '2'),
-(41, 'fdsfdsfdsf4444', '3', 3, 1, 3, 3, '3', 3, 1, 1, 1, '3', 3, '3', 4, '3', 1, 1, 1, 1, 1, 0, 1, 1, 1, '3', 1, 1, 1, 1, 1, 1, 1, 1, '3', 3, 1, '3'),
-(42, 'fdsfdsfdsf4444', '3', 3, 1, 3, 3, '3', 3, 1, 1, 1, '3', 3, '3', 4, '3', 1, 1, 1, 1, 1, 0, 1, 1, 1, '3', 1, 1, 1, 1, 1, 1, 1, 1, '3', 3, 1, '3'),
-(43, 'fdsfdsfdsf4444', '3', 3, 1, 3, 3, '3', 3, 1, 1, 1, '3', 3, '3', 4, '3', 1, 1, 1, 1, 1, 0, 1, 1, 1, '3', 1, 1, 1, 1, 1, 1, 1, 1, '3', 3, 1, '3'),
-(44, 'zxcxz', '3', 9, 1, 9, 3, '9', 9, 1, 1, 1, '9', 3, '9', 4, '9', 1, 1, 1, 1, 1, 0, 1, 1, 1, '9', 1, 1, 1, 1, 1, 1, 1, 1, '9', 9, 1, '9'),
-(45, 'zxcxz', '3', 9, 1, 9, 3, '9', 9, 1, 1, 1, '9', 3, '9', 4, '9', 1, 1, 1, 1, 1, 0, 1, 1, 1, '9', 1, 1, 1, 1, 1, 1, 1, 1, '9', 9, 1, '9');
+(1, 'BAPA821212MJCRNN04', '1', 0, 0, 0, 1, '0', 3, 1, 1, 1, 'Estudio', 2, NULL, 2, '', 1, 1, 1, 1, 1, 0, 1, 1, 0, '0', 1, 1, 1, 1, 1, 1, 0, 1, '0', 3, 1, '15000');
 
 --
 -- Indexes for dumped tables
@@ -10942,13 +10892,13 @@ ALTER TABLE `asentamientos`
 -- AUTO_INCREMENT for table `datos_generales`
 --
 ALTER TABLE `datos_generales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `datos_medicos`
 --
 ALTER TABLE `datos_medicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `discapacidades`
@@ -10996,7 +10946,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `medicamentos`
@@ -11056,7 +11006,7 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT for table `vivienda`
 --
 ALTER TABLE `vivienda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
