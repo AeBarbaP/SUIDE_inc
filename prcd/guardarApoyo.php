@@ -1,6 +1,6 @@
 <?php
 
-    include('../prcd/qc/qc.php');
+    include('qc/qc.php');
 
     $curp = $_POST['curp_exp'];
     $tipoSolicitud = $_POST['tipoSolicitud'];
@@ -12,30 +12,32 @@
     $montoSolicitud = $_POST['monto_solicitud'];
 
     
+       
+        $QueryInsert = "INSERT INTO servicios (
+            curp,
+            folio_solicitud,
+            fecha_solicitud,
+            tipo_solicitud,
+            detalle_solicitud,
+            cantidad,
+            monto_unitario,
+            monto_solicitud,
+            monto_entregado
+        )
+        VALUES (
+            '$curpRen',
+            '$folioSolicitud',
+            '$fechaSolicitud',
+            '$tipoSolicitud',
+            '$detalleSolicitud',
+            '$cantidadArt',
+            '$unitario',
+            '$montoSolicitud',
+            '$montoSolicitud'
+        )
+        ";
+
     
-    $QueryInsert = "INSERT INTO servicios (
-        curp,
-        folio_solicitud,
-        fecha_solicitud,
-        tipo_solicitud,
-        detalle_solicitud,
-        cantidad,
-        monto_unitario,
-        monto_solicitud,
-        monto_entregado
-    )
-    VALUES (
-        '$curp',
-        '$folioSolicitud',
-        '$fechaSolicitud',
-        '$tipoSolicitud',
-        '$detalleSolicitud',
-        '$cantidadArt',
-        '$unitario',
-        '$montoSolicitud',
-        '$montoSolicitud'
-    )
-    ";
 
     $resultado_QueryInsert = $conn->query($QueryInsert);
 

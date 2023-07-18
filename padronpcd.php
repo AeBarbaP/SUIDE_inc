@@ -69,7 +69,7 @@ include('prcd/qc/qc.php');
     <link href="sidebars.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.js" integrity="sha512-sk0cNQsixYVuaLJRG0a/KRJo9KBkwTDqr+/V94YrifZ6qi8+OO3iJEoHi0LvcTVv1HaBbbIvpx+MCjOuLVnwKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.js" integrity="sha512-sk0cNQsixYVuaLJRG0a/KRJo9KBkwTDqr+/V94YrifZ6qi8+OO3iJEoHi0LvcTVv1HaBbbIvpx+MCjOuLVnwKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
@@ -1742,7 +1742,7 @@ include('prcd/qc/qc.php');
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Descripción:</label>
                   <!-- <div id="NuevaSolicitud"></div> -->
                   <div class="table-responsive" id="tablaSolicitud">
-                    <table class="table table-striped table-hover text-center">
+                    <table class="table table-striped table-hover text-center" id="tablaPre">
                       <thead>
                         <tr>
                           <th scope="col">#</th>
@@ -1762,7 +1762,7 @@ include('prcd/qc/qc.php');
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiarModalSolicitud()">Cancelar</button>
               <button type="button" class="btn btn-primary" id="btnlistaEspera" onclick="guardarSolicitudCompleta()" disabled>Agregar Solicitud</button>
-              <button type="button" class="btn btn-success" id="btnEntregaApoyo" onclick="guardarSolicitud();swalEntrega()" disabled>Entregar</button>
+              <button type="button" class="btn btn-success" id="btnEntregaApoyo" onclick="swalEntrega();guardarSolicitud()" disabled>Entregar</button>
             </div>
           </div>
         </div>
