@@ -976,7 +976,7 @@ function limpiarModalSolicitud(){
     document.getElementById('costoSolicitud').value = "";
     document.getElementById('costoSolicitudExtra').value = "";
     document.getElementById('costoSolicitudOtro').value = "";
-    document.getElementById('divTag').innerHTML = "";
+    document.getElementById('divTag').hidden = true;
     document.getElementById('btnlistaEspera').disabled = true;
     document.getElementById('btnEntregaApoyo').disabled = true;
 }
@@ -987,11 +987,11 @@ function limpiaInputsFunc(){
     document.getElementById('divTag').hidden = true;
 }
 
-function limpiarInputsExtra(){
+function limpiaInputsExtra(){
     document.getElementById('costoSolicitudExtra').value = "";
 }
 
-function limpiarInputsOtro(){
+function limpiaInputsOtro(){
     document.getElementById('costoSolicitudOtro').value = "";
 }
 
@@ -1012,8 +1012,8 @@ function queryCosto(x){
             var verificador = jsonData.estatus;
             if (verificador == 1){
                 document.getElementById('divTag').hidden = false;
-                document.getElementById('disponible1').setAttribute('style','color:green');
-                document.getElementById('disponible').setAttribute('style','color:green');
+                document.getElementById('disponible1').setAttribute('style','color:green;');
+                document.getElementById('disponible').setAttribute('style','color:green;');
                 document.getElementById('disponible').innerHTML = jsonData.cantidad;
                 var variable1 = jsonData.costo;
                 var variable2 = document.getElementById('cantidadArt').value;
@@ -1076,6 +1076,43 @@ function folioApoyo(){
             //alert('Se agregó nuevo apoyo extraordinario al catálogo');
 
         }
+    });
+}
+
+function PreguardarSolicitud(){
+    var curp_exp = document.getElementById('curp_exp').value;
+    var unitario = document.getElementById('inputUnitario').value;
+
+    var tipoSolicitud = document.getElementById('tipoSolicitud').value;
+    var fechaSolicitud = document.getElementById('fechaSolicitud').value;
+    var folioSolicitud = document.getElementById('folioSolicitud').value;
+    var detalleSolicitud = document.getElementById('articuloSolicitud').value;
+    var cantidadArt = document.getElementById('cantidadArt').value;
+    var monto_solicitud = document.getElementById('costoSolicitud').value;
+
+    var nFilas = $("#NuevaSolicitud tr").length;
+    
+    $.ajax({
+        type: "POST",
+        url: 'prcd/preguardarApoyo.php',
+        dataType:'html',
+        data: {
+            nFilas:nFilas,
+            curp_exp:curp_exp,
+            tipoSolicitud:tipoSolicitud,
+            fechaSolicitud:fechaSolicitud,
+            folioSolicitud:folioSolicitud,
+            detalleSolicitud:detalleSolicitud,
+            cantidadArt:cantidadArt,
+            unitario:unitario,
+            monto_solicitud:monto_solicitud
+        },
+        success: function(data){
+            $('#NuevaSolicitud').fadeIn(1000).append(data);
+            // var tabla = document.getElementById("NuevaSolicitud");
+            // tabla.innerHTML = 
+        }
+
     });
 }
 
