@@ -14,6 +14,14 @@ $sql = "SELECT * FROM documentos_list WHERE curp = '$curp'";
 $resultadoSql = $conn->query($sql);
 $rowSQL = $resultadoSql->fetch_assoc();
 
+$sql2 = "SELECT * FROM datos_generales WHERE curp = '$curp'";
+$resultadoSql2 = $conn->query($sql2);
+$rowSQL2 = $resultadoSql2->fetch_assoc();
+
+$sql3 = "SELECT * FROM log_updates WHERE curp = '$curp'";
+$resultadoSql3 = $conn->query($sql3);
+$rowSQL3 = $resultadoSql2->fetch_assoc();
+
 while ($rowSQL = $resultadoSql2->fetch_assoc()){
     if ($rowSQL['tipo_doc']==1){
         $doc1 = 1;
@@ -25,27 +33,27 @@ while ($rowSQL = $resultadoSql2->fetch_assoc()){
     }  else if ($rowSQL['tipo_doc']== null){
         $doc2 = "";
     }
-    if ($rowSQL['tipo_doc']==1){
+    if ($rowSQL['tipo_doc']==3){
         $doc3 = 1;
     }  else if ($rowSQL['tipo_doc']== null){
         $doc3 = "";
     }
-    if ($rowSQL['tipo_doc']==1){
+    if ($rowSQL['tipo_doc']==4){
         $doc4 = 1;
     }  else if ($rowSQL['tipo_doc']== null){
         $doc4 = "";
     }
-    if ($rowSQL['tipo_doc']==1){
+    if ($rowSQL['tipo_doc']==5){
         $doc5 = 1;
     }  else if ($rowSQL['tipo_doc']== null){
         $doc5 = "";
     }
-    if ($rowSQL['tipo_doc']==1){
+    if ($rowSQL['tipo_doc']==6){
         $doc6 = 1;
     }  else if ($rowSQL['tipo_doc']== null){
         $doc6 = "";
     }
-    if ($rowSQL['tipo_doc']==1){
+    if ($rowSQL['tipo_doc']==7){
         $doc7 = 1;
     }  else if ($rowSQL['tipo_doc']== null){
         $doc7 = "";
@@ -85,11 +93,11 @@ function Footer()
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
-$pdf->SetFont('Arial','B',10);
+$pdf->SetFont('Arial','B',12);
 $pdf->Multicell(190,8,utf8_decode('
 
 DIRECCIÓN DE ATENCIÓN PRIORITARIA A PERSONAS CON DISCAPACIDAD'),0,'C',0);
-$pdf->SetFont('Arial','B',8);
+$pdf->SetFont('Arial','B',10);
 
 $pdf->Multicell(190,5,utf8_decode('REQUISITOS PARA EXPEDIENTES DE PERSONAS CON DISCAPACIDAD'),0,'C',0);
 $pdf->Ln();
@@ -102,25 +110,55 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(151,8,,0,'R',0);
 $pdf->Cell(40,8,,1,0,'C');
 $pdf->Ln(); */
-$pdf->SetFont('Arial','B',10);
+$pdf->SetFont('Arial','B',12);
 $pdf->SetFillColor(93,109,126);
-$pdf->Cell(100,5,'Expediente No.',1,0,'C');
-$pdf->Cell(91,5,'Fecha',1,0,'C');
+$pdf->Cell(65,5,'Número de Expediente.',1,0,'C');
+$pdf->Cell(63,5,'Fecha de Registro',1,0,'C');
+$pdf->Cell(63,5,'Fecha Última Actualización',1,0,'C');
 $pdf->Ln();
-$pdf->Cell(100,18,$rowSQL['datos_pc'],1,0,'C');
-$pdf->Cell(91,18,'Zacatecas, Zac., a '.$rowSQL['fecha'],1,0,'C');
+$pdf->Cell(65,18,$rowSQL2['numExpediente'],1,0,'C');
+$pdf->Cell(63,18,'Zacatecas, Zac., a '.$rowSQL2['fecha_registro'],1,0,'C');
+$pdf->Cell(63,18,$rowSQL3['fecha_lastupdate'],1,0,'C'); /* Hacer validación para registro nuevo */
 $pdf->Ln();
-$pdf->Cell(191,8,'MANTENIMIENTO PREVENTIVO/CORRECTIVO DE HARDWARE',1,0,'C');
+/* $pdf->Cell(191,8,'MANTENIMIENTO PREVENTIVO/CORRECTIVO DE HARDWARE',1,0,'C');
+$pdf->Ln(); */
+$pdf->SetFont('Arial','B',10);
+$pdf->Cell(101,5,'',0,0,'C');
+$pdf->Cell(30,5,'SÍ',0,0,'C');
+$pdf->Cell(30,5,'NO',0,0,'C');
+$pdf->Cell(30,5,'N/A',0,0,'C');
 $pdf->Ln();
-$pdf->SetFont('Arial','B',8);
-$pdf->Cell(100,5,'Actividad',1,0,'C');
-$pdf->Cell(91,5,'Trabajo realizado',1,0,'C');
+$pdf->SetFont('Arial','B',10);
+$pdf->Cell(10,5,'1',0,0,'C');
+$pdf->Cell(91,5,utf8_decode('HOJA DE REGISTRO'),0,0,'R');
+$pdf->Cell(30,5,utf8_decode(),0,0,'C');
+$pdf->Cell(30,5,utf8_decode(),0,0,'C');
+$pdf->Cell(30,5,utf8_decode(),0,0,'C');
 $pdf->Ln();
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(10,5,'1',1,0,'C');
-$pdf->Cell(90,5,utf8_decode('Revisar conexión a internet'),1,0,'L');
-$pdf->Cell(91,5,utf8_decode($internet),1,0,'C');
+$pdf->SetFont('Arial','B',10);
+$pdf->Cell(10,5,'2',1,0,'C');
+$pdf->Cell(91,5,utf8_decode('DOCUMENTO MÉDICO'),0,0,'R');
+$pdf->Cell(30,5,utf8_decode(),0,0,'C');
+$pdf->Cell(30,5,utf8_decode(),0,0,'C');
+$pdf->Cell(30,5,utf8_decode(),0,0,'C');
 $pdf->Ln();
+$pdf->SetFont('Arial','R',8);
+$pdf->Cell(101,5,utf8_decode('Que indique el tipo y grado de discapacidad expedido por institución pública'),0,0,'R');
+$pdf->Cell(90,5,utf8_decode(),0,0,'C');
+$pdf->Ln();
+$pdf->SetFont('Arial','B',10);
+$pdf->Cell(10,5,'3',1,0,'C');
+$pdf->Cell(91,5,utf8_decode('COPIA DEL ACTA DE NACIMIENTO'),0,0,'R');
+$pdf->Cell(30,5,utf8_decode(),0,0,'C');
+$pdf->Cell(30,5,utf8_decode(),0,0,'C');
+$pdf->Cell(30,5,utf8_decode(),0,0,'C');
+$pdf->Ln();
+$pdf->SetFont('Arial','R',8);
+$pdf->Cell(101,5,utf8_decode('O documento que acredite la condición jurídica de la persona beneficiaria'),0,0,'R');
+$pdf->Cell(90,5,utf8_decode(),0,0,'C');
+$pdf->Ln();
+
+
 $pdf->Cell(10,5,'2',1,0,'C');
 $pdf->SetFont('Arial','',8);
 $pdf->Cell(90,5,'Instalar impresora/scanner',1,0,'L');
