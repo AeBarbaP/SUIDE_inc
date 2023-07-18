@@ -4,7 +4,7 @@ include('qc/qc.php');
 date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
 
-$fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
+$fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
 
 $nombre = $_POST['nombre'];
 $apellidoP = $_POST['apellidoP'];
@@ -51,6 +51,7 @@ $otroSS = $_POST['otroSS'];
 
 
 $sqlinsert= "INSERT INTO datos_generales (
+    fecha_registro,
     nombre,
     apellido_p,
     apellido_m,
@@ -94,6 +95,7 @@ $sqlinsert= "INSERT INTO datos_generales (
     seguridad_social,
     seguridad_social_donde)
 VALUES(
+    '$fecha_registro',
     '$nombre',
     '$apellidoP',
     '$apellidoM',
