@@ -1111,12 +1111,12 @@ function guardarSolicitud(){
             var verificador = jsonData.success;
             if (verificador == 1) {
                 mostrarTabla();
+                mostrarTablaServicios();
                 
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
             document.getElementById('btnEntregaApoyo').disabled = false;
-            mostrarTablaServicios();
         }
 
     });
@@ -1150,7 +1150,7 @@ function guardarSolicitudExtra(){
             var verificador = jsonData.success;
             if (verificador == 1) {
                 mostrarTabla();
-                
+                mostrarTablaServicios();
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
@@ -1188,7 +1188,7 @@ function guardarSolicitudOtros(){
             var verificador = jsonData.success;
             if (verificador == 1) {
                 mostrarTabla();
-                
+                mostrarTablaServicios();
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
@@ -1265,6 +1265,7 @@ function swalEntrega(){
     }).then((result) => {
         if (result.isConfirmed) {
             flagEntrega();
+            limpiarModalSolicitud();
             mostrarTablaServicios();
             document.getElementById('btnEntregaApoyo').disabled = false;
             swalWithBootstrapButtons.fire(
@@ -1273,7 +1274,6 @@ function swalEntrega(){
                 'success'
             );
             $("#solicitudAdd").modal('hide');
-            limpiarModalSolicitud();
         } else if (
                 /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel

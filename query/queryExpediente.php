@@ -11,13 +11,13 @@ $rowVariable = $resultadoVariable->fetch_assoc();
 $numMpioV = $rowVariable['municipio'];
 $numMpio = substr($numMpioV,3,2);
 $idExp = $rowVariable['id'];
+$discCve = $cveDiscapacidad;
 
-if ($cveDiscapacidad <= 9){
+/* if ($cveDiscapacidad <= 9){
     $discCve = '0'.$cveDiscapacidad;
 }
 else {
-    $discCve = $cveDiscapacidad;
-}
+} */
 
 $numExpediente = 'C-'.$numMpio.$discCve.'-'.$idExp;
 
