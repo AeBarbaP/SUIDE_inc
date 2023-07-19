@@ -267,13 +267,23 @@ include('prcd/qc/qc.php');
 <!--       <h4 class="text-muted mt-4">Últimos documentos generados</h4> -->
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm-2 justify-content-between align-items-center">
+          <div class="col-sm-2 justify-content-center align-items-center text-center">
             <p class="h5">No. Expediente</p>
             <strong><span class="h4" id="numeroExpediente"></span></strong>
             <br>
-            <img id="profile" src="img/no_profile.png" width="100%" style="width:14rem">
+            <img id="profile" src="img/no_profile.png" width="100%">
             <div class="input-group">
-              <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+          <!-- file photo-->
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+                
+              <input type="file" name="file_photo" id="file_photo" onchange="foto()" accept="image/png, image/gif, image/jpeg" class="h6 w-100 mt-3" disabled><br>
+            
+              <progress id="progressBar_photo" value="0" max="100" style="width:270px;"></progress>
+              <small id="status_photo"></small>
+              <p id="loaded_n_total_photo"></p>
+            </form>
+          <!-- file photo-->
+              <!-- <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload"> -->
             </div>
             <br>
             <div id="imgQR">
@@ -655,8 +665,7 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-6">
                       <label for="datos_usr" class="form-label">Discapacidad:</label>
                       <input type="text" id="curp_exp" oninput="curpTemporal()">
-                      <!-- <select class="discapacidadList form-control selectpicker" placeholder="Buscar Discapacidad..." data-show-subtext="true" data-live-search="true" name="discapacidad" id="discapacidadList" onclick="dicapacidadTab()">
-                      </select> -->
+                     
                       <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..." onchange="numExpGenerator(this.value)" required>
                       <datalist id="discapacidadList">
 
