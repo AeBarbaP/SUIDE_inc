@@ -1840,7 +1840,7 @@ include('prcd/qc/qc.php');
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiarModalSolicitud()">Cancelar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="borrarSolicitud();limpiarModalSolicitud()">Cancelar</button>
               <button type="button" class="btn btn-primary" id="btnlistaEspera" onclick="guardarSolicitudCompleta()" disabled>Agregar Solicitud</button>
               <button type="button" class="btn btn-success" id="btnEntregaApoyo" onclick="swalEntrega()" disabled>Entregar</button>
             </div>
