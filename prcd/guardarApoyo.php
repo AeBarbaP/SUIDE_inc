@@ -11,31 +11,29 @@
     $unitario = $_POST['unitario'];
     $montoSolicitud = $_POST['monto_solicitud'];
 
-    
-       
-        $QueryInsert = "INSERT INTO servicios (
-            curp,
-            folio_solicitud,
-            fecha_solicitud,
-            tipo_solicitud,
-            detalle_solicitud,
-            cantidad,
-            monto_unitario,
-            monto_solicitud,
-            monto_entregado
-        )
-        VALUES (
-            '$curpRen',
-            '$folioSolicitud',
-            '$fechaSolicitud',
-            '$tipoSolicitud',
-            '$detalleSolicitud',
-            '$cantidadArt',
-            '$unitario',
-            '$montoSolicitud',
-            '$montoSolicitud'
-        )
-        ";
+    $QueryInsert = "INSERT INTO servicios (
+        curp,
+        folio_solicitud,
+        fecha_solicitud,
+        tipo_solicitud,
+        detalle_solicitud,
+        cantidad,
+        monto_unitario,
+        monto_solicitud,
+        monto_entregado
+    )
+    VALUES (
+        '$curp',
+        '$folioSolicitud',
+        '$fechaSolicitud',
+        '$tipoSolicitud',
+        '$detalleSolicitud',
+        '$cantidadArt',
+        '$unitario',
+        '$montoSolicitud',
+        '$montoSolicitud'
+    )
+    ";
 
     
 
