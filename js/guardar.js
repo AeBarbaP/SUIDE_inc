@@ -1331,3 +1331,33 @@ function mostrarTablaServicios(){
     });
 
 }
+
+//borrar tabla modal servicios
+
+function borrarSolicitud(){
+    var folio = document.getElementById("folioSolicitud").value;
+    var curp = document.getElementById("curp_exp").value;
+    var tipo = document.getElementById("tipoSolicitud").value;
+
+    $.ajax({
+        type: "POST",
+        url: 'prcd/eliminarSolicitud.php',
+        dataType:'json',
+        data: {
+            folio:folio,
+            curp:curp,
+            tipo:tipo
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            
+            if (success == 1) {
+                alert("No guardado");
+            } else if (success == 0){
+                alert("No eliminado");
+            }
+        }
+    });
+    
+}
