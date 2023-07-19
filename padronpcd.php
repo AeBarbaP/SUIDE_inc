@@ -359,7 +359,7 @@ include('prcd/qc/qc.php');
                     <label for="datos_usr" class="form-label">RFC:</label>
                     <div class="input-group">
                       <span class="input-group-text w-50" id="rfcCut"></span>
-                      <input type="text" class="form-control" id="rfcHomo" aria-describedby="basic-addon3 basic-addon4">
+                      <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" maxlength="3" id="rfcHomo" aria-describedby="basic-addon3 basic-addon4">
                     </div>
                   </div>
                   <div class="col-sm-2">
@@ -471,7 +471,7 @@ include('prcd/qc/qc.php');
                     <label for="datos_usr" class="form-label">Correo Electróncio:</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">@</span>
-                      <input type="email" id="correo" class="form-control" placeholder="e-mail" aria-label="e-mail" aria-describedby="basic-addon1">
+                      <input type="email" id="correo" class="form-control" onkeyup="javascript:this.value=this.value.toLowerCase();" placeholder="e-mail" aria-label="e-mail" aria-describedby="basic-addon1">
                     </div>
                     <div class="invalid-feedback">
                       * Campo requerido.
@@ -870,7 +870,6 @@ include('prcd/qc/qc.php');
                             //} else{
                               textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeA('"+val+"')");
-                              //document.querySelector('#tipoAlergia option[value='+val+']').remove();
                               document.getElementById("alergiaInput").value ="";
 
                               //remover al momento de programar guardar          
@@ -916,7 +915,7 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Enfermedades:</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" id="enfermedadesSearch" oninput="buscarEnfermedad()" aria-label="Buscar...">
+                        <input type="text" class="form-control" id="enfermedadesSearch" onfocus="buscarEnfermedad()" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
                       <select class="form-select" id="enfermedades" onclick="addB(this.value)" onselect="enfermedadesOp(this.value)" multiple aria-label="multiple select example">
@@ -929,6 +928,28 @@ include('prcd/qc/qc.php');
                         <div contenteditable="false" class="editable form-control mt-2" id="enfermedadesFull">
                           <input type="text" id="numeroB" hidden>
                         </div>
+                        <!-- Modal para agregar enfermedad -->
+                        <div class="modal fade" id="enfermedadModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar enfermedad</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="input-group">
+                                  <span class="input-group-text"> Enfermedad:</span>
+                                  <input type="text" class="form-control  w-50" id="enfermedadInput" name="enfermedadInput" value="" placeholder="">
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary" onclick="addInputE()" data-bs-dismiss="modal">Agregar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Termina modal para agregar enfermedad -->
                         <script>
                           function addB(val) {
                             var p2;
@@ -949,7 +970,25 @@ include('prcd/qc/qc.php');
                             console.log(numeroB);
                             document.getElementById('numeroB').value = numeroB;
                           }
-                          
+                          function addInputE() {
+                            var numeroB = "";//remover al momento de programar guardar
+                            var val = document.getElementById("enfermedadInput").value;
+                            var textarea = document.getElementById("enfermedadesFull");
+                            //if (val==null || val =="" || val == 0){
+                              //console.log('sin valor');
+                            //} else{
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              document.getElementById(val).setAttribute('onclick',"removeB('"+val+"')");
+                              document.getElementById("enfermedadInput").value ="";
+
+                              //remover al momento de programar guardar          
+                              const paragraphs = document.querySelectorAll('[class="valorFull"]');
+                              paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
+                              numeroB = numeroB.slice(0, numeroB.length - 2);
+                              console.log(numeroB);
+                              document.getElementById('numeroB').value = numeroB;
+                           // }
+                          }
                           function removeB(val) {
                             var numeroB = ""; //remover al momento de programar guardar
                             console.log(val);
@@ -977,7 +1016,7 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Medicamentos:</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" id="buscarMed" oninput="buscarMedicamento()" aria-label="Buscar...">
+                        <input type="text" class="form-control" id="buscarMed" onfocus="buscarMedicamento()" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
                       <select class="form-select" id="medicamentos" onclick="addC(this.value)" onchange="medicamentosOp(this.value)" multiple aria-label="multiple select example">
@@ -990,12 +1029,34 @@ include('prcd/qc/qc.php');
                         <div contenteditable="false" class="editable form-control mt-2" id="medicamentosFull">
                           <input type="text" id="numeroC" hidden>
                         </div>
+                        <!-- Modal para agregar medicamento -->
+                        <div class="modal fade" id="medicamentoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar medicamento</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="input-group">
+                                  <span class="input-group-text"> Medicamento:</span>
+                                  <input type="text" class="form-control  w-50" id="medicamentoInput" name="medicamentoInput" value="" placeholder="">
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary" onclick="addInputM()" data-bs-dismiss="modal">Agregar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Termina modal para agregar medicamento -->
                         <script>
                           function addC(val) {
                             var p2;
                             var numeroC = ""; //remover al momento de programar guardar
                             var textarea = document.getElementById("medicamentosFull");
-                            if (val==null || val ==""){
+                            if (val==null || val =="" || val == 0){
                               console.log('sin valor');
                             } else{
                               textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorMFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
@@ -1008,6 +1069,25 @@ include('prcd/qc/qc.php');
                             numeroC = numeroC.slice(0, numeroC.length - 2);
                             console.log(numeroC);
                             document.getElementById('numeroC').value = numeroC;
+                          }
+                          function addInputM() {
+                            var numeroC = "";//remover al momento de programar guardar
+                            var val = document.getElementById("medicamentoInput").value;
+                            var textarea = document.getElementById("medicamentosFull");
+                            //if (val==null || val =="" || val == 0){
+                              //console.log('sin valor');
+                            //} else{
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              document.getElementById(val).setAttribute('onclick',"removeC('"+val+"')");
+                              document.getElementById("medicamentoInput").value ="";
+
+                              //remover al momento de programar guardar          
+                              const paragraphs = document.querySelectorAll('[class="valorFull"]');
+                              paragraphs.forEach(p => numeroC = numeroC + p.id +', ');
+                              numeroC = numeroC.slice(0, numeroC.length - 2);
+                              console.log(numeroB);
+                              document.getElementById('numeroB').value = numeroB;
+                           // }
                           }
                           function removeC(val) {
                             var numeroC = ""; //remover al momento de programar guardar
@@ -1762,7 +1842,7 @@ include('prcd/qc/qc.php');
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiarModalSolicitud()">Cancelar</button>
               <button type="button" class="btn btn-primary" id="btnlistaEspera" onclick="guardarSolicitudCompleta()" disabled>Agregar Solicitud</button>
-              <button type="button" class="btn btn-success" id="btnEntregaApoyo" onclick="swalEntrega();guardarSolicitud()" disabled>Entregar</button>
+              <button type="button" class="btn btn-success" id="btnEntregaApoyo" onclick="swalEntrega()" disabled>Entregar</button>
             </div>
           </div>
         </div>
@@ -2357,7 +2437,7 @@ include('prcd/qc/qc.php');
     var expediente = document.getElementById('searchDBInclusion').value;
     $.ajax({
       type:"POST",
-      url:"prcd/query_searchPadronBD.php",
+      url:"query/query_searchPadronBD.php",
       data:{
         expediente:expediente
       },

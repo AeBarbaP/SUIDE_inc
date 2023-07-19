@@ -1,5 +1,5 @@
 <?php
-include('qc/qc2.php');
+include('../prcd/qc/qc2.php');
 
 
 if ($_POST['expediente'] == 0){
