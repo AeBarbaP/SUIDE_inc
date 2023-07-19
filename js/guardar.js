@@ -1,6 +1,81 @@
-/* function fecha(){
-    const hoy = fecha.getDate();
-} */
+function _(el) {
+    return document.getElementById(el);
+  }
+  
+  function foto() {
+    var doc = "_photo";
+    var idUsr = document.getElementById('curp_exp').value;
+    var file = _("file"+doc).files[0];
+    var documento = doc;
+    var idUsuario = idUsr;
+    var formdata = new FormData();
+    // variable del name file
+    formdata.append("file", file);
+    // variables post
+    // formdata.append("documento", documento);
+    formdata.append("idUsuario", idUsuario);
+    var ajax = new XMLHttpRequest();
+    ajax.upload.addEventListener("progress", progressHandler, false);
+    ajax.addEventListener("load", completeHandler, false);
+    ajax.addEventListener("error", errorHandler, false);
+    ajax.addEventListener("abort", abortHandler, false);
+    ajax.open("POST", "prcd/upload_photo.php"); 
+    
+    ajax.send(formdata);
+    
+    function progressHandler(event) {
+
+        _("loaded_n_total"+doc).innerHTML = "Cargado " + event.loaded + " bytes de " + event.total;
+        var percent = (event.loaded / event.total) * 100;
+        _("progressBar"+doc).value = Math.round(percent);
+        _("status"+doc).innerHTML = Math.round(percent) + "% subido... espere un momento";
+      }
+      
+      function completeHandler(event) {
+        _("status"+doc).innerHTML = event.target.responseText;
+        _("progressBar"+doc).value = 100; //wil clear progress bar after successful upload
+          _("file"+doc).style.display='none';
+          _("progressBar"+doc).style.display='none';
+        // document.getElementById('registroDoc'+doc).disabled = true;
+        // document.getElementById('registroDoc'+doc).setAttribute('style','color: #59c965');
+        // document.getElementById('profile').setAttribute('src','assets/docs_expedientes/photos/photosarchivo_'+idUsr+'.*');
+        // document.getElementById('btnModal'+doc).disabled = true;
+        // $(".bloqueo"+doc).attr("disabled", true);
+        buscarPhoto(idUsr);
+      }
+      
+      function errorHandler(event) {
+        _("status"+doc).innerHTML = "Fallo en la subida";
+      }
+      
+      function abortHandler(event) {
+        _("status"+doc).innerHTML = "Fallo en la subida";
+      }
+  }
+
+  function buscarPhoto(curp){
+    $.ajax({
+        type: "POST",
+        url: 'query/buscarPhoto.php',
+        dataType:'json',
+        data: {
+            
+            curp:curp
+            
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            var ruta = jsonData.ruta;
+            
+            if (success == 1) {
+               document.getElementById("profile").setAttribute('src','assets/'+ruta);
+            } else if (success == 0){
+                console.log("Sin foto");
+            }
+        }
+    });
+  }
 
 $(document).ready(function() {
     $('#generalesForm').submit(function(e) {
@@ -190,6 +265,7 @@ $(document).ready(function() {
                     document.getElementById('nav-medicos-tab').disabled = false;
                     document.getElementById('nav-generales-tab').disabled = true;
                     document.getElementById('curp_exp').value = curpSaved;
+                    document.getElementById('file_photo').disabled = false;
                     /* var curpExp = document.getElementById('curp_exp').value;
                     document.getElementById('buttonCheck').setAttribute('href','prcd/checkListPDF.php?curp='+curpExp); */
                 }
