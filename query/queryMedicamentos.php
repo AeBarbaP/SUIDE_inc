@@ -15,7 +15,7 @@
     if ($fila == 0){
         echo'
             <script>
-                document.getElementById("nohay").innerHTML = "No se encontró el medicamento, da Enter para agregar"
+                document.getElementById("nohay").innerHTML = ""
             </script>
         ';
     }
