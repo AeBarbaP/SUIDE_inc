@@ -1065,11 +1065,11 @@ function limpiaInputsFunc(){
     document.getElementById('divTag').hidden = true;
 }
 
-function limpiarInputsExtra(){
+function limpiaInputsExtra(){
     document.getElementById('costoSolicitudExtra').value = "";
 }
 
-function limpiarInputsOtro(){
+function limpiaInputsOtro(){
     document.getElementById('costoSolicitudOtro').value = "";
 }
 
@@ -1188,6 +1188,7 @@ function guardarSolicitud(){
             if (verificador == 1) {
                 mostrarTabla();
                 mostrarTablaServicios();
+                limpiaInputsFunc();
                 
             } else if (verificador == 0){
                 alert('no muestra tabla');
@@ -1226,6 +1227,8 @@ function guardarSolicitudExtra(){
             var verificador = jsonData.success;
             if (verificador == 1) {
                 mostrarTabla();
+                flagEntregaEO();
+                limpiaInputsExtra();
                 mostrarTablaServicios();
             } else if (verificador == 0){
                 alert('no muestra tabla');
@@ -1264,6 +1267,8 @@ function guardarSolicitudOtros(){
             var verificador = jsonData.success;
             if (verificador == 1) {
                 mostrarTabla();
+                flagEntregaEO();
+                limpiaInputsOtro();
                 mostrarTablaServicios();
             } else if (verificador == 0){
                 alert('no muestra tabla');
@@ -1273,7 +1278,7 @@ function guardarSolicitudOtros(){
 
     });
 }
-function guardarSolicitudCompleta(){
+/* function guardarSolicitudCompleta(){
     var curp_exp = document.getElementById('curp_exp').value;
     var tipoSolicitud = document.getElementById('tipoSolicitud').value;
     var fechaSolicitud = document.getElementById('fechaSolicitud').value;
@@ -1299,10 +1304,10 @@ function guardarSolicitudCompleta(){
             }
         }
 
-    });
+    }); */
     //tablaSolicitud.ajax.reload();
 
-}
+/* } */
 function mostrarTabla(){
     var folioSolicitud = document.getElementById('folioSolicitud').value;
     var tipoSolicitud = document.getElementById('tipoSolicitud').value;
@@ -1342,13 +1347,13 @@ function swalEntrega(){
         if (result.isConfirmed) {
             flagEntrega();
             limpiarModalSolicitud();
-            mostrarTablaServicios();
             document.getElementById('btnEntregaApoyo').disabled = false;
             swalWithBootstrapButtons.fire(
                 'Entregado!',
                 'Se ha generado el Acta de Entrega',
                 'success'
-            );
+                );
+            mostrarTablaServicios();
             $("#solicitudAdd").modal('hide');
         } else if (
                 /* Read more about handling dismissals below */
@@ -1362,14 +1367,14 @@ function swalEntrega(){
         }           
     })
 }
-function flagEntrega(){
+function flagEntregaEO(){
     var tipo = document.getElementById('tipoSolicitud').value;
     var curp_exp = document.getElementById('curp_exp').value;
     var folioSolicitud = document.getElementById('folioSolicitud').value;
 
     $.ajax({
         type: "POST",
-        url: 'prcd/actualizarStatus.php',
+        url: 'prcd/actualizarStatusEO.php',
         dataType:'json',
         data: {
             curp_exp:curp_exp,
@@ -1392,7 +1397,6 @@ function flagEntrega(){
 
 function mostrarTablaServicios(){
     var curp = document.getElementById('curp_exp').value;
-    
 
     $.ajax({
         type: "POST",
@@ -1436,4 +1440,33 @@ function borrarSolicitud(){
         }
     });
     
+}
+
+function swalListaEspera(){
+    /* const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+    swalWithBootstrapButtons.fire({
+        title: 'Estas seguro?',
+        text: "Se generará el acta de entrega para firma",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, entregar!',
+        cancelButtonText: 'No, cancelar!',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) { */
+        /* flagEntregaEO(); */
+        mostrarTablaServicios();
+    Swal.fire(
+        'Solicitud Agregada!',
+        'Su solicitud se agregó a Lista de Espera',
+        'success'
+    )
+        limpiarModalSolicitud();
+        $("#solicitudAdd").modal('hide');
 }

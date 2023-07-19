@@ -1782,7 +1782,7 @@ include('prcd/qc/qc.php');
                 </div>
                 <div class="col-sm-8" id="descripcionExtra" style="display: none;">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Especifica:</label>
-                  <select class="form-select" id="extraSolicitud" onchange="limpiaInputsExtra()" aria-label="Default select example" required>
+                  <select class="form-select" id="extraSolicitud" aria-label="Default select example" required>
                     <option selected>Selecciona...</option>
                   </select>
                   <div class="invalid-feedback">
@@ -1850,7 +1850,7 @@ include('prcd/qc/qc.php');
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="borrarSolicitud();limpiarModalSolicitud()">Cancelar</button>
-              <button type="button" class="btn btn-primary" id="btnlistaEspera" onclick="guardarSolicitudCompleta()" disabled>Agregar Solicitud</button>
+              <button type="button" class="btn btn-primary" id="btnlistaEspera" onclick="swalListaEspera()" disabled>Agregar Solicitud</button>
               <button type="button" class="btn btn-success" id="btnEntregaApoyo" onclick="swalEntrega()" disabled>Entregar</button>
             </div>
           </div>
