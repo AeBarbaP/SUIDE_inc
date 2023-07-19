@@ -1386,7 +1386,7 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Personas que dependen económicamente de usted:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline">
-                            <input class="form-control" type="number" id="dependenciaEconomica" placeholder="Personas que dependen económicamente">
+                            <input class="form-control" type="number" id="dependenciaEconomica" onkeypress="ValidaSoloNumeros()" placeholder="Personas que dependen económicamente">
                         </div>
                       </div>
                       <br>

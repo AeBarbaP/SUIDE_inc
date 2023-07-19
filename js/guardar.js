@@ -978,7 +978,7 @@ function limpiarModalSolicitud(){
     document.getElementById('costoSolicitud').value = "";
     document.getElementById('costoSolicitudExtra').value = "";
     document.getElementById('costoSolicitudOtro').value = "";
-    document.getElementById('divTag').innerHTML = "";
+    document.getElementById('divTag').hidden = true;
     document.getElementById('btnlistaEspera').disabled = true;
     document.getElementById('btnEntregaApoyo').disabled = true;
 }
