@@ -1674,7 +1674,7 @@ include('prcd/qc/qc.php');
                 </div>
                 <div class="col-sm-2" id="cantidadFuncional" style="display: none;">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Cantidad:</label>
-                  <input type="text" class="form-control" onchange="queryCosto(this.value)" id="cantidadArt" name="folio" placeholder="">
+                  <input type="text" class="form-control" oninput="queryCosto(this.value)" id="cantidadArt" name="folio" placeholder="">
                   <input type="text" id="inputUnitario" hidden>
                 </div>
                 <div class="col-sm-3" id="costoFuncional" style="display: none;">
@@ -1688,7 +1688,7 @@ include('prcd/qc/qc.php');
                 <div class="col-sm-1" id="btnFuncK" style="display: none;">
                   <label for="datos_usr" class="form-label text-light">.</label>
                   <div class="input-group">
-                    <button class="btn btn-primary" type="button" onclick="PreguardarSolicitud()" id="agregarItemFunc"><i class="bi bi-plus-circle"></i></button>
+                    <button class="btn btn-primary" type="button" onclick="guardarSolicitud()" id="agregarItemFunc"><i class="bi bi-plus-circle"></i></button>
                   </div>
                 </div>
                 <div class="col-sm-8" id="descripcionExtra" style="display: none;">
@@ -1762,7 +1762,11 @@ include('prcd/qc/qc.php');
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiarModalSolicitud()">Cancelar</button>
               <button type="button" class="btn btn-primary" id="btnlistaEspera" onclick="guardarSolicitudCompleta()" disabled>Agregar Solicitud</button>
+<<<<<<< HEAD
               <button type="button" class="btn btn-success" id="btnEntregaApoyo" onclick="swalEntrega();guardarSolicitud()" disabled>Entregar</button>
+=======
+              <button type="button" class="btn btn-success" id="btnEntregaApoyo" onclick="swalEntrega()" disabled>Entregar</button>
+>>>>>>> parent of 5d95dae (preguardar apoyo)
             </div>
           </div>
         </div>
