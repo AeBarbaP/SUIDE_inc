@@ -746,7 +746,8 @@ $(document).ready(function() {
                         title: 'Datos del Familiar han sido guardados',
                         showConfirmButton: false,
                         timer: 1500
-                    })
+                    });
+                    showMeFam();
                 }
                 else if (verificador = 2){
                     Swal.fire({
@@ -816,7 +817,8 @@ $(document).ready(function() {
                         title: 'Datos de Referencia han sido guardados',
                         showConfirmButton: false,
                         timer: 1500
-                    })
+                    });
+                    showMeRef();
                 }
                 else if (verificador == 2){
                     Swal.fire({
@@ -849,10 +851,10 @@ function showMeRef(){
 }
 
 
-$(document).ready(function() {
-    $('#formSolicitudes').submit(function(e) {
+/* $(document).ready(function() {
+    $('#formSolicitudes').submit(function(e) { */
         /* Servicios Otorgados */
-        var folioSolicitud = document.getElementById('folioSolicitud').value;
+/*         var folioSolicitud = document.getElementById('folioSolicitud').value;
         var fechaSolicitud = document.getElementById('fechaSolicitud').value;
         var tipoSolicitud = document.getElementById('tipoSolicitud').value;
         var descripcionSolicitud = document.getElementById('descripcionSolicitud').value;
@@ -882,7 +884,7 @@ $(document).ready(function() {
 
         })
     })
-})
+}) */
 function queryTabFuncionales(x){
     var solicitud = x;
     
@@ -1114,6 +1116,7 @@ function guardarSolicitud(){
                 alert('no muestra tabla');
             }
             document.getElementById('btnEntregaApoyo').disabled = false;
+            mostrarTablaServicios();
         }
 
     });
