@@ -6,134 +6,16 @@
 ini_set('max_execution_time', '0');
 ini_set('memory_limit', '2048M');
 
-include('prcd/qc.php');
+include('qc/qc.php');
 
-$folio = $_REQUEST['folio'];
-$internet = 0;
-$inst_periferico = 0;
-$limp_equipo = 0;
-$tec_mouse = 0;
-$falla_monitor = 0;
-$otra1 = 0;
-$act_office = 0;
-$activar_so = 0;
-$actualizar_sw = 0;
-$formateo_completo = 0;
-$limpieza_virus = 0;
-$instalar_sw = 0;
-$otra_sw = 0;
-$escanear = 0;
-$printcolor = 0;
-$rw_cd = 0;
-$web = 0;
-$otra_2 = 0;
-
-$sql = "SELECT * FROM bitacora WHERE folio = '$folio'";
-$resultadoSql = $conn->query($sql);
-$rowSQL = $resultadoSql->fetch_assoc();
-
-$sql2 = "SELECT * FROM observaciones WHERE folio = '$folio'";
-$resultadoSql2 = $conn->query($sql2);
-/* $rowSQL2 = $resultadoSql2->fetch_assoc(); */
-
-while ($rowSQL2 = $resultadoSql2->fetch_assoc()){
-  if ($rowSQL2['sub_cat']==1){
-    $internet = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $internet = "";
-  }
-  if ($rowSQL2['sub_cat']==2){
-    $inst_periferico = $rowSQL2['observaciones_dti'];
-  }   else if ($rowSQL2['sub_cat']== null){
-    $inst_periferico = "";
-  }
-  if ($rowSQL2['sub_cat']==3){
-    $limp_equipo = $rowSQL2['observaciones_dti'];
-  }   else if ($rowSQL2['sub_cat']== null){
-    $limp_equipo = "";
-  }
-  if ($rowSQL2['sub_cat']==4){
-    $tec_mouse = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $tec_mouse = "";
-  }
-  if ($rowSQL2['sub_cat']==5){
-    $falla_monitor = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $falla_monitor = "";
-  }
-  if ($rowSQL2['sub_cat']==6){
-    $otra1 = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $otra1 = "";
-  }
-  if ($rowSQL2['sub_cat']==7){
-    $act_office = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $act_office = "";
-  }
-  if ($rowSQL2['sub_cat']==8){
-    $activar_so = $rowSQL2['observaciones_dti'];
-  }   else if ($rowSQL2['sub_cat']== null){
-    $activar_so = "";
-  }
-  if ($rowSQL2['sub_cat']==9){
-    $actualizar_sw = $rowSQL2['observaciones_dti'];
-  }   else if ($rowSQL2['sub_cat']== null){
-    $actualizar_sw = "";
-  }
-  if ($rowSQL2['sub_cat']==10){
-    $formateo_completo = $rowSQL2['observaciones_dti'];
-  }   else if ($rowSQL2['sub_cat']== null){
-    $formateo_completo = "";
-  }
-  if ($rowSQL2['sub_cat']==11){
-    $limpieza_virus = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $limpieza_virus = "";
-  }
-    if ($rowSQL2['sub_cat']==12){
-    $instalar_sw = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $instalar_sw = "";
-  }
-    if ($rowSQL2['sub_cat']==13){
-    $otra_sw = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $otra_sw = "";
-  }
-    if ($rowSQL2['sub_cat']==14){
-    $escanear = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $escanear = "";
-  }
-    if ($rowSQL2['sub_cat']==15){
-    $printcolor = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $printcolor = "";
-  }
-    if ($rowSQL2['sub_cat']==16){
-    $rw_cd = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $rw_cd = "";
-  }
-    if ($rowSQL2['sub_cat']==17){
-    $web = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $web = "";
-  }
-    if ($rowSQL2['sub_cat']==18){
-    $otra_2 = $rowSQL2['observaciones_dti'];
-  }  else if ($rowSQL2['sub_cat']== null){
-    $otra_2 = "";
-  }
+/*  */
 /*   echo '
   <script>
   console.log('.$rowSQL2['observaciones_dti'].');
   </script>
   '; */
-}
-require('prcd/fpdf/fpdf.php');
+
+require('fpdf/fpdf.php');
 class PDF extends FPDF
 {
 // Cabecera de página
@@ -141,7 +23,7 @@ function Header()
 {
     // Logo
 
-    $this->Image('img/logo_completo.jpg',72,15,63);
+    /* $this->Image('',72,15,63); */
     // Arial bold 15
     $this->SetFont('Arial','B',15);
     // Movernos a la derecha
