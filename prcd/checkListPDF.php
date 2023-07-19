@@ -6,7 +6,7 @@
 ini_set('max_execution_time', '0');
 ini_set('memory_limit', '2048M');
 
-include('qc/qc.php');
+/* include('qc/qc.php');
 
 $curp = $_REQUEST['curp'];
 
@@ -58,7 +58,7 @@ while ($rowSQL = $resultadoSql2->fetch_assoc()){
     }  else if ($rowSQL['tipo_doc']== null){
         $doc7 = "";
     }
-}
+} */
 
 require('fpdf/fpdf.php');
 class PDF extends FPDF
@@ -112,10 +112,10 @@ $pdf->Cell(65,5,'Número de Expediente.',1,0,'C');
 $pdf->Cell(63,5,'Fecha de Registro',1,0,'C');
 $pdf->Cell(63,5,'Fecha Última Actualización',1,0,'C');
 $pdf->Ln();
-$pdf->Cell(65,18,$rowSQL2['numExpediente'],1,0,'C');
+/* $pdf->Cell(65,18,$rowSQL2['numExpediente'],1,0,'C');
 $pdf->Cell(63,18,$rowSQL2['fecha_registro'],1,0,'C');
 $pdf->Cell(63,18,$rowSQL3['fecha_lastupdate'],1,0,'C');
-$pdf->Ln();
+$pdf->Ln(); */
 
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(86,5,'',0,0,'C');
@@ -231,7 +231,7 @@ $pdf->Cell(191,10,'Para más información, puede comunicarse a las oficinas del 
 $pdf->Ln();
 
 $modo="I";
-$nombre_archivo="checklistDocumentos".$rowSQL2['numExpediente'].".pdf";
+$nombre_archivo="checklistDocumentos.pdf";
 $pdf->Output($nombre_archivo,$modo);
 
 ?>
