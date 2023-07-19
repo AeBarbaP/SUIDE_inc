@@ -976,7 +976,7 @@ function limpiarModalSolicitud(){
     document.getElementById('costoSolicitud').value = "";
     document.getElementById('costoSolicitudExtra').value = "";
     document.getElementById('costoSolicitudOtro').value = "";
-    document.getElementById('divTag').hidden = true;
+    document.getElementById('divTag').innerHTML = "";
     document.getElementById('btnlistaEspera').disabled = true;
     document.getElementById('btnEntregaApoyo').disabled = true;
 }
@@ -987,11 +987,11 @@ function limpiaInputsFunc(){
     document.getElementById('divTag').hidden = true;
 }
 
-function limpiaInputsExtra(){
+function limpiarInputsExtra(){
     document.getElementById('costoSolicitudExtra').value = "";
 }
 
-function limpiaInputsOtro(){
+function limpiarInputsOtro(){
     document.getElementById('costoSolicitudOtro').value = "";
 }
 
@@ -1012,8 +1012,8 @@ function queryCosto(x){
             var verificador = jsonData.estatus;
             if (verificador == 1){
                 document.getElementById('divTag').hidden = false;
-                document.getElementById('disponible1').setAttribute('style','color:green;');
-                document.getElementById('disponible').setAttribute('style','color:green;');
+                document.getElementById('disponible1').setAttribute('style','color:green');
+                document.getElementById('disponible').setAttribute('style','color:green');
                 document.getElementById('disponible').innerHTML = jsonData.cantidad;
                 var variable1 = jsonData.costo;
                 var variable2 = document.getElementById('cantidadArt').value;
@@ -1079,6 +1079,7 @@ function folioApoyo(){
     });
 }
 
+<<<<<<< HEAD
 function PreguardarSolicitud(){
     var curp_exp = document.getElementById('curp_exp').value;
     var unitario = document.getElementById('inputUnitario').value;
@@ -1117,6 +1118,8 @@ function PreguardarSolicitud(){
     });
 }
 // $(document).on("click", "#btnEntregaApoyo", function() { 
+=======
+>>>>>>> parent of 5d95dae (preguardar apoyo)
 function guardarSolicitud(){
     // var curp_exp = document.getElementById('curp_exp').value;
     // var unitario = document.getElementById('inputUnitario').value;
