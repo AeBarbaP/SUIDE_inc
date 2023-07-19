@@ -342,7 +342,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-1">
                     <label for="edad" class="form-label">Edad:</label>
-                    <input type="text" class="form-control" id="edad" name="datos_usr" placeholder="" disabled>
+                    <input type="text" class="form-control" id="edad" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="" disabled>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
@@ -395,7 +395,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-2">
                     <label for="datos_usr" class="form-label">Núm. Exterior</label>
-                    <input type="text" class="form-control" id="numExt" name="datos_usr" placeholder="# Exterior" required>
+                    <input type="text" class="form-control" id="numExt" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="# Exterior" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
@@ -462,7 +462,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-2">
                     <label for="datos_usr" class="form-label">Código Postal</label>
-                    <input type="text" class="form-control" id="codigoPostal" name="datos_usr" placeholder="C.P." required>
+                    <input type="text" class="form-control" id="codigoPostal" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="C.P." required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
@@ -479,11 +479,11 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">Teléfono Particular:</label>
-                    <input type="text" class="form-control" id="telFijo" name="datos_usr" placeholder="Teléfono particular">
+                    <input type="text" class="form-control" id="telFijo" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Teléfono particular">
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">Celular:</label>
-                    <input type="text" class="form-control" id="celular" name="datos_usr" placeholder="Celular">
+                    <input type="text" class="form-control" id="celular" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Celular">
                   </div>
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Nivel de Escolaridad:</label>
@@ -541,7 +541,7 @@ include('prcd/qc/qc.php');
                     <label for="basic-url" class="form-label">Ingreso mensual:</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text">$</span>
-                      <input type="text" class="form-control" id="ingresoMensual" aria-label="Amount (to the nearest dollar)" disabled>
+                      <input type="text" class="form-control" id="ingresoMensual" onkeypress="ValidaSoloNumeros()" aria-label="Amount (to the nearest dollar)" disabled>
                       <span class="input-group-text">.00</span>
                     </div>
                   </div>
@@ -598,7 +598,7 @@ include('prcd/qc/qc.php');
                     <label for="basic-url" class="form-label">Monto de la Pensión:</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text">$</span>
-                      <input type="text" class="form-control" id="montoP" aria-label="Monto..." disabled>
+                      <input type="text" class="form-control" id="montoP" onkeypress="ValidaSoloNumeros()" aria-label="Monto..." disabled>
                       <span class="input-group-text">.00</span>
                     </div>
                   </div>
@@ -1060,7 +1060,7 @@ include('prcd/qc/qc.php');
                         <div class="form-check form-check-inline">
                           <div class="input-group mb-3 w-75">
                             <span class="input-group-text">$</span>
-                            <input type="text" class="form-control" id="montoVivienda" aria-label="Amount (to the nearest dollar)" disabled>
+                            <input type="text" class="form-control" id="montoVivienda" onkeypress="ValidaSoloNumeros()" aria-label="Amount (to the nearest dollar)" disabled>
                             <span class="input-group-text">.00</span>
                           </div>
                         </div>
@@ -1080,7 +1080,7 @@ include('prcd/qc/qc.php');
                         <div class="form-check form-check-inline">
                           <div class="input-group mb-3 w-75">
                             <span class="input-group-text">$</span>
-                            <input type="text" class="form-control" id="costoVivienda" aria-label="Amount (to the nearest dollar)" disabled>
+                            <input type="text" class="form-control" id="costoVivienda" onkeypress="ValidaSoloNumeros()" aria-label="Amount (to the nearest dollar)" disabled>
                             <span class="input-group-text">.00</span>
                           </div>
                         </div>
@@ -1119,7 +1119,7 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Número de habitaciones:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline">
-                          <input class="form-control mt-2" type="number" id="numHabitaciones" placeholder="# Habitaciones">
+                          <input class="form-control mt-2" type="number" id="numHabitaciones" onkeypress="ValidaSoloNumeros()" placeholder="# Habitaciones">
                         </div>
                         <div class="form-check mt-3">
                           <input class="form-check-input" type="checkbox" onclick="roomsCheck()" id="checkAllRooms">
@@ -1403,7 +1403,7 @@ include('prcd/qc/qc.php');
                         <div class="form-check form-check-inline mb-3">
                           <div class="input-group w-75">
                             <span class="input-group-text">$</span>
-                            <input type="text" class="form-control" id="deudasInput" aria-label="Monto" placeholder="Monto Deuda" disabled>
+                            <input type="text" class="form-control" id="deudasInput" onkeypress="ValidaSoloNumeros()" aria-label="Monto" placeholder="Monto Deuda" disabled>
                             <span class="input-group-text">.00</span>
                           </div>
                         </div>
@@ -1449,7 +1449,7 @@ include('prcd/qc/qc.php');
                       <!-- integración familiar -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" onclick="showMeFam()"data-bs-target="#agregarFamiliar" ><i class="bi bi-person-fill-add"></i> Agregar familiar</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#agregarFamiliar" ><i class="bi bi-person-fill-add"></i> Agregar familiar</button>
                       </div>
                     </div>
                   </div>
@@ -1480,7 +1480,7 @@ include('prcd/qc/qc.php');
                       <!-- referencias -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#agregarReferencia" onclick="showMeRef()"><i class="bi bi-person-fill-add"></i> Agregar referencia</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#agregarReferencia"><i class="bi bi-person-fill-add"></i> Agregar referencia</button>
                       </div>
                     </div>
                   </div>
@@ -1674,7 +1674,7 @@ include('prcd/qc/qc.php');
                 </div>
                 <div class="col-sm-2" id="cantidadFuncional" style="display: none;">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Cantidad:</label>
-                  <input type="text" class="form-control" oninput="queryCosto(this.value)" id="cantidadArt" name="folio" placeholder="">
+                  <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" oninput="queryCosto(this.value)" id="cantidadArt" name="folio" placeholder="">
                   <input type="text" id="inputUnitario" hidden>
                 </div>
                 <div class="col-sm-3" id="costoFuncional" style="display: none;">
@@ -1704,7 +1704,7 @@ include('prcd/qc/qc.php');
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Monto solicitado:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" id="costoSolicitudExtra" aria-label="Amount (to the nearest dollar)">
+                    <input type="text" class="form-control" id="costoSolicitudExtra" onkeypress="ValidaSoloNumeros()" aria-label="Amount (to the nearest dollar)">
                     <span class="input-group-text">.00</span>
                   </div>
                 </div>
@@ -1727,7 +1727,7 @@ include('prcd/qc/qc.php');
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Monto Solicitado:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" id="costoSolicitudOtro" aria-label="Amount (to the nearest dollar)">
+                    <input type="text" class="form-control" id="costoSolicitudOtro" onkeypress="ValidaSoloNumeros()" aria-label="Amount (to the nearest dollar)">
                     <span class="input-group-text">.00</span>
                   </div>
                 </div>
@@ -1762,11 +1762,7 @@ include('prcd/qc/qc.php');
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiarModalSolicitud()">Cancelar</button>
               <button type="button" class="btn btn-primary" id="btnlistaEspera" onclick="guardarSolicitudCompleta()" disabled>Agregar Solicitud</button>
-<<<<<<< HEAD
               <button type="button" class="btn btn-success" id="btnEntregaApoyo" onclick="swalEntrega();guardarSolicitud()" disabled>Entregar</button>
-=======
-              <button type="button" class="btn btn-success" id="btnEntregaApoyo" onclick="swalEntrega()" disabled>Entregar</button>
->>>>>>> parent of 5d95dae (preguardar apoyo)
             </div>
           </div>
         </div>
@@ -1778,7 +1774,7 @@ include('prcd/qc/qc.php');
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-plus-lg"></i> Agregar Solicitud</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-plus-lg"></i> Actualizar Solicitud</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -1821,7 +1817,7 @@ include('prcd/qc/qc.php');
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Monto autorizado:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" aria-label="">
+                    <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" aria-label="">
                     <span class="input-group-text">.00</span>
                   </div>
                 </div>
@@ -2015,7 +2011,7 @@ include('prcd/qc/qc.php');
                             <div class="col-md-12">
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Teléfono:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp" onkeypress="ValidaSoloNumeros()">
                                 <span class="input-group-text" id="basic-addon1">Correo-e:</span>
                                 <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
                               </div>  
@@ -2028,7 +2024,7 @@ include('prcd/qc/qc.php');
                                 <span class="input-group-text" id="basic-addon1">No. Int.:</span>
                                 <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="intTemp">
                                 <span class="input-group-text" id="basic-addon1">No. Ext.:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="extTemp">
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="extTemp" onkeypress="ValidaSoloNumeros()">
                               </div>  
                             </div>
                             <div class="col-md-12">
@@ -2036,7 +2032,7 @@ include('prcd/qc/qc.php');
                                 <span class="input-group-text" id="basic-addon1">Colonia:</span>
                                 <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="coloniaTemp">
                                 <span class="input-group-text" id="basic-addon1">C.P.:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="referenciaTemp">
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="CPTemp" onkeypress="ValidaSoloNumeros()">
                               </div>  
                             </div>
                             <div class="col-md-12">
@@ -2551,7 +2547,7 @@ include('prcd/qc/qc.php');
                 <div class="col-md-6">
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1" >Edad</span>
-                    <input type="number" id="edadFam" class="form-control" id="inputGroup01">
+                    <input type="number" id="edadFam" onkeypress="ValidaSoloNumeros()" class="form-control" id="inputGroup01">
                   </div>
                 </div>
               </div>
@@ -2578,14 +2574,14 @@ include('prcd/qc/qc.php');
                 <div class="col-md-6">
                 <div class="input-group mb-3">  
                   <span class="input-group-text">$</span>
-                  <input type="text" class="form-control" id="ingresoFam" placeholder="Ingreso" aria-label="Ingreso mensual">
+                  <input type="text" class="form-control" id="ingresoFam" onkeypress="ValidaSoloNumeros()" placeholder="Ingreso" aria-label="Ingreso mensual">
                   <span class="input-group-text">.00</span>
                 </div>
                 </div>
                 <div class="col-md-6">
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
-                    <input type="text" class="form-control" placeholder="# Teléfono o Celular" id="telFam"> <!-- validar solo numeros -->
+                    <input type="text" class="form-control" placeholder="# Teléfono o Celular" onkeypress="ValidaSoloNumeros()" id="telFam"> <!-- validar solo numeros -->
                   </div>
                 </div>
                 <div class="col-md-12">
@@ -2597,7 +2593,7 @@ include('prcd/qc/qc.php');
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
-                <button type="submit" class="btn btn-primary" onclick="showMeFam()" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Agregar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Agregar</button>
               </div>
             </form>
           </div>
@@ -2643,7 +2639,7 @@ include('prcd/qc/qc.php');
                 <div class="col-md-6">
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
-                    <input type="text" class="form-control" placeholder="# de Celular" id="telRef"> <!-- validar solo numeros -->
+                    <input type="text" class="form-control" placeholder="# de Celular" onkeypress="ValidaSoloNumeros()" id="telRef"> <!-- validar solo numeros -->
                   </div>
                 </div>
               </div>
@@ -2657,7 +2653,7 @@ include('prcd/qc/qc.php');
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
-                <button type="submit" class="btn btn-primary" onclick="showMeRef()" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Agregar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Agregar</button>
                 </form>
               </div>
           </div>
