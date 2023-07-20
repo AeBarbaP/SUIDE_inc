@@ -1,68 +1,5 @@
 <?php
-include('qc/qc.php');
 require('fpdf/fpdf.php');
-
-$hoja_registro = "";
-$doc_medico = "";
-$acta_nac = "";
-$curp_doc = "";
-$ine = "";
-$comp_dom = "";
-$tarjeta_circ = "";
-
-// $curp = $_POST['curp'];
-$curp =$_REQUEST['curp'];
-$sqlCurp = "SELECT * FROM documentos_list WHERE id_ext = '$curp'";
-$resultadoCurp = $conn->query($sqlCurp);
-
-while($rowSQL=$resultadoCurp->fetch_assoc()){
-    
-    if($rowSQL['tipo_doc']==1){
-        $hoja_registro = "X";
-    }else if($rowSQL['tipo_doc']==null){
-        $hoja_registro = "";
-    }
-
-    if($rowSQL['tipo_doc']==2){
-        $doc_medico = "X";
-    }else if($rowSQL['tipo_doc']==null){
-        $doc_medico = "";
-    }
-
-    if($rowSQL['tipo_doc']==3){
-        $acta_nac = "X";
-    }else if($rowSQL['tipo_doc']==null){
-        $acta_nac = "";
-    }
-
-    if($rowSQL['tipo_doc']==4){
-        $curp_doc = "X";
-    }else if($rowSQL['tipo_doc']==null){
-        $curp_doc = "";
-    }
-
-    if($rowSQL['tipo_doc']==5){
-        $ine = "X";
-    }else if($rowSQL['tipo_doc']==null){
-        $ine = "";
-    }
-
-    if($rowSQL['tipo_doc']==6){
-        $comp_dom = "X";
-    }else if($rowSQL['tipo_doc']==null){
-        $comp_dom = "";
-    }
-
-    if($rowSQL['tipo_doc']==7){
-        $tarjeta_circ = "X";
-    }else if($rowSQL['tipo_doc']==null){
-        $tarjeta_circ = "";
-    }
-
-    
-}
-    
-
 
 class PDF extends FPDF
 {
@@ -128,7 +65,7 @@ $pdf->Ln();
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(106,6,utf8_decode('1.- HOJA DE REGISTRO'),0,0,'R');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
-$pdf->Cell(20,6,utf8_decode($hoja_registro),1,0,'C');
+$pdf->Cell(20,6,utf8_decode(''),1,0,'C');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
 $pdf->Cell(20,6,utf8_decode(''),1,0,'C');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
@@ -140,7 +77,7 @@ $pdf->Ln();
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(106,6,utf8_decode('2.- DOCUMENTO MÉDICO'),0,0,'R');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
-$pdf->Cell(20,6,utf8_decode($doc_medico),1,0,'C');
+$pdf->Cell(20,6,utf8_decode(''),1,0,'C');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
 $pdf->Cell(20,6,utf8_decode(''),1,0,'C');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
@@ -157,7 +94,7 @@ $pdf->Ln();
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(106,6,utf8_decode('3.- COPIA DEL ACTA DE NACIMIENTO'),0,0,'R');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
-$pdf->Cell(20,6,utf8_decode($acta_nac),1,0,'C');
+$pdf->Cell(20,6,utf8_decode(''),1,0,'C');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
 $pdf->Cell(20,6,utf8_decode(''),1,0,'C');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
@@ -174,7 +111,7 @@ $pdf->Ln();
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(106,6,utf8_decode('4.- COPIA DE LA CURP'),0,0,'R');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
-$pdf->Cell(20,6,utf8_decode($curp_doc),1,0,'C');
+$pdf->Cell(20,6,utf8_decode(''),1,0,'C');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
 $pdf->Cell(20,6,utf8_decode(''),1,0,'C');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
@@ -189,7 +126,7 @@ $pdf->Ln();
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(106,6,utf8_decode('5.- COPIA DE IDENTIFICACIÓN OFICIAL DEL BENEFICIARIO'),0,0,'R');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
-$pdf->Cell(20,6,utf8_decode($ine),1,0,'C');
+$pdf->Cell(20,6,utf8_decode(''),1,0,'C');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
 $pdf->Cell(20,6,utf8_decode(''),1,0,'C');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
@@ -206,7 +143,7 @@ $pdf->Ln();
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(106,6,utf8_decode('6.- COPIA DE COMPROBANTE DE DOMICILIO'),0,0,'R');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
-$pdf->Cell(20,6,utf8_decode($comp_dom),1,0,'C');
+$pdf->Cell(20,6,utf8_decode(''),1,0,'C');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
 $pdf->Cell(20,6,utf8_decode(''),1,0,'C');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
@@ -230,12 +167,12 @@ $pdf->Ln();
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(106,6,utf8_decode('7.- COPIA DE TARJETA DE CIRCULACIÓPN DEL VEHÍCULO EN EL'),0,0,'R');
 $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
-$pdf->Cell(63,6,utf8_decode($tarjeta_circ),1,0,'C');
-// $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
-// $pdf->Cell(20,6,utf8_decode(''),1,0,'C');
-// $pdf->Cell(5,6,utf8_decode(''),0,0,'C');
-// $pdf->Cell(20,6,utf8_decode(''),1,0,'C');
-// $pdf->Cell(10,6,utf8_decode(''),0,0,'C');
+$pdf->Cell(20,6,utf8_decode(''),1,0,'C');
+$pdf->Cell(5,6,utf8_decode(''),0,0,'C');
+$pdf->Cell(20,6,utf8_decode(''),1,0,'C');
+$pdf->Cell(5,6,utf8_decode(''),0,0,'C');
+$pdf->Cell(20,6,utf8_decode(''),1,0,'C');
+$pdf->Cell(10,6,utf8_decode(''),0,0,'C');
 $pdf->Ln();
 $pdf->Cell(106,6,utf8_decode('QUE SE TRASLADA LA PERSONA CON DISCAPACIDAD'),0,0,'R');
 $pdf->Ln();
