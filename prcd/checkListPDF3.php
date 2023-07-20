@@ -1,5 +1,13 @@
 <?php
+include('qc/qc.php');
 require('fpdf/fpdf.php');
+
+$curp = $_POST['curp'];
+$sqlCurp = "SELECT * FROM documentos WHERE curp = '$curp'";
+$resultadoCurp = $conn->query($sqlCurp);
+while($rowSQL = $resultadoCurp-fetch_assoc()){
+
+}
 
 class PDF extends FPDF
 {
