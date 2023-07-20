@@ -125,6 +125,7 @@ $(document).ready(function() {
         var pensionNo = document.getElementById('pensionNo');
         var seguridadsocial = document.getElementById('seguridadsocial').value;
         var otroSS = document.getElementById('otroSS').value;
+        var numSS = document.getElementById('numss').value;
 
         if(generoF.checked){
             var genero = 1;
@@ -241,6 +242,7 @@ $(document).ready(function() {
                 pensionTemporalidad:pensionTemporalidad,
                 seguridadsocial:seguridadsocial,
                 otroSS:otroSS,
+                numSS:numSS
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
