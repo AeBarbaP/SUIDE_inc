@@ -1679,7 +1679,7 @@ include('prcd/qc/qc.php');
                     </table>
                     <div id="elementH"></div>
                     <div class="d-grid gap-2">
-                      <a id="buttonCheck" class="btn btn-primary btn-lg" onclick="saveFlags()" type="button">Imprimir formato...</a>
+                      <a id="buttonCheck" class="btn btn-primary btn-lg"  type="button">Imprimir formato...</a>
                     </div>
                   </div>
                 </div>
