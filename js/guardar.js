@@ -1344,8 +1344,8 @@ function swalEntrega(){
         cancelButtonText: 'No, cancelar!',
         reverseButtons: true
     }).then((result) => {
+        flagEntrega();
         if (result.isConfirmed) {
-            flagEntrega();
             limpiarModalSolicitud();
             document.getElementById('btnEntregaApoyo').disabled = false;
             swalWithBootstrapButtons.fire(
@@ -1353,6 +1353,7 @@ function swalEntrega(){
                 'Se ha generado el Acta de Entrega',
                 'success'
                 );
+            
             mostrarTablaServicios();
             $("#solicitudAdd").modal('hide');
         } else if (
@@ -1366,6 +1367,61 @@ function swalEntrega(){
             )
         }           
     })
+}
+function flagEntregaEO(){
+    var tipo = document.getElementById('tipoSolicitud').value;
+    var curp_exp = document.getElementById('curp_exp').value;
+    var folioSolicitud = document.getElementById('folioSolicitud').value;
+
+    $.ajax({
+        type: "POST",
+        url: 'prcd/actualizarStatusEO.php',
+        dataType:'json',
+        data: {
+            curp_exp:curp_exp,
+            folioSolicitud:folioSolicitud,
+            tipo:tipo
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var verificador = jsonData.success;
+            var monto = jsonData.monto;
+            console.log(monto);
+            if (verificador == 1) {
+                console.log('flag actualizado');
+            } else if (verificador == 0){
+                console.log('no muestra tabla');
+            }
+        }
+    });
+}
+
+function flagEntrega(){
+    var tipo = document.getElementById('tipoSolicitud').value;
+    var curp_exp = document.getElementById('curp_exp').value;
+    var folioSolicitud = document.getElementById('folioSolicitud').value;
+
+    $.ajax({
+        type: "POST",
+        url: 'prcd/actualizarStatus.php',
+        dataType:'json',
+        data: {
+            curp_exp:curp_exp,
+            folioSolicitud:folioSolicitud,
+            tipo:tipo
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var verificador = jsonData.success;
+            var monto = jsonData.monto;
+            console.log(monto);
+            if (verificador == 1) {
+                console.log('flag actualizado');
+            } else if (verificador == 0){
+                console.log('no muestra tabla');
+            }
+        }
+    });
 }
 function flagEntregaEO(){
     var tipo = document.getElementById('tipoSolicitud').value;
