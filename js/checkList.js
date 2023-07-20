@@ -1,4 +1,4 @@
-function saveFlags(){
+function saveFlagsno(){
     /* var checkAllSi = document.getElementById('checkAllSi'),
         checkAllNo = document.getElementById('checkAllNo');
 

@@ -18,4 +18,5 @@ function estadosSelect(){
 function curpTemporal (){
     var curpExp = document.getElementById('curp_exp').value;
     document.getElementById('buttonCheck').setAttribute('href','prcd/checkListPDF3.php?curp='+curpExp);
+    document.getElementById('buttonCheck').setAttribute('target','_blank');
 }
