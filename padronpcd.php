@@ -623,7 +623,7 @@ include('prcd/qc/qc.php');
                       <option value="5">Semestral</option>
                     </select>
                   </div>
-                  <div class="col-sm-10 mb-3">
+                  <div class="col-sm-8 mb-3">
                     <label for="exampleDataListSS" class="form-label">Tipo de Seguridad Social:</label>
                     <div class="input-group">
                       <select class="form-select" id="seguridadsocial" onchange="seguridadOp(this.value)" aria-label="Default select example">
@@ -636,6 +636,12 @@ include('prcd/qc/qc.php');
                       </select>
                       <span class="input-group-text"> Especifique: </span>
                       <input type="text" class="form-control" id="otroSS" name="datos_usr" placeholder="Nombre de la Institución de Seguridad Social" disabled>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 mb-3">
+                    <div class="mb-3">
+                      <label for="numss" class="form-label">Número de Seguridad Social:</label>
+                      <input type="text" class="form-control" id="numss" placeholder="">
                     </div>
                   </div>
                   <br>
@@ -1691,7 +1697,7 @@ include('prcd/qc/qc.php');
                         <img src="img/Registro.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Formato de Registro</h5>
-                          <a href="#" class="btn btn-primary">Imprimir</a>
+                          <a href="prcd/registroPDF.php" target="_blank" class="btn btn-primary">Imprimir</a>
                         </div>
                       </div>  
                     </div>
@@ -1700,7 +1706,7 @@ include('prcd/qc/qc.php');
                         <img src="img/Responsiva.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Acta Responsiva</h5>
-                          <a href="#" class="btn btn-primary">Imprimir</a>
+                          <a href="prcd/responsivaPDF.php" target="_blank" class="btn btn-primary">Imprimir</a>
                         </div>
                       </div>  
                     </div>

@@ -15,6 +15,14 @@ $curp =$_REQUEST['curp'];
 $sqlCurp = "SELECT * FROM documentos_list WHERE id_ext = '$curp'";
 $resultadoCurp = $conn->query($sqlCurp);
 
+/* $sqlGenerales = "SELECT * FROM datos_generales WHERE id_ext = '$curp'";
+$resultadoGenerales = $conn->query($sqlGenerales);
+/* $rowSqlGenerales = $resultadoGenerales->fetch_assoc(); */
+
+/* $numExpediente= $rowSqlGenerales['numExpediente'];
+$fecha_registro= $rowSqlGenerales['fecha_registro'];
+$fecha_actualizacion = $rowSqlGenerales['fecha_actualizacion']; */
+
 while($rowSQL=$resultadoCurp->fetch_assoc()){
     
     if($rowSQL['tipo_doc']==1){
@@ -118,9 +126,9 @@ $pdf->Cell(63,7,'Fecha de Registro',0,0,'C');
 $pdf->Cell(63,7,utf8_decode('Fecha Última Actualización'),0,0,'C');
 $pdf->Ln();
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(65,7,utf8_decode('ExpedienteNumero'),0,0,'C');
-$pdf->Cell(63,7,'Registro',0,0,'C');
-$pdf->Cell(63,7,utf8_decode('Actualización'),0,0,'C');
+$pdf->Cell(65,7,utf8_decode(''),0,0,'C');
+$pdf->Cell(63,7,utf8_decode(''),0,0,'C');
+$pdf->Cell(63,7,utf8_decode(''),0,0,'C');
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();

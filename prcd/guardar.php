@@ -48,6 +48,7 @@ $pensionMonto = $_POST['pensionMonto'];
 $pensionTemporalidad = $_POST['pensionTemporalidad'];
 $seguridadsocial = $_POST['seguridadsocial'];
 $otroSS = $_POST['otroSS'];
+$numSS = $_POST['numSS'];
 
 
 $sqlinsert= "INSERT INTO datos_generales (
@@ -93,7 +94,9 @@ $sqlinsert= "INSERT INTO datos_generales (
     pension_monto,
     pension_temporalidad,
     seguridad_social,
-    seguridad_social_donde)
+    seguridad_social_donde,
+    numSS
+    )
 VALUES(
     '$fecha_registro',
     '$nombre',
@@ -137,7 +140,8 @@ VALUES(
     '$pensionMonto',
     '$pensionTemporalidad',
     '$seguridadsocial',
-    '$otroSS'
+    '$otroSS',
+    '$numSS'
 )";
 
 $resultado= $conn->query($sqlinsert);
