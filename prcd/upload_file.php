@@ -1,5 +1,4 @@
 <?php    
-    session_start();
     include('qc/qc.php');
 
     date_default_timezone_set('America/Mexico_City');
@@ -33,7 +32,7 @@ $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
     $ruta = "docs_expedientes/". $link .'_'. $idUsr .'.'.$extension;
     // $sqlinsert= "UPDATE documentos SET link4='$ruta_pptx' WHERE id_usr='$curp'";
     $sqlInsert= "INSERT INTO documentos_list (
-        curp,
+        id_ext,
         tipo_doc,
         ruta_doc,
         fecha
