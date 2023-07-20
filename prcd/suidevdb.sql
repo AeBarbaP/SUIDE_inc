@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2023 at 07:24 PM
+-- Generation Time: Jul 20, 2023 at 10:50 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -9906,7 +9906,7 @@ CREATE TABLE `datos_generales` (
 --
 
 INSERT INTO `datos_generales` (`id`, `numExpediente`, `fecha_registro`, `fecha_actualizacion`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `estado`, `municipio`, `localidad`, `asentamiento`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `profesión`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `sindicato`, `sindicato_cual`, `seguridad_social`, `seguridad_social_donde`, `seguridad_social_otro`, `numSS`, `photo`) VALUES
-(10, NULL, '2023-07-19 14:47:45', NULL, 'Jesusrlv', 'Jesusrlv', 'Jesusrlv', 0, 41, 1, '2023-06-27', 'Zacatecas', '222', '12', '12', 'HP Laser Jet', 'programación', '2121', '32', 32008, 'ADJUNTAS DEL PEÑASCO (EL PEÑASCO)', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '3223232', 6, 'programación', 'LEVJ810924HZSXLS04', 'LEVJ8109248K3', 0, 'N/A', 'programación', '0', 'N/A', '', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', 1, '', NULL, NULL, 'docs_expedientes/photos/archivo_LEVJ810924HZSXLS04.png');
+(10, 'C-5602-1', '2023-07-19 14:47:45', '2023-07-20 12:29:56', 'Jesusrlv', 'Jesusrlv', 'Jesusrlv', 0, 41, 1, '2023-06-27', 'Zacatecas', '222', '12', '12', 'HP Laser Jet', 'programación', '2121', '32', 32008, 'ADJUNTAS DEL PEÑASCO (EL PEÑASCO)', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '3223232', 6, 'programación', 'LEVJ810924HZSXLS04', 'LEVJ8109248K3', 0, 'N/A', 'programación', '0', 'N/A', '', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', 1, '', NULL, NULL, 'docs_expedientes/photos/archivo_LEVJ810924HZSXLS04.png');
 
 -- --------------------------------------------------------
 
@@ -10053,16 +10053,19 @@ CREATE TABLE `documentos` (
 
 CREATE TABLE `documentos_list` (
   `id` int(11) NOT NULL,
-  `id_ext` int(11) NOT NULL,
-  `doc_medico` varchar(50) NOT NULL,
-  `doc_acta_nac` varchar(50) NOT NULL,
-  `doc_curp` varchar(50) NOT NULL,
-  `doc_ine` varchar(50) NOT NULL,
-  `doc_comp_dom` varchar(50) NOT NULL,
-  `doc_tarjeta` varchar(50) NOT NULL,
-  `doc_foto1` varchar(50) NOT NULL,
-  `doc_foto2` varchar(50) NOT NULL
+  `id_ext` varchar(20) NOT NULL,
+  `tipo_doc` int(11) DEFAULT NULL,
+  `ruta_doc` varchar(150) DEFAULT NULL,
+  `fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `documentos_list`
+--
+
+INSERT INTO `documentos_list` (`id`, `id_ext`, `tipo_doc`, `ruta_doc`, `fecha`) VALUES
+(1, 'levj810924', 2, 'docs_expedientes/archivo2_levj810924.pdf', '2023-07-20 01:01:50'),
+(2, 'levj810924', 4, 'docs_expedientes/archivo4_levj810924.pdf', '2023-07-20 01:12:57');
 
 -- --------------------------------------------------------
 
@@ -10352,7 +10355,9 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (93, 1, '2023-07-15 13:35:41', NULL),
 (94, 1, '2023-07-18 00:44:31', NULL),
 (95, 1, '2023-07-18 12:47:03', NULL),
-(96, 1, '2023-07-19 12:16:18', NULL);
+(96, 1, '2023-07-19 12:16:18', NULL),
+(97, 0, NULL, '2023-07-20 13:15:33'),
+(98, 1, '2023-07-20 13:15:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -10964,7 +10969,7 @@ ALTER TABLE `discapacidades`
 -- AUTO_INCREMENT for table `documentos_list`
 --
 ALTER TABLE `documentos_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `enfermedades`
@@ -11000,7 +11005,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT for table `medicamentos`
