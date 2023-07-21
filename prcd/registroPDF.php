@@ -154,6 +154,32 @@ else if ($ss == 4){
   $regSS3 = " ";
   $regSS4 = "X";
 }
+
+$discapacidad = $rowSqlMedicos['tipo_discapacidad'];
+if ($ss == 1){
+  $regSS1 = "X";
+  $regSS2 = " ";
+  $regSS3 = " ";
+  $regSS4 = " ";
+}
+else if ($ss == 2){
+  $regSS1 = " ";
+  $regSS2 = "X";
+  $regSS3 = " ";
+  $regSS4 = " ";
+}
+else if ($ss == 3){
+  $regSS1 = " ";
+  $regSS2 = " ";
+  $regSS3 = "X";
+  $regSS4 = " ";
+}
+else if ($ss == 4){
+  $regSS1 = " ";
+  $regSS2 = " ";
+  $regSS3 = " ";
+  $regSS4 = "X";
+}
 class PDF extends FPDF
 {
 // Cabecera de página
@@ -559,25 +585,25 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(11,5,utf8_decode('Física:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode('&#x2714'),0,0,'C');
+$pdf->Cell(4,5,utf8_decode($regDiscFisica),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(17,5,utf8_decode('Intelectual:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(4,5,utf8_decode($regDiscIntelectual),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(16,5,utf8_decode('Sensorial:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(4,5,utf8_decode($regDiscSensorial),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(14,5,utf8_decode('Múltiple:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(4,5,utf8_decode($regDiscMultiple),0,0,'C');
 $pdf->Cell(38,5,utf8_decode(''),0,0,'C');
 $pdf->Ln();
 

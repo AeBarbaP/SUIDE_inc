@@ -670,8 +670,8 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-6">
                       <label for="datos_usr" class="form-label">Discapacidad:</label>
-                      <input type="text" id="curp_exp" oninput="curpTemporal()">
-                     
+                      <input type="text" id="curp_exp" onchange="curpTemporal()">
+                    
                       <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..." onchange="numExpGenerator(this.value)" required>
                       <datalist id="discapacidadList">
 
