@@ -139,7 +139,7 @@ $(document).ready(function() {
         if(estudiaSi.checked){
             var estudia = 1;
             var estudiaLugar = document.getElementById('lugarEstudia').value;
-            document.getElementById('lugarEstudia').required = true;
+            document.getElementById('lugarEstudia').required = false;
         }
         else if (estudiaNo.checked){
             var estudia = 0;
@@ -294,6 +294,7 @@ $(document).ready(function() {
         var discapacidad = document.getElementById('discapacidad').value;
         var gradoDisc = document.getElementById('gradoDisc').value;
         var tipoDisc = document.getElementById('tipoDisc').value;
+        var descDisc = document.getElementById('descDisc').value;
         var causaDisc = document.getElementById('causaDisc').value;
         var especifiqueD = document.getElementById('especifiqueD').value;
         var temporalidad = document.getElementById('temporalidad').value;
@@ -357,6 +358,7 @@ $(document).ready(function() {
                 discapacidad:discapacidad,
                 gradoDisc:gradoDisc,
                 tipoDisc:tipoDisc,
+                descDisc:descDisc,
                 causaDisc:causaDisc,
                 especifiqueD:especifiqueD,
                 temporalidad:temporalidad,

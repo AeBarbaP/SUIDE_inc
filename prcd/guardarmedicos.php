@@ -9,6 +9,7 @@ $fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
 $curp_exp = $_POST['curp_exp'];
 $discapacidad = $_POST['discapacidad'];
 $gradoDisc = $_POST['gradoDisc'];
+$descDisc = $_POST['descDisc'];
 $tipoDisc = $_POST['tipoDisc'];
 $causaDisc = $_POST['causaDisc'];
 $especifiqueD = $_POST['especifiqueD'];
@@ -36,6 +37,7 @@ $sqlinsert= "INSERT INTO datos_medicos (
     discapacidad,
     grado_discapacidad,
     tipo_discapacidad,
+    descripcionDiscapacidad,
     causa,
     causa_otro,
     temporalidad,
@@ -62,6 +64,7 @@ VALUES(
     '$discapacidad',
     '$gradoDisc',
     '$tipoDisc',
+    '$descDisc',
     '$causaDisc',
     '$especifiqueD',
     '$temporalidad',

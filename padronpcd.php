@@ -390,10 +390,11 @@ include('prcd/qc/qc.php');
                     <label for="edoCivil" class="form-label">Estado Civil:</label>
                     <select class="form-select" id="edoCivil" aria-label="Default select example">
                       <option selected>Selecciona...</option>
-                      <option value="1">Solter@</option>
-                      <option value="2">Casad@</option>
-                      <option value="3">Divorciad@</option>
-                      <option value="4">Viud@</option>
+                      <option value="2">Solter@</option>
+                      <option value="1">Casad@</option>
+                      <option value="3">Viud@</option>
+                      <option value="6">Divorciad@</option>
+                      <option value="8">Unión Libre</option>
                     </select>
                   </div>
                   <div class="col-sm-8">
@@ -503,8 +504,11 @@ include('prcd/qc/qc.php');
                       <option value="2">Primaria</option>
                       <option value="3">Secundaria</option>
                       <option value="4">Preparatoria</option>
-                      <option value="5">Licenciatura</option>
-                      <option value="6">Posgrado</option>
+                      <option value="5">Carrera Técnica</option>
+                      <option value="6">Licenciatura</option>
+                      <option value="7">Posgrado</option>
+                      <option value="8">Preescolar</option>
+                      <option value="9">Escuela de Educación Especial</option>
                     </select>
                   </div>
                   <div class="col-sm-4">
@@ -654,7 +658,7 @@ include('prcd/qc/qc.php');
               </div>
                 <div class="tab-pane fade" id="nav-medicos" role="tabpanel" aria-labelledby="nav-medicos-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3" style="width:95%">
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                       <form id="medicosForm">
                       <label for="exampleDataListDisc" class="form-label">Tipo de Discapacidad:</label>
                       <select class="form-select" id="tipoDisc" onchange="discapacidadTab(this.value)" aria-label="Default select example">
@@ -663,15 +667,16 @@ include('prcd/qc/qc.php');
                         <option value="Intelectual">Intelectual</option>
                         <option value="Sensorial">Sensorial</option>
                         <option value="Múltiple">Múltiple</option>
+                        <option value="Psicosocial">Psicosocial</option>
                       </select>
                       <div class="invalid-feedback">
                         * Campo requerido.
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                       <label for="datos_usr" class="form-label">Discapacidad:</label>
                       <input type="text" id="curp_exp" onchange="curpTemporal()">
-                    
+
                       <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..." onchange="numExpGenerator(this.value)" required>
                       <datalist id="discapacidadList">
 
@@ -681,8 +686,22 @@ include('prcd/qc/qc.php');
                       </div>
                     </div>
                     <div class="col-sm-2">
-                      <label for="datos_usr" class="form-label">Grado:</label>
-                      <input type="text" class="form-control" id="gradoDisc" name="datos_usr" placeholder="Grado" required>
+                      <label for="exampleDataListDisc" class="form-label">Grado:</label>
+                      <select class="form-select" id="gradoDisc" aria-label="Default select example">
+                        <option selected>Selecciona...</option>
+                        <option value="1-Leve">1. Leve</option>
+                        <option value="2-Moderado">2. Moderado</option>
+                        <option value="3-Grave">3. Grave</option>
+                        <option value="4-Severo">4. Severo</option>
+                        <option value="5-Profundo">5. Profundo</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        * Campo requerido.
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <label for="datos_usr" class="form-label">Descripción:</label>
+                      <input type="text" class="form-control" id="descDisc" name="datos_usr" placeholder="Grado" required>
                       <div class="invalid-feedback">
                         * Campo requerido.
                       </div>
@@ -2650,9 +2669,11 @@ include('prcd/qc/qc.php');
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-mortarboard"></i></span>
                 <select class="form-select" id="escolaridadFam" aria-label="Default select example">
                   <option selected>Nivel de Escolaridad...</option>
+                  <option value="Preescolar">Preescolar</option>
                   <option value="Primaria">Primaria</option>
                   <option value="Secundaria">Secundaria</option>
                   <option value="Preparatoria">Preparatoria</option>
+                  <option value="Carrera_Tecnica">Carrera Técnica</option>
                   <option value="Licenciatura">Licenciatura</option>
                   <option value="Posgrado">Posgrado</option>
                 </select>
@@ -2662,9 +2683,17 @@ include('prcd/qc/qc.php');
                 <input type="text" class="form-control" placeholder="Profesión" aria-label="profesionFam" id="profesionFam" aria-describedby="basic-addon1">
               </div>
               <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Discapacidad</span>
-                <input type="text" class="form-control" placeholder="Discapacidad" aria-label="discapacidad" id="discapacidadFam" aria-describedby="basic-addon1">
+                <span class="input-group-text" id="basic-addon1">Tiene Discapacidad?</span>
+                <select class="form-select" id="selectDiscapacidadFam" onchange="familiarDisc(this.value)">
+                  <option selected>Selecciona...</option>
+                  <option value="1">Sí</option>
+                  <option value="2">No</option>
+                </select>
               </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"  id="basic-addon1"><i class="bi bi-universal-access-circle"></i></span>
+                <input type="text" class="form-control" placeholder="Descripción de discapacidad" aria-label="discapacidad" id="discapacidadFam" aria-describedby="basic-addon1" disabled>
+              </div> 
               <div class="row">
                 <div class="col-md-6">
                 <div class="input-group mb-3">  

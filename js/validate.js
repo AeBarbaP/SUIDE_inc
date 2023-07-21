@@ -565,58 +565,14 @@ function valoracionCheck(x){
             document.getElementById('registroDoc7').disabled = true;
         }
     }
-    /* function checkAll3(){
-        if (checkAllNA.checked){
-            document.getElementById('valoracionNA').checked = true;
-            document.getElementById('actaNA').checked = true;
-            document.getElementById('curpNA').checked = true;
-            document.getElementById('comprobanteNA').checked = true;
-            document.getElementById('fotosNA').checked = true;
-            document.getElementById('circulacionNA').checked = true;
-            document.getElementById('ineNA').checked = true;
-        } else {
-            document.getElementById('valoracionNA').checked = false;
-            document.getElementById('actaNA').checked = false;
-            document.getElementById('curpNA').checked = false;
-            document.getElementById('comprobanteNA').checked = false;
-            document.getElementById('fotosNA').checked = false;
-            document.getElementById('circulacionNA').checked = false;
-            document.getElementById('ineNA').checked = false;
-        }
-    } */
-        /*e.preventDefault();
 
-        $.ajax({
-            type: "POST",
-            url: '',
-            dataType:'json',
-            data: {
-                checkAllSi:checkAllSi,
-                checkAllNo:checkAllNo,
-                checkAllNA:checkAllNA,
-                valoracionSi:valoracionSi,
-                valoracionNo:valoracionNo,
-                valoracionNA:valoracionNA,
-                actaSi:actaSi,
-                actaNo:actaNo,
-                actaNA:actaNA,
-                curpSi:curpSi,
-                curpNo:curpNo,
-                curpNA:curpNA,
-                comprobanteSi:comprobanteSi,
-                comprobanteNo:comprobanteNo,
-                comprobanteNA:comprobanteNA,
-                fotosSi:fotosSi,
-                fotosNo:fotosNo,
-                fotosNA:fotosNA,
-                circulacionSi:circulacionSi,
-                circulacionNo:circulacionNo,
-                circulacionNA:circulacionNA,
-                ineSi:ineSi,
-                ineNo:ineNo,
-                ineNA:ineNA
-            }
+function familiarDisc(x){
+    var discapFam = x;
 
-        })
-    })
-}) */
+    if (discapFam == 1){
+        document.getElementById('discapacidadFam').disabled = false;
+    }
+    else {
+        document.getElementById('discapacidadFam').disabled = true;
+    }
+}
