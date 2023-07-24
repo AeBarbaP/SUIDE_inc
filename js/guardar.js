@@ -139,7 +139,7 @@ $(document).ready(function() {
         if(estudiaSi.checked){
             var estudia = 1;
             var estudiaLugar = document.getElementById('lugarEstudia').value;
-            document.getElementById('lugarEstudia').required = false;
+            document.getElementById('lugarEstudia').required = true;
         }
         else if (estudiaNo.checked){
             var estudia = 0;
