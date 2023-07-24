@@ -86,6 +86,7 @@ include('prcd/qc/qc.php');
     <script src="js/discapacidades.js"></script>
     <script src="js/numeroExpediente.js"></script>
     <script src="js/checkList.js"></script>
+    <script src="js/tarjetones.js"></script>
 
     <style>
       * {
@@ -1992,6 +1993,8 @@ include('prcd/qc/qc.php');
               <div class="input-group mb-1 mt-2 w-100">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
                 <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+                <input type="text" id="curpTarjeton"> 
+                <input type="text" id="numExpediente" hidden> 
               </div><!-- input group -->
               <br>
               <div class="container text-center">
@@ -2499,7 +2502,7 @@ include('prcd/qc/qc.php');
     var expediente = document.getElementById('searchDBInclusion2').value;
     $.ajax({
       type:"POST",
-      url:"prcd/query_searchPadronBDTarjeton.php",
+      url:"query/query_searchPadronBDTarjeton.php",
       data:{
         expediente:expediente
       },

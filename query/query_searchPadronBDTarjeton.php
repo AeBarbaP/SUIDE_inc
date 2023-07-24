@@ -1,5 +1,11 @@
 <?php
-include('qc/qc2.php');
+include('../prcd/qc/qc2.php');
+
+if ($_POST['expediente'] == 0){
+  $tipoSangre = "";
+  $tipoSangre2 = "";
+}
+else{
 
     $expediente = $_POST['expediente'];
     header("content-type: image/jpeg");
@@ -9,11 +15,14 @@ include('qc/qc2.php');
     $resultado_QueryExpediente = $conn2->query($QueryExpediente);
     $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
 
+    if($resultado_QueryExpediente){
+    
     $nombreExp = $row_sql_expediente['nombre'];
     $idExp = $row_sql_expediente['id'];
     $apellidoPaterno = $row_sql_expediente['apellidoPaterno'];
     $apellidoMaterno = $row_sql_expediente['apellidoMaterno'];
     $folio = $row_sql_expediente['folio'];
+    $curp = $row_sql_expediente['curp'];
     
     //Discapacidad
     $QueryDiscapacidad = "SELECT * FROM discapacidades WHERE idExpediente = '$idExp'";
@@ -26,15 +35,20 @@ include('qc/qc2.php');
     $row_QueryDiscapacidad2 = $resultado_QueryDiscapacidad2->fetch_assoc();
     $discapacidad2 = $row_QueryDiscapacidad2['nombreDiscapacidad'];
 
-    if($resultado_QueryExpediente){
-
+      if ($curp != null || $curp != 0){
+        $curpShow = $curp;
+      }
+      else {
+        $curpShow = ' CURP no registrada';
+      }
+      
       echo'
 
         <div >
           <h5 class="card-title mt-3">'.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
           <p class="card-text">Tipo Discapacidad: '.$discapacidad2.'</p>
-          <p class="card-text">Número de Expediente: '.$folio.'</p>
-          <p class="card-text">Número de Expediente: '.$folio.'</p>
+          <p class="card-text" id="numExpedientes">Número de Expediente: '.$folio.'</p>
+          <p class="card-text" id="curpShows">CURP: '.$curpShow.'</p>
 
       ';
     }
@@ -44,3 +58,4 @@ include('qc/qc2.php');
         alert("No se encontró el registro");
       </script>';
     }
+}

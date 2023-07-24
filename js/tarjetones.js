@@ -1,27 +1,33 @@
 function vehiculoAdd(){
-    var curp_exp = document.getElementById('curp_exp').value;
-    var unitario = document.getElementById('numExpediente').value;
+    var cuprTarjeton = document.getElementById('cuprTarjeton').value;
+    var numExpediente = document.getElementById('numExpediente').value;
 
-    var tipoSolicitud = document.getElementById('tipoTarjeton').value;
-    var fechaSolicitud = document.getElementById('marcaPerm').value;
-    var folioSolicitud = document.getElementById('annioPerm').value;
-    var detalleSolicitud = document.getElementById('placasPerm').value;
-    var cantidadArt = document.getElementById('seriePerm').value;
-    var monto_solicitud = document.getElementById('folioTPerm').value;
+    var tipoTarjeton = document.getElementById('tipoTarjeton').value;
+    var modelo = document.getElementById('modeloPerm').value;
+    var marca = document.getElementById('marcaPerm').value;
+    var annio = document.getElementById('annioPerm').value;
+    var numPlaca = document.getElementById('placasPerm').value;
+    var serie = document.getElementById('seriePerm').value;
+    var folioTarjeton = document.getElementById('folioTPerm').value;
+    var vigencia = document.getElementById('vigenciaPerm').value;
+    var autoSeguro = document.getElementById('AutoSeguroInput').value;
     
     $.ajax({
         type: "POST",
-        url: 'prcd/guardarApoyo.php',
+        url: 'prcd/guardarVehiculo.php',
         dataType:'json',
         data: {
-            curp_exp:curp_exp,
-            tipoSolicitud:tipoSolicitud,
-            fechaSolicitud:fechaSolicitud,
-            folioSolicitud:folioSolicitud,
-            detalleSolicitud:detalleSolicitud,
-            cantidadArt:cantidadArt,
-            unitario:unitario,
-            monto_solicitud:monto_solicitud
+            cuprTarjeton:cuprTarjeton,
+            numExpediente:numExpediente,
+            tipoTarjeton:tipoTarjeton,
+            modelo:modelo,
+            marca:marca,
+            annio:annio,
+            numPlaca:numPlaca,
+            serie:serie,
+            folioTarjeton:folioTarjeton,
+            vigencia:vigencia,
+            autoSeguro:autoSeguro
         },
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));

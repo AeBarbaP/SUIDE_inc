@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2023 at 11:01 PM
+-- Generation Time: Jul 24, 2023 at 10:24 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -10374,7 +10374,8 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (100, 0, NULL, '2023-07-21 12:11:11'),
 (101, 1, '2023-07-21 12:11:15', NULL),
 (102, 0, NULL, '2023-07-21 13:52:31'),
-(103, 1, '2023-07-21 13:52:35', NULL);
+(103, 1, '2023-07-21 13:52:35', NULL),
+(104, 1, '2023-07-24 09:18:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -10686,7 +10687,8 @@ INSERT INTO `servicios` (`id`, `curp`, `folio_solicitud`, `fecha_solicitud`, `ti
 (157, '11234', 'INC-2023-157', '2023-07-19', 1, '7', 1, 272, 272, NULL, NULL, 272, NULL),
 (158, '11234', 'INC-2023-157', '2023-07-19', 1, '10', 1, 3699, 3699, NULL, NULL, 3699, NULL),
 (159, '12321', 'INC-2023-159', '2023-07-19', 1, '11', 1, 704, 704, NULL, NULL, 704, NULL),
-(160, '12321', 'INC-2023-159', '2023-07-19', 1, '13', 3, 439, 1317, NULL, NULL, 1317, NULL);
+(160, '12321', 'INC-2023-159', '2023-07-19', 1, '13', 3, 439, 1317, NULL, NULL, 1317, NULL),
+(163, '', 'INC-2023-161', '2023-07-24', 1, '3', 1, 1146, 1146, NULL, '2023-07-24', 1146, 1);
 
 -- --------------------------------------------------------
 
@@ -10714,7 +10716,8 @@ INSERT INTO `solicitud` (`id`, `folio_solicitud`, `curp`, `tipo`, `total_solicit
 (2, 'INC-2023-132', 'lev2', 1, '3738', '2023-07-18 00:00:00', '2023-07-18 13:23:14', 1),
 (3, 'INC-2023-138', 'sddsdsd', 1, '816', '2023-07-18 00:00:00', '2023-07-18 14:23:32', 1),
 (4, 'INC-2023-144', 'sdsd', 1, '4362', '2023-07-19 00:00:00', '2023-07-19 12:16:53', 1),
-(5, 'INC-2023-146', 'dsdsd', 1, '1135', '2023-07-19 00:00:00', '2023-07-19 12:17:41', 1);
+(5, 'INC-2023-146', 'dsdsd', 1, '1135', '2023-07-19 00:00:00', '2023-07-19 12:17:41', 1),
+(6, 'INC-2023-161', '', 1, '1146', '2023-07-24 00:00:00', '2023-07-24 13:12:35', 1);
 
 -- --------------------------------------------------------
 
@@ -10728,6 +10731,7 @@ CREATE TABLE `tarjetones` (
   `numExpediente` varchar(12) NOT NULL,
   `tipo_tarjeton` int(11) NOT NULL COMMENT '1 - Permanente\r\n2 - Préstamo',
   `folio_tarjeton` int(11) NOT NULL,
+  `fecha_entrega` datetime NOT NULL,
   `vigencia` int(11) NOT NULL,
   `vehiculo_marca` varchar(20) NOT NULL,
   `vehiculo_modelo` varchar(20) NOT NULL,
@@ -11053,7 +11057,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `medicamentos`
@@ -11089,13 +11093,13 @@ ALTER TABLE `referencias`
 -- AUTO_INCREMENT for table `servicios`
 --
 ALTER TABLE `servicios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 
 --
 -- AUTO_INCREMENT for table `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tarjetones`
