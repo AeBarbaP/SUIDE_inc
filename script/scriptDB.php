@@ -140,7 +140,7 @@ $gradoDiscapacidad = $rowDB['gradoDiscapacidad']; // se relaciona con idExpedien
 // enfermedades
 $idCatEnfermedad = $rowDB['idCatEnfermedad']; // se relaciona con idExpediente
 // alergias
-    $enfermedadesSQL = "SELECT * FROM enfermedadesn WHERE "
+    $enfermedadesSQL = "SELECT * FROM enfermedadesn WHERE ";
 $idCatAlergia = $rowDB['idCatAlergia']; // se relaciona con idExpediente
 // medicamentos
 $idCatMedicamento = $rowDB['idCatMedicamento']; // se relaciona con idExpediente
@@ -221,7 +221,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
 
 
 
-$sqlInsert = "INSERT INTO datos_generales Values"
+$sqlInsert = "INSERT INTO datos_generales Values";
 
 
 // INNER JOIN con datos_medicos, aleggias, efenrmedades, medicamentos, discapacidades

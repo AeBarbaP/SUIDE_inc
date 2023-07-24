@@ -576,3 +576,14 @@ function familiarDisc(x){
         document.getElementById('discapacidadFam').disabled = true;
     }
 }
+function autoSeguroCheck(){
+    var autoSeguroOp = document.getElementById('checkAutoS');
+
+    if (autoSeguroOp.checked){
+        document.getElementById('AutoSeguroInput').disabled = false;
+        document.getElementById('AutoSeguroInput').required = true;
+    }
+    else {
+        document.getElementById('AutoSeguroInput').disabled = true;
+    }
+}

@@ -2007,35 +2007,44 @@ include('prcd/qc/qc.php');
                         </div>
                         <hr>
                         <h5 class="mb-3">Datos del vehículo</h5>
+                        <input type="text" id="tipoTarjeton" value="1" hidden>
                         <div class="input-group mb-3">
                           <span class="input-group-text" id="basic-addon1">Marca</span>
-                          <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaForm">
+                          <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaPerm">
                         </div>
                         <div class="input-group mb-3">
                           <span class="input-group-text" id="basic-addon1">Modelo</span>
-                          <input type="text" class="form-control" placeholder="Modelo" aria-label="modelo" aria-describedby="basic-addon1">
+                          <input type="text" class="form-control" placeholder="Modelo" id="modeloPerm" aria-label="modelo" aria-describedby="basic-addon1">
                           <span class="input-group-text">Año</span>
-                          <input type="text" class="form-control" placeholder="Año" aria-label="anio" id="annioForm">
+                          <input type="text" class="form-control" placeholder="Año" aria-label="anio" id="annioPerm">
                         </div>
                         <div class="input-group mb-3">
                           <span class="input-group-text" id="basic-addon1">No. de Placas</span>
-                          <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasForm">
+                          <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasPerm">
+                          <span class="input-group-text" id="basic-addon1">No. de Serie</span>
+                          <input type="text" class="form-control w-25" placeholder="# de Serie del vehículo" aria-label="numeroserie" aria-describedby="basic-addon1" id="seriePerm">
                         </div>
                         <div class="input-group mb-3">
-                          <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-                          <input type="text" class="form-control" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieForm">
+                          <span class="input-group-text" id="basic-addon1">Folio Tarjetón</span>
+                          <input type="text" class="form-control" placeholder="# de del tarjetón a asignar" aria-label="numeroplacas" aria-describedby="basic-addon1" id="folioTPerm">
+                          <span class="input-group-text" id="basic-addon1">Vigencia</span>
+                          <select class="form-select" id="vigenciaPerm" aria-label="Default select example">
+                            <option selected>Selecciona...</option>
+                            <option value="1">2 años</option>
+                            <option value="2">6 años</option>
+                          </select>
                         </div>
                         <div class="col-md-12">
                           <div class="input-group mb-3">
                             <span class="input-group-text">Vehículo extranjero</span>
                             <div class="input-group-text">
-                              <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                              <input class="form-check-input mt-0" type="checkbox" onchange="autoSeguroCheck()" value="" id="checkAutoS" aria-label="Checkbox for following text input">
                             </div>
-                            <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguro" disabled>
+                            <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroInput" disabled>
                           </div>  
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                          <button class="btn btn-primary me-md-2" type="button"><i class="bi bi-plus-lg"></i> Agregar</button>
+                          <button class="btn btn-primary me-md-2" type="button" id="agregarVehiculoBtn" onclick="vehiculoAdd()"><i class="bi bi-plus-lg"></i> Agregar</button>
                         </div>
                         <hr>
                         <div class="table-responsive text-center">
