@@ -4,9 +4,10 @@ include('qc/qc.php');
 date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
 
+$numExpediente = $_POST['expediente'];
+$folioExpediente = $_POST['folioExpediente'];
+$curpTarjeton = $_POST['curp'];
 
-$curpTarjeton = $_POST['curpTarjeton'];
-$numExpediente = $_POST['numExpediente'];
 $tipoTarjeton = $_POST['tipoTarjeton'];
 $folioTarjeton = $_POST['folioTarjeton'];
 $fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
@@ -20,7 +21,6 @@ $autoSeguro = $_POST['autoSeguro'];
 
 $sqlinsert= "INSERT INTO tarjetones (
     curp,
-    nombre,
     numExpediente,
     tipo_tarjeton,
     folio_tarjeton,
@@ -52,7 +52,9 @@ $resultado= $conn->query($sqlinsert);
 
 if ($resultado) {
     echo json_encode(array(
-        'success'=>1
+        'success'=>1,
+        'curpTarjetones'=>$curpTarjeton,
+        'folioExpediente'=>$folioExpediente
     ));
 }
 else {

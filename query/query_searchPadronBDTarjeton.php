@@ -46,9 +46,11 @@ else{
 
         <div >
           <h5 class="card-title mt-3">'.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
-          <p class="card-text">Tipo Discapacidad: '.$discapacidad2.'</p>
-          <p class="card-text" id="numExpedientes">Número de Expediente: '.$folio.'</p>
-          <p class="card-text" id="curpShows">CURP: '.$curpShow.'</p>
+          <label class="card-text">Tipo Discapacidad: </label><label>'.$discapacidad2.'</label>
+          <br>
+          <label class="card-text">Número de Expediente:</label><label id="numExpediente">'.$folio.'</label>
+          <br>
+          <label class="card-text">CURP:</label><label id="curpShows">'.$curpShow.'</label>
 
       ';
     }
