@@ -35,9 +35,9 @@ function vehiculoAdd(){
             var verificador = jsonData.success;
 /*             var curpTarjeton = jsonData.cuprTarjeton;
             var numExpediente = jsonData.numExpediente; */
+            mostrarTablaVehiculos();
+            limpiarInputsVehiculo();
             if (verificador == 1) {
-                mostrarTablaVehiculos();
-                limpiarInputsVehiculo();
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
@@ -51,8 +51,8 @@ function vehiculoAdd(){
 
 function mostrarTablaVehiculos(){
     var folioTarjeton = document.getElementById('folioTarjeton').value;
-    var curpTarjeton = document.getElementById('curpTarjeton').value;
-    var numExpediente = document.getElementById('numExpediente').value;
+    var curpTarjeton = document.getElementById('curpShows').innerHTML;
+    var numExpediente = document.getElementById('numExpediente').innerHTML;
 
     $.ajax({
         type: "POST",
