@@ -35,12 +35,12 @@ function vehiculoAdd(){
             var verificador = jsonData.success;
 /*             var curpTarjeton = jsonData.cuprTarjeton;
             var numExpediente = jsonData.numExpediente; */
-            mostrarTablaVehiculos();
-            limpiarInputsVehiculo();
             if (verificador == 1) {
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
+            limpiarInputsVehiculo();
+            mostrarTablaVehiculos();
             /* document.getElementById('curpTarjeton').value = curpTarjeton;
             document.getElementById('numExpediente').value = numExpediente; */
         }
@@ -50,18 +50,14 @@ function vehiculoAdd(){
 }
 
 function mostrarTablaVehiculos(){
-    var folioTarjeton = document.getElementById('folioTarjeton').value;
     var curpTarjeton = document.getElementById('curpShows').innerHTML;
-    var numExpediente = document.getElementById('numExpediente').innerHTML;
 
     $.ajax({
         type: "POST",
         url: 'query/queryTablaTarjetones.php',
         dataType:'html',
         data: {
-            folioTarjeton:folioTarjeton,
             curpTarjeton:curpTarjeton,
-            numExpediente:numExpediente
         },
         success: function(data){
             $('#vehiculosTabla').fadeIn(1000).html(data);
