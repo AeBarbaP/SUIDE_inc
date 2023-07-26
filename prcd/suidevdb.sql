@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
--- Generation Time: Jul 24, 2023 at 10:24 PM
-=======
--- Generation Time: Jul 20, 2023 at 10:50 PM
->>>>>>> 1cba49f43a46de0cdfe29c2dc7aa04f0b6f5356a
+-- Generation Time: Jul 26, 2023 at 09:52 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -9899,30 +9895,18 @@ CREATE TABLE `datos_generales` (
   `sindicato` int(11) NOT NULL,
   `sindicato_cual` varchar(100) NOT NULL,
   `seguridad_social` int(11) NOT NULL,
-<<<<<<< HEAD
   `seguridad_social_otro` varchar(100) DEFAULT NULL,
   `numSS` varchar(20) DEFAULT NULL,
   `photo` varchar(150) DEFAULT NULL,
   `estatus` int(11) NOT NULL
-=======
-  `seguridad_social_donde` varchar(100) NOT NULL,
-  `seguridad_social_otro` varchar(100) DEFAULT NULL,
-  `numSS` varchar(20) DEFAULT NULL,
-  `photo` varchar(150) DEFAULT NULL
->>>>>>> 1cba49f43a46de0cdfe29c2dc7aa04f0b6f5356a
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `datos_generales`
 --
 
-<<<<<<< HEAD
 INSERT INTO `datos_generales` (`id`, `numExpediente`, `fecha_registro`, `fecha_actualizacion`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `estado`, `municipio`, `localidad`, `asentamiento`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `profesión`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `sindicato`, `sindicato_cual`, `seguridad_social`, `seguridad_social_otro`, `numSS`, `photo`, `estatus`) VALUES
 (10, 'C-5602-1', '2023-07-19 14:47:45', '2023-07-20 12:29:56', 'Jesusrlv', 'Jesusrlv', 'Jesusrlv', 0, 41, 1, '2023-06-27', 'Zacatecas', '222', '12', '12', 'HP Laser Jet', 'programación', '2121', '32', 32008, 'ADJUNTAS DEL PEÑASCO (EL PEÑASCO)', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '3223232', 6, 'programación', 'LEVJ810924HZSXLS04', 'LEVJ8109248K3', 0, 'N/A', 'programación', '0', 'N/A', '', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', 1, NULL, NULL, 'docs_expedientes/photos/archivo_LEVJ810924HZSXLS04.png', 0);
-=======
-INSERT INTO `datos_generales` (`id`, `numExpediente`, `fecha_registro`, `fecha_actualizacion`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `estado`, `municipio`, `localidad`, `asentamiento`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `profesión`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `sindicato`, `sindicato_cual`, `seguridad_social`, `seguridad_social_donde`, `seguridad_social_otro`, `numSS`, `photo`) VALUES
-(10, 'C-5602-1', '2023-07-19 14:47:45', '2023-07-20 12:29:56', 'Jesusrlv', 'Jesusrlv', 'Jesusrlv', 0, 41, 1, '2023-06-27', 'Zacatecas', '222', '12', '12', 'HP Laser Jet', 'programación', '2121', '32', 32008, 'ADJUNTAS DEL PEÑASCO (EL PEÑASCO)', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '3223232', 6, 'programación', 'LEVJ810924HZSXLS04', 'LEVJ8109248K3', 0, 'N/A', 'programación', '0', 'N/A', '', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', 1, '', NULL, NULL, 'docs_expedientes/photos/archivo_LEVJ810924HZSXLS04.png');
->>>>>>> 1cba49f43a46de0cdfe29c2dc7aa04f0b6f5356a
 
 -- --------------------------------------------------------
 
@@ -9936,10 +9920,7 @@ CREATE TABLE `datos_medicos` (
   `discapacidad` varchar(50) NOT NULL,
   `grado_discapacidad` varchar(50) NOT NULL,
   `tipo_discapacidad` int(11) NOT NULL,
-<<<<<<< HEAD
   `descripcionDiscapacidad` varchar(100) NOT NULL,
-=======
->>>>>>> 1cba49f43a46de0cdfe29c2dc7aa04f0b6f5356a
   `causa` int(11) NOT NULL,
   `causa_otro` varchar(100) DEFAULT NULL,
   `temporalidad` int(11) NOT NULL,
@@ -9966,7 +9947,6 @@ CREATE TABLE `datos_medicos` (
 -- Dumping data for table `datos_medicos`
 --
 
-<<<<<<< HEAD
 INSERT INTO `datos_medicos` (`id`, `curp`, `discapacidad`, `grado_discapacidad`, `tipo_discapacidad`, `descripcionDiscapacidad`, `causa`, `causa_otro`, `temporalidad`, `valoracion`, `fecha_valoracion`, `rehabilitacion`, `rehabilitacion_donde`, `rehabilitacion_inicio`, `rehabilitacion_duracion`, `tipo_sangre`, `cirugias`, `tipo_cirugias`, `protesis`, `protesis_tipo`, `alergias`, `alergias_cual`, `enfermedades`, `enfermedades_cual`, `medicamentos`, `medicamentos_cual`) VALUES
 (1, '', '', '0', 0, '', 0, '', 0, 0, '0000-00-00', 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, ''),
 (2, '', '', '0', 0, '', 0, '', 0, 0, '0000-00-00', 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, ''),
@@ -9981,22 +9961,52 @@ INSERT INTO `datos_medicos` (`id`, `curp`, `discapacidad`, `grado_discapacidad`,
 (11, 'INC', 'Multiple', 'mucho', 4, '', 7, 'parto', 1, 4, '2023-07-22', 1, 'CREE', '2023-07-26', '1', 5, 1, 'Vesícula, apéndice', 1, 'rodilla completa', 1, 'Cacahuate, Mariscos, Trigo', 0, 'Enfermedades no reportadas', 0, 'Enfermedades no reportadas'),
 (12, 'ROJO', 'una', 'uno', 4, '', 1, '', 1, 1, '2022-07-22', 1, 'CREE', '2023-05-22', '1', 1, 1, 'hfd', 1, 'fdsa', 1, 'Cacahuate, Huevo, Nuez, Penicilina, Sol', 1, 'Gastritis, Diabetes, Hipertensi�n', 1, 'Metocarbamol, Diazepam, Losartan, Insulina'),
 (13, 'BAPA821212MJCRNN04', '10-Cuadriparesia', 'x', 0, '', 3, '', 1, 1, '2023-07-12', 0, '0', '0000-00-00', '0', 1, 2, '', 2, '', 1, 'APLV Alergia a la Proteína de la Leche de Vaca, Ciprofloxacino, Sulfametoxazol-trimetoprima (Bactrim), Polvo, Moho', 0, 'Enfermedades no reportadas', 1, 'Diazepam, CBD');
-=======
-INSERT INTO `datos_medicos` (`id`, `curp`, `discapacidad`, `grado_discapacidad`, `tipo_discapacidad`, `causa`, `causa_otro`, `temporalidad`, `valoracion`, `fecha_valoracion`, `rehabilitacion`, `rehabilitacion_donde`, `rehabilitacion_inicio`, `rehabilitacion_duracion`, `tipo_sangre`, `cirugias`, `tipo_cirugias`, `protesis`, `protesis_tipo`, `alergias`, `alergias_cual`, `enfermedades`, `enfermedades_cual`, `medicamentos`, `medicamentos_cual`) VALUES
-(1, '', '', '0', 0, 0, '', 0, 0, '0000-00-00', 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, ''),
-(2, '', '', '0', 0, 0, '', 0, 0, '0000-00-00', 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, ''),
-(3, 'prueba', 'gfd', '0', 0, 0, '', 0, 0, '0000-00-00', 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, ''),
-(4, 'guiw', 'j', '0', 0, 0, '', 0, 0, '0000-00-00', 0, '', '0000-00-00', '', 0, 0, '', 0, '', 1, 'bh', 2, 'hn', 3, 'vc'),
-(5, 'j', 's', '0', 1, 7, 'j', 3, 2, '0000-00-00', 1, 'd', '2023-07-10', '2', 1, 1, 'f', 1, 'g', 1, 'd', 1, 'f', 1, 'd'),
-(6, 'GOBM200421MJCNRRA8', 's', '0', 1, 7, 'g', 1, 1, '0000-00-00', 1, 'g', '2022-07-08', '1', 1, 1, 'g', 1, 'tg', 1, 'g', 1, 'g', 1, 'bv'),
-(7, '', '', '0', 0, 0, '', 0, 0, '0000-00-00', 0, '', '0000-00-00', '', 0, 0, '', 0, '', 0, '', 0, '', 0, ''),
-(8, 'PRUEBA', 'motora', '0', 1, 7, 'itra', 5, 1, '0000-00-00', 1, 'f', '2023-08-23', '2', 1, 1, 'cadera', 1, 'cadera', 3, '', 0, '', 0, ''),
-(9, 'PRUEBA', 'motora', '0', 1, 7, 'g', 5, 1, '0000-00-00', 1, 're', '2023-07-23', '3', 1, 1, 't', 1, 'r', 1, '', 0, '', 0, ''),
-(10, 'BAPA', 'Síndrome de Aspergel', 'uno', 2, 7, 'parto', 1, 5, '0000-00-00', 1, 'CREE', '2023-07-23', '1', 5, 1, 'Rodilla', 1, 'Rodilla', 3, 'Cacahuate, Huevo, Nuez, Penicilina, Sol, Polvo', 0, 'Gastritis, Diabetes, Hipertensi�n', 0, 'Insulina, Losartan, Metocarbamol, CBD'),
-(11, 'INC', 'Multiple', 'mucho', 4, 7, 'parto', 1, 4, '2023-07-22', 1, 'CREE', '2023-07-26', '1', 5, 1, 'Vesícula, apéndice', 1, 'rodilla completa', 1, 'Cacahuate, Mariscos, Trigo', 0, 'Enfermedades no reportadas', 0, 'Enfermedades no reportadas'),
-(12, 'ROJO', 'una', 'uno', 4, 1, '', 1, 1, '2022-07-22', 1, 'CREE', '2023-05-22', '1', 1, 1, 'hfd', 1, 'fdsa', 1, 'Cacahuate, Huevo, Nuez, Penicilina, Sol', 1, 'Gastritis, Diabetes, Hipertensi�n', 1, 'Metocarbamol, Diazepam, Losartan, Insulina'),
-(13, 'BAPA821212MJCRNN04', '10-Cuadriparesia', 'x', 0, 3, '', 1, 1, '2023-07-12', 0, '0', '0000-00-00', '0', 1, 2, '', 2, '', 1, 'APLV Alergia a la Proteína de la Leche de Vaca, Ciprofloxacino, Sulfametoxazol-trimetoprima (Bactrim), Polvo, Moho', 0, 'Enfermedades no reportadas', 1, 'Diazepam, CBD');
->>>>>>> 1cba49f43a46de0cdfe29c2dc7aa04f0b6f5356a
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `datos_usuariot`
+--
+
+CREATE TABLE `datos_usuariot` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `apellido_p` varchar(100) NOT NULL,
+  `apellido_m` varchar(100) NOT NULL,
+  `curp` varchar(20) NOT NULL,
+  `cve_id_ine` int(11) NOT NULL,
+  `telefono` int(11) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `calle` varchar(80) NOT NULL,
+  `no_ext` int(11) NOT NULL,
+  `no_int` varchar(4) NOT NULL,
+  `colonia` varchar(80) NOT NULL,
+  `cp` int(6) NOT NULL,
+  `estado` varchar(20) NOT NULL,
+  `municipio` varchar(100) NOT NULL,
+  `localidad` varchar(100) NOT NULL,
+  `tipo_discapacidad` varchar(20) NOT NULL,
+  `discapacidad` varchar(80) NOT NULL,
+  `grado_discapacidad` varchar(20) NOT NULL,
+  `dx_discapacidad` varchar(100) NOT NULL,
+  `temporalidad` int(11) NOT NULL,
+  `institucion_val` varchar(80) NOT NULL,
+  `medico` varchar(150) NOT NULL,
+  `cedula` varchar(20) DEFAULT NULL,
+  `fecha_valoracion` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `datos_usuariot`
+--
+
+INSERT INTO `datos_usuariot` (`id`, `nombre`, `apellido_p`, `apellido_m`, `curp`, `cve_id_ine`, `telefono`, `correo`, `calle`, `no_ext`, `no_int`, `colonia`, `cp`, `estado`, `municipio`, `localidad`, `tipo_discapacidad`, `discapacidad`, `grado_discapacidad`, `dx_discapacidad`, `temporalidad`, `institucion_val`, `medico`, `cedula`, `fecha_valoracion`) VALUES
+(1, 'BAPA821212MJCRNN04', 'Ana Elisa', 'Barba', 'Pinedo', 54698, 2147483647, 'aebarbap@gmail.com', 'de la Colina', 218, 'A', 'Loma Bonita', 98160, 'Zacatecas', 'Zacatecas', 'La Escondida', 'Física', '03-Motora', '1-Leve', 'Cirugía de tobillo derecho', 0, 'IMSS', 'Miguel Mendoza Enriquez', '68335868', '2023-07-25'),
+(2, 'GOAL851108HZSNLS02', 'Luis Fernando', 'González', 'Álvarez', 87996, 2147483647, 'ferdi10@gmail.com', 'de la Colina', 218, 'A', 'Loma Bonita', 98160, 'Zacatecas', 'Zacatecas', 'La Escondida', 'Física', '03-Motora', '1-Leve', 'Fractura extremidad inferior izquierda', 0, 'IMSS', 'Miguel Alejandro Mendoza Enriquez', '68868', '2023-07-26'),
+(3, 'BAPA821212MJCRNN04', 'Ana Elisa', 'Barba', 'Pinedo', 56539, 2147483647, 'aebarbap@gmail.com', 'de la Colina', 218, 'A', 'Loma Bonita', 98160, 'Zacatecas', 'Zacatecas', 'La Escondida', 'Física', '03-Motora', '2-Moderado', 'Esguince extremidad inferior izquierda', 0, 'IMSS', 'Miguel Mendoza', '4234588', '2020-06-11'),
+(4, 'BAPA821212MJCRNN04', 'Ana Elisa', 'Barba', 'Pinedo', 56539, 2147483647, 'aebarbap@gmail.com', 'de la Colina', 218, 'A', 'Loma Bonita', 98160, 'Zacatecas', 'Zacatecas', 'La Escondida', 'Física', '03-Motora', '2-Moderado', 'Esguince extremidad inferior izquierda', 0, 'IMSS', 'Miguel Mendoza', '4234588', '2020-06-11'),
+(5, 'LOHC051583MZSPRR02', 'Carmen Dinorah', 'López', 'Hernández', 6898968, 33659874, 'dinorhina@hotmail.com', 'conocida', 66, '', 'Centro', 98100, 'Zacatecas', 'Zacatecas', 'Zacatecas', 'Física', '03-Motora', '1-Leve', 'Esguince extremidad inferior izquierda', 0, 'IMSS', 'Medico', '6569', '2023-07-23'),
+(6, 'GOLI091976MZSNRRA2', 'Irma Elizabeth', 'González', 'Lira', 878, 2147483647, 'liz7ita@hotmail.com', 'conocida', 88, 'a', 'conocida', 98000, 'Guadalupe', 'Guadalupe', 'Sauceda de la Borda', 'Física', '03-Motora', '2-Moderado', 'Fractura peroné derecho', 0, 'IMSS', 'Medico', '69869', '2023-06-30');
 
 -- --------------------------------------------------------
 
@@ -10015,7 +10025,6 @@ CREATE TABLE `discapacidades` (
 --
 
 INSERT INTO `discapacidades` (`id`, `nombre`, `tipo`) VALUES
-<<<<<<< HEAD
 (1, 'Mudez', 'Física'),
 (2, 'Acondroplasia / Talla Baja', 'Física'),
 (3, 'Motora', 'Física'),
@@ -10023,29 +10032,15 @@ INSERT INTO `discapacidades` (`id`, `nombre`, `tipo`) VALUES
 (5, 'Psicomotor', 'Física'),
 (6, 'Esclerosis Múltiple', 'Física'),
 (7, 'Espondilitis', 'Física'),
-=======
-(1, 'Sin datos', 'Sin datos'),
-(2, 'Acondroplasia', 'Física'),
-(3, 'Motora', 'Física'),
-(4, 'Síndrome de Guillain Barré', 'Física'),
-(5, 'Retraso Psicomotor', 'Física'),
-(6, 'Esclerosis Múltiple', 'Física'),
-(7, 'Espondilitis Anquilosante', 'Física'),
->>>>>>> 1cba49f43a46de0cdfe29c2dc7aa04f0b6f5356a
 (8, 'Mielomeningocele', 'Física'),
 (9, 'Uniparesia / Monoparesia', 'Física'),
 (10, 'Cuadriparesia', 'Física'),
 (11, 'Amputación', 'Física'),
-<<<<<<< HEAD
 (12, 'Poliomielitis', 'Física'),
-=======
-(12, 'Secuela de Poliomielitis', 'Física'),
->>>>>>> 1cba49f43a46de0cdfe29c2dc7aa04f0b6f5356a
 (13, 'Enfermedad Articular Degenerativa', 'Física'),
 (14, 'Cuadriplejia', 'Física'),
 (15, 'Hemiplejia', 'Física'),
 (16, 'Paraparesia', 'Física'),
-<<<<<<< HEAD
 (17, 'Distrofia', 'Fisica'),
 (18, 'Paraplejia', 'Física'),
 (19, 'Hemimelia', 'Física'),
@@ -10083,34 +10078,6 @@ INSERT INTO `discapacidades` (`id`, `nombre`, `tipo`) VALUES
 (51, 'Motora Psicosocial', 'Múltiple'),
 (52, 'Intelectual Visual', 'Múltiple'),
 (53, 'Intelectual Auditiva', 'Múltiple');
-=======
-(17, 'Distrofia Muscular', 'Fisica'),
-(18, 'Paraplejia', 'Física'),
-(19, 'Hemimelia', 'Física'),
-(20, 'Sin Datos', 'Sin Datos'),
-(21, 'Hipoacusia', 'Sensorial'),
-(22, 'Mudez', 'Sensorial'),
-(23, 'Problemas para la Comunicación', 'Intelectual'),
-(24, 'Ceguera Total', 'Sensorial'),
-(25, 'Débil Visual', 'Sensorial'),
-(26, 'Sordo Ciego', 'Múltiple'),
-(27, 'Sin Datos', 'Sin datos'),
-(28, 'Sin Datos', 'Sin datos'),
-(29, 'Autismo - Trastorno Generalizado del Desarrollo no Especificado', 'Intelectual'),
-(30, 'Autismo - Síndrome de Heller', 'Intelectual'),
-(31, 'Síndrome de Down', 'Intelectual'),
-(32, 'Deficiencia Mental', 'Intelectual'),
-(33, 'Parálisis Cerebral', 'Múltiple'),
-(34, 'Lento Aprendizaje', 'Intelectual'),
-(35, 'Microcefalia', 'Intelectual'),
-(36, 'Daño Neurológico', 'Intelectual'),
-(37, 'Autismo', 'Intelectual'),
-(38, 'Autismo - Síndrome de Aspergel', 'Intelectual'),
-(39, 'Autismo - Síndrome de Rett', 'Intelectual'),
-(40, 'Múltiple', 'Múltiple'),
-(41, 'Senectud con Discapacidad', 'Física'),
-(42, 'Síndrome de West', 'Física');
->>>>>>> 1cba49f43a46de0cdfe29c2dc7aa04f0b6f5356a
 
 -- --------------------------------------------------------
 
@@ -10448,17 +10415,18 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (95, 1, '2023-07-18 12:47:03', NULL),
 (96, 1, '2023-07-19 12:16:18', NULL),
 (97, 0, NULL, '2023-07-20 13:15:33'),
-<<<<<<< HEAD
 (98, 1, '2023-07-20 13:15:37', NULL),
 (99, 1, '2023-07-21 09:39:26', NULL),
 (100, 0, NULL, '2023-07-21 12:11:11'),
 (101, 1, '2023-07-21 12:11:15', NULL),
 (102, 0, NULL, '2023-07-21 13:52:31'),
 (103, 1, '2023-07-21 13:52:35', NULL),
-(104, 1, '2023-07-24 09:18:58', NULL);
-=======
-(98, 1, '2023-07-20 13:15:37', NULL);
->>>>>>> 1cba49f43a46de0cdfe29c2dc7aa04f0b6f5356a
+(104, 1, '2023-07-24 09:18:58', NULL),
+(105, 0, NULL, '2023-07-25 08:18:34'),
+(106, 1, '2023-07-25 08:18:38', NULL),
+(107, 0, NULL, '2023-07-26 08:25:43'),
+(108, 1, '2023-07-26 08:26:00', NULL),
+(109, 0, NULL, '2023-07-26 08:27:33');
 
 -- --------------------------------------------------------
 
@@ -10770,12 +10738,8 @@ INSERT INTO `servicios` (`id`, `curp`, `folio_solicitud`, `fecha_solicitud`, `ti
 (157, '11234', 'INC-2023-157', '2023-07-19', 1, '7', 1, 272, 272, NULL, NULL, 272, NULL),
 (158, '11234', 'INC-2023-157', '2023-07-19', 1, '10', 1, 3699, 3699, NULL, NULL, 3699, NULL),
 (159, '12321', 'INC-2023-159', '2023-07-19', 1, '11', 1, 704, 704, NULL, NULL, 704, NULL),
-<<<<<<< HEAD
 (160, '12321', 'INC-2023-159', '2023-07-19', 1, '13', 3, 439, 1317, NULL, NULL, 1317, NULL),
 (163, '', 'INC-2023-161', '2023-07-24', 1, '3', 1, 1146, 1146, NULL, '2023-07-24', 1146, 1);
-=======
-(160, '12321', 'INC-2023-159', '2023-07-19', 1, '13', 3, 439, 1317, NULL, NULL, 1317, NULL);
->>>>>>> 1cba49f43a46de0cdfe29c2dc7aa04f0b6f5356a
 
 -- --------------------------------------------------------
 
@@ -10803,7 +10767,6 @@ INSERT INTO `solicitud` (`id`, `folio_solicitud`, `curp`, `tipo`, `total_solicit
 (2, 'INC-2023-132', 'lev2', 1, '3738', '2023-07-18 00:00:00', '2023-07-18 13:23:14', 1),
 (3, 'INC-2023-138', 'sddsdsd', 1, '816', '2023-07-18 00:00:00', '2023-07-18 14:23:32', 1),
 (4, 'INC-2023-144', 'sdsd', 1, '4362', '2023-07-19 00:00:00', '2023-07-19 12:16:53', 1),
-<<<<<<< HEAD
 (5, 'INC-2023-146', 'dsdsd', 1, '1135', '2023-07-19 00:00:00', '2023-07-19 12:17:41', 1),
 (6, 'INC-2023-161', '', 1, '1146', '2023-07-24 00:00:00', '2023-07-24 13:12:35', 1);
 
@@ -10825,12 +10788,47 @@ CREATE TABLE `tarjetones` (
   `vehiculo_modelo` varchar(20) NOT NULL,
   `vehiculo_anyo` int(11) NOT NULL,
   `no_placa` varchar(10) NOT NULL,
-  `no_serie` int(11) NOT NULL,
+  `no_serie` varchar(20) NOT NULL,
   `autoseguro_reg` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-=======
-(5, 'INC-2023-146', 'dsdsd', 1, '1135', '2023-07-19 00:00:00', '2023-07-19 12:17:41', 1);
->>>>>>> 1cba49f43a46de0cdfe29c2dc7aa04f0b6f5356a
+
+--
+-- Dumping data for table `tarjetones`
+--
+
+INSERT INTO `tarjetones` (`id`, `curp`, `numExpediente`, `tipo_tarjeton`, `folio_tarjeton`, `fecha_entrega`, `vigencia`, `vehiculo_marca`, `vehiculo_modelo`, `vehiculo_anyo`, `no_placa`, `no_serie`, `autoseguro_reg`) VALUES
+(1, 'CURP: NIRI760825MZST', '1548', 1, 1564, '2023-07-25 12:58:21', 2, 'HONDA', 'CIVIC', 2015, 'ZGI-5815', '6', '56863'),
+(2, ' MURI690122MZSRDS16', '1562', 1, 15483, '2023-07-25 13:03:56', 1, 'FORD', 'FIESTA', 2000, 'ZLT-2545', '0', '25655'),
+(3, ' MORR850915HZSRMN01', '', 1, 254, '2023-07-25 13:07:56', 2, 'CHEVROLET', 'AVEO', 2023, 'ZAC-2345', '0', '025482'),
+(4, ' ROSL710516MZSBFZ07', '', 1, 684, '2023-07-25 13:09:44', 2, 'CHEVROLET', 'AVEO', 2022, 'ZJK-5487', '5', '08972'),
+(5, ' TOME710506MZSRCV07', '', 1, 1648, '2023-07-25 13:11:33', 1, 'FORD', 'EXPLORER', 2012, 'ZLN-5486', '0', '54896'),
+(6, ' AUGA771210MZSGNL07', '', 1, 245, '2023-07-25 13:13:44', 1, 'HYUDAY', 'ACCENT', 2018, 'ZCL-1578', '0', '555796'),
+(7, ' MAOA830823MZSRRN05', '', 1, 1958, '2023-07-25 13:15:22', 1, 'ZUZUKI', 'VITARA', 2021, 'ZSF-4878', '0', '666565'),
+(8, 'IOSS870616HJCNNM05', '', 1, 5842, '2023-07-25 13:24:06', 1, 'NISSAN', 'MARCH', 2015, 'ZDG7851', '0', '869'),
+(9, 'GUBJ571109HZSTTS00', '', 1, 2598, '2023-07-25 13:26:52', 1, 'GMC', 'LOBO', 2015, 'HJD5692', '0', '5786'),
+(10, 'BARK080912HZSXSVA9', '', 1, 1235, '2023-07-25 13:30:39', 1, 'NISSAN', 'XTERRA', 2012, 'ZSA5883', '0', '5566'),
+(11, 'RAPD911129HZSMNN09', '', 1, 1548, '2023-07-25 13:33:03', 1, 'FORD', 'EDGE', 2021, 'ZGT5869', '0', '588'),
+(12, 'ROGM950703MZSDNT01', '4586', 1, 2658, '2023-07-25 13:35:13', 2, 'RENAULT', 'SANDERO', 2020, 'ZDE8956', '0', '988558'),
+(13, 'AUGA771210MZSGNL07', '56', 1, 1695, '2023-07-25 14:53:28', 2, 'NISSAN', 'SENTRA', 2012, 'ZLT5885', '0', '25878'),
+(14, 'HEEG590317HZSRSR07', '256', 1, 2549, '2023-07-25 14:55:31', 2, 'NISSAN', 'TSURU', 2010, 'ZDO6565', '0', '98968'),
+(15, 'MAVS921223HJCRLL06', '1578', 1, 2167486, '2023-07-26 08:27:26', 1, 'HONDA', 'CIVIC', 2020, 'ZRT5864', '0', '898'),
+(16, 'VISM850319HZSLNN05', '57', 1, 689, '2023-07-26 08:34:14', 1, 'NISSAN', 'TSURU', 1985, 'ZGT5525', '0', '25875'),
+(17, 'DILH830211HZSZPRO7', '58', 1, 5487, '2023-07-26 08:40:38', 2, 'HONDA', 'FIT', 2010, 'ZTY5487', '0', '87576'),
+(18, 'RESD941126MZSDNLO6', '365', 1, 2587, '2023-07-26 08:45:03', 1, 'FORD', 'EXPLORER', 2010, 'ZSD5694', '0', '55468'),
+(19, 'DAGA800829MZSVRL02', '158', 1, 25862, '2023-07-26 09:17:49', 2, 'HONDA', 'FIT', 2013, 'ZGE4848', '0', '6398'),
+(20, 'DAGA800829MZSVRL02', '158', 1, 25862, '2023-07-26 09:21:38', 2, 'CHEVROLET', 'AVEO', 2021, 'ZZS5693', '0', '5648'),
+(21, 'CAVR980115HZSRLB07', '4987', 1, 6584, '2023-07-26 09:23:15', 1, 'ZUZUKI', 'VITARA', 2019, 'ZSA9686', '0', ''),
+(22, 'CAVR980115HZSRLB07', '4987', 1, 6584, '2023-07-26 09:23:42', 1, 'HONDA', 'CIVIC', 2018, 'ZGT7859', '0', ''),
+(23, 'LORV280521MZSPDR13', '15644', 1, 2586, '2023-07-26 09:29:04', 2, 'CHEVROLET', 'AVEO', 2023, 'ZTR5868', '0', ''),
+(24, 'AUGA230213MZSGNG09', '21133', 1, 1398, '2023-07-26 09:59:52', 1, 'KIA', 'SPORTAGE', 2020, 'ZKL6523', '75', ''),
+(25, 'NIRI760825MZSTVM07', '1548', 1, 9856, '2023-07-26 10:06:52', 1, 'HONDA', 'CIVIC', 2013, 'ZTD9854', '0', ''),
+(26, 'hgfsdjf', '', 2, 61549, '2023-07-26 12:27:48', 92, 'HONDA', 'CIVIC', 2010, 'GD6987', '0', ''),
+(27, 'BAPA821212MJCRNN04', '', 2, 2348, '2023-07-26 12:52:27', 92, 'KIA', 'RIO', 2016, 'ZFE6598', '4', ''),
+(28, 'BAPA821212MJCRNN04', '', 2, 2348, '2023-07-26 12:55:05', 92, 'CHEVROLET', 'AVEO', 2017, 'JNT1585', '0', ''),
+(29, 'BAPA821212MJCRNN04', '', 2, 695, '2023-07-26 13:12:28', 92, 'KIA', 'RIO', 2020, 'ZDT8956', '0', ''),
+(30, 'LOHC051583MZSPRR02', '', 2, 495, '2023-07-26 13:42:11', 92, 'HONDA', 'CIVIC', 2012, 'ZTH3358', '0', ''),
+(31, 'GOLI091976MZSNRRA2', '', 2, 36985, '2023-07-26 14:04:10', 123, 'NISSAN', 'VERSA', 2020, 'ZGW5698', '0', ''),
+(32, 'GOLI091976MZSNRRA2', '', 2, 36985, '2023-07-26 14:04:55', 123, 'NISSAN', 'XTERRA', 2015, 'ZFE3233', '5456', '');
 
 -- --------------------------------------------------------
 
@@ -10961,6 +10959,12 @@ ALTER TABLE `datos_medicos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `datos_usuariot`
+--
+ALTER TABLE `datos_usuariot`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `discapacidades`
 --
 ALTER TABLE `discapacidades`
@@ -11051,15 +11055,12 @@ ALTER TABLE `solicitud`
   ADD PRIMARY KEY (`id`);
 
 --
-<<<<<<< HEAD
 -- Indexes for table `tarjetones`
 --
 ALTER TABLE `tarjetones`
   ADD PRIMARY KEY (`id`);
 
 --
-=======
->>>>>>> 1cba49f43a46de0cdfe29c2dc7aa04f0b6f5356a
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -11106,14 +11107,16 @@ ALTER TABLE `datos_medicos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `datos_usuariot`
+--
+ALTER TABLE `datos_usuariot`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `discapacidades`
 --
 ALTER TABLE `discapacidades`
-<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
-=======
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
->>>>>>> 1cba49f43a46de0cdfe29c2dc7aa04f0b6f5356a
 
 --
 -- AUTO_INCREMENT for table `documentos_list`
@@ -11155,11 +11158,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
-=======
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
->>>>>>> 1cba49f43a46de0cdfe29c2dc7aa04f0b6f5356a
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `medicamentos`
@@ -11195,27 +11194,19 @@ ALTER TABLE `referencias`
 -- AUTO_INCREMENT for table `servicios`
 --
 ALTER TABLE `servicios`
-<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
-=======
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
->>>>>>> 1cba49f43a46de0cdfe29c2dc7aa04f0b6f5356a
 
 --
 -- AUTO_INCREMENT for table `solicitud`
 --
 ALTER TABLE `solicitud`
-<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tarjetones`
 --
 ALTER TABLE `tarjetones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-=======
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
->>>>>>> 1cba49f43a46de0cdfe29c2dc7aa04f0b6f5356a
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `users`
