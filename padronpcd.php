@@ -87,6 +87,8 @@ include('prcd/qc/qc.php');
     <script src="js/numeroExpediente.js"></script>
     <script src="js/checkList.js"></script>
     <script src="js/tarjetones.js"></script>
+    <script src="js/tarjetonesTemp.js"></script>
+    <script src="js/usuarioTemp.js"></script>
 
     <style>
       * {
@@ -1885,7 +1887,7 @@ include('prcd/qc/qc.php');
       <!-- Termina Modal para agregar solicitud -->
 
 <!-- Modal para editar solicitud -->
-      <div class="modal fade" id="solicitudEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="solicitudEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
@@ -1947,7 +1949,7 @@ include('prcd/qc/qc.php');
       </div>
 
       <!-- Inicia Modal para generar credencial -->
-      <div class="modal fade" id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
+      <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
           <div class="modal-content">
             <div class="modal-header">
@@ -1982,7 +1984,7 @@ include('prcd/qc/qc.php');
       <!-- Termina Modal para generar credencial -->
       <!-- Inicia Modal para generar tarjeton -->
 
-      <div class="modal fade " id="tarjetongen" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
+      <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="tarjetongen" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
           <div class="modal-content">
             <div class="modal-header">
@@ -2013,28 +2015,28 @@ include('prcd/qc/qc.php');
                         <input type="text" id="tipoTarjeton" value="1" hidden>
                         <div class="input-group mb-3">
                           <span class="input-group-text" id="basic-addon1">Marca</span>
-                          <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaPerm">
+                          <input type="text" class="form-control" oninput="habilitaBTNadd()" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaPerm">
                         </div>
                         <div class="input-group mb-3">
                           <span class="input-group-text" id="basic-addon1">Modelo</span>
-                          <input type="text" class="form-control" placeholder="Modelo" id="modeloPerm" aria-label="modelo" aria-describedby="basic-addon1">
+                          <input type="text" class="form-control" placeholder="Modelo" id="modeloPerm" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="modelo" aria-describedby="basic-addon1">
                           <span class="input-group-text">Año</span>
-                          <input type="text" class="form-control" placeholder="Año" aria-label="anio" id="annioPerm">
+                          <input type="text" onkeypress="ValidaSoloNumeros()" class="form-control" placeholder="Año" aria-label="anio" id="annioPerm">
                         </div>
                         <div class="input-group mb-3">
                           <span class="input-group-text" id="basic-addon1">No. de Placas</span>
-                          <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasPerm">
+                          <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-describedby="basic-addon1" id="placasPerm">
                           <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-                          <input type="text" class="form-control w-25" placeholder="# de Serie del vehículo" aria-label="numeroserie" aria-describedby="basic-addon1" id="seriePerm">
+                          <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" placeholder="# de Serie del vehículo" aria-label="numeroserie" aria-describedby="basic-addon1" id="seriePerm">
                         </div>
                         <div class="input-group mb-3">
                           <span class="input-group-text" id="basic-addon1">Folio Tarjetón</span>
-                          <input type="text" class="form-control" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPerm">
+                          <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPerm">
                           <span class="input-group-text" id="basic-addon1">Vigencia</span>
                           <select class="form-select" id="vigenciaPerm" aria-label="Default select example">
                             <option selected>Selecciona...</option>
-                            <option value="1">2 años</option>
-                            <option value="2">6 años</option>
+                            <option value="730">2 años</option>
+                            <option value="2190">6 años</option>
                           </select>
                         </div>
                         <div class="col-md-12">
@@ -2073,7 +2075,7 @@ include('prcd/qc/qc.php');
             </div>  
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiaModalTarjeton()">Cerrar</button>
-              <button type="button" class="btn btn-primary" id="habilitaimprimirt" onclick="swaldatostrn();limpiaModalTarjeton()"><i class="bi bi-save2"></i> Generar Tarjetón</button>
+              <button type="button" class="btn btn-primary" id="habilitaimprimirtp" onclick="swaldatostrn();limpiaModalTarjeton()" disabled><i class="bi bi-save2"></i> Generar QR</button>
               <button type="button" class="btn btn-primary" id="imprimirt" disabled><i class="bi bi-printer"></i> Imprimir</button>
             </div>
           </div>
@@ -2093,7 +2095,7 @@ include('prcd/qc/qc.php');
 
 <!-- Inicia Modal para generar tarjeton de préstamo-->
 
-<div class="modal fade " id="tarjetonPrestamo" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="tarjetonPrestamo" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
           <div class="modal-content">
             <div class="modal-header">
@@ -2114,6 +2116,12 @@ include('prcd/qc/qc.php');
                           <div class="row">
                             <div class="col-md-12">
                               <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Nombre (s)</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp">
+                              </div>  
+                            </div>
+                            <div class="col-md-12">
+                              <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Apellido Paterno</span>
                                 <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apPaterno">
                                 <span class="input-group-text" id="basic-addon1">Apellido Materno</span>
@@ -2122,14 +2130,8 @@ include('prcd/qc/qc.php');
                             </div>
                             <div class="col-md-12">
                               <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Nombre (s)</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">CURP</span>
-                                <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
+                                <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
                                 <span class="input-group-text" id="basic-addon1">Clave INE / Folio ID:</span>
                                 <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
                               </div>  
@@ -2137,9 +2139,9 @@ include('prcd/qc/qc.php');
                             <div class="col-md-12">
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Teléfono:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp" onkeypress="ValidaSoloNumeros()">
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="telcelTemp" onkeypress="ValidaSoloNumeros()">
                                 <span class="input-group-text" id="basic-addon1">Correo-e:</span>
-                                <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
+                                <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toLowerCase()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="correoTemp">
                               </div>  
                             </div>
                             <h5 class="mb-3"><i class="bi bi-house-door"></i> Domicilio</h5>
@@ -2147,10 +2149,10 @@ include('prcd/qc/qc.php');
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Calle:</span>
                                 <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="calleTemp">
-                                <span class="input-group-text" id="basic-addon1">No. Int.:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="intTemp">
                                 <span class="input-group-text" id="basic-addon1">No. Ext.:</span>
                                 <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="extTemp" onkeypress="ValidaSoloNumeros()">
+                                <span class="input-group-text" id="basic-addon1">No. Int.:</span>
+                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="intTemp">
                               </div>  
                             </div>
                             <div class="col-md-12">
@@ -2174,35 +2176,70 @@ include('prcd/qc/qc.php');
                             <h5 class="mb-3"><i class="bi bi-heart-pulse"></i> Valoración Médica:</h5>
                             <div class="col-md-12">
                               <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Diagnóstico:</span>
-                                <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="dxTemp">
-                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-clock-history"></i></span>
-                                <select class="form-select" id="inputGroupSelect02">
+                                <span class="input-group-text" id="basic-addon1">Tipo Discapacidad:</span>
+                                <select class="form-select" id="tipoDiscTemp" onchange="discapacidadTab(this.value)" aria-label="Default select example">
+                                  <option selected>Selecciona...</option>
+                                  <option value="Física">Física</option>
+                                  <option value="Intelectual">Intelectual</option>
+                                  <option value="Sensorial">Sensorial</option>
+                                  <option value="Múltiple">Múltiple</option>
+                                  <option value="Psicosocial">Psicosocial</option>
+                                </select>
+                                <span class="input-group-text" id="basic-addon1">Discapacidad:</span>
+                                <input class="form-control w-25" list="discapacidadList" id="discapacidadTemp" placeholder="Buscar..." required>
+                                <datalist id="discapacidadList">
+                                
+                                </datalist>
+                              </div>
+                            <div class="col-md-12">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Grado</i></span>
+                                <select class="form-select" id="gradoDiscTemp" aria-label="Default select example">
+                                  <option selected>Selecciona...</option>
+                                  <option value="1-Leve">1. Leve</option>
+                                  <option value="2-Moderado">2. Moderado</option>
+                                  <option value="3-Grave">3. Grave</option>
+                                  <option value="4-Severo">4. Severo</option>
+                                  <option value="5-Profundo">5. Profundo</option>
+                                </select>
+                                <span class="input-group-text" id="basic-addon1">Descripción Dx:</span>
+                                <input type="text" class="form-control w-25" placeholder="Descripción del diagnóstico" aria-label="" aria-describedby="basic-addon1" id="dxTemp">
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-clock-history"></i> Temporalidad: </span>
+                                <select class="form-select" id="temporalidad">
                                   <option selected>Temporalidad...</option>
-                                  <option value="1">0 - 3 meses</option>
+                                  <option value="0">0 - 3 meses</option>
                                   <option value="2">4 - 6 meses</option>
                                   <option value="3">7 - 11 meses</option>
                                   <option value="4">12 meses o más</option>
                                 </select>
+                              </div>
+                            </div>  
+                            <div class="col-md-12">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Institución:</span>
+                                <input type="text" class="form-control" placeholder="Nombre de la Institución donde se expide la valoración" aria-label="" aria-describedby="basic-addon1" id="institucionTemp">
                               </div>  
                             </div>
                             <div class="col-md-12">
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Nombre del Médico:</span>
-                                <input type="text" class="form-control" placeholder="Nombre del Médico que lo expide" aria-label="" aria-describedby="basic-addon1" id="medicoTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Institución:</span>
-                                <input type="text" class="form-control" placeholder="Nombre de la Institución donde se expide" aria-label="" aria-describedby="basic-addon1" id="institucionTemp">
+                                <input type="text" class="form-control w-25" placeholder="Nombre del Médico" aria-label="" aria-describedby="basic-addon1" id="medicoTemp">
+                                <span class="input-group-text" id="basic-addon1"># de Cédula:</span>
+                                <input type="text" class="form-control" placeholder="# de Cédula" aria-label="" aria-describedby="basic-addon1" id="cedulaTemp">
                               </div>  
                             </div>
                             <div class="col-md-8">
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Fecha de valoración:</span>
-                                <input type="date" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaValTemp">
+                                <input type="date" class="form-control" onchange="habilitaBtnDatos()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaValTemp">
                               </div>  
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                              <button class="btn btn-primary me-md-2" id="agregarUsuarioTempBtn" onclick="usuarioTempAdd(); deshabilitaBtnDatos()" type="button" disabled><i class="bi bi-plus-lg"></i> Guardar Datos</button>
                             </div>
                           </div>
                         </div>
@@ -2210,39 +2247,49 @@ include('prcd/qc/qc.php');
                         <h5 class="mb-3"><i class="bi bi-car-front-fill"></i> Datos del vehículo</h5>
                         <div class="col-md-12">
                           <div class="input-group mb-3">
+                            <input type="text" id="tipoTarjeton" value="Temporal" hidden>
                             <span class="input-group-text" id="basic-addon1">Marca</span>
-                            <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaTempForm">
+                            <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase()" oninput="habilitaBTNaddTemp()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaTemp" disabled>
                             <span class="input-group-text" id="basic-addon1">Modelo</span>
-                            <input type="text" class="form-control" placeholder="Modelo" aria-label="modelo" id="modeloTempForm" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Modelo" aria-label="modelo" id="modeloTemp" aria-describedby="basic-addon1" disabled>
                             <span class="input-group-text">Año</span>
-                            <input type="text" class="form-control" placeholder="Año" aria-label="anio" id="annioTempForm">
+                            <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="Año" aria-label="anio" id="annioTemp" disabled>
                           </div>
                         </div>
                         <div class="col-md-12">
                           <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">No. de Placas</span>
-                            <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasTempForm">
+                            <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasTemp" disabled>
                             <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-                            <input type="text" class="form-control" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieTempForm">
+                            <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieTemp" disabled>
                           </div>
                         </div>
-                        <div class="col-md-12">
-                          <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1">Tarjeta de Circulación</span>
-                            <input type="text" class="form-control" placeholder="# Tarjeta de Circulación" aria-label="" aria-describedby="basic-addon1" id="circulacionTempForm">
-                          </div>
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">Folio Tarjetón</span>
+                          <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTTemp" disabled>
+                          <span class="input-group-text" id="basic-addon1">Vigencia</span>
+                          <select class="form-select" id="vigenciaTemp" aria-label="Default select example" disabled>
+                            <option selected>Selecciona...</option>
+                            <option value="15">15 días</option>
+                            <option value="30">1 mes</option>
+                            <option value="61">2 meses</option>
+                            <option value="92">3 meses</option>
+                            <option value="123">4 meses</option>
+                            <option value="154">5 meses</option>
+                            <option value="185">6 meses</option>
+                          </select>
                         </div>
                         <div class="col-md-12">
                           <div class="input-group mb-3">
                             <span class="input-group-text">Vehículo extranjero</span>
                             <div class="input-group-text">
-                              <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                              <input class="form-check-input mt-0" type="checkbox" id="checkAutoST" onchange="autoSeguroTCheck()" value="" aria-label="Checkbox for following text input" disabled>
                             </div>
-                            <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguro" disabled>
+                            <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroTemp" disabled>
                           </div>  
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                          <button class="btn btn-primary me-md-2" type="button"><i class="bi bi-plus-lg"></i> Agregar</button>
+                          <button class="btn btn-primary me-md-2" id="agregarVehiculoTempBtn" onclick="vehiculoTempAdd(); limpiarInputsVehiculoTemp()" type="button" disabled><i class="bi bi-plus-lg"></i> Agregar</button>
                         </div>
                         <hr>
                         <div class="table-responsive text-center">
@@ -2267,9 +2314,9 @@ include('prcd/qc/qc.php');
               </div>
             </div>  
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiaModalTarjeton()">Cerrar</button>
-              <button type="button" class="btn btn-primary" id="habilitaimprimirt" onclick="swaldatostrn(); limpiaModalTarjeton()"><i class="bi bi-save2"></i> Generar Tarjetón</button>
-              <button type="button" class="btn btn-primary" id="imprimirt" disabled><i class="bi bi-printer"></i> Imprimir</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiaModalTarjetonTemp()">Cerrar</button>
+              <button type="button" class="btn btn-primary" id="habilitaimprimirtt" onclick="swaldatostrn()" disabled><i class="bi bi-save2"></i> Generar QR</button>
+              <button type="button" class="btn btn-primary" id="imprimirtt" disabled><i class="bi bi-printer"></i> Imprimir</button>
             </div>
           </div>
         </div>
@@ -2352,126 +2399,10 @@ include('prcd/qc/qc.php');
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         document.getElementById("habilitaimprimirt").disabled=true;
+        document.getElementById("habilitaimprimirtt").disabled=true;
         document.getElementById("imprimirt").disabled=false;
-        // enviar datos
-        var expediente = document.getElementById('searchDBInclusion').value;
-        var marca = document.geteElementById("marcaForm").value;
-        var modelo = document.geteElementById("modeloForm").value;
-        var annio = document.geteElementById("annioForm").value;
-        var placas = document.geteElementById("placasForm").value;
-        var serie = document.geteElementById("serieForm").value;
-        var noChoferes = document.geteElementById("choferesForm").value;
-        var nombreChoferes = document.geteElementById("nombresChoferesForm").value;
-        // ajax
-        $.ajax({
-                  type:"POST",
-                  url:"prcd/checkin.php",
-                  data:{
-                    expediente:expediente,
-                    marca:marca,
-                    modelo:modelo,
-                    annio:annio,
-                    placas:placas,
-                    serie:serie,
-                    noChoferes:noChoferes,
-                    nombreChoferes:nombreChoferes
-                  },
-                  dataType: "html",
-                  async:true,
-                  cache: false,
-                    success: function(response)
-                    {
-                        var jsonData = JSON.parse(response);
-
-                        // user is logged in successfully in the back-end
-                        // let's redirect
-                        if (jsonData.success == "0")
-                        {
-                          let timerInterval
-                          Swal.fire({
-                            title: 'No hay datos registrados',
-                            html: 'No hay datos registrados',
-                            timer: 2000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                              Swal.showLoading()
-                              const b = Swal.getHtmlContainer().querySelector('b')
-                              timerInterval = setInterval(() => {
-                                b.textContent = Swal.getTimerLeft()
-                              }, 100)
-                            },
-                            willClose: () => {
-                              clearInterval(timerInterval)
-                            }
-                          }).then((result) => {
-                            /* Read more about handling dismissals below */
-                            if (result.dismiss === Swal.DismissReason.timer) {
-                              console.log('I was closed by the timer')
-                            }
-                          })
-                        }
-                        else if (jsonData.success == "1")
-                        {
-                            // location.href = 'my_profile.php';
-                            let timerInterval
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Usuario ya existe',
-                                text: '¿Quieres editar sus datos?',
-                                footer: 'INCLUSIÓN',
-                                timer: 2000,
-                              timerProgressBar: true,
-                              didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                  b.textContent = Swal.getTimerLeft()
-                                }, 100)
-                              },
-                              willClose: () => {
-                                clearInterval(timerInterval)
-                              }
-                            }).then((result) => {
-                              /* Read more about handling dismissals below */
-                              if (result.dismiss === Swal.DismissReason.timer) {
-                                console.log('I was closed by the timer')
-                              }
-                            });
-                        }
-                        else if (jsonData.success == "3")
-                        {
-                            // location.href = 'my_profile.php';
-                            let timerInterval
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'NO EXISTE REGISTRO',
-                                text: 'Credenciales incorrectas',
-                                footer: 'UACYA | UAZ',
-                                timer: 2000,
-                                timerProgressBar: true,
-                                didOpen: () => {
-                                  Swal.showLoading()
-                                  const b = Swal.getHtmlContainer().querySelector('b')
-                                  timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                  }, 100)
-                                },
-                                willClose: () => {
-                                  clearInterval(timerInterval)
-                                }
-                              }).then((result) => {
-                                /* Read more about handling dismissals below */
-                                if (result.dismiss === Swal.DismissReason.timer) {
-                                  console.log('I was closed by the timer')
-                                }
-                            });
-                        }
-                        
-                  }           
-                  });
-        // ajax
-
-        Swal.fire('Listo!', '', 'success')
+        document.getElementById("imprimirtt").disabled=false;
+        Swal.fire('Listo!', '', 'success');
       } else if (result.isDenied) {
         Swal.fire('Verifica los datos en el padrón!', '', 'info')
       }
@@ -2538,7 +2469,7 @@ include('prcd/qc/qc.php');
 
   function init() {
     var inputFile = document.getElementById('inputFile1');
-    inputFile.addEventListener('change', mostrarImagen, false);
+    inputFile.addEventListener('change', mostrarImagen(), false);
   }
   function mostrarImagen(event) {
   var file = event.target.files[0];

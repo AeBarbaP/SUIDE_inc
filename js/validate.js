@@ -587,3 +587,14 @@ function autoSeguroCheck(){
         document.getElementById('AutoSeguroInput').disabled = true;
     }
 }
+function autoSeguroTCheck(){
+    var autoSeguroOp = document.getElementById('checkAutoST');
+
+    if (autoSeguroOp.checked){
+        document.getElementById('AutoSeguroTemp').disabled = false;
+        document.getElementById('AutoSeguroTemp').required = true;
+    }
+    else {
+        document.getElementById('AutoSeguroTemp').disabled = true;
+    }
+}

@@ -40,13 +40,18 @@ function vehiculoAdd(){
                 alert('no muestra tabla');
             }
             limpiarInputsVehiculo();
+            document.getElementById('vehiculosTabla').hidden = false;
+            document.getElementById('folioTPerm').disabled = true;
+            document.getElementById('vigenciaPerm').disabled = true;
             mostrarTablaVehiculos();
-            /* document.getElementById('curpTarjeton').value = curpTarjeton;
-            document.getElementById('numExpediente').value = numExpediente; */
         }
         
 
     });
+}
+
+function habilitaBTNadd(){
+    document.getElementById('agregarVehiculoBtn').disabled = false;
 }
 
 function mostrarTablaVehiculos(){
@@ -72,8 +77,8 @@ function limpiarInputsVehiculo(){
     document.getElementById('annioPerm').value = "";
     document.getElementById('placasPerm').value = "";
     document.getElementById('seriePerm').value = "";
-    document.getElementById('folioTPerm').value = "";
-    document.getElementById('vigenciaPerm').value = "";
+    /* document.getElementById('folioTPerm').value = ""; */
+    /* document.getElementById('vigenciaPerm').value = ""; */
     document.getElementById('checkAutoS').checked = false;
     document.getElementById('AutoSeguroInput').value = "";
 }
@@ -93,4 +98,5 @@ function limpiaModalTarjeton(){
     document.getElementById('numExpediente').value = "";
     document.getElementById('agregarVehiculoBtn').disabled = true;
     document.getElementById('tarjeton').hidden = true;
+    document.getElementById('vehiculosTabla').hidden = true;
 }
