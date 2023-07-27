@@ -393,14 +393,14 @@ include('prcd/qc/qc.php');
                     <label for="edoCivil" class="form-label">Estado Civil:</label>
                     <select class="form-select" id="edoCivil" aria-label="Default select example">
                       <option selected>Selecciona...</option>
-                      <option value="2">Solter@</option>
-                      <option value="1">Casad@</option>
-                      <option value="3">Viud@</option>
-                      <option value="6">Divorciad@</option>
-                      <option value="8">Unión Libre</option>
+                      <option value="Solter@">Solter@</option>
+                      <option value="Casad@">Casad@</option>
+                      <option value="Viud@">Viud@</option>
+                      <option value="Divorciad@">Divorciad@</option>
+                      <option value="Unión_Libre">Unión Libre</option>
                     </select>
                   </div>
-                  <div class="col-sm-8">
+                  <div class="col-sm-5">
                     <label for="datos_pc" class="form-label">Domicilio:</label>
                     <input type="text" class="form-control" id="domicilio" name="datos_pc" placeholder="Nombre de la calle o vialidad" required>
                     <div class="invalid-feedback">
@@ -417,6 +417,15 @@ include('prcd/qc/qc.php');
                   <div class="col-sm-2">
                     <label for="datos_usr" class="form-label">Núm. Interior</label>
                     <input type="text" class="form-control" id="numInt" name="datos_usr" placeholder="# Interior">
+                  </div>
+                  <div class="col-sm-3">
+                    <label for="datos_pc" class="form-label">Tipo de Vialidad:</label>
+                    <select class="form-select" id="tipoVialidad" onfocus="catTipoVialidades()" aria-label="Default select example">
+
+                    </select>
+                    <div class="invalid-feedback">
+                      * Campo requerido.
+                    </div>
                   </div>
                   <div class="col-sm-6">
                     <label for="datos_pc" class="form-label">Colonia:</label>
@@ -503,15 +512,15 @@ include('prcd/qc/qc.php');
                     <label for="exampleDataList" class="form-label">Nivel de Escolaridad:</label>
                     <select class="form-select" id="escolaridad" aria-label="Default select example">
                       <option selected>Selecciona...</option>
-                      <option value="1">Sin escolarizar</option>
-                      <option value="2">Primaria</option>
-                      <option value="3">Secundaria</option>
-                      <option value="4">Preparatoria</option>
-                      <option value="5">Carrera Técnica</option>
-                      <option value="6">Licenciatura</option>
-                      <option value="7">Posgrado</option>
-                      <option value="8">Preescolar</option>
-                      <option value="9">Escuela de Educación Especial</option>
+                      <option value="Ninguno">Sin escolarizar</option>
+                      <option value="Primaria">Primaria</option>
+                      <option value="Secundaria">Secundaria</option>
+                      <option value="Preparatoria">Preparatoria</option>
+                      <option value="Técnica">Carrera Técnica</option>
+                      <option value="Licenciatura">Licenciatura</option>
+                      <option value="Posgrado">Posgrado</option>
+                      <option value="Preescolar">Preescolar</option>
+                      <option value="Especial">Escuela de Educación Especial</option>
                     </select>
                   </div>
                   <div class="col-sm-4">
@@ -635,10 +644,10 @@ include('prcd/qc/qc.php');
                     <div class="input-group">
                       <select class="form-select" id="seguridadsocial" onchange="seguridadOp(this.value)" aria-label="Default select example">
                         <option selected>Selecciona...</option>
-                        <option value="1">IMSS</option>
-                        <option value="2">ISSSTE</option>
-                        <option value="3">SSZ</option>
-                        <option value="4">Sin Seguridad Social</option>
+                        <option value="IMSS">IMSS</option>
+                        <option value="ISSSTE">ISSSTE</option>
+                        <option value="SSZ">SSZ</option>
+                        <option value="Ninguno">Sin Seguridad Social</option>
                         <option value="5">Otro</option>
                       </select>
                       <span class="input-group-text"> Especifique: </span>

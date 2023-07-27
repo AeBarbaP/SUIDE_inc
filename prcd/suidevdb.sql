@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2023 at 09:52 PM
+-- Generation Time: Jul 27, 2023 at 10:03 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -9846,6 +9846,45 @@ INSERT INTO `catmunicipios` (`id`, `claveMunicipio`, `nombreMunicipio`, `municip
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cattipovialidades`
+--
+
+CREATE TABLE `cattipovialidades` (
+  `id` int(10) UNSIGNED NOT NULL COMMENT 'Identificador único de cada registro. Establecen la manera más rápida posible de encontrar un registro',
+  `nombreVialidad` varchar(100) NOT NULL COMMENT 'Descripción del Tipo de Vialidad'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Estructura en la cual  se almacena la información del Catálogo Tipo de Vialidad conforme a la plantilla del Padrón Único de Beneficiarios (UPLA)';
+
+--
+-- Dumping data for table `cattipovialidades`
+--
+
+INSERT INTO `cattipovialidades` (`id`, `nombreVialidad`) VALUES
+(1, 'AMPLIACIÓN'),
+(2, 'ANDADOR'),
+(3, 'AVENIDA'),
+(4, 'BOULEVARD'),
+(5, 'CALLE'),
+(6, 'CALLEJÓN'),
+(7, 'CALZADA'),
+(8, 'CERRADA'),
+(9, 'CIRCUITO'),
+(10, 'CIRCUNVALACIÓN'),
+(11, 'CONTINUACIÓN'),
+(12, 'CORREDOR'),
+(13, 'DIAGONAL'),
+(14, 'EJE VIAL'),
+(15, 'PASAJE'),
+(16, 'PEATONAL'),
+(17, 'PERIFÉRICO'),
+(18, 'PRIVADA'),
+(19, 'PROLONGACIÓN'),
+(20, 'RETORNO'),
+(21, 'VIADUCTO'),
+(22, 'NINGUNO');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `datos_generales`
 --
 
@@ -9859,7 +9898,7 @@ CREATE TABLE `datos_generales` (
   `apellido_m` varchar(50) NOT NULL,
   `genero` int(11) NOT NULL,
   `edad` int(11) NOT NULL,
-  `edo_civil` int(11) NOT NULL,
+  `edo_civil` varchar(20) NOT NULL,
   `f_nacimiento` date NOT NULL,
   `lugar_nacimiento` varchar(200) NOT NULL COMMENT 'Estados',
   `domicilio` varchar(100) NOT NULL,
@@ -9868,6 +9907,7 @@ CREATE TABLE `datos_generales` (
   `colonia` varchar(100) NOT NULL,
   `entre_vialidades` varchar(100) NOT NULL,
   `descr_referencias` varchar(200) NOT NULL,
+  `tipoVialidad` varchar(25) NOT NULL,
   `estado` varchar(100) NOT NULL,
   `municipio` int(11) NOT NULL,
   `localidad` varchar(100) NOT NULL,
@@ -9876,7 +9916,7 @@ CREATE TABLE `datos_generales` (
   `telefono_part` varchar(20) NOT NULL,
   `correo` varchar(100) DEFAULT NULL,
   `telefono_cel` varchar(20) NOT NULL,
-  `escolaridad` int(11) NOT NULL,
+  `escolaridad` varchar(30) NOT NULL,
   `profesión` varchar(50) NOT NULL,
   `curp` varchar(30) NOT NULL,
   `rfc` varchar(30) NOT NULL,
@@ -9905,8 +9945,8 @@ CREATE TABLE `datos_generales` (
 -- Dumping data for table `datos_generales`
 --
 
-INSERT INTO `datos_generales` (`id`, `numExpediente`, `fecha_registro`, `fecha_actualizacion`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `estado`, `municipio`, `localidad`, `asentamiento`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `profesión`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `sindicato`, `sindicato_cual`, `seguridad_social`, `seguridad_social_otro`, `numSS`, `photo`, `estatus`) VALUES
-(10, 'C-5602-1', '2023-07-19 14:47:45', '2023-07-20 12:29:56', 'Jesusrlv', 'Jesusrlv', 'Jesusrlv', 0, 41, 1, '2023-06-27', 'Zacatecas', '222', '12', '12', 'HP Laser Jet', 'programación', '2121', '32', 32008, 'ADJUNTAS DEL PEÑASCO (EL PEÑASCO)', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '3223232', 6, 'programación', 'LEVJ810924HZSXLS04', 'LEVJ8109248K3', 0, 'N/A', 'programación', '0', 'N/A', '', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', 1, NULL, NULL, 'docs_expedientes/photos/archivo_LEVJ810924HZSXLS04.png', 0);
+INSERT INTO `datos_generales` (`id`, `numExpediente`, `fecha_registro`, `fecha_actualizacion`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `tipoVialidad`, `estado`, `municipio`, `localidad`, `asentamiento`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `profesión`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `sindicato`, `sindicato_cual`, `seguridad_social`, `seguridad_social_otro`, `numSS`, `photo`, `estatus`) VALUES
+(10, 'C-5602-1', '2023-07-19 14:47:45', '2023-07-20 12:29:56', 'Jesusrlv', 'Jesusrlv', 'Jesusrlv', 0, 41, '1', '2023-06-27', 'Zacatecas', '222', '12', '12', 'HP Laser Jet', 'programación', '2121', '', '32', 32008, 'ADJUNTAS DEL PEÑASCO (EL PEÑASCO)', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '3223232', '6', 'programación', 'LEVJ810924HZSXLS04', 'LEVJ8109248K3', 0, 'N/A', 'programación', '0', 'N/A', '', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', 1, NULL, NULL, 'docs_expedientes/photos/archivo_LEVJ810924HZSXLS04.png', 0);
 
 -- --------------------------------------------------------
 
@@ -10426,7 +10466,9 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (106, 1, '2023-07-25 08:18:38', NULL),
 (107, 0, NULL, '2023-07-26 08:25:43'),
 (108, 1, '2023-07-26 08:26:00', NULL),
-(109, 0, NULL, '2023-07-26 08:27:33');
+(109, 0, NULL, '2023-07-26 08:27:33'),
+(110, 0, NULL, '2023-07-27 11:38:32'),
+(111, 1, '2023-07-27 11:38:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -10947,6 +10989,12 @@ ALTER TABLE `asentamientos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `cattipovialidades`
+--
+ALTER TABLE `cattipovialidades`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `datos_generales`
 --
 ALTER TABLE `datos_generales`
@@ -11095,6 +11143,12 @@ ALTER TABLE `asentamientos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1755;
 
 --
+-- AUTO_INCREMENT for table `cattipovialidades`
+--
+ALTER TABLE `cattipovialidades`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Identificador único de cada registro. Establecen la manera más rápida posible de encontrar un registro', AUTO_INCREMENT=23;
+
+--
 -- AUTO_INCREMENT for table `datos_generales`
 --
 ALTER TABLE `datos_generales`
@@ -11158,7 +11212,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT for table `medicamentos`

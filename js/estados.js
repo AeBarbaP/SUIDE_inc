@@ -20,3 +20,21 @@ function curpTemporal (){
     document.getElementById('buttonCheck').setAttribute('href','prcd/checkListPDF2.php?curp='+curpExp);
     document.getElementById('buttonCheck').setAttribute('target','_blank');
 }
+
+function catTipoVialidades(){
+    var x = 1;
+    
+    $.ajax({
+        type:"POST",
+        url:"query/queryVialidades.php",
+        data:{
+            x:x
+        },
+        dataType: "html",
+        cache: false,
+            success: function(response)
+            { 
+            $('#tipoVialidad').fadeIn(1000).html(response);
+            }
+        });
+}
