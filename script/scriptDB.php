@@ -27,60 +27,60 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     $apellidoMaterno = $rowDB['apellidoMaterno'];
     $sexo = $rowDB['sexo']; //genero (Femenino,Masculino)
     
-    $idCatEstadoCivil = $rowDB['idCatEstadoCivil']; // se relaciona con idExpediente
-
-    $dbEstadoCivil = "SELECT * FROM catestadociviles WHERE id = $idCatEstadoCivil";
-    $resultadodbEstadoCivil = $conn2->query($dbEstadoCivil);
-
-    if ($rowdbEstadoCivil = $resultadodbEstadoCivil->fetch_assoc()){
-        $estadocivil = $rowdbEstadoCivil['nombreEstadoCivil'];
-    }
-
+    
     $fechaNacimiento = $rowDB['fechaNacimiento']; 
     $lugarNacimiento = $rowDB['lugarNacimiento']; 
     $curp = $rowDB['curp']; 
     $rfc = $rowDB['rfc']; 
-
+    
     $idCatTipoSeguridad = $rowDB['idCatTipoSeguridad']; 
-
+    
     $dbCatSeguridadSocial = "SELECT * FROM cattiposeguridad WHERE id = $idCatTipoSeguridad";
     $resultadodbCatSeguridadSocial = $conn2->query($dbCatSeguridadSocial);
-
+    
     if ($rowdbCatSeguridadSocial = $resultadodbCatSeguridadSocial->fetch_assoc()){
         $seguridadSocial = $rowdbCatSeguridadSocial['nombreSeguridad'];
     }
-
+    
     $numeroSeguro = $rowDB['numeroSeguro'];  //numSS
-
+    
     $idEstatusExpediente = $rowDB['idEstatusExpediente']; //se va a agregar a la nueva db (creado, finado, baja)
-
+    
     $dbCatEstatus = "SELECT * FROM estatusexpedientes WHERE id = $idEstatusExpediente";
     $resultadodbCatEstatus = $conn2->query($dbCatEstatus);
-
+    
     if ($rowdbCatEstatus = $resultadodbCatEstatus-> fetch_assoc()){
         $estatusExp = $rowdbCatEstatus['estatusExpediente'];
     } else {
         $estatusExp = '';
     }
-
+    
     $db2 = "SELECT * FROM detalleexpedientes WHERE idExpediente = $id";
     $resultadoDB2 = $conn2->query($db2);
     $rowDB2 = $resultadoDB2->fetch_assoc();
-
     
-// detalle expedientes
+    
+    $idCatEstadoCivil = $rowDB2['idCatEstadoCivil']; // se relaciona con idExpediente
+    
+    $dbEstadoCivil = "SELECT * FROM catestadociviles WHERE claveEstadoCivil = $idCatEstadoCivil";
+    $resultadodbEstadoCivil = $conn2->query($dbEstadoCivil);
+    
+    if ($rowdbEstadoCivil = $resultadodbEstadoCivil->fetch_assoc()){
+        $estadocivil = $rowdbEstadoCivil['nombreEstadoCivil'];
+    }
+    // detalle expedientes
     $direccion = $rowDB2['direccion']; // se relaciona con idExpediente
     $numeroCasa = $rowDB2['numeroCasa']; // se relaciona con idExpediente
     $numeroInterior = $rowDB2['numeroInterior']; // se relaciona con idExpediente
     $colonia = $rowDB2['colonia']; // se relaciona con idExpediente
     $cp = $rowDB2['cp']; // se relaciona con idExpediente
+    $numeroTelefono = $rowDB2['numeroTelefono']; // se relaciona con idExpediente
     $celular = $rowDB2['celular']; // se relaciona con idExpediente
-    $numeroTelefo = $rowDB2['numeroTelefo']; // se relaciona con idExpediente
     $correo = $rowDB2['correo']; // se relaciona con idExpediente
     $referencia = $rowDB2['referencia']; // se relaciona con idExpediente
     $habilidad = $rowDB2['habilidad']; // se relaciona con idExpediente
     $entreVialidades = $rowDB2['entreVialidades']; // se relaciona con idExpediente
-
+    $estado = 32;
     $idCatMunicipio = $rowDB2['idCatMunicipio']; // se relaciona con idExpediente
 
     $dbMunicipio = "SELECT * FROM catmunicipios WHERE id = $idCatMunicipio";
@@ -100,26 +100,33 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     if ($rowdbLocalidad = $resultadoDBLocalidad->fetch_assoc()){
         $localidad = $rowdbLocalidad['nombreLocalidad'];
     }
+    else{
+        $localidad = "";
+    }
     
     $idAsentamiento = $rowDB2['idAsentamiento']; // se relaciona con idExpediente
 
-    $dbAsentamiento = "SELECT * FROM asentamiento WHERE id = $idAsentamiento";
-    $resultadoDBAsentamiento = $conn2->query($dbAsentamiento);
+    $dbAsentamiento = "SELECT * FROM asentamientos WHERE id = $idAsentamiento";
+    $resultadoAsentamiento = $conn2->query($dbAsentamiento);
 
-    if ($rowdbAsentamiento = $resultadoDBAsentamiento){
+    if ($rowdbAsentamiento = $resultadoAsentamiento->fetch_assoc()){
         $asentamiento = $rowdbAsentamiento['nombreAsentamiento'];
         $cveAsentamiento = $rowdbAsentamiento['claveAsentamiento'];
     }
+    else{
+        $asentamiento = "";
+        $cveAsentamiento = "";
+    }
 
-    $idCatEscolaridad = $rowDB['idCatEscolaridad']; // se relaciona con idExpediente
+    //$idCatEscolaridad = $rowDB2['idCatEscolaridad']; // se relaciona con idExpediente
 
     $dbCatEscolaridad = "SELECT * FROM detalleescolaridades WHERE idExpediente = $id";
     $resultadodbCatEscolaridad = $conn2->query($dbCatEscolaridad);
 
     if ($rowDBCatEscolaridad = $resultadodbCatEscolaridad->fetch_assoc()){
-        $idescolaridad = $rowDBEscolaridad['idCatEscolaridad'];
+        $idescolaridad = $rowDBCatEscolaridad['idCatEscolaridad'];
 
-        $dbEscolaridad = "SELECT * FROM catescolraridades WHERE id = $idescolaridad";
+        $dbEscolaridad = "SELECT * FROM catescolaridades WHERE id = $idescolaridad";
         $resultadoEscolaridad = $conn2->query($dbEscolaridad);
         if ($rowEscolaridad = $resultadoEscolaridad->fetch_assoc()){
             $escolaridad = $rowEscolaridad['nombreEscolaridad'];
@@ -128,7 +135,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
             $escolaridad = "";
         }
 
-        $idProfesion = $rowDBEscolaridad['idCatProfesion']; // se relaciona con idExpediente
+        $idProfesion = $rowDBCatEscolaridad['idCatProfesion']; // se relaciona con idExpediente
         
         $dbProfesion = "SELECT * FROM catprofesiones WHERE id = $idProfesion";
         $resultadoProfesion = $conn2->query($dbProfesion);
@@ -140,12 +147,12 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         }
     }
 
-    $dbTabEstudioSE = "SELECT * FROM estudiosocioeconomico WHERE idExpediente = $id";
+    $dbTabEstudioSE = "SELECT * FROM estudiosocioeconomicos WHERE idExpediente = $id";
     $resultadoEstudioSE = $conn2->query($dbTabEstudioSE);
     $rowdbEstudioSE = $resultadoEstudioSE->fetch_assoc();
 // estudiossocioeconómico
     $estudia = $rowdbEstudioSE['estudia']; // se relaciona con idExpediente
-    $LgarEstudio = $rowdbEstudioSE['LgarEstudio']; // se relaciona con idExpediente
+    $LgarEstudio = $rowdbEstudioSE['lgarEstudio']; // se relaciona con idExpediente
     $trabaja = $rowdbEstudioSE['trabaja']; // se relaciona con idExpediente
     $lugarTrabajo = $rowdbEstudioSE['lugarTrabajo']; // se relaciona con idExpediente
     $asociacion = $rowdbEstudioSE['asociacion']; // se relaciona con idExpediente
@@ -157,44 +164,100 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     $montoPension = $rowdbEstudioSE['montoPension']; // se relaciona con idExpediente
     $idEstudioSocioEconomico = $rowdbEstudioSE['id'];
 
-    $dbTabIngresos = "SELECT * FROM ingresos WHERE idEstudioSocieoconomico = $idEstudioSocioEconomico";
+    $dbTabIngresos = "SELECT * FROM ingresos WHERE idEstudioSocioeconomico = $idEstudioSocioEconomico";
     $resultadoTabIngresos = $conn2->query($dbTabIngresos);
     $rowTabIngresos = $resultadoTabIngresos->fetch_assoc();
 // ingresos
-    $IngresoMensual = $rowrowTabIngresosDB['IngresoMensual']; // se relaciona con idEstudioSocioeconomico
-    $personasDependen = $rowTabIngresos['personasDependen']; // se relaciona con idEstudioSocioeconomico
+    $IngresoMensual = $rowTabIngresos['IngresoMensual']; // se relaciona con idEstudioSocioeconomico
+    $personasDependen = $rowTabIngresos['pesonasDependen']; // se relaciona con idEstudioSocioeconomico
     $deudas = $rowTabIngresos['deudas']; // se relaciona con idEstudioSocioeconomico
     $montoDeuda = $rowTabIngresos['montoDeuda']; // se relaciona con idEstudioSocioeconomico
 
 $sqlInsert = "INSERT INTO datos_generales VALUES(
-    $folio,
-    $apellidoPaterno,
-    $apellidoMaterno,
-    $sexo,
-    $curp,
-    $rfc,
-    $lugarNacimiento,
-    $fechaNacimiento,
-    $fechaIngreso,
-    $numeroSeguro,
-    $idEstatusExpediente,
-    $idCatTipoSeguridad,
+    '$folio',
+    '$fechaIngreso',
+    '$nombre',
+    '$apellidoPaterno',
+    '$apellidoMaterno',
+    '$sexo',
+    '$estadocivil',
+    '$fechaNacimiento',
+    '$lugarNacimiento',
+    '$direccion',
+    '$numeroInterior',
+    '$numeroCasa',
+    '$colonia',
+    '$entreVialidades',
+    '$referencia',
+    '$estado',
+    '$claveMunicipio',
+    '$localidad',
+    '$asentamiento',
+    '$cp',
+    '$numeroTelefono',
+    '$correo',
+    '$celular',
+    '$escolaridad',
+    '$profesion',
+    '$curp',
+    '$rfc',
+    '$estudia',
+    '$LgarEstudio',
+    '$habilidad',
+    '$trabaja',
+    '$lugarTrabajo',
+    '$IngresoMensual',
+    '$asociacion',
+    '$lugarAsociacion',
+    '$pensionado',
+    '$lugarPension',
+    '$montoPension',
+    '$seguridadSocial',
+    '$numeroSeguro',
+    '$estatusExp',
 )
 INTO(
     numExpediente,
+    fecha_registro,
+    nombre,
     apellido_p,
     apellido_m,
-    nombre,
     genero,
+    edo_civil,
+    f_nacimiento,
+    lugar_nacimiento,
+    domicilio,
+    no_int,
+    no_ext,
+    colonia,
+    entre_vialidades,
+    descr_referencias,
+    estado,
+    municipio,
+    localidad,
+    asentamiento,
+    cp,
+    telefono_part,
+    correo,
+    telefono_cel,
+    escolaridad,
+    profesion,
     curp,
     rfc,
-    lugar_nacimiento,
-    f_nacimiento,
-    fecha_registro,
-    nss,
-    estatus,
+    estudia,
+    estudia_donde,
+    estudia_habilidad,
+    trabaja,
+    trabaja_donde,
+    trabaja_ingresos,
+    asoc_civ,
+    asoc_cual,
+    pensionado,
+    pensionado_donde,
+    pension_monto,
     seguridad_social,
-    
+    numSS,
+    estatus
 )";
 
 $resultadoSQL = $conn->query($sqlInsert);
@@ -204,7 +267,7 @@ if ($resultadoSQL){
 } //FIN WHILE
 
 // DATOS MÉDICOS de la anterior es datosmedicos
-$db1 = "SELECT * FROM datosmedicos";
+/* $db1 = "SELECT * FROM datosmedicos";
 $resultadoDB1 = $conn2->query($db1);
 while($rowDB = $resultadoDB1->fetch_assoc()){
 
@@ -318,7 +381,7 @@ $sqlInsert = "INSERT INTO datos_generales Values";
 // script_fotos.php
 
 }
-
+ */
 
 
 
