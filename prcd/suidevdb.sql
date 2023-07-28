@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2023 at 10:03 PM
+-- Generation Time: Jul 28, 2023 at 08:54 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -9934,7 +9934,7 @@ CREATE TABLE `datos_generales` (
   `pension_temporalidad` varchar(20) NOT NULL,
   `sindicato` int(11) NOT NULL,
   `sindicato_cual` varchar(100) NOT NULL,
-  `seguridad_social` int(11) NOT NULL,
+  `seguridad_social` varchar(20) NOT NULL,
   `seguridad_social_otro` varchar(100) DEFAULT NULL,
   `numSS` varchar(20) DEFAULT NULL,
   `photo` varchar(150) DEFAULT NULL,
@@ -9946,7 +9946,7 @@ CREATE TABLE `datos_generales` (
 --
 
 INSERT INTO `datos_generales` (`id`, `numExpediente`, `fecha_registro`, `fecha_actualizacion`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `tipoVialidad`, `estado`, `municipio`, `localidad`, `asentamiento`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `profesión`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `sindicato`, `sindicato_cual`, `seguridad_social`, `seguridad_social_otro`, `numSS`, `photo`, `estatus`) VALUES
-(10, 'C-5602-1', '2023-07-19 14:47:45', '2023-07-20 12:29:56', 'Jesusrlv', 'Jesusrlv', 'Jesusrlv', 0, 41, '1', '2023-06-27', 'Zacatecas', '222', '12', '12', 'HP Laser Jet', 'programación', '2121', '', '32', 32008, 'ADJUNTAS DEL PEÑASCO (EL PEÑASCO)', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '3223232', '6', 'programación', 'LEVJ810924HZSXLS04', 'LEVJ8109248K3', 0, 'N/A', 'programación', '0', 'N/A', '', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', 1, NULL, NULL, 'docs_expedientes/photos/archivo_LEVJ810924HZSXLS04.png', 0);
+(10, 'C-5602-1', '2023-07-19 14:47:45', '2023-07-20 12:29:56', 'Jesusrlv', 'Jesusrlv', 'Jesusrlv', 0, 41, '1', '2023-06-27', 'Zacatecas', '222', '12', '12', 'HP Laser Jet', 'programación', '2121', '', '32', 32008, 'ADJUNTAS DEL PEÑASCO (EL PEÑASCO)', 'Sin registro', 98000, '3223232', 'jesus@fdf.net', '3223232', '6', 'programación', 'LEVJ810924HZSXLS04', 'LEVJ8109248K3', 0, 'N/A', 'programación', '0', 'N/A', '', 0, 'N/A', 0, 'N/A', 0, 'N/A', 0, 'N/A', '1', NULL, NULL, 'docs_expedientes/photos/archivo_LEVJ810924HZSXLS04.png', 0);
 
 -- --------------------------------------------------------
 
@@ -10468,7 +10468,8 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (108, 1, '2023-07-26 08:26:00', NULL),
 (109, 0, NULL, '2023-07-26 08:27:33'),
 (110, 0, NULL, '2023-07-27 11:38:32'),
-(111, 1, '2023-07-27 11:38:35', NULL);
+(111, 1, '2023-07-27 11:38:35', NULL),
+(112, 1, '2023-07-28 10:06:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -11212,7 +11213,7 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT for table `medicamentos`
