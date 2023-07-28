@@ -140,32 +140,31 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         }
     }
 
-    $dbEstudioSE = "SELECT * FROM estudiosocioeconomico WHERE idExpediente = $id";
-
+    $dbTabEstudioSE = "SELECT * FROM estudiosocioeconomico WHERE idExpediente = $id";
+    $resultadoEstudioSE = $conn2->query($dbTabEstudioSE);
+    $rowdbEstudioSE = $resultadoEstudioSE->fetch_assoc();
 // estudiossocioeconómico
-    $estudia = $rowDB['estudia']; // se relaciona con idExpediente
-    $LgarEstudio = $rowDB['LgarEstudio']; // se relaciona con idExpediente
-    $trabaja = $rowDB['trabaja']; // se relaciona con idExpediente
-    $lugarTrabajo = $rowDB['lugarTrabajo']; // se relaciona con idExpediente
-    $asociacion = $rowDB['asociacion']; // se relaciona con idExpediente
-    $lugarAsociacion = $rowDB['lugarAsociacion']; // se relaciona con idExpediente
-    $sindicato = $rowDB['sindicato']; // se relaciona con idExpediente
-    $lugarSindicato = $rowDB['lugarSindicato']; // se relaciona con idExpediente
-    $pensionado = $rowDB['pensionado']; // se relaciona con idExpediente
-    $lugarPension = $rowDB['lugarPension']; // se relaciona con idExpediente
-    $montoPension = $rowDB['montoPension']; // se relaciona con idExpediente
+    $estudia = $rowdbEstudioSE['estudia']; // se relaciona con idExpediente
+    $LgarEstudio = $rowdbEstudioSE['LgarEstudio']; // se relaciona con idExpediente
+    $trabaja = $rowdbEstudioSE['trabaja']; // se relaciona con idExpediente
+    $lugarTrabajo = $rowdbEstudioSE['lugarTrabajo']; // se relaciona con idExpediente
+    $asociacion = $rowdbEstudioSE['asociacion']; // se relaciona con idExpediente
+    $lugarAsociacion = $rowdbEstudioSE['lugarAsociacion']; // se relaciona con idExpediente
+    $sindicato = $rowdbEstudioSE['sindicato']; // se relaciona con idExpediente
+    $lugarSindicato = $rowdbEstudioSE['lugarSindicato']; // se relaciona con idExpediente
+    $pensionado = $rowdbEstudioSE['pensionado']; // se relaciona con idExpediente
+    $lugarPension = $rowdbEstudioSE['lugarPension']; // se relaciona con idExpediente
+    $montoPension = $rowdbEstudioSE['montoPension']; // se relaciona con idExpediente
+    $idEstudioSocioEconomico = $rowdbEstudioSE['id'];
 
+    $dbTabIngresos = "SELECT * FROM ingresos WHERE idEstudioSocieoconomico = $idEstudioSocioEconomico";
+    $resultadoTabIngresos = $conn2->query($dbTabIngresos);
+    $rowTabIngresos = $resultadoTabIngresos->fetch_assoc();
 // ingresos
-    $IngresoMensual = $rowDB['IngresoMensual']; // se relaciona con idEstudioSocioeconomico
-    $personasDependen = $rowDB['personasDependen']; // se relaciona con idEstudioSocioeconomico
-    $deudas = $rowDB['deudas']; // se relaciona con idEstudioSocioeconomico
-    $montoDeuda = $rowDB['montoDeuda']; // se relaciona con idEstudioSocioeconomico
-
-// ingresos
-    $IngresoMensual = $rowDB['IngresoMensual']; // se relaciona con idExpediente
-    $personasDependen = $rowDB['personasDependen']; // se relaciona con idExpediente
-    $deudas = $rowDB['deudas']; // se relaciona con idExpediente
-    $montoDeuda = $rowDB['montoDeuda']; // se relaciona con idExpediente
+    $IngresoMensual = $rowrowTabIngresosDB['IngresoMensual']; // se relaciona con idEstudioSocioeconomico
+    $personasDependen = $rowTabIngresos['personasDependen']; // se relaciona con idEstudioSocioeconomico
+    $deudas = $rowTabIngresos['deudas']; // se relaciona con idEstudioSocioeconomico
+    $montoDeuda = $rowTabIngresos['montoDeuda']; // se relaciona con idEstudioSocioeconomico
 
 $sqlInsert = "INSERT INTO datos_generales VALUES(
     $folio,
