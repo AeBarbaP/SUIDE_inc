@@ -888,7 +888,7 @@ include('prcd/qc/qc.php');
     }
   }
 
-  function init() {
+/*   function init() {
     var inputFile = document.getElementById('inputFile1');
     inputFile.addEventListener('change', mostrarImagen, false);
   }
@@ -902,7 +902,7 @@ include('prcd/qc/qc.php');
   reader.readAsDataURL(file);
   }
 
-  window.addEventListener('load', init, false);
+  window.addEventListener('load', init, false); */
 
 </script>
 

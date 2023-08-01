@@ -294,7 +294,11 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     else{
         $error = $conn2->error;
         $error1 = $conn->error;
-        echo json_encode(array('success'=>0,'error'=>$error));
+        echo json_encode(array(
+            'success'=>0,
+            'error'=>$error
+            )
+        );
         echo json_encode(array('success'=>0,'error'=>$error1));
     }
     

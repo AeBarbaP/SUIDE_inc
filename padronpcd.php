@@ -279,7 +279,7 @@ include('prcd/qc/qc.php');
           <!-- file photo-->
             <form id="upload_form" enctype="multipart/form-data" method="post">
                 
-              <input type="file" name="file_photo" id="file_photo" onchange="foto()" accept="image/png, image/gif, image/jpeg" class="h6 w-100 mt-3" disabled><br>
+              <input type="file"  name="file_photo" id="file_photo" onchange="foto()" accept="image/png, image/gif, image/jpeg" class="h6 w-100 mt-3" disabled><br>
             
               <progress id="progressBar_photo" value="0" max="100" style="width:270px;"></progress>
               <small id="status_photo"></small>
@@ -713,7 +713,7 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label">Descripción:</label>
-                      <input type="text" class="form-control" id="descDisc" name="datos_usr" placeholder="Grado" required>
+                      <input type="text" class="form-control" id="descDisc" name="datos_usr" placeholder="Describe la discapacidad" required>
                       <div class="invalid-feedback">
                         * Campo requerido.
                       </div>
@@ -2102,6 +2102,375 @@ include('prcd/qc/qc.php');
   </body>
 </html>
 
+<!-- Inicia Moda para agregar Familiar en la tab de Integración Familiar -->
+<div class="modal fade" id="agregarFamiliar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Agregar Familiar</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="familiaForm">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1" id="nombreFamiliar" name="nombre" required>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
+                    <select class="form-select" id="parentescoFam" aria-label="Default select example">
+                      <option selected>Parentesco...</option>
+                      <option value="Padre">Padre</option>
+                      <option value="Madre">Madre</option>
+                      <option value="Herman@">Herman@</option>
+                      <option value="Espos@">Espos@</option>
+                      <option value="Tí@">Tí@</option>
+                      <option value="Sobrin@">Sobrin@</option>
+                      <option value="Abuel@">Abuel@</option>
+                      <option value="Prim@">Prim@</option>
+                      <option value="Otr@">Otr@</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" >Edad</span>
+                    <input type="number" id="edadFam" onkeypress="ValidaSoloNumeros()" class="form-control" id="inputGroup01">
+                  </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-mortarboard"></i></span>
+                <select class="form-select" id="escolaridadFam" aria-label="Default select example">
+                  <option selected>Nivel de Escolaridad...</option>
+                  <option value="Preescolar">Preescolar</option>
+                  <option value="Primaria">Primaria</option>
+                  <option value="Secundaria">Secundaria</option>
+                  <option value="Preparatoria">Preparatoria</option>
+                  <option value="Carrera_Tecnica">Carrera Técnica</option>
+                  <option value="Licenciatura">Licenciatura</option>
+                  <option value="Posgrado">Posgrado</option>
+                </select>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
+                <input type="text" class="form-control" placeholder="Profesión" aria-label="profesionFam" id="profesionFam" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Tiene Discapacidad?</span>
+                <select class="form-select" id="selectDiscapacidadFam" onchange="familiarDisc(this.value)">
+                  <option selected>Selecciona...</option>
+                  <option value="1">Sí</option>
+                  <option value="2">No</option>
+                </select>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"  id="basic-addon1"><i class="bi bi-universal-access-circle"></i></span>
+                <input type="text" class="form-control" placeholder="Descripción de discapacidad" aria-label="discapacidad" id="discapacidadFam" aria-describedby="basic-addon1" disabled>
+              </div> 
+              <div class="row">
+                <div class="col-md-6">
+                <div class="input-group mb-3">  
+                  <span class="input-group-text">$</span>
+                  <input type="text" class="form-control" id="ingresoFam" onkeypress="ValidaSoloNumeros()" placeholder="Ingreso" aria-label="Ingreso mensual">
+                  <span class="input-group-text">.00</span>
+                </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
+                    <input type="text" class="form-control" placeholder="# Teléfono o Celular" onkeypress="ValidaSoloNumeros()" id="telFam"> <!-- validar solo numeros -->
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" ><i class="bi bi-envelope-at"></i></span>
+                    <input type="mail" class="form-control" placeholder="Correo electrónico" id="emailFam"> <!-- validar solo numeros -->
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Agregar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Termina Modal para agregar Familiar en la Tab de Integración Familiar -->
+
+<!-- Inicia Moda para agregar Referencia en la tab de Referencias -->
+<div class="modal fade" id="agregarReferencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Agregar Referencia</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="referenciasForm">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre completo" id="nombreReferencia" aria-describedby="basic-addon1" name="nombre" required>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
+                    <select class="form-select" id="parentescoRef" aria-label="Default select example">
+                      <option selected>Parentesco...</option>
+                      <option value="Amig@">Amig@</option>
+                      <option value="Vecin@">Vecin@</option>
+                      <option value="Otr@">Otr@</option>
+                      <option value="Espos@">Espos@</option>
+                      <option value="Padre">Padre</option>
+                      <option value="Madre">Madre</option>
+                      <option value="Herman@">Herman@</option>
+                      <option value="Tí@">Tí@</option>
+                      <option value="Sobrin@">Sobrin@</option>
+                      <option value="Abuel@">Abuel@</option>
+                      <option value="Prim@">Prim@</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
+                    <input type="text" class="form-control" placeholder="# de Celular" onkeypress="ValidaSoloNumeros()" id="telRef"> <!-- validar solo numeros -->
+                  </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
+                <input type="text" class="form-control" placeholder="Profesión" aria-label="profesion" id="profesionRef" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Domicilio</span>
+                <textarea type="text" class="form-control" placeholder="" aria-label="domicilio" id="domicilioRef" rows="2" aria-describedby="basic-addon1"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Agregar</button>
+                </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Termina Modal para agregar Referencia en la tab de Referencias -->
+
+    <!-- Inician Modales para cargar archivos en pdf o jpg en Tab Documentos -->
+
+    <div class="modal fade" id="docUpload1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" name="file1" id="file1" accept="application/pdf" class="form-control">
+              </div>
+              <div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" value="0">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar1" value="0" max="100" style="height: 20px">
+                  <p id="loaded_n_total1"></p>
+                </div>
+              </div>
+              <small id="status1"></small>
+            </form>
+          
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btnModal1" onclick="uploadFile(1)">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="docUpload2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file2" id="file2" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar2" value="0" max="100">
+                  <p id="loaded_n_total2"></p>
+                </div>
+              </div>
+              <small id="status2"></small>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btnModal2" onclick="uploadFile(2)">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="docUpload3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file3" id="file3" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar3" value="0" max="100">
+                  <p id="loaded_n_total3"></p>
+                </div>
+              </div>
+              <small id="status3"></small>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btnModal3" onclick="uploadFile(3)" >Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="docUpload4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file4" id="file4" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria.valuenow="0" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar4" value="0" max="100">
+                  <p id="loaded_n_total4"></p>
+                </div>
+              </div>
+              <small id="status4"></small>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btnModal4" onclick="uploadFile(4)">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="docUpload5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file5" id="file5" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar5" value="0" max="100">
+                  <p id="loaded_n_total5"></p>
+                </div>
+              </div>
+              <small id="status5"></small>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btnModal5" onclick="uploadFile(5)">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="docUpload6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file6" id="file6" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar6" value="0" max="100">
+                  <p id="loaded_n_total6"></p>
+                </div>
+              </div>
+              <small id="status6"></small>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btnModal6" onclick="uploadFile(6)">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="docUpload7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel"><strong><i class="bi bi-cloud-arrow-up h2"></i> Subir Tarjeta de Circulación</strong></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file7" id="file7" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar7" value="0" max="100">
+                  <small id="status7"></small>
+                </div>
+              </div>
+              <p id="loaded_n_total7"></p>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btnModal7" onclick="uploadFile(7)">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Terminan Modales para cargar archivo en pdf o jpg en Tab Documentos -->
+
 <!-- Inicia Modal para generar tarjeton de préstamo-->
 
 <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="tarjetonPrestamo" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
@@ -2430,7 +2799,7 @@ include('prcd/qc/qc.php');
       // dataType: "html",
       //contentType:false,
       //processData:false,
-      cache: false,
+      //cache: false,
         success: function(data) {
           $("#credencial").html(data);
 
@@ -2443,7 +2812,7 @@ include('prcd/qc/qc.php');
     $.ajax({
       type:"POST",
       url:"query/query_searchPadronBDTarjeton.php",
-      dataType: 'HTML',
+      dataType: 'html',
       data:{
         expediente:expediente
       },
@@ -2476,471 +2845,82 @@ include('prcd/qc/qc.php');
     }
   }
 
-  function init() {
-    var inputFile = document.getElementById('inputFile1');
-    inputFile.addEventListener('change', mostrarImagen(), false);
-  }
-  function mostrarImagen(event) {
-  var file = event.target.files[0];
-  var reader = new FileReader();
-    reader.onload = function(event) {
-    var img = document.getElementById('img1');
-    img.src= event.target.result;
-  }
-  reader.readAsDataURL(file);
-  }
-
-  window.addEventListener('load', init, false);
-
 </script>
 
 <!-- Inicia Modal editar-->
-
-
 <div class="modal fade" id="editarUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Editar Usuario</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form action="prcd/actualizaruseractivo.php" method="POST"><!--form-->
-                  <input name="id" value="<?php echo $id?>" hidden>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
-                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" value="<?php echo $nombre?>" aria-describedby="basic-addon1" name="nombre" required>
-                  </div>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-workspace"></i></span>
-                    <input type="text" class="form-control" placeholder="Usuario" aria-label="usuario" value="<?php echo $usuario?>" aria-describedby="basic-addon1" readonly>
-                  </div>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1" for="inputGroupSelect01" readonly>Perfil</span>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Editar Usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="prcd/actualizaruseractivo.php" method="POST"><!--form-->
+              <input name="id" value="<?php echo $id?>" hidden>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" value="<?php echo $nombre?>" aria-describedby="basic-addon1" name="nombre" required>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-workspace"></i></span>
+                <input type="text" class="form-control" placeholder="Usuario" aria-label="usuario" value="<?php echo $usuario?>" aria-describedby="basic-addon1" readonly>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1" for="inputGroupSelect01" readonly>Perfil</span>
 
-                    <select class="form-select" id="inputGroupSelect01" value="<?php echo $rowPerfil;?>" selected="selected" disabled>
+                <select class="form-select" id="inputGroupSelect01" value="<?php echo $rowPerfil;?>" selected="selected" disabled>
 
-                      <option value="<?php echo $rowPerfil['id'];?>" selected="selected" disabled><?php echo $rowPerfil['perfil'];?></option>
+                  <option value="<?php echo $rowPerfil['id'];?>" selected="selected" disabled><?php echo $rowPerfil['perfil'];?></option>
 
-                    </select>
+                </select>
 
-                    <?php
-                    echo '
-                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group" disabled>';
-                      echo '
-                      <input type="radio" class="btn-check" value="1" id="btnradio1" 
-                      ';
-                      if($rowStatus['estatus'] ==  1){
-                        echo 'checked="checked"';
-                      }
-                      echo'
-                      disabled>
-                      <label class="btn btn-outline-success" for="btnradio1"><i class="bi bi-check-lg"></i> Activo</label>
-                    
-                      <input type="radio" class="btn-check" value="2" id="btnradio2"  
-                      ';
-                      if($rowStatus['estatus'] == 2){
-                        echo 'checked="checked"';
-                      }
-                      echo'
-                      disabled>
-                      <label class="btn btn-outline-danger" for="btnradio2"><i class="bi bi-x-lg"></i> Inactivo</label>
-                      ';
-                    
-                    echo '
-                    </div>
-                  </div>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-shield-lock-fill"></i></span>
-                    <input type="password" class="form-control" placeholder="Contraseña" aria-label="contraseña" value="' . $rowStatus['pwd'] . '" aria-describedby="basic-addon1" name="pwd" id="passW">
-                  </div>
-                  <input type="checkbox" onclick="myFunction()"> Mostrar Password 
-                  <script>
-                  function myFunction() {
-                    var x = document.getElementById("passW");
-                    if (x.type === "password") {
-                      x.type = "text";
-                    } else {
-                      x.type = "password";
-                    }
-                  } 
-                  </script>
+                <?php
+                echo '
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group" disabled>
+                  <input type="radio" class="btn-check" value="1" id="btnradio1" 
+                  ';
+                  if($rowStatus['estatus'] ==  1){
+                    echo 'checked="checked"';
+                  }
+                  echo'
+                  disabled>
+                  <label class="btn btn-outline-success" for="btnradio1"><i class="bi bi-check-lg"></i> Activo</label>
+                
+                  <input type="radio" class="btn-check" value="2" id="btnradio2"  
+                  ';
+                  if($rowStatus['estatus'] == 2){
+                    echo 'checked="checked"';
+                  }
+                  echo'
+                  disabled>
+                  <label class="btn btn-outline-danger" for="btnradio2"><i class="bi bi-x-lg"></i> Inactivo</label>
                   
-            </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
-                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Guardar Cambios</button>
+                </div>
               </div>
-            </form><!--form-->
-        </div>
-      </div>
-    </div>
-    ';?>
-    <!-- Inicia Moda para agregar Familiar en la tab de Integración Familiar -->
-    <div class="modal fade" id="agregarFamiliar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Agregar Familiar</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-shield-lock-fill"></i></span>
+                <input type="password" class="form-control" placeholder="Contraseña" aria-label="contraseña" value="' . $rowStatus['pwd'] . '" aria-describedby="basic-addon1" name="pwd" id="passW">
+              </div>
+              <input type="checkbox" onclick="myFunction()"><label>Mostrar Password</label>
+        </div>';
+        ?>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
+            <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Guardar Cambios</button>
           </div>
-          <div class="modal-body">
-            <form id="familiaForm">
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
-                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1" id="nombreFamiliar" name="nombre" required>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
-                    <select class="form-select" id="parentescoFam" aria-label="Default select example">
-                      <option selected>Parentesco...</option>
-                      <option value="Padre">Padre</option>
-                      <option value="Madre">Madre</option>
-                      <option value="Herman@">Herman@</option>
-                      <option value="Espos@">Espos@</option>
-                      <option value="Tí@">Tí@</option>
-                      <option value="Sobrin@">Sobrin@</option>
-                      <option value="Abuel@">Abuel@</option>
-                      <option value="Prim@">Prim@</option>
-                      <option value="Otr@">Otr@</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1" >Edad</span>
-                    <input type="number" id="edadFam" onkeypress="ValidaSoloNumeros()" class="form-control" id="inputGroup01">
-                  </div>
-                </div>
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1"><i class="bi bi-mortarboard"></i></span>
-                <select class="form-select" id="escolaridadFam" aria-label="Default select example">
-                  <option selected>Nivel de Escolaridad...</option>
-                  <option value="Preescolar">Preescolar</option>
-                  <option value="Primaria">Primaria</option>
-                  <option value="Secundaria">Secundaria</option>
-                  <option value="Preparatoria">Preparatoria</option>
-                  <option value="Carrera_Tecnica">Carrera Técnica</option>
-                  <option value="Licenciatura">Licenciatura</option>
-                  <option value="Posgrado">Posgrado</option>
-                </select>
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
-                <input type="text" class="form-control" placeholder="Profesión" aria-label="profesionFam" id="profesionFam" aria-describedby="basic-addon1">
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Tiene Discapacidad?</span>
-                <select class="form-select" id="selectDiscapacidadFam" onchange="familiarDisc(this.value)">
-                  <option selected>Selecciona...</option>
-                  <option value="1">Sí</option>
-                  <option value="2">No</option>
-                </select>
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text"  id="basic-addon1"><i class="bi bi-universal-access-circle"></i></span>
-                <input type="text" class="form-control" placeholder="Descripción de discapacidad" aria-label="discapacidad" id="discapacidadFam" aria-describedby="basic-addon1" disabled>
-              </div> 
-              <div class="row">
-                <div class="col-md-6">
-                <div class="input-group mb-3">  
-                  <span class="input-group-text">$</span>
-                  <input type="text" class="form-control" id="ingresoFam" onkeypress="ValidaSoloNumeros()" placeholder="Ingreso" aria-label="Ingreso mensual">
-                  <span class="input-group-text">.00</span>
-                </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
-                    <input type="text" class="form-control" placeholder="# Teléfono o Celular" onkeypress="ValidaSoloNumeros()" id="telFam"> <!-- validar solo numeros -->
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1" ><i class="bi bi-envelope-at"></i></span>
-                    <input type="mail" class="form-control" placeholder="Correo electrónico" id="emailFam"> <!-- validar solo numeros -->
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
-                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Agregar</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+        </form><!--form-->
     </div>
-    <!-- Termina Modal para agregar Familiar en la Tab de Integración Familiar -->
+  </div>
+</div>
     
-    <!-- Inicia Moda para agregar Referencia en la tab de Referencias -->
-    <div class="modal fade" id="agregarReferencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Agregar Referencia</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="referenciasForm">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
-                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre completo" id="nombreReferencia" aria-describedby="basic-addon1" name="nombre" required>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
-                    <select class="form-select" id="parentescoRef" aria-label="Default select example">
-                      <option selected>Parentesco...</option>
-                      <option value="Amig@">Amig@</option>
-                      <option value="Vecin@">Vecin@</option>
-                      <option value="Otr@">Otr@</option>
-                      <option value="Espos@">Espos@</option>
-                      <option value="Padre">Padre</option>
-                      <option value="Madre">Madre</option>
-                      <option value="Herman@">Herman@</option>
-                      <option value="Tí@">Tí@</option>
-                      <option value="Sobrin@">Sobrin@</option>
-                      <option value="Abuel@">Abuel@</option>
-                      <option value="Prim@">Prim@</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
-                    <input type="text" class="form-control" placeholder="# de Celular" onkeypress="ValidaSoloNumeros()" id="telRef"> <!-- validar solo numeros -->
-                  </div>
-                </div>
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
-                <input type="text" class="form-control" placeholder="Profesión" aria-label="profesion" id="profesionRef" aria-describedby="basic-addon1">
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Domicilio</span>
-                <textarea type="text" class="form-control" placeholder="" aria-label="domicilio" id="domicilioRef" rows="2" aria-describedby="basic-addon1"></textarea>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
-                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Agregar</button>
-                </form>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Termina Modal para agregar Referencia en la tab de Referencias -->
-
-    <!-- Inician Modales para cargar archivos en pdf o jpg en Tab Documentos -->
-
-    <div class="modal fade" id="docUpload1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            
-            <form id="upload_form" enctype="multipart/form-data" method="post">
-              <div class="input-group mb-3">
-                <input type="file" name="file1" id="file1" accept="application/pdf" class="form-control">
-              </div>
-              <div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" value="0">
-                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar1" value="0" max="100" style="height: 20px">
-                  <p id="loaded_n_total1"></p>
-                </div>
-              </div>
-              <small id="status1"></small>
-            </form>
-          
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" id="btnModal1" onclick="uploadFile(1)">Subir Archivo</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="docUpload2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="upload_form" enctype="multipart/form-data" method="post">
-              <div class="input-group mb-3">
-                <input type="file" class="form-control" name="file2" id="file2" accept="application/pdf">
-              </div>
-              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="height: 20px">
-                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar2" value="0" max="100">
-                  <p id="loaded_n_total2"></p>
-                </div>
-              </div>
-              <small id="status2"></small>
-            </form>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" id="btnModal2" onclick="uploadFile(2)">Subir Archivo</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="docUpload3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="upload_form" enctype="multipart/form-data" method="post">
-              <div class="input-group mb-3">
-                <input type="file" class="form-control" name="file3" id="file3" accept="application/pdf">
-              </div>
-              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="height: 20px">
-                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar3" value="0" max="100">
-                  <p id="loaded_n_total3"></p>
-                </div>
-              </div>
-              <small id="status3"></small>
-            </form>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" id="btnModal3" onclick="uploadFile(3)" >Subir Archivo</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="docUpload4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="upload_form" enctype="multipart/form-data" method="post">
-              <div class="input-group mb-3">
-                <input type="file" class="form-control" name="file4" id="file4" accept="application/pdf">
-              </div>
-              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria.valuenow="0" style="height: 20px">
-                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar4" value="0" max="100">
-                  <p id="loaded_n_total4"></p>
-                </div>
-              </div>
-              <small id="status4"></small>
-            </form>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" id="btnModal4" onclick="uploadFile(4)">Subir Archivo</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="docUpload5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="upload_form" enctype="multipart/form-data" method="post">
-              <div class="input-group mb-3">
-                <input type="file" class="form-control" name="file5" id="file5" accept="application/pdf">
-              </div>
-              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="height: 20px">
-                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar5" value="0" max="100">
-                  <p id="loaded_n_total5"></p>
-                </div>
-              </div>
-              <small id="status5"></small>
-            </form>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" id="btnModal5" onclick="uploadFile(5)">Subir Archivo</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="docUpload6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="upload_form" enctype="multipart/form-data" method="post">
-              <div class="input-group mb-3">
-                <input type="file" class="form-control" name="file6" id="file6" accept="application/pdf">
-              </div>
-              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="height: 20px">
-                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar6" value="0" max="100">
-                  <p id="loaded_n_total6"></p>
-                </div>
-              </div>
-              <small id="status6"></small>
-            </form>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" id="btnModal6" onclick="uploadFile(6)">Subir Archivo</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="docUpload7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel"><strong><i class="bi bi-cloud-arrow-up h2"></i> Subir Tarjeta de Circulación</strong></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="upload_form" enctype="multipart/form-data" method="post">
-              <div class="input-group mb-3">
-                <input type="file" class="form-control" name="file7" id="file7" accept="application/pdf">
-              </div>
-              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="height: 20px">
-                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar7" value="0" max="100">
-                  <small id="status7"></small>
-                </div>
-              </div>
-              <p id="loaded_n_total7"></p>
-            </form>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" id="btnModal7" onclick="uploadFile(7)">Subir Archivo</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- Terminan Modales para cargar archivo en pdf o jpg en Tab Documentos -->
+<script>
+  function myFunction() {
+    var x = document.getElementById("passW");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  } 
+</script>

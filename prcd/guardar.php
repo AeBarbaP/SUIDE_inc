@@ -94,7 +94,7 @@ $sqlinsert= "INSERT INTO datos_generales (
     pension_monto,
     pension_temporalidad,
     seguridad_social,
-    seguridad_social_donde,
+    seguridad_social_otro,
     numSS
     )
 VALUES(

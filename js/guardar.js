@@ -128,13 +128,13 @@ $(document).ready(function() {
         var numSS = document.getElementById('numss').value;
 
         if(generoF.checked){
-            var genero = 1;
+            var genero = "Femenino";
         }
         else if (generoM.checked){
-            var genero = 0;
+            var genero = "Masculino";
         }
         else if (generoO.checked){
-            var genero = 2;
+            var genero = "Otro";
         }
         if(estudiaSi.checked){
             var estudia = 1;
@@ -1155,14 +1155,15 @@ function guardarSolicitud(){
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));
             var verificador = jsonData.success;
+            mostrarTablaServicios();
             if (verificador == 1) {
                 mostrarTabla();
-                mostrarTablaServicios();
                 limpiaInputsFunc();
-                
+                mostrarTablaServicios();
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
+            mostrarTablaServicios();
             document.getElementById('btnEntregaApoyo').disabled = false;
         }
 
@@ -1248,36 +1249,7 @@ function guardarSolicitudOtros(){
 
     });
 }
-/* function guardarSolicitudCompleta(){
-    var curp_exp = document.getElementById('curp_exp').value;
-    var tipoSolicitud = document.getElementById('tipoSolicitud').value;
-    var fechaSolicitud = document.getElementById('fechaSolicitud').value;
-    var folioSolicitud = document.getElementById('folioSolicitud').value;
-    
-    $.ajax({
-        type: "POST",
-        url: 'prcd/guardarSolicitudFull.php',
-        dataType:'json',
-        data: {
-            curp_exp:curp_exp,
-            tipoSolicitud:tipoSolicitud,
-            fechaSolicitud:fechaSolicitud,
-            folioSolicitud:folioSolicitud
-        },
-        success: function(data){
-            var jsonData = JSON.parse(JSON.stringify(data));
-            var verificador = jsonData.success;
-            if (verificador == 1) {
-                mostrarTablaServicios();
-            } else if (verificador == 0){
-                alert('no muestra tabla');
-            }
-        }
 
-    }); */
-    //tablaSolicitud.ajax.reload();
-
-/* } */
 function mostrarTabla(){
     var folioSolicitud = document.getElementById('folioSolicitud').value;
     var tipoSolicitud = document.getElementById('tipoSolicitud').value;
@@ -1317,13 +1289,13 @@ function swalEntrega(){
         flagEntrega();
         if (result.isConfirmed) {
             limpiarModalSolicitud();
+            mostrarTablaServicios();
             document.getElementById('btnEntregaApoyo').disabled = false;
             swalWithBootstrapButtons.fire(
                 'Entregado!',
                 'Se ha generado el Acta de Entrega',
                 'success'
                 );
-            
             mostrarTablaServicios();
             $("#solicitudAdd").modal('hide');
         } else if (
