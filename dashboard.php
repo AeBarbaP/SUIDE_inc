@@ -833,7 +833,7 @@ include('prcd/qc/qc.php');
     var expediente = document.getElementById('searchDBInclusion').value;
     $.ajax({
       type:"POST",
-      url:"prcd/query_searchPadronBD.php",
+      url:"query/query_searchPadronBD.php",
       data:{
         expediente:expediente
       },
@@ -852,7 +852,7 @@ include('prcd/qc/qc.php');
     var expediente = document.getElementById('searchDBInclusion2').value;
     $.ajax({
       type:"POST",
-      url:"prcd/query_searchPadronBDTarjeton.php",
+      url:"query/query_searchPadronBDTarjeton.php",
       data:{
         expediente:expediente
       },
