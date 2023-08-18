@@ -27,7 +27,7 @@ $err = 'L';
 
 $qrcode = new QRcode(utf8_encode($msg), $err);
 //$qrcode->displayFPDF(&$fpdf, 1, 1, 1, $background=array(255,255,255), $color=array(0,0,0));
-//$qrcode->disableBorder();
+
 //$qrcode->displayPNG(200);
 //$qrcode->displayHTML();
 //$qrcode->displayHTML();
@@ -68,9 +68,7 @@ class PDF extends FPDF
 function hoja2($qrcode,$direccion,$concatNumIntNumCasa,$cp,$colonia,$localidad,$municipio,$telefono,$tipoSangre,$alergias)
 {
 $this->Image('../img/PROPUESTA_CREDENCIAL_PCD_2021-2027_Back.jpg','0','0','1024','640','JPG');
-$this->Cell(50,5,'','','','L','');
-$qrcode->displayFPDF($this, 115, 68, 14);		
-			//IMAGE (RUTA,X,Y,ANCHO,ALTO,EXTEN)
+//IMAGE (RUTA,X,Y,ANCHO,ALTO,EXTEN)
 $this->Ln(35);
 $this->Ln(35);
 $this->Ln(32);
@@ -80,7 +78,9 @@ $this->Cell(50,5,utf8_decode($direccion),'','','L','');
 $this->Cell(50,5,'','','','L','');
 $this->Ln(30);
 $this->Ln(26);
-$this->Cell(520,5,'','','','L','');
+$this->Cell(520,5,'','','','C','');
+$qrcode->displayFPDF($this, 95, 185, 270);
+$qrcode->disableBorder($this);	
 $this->Cell(50,5,utf8_decode($concatNumIntNumCasa),'','','L','');
 $this->Ln(30);
 $this->Ln(26);

@@ -36,6 +36,13 @@ function vehiculoAdd(){
 /*             var curpTarjeton = jsonData.cuprTarjeton;
             var numExpediente = jsonData.numExpediente; */
             if (verificador == 1) {
+                if (curp == "CURP no registrada"){
+                    document.getElementById('agregarVehiculoBtn').disabled = true;
+                    alert('No tiene registrada una CURP, actualice Expediente');
+                }
+                else {
+                    codigoQR(curp);
+                }
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
@@ -43,6 +50,7 @@ function vehiculoAdd(){
             document.getElementById('vehiculosTabla').hidden = false;
             document.getElementById('folioTPerm').disabled = true;
             document.getElementById('vigenciaPerm').disabled = true;
+            document.getElementById('imprimirt').disabled = false;
             mostrarTablaVehiculos();
         }
         
@@ -69,6 +77,41 @@ function mostrarTablaVehiculos(){
         }
     });
 
+}
+
+function codigoQR(concatenado){
+    var texto = concatenado.toString();
+    /* document.getElementById('matriculaQR2').innerHTML = concatenado; */
+    document.getElementById('qrTarjeton').innerHTML = "";
+// aquí
+
+var qrcode = new QRCode(document.getElementById("qrTarjeton"), {
+      text: texto,
+      width: 80,
+      height: 80,
+      correctLevel: QRCode.CorrectLevel.H
+    });
+
+    // Obtener el elemento canvas generado por QRCode.js
+    var canvas = document.querySelector("#codigo-qr canvas");
+
+    // Crear un nuevo elemento de imagen para el logo
+    var logo = new Image();
+    logo.src = "imagen.png";
+
+    // Esperar a que el logo se cargue antes de dibujarlo en el canvas
+    logo.onload = function() {
+      // Calcular la posición del logo en el centro del código QR
+      var logoSize = qrcode._htOption.width * 0.2; // Tamaño relativo del logo (20%)
+      var xPos = (canvas.width - logoSize) / 2;
+      var yPos = (canvas.height - logoSize) / 2;
+
+      // Dibujar el logo en el canvas
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(logo, xPos, yPos, logoSize, logoSize);
+    };
+
+    console.log();
 }
 
 function limpiarInputsVehiculo(){

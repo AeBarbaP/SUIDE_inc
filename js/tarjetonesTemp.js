@@ -34,6 +34,7 @@ function vehiculoTempAdd(){
             var jsonData = JSON.parse(JSON.stringify(data));
             var verificador = jsonData.success;
             if (verificador == 1) {
+                codigoQR(curp);
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
@@ -41,6 +42,7 @@ function vehiculoTempAdd(){
             document.getElementById('vehiculosTemp').hidden = false;
             document.getElementById('folioTTemp').disabled = true;
             document.getElementById('vigenciaTemp').disabled = true;
+            document.getElementById('imprimirtt').disabled = false;
             mostrarTablaVehiculosTemp();
         }
         
@@ -50,6 +52,41 @@ function vehiculoTempAdd(){
 
 function habilitaBTNaddTemp(){
     document.getElementById('agregarVehiculoTempBtn').disabled = false;
+}
+
+function codigoQR(concatenado){
+    var texto = concatenado.toString();
+    /* document.getElementById('matriculaQR2').innerHTML = concatenado; */
+    document.getElementById('qrTarjeton').innerHTML = "";
+// aquí
+
+var qrcode = new QRCode(document.getElementById("qrTarjeton"), {
+      text: texto,
+      width: 80,
+      height: 80,
+      correctLevel: QRCode.CorrectLevel.H
+    });
+
+    // Obtener el elemento canvas generado por QRCode.js
+    var canvas = document.querySelector("#codigo-qr canvas");
+
+    // Crear un nuevo elemento de imagen para el logo
+    var logo = new Image();
+    logo.src = "imagen.png";
+
+    // Esperar a que el logo se cargue antes de dibujarlo en el canvas
+    logo.onload = function() {
+      // Calcular la posición del logo en el centro del código QR
+      var logoSize = qrcode._htOption.width * 0.2; // Tamaño relativo del logo (20%)
+      var xPos = (canvas.width - logoSize) / 2;
+      var yPos = (canvas.height - logoSize) / 2;
+
+      // Dibujar el logo en el canvas
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(logo, xPos, yPos, logoSize, logoSize);
+    };
+
+    console.log();
 }
 
 function mostrarTablaVehiculosTemp(){
