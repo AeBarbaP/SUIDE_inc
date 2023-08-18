@@ -331,7 +331,7 @@ include('prcd/qc/qc.php');
                             <br>
                             <div class="container text-center">
                               <div class="card mb-3" style="width: 100%;">
-                              <form action="prcd/generaqrcredencial.php" id="form-id" method="POST"><!--form-->
+                              <form action="prcd/generaqrcredencial2.php" target="_blank" id="form-id"  method="POST"><!--form-->
                                 <div class="row g-0" id="credencial">
                                     
                                 </div><!-- row -->
@@ -668,7 +668,7 @@ include('prcd/qc/qc.php');
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         document.getElementById("habilitaimprimirc").disabled=true;
-        document.getElementById("imprimirc").disabled=false;
+        document.getElementById("imprimirc").disabled=true;
         var form = document.getElementById("form-id");
         form.submit();
         Swal.fire('Listo!', '', 'success')

@@ -332,6 +332,15 @@ $idDatosMedicos = $rowDB3['id'];
 $cirugia = $rowDB3['cirugia']; // se relaciona con idExpediente
 $tipoCirugia = $rowDB3['tipoCirugia']; // se relaciona con idExpediente
 $idTipoSangre = $rowDB3['idTipoSangre']; // se relaciona con idExpediente
+$grado = $rowDB4['grado']; // se relaciona con idExpediente
+$temporalidad = $rowDB4['temporalidad']; // se relaciona con idExpediente
+$valoracion = $rowDB4['valoracion']; // se relaciona con idExpediente
+$idCatCausa = $rowDB4['idCatCausa']; // se relaciona con idExpediente
+$idCatDiscapacidad = $rowDB4['idCatDiscapacidad']; // se relaciona con idExpediente
+$idCatInstitucion = $rowDB4['idCatInstitucion']; // se relaciona con idExpediente
+$protesis = $rowDB4['protesis']; // se relaciona con idExpediente
+$tipoProtesis = $rowDB4['tipoProtesis']; // se relaciona con idExpediente
+$gradoDiscapacidad = $rowDB4['gradoDiscapacidad']; // se relaciona con idExpediente
 
 $sqlInsertDMedicos = "INSERT INTO datos_medicos VALUES(
     $curp
@@ -359,18 +368,10 @@ else{
 // discapacidades
 $db4 = "SELECT * FROM discapacidades WHERE idExpediente = '$id'";
 $resultadoDB4 = $conn2->query($db4);
-while($rowDB4 = $resultadoDB4->fetch_assoc()){
-$grado = $rowDB4['grado']; // se relaciona con idExpediente
-$temporalidad = $rowDB4['temporalidad']; // se relaciona con idExpediente
-$valoracion = $rowDB4['valoracion']; // se relaciona con idExpediente
-$idCatCausa = $rowDB4['idCatCausa']; // se relaciona con idExpediente
-$idCatDiscapacidad = $rowDB4['idCatDiscapacidad']; // se relaciona con idExpediente
-$idCatInstitucion = $rowDB4['idCatInstitucion']; // se relaciona con idExpediente
-$protesis = $rowDB4['protesis']; // se relaciona con idExpediente
-$tipoProtesis = $rowDB4['tipoProtesis']; // se relaciona con idExpediente
-$gradoDiscapacidad = $rowDB4['gradoDiscapacidad']; // se relaciona con idExpediente
 
-$sqlInsertDDisc = "INSERT INTO datos_discapacidades VALUES(
+while($rowDB4 = $resultadoDB4->fetch_assoc()){
+
+$sqlInsertDisc = "UPDATE datos_medicos VALUES(
     $grado,
     $temporalidad,
     $valoracion,

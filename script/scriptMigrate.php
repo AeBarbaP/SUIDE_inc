@@ -11,15 +11,26 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     $ordenExpediente = $rowDB['ordenExpediente'];
 
     // DATOS MÉDICOS de la anterior es datosmedicos
-    $db1 = "SELECT * FROM datosmedicos";
-    $resultadoDB1 = $conn2->query($db1);
+    $db2 = "SELECT * FROM datosmedicos";
+    $resultadoDB2 = $conn2->query($db2);
+    
+    if ($rowDB2 = $resultadoDB2->fetch_assoc()){
+        // datosMedicos
+        $cirugia = $rowDB['cirugia']; // se relaciona con idExpediente
+        $tipoCirugia = $rowDB['tipoCirugia']; // se relaciona con idExpediente
+        $idTipoSangre = $rowDB['idTipoSangre']; // se relaciona con idExpediente
+    }
+    else {
+        $cirugia = ""; // se relaciona con idExpediente
+        $tipoCirugia = ""; // se relaciona con idExpediente
+        $idTipoSangre = ""; // se relaciona con idExpediente
+    }
+    
+    // discapacidades
 
-
-    // datosMedicos
-    $cirugia = $rowDB['cirugia']; // se relaciona con idExpediente
-    $tipoCirugia = $rowDB['tipoCirugia']; // se relaciona con idExpediente
-    $idTipoSangre = $rowDB['idTipoSangre']; // se relaciona con idExpediente
-    // discaoacidades
+    $db3 = "SELECT * FROM discapacidades WHERE idExpediente = '$id'";
+    $resultadoDB3 = $conn2->query($db3);
+    
     $grado = $rowDB['grado']; // se relaciona con idExpediente
     $temporalidad = $rowDB['temporalidad']; // se relaciona con idExpediente
     $valoracion = $rowDB['valoracion']; // se relaciona con idExpediente

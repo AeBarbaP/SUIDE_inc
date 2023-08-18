@@ -45,8 +45,23 @@ header("content-type: image/jpeg");
       $colonia = $row_QueryDireccion['colonia'];
       $municipio = $row_QueryDireccion['idCatMunicipio'];
       $localidad = $row_QueryDireccion['idCatLocalidad'];
+      $telefono = $row_QueryDireccion['numeroTelefono'];
+      $celular = $row_QueryDireccion['celular'];
       $cp = $row_QueryDireccion['cp'];
       $folio = $row_sql_expediente['folio'];
+
+      if ($telefono == null || $telefono == ""){
+        if ($celular == null || $celular == ""){
+          $telefonoCel = "Sin teléfono registrado";
+        }
+        else{
+          $telefonoCel = $celular;
+        }
+      }
+      else {
+        $telefonoCel = $telefono;
+      }
+      
 
       $QueryMunicipio = "SELECT * FROM catmunicipios WHERE id = '$municipio'";
       $resultado_QueryMunicipio = $conn2->query($QueryMunicipio);
@@ -150,13 +165,31 @@ header("content-type: image/jpeg");
         </div>
         <div class="col-md-8">
           <div class="card-body text-start">
+            <input value="'.$foto.'" type="text" name="foto" hidden>
+            <input value="'.$nombreExp.'" type="text" name="nombre" hidden>
+            <input value="'.$apellidoPaterno.'" type="text" name="apellidoPaterno" hidden>
+            <input value="'.$apellidoMaterno.'" type="text" name="apellidoMaterno" hidden>
+            <input value="'.$folio.'" type="text" name="folio" hidden>
+            <input value="'.$discapacidad2.'" type="text" name="discapacidad" hidden>
+            <input value="'.$curp.'" type="text" name="curp" hidden>
+            <input value="'.$direccion.'" type="text" name="direccion" hidden>
+            <input value="'.$numeroCasa.'" type="text" name="numeroCasa" hidden>
+            <input value="'.$numeroInterior.'" type="text" name="numeroInterior" hidden>
+            <input value="'.$colonia.'" type="text" name="colonia" hidden>
+            <input value="'.$localidad2.'" type="text" name="localidad2" hidden>
+            <input value="'.$municipio2.'" type="text" name="municipio" hidden>
+            <input value="'.$estado2.'" type="text" name="estado" hidden>
+            <input value="'.$telefonoCel.'" type="text" name="telefonoCel" hidden>
+            <input value="'.$cp.'" type="text" name="cp" hidden>
+            <input value="'.$alergias3.'" type="text" name="alergias" hidden>
+            <input value="'.$tipoSangre2.'" type="text" name="tipoSangre" hidden>
             <h5 class="card-title mt-3" >'.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
-            <p class="card-text">Número de Expediente: '.$folio.'</p>
-            <p class="card-text">Tipo Discapacidad: '.$discapacidad2.'</p>
+            <p class="card-text" >Número de Expediente: '.$folio.'</p>
+            <p class="card-text" >Tipo Discapacidad: '.$discapacidad2.'</p>
             <p class="card-text">CURP: '.$curp.'</p>
-            <p class="card-text">Domicilio: '.$direccion.' '.$numeroCasa.' '.$numeroInterior.'<br>Colonia: '.$colonia.'<br>Localidad: '.$localidad2.'<br>Municipio: '.$municipio2.'<br>Estado: '.$estado2.'<br>C.P.: '.$cp.'</p>
-            <p class="card-text">Tipo de Sangre: '.$tipoSangre2.'</p>
-            <p class="card-text">Alergias: '.$alergias3.'</p>
+            <p class="card-text">Domicilio: '.$direccion.' '.$numeroCasa.' '.$numeroInterior.'<br>Colonia: '.$colonia.'<br>Localidad: '.$localidad2.'<br>Municipio: '.$municipio2.'<br>Estado: '.$estado2.'<br>C.P.: '.$cp.'</span>
+            <p class="card-text" >Tipo de Sangre: '.$tipoSangre2.'</p>
+            <p class="card-text" >Alergias: '.$alergias3.'</p>
             <select class="form-select mb-3 w-100" id="selectentrega" onchange="OcultarInput()" aria-label="Default select example" required>
               <option value="">Selecciona a quien se entrega la credencial</option>
               <option value="1">Usuario</option>
