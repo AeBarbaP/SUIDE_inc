@@ -161,7 +161,7 @@ header("content-type: image/jpeg");
         
         echo'
         
-          
+        
         </div>
         <div class="col-md-8">
           <div class="card-body text-start">
