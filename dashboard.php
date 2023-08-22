@@ -185,10 +185,10 @@ include('prcd/qc/qc.php');
       <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-inboxes ms-3 me-2"></i>
           Padrón PCD
         </a></span>
-        <div class="collapse" id="padron-collapse">
+        <div class="collapse" id="padron-collapse" hidden>
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="padronpcdfull.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-inboxes ms-2 me-3"></i> Padrón PCD</a></li>
-            <li><a href="padronpcd.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-folder-plus ms-2 me-3"></i> Agregar nuevo</a></li>
+            <li><a href="padronpcd.php" class="link-dark d-inline-flex text-decoration-none rounded" readonly><i class="bi bi-folder-plus ms-2 me-3"></i> Agregar nuevo</a></li>
             <li><a href="padronpcdActualizar.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-journals ms-2 me-3"></i> Actualizar expediente</a></li>
             
           </ul>
@@ -226,7 +226,7 @@ include('prcd/qc/qc.php');
         <div class="collapse" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#editarUser"><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
-            <li><a href="cuentasusuario.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-people ms-2 me-3"></i>Gestión de usuarios</a></li>
+            <!-- <li><a href="cuentasusuario.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-people ms-2 me-3"></i>Gestión de usuarios</a></li> -->
           </ul>
           <li class="border-top my-3"></li>
       <li class="ms-2 mb-1">
@@ -381,7 +381,7 @@ include('prcd/qc/qc.php');
                             </div>  
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" onclick="limiarmodalcredencial()" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             <button class="btn btn-primary" data-bs-target="#credgen" data-bs-toggle="modal"><i class="bi bi-chevron-double-left me-2"></i>Regresar</button>
                             <button type="button" class="btn btn-primary" id="imprimirp" ><i class="bi bi-printer"></i> Imprimir</button>
                           </div>
@@ -805,11 +805,14 @@ $(document).ready(function () {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        document.getElementById("habilitaimprimirc").disabled=true;
+        document.getElementById("habilitaimprimirc").disabled=false;
         document.getElementById("imprimirc").disabled=true;
+        document.getElementById('searchDBInclusion').value = "";
+        document.getElementById('credencial').hidden = true;
         var form = document.getElementById("form-id");
         form.submit();
         Swal.fire('Listo!', '', 'success')
+
       } else if (result.isDenied) {
         Swal.fire('Verifica los datos en el padrón!', '', 'info')
       }
@@ -980,6 +983,7 @@ $(document).ready(function () {
       //processData:false,
       cache: false,
         success: function(data) {
+          document.getElementById('credencial').hidden = false;
           $("#credencial").html(data);
 
       }               

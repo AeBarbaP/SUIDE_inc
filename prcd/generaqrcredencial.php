@@ -94,6 +94,7 @@ function generarCodigo($longitud) {
             title: "Registro correcto",
             footer: "SUIDEV"
         }).then(function(){window.location="../home_config.php";});
+        limpiarmodalcredencial();
         </script>';
         }
         else{
@@ -104,3 +105,11 @@ function generarCodigo($longitud) {
     
 </body>
 </html>
+
+<script>
+    function limiarmodalcredencial(){
+        document.getElementById('searchDBInclusion').value = "";
+        document.getElementById('habilitaimprimirc').disabled = false;
+    }
+
+</script>
