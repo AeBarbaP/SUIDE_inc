@@ -16,15 +16,17 @@ header("content-type: image/jpeg");
     $resultado_QueryExpediente = $conn2->query($QueryExpediente);
     $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
 
+    $idExpediente = $row_sql_expediente['id'];
+
     if ($resultado_QueryExpediente){
 
        // Dirección
-      $QueryDireccion = "SELECT * FROM detalleexpedientes WHERE idExpediente = '$expediente'";
+      $QueryDireccion = "SELECT * FROM detalleexpedientes WHERE idExpediente = '$idExpediente'";
       $resultado_QueryDireccion = $conn2->query($QueryDireccion);
       $row_QueryDireccion = $resultado_QueryDireccion->fetch_assoc();
 
       //Datos Médicos
-      $QueryDatosMedicos = "SELECT * FROM datosmedicos WHERE idExpediente = '$expediente'";
+      $QueryDatosMedicos = "SELECT * FROM datosmedicos WHERE idExpediente = '$idExpediente'";
       $resultado_QueryDatosMedicos = $conn2->query($QueryDatosMedicos);
       $row_QueryDatosMedicos = $resultado_QueryDatosMedicos->fetch_assoc();
       $tipoSangre = $row_QueryDatosMedicos['idTipoSangre'];

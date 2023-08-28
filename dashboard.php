@@ -485,7 +485,7 @@ include('prcd/qc/qc.php');
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiaModalTarjeton()">Cerrar</button>
               <button type="button" class="btn btn-primary" id="habilitaimprimirtp" onclick="swaldatostrn();limpiaModalTarjeton()" disabled><i class="bi bi-save2"></i> Generar QR</button>
-              <button type="button" class="btn btn-primary" id="imprimirt" data-bs-toggle="modal" data-bs-target="#qrShows" disabled><i class="bi bi-printer"></i> Imprimir</button>
+              <button type="button" class="btn btn-primary" id="imprimirt" data-bs-toggle="modal" data-bs-target="#qrShows" onclick="limpiaModalTarjeton()" disabled><i class="bi bi-printer"></i> Imprimir</button>
             </div>
           </div>
         </div>
@@ -638,7 +638,7 @@ $(document).ready(function () {
                                 </select>
                                 <span class="input-group-text" id="basic-addon1">Discapacidad:</span>
                                 <input class="form-control w-25" list="discapacidadList" id="discapacidadTemp" placeholder="Buscar..." required>
-                                <datalist id="discapacidadList">
+                                <datalist class="list2" id="discapacidadList">
                                 
                                 </datalist>
                               </div>
@@ -767,7 +767,7 @@ $(document).ready(function () {
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiaModalTarjetonTemp()">Cerrar</button>
               <button type="button" class="btn btn-primary" id="habilitaimprimirtt" onclick="swaldatostrn()" disabled><i class="bi bi-save2"></i> Generar QR</button>
-              <button type="button" class="btn btn-primary" id="imprimirtt" data-bs-toggle="modal" data-bs-target="#qrShows" disabled><i class="bi bi-printer"></i> Imprimir</button>
+              <button type="button" class="btn btn-primary" id="imprimirtt" data-bs-toggle="modal" data-bs-target="#qrShows" onclick="limpiaModalTarjetonTemp()" disabled><i class="bi bi-printer"></i> Imprimir</button>
             </div>
           </div>
         </div>
@@ -1003,6 +1003,9 @@ $(document).ready(function () {
       //processData:false,
       cache: false,
         success: function(data) {
+          document.getElementById('tarjeton').hidden = false;
+          document.getElementById('folioTPerm').disabled = false;
+          document.getElementById('vigenciaPerm').disabled = false;
           $("#tarjeton").html(data);
 
       }               

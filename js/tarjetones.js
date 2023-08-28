@@ -11,51 +11,57 @@ function vehiculoAdd(){
     var folioTarjeton = document.getElementById('folioTPerm').value;
     var vigencia = document.getElementById('vigenciaPerm').value;
     var autoSeguro = document.getElementById('AutoSeguroInput').value;
-    
-    $.ajax({
-        type: "POST",
-        url: 'prcd/guardarVehiculo.php',
-        dataType:'json',
-        data: {
-            expediente:expediente,
-            folioExpediente:folioExpediente,
-            curp:curp,
-            tipoTarjeton:tipoTarjeton,
-            modelo:modelo,
-            marca:marca,
-            annio:annio,
-            numPlaca:numPlaca,
-            serie:serie,
-            folioTarjeton:folioTarjeton,
-            vigencia:vigencia,
-            autoSeguro:autoSeguro
-        },
-        success: function(data){
-            var jsonData = JSON.parse(JSON.stringify(data));
-            var verificador = jsonData.success;
-/*             var curpTarjeton = jsonData.cuprTarjeton;
-            var numExpediente = jsonData.numExpediente; */
-            if (verificador == 1) {
-                if (curp == "CURP no registrada"){
-                    document.getElementById('agregarVehiculoBtn').disabled = true;
-                    alert('No tiene registrada una CURP, actualice Expediente');
-                }
-                else {
-                    codigoQR(curp);
-                }
-            } else if (verificador == 0){
-                alert('no muestra tabla');
-            }
-            limpiarInputsVehiculo();
-            document.getElementById('vehiculosTabla').hidden = false;
-            document.getElementById('folioTPerm').disabled = true;
-            document.getElementById('vigenciaPerm').disabled = true;
-            document.getElementById('imprimirt').disabled = false;
-            mostrarTablaVehiculos();
-        }
-        
 
-    });
+    if (modelo != "" && marca != "" && annio != "" && numPlaca != "" && serie != "" && folioTarjeton != "" && vigencia  != "") {
+        
+        $.ajax({
+            type: "POST",
+            url: 'prcd/guardarVehiculo.php',
+            dataType:'json',
+            data: {
+                expediente:expediente,
+                folioExpediente:folioExpediente,
+                curp:curp,
+                tipoTarjeton:tipoTarjeton,
+                modelo:modelo,
+                marca:marca,
+                annio:annio,
+                numPlaca:numPlaca,
+                serie:serie,
+                folioTarjeton:folioTarjeton,
+                vigencia:vigencia,
+                autoSeguro:autoSeguro
+            },
+            success: function(data){
+                var jsonData = JSON.parse(JSON.stringify(data));
+                var verificador = jsonData.success;
+    /*             var curpTarjeton = jsonData.cuprTarjeton;
+                var numExpediente = jsonData.numExpediente; */
+                if (verificador == 1) {
+                    if (curp == "CURP no registrada"){
+                        document.getElementById('agregarVehiculoBtn').disabled = true;
+                        alert('No tiene registrada una CURP, actualice Expediente');
+                    }
+                    else {
+                        codigoQR(curp);
+                    }
+                } else if (verificador == 0){
+                    alert('no muestra tabla');
+                }
+                limpiarInputsVehiculo();
+                document.getElementById('vehiculosTabla').hidden = false;
+                document.getElementById('folioTPerm').disabled = true;
+                document.getElementById('vigenciaPerm').disabled = true;
+                document.getElementById('imprimirt').disabled = false;
+                mostrarTablaVehiculos();
+            }
+            
+
+        });
+    }
+    else{
+        alert("No se han llenado todos los campos, verifica...");
+    }
 }
 
 function habilitaBTNadd(){

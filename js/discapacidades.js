@@ -11,7 +11,7 @@ function discapacidadTab(x){
             cache: false,
                 success: function(response)
                 { 
-                $('#discapacidadList').fadeIn(1000).html(response);
+                $('.list2').fadeIn(1000).html(response);
                 }
             });
     }
