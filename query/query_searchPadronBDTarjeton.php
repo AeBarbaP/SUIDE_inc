@@ -44,13 +44,16 @@ else{
       
       echo'
 
-        <div >
+        <div>
           <h5 class="card-title mt-3">'.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
           <label class="card-text">Tipo Discapacidad: </label><label>'.$discapacidad2.'</label>
           <br>
           <label class="card-text">Número de Expediente:</label><label id="numExpediente">'.$folio.'</label>
           <br>
           <label class="card-text">CURP:</label><label id="curpShows">'.$curpShow.'</label>
+          <input type="text" id="numExpediente1" value="'.$folio.'" hidden> 
+          <input type="text" id="curpTarjeton" value="'.$curpShow.'" hidden> 
+        </div>
 
       ';
     }

@@ -44,8 +44,8 @@ function vehiculoAdd(){
                         alert('No tiene registrada una CURP, actualice Expediente');
                     }
                     else {
-                        codigoQR(curp);
-                        document.getElementById('etiquetaNum').innerHTML = expediente;
+                        // codigoQR(curp);
+                        // document.getElementById('etiquetaNum').innerHTML = expediente;
                         //console.log(expediente);
                     }
                 } else if (verificador == 0){

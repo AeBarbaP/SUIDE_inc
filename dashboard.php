@@ -404,8 +404,7 @@ include('prcd/qc/qc.php');
               <div class="input-group mb-1 mt-2 w-100">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
                 <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
-                <input type="text" id="curpTarjeton" hidden> 
-                <!-- <input type="text" id="numExpediente1" hidden>  -->
+                <!-- <input type="text" id="curpTarjeton" hidden>  -->
               </div><!-- input group -->
               <br>
               <div class="container text-center">
@@ -1019,6 +1018,7 @@ $(document).ready(function () {
 // para generar tarjetón
   function buscarExpediente2(){
     var expediente = document.getElementById('searchDBInclusion2').value;
+    
     $.ajax({
       type:"POST",
       url:"query/query_searchPadronBDTarjeton.php",
@@ -1035,6 +1035,10 @@ $(document).ready(function () {
         document.getElementById('vigenciaPerm').disabled = false;
         $("#tarjeton").html(data);
         mostrarTablaVehiculos();
+        var curp = document.getElementById('curpTarjeton').value;
+        var folioExpediente = document.getElementById('numExpediente1').value;
+        codigoQR(curp);
+        document.getElementById('etiquetaNum').innerHTML = folioExpediente;
 
       }               
     });
