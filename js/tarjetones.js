@@ -35,8 +35,9 @@ function vehiculoAdd(){
             success: function(data){
                 var jsonData = JSON.parse(JSON.stringify(data));
                 var verificador = jsonData.success;
-    /*             var curpTarjeton = jsonData.cuprTarjeton;
-                var numExpediente = jsonData.numExpediente; */
+                //var curpTarjeton = jsonData.cuprTarjeton;
+                //var numExpediente = jsonData.folioExpediente;
+                var expediente = folioExpediente;
                 if (verificador == 1) {
                     if (curp == "CURP no registrada"){
                         document.getElementById('agregarVehiculoBtn').disabled = true;
@@ -44,6 +45,8 @@ function vehiculoAdd(){
                     }
                     else {
                         codigoQR(curp);
+                        document.getElementById('etiquetaNum').innerHTML = expediente;
+                        //console.log(expediente);
                     }
                 } else if (verificador == 0){
                     alert('no muestra tabla');
@@ -85,10 +88,11 @@ function mostrarTablaVehiculos(){
 
 }
 
-function codigoQR(concatenado){
+function codigoQR(concatenado,expediente){
     var texto = concatenado.toString();
     /* document.getElementById('matriculaQR2').innerHTML = concatenado; */
     document.getElementById('qrTarjeton').innerHTML = "";
+   
 // aquí
 
 var qrcode = new QRCode(document.getElementById("qrTarjeton"), {
