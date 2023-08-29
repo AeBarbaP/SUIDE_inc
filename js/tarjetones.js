@@ -153,3 +153,10 @@ function limpiaModalTarjeton(){
     document.getElementById('tarjeton').hidden = true;
     document.getElementById('vehiculosTabla').hidden = true;
 }
+
+function habilitarBtn(){
+    document.getElementById('imprimirt').disabled = false;
+}
+function deshabilitarBtn(){
+    document.getElementById('imprimirt').disabled = true;
+}

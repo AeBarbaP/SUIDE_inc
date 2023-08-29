@@ -1029,11 +1029,12 @@ $(document).ready(function () {
       //contentType:false,
       //processData:false,
       cache: false,
-        success: function(data) {
-          document.getElementById('tarjeton').hidden = false;
-          document.getElementById('folioTPerm').disabled = false;
-          document.getElementById('vigenciaPerm').disabled = false;
-          $("#tarjeton").html(data);
+      success: function(data) {
+        document.getElementById('tarjeton').hidden = false;
+        document.getElementById('folioTPerm').disabled = false;
+        document.getElementById('vigenciaPerm').disabled = false;
+        $("#tarjeton").html(data);
+        mostrarTablaVehiculos();
 
       }               
     });

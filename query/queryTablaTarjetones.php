@@ -6,7 +6,9 @@
     
     $Query = "SELECT * FROM tarjetones WHERE curp = '$curp'";
     $resultado_Query = $conn->query($Query);
+    $fila = $resultado_Query->num_rows;
     
+    if($fila > 0){
     $x = 0;
 
     while ($row_sql_Vehiculos = $resultado_Query->fetch_assoc()){
@@ -20,6 +22,18 @@
                 <td>'.$row_sql_Vehiculos['no_placa'].'</td>
             </tr>
         ';
+        echo'
+        <script>
+        habilitarBtn();
+        </script>
+        ';
     }
+}// fin if
+else{
+    echo '
+    <script>
+    deshabilitarBtn();
+    </script>';
+}
     
 ?>
