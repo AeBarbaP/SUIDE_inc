@@ -1,5 +1,6 @@
 <?php
 include('../prcd/qc/qc2.php');
+include('../prcd/qc/qc.php');
 
 if ($_POST['expediente'] == 0){
   $tipoSangre = "";
@@ -9,6 +10,19 @@ else{
 
     $expediente = $_POST['expediente'];
     header("content-type: image/jpeg");
+
+    $queryTarjeton ="SELECT * FROM tarjetones WHERE numExpediente = '$expediente'";
+    $resultadoTarjeton = $conn -> query($queryTarjeton);
+    $filasTarjeton = $resultadoTarjeton->num_rows;
+
+    if($filasTarjeton > 0){
+      $rowTarjeton = $resultadoTarjeton->fetch_assoc();
+      $tarjeton = $rowTarjeton['folio_tarjeton'];
+    }
+    else{
+      $tarjeton = "No hay tarjetón registrado";
+    }
+
 
     // Detalles del expediente
     $QueryExpediente = "SELECT * FROM expedientes WHERE ordenExpediente = '$expediente'";
@@ -50,7 +64,11 @@ else{
           <br>
           <label class="card-text">Número de Expediente:</label><label id="numExpediente">'.$folio.'</label>
           <br>
-          <label class="card-text">CURP:</label><label id="curpShows">'.$curpShow.'</label>
+          <label class="card-text">CURP: </label><label id="curpShows">'.$curpShow.'</label>
+          <br>
+          <label class="card-text">Tarjetón: </label><label id="tarjetonShows">'.$tarjeton.'</label>
+          
+          <input type="text" id="folioTarjeton" value="'.$tarjeton.'" hidden> 
           <input type="text" id="numExpediente1" value="'.$folio.'" hidden> 
           <input type="text" id="curpTarjeton" value="'.$curpShow.'" hidden> 
         </div>

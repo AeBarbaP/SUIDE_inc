@@ -54,7 +54,7 @@ if ($resultado) {
     echo json_encode(array(
         'success'=>1,
         'curpTarjetones'=>$curpTarjeton,
-        'folioExpediente'=>$folioExpediente
+        'folioExpediente'=>$folioExpediente,
     ));
 }
 else {
