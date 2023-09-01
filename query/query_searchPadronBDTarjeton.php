@@ -18,9 +18,19 @@ else{
     if($filasTarjeton > 0){
       $rowTarjeton = $resultadoTarjeton->fetch_assoc();
       $tarjeton = $rowTarjeton['folio_tarjeton'];
+      echo '
+      <script>
+        folioTarjetonPositivo();
+      </script>
+      ';
     }
     else{
       $tarjeton = "No hay tarjetón registrado";
+      echo '
+      <script>
+      folioTarjetonNegativo();
+      </script>
+      ';
     }
 
 
@@ -79,6 +89,6 @@ else{
       echo'
       <script>
         alert("No se encontró el registro");
-      </script>';
+      </>';
     }
 }

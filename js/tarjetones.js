@@ -160,3 +160,52 @@ function habilitarBtn(){
 function deshabilitarBtn(){
     document.getElementById('imprimirt').disabled = true;
 }
+
+
+// consulta de tarjetones si est{a existente
+function revisarTarjeton(){
+    
+    var tarjeton = document.getElementById('folioTarjeton').value;
+
+    $.ajax({
+        type: "POST",
+        url: 'query/queryRevisarTarjeton.php',
+        dataType:'json',
+        data: {
+            tarjeton:tarjeton
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            
+            if (success == 1) {
+
+                    document.getElementById('folioTPerm').disabled = true;
+                    alert('No tiene registrada una CURP, actualice Expediente');
+                
+            } else if (verificador == 0){
+                alert('no muestra tabla');
+            }
+            
+            document.getElementById('imprimirt').disabled = false;
+        }
+
+    });
+    
+}
+
+function folioTarjetonPositivo(){
+        var folioT = document.getElementById("folioTarjeton").value;
+        document.getElementById("folioTPerm").disabled = true;
+        document.getElementById("vigenciaPerm").disabled = true;
+        document.getElementById("folioTPerm").value = folioT;
+        document.getElementById("textoTarjeton").innerHTML = "<small class='text-danger'>Folio no disponible</small>";
+      
+}
+
+function folioTarjetonNegativo(){
+    document.getElementById("folioTPerm").disabled = false;
+    document.getElementById("folioTPerm").value = "";
+    document.getElementById("textoTarjeton").innerHTML = "<small class='text-primary'>Folio disponible</small>";
+
+}
