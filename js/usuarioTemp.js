@@ -24,6 +24,8 @@ function usuarioTempAdd(){
     var cedula = document.getElementById('cedulaTemp').value;
     var fechaValTemp = document.getElementById('fechaValTemp').value;
     
+
+
     $.ajax({
         type: "POST",
         url: 'prcd/guardarUsuarioTemp.php',
@@ -70,7 +72,27 @@ function usuarioTempAdd(){
 }
 
 function habilitaBtnDatos(){
-    document.getElementById('agregarUsuarioTempBtn').disabled = false;
+    var paterno = document.getElementById('apPaterno').value;
+    var materno = document.getElementById('apMaterno').value;
+    var nombre = document.getElementById('nombreTemp').value;
+    var tempCurp = document.getElementById('curpTemp').value;
+    var ine = document.getElementById('idClaveTemp').value;
+    var tipoDiscTemp = document.getElementById('tipoDiscTemp').value;
+    var discapacidadTemp= document.getElementById('discapacidadTemp').value;
+    var gradoDiscTemp = document.getElementById('gradoDiscTemp').value;
+    var dxTemp = document.getElementById('dxTemp').value;
+    var temporalidad = document.getElementById('temporalidad').value;
+    var institucionTemp = document.getElementById('institucionTemp').value;
+    var medicoTemp = document.getElementById('medicoTemp').value;
+    var fechaValTemp = document.getElementById('fechaValTemp').value;
+
+    if (paterno == "" || materno == "" || nombre == "" || tempCurp== "" || ine == "" || tipoDiscTemp == "" || discapacidadTemp == "" || gradoDiscTemp == "" || dxTemp == "" || temporalidad == "" || institucionTemp == "" || medicoTemp == "" || fechaValTemp == ""){
+        alert("Hay campos vacíos");
+        document.getElementById('agregarUsuarioTempBtn').disabled = true;
+    }
+    else {
+        document.getElementById('agregarUsuarioTempBtn').disabled = false;
+    }
 }
 
 function deshabilitaBtnDatos(){
@@ -100,7 +122,7 @@ function deshabilitaBtnDatos(){
     document.getElementById('medicoTemp').disabled = true;
     document.getElementById('cedulaTemp').disabled = true;
     document.getElementById('fechaValTemp').disabled = true;
-    document.getElementById('temporalidad').disabled = true;
+    
     //habilita inputs datos del vehiculo
     document.getElementById('modeloTemp').disabled = false;
     document.getElementById('marcaTemp').disabled = false;

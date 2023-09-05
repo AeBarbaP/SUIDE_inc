@@ -65,6 +65,28 @@ function curp2date(curp) {
         }
     }
 
+    $(document).ready(function() {	
+        $('#curpTemp').on('blur', function() {
+
+            var username = $(this).val();		
+            var dataString = 'username='+username;
+    
+            $.ajax({
+                type: "POST",
+                url: "query/verficacionCURPTemp.php",
+                data: dataString,
+                success: function(response) {
+                    var jsonData = JSON.parse(JSON.stringify(response));
+                    var verificador = jsonData.success;
+                    if (verificador = 1){
+                        alert("Usuario ya registrado");
+                        document.getElementById('agregarVehiculoBtn').disabled = true;
+                    }
+                }
+            });
+        });              
+    });   
+
     function validarInput2(input) {
         var curp = input.value.toUpperCase(),
             resultado = document.getElementById("result-username"),
@@ -116,17 +138,39 @@ function cambiarAtrib(){
     var casilla = document.getElementById('oficial');
 
     if (casilla.checked){
+        document.getElementById('nombreTemp').setAttribute('onchange','habilitaBtnDatos()');
         document.getElementById('curpTemp').setAttribute('onchange','');
         document.getElementById('spanRFC').innerHTML = "RFC";
         document.getElementById('apPaterno').disabled = true;
         document.getElementById('apMaterno').disabled = true;
         document.getElementById('idClaveTemp').disabled = true;
+        document.getElementById('tipoDiscTemp').disabled = true;
+        document.getElementById('discapacidadTemp').disabled = true;
+        document.getElementById('gradoDiscTemp').disabled = true;
+        document.getElementById('dxTemp').disabled = true;
+        document.getElementById('temporalidad').disabled = true;
+        document.getElementById('institucionTemp').disabled = true;
+        document.getElementById('medicoTemp').disabled = true;
+        document.getElementById('cedulaTemp').disabled = true;
+        document.getElementById('fechaValTemp').disabled = true;
+        document.getElementById('idClaveTemp').disabled = true;
     }
     else{
+        document.getElementById('nombreTemp').setAttribute('onchange','');
         document.getElementById('curpTemp').setAttribute('onchange','validarInput2(this)');
         document.getElementById('spanRFC').innerHTML = "CURP";
         document.getElementById('apPaterno').disabled = false;
         document.getElementById('apMaterno').disabled = false;
+        document.getElementById('idClaveTemp').disabled = false;
+        document.getElementById('tipoDiscTemp').disabled = false;
+        document.getElementById('discapacidadTemp').disabled = false;
+        document.getElementById('gradoDiscTemp').disabled = false;
+        document.getElementById('dxTemp').disabled = false;
+        document.getElementById('temporalidad').disabled = false;
+        document.getElementById('institucionTemp').disabled = false;
+        document.getElementById('medicoTemp').disabled = false;
+        document.getElementById('cedulaTemp').disabled = false;
+        document.getElementById('fechaValTemp').disabled = false;
         document.getElementById('idClaveTemp').disabled = false;
     }
 }
