@@ -130,8 +130,8 @@ function limpiarInputsVehiculo(){
     document.getElementById('annioPerm').value = "";
     document.getElementById('placasPerm').value = "";
     document.getElementById('seriePerm').value = "";
-    /* document.getElementById('folioTPerm').value = ""; */
-    /* document.getElementById('vigenciaPerm').value = ""; */
+    document.getElementById('folioTPerm').value = "";
+    document.getElementById('vigenciaPerm').value = "";
     document.getElementById('checkAutoS').checked = false;
     document.getElementById('AutoSeguroInput').value = "";
 }
@@ -162,7 +162,7 @@ function deshabilitarBtn(){
 }
 
 
-// consulta de tarjetones si est{a existente
+// consulta de tarjetones si esta existente
 function revisarTarjeton(){
     
     var tarjeton = document.getElementById('folioTarjeton').value;
@@ -199,13 +199,13 @@ function folioTarjetonPositivo(){
         document.getElementById("folioTPerm").disabled = true;
         document.getElementById("vigenciaPerm").disabled = true;
         document.getElementById("folioTPerm").value = folioT;
-        document.getElementById("textoTarjeton").innerHTML = "<small class='text-danger'>Folio no disponible</small>";
+        //document.getElementById("textoTarjeton").innerHTML = "<small class='text-danger'>Folio no disponible</small>";
       
 }
 
 function folioTarjetonNegativo(){
     document.getElementById("folioTPerm").disabled = false;
     document.getElementById("folioTPerm").value = "";
-    document.getElementById("textoTarjeton").innerHTML = "<small class='text-primary'>Folio disponible</small>";
+    //document.getElementById("textoTarjeton").innerHTML = "<small class='text-primary'>Folio disponible</small>";
 
 }

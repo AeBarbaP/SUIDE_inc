@@ -594,6 +594,15 @@ $(document).ready(function () {
                           <div class="row">
                             <div class="col-md-12">
                               <div class="input-group mb-3">
+                                <span class="input-group-text">Vehículo oficial</span>
+                                <div class="input-group-text">
+                                  <input class="form-check-input mt-0" type="checkbox" id="oficial" onchange="cambiarAtrib()" value="" aria-label="Checkbox for following text input">
+                                </div>
+                                
+                              </div>  
+                            </div>
+                            <div class="col-md-12">
+                              <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Nombre (s)</span>
                                 <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp">
                               </div>  
@@ -608,8 +617,8 @@ $(document).ready(function () {
                             </div>
                             <div class="col-md-12">
                               <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">CURP</span>
-                                <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
+                                <span class="input-group-text" id="spanRFC">CURP</span>
+                                <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="" onchange="validarInput2(this)" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
                                 <span class="input-group-text" id="basic-addon1">Clave INE / Folio ID:</span>
                                 <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
                               </div>  

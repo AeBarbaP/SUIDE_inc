@@ -64,6 +64,23 @@ function curp2date(curp) {
 
         }
     }
+
+    function validarInput2(input) {
+        var curp = input.value.toUpperCase(),
+            resultado = document.getElementById("result-username"),
+            valido = "No válido";
+
+        if (curpValida(curp)) {
+            alert('CURP Válido');
+            //document.getElementById('btnGuardarGeneral').disabled=false;
+
+        } else {
+            alert('CURP No Válido');
+            //document.getElementById('btnGuardarGeneral').disabled=true;
+
+        }
+    }
+
     function curpValida(curp) {
         var re = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0\d|1[0-2])(?:[0-2]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/,
             validado = curp.match(re);
@@ -93,4 +110,23 @@ function curp2date(curp) {
 function cortarRFC(curp){
     var rfcCutted = curp.substr(0,10);
     document.getElementById('rfcCut').innerHTML = rfcCutted;
+}
+
+function cambiarAtrib(){
+    var casilla = document.getElementById('oficial');
+
+    if (casilla.checked){
+        document.getElementById('curpTemp').setAttribute('onchange','');
+        document.getElementById('spanRFC').innerHTML = "RFC";
+        document.getElementById('apPaterno').disabled = true;
+        document.getElementById('apMaterno').disabled = true;
+        document.getElementById('idClaveTemp').disabled = true;
+    }
+    else{
+        document.getElementById('curpTemp').setAttribute('onchange','validarInput2(this)');
+        document.getElementById('spanRFC').innerHTML = "CURP";
+        document.getElementById('apPaterno').disabled = false;
+        document.getElementById('apMaterno').disabled = false;
+        document.getElementById('idClaveTemp').disabled = false;
+    }
 }

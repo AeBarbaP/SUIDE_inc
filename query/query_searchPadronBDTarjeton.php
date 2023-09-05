@@ -26,11 +26,11 @@ else{
     }
     else{
       $tarjeton = "No hay tarjetón registrado";
-      echo '
+/*       echo '
       <script>
       folioTarjetonNegativo();
       </script>
-      ';
+      '; */
     }
 
 
@@ -76,7 +76,7 @@ else{
           <br>
           <label class="card-text">CURP: </label><label id="curpShows">'.$curpShow.'</label>
           <br>
-          <label class="card-text">Tarjetón: </label><label id="tarjetonShows">'.$tarjeton.'</label>
+          <label class="card-text">Tarjetón asignado: </label><label id="tarjetonShows">'.$tarjeton.'</label>
           
           <input type="text" id="folioTarjeton" value="'.$tarjeton.'" hidden> 
           <input type="text" id="numExpediente1" value="'.$folio.'" hidden> 
