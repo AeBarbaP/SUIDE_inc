@@ -19,8 +19,11 @@ $estado = $_POST['estado'];
 $telefono = $_POST['telefonoCel'];
 $tipoSangre = $_POST['tipoSangre'];
 $alergias = $_POST['alergias'];
+$cadena = $_POST['cadena'];
 $apellidosConcat = $apellidoPaterno.' '.$apellidoMaterno; 
 $concatNumIntNumCasa = $numeroCasa.'-'.$numeroInterior;
+
+$alergiasNum = strlen($alergias);
 
 $msg = $curp;
 $err = 'L';
@@ -65,18 +68,29 @@ class PDF extends FPDF
 		$this->Cell(50,4,utf8_decode($discapacidad),'','','L','');
 			
 }
-function hoja2($qrcode,$direccion,$concatNumIntNumCasa,$cp,$colonia,$localidad,$municipio,$telefono,$tipoSangre,$alergias)
+function hoja2($cadena,$qrcode,$direccion,$concatNumIntNumCasa,$cp,$colonia,$localidad,$municipio,$telefono,$tipoSangre,$alergias)
 {
+$direccionMulti = strlen($direccion);
+$localidadMulti = strlen($localidad);
+$municipioMulti = strlen($municipio);
 $this->Image('../img/PROPUESTA_CREDENCIAL_PCD_2021-2027_Back.jpg','0','0','1024','640','JPG');
 //IMAGE (RUTA,X,Y,ANCHO,ALTO,EXTEN)
 $this->Ln(35);
 $this->Ln(35);
-$this->Ln(32);
-$this->SetFont('Arial','B',25);
-$this->Cell(480,5,'','','','L','');
-$this->Cell(50,5,utf8_decode($direccion),'','','L','');
+if ($direccionMulti <= 15){
+	$this->Ln(32);
+	$this->SetFont('Arial','B',25);
+	$this->Cell(480,5,'','','','L','');
+	$this->Cell(50,5,utf8_decode($direccion),'','','L','');
+	$this->Ln(30);
+}
+else{
+	$this->Ln(15);
+	$this->SetFont('Arial','B',25);
+	$this->Cell(480,5,'','','','L','');
+	$this->MultiCell(350,24,utf8_decode($direccion),'','L','');
+}
 $this->Cell(50,5,'','','','L','');
-$this->Ln(30);
 $this->Ln(26);
 $this->Cell(520,5,'','','','C','');
 $qrcode->displayFPDF($this, 95, 185, 270);
@@ -87,10 +101,17 @@ $this->Ln(26);
 $this->Cell(520,5,'','','','L','');
 $this->Cell(30,5,utf8_decode($colonia),'','','L','');
 $this->Ln(30);
-$this->Ln(21);
-$this->Cell(550,5,'','','','L','');
-$this->Cell(30,5,utf8_decode($localidad),'','','L','');
-$this->Ln(30);
+if ($localidadMulti <= 17){
+	$this->Ln(21);
+	$this->Cell(550,5,'','','','L','');
+	$this->Cell(30,5,utf8_decode($localidad),'','','L','');
+	$this->Ln(30);
+}
+else{
+	$this->Ln(3);
+	$this->Cell(550,5,'','','','L','');
+	$this->MultiCell(350,24,utf8_decode($localidad),'','L','');
+}
 $this->Ln(24);
 $this->Cell(550,5,'','','','L','');
 $this->Cell(30,5,utf8_decode($municipio),'','','L','');
@@ -102,10 +123,19 @@ $this->Ln(30);
 $this->Ln(25);
 $this->Cell(615,5,'','','','L','');
 $this->Cell(50,5,utf8_decode($tipoSangre),'','','L','');
-$this->Ln(32);
-$this->Ln(25);
-$this->Cell(520,5,'','','','L','');
-$this->Cell(50,5,utf8_decode($alergias),'','','L','');
+$this->Ln(30);
+
+if ($cadena <= 15){
+	$this->Ln(18);
+	$this->Cell(520,5,'','','','L','');
+	$this->SetFont('Arial','B',25);
+}
+else{
+	$this->Ln(7);
+	$this->Cell(520,5,'','','','L','');
+	$this->SetFont('Arial','B',20);
+}
+$this->MultiCell(350,22,utf8_decode($alergias),'','L','');
 			
 }
 }// fin clase
@@ -114,6 +144,6 @@ $pdf->SetFont('Arial','',10);
 $pdf->AddPage();
 $pdf->hoja1($foto,$nombre,$apellidosConcat,$folio,$discapacidad);
 $pdf->AddPage();
-$pdf->hoja2($qrcode,$direccion,$concatNumIntNumCasa,$cp,$colonia,$localidad,$municipio,$telefono,$tipoSangre,$alergias);
+$pdf->hoja2($cadena,$qrcode,$direccion,$concatNumIntNumCasa,$cp,$colonia,$localidad,$municipio,$telefono,$tipoSangre,$alergias);
 $pdf->Output();
 ?>
