@@ -72,12 +72,12 @@ function hoja2($cadena,$qrcode,$direccion,$concatNumIntNumCasa,$cp,$colonia,$loc
 {
 $direccionMulti = strlen($direccion);
 $localidadMulti = strlen($localidad);
-$municipioMulti = strlen($municipio);
+$coloniaMulti = strlen($colonia);
 $this->Image('../img/PROPUESTA_CREDENCIAL_PCD_2021-2027_Back.jpg','0','0','1024','640','JPG');
 //IMAGE (RUTA,X,Y,ANCHO,ALTO,EXTEN)
 $this->Ln(35);
 $this->Ln(35);
-if ($direccionMulti <= 15){
+if ($direccionMulti <= 25){
 	$this->Ln(32);
 	$this->SetFont('Arial','B',25);
 	$this->Cell(480,5,'','','','L','');
@@ -85,7 +85,7 @@ if ($direccionMulti <= 15){
 	$this->Ln(30);
 }
 else{
-	$this->Ln(15);
+	$this->Ln(32);
 	$this->SetFont('Arial','B',25);
 	$this->Cell(480,5,'','','','L','');
 	$this->MultiCell(350,24,utf8_decode($direccion),'','L','');
@@ -97,10 +97,19 @@ $qrcode->displayFPDF($this, 95, 185, 270);
 $qrcode->disableBorder($this);	
 $this->Cell(50,5,utf8_decode($concatNumIntNumCasa),'','','L','');
 $this->Ln(30);
-$this->Ln(26);
-$this->Cell(520,5,'','','','L','');
-$this->Cell(30,5,utf8_decode($colonia),'','','L','');
-$this->Ln(30);
+if ($coloniaMulti <=20){
+	$this->Ln(26);
+	$this->Cell(520,5,'','','','L','');
+	$this->Cell(30,5,utf8_decode($colonia),'','','L','');
+	$this->Ln(30);
+}
+else {
+	$this->Ln(7);
+	$this->Cell(520,5,'','','','L','');
+	$this->MultiCell(350,24,utf8_decode($colonia),'','L','');
+	
+
+}
 if ($localidadMulti <= 17){
 	$this->Ln(21);
 	$this->Cell(550,5,'','','','L','');
