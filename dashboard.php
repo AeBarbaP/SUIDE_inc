@@ -86,6 +86,7 @@ include('prcd/qc/qc.php');
     <script src="js/tarjetonesTemp.js"></script>
     <script src="js/usuarioTemp.js"></script>
     <script src="js/print.js"></script>
+    <script src="js/credencialEmpleados.js"></script>
 
     <style>
       body {
@@ -213,6 +214,7 @@ include('prcd/qc/qc.php');
         <div class="collapse" id="credencial-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#credgen"><i class="bi bi-plus-circle me-3"></i> Nueva</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#credencialEmpleados"><i class="bi bi-person-vcard me-3"></i> Empleados</a></li>
           </ul>
         </div>
       </li>
@@ -364,7 +366,7 @@ include('prcd/qc/qc.php');
                       </div><!-- modal dialog -->
                     </div><!-- modal -->
                     <!-- Inicia modal anidado para vista previa de credencial -->
-                    <div class="modal fade" id="credencialpreview" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                    <!-- <div class="modal fade" id="credencialpreview" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
                       <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -387,7 +389,7 @@ include('prcd/qc/qc.php');
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <!-- Termina modal anidado para vista previa de credencial -->
                     <!-- Termina Modal para generar credencial -->
 
@@ -574,242 +576,277 @@ $(document).ready(function () {
                     <!-- Inicia Modal para generar tarjeton de préstamo-->
 
 <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="tarjetonPrestamo" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"><strong><i class="bi bi-plus h2"></i> Tarjetón de Préstamo con QR</strong></h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="container text-center">
-                <div class="card mb-3" style="max-width: 100%;">
-                  <div class="row g-0 align-items-center">
-                    <div class="col-md-3">
-                      <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-9">
-                      <div class="card-body text-start" id="cardPrestamo">
-                        <div id = "tarjetonPrestamo">
-                          <h5 class="mb-3"><i class="bi bi-person"></i> Datos del Usuario</h5>
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text">Vehículo oficial</span>
-                                <div class="input-group-text">
-                                  <input class="form-check-input mt-0" type="checkbox" id="oficial" onchange="cambiarAtrib()" value="" aria-label="Checkbox for following text input">
-                                </div>
-                                
-                              </div>  
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Nombre (s)</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Apellido Paterno</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apPaterno">
-                                <span class="input-group-text" id="basic-addon1">Apellido Materno</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apMaterno">
-                              </div>  
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="spanRFC">CURP</span>
-                                <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="" onchange="validarInput2(this)" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
-                                <span class="input-group-text" id="basic-addon1">Clave INE / Folio ID:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Teléfono:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="telcelTemp" onkeypress="ValidaSoloNumeros()">
-                                <span class="input-group-text" id="basic-addon1">Correo-e:</span>
-                                <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toLowerCase()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="correoTemp">
-                              </div>  
-                            </div>
-                            <h5 class="mb-3"><i class="bi bi-house-door"></i> Domicilio</h5>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Calle:</span>
-                                <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="calleTemp">
-                                <span class="input-group-text" id="basic-addon1">No. Ext.:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="extTemp" onkeypress="ValidaSoloNumeros()">
-                                <span class="input-group-text" id="basic-addon1">No. Int.:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="intTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Colonia:</span>
-                                <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="coloniaTemp">
-                                <span class="input-group-text" id="basic-addon1">C.P.:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="CPTemp" onkeypress="ValidaSoloNumeros()">
-                              </div>  
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Estado:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="estadoTemp">
-                                <span class="input-group-text" id="basic-addon1">Municipio:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="municipioTemp">
-                                <span class="input-group-text" id="basic-addon1">Localidad:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="localidadTemp">
-                              </div>  
-                            </div>
-                            <h5 class="mb-3"><i class="bi bi-heart-pulse"></i> Valoración Médica:</h5>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Tipo Discapacidad:</span>
-                                <select class="form-select" id="tipoDiscTemp" onchange="discapacidadTab(this.value)" aria-label="Default select example">
-                                  <option selected>Selecciona...</option>
-                                  <option value="Física">Física</option>
-                                  <option value="Intelectual">Intelectual</option>
-                                  <option value="Sensorial">Sensorial</option>
-                                  <option value="Múltiple">Múltiple</option>
-                                  <option value="Psicosocial">Psicosocial</option>
-                                </select>
-                                <span class="input-group-text" id="basic-addon1">Discapacidad:</span>
-                                <input class="form-control w-25" list="discapacidadList" id="discapacidadTemp" placeholder="Buscar..." required>
-                                <datalist class="list2" id="discapacidadList">
-                                
-                                </datalist>
-                              </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Grado</i></span>
-                                <select class="form-select" id="gradoDiscTemp" aria-label="Default select example">
-                                  <option selected>Selecciona...</option>
-                                  <option value="1-Leve">1. Leve</option>
-                                  <option value="2-Moderado">2. Moderado</option>
-                                  <option value="3-Grave">3. Grave</option>
-                                  <option value="4-Severo">4. Severo</option>
-                                  <option value="5-Profundo">5. Profundo</option>
-                                </select>
-                                <span class="input-group-text" id="basic-addon1">Descripción Dx:</span>
-                                <input type="text" class="form-control w-25" placeholder="Descripción del diagnóstico" aria-label="" aria-describedby="basic-addon1" id="dxTemp">
-                              </div>
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-clock-history"></i> Temporalidad: </span>
-                                <select class="form-select" id="temporalidad">
-                                  <option selected>Temporalidad...</option>
-                                  <option value="0">0 - 3 meses</option>
-                                  <option value="2">4 - 6 meses</option>
-                                  <option value="3">7 - 11 meses</option>
-                                  <option value="4">12 meses o más</option>
-                                </select>
-                              </div>
-                            </div>  
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Institución:</span>
-                                <input type="text" class="form-control" placeholder="Nombre de la Institución donde se expide la valoración" aria-label="" aria-describedby="basic-addon1" id="institucionTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Nombre del Médico:</span>
-                                <input type="text" class="form-control w-25" placeholder="Nombre del Médico" aria-label="" aria-describedby="basic-addon1" id="medicoTemp">
-                                <span class="input-group-text" id="basic-addon1"># de Cédula:</span>
-                                <input type="text" class="form-control" placeholder="# de Cédula" aria-label="" aria-describedby="basic-addon1" id="cedulaTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-8">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Fecha de valoración:</span>
-                                <input type="date" class="form-control" onchange="habilitaBtnDatos()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaValTemp">
-                              </div>  
-                            </div>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                              <button class="btn btn-primary me-md-2" id="agregarUsuarioTempBtn" onclick="usuarioTempAdd(); deshabilitaBtnDatos()" type="button" disabled><i class="bi bi-plus-lg"></i> Guardar Datos</button>
-                            </div>
-                          </div>
-                        </div>
-                        <hr>
-                        <h5 class="mb-3"><i class="bi bi-car-front-fill"></i> Datos del vehículo</h5>
-                        <div class="col-md-12">
-                          <div class="input-group mb-3">
-                            <input type="text" id="tipoTarjeton" value="Temporal" hidden>
-                            <span class="input-group-text" id="basic-addon1">Marca</span>
-                            <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase()" oninput="habilitaBTNaddTemp()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaTemp" disabled>
-                            <span class="input-group-text" id="basic-addon1">Modelo</span>
-                            <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Modelo" aria-label="modelo" id="modeloTemp" aria-describedby="basic-addon1" disabled>
-                            <span class="input-group-text">Año</span>
-                            <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="Año" aria-label="anio" id="annioTemp" disabled>
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1">No. de Placas</span>
-                            <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasTemp" disabled>
-                            <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-                            <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieTemp" disabled>
-                          </div>
-                        </div>
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><strong><i class="bi bi-plus h2"></i> Tarjetón de Préstamo con QR</strong></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container text-center">
+          <div class="card mb-3" style="max-width: 100%;">
+            <div class="row g-0 align-items-center">
+              <div class="col-md-3">
+                <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-9">
+                <div class="card-body text-start" id="cardPrestamo">
+                  <div id = "tarjetonPrestamo">
+                    <h5 class="mb-3"><i class="bi bi-person"></i> Datos del Usuario</h5>
+                    <div class="row">
+                      <div class="col-md-12">
                         <div class="input-group mb-3">
-                          <span class="input-group-text" id="basic-addon1">Folio Tarjetón</span>
-                          <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTTemp" disabled>
-                          <span class="input-group-text" id="basic-addon1">Vigencia</span>
-                          <select class="form-select" id="vigenciaTemp" aria-label="Default select example" disabled>
+                          <span class="input-group-text">Vehículo oficial</span>
+                          <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" id="oficial" onchange="cambiarAtrib()" value="" aria-label="Checkbox for following text input">
+                          </div>
+                          
+                        </div>  
+                      </div>
+                      <div class="col-md-12">
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">Nombre (s)</span>
+                          <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp">
+                        </div>  
+                      </div>
+                      <div class="col-md-12">
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">Apellido Paterno</span>
+                          <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apPaterno">
+                          <span class="input-group-text" id="basic-addon1">Apellido Materno</span>
+                          <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apMaterno">
+                        </div>  
+                      </div>
+                      <div class="col-md-12">
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="spanRFC">CURP</span>
+                          <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="" onchange="validarInput2(this)" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
+                          <span class="input-group-text" id="basic-addon1">Clave INE / Folio ID:</span>
+                          <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
+                        </div>  
+                      </div>
+                      <div class="col-md-12">
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">Teléfono:</span>
+                          <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="telcelTemp" onkeypress="ValidaSoloNumeros()">
+                          <span class="input-group-text" id="basic-addon1">Correo-e:</span>
+                          <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toLowerCase()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="correoTemp">
+                        </div>  
+                      </div>
+                      <h5 class="mb-3"><i class="bi bi-house-door"></i> Domicilio</h5>
+                      <div class="col-md-12">
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">Calle:</span>
+                          <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="calleTemp">
+                          <span class="input-group-text" id="basic-addon1">No. Ext.:</span>
+                          <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="extTemp" onkeypress="ValidaSoloNumeros()">
+                          <span class="input-group-text" id="basic-addon1">No. Int.:</span>
+                          <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="intTemp">
+                        </div>  
+                      </div>
+                      <div class="col-md-12">
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">Colonia:</span>
+                          <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="coloniaTemp">
+                          <span class="input-group-text" id="basic-addon1">C.P.:</span>
+                          <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="CPTemp" onkeypress="ValidaSoloNumeros()">
+                        </div>  
+                      </div>
+                      <div class="col-md-12">
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">Estado:</span>
+                          <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="estadoTemp">
+                          <span class="input-group-text" id="basic-addon1">Municipio:</span>
+                          <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="municipioTemp">
+                          <span class="input-group-text" id="basic-addon1">Localidad:</span>
+                          <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="localidadTemp">
+                        </div>  
+                      </div>
+                      <h5 class="mb-3"><i class="bi bi-heart-pulse"></i> Valoración Médica:</h5>
+                      <div class="col-md-12">
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">Tipo Discapacidad:</span>
+                          <select class="form-select" id="tipoDiscTemp" onchange="discapacidadTab(this.value)" aria-label="Default select example">
                             <option selected>Selecciona...</option>
-                            <option value="15">15 días</option>
-                            <option value="30">1 mes</option>
-                            <option value="61">2 meses</option>
-                            <option value="92">3 meses</option>
-                            <option value="123">4 meses</option>
-                            <option value="154">5 meses</option>
-                            <option value="185">6 meses</option>
+                            <option value="Física">Física</option>
+                            <option value="Intelectual">Intelectual</option>
+                            <option value="Sensorial">Sensorial</option>
+                            <option value="Múltiple">Múltiple</option>
+                            <option value="Psicosocial">Psicosocial</option>
                           </select>
+                          <span class="input-group-text" id="basic-addon1">Discapacidad:</span>
+                          <input class="form-control w-25" list="discapacidadList" id="discapacidadTemp" placeholder="Buscar..." required>
+                          <datalist class="list2" id="discapacidadList">
+                          
+                          </datalist>
                         </div>
                         <div class="col-md-12">
                           <div class="input-group mb-3">
-                            <span class="input-group-text">Vehículo extranjero</span>
-                            <div class="input-group-text">
-                              <input class="form-check-input mt-0" type="checkbox" id="checkAutoST" onchange="autoSeguroTCheck()" value="" aria-label="Checkbox for following text input" disabled>
-                            </div>
-                            <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroTemp" disabled>
+                            <span class="input-group-text" id="basic-addon1">Grado</i></span>
+                            <select class="form-select" id="gradoDiscTemp" aria-label="Default select example">
+                              <option selected>Selecciona...</option>
+                              <option value="1-Leve">1. Leve</option>
+                              <option value="2-Moderado">2. Moderado</option>
+                              <option value="3-Grave">3. Grave</option>
+                              <option value="4-Severo">4. Severo</option>
+                              <option value="5-Profundo">5. Profundo</option>
+                            </select>
+                            <span class="input-group-text" id="basic-addon1">Descripción Dx:</span>
+                            <input type="text" class="form-control w-25" placeholder="Descripción del diagnóstico" aria-label="" aria-describedby="basic-addon1" id="dxTemp">
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-clock-history"></i> Temporalidad: </span>
+                            <select class="form-select" id="temporalidad">
+                              <option selected>Temporalidad...</option>
+                              <option value="0">0 - 3 meses</option>
+                              <option value="2">4 - 6 meses</option>
+                              <option value="3">7 - 11 meses</option>
+                              <option value="4">12 meses o más</option>
+                            </select>
+                          </div>
+                        </div>  
+                        <div class="col-md-12">
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Institución:</span>
+                            <input type="text" class="form-control" placeholder="Nombre de la Institución donde se expide la valoración" aria-label="" aria-describedby="basic-addon1" id="institucionTemp">
+                          </div>  
+                        </div>
+                        <div class="col-md-12">
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Nombre del Médico:</span>
+                            <input type="text" class="form-control w-25" placeholder="Nombre del Médico" aria-label="" aria-describedby="basic-addon1" id="medicoTemp">
+                            <span class="input-group-text" id="basic-addon1"># de Cédula:</span>
+                            <input type="text" class="form-control" placeholder="# de Cédula" aria-label="" aria-describedby="basic-addon1" id="cedulaTemp">
+                          </div>  
+                        </div>
+                        <div class="col-md-8">
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Fecha de valoración:</span>
+                            <input type="date" class="form-control" onchange="habilitaBtnDatos()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaValTemp">
                           </div>  
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                          <button class="btn btn-primary me-md-2" id="agregarVehiculoTempBtn" onclick="vehiculoTempAdd(); limpiarInputsVehiculoTemp()" type="button" disabled><i class="bi bi-plus-lg"></i> Agregar</button>
-                        </div>
-                        <hr>
-                        <div class="table-responsive text-center">
-                          <table class="table table-hover">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Marca</th>
-                                <th scope="col">Modelo</th>
-                                <th scope="col"># de Placa</th>
-                              </tr>
-                            </thead>
-                            <tbody id="vehiculosTemp">
-                              
-                            </tbody>
-                          </table>
+                          <button class="btn btn-primary me-md-2" id="agregarUsuarioTempBtn" onclick="usuarioTempAdd(); deshabilitaBtnDatos()" type="button" disabled><i class="bi bi-plus-lg"></i> Guardar Datos</button>
                         </div>
                       </div>
+                    </div>
+                    <hr>
+                    <h5 class="mb-3"><i class="bi bi-car-front-fill"></i> Datos del vehículo</h5>
+                    <div class="col-md-12">
+                      <div class="input-group mb-3">
+                        <input type="text" id="tipoTarjeton" value="Temporal" hidden>
+                        <span class="input-group-text" id="basic-addon1">Marca</span>
+                        <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase()" oninput="habilitaBTNaddTemp()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaTemp" disabled>
+                        <span class="input-group-text" id="basic-addon1">Modelo</span>
+                        <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Modelo" aria-label="modelo" id="modeloTemp" aria-describedby="basic-addon1" disabled>
+                        <span class="input-group-text">Año</span>
+                        <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="Año" aria-label="anio" id="annioTemp" disabled>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">No. de Placas</span>
+                        <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasTemp" disabled>
+                        <span class="input-group-text" id="basic-addon1">No. de Serie</span>
+                        <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieTemp" disabled>
+                      </div>
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Folio Tarjetón</span>
+                      <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTTemp" disabled>
+                      <span class="input-group-text" id="basic-addon1">Vigencia</span>
+                      <select class="form-select" id="vigenciaTemp" aria-label="Default select example" disabled>
+                        <option selected>Selecciona...</option>
+                        <option value="15">15 días</option>
+                        <option value="30">1 mes</option>
+                        <option value="61">2 meses</option>
+                        <option value="92">3 meses</option>
+                        <option value="123">4 meses</option>
+                        <option value="154">5 meses</option>
+                        <option value="185">6 meses</option>
+                      </select>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Vehículo extranjero</span>
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="checkbox" id="checkAutoST" onchange="autoSeguroTCheck()" value="" aria-label="Checkbox for following text input" disabled>
+                        </div>
+                        <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroTemp" disabled>
+                      </div>  
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                      <button class="btn btn-primary me-md-2" id="agregarVehiculoTempBtn" onclick="vehiculoTempAdd(); limpiarInputsVehiculoTemp()" type="button" disabled><i class="bi bi-plus-lg"></i> Agregar</button>
+                    </div>
+                    <hr>
+                    <div class="table-responsive text-center">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Marca</th>
+                            <th scope="col">Modelo</th>
+                            <th scope="col"># de Placa</th>
+                          </tr>
+                        </thead>
+                        <tbody id="vehiculosTemp">
+                          
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>  
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiaModalTarjetonTemp()">Cerrar</button>
-              <button type="button" class="btn btn-primary" id="habilitaimprimirtt" onclick="swaldatostrn()" disabled><i class="bi bi-save2"></i> Generar QR</button>
-              <button type="button" class="btn btn-primary" id="imprimirtt" data-bs-toggle="modal" data-bs-target="#qrShows" onclick="limpiaModalTarjetonTemp()" disabled><i class="bi bi-printer"></i> Imprimir</button>
             </div>
           </div>
+        </div>  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiaModalTarjetonTemp()">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="habilitaimprimirtt" onclick="swaldatostrn()" disabled><i class="bi bi-save2"></i> Generar QR</button>
+          <button type="button" class="btn btn-primary" id="imprimirtt" data-bs-toggle="modal" data-bs-target="#qrShows" onclick="limpiaModalTarjetonTemp()" disabled><i class="bi bi-printer"></i> Imprimir</button>
         </div>
       </div>
+    </div>
+  </div>
+</div>
       
       <!-- Termina Modal para generar tarjeton de préstamo-->
+
+      <!-- Inicia Modal para generar credencial -->
+        <div class="modal fade" id="credencialEmpleados" tabindex="-1" aria-labelledby="generacredencialempleados" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Generar Credencial para Empleados</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body" style="height: 620px;">
+                <div class="input-group mb-1 mt-2 w-50">
+                  <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                  <input class="form-control" id="searchTeam" onkeyup="javascript:this.value=this.value.toUpperCase()" oninput="buscarEmpleado()" placeholder="Buscar...">
+                </div><!-- input group -->
+                <br>
+                <div class="container text-center">
+                  <div class="card mb-3" style="width: 100%;">
+                  <form action="prcd/generaqrcredencial3.php" target="_blank" id="form-id"  method="POST"><!--form-->
+                    <div class="row g-0" id="credencialEmpleado">
+                        
+                    </div><!-- row -->
+                  </form>
+                  </div><!-- card -->
+                </div><!-- container -->
+              </div><!-- modal body -->
+                          
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd()"><i class="bi bi-save2"></i> Generar Credencial</button>
+                <button type="button" class="btn btn-primary" id="imprimirc" data-bs-target="#credencialpreview" data-bs-toggle="modal" disabled><i class="bi bi-printer"></i> Imprimir</button>
+              </div><!-- modal footer -->
+            </div><!-- modal content -->
+          </div><!-- modal dialog -->
+        </div><!-- modal -->
       
     </main>
     <script src="sidebars.js"></script>

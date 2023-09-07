@@ -95,11 +95,11 @@ function codigoQR(concatenado,expediente){
    
 // aquí
 
-var qrcode = new QRCode(document.getElementById("qrTarjeton"), {
-      text: texto,
-      width: 80,
-      height: 80,
-      correctLevel: QRCode.CorrectLevel.H
+    var qrcode = new QRCode(document.getElementById("qrTarjeton"), {
+        text: texto,
+        width: 80,
+        height: 80,
+        correctLevel: QRCode.CorrectLevel.H
     });
 
     // Obtener el elemento canvas generado por QRCode.js
@@ -111,14 +111,14 @@ var qrcode = new QRCode(document.getElementById("qrTarjeton"), {
 
     // Esperar a que el logo se cargue antes de dibujarlo en el canvas
     logo.onload = function() {
-      // Calcular la posición del logo en el centro del código QR
-      var logoSize = qrcode._htOption.width * 0.2; // Tamaño relativo del logo (20%)
-      var xPos = (canvas.width - logoSize) / 2;
-      var yPos = (canvas.height - logoSize) / 2;
+        // Calcular la posición del logo en el centro del código QR
+        var logoSize = qrcode._htOption.width * 0.2; // Tamaño relativo del logo (20%)
+        var xPos = (canvas.width - logoSize) / 2;
+        var yPos = (canvas.height - logoSize) / 2;
 
-      // Dibujar el logo en el canvas
-      var ctx = canvas.getContext("2d");
-      ctx.drawImage(logo, xPos, yPos, logoSize, logoSize);
+        // Dibujar el logo en el canvas
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(logo, xPos, yPos, logoSize, logoSize);
     };
 
     console.log();

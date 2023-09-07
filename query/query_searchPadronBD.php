@@ -1,6 +1,6 @@
 <?php
 include('../prcd/qc/qc2.php');
-
+include('../prcd/qc/qc.php');
 
 if ($_POST['expediente'] == 0){
   $tipoSangre = "";
