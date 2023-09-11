@@ -830,7 +830,7 @@ $(document).ready(function () {
                 <br>
                 <div class="container text-center">
                   <div class="card mb-3" style="width: 100%;">
-                  <form action="prcd/generaqrcredencial3.php" target="_blank" id="form-id"  method="POST"><!--form-->
+                  <form action="prcd\generaqrcredencial3.php" target="_blank" id="form-id-emp"  method="POST"><!--form-->
                     <div class="row g-0" id="credencialEmpleado">
                         
                     </div><!-- row -->
@@ -841,8 +841,8 @@ $(document).ready(function () {
                           
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd()"><i class="bi bi-save2"></i> Generar Credencial</button>
-                <button type="button" class="btn btn-primary" id="imprimirc" data-bs-target="#credencialpreview" data-bs-toggle="modal" disabled><i class="bi bi-printer"></i> Imprimir</button>
+                <button type="submit" class="btn btn-primary" id="habilitaimprimirEmp" onclick="swaldatoscrdEmp()"><i class="bi bi-save2"></i> Generar Credencial</button>
+                <button type="button" class="btn btn-primary" id="imprimirEmp" data-bs-target="#credencialpreview" data-bs-toggle="modal" disabled><i class="bi bi-printer"></i> Imprimir</button>
               </div><!-- modal footer -->
             </div><!-- modal content -->
           </div><!-- modal dialog -->
@@ -863,7 +863,7 @@ $(document).ready(function () {
 
 <script>
 
-  function swaldatoscrd () {
+  function swaldatoscrd() {
     var selectAB = document.getElementById("selectentrega").value;
     var selectVig = document.getElementById("selectvigencia").value;
     if ((selectAB!=="") && (selectVig!=="")){
@@ -904,8 +904,49 @@ $(document).ready(function () {
     })
     }
   }
+  function swaldatoscrdEmp() {
+    /* var selectAB = document.getElementById("selectentrega").value;
+    var selectVig = document.getElementById("selectvigencia").value;
+    if ((selectAB!=="") && (selectVig!=="")){
 
-  function swaldatostrn () {
+     */
+    Swal.fire({
+      title: 'Los datos están correctos?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Sí',
+      denyButtonText: `No`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        document.getElementById("habilitaimprimirEmp").disabled=false;
+        document.getElementById("imprimirEmp").disabled=true;
+        document.getElementById('searchTeam').value = "";
+        document.getElementById('credencialEmpleado').hidden = true;
+        var form = document.getElementById("form-id-emp");
+        form.submit();
+        Swal.fire('Listo!', '', 'success')
+
+      } else if (result.isDenied) {
+        Swal.fire('Verifica los datos en el padrón!', '', 'info')
+      }
+    /* })
+    } else {
+      Swal.fire({
+        title: '<strong>SUIDEV</strong>',
+        imageUrl: 'img/horizontal-justo.png',
+        imageHeight: 120,
+        text: 'Hay un campo vacío',
+        showCloseButton: true,
+        focusConfirm: false,
+        confirmButtonText:
+          '<i class="fa fa-thumbs-up"></i> OK!',
+        confirmButtonAriaLabel: 'OK!',
+    })*/
+    })
+  }
+
+  function swaldatostrn() {
     Swal.fire({
       title: 'Los datos están correctos?',
       showDenyButton: true,

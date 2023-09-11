@@ -25,12 +25,12 @@ if ($resultado_QueryEmpleado){
     
     echo'
             <div class="col-md-4">
-                <img id="profile" src="img/no_profile.png" width="100%">
+                <img id="profilePhoto" src="img/no_profile.png" width="100%">
                 <div class="input-group">
                 <!-- file photo-->
                 <form id="upload_form" enctype="multipart/form-data" method="post">
                 
-                <input type="file"  name="file_photo" id="file_photo" onchange="foto()" accept="image/png, image/gif, image/jpeg" class="h6 w-100 mt-3" disabled><br>
+                <input type="file"  name="file_photo" id="file_photo" onchange="fotoEmp()" accept="image/png, image/gif, image/jpeg" class="h6 w-100 mt-3"><br>
 
                 <progress id="progressBar_photo" value="0" max="100" style="width:270px;"></progress>
                 <small id="status_photo"></small>
@@ -40,11 +40,11 @@ if ($resultado_QueryEmpleado){
         </div>
         <div class="col-md-8">
             <div class="card-body text-start">
-                <input value="'.$numEmpleado.'" type="text" name="foto" hidden>
+                <input value="'.$numEmpleado.'" type="text" name="numEmpleado" hidden>
                 <input value="'.$nombre.'" type="text" name="nombre" hidden>
-                <input value="'.$aPaterno.'" type="text" name="apellidoPaterno" hidden>
-                <input value="'.$aMaterno.'" type="text" name="apellidoMaterno" hidden>
-                <input value="'.$curp.'" type="text" name="curp" hidden>
+                <input value="'.$aPaterno.'" type="text" name="apPaterno" hidden>
+                <input value="'.$aMaterno.'" type="text" name="aMaterno" hidden>
+                <input value="'.$curp.'" type="text" id="curpEmp" name="curp" hidden>
                 <input value="'.$numSeguridad.'" type="text" name="nss" hidden>
                 <input value="'.$puesto.'" type="text" name="puesto" hidden>
                 <input value="'.$area.'" type="text" name="area" hidden>

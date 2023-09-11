@@ -2,33 +2,20 @@
 require_once('qrcode.class.php');
 
 $nombre = $_POST['nombre'];
-$foto = $_POST['foto'];
-$apellidoPaterno = $_POST['apellidoPaterno'];
-$apellidoMaterno = $_POST['apellidoMaterno'];
-$folio = $_POST['folio'];
-$discapacidad = $_POST['discapacidad'];
+/* $photo = $_POST['photo']; */
+$aPaterno = $_POST['apPaterno'];
+$aMaterno = $_POST['aMaterno'];
+$nss = $_POST['nss'];
+$numEmpleado = $_POST['numEmpleado'];
 $curp = $_POST['curp'];
-$direccion = $_POST['direccion'];
-$numeroCasa = $_POST['numeroCasa'];
-$cp = $_POST['cp'];
-$numeroInterior = $_POST['numeroInterior'];
-$colonia = $_POST['colonia'];
-$localidad = $_POST['localidad2'];
-$municipio = $_POST['municipio'];
-$estado = $_POST['estado'];
-$telefono = $_POST['telefonoCel'];
-$tipoSangre = $_POST['tipoSangre'];
-$alergias = $_POST['alergias'];
-$cadena = $_POST['cadena'];
-$apellidosConcat = $apellidoPaterno.' '.$apellidoMaterno; 
-$concatNumIntNumCasa = $numeroCasa.'-'.$numeroInterior;
+$puesto = $_POST['puesto'];
+$area = $_POST['area'];
+$nombreConcat = $nombre.' '.$aPaterno.' '.$aMaterno; 
 
-$alergiasNum = strlen($alergias);
-
-$msg = $curp;
+/* $msg = $curp;
 $err = 'L';
 
-$qrcode = new QRcode(utf8_encode($msg), $err);
+$qrcode = new QRcode(utf8_encode($msg), $err); */
 //$qrcode->displayFPDF(&$fpdf, 1, 1, 1, $background=array(255,255,255), $color=array(0,0,0));
 
 //$qrcode->displayPNG(200);
@@ -39,47 +26,56 @@ define('FPDF_FONTPATH','font/');
 require('fpdf/fpdf.php');
 class PDF extends FPDF
 {
-	function hoja1($foto,$nombre,$apellidosConcat,$folio,$discapacidad)
+	function hoja1($numEmpleado,$nombreConcat,$nss,$puesto,$area,$curp)
 	{
 
-		$this->Image('../img/CREDENCIAL_PCD_2021-2027_Frente.jpg','0','0','1024','640','JPG');								
+		$this->Image('../img/credencialTrabajadores_Front.jpg','0','0','1024','640','JPG');								
 			//IMAGE (RUTA,X,Y,ANCHO,ALTO,EXTEN)
-		$this->Image("data:image/jpg;base64,$foto",'720','240','280','360','JPG');
+		/* $this->Image("data:image/jpg;base64,$photo",'720','240','280','360','JPG'); */
 		$this->Ln(37);
 		$this->Ln(37);
 		$this->Ln(37);
 		$this->Ln(37);
 		$this->Ln(35);
-		$this->Ln(35);
-		$this->Ln(35);
-		$this->SetFont('Arial','B',25);
-		$this->Cell(50,5,'','','','L','');
-		$this->Cell(50,5,utf8_decode($apellidosConcat),'','','L','');
-		$this->Ln(35);
-		$this->Cell(50,5,'','','','L','');
-		$this->Cell(50,4,utf8_decode($nombre),'','','L','');
+		$this->Ln(26);
+		$this->SetFont('Arial','B',26);
+		$this->Cell(135,5,'','','','L','');
+		$this->MultiCell(650,24,utf8_decode($nombreConcat),'','L','');
+		$this->Ln(33);
+		$this->Ln(33);
+		$this->Ln(7);
+		$this->Cell(20,5,'','','','L','');
+		$this->Cell(50,4,utf8_decode($numEmpleado),'','','L','');
+		$this->Cell(300,4,'','','','L','');
+		$this->Cell(20,4,utf8_decode($nss),'','','L','');
 		$this->Ln(34);
+		$this->Cell(350,5,'','','','L','');
+		$this->Cell(80,4,utf8_decode('CURP:'),'','','L','');
+		$this->Ln(34);
+		$this->Cell(370,5,'','','','L','');
+		$this->Cell(20,4,utf8_decode($curp),'','','L','');
 		$this->Ln(30);
-		$this->Cell(50,5,'','','','L','');
-		$this->Cell(50,4,utf8_decode($folio),'','','L','');
-		$this->Ln(35);
-		$this->Ln(31);
-		$this->Cell(50,5,'','','','L','');
-		$this->Cell(50,4,utf8_decode($discapacidad),'','','L','');
-			
+		$this->Cell(20,5,'','','','L','');
+		$this->MultiCell(600,26,utf8_decode($puesto),'','L','');
+		$this->Ln(7);
+		$this->SetFont('Arial','B',20);
+		$this->Cell(20,5,'','','','L','');
+		$this->MultiCell(500,26,utf8_decode($area),'','L','');
+		
 }
 function hoja2()
+
 {
 
-$this->Image('../img/PROPUESTA_CREDENCIAL_PCD_2021-2027_Back.jpg','0','0','1024','640','JPG');
+$this->Image('../img/credencialTrabajadores_Back.jpg','0','2','1024','640','JPG');
 //IMAGE (RUTA,X,Y,ANCHO,ALTO,EXTEN)
-
+/* $this->Image("data:image/jpg;base64,$qrcode",'720','240','280','360','JPG'); */
 }
 }// fin clase
 $pdf=new PDF('L','pt',array(1024,640)); //constructor pdf
 $pdf->SetFont('Arial','',10);
 $pdf->AddPage();
-$pdf->hoja1($foto,$nombre,$apellidosConcat,$folio,$discapacidad);
+$pdf->hoja1($numEmpleado,$nombreConcat,$nss,$puesto,$area,$curp);
 $pdf->AddPage();
 $pdf->hoja2();
 $pdf->Output();
