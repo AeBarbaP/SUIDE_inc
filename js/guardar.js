@@ -1471,7 +1471,7 @@ function swalListaEspera(){
 
 function fotoEmp() {
     var doc = "_photo";
-    var idUsr = document.getElementsById('curpEmp').value;
+    var idUsr = document.getElementById('curpEmp').value;
     var file = _("file"+doc).files[0];
     var idUsuario = idUsr;
     var formdata = new FormData();
@@ -1532,13 +1532,14 @@ function buscarPhotoEmp(curp){
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));
             var success = jsonData.success;
-            var ruta = jsonData.ruta;
-            console.log(ruta);
-            
             if (success == 1) {
+                var ruta = jsonData.ruta;
+                console.log(ruta);
                 document.getElementById("profilePhoto").setAttribute('src','');
                 document.getElementById("profilePhoto").setAttribute('src','assets/'+ruta);
             } else if (success == 0){
+                document.getElementById("profilePhoto").setAttribute('src','');
+                document.getElementById("profilePhoto").setAttribute('src','img/no_profile.png');
                 console.log("Sin foto");
             }
         }

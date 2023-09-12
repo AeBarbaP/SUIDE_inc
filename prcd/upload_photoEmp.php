@@ -29,7 +29,13 @@ include('qc/qc.php');
     // $sqlinsert= "UPDATE documentos SET link4='$ruta_pptx' WHERE id_usr='$curp'";
     $sqlUpdate= "UPDATE empleados SET fotografia = '$ruta' WHERE curp = '$curp'";
     $resultado= $conn->query($sqlUpdate);
-    
+    if ($resultado){
+        echo "foto cargada en sistema";
+    }
+    else {
+        $error = $conn->error;
+        echo $error;
+    }
     
 } else {
     echo "move_uploaded_file function failed";

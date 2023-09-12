@@ -8,10 +8,11 @@ $empleado = $_POST['empleado'];
 $QueryEmpleado = "SELECT * FROM empleados WHERE numEmpleado LIKE '%$empleado%' OR nombre LIKE '%$empleado%' OR aPaterno LIKE '%$empleado%' OR aMaterno LIKE '%$empleado%'";
 $resultado_QueryEmpleado = $conn->query($QueryEmpleado);
 
-if ($resultado_QueryEmpleado){
+if ($resultado_QueryEmpleado->num_rows > 0){
+/* if ($resultado_QueryEmpleado){ */
 
     $row_sql_empleado = $resultado_QueryEmpleado->fetch_assoc();
-
+    
     // este es el id de tabla expedientes que nos llevaremos a datos médicos
     $numEmpleado = $row_sql_empleado['numEmpleado'];
     $nombre = $row_sql_empleado['nombre'];
@@ -24,17 +25,17 @@ if ($resultado_QueryEmpleado){
     $foto = $row_sql_empleado['fotografia'];
     
     echo'
-            <div class="col-md-4">
-                <img id="profilePhoto" src="img/no_profile.png" width="100%">
-                <div class="input-group">
+        <div class="col-md-4">
+            <img id="profilePhoto" src="img/no_profile.png" width="100%">
+            <div class="input-group">
                 <!-- file photo-->
                 <form id="upload_form" enctype="multipart/form-data" method="post">
-                
-                <input type="file"  name="file_photo" id="file_photo" onchange="fotoEmp()" accept="image/png, image/gif, image/jpeg" class="h6 w-100 mt-3"><br>
+                    
+                    <input type="file"  name="file_photo" id="file_photo" onchange="fotoEmp()" accept="image/png, image/gif, image/jpeg" class="h6 w-100 mt-3"><br>
 
-                <progress id="progressBar_photo" value="0" max="100" style="width:270px;"></progress>
-                <small id="status_photo"></small>
-                <p id="loaded_n_total_photo"></p>
+                    <progress id="progressBar_photo" value="0" max="100" style="width:230px;"></progress>
+                    <small id="status_photo"></small>
+                    <p id="loaded_n_total_photo"></p>
                 </form>
             </div>
         </div>
@@ -58,10 +59,33 @@ if ($resultado_QueryEmpleado){
             </div>
         </div>
     ';
+    echo'
+        <script>
+            document.getElementById("habilitaimprimirEmp").disabled = false;
+        </script>
+        ';
 }
 else{
+
+    echo'
+            <div class="col-md-4">
+                <img id="profilePhoto" src="img/no_profile.png" width="100%">
+                <div class="input-group">
+                <!-- file photo-->
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card-body text-start">
+
+            <input value="" type="text" id="curpEmp" name="curp" hidden>
+            
+            </div>
+            </div>
+            ';
+
     echo'
         <script>
             console.log("No se encontró el registro");
+            document.getElementById("habilitaimprimirEmp").disabled = true;
         </script>';
 }

@@ -196,9 +196,11 @@ function revisarTarjeton(){
 
 function folioTarjetonPositivo(){
         var folioT = document.getElementById("folioTarjeton").value;
+        var vigenciaT = document.getElementById("folioTarjeton").value;
         document.getElementById("folioTPerm").disabled = true;
         document.getElementById("vigenciaPerm").disabled = true;
         document.getElementById("folioTPerm").value = folioT;
+        document.getElementById("vigenciaTarjeton").value = folioT;
         //document.getElementById("textoTarjeton").innerHTML = "<small class='text-danger'>Folio no disponible</small>";
       
 }

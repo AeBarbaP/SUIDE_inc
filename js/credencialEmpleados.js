@@ -10,6 +10,8 @@ function buscarEmpleado(){
             success: function(data) {
             document.getElementById('credencialEmpleado').hidden = false;
             $("#credencialEmpleado").html(data);
+            var curpEmpPhoto = document.getElementById('curpEmp').value;
+            buscarPhotoEmp(curpEmpPhoto);
 
         }               
     });

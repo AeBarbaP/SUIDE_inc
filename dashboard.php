@@ -830,11 +830,11 @@ $(document).ready(function () {
                 <br>
                 <div class="container text-center">
                   <div class="card mb-3" style="width: 100%;">
-                  <form action="prcd\generaqrcredencial3.php" target="_blank" id="form-id-emp"  method="POST"><!--form-->
-                    <div class="row g-0" id="credencialEmpleado">
-                        
-                    </div><!-- row -->
-                  </form>
+                    <form action="prcd\generaqrcredencial3.php" target="_blank" id="form-id-emp"  method="POST"><!--form-->
+                      <div class="row g-0" id="credencialEmpleado">
+                          
+                      </div><!-- row -->
+                    </form>
                   </div><!-- card -->
                 </div><!-- container -->
               </div><!-- modal body -->
