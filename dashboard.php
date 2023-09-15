@@ -405,7 +405,7 @@ include('prcd/qc/qc.php');
             <div class="modal-body">
               <div class="input-group mb-1 mt-2 w-100">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2()" onchange="limpiaModalTarjeton()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+                <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
                 <!-- <input type="text" id="curpTarjeton" hidden>  -->
               </div><!-- input group -->
               <br>
@@ -425,7 +425,7 @@ include('prcd/qc/qc.php');
                         <input type="text" id="tipoTarjeton" value="1" hidden>
                         <div class="input-group mb-3">
                           <span class="input-group-text" id="basic-addon1">Marca</span>
-                          <input type="text" class="form-control" oninput="habilitaBTNadd()" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaPerm">
+                          <input type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaPerm">
                         </div>
                         <div class="input-group mb-3">
                           <span class="input-group-text" id="basic-addon1">Modelo</span>
@@ -437,7 +437,7 @@ include('prcd/qc/qc.php');
                           <span class="input-group-text" id="basic-addon1">No. de Placas</span>
                           <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-describedby="basic-addon1" id="placasPerm">
                           <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-                          <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" placeholder="# de Serie del vehículo" aria-label="numeroserie" aria-describedby="basic-addon1" id="seriePerm">
+                          <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" oninput="habilitaBTNadd()" placeholder="# de Serie del vehículo" aria-label="numeroserie" aria-describedby="basic-addon1" id="seriePerm">
                         </div>
                         <div class="input-group mb-1">
                           <span class="input-group-text" id="basic-addon1">Folio Tarjetón</span>
@@ -814,7 +814,7 @@ $(document).ready(function () {
       
       <!-- Termina Modal para generar tarjeton de préstamo-->
 
-      <!-- Inicia Modal para generar credencial -->
+      <!-- Inicia Modal para generar credencial empleados -->
         <div class="modal fade" id="credencialEmpleados" tabindex="-1" aria-labelledby="generacredencialempleados" aria-hidden="true">
           <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">

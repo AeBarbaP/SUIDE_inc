@@ -2,7 +2,7 @@
 require_once('qrcode.class.php');
 
 $nombre = $_POST['nombre'];
-/* $photo = $_POST['photo']; */
+$photo = $_POST['foto']; 
 $aPaterno = $_POST['apPaterno'];
 $aMaterno = $_POST['aMaterno'];
 $nss = $_POST['nss'];
@@ -26,12 +26,12 @@ define('FPDF_FONTPATH','font/');
 require('fpdf/fpdf.php');
 class PDF extends FPDF
 {
-	function hoja1($numEmpleado,$nombreConcat,$nss,$puesto,$area,$curp)
+	function hoja1($numEmpleado,$nombreConcat,$nss,$puesto,$area,$curp,$photo)
 	{
 
 		$this->Image('../img/credencialTrabajadores_Front.jpg','0','0','1024','640','JPG');								
 			//IMAGE (RUTA,X,Y,ANCHO,ALTO,EXTEN)
-		/* $this->Image("data:image/jpg;base64,$photo",'720','240','280','360','JPG'); */
+		$this->Image("../assets/$photo",'750','230','260','350','JPG');
 		$this->Ln(37);
 		$this->Ln(37);
 		$this->Ln(37);
@@ -75,7 +75,7 @@ $this->Image('../img/credencialTrabajadores_Back.jpg','0','2','1024','640','JPG'
 $pdf=new PDF('L','pt',array(1024,640)); //constructor pdf
 $pdf->SetFont('Arial','',10);
 $pdf->AddPage();
-$pdf->hoja1($numEmpleado,$nombreConcat,$nss,$puesto,$area,$curp);
+$pdf->hoja1($numEmpleado,$nombreConcat,$nss,$puesto,$area,$curp,$photo);
 $pdf->AddPage();
 $pdf->hoja2();
 $pdf->Output();
