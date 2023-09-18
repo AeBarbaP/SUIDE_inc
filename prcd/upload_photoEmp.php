@@ -21,11 +21,11 @@ include('qc/qc.php');
     $archivo_ext=$_FILES['file']['name'];
     $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
 
-    if(move_uploaded_file($_FILES["file"]["tmp_name"],"../assets/docs_expedientes/photos/". $link.'.'.$extension)){
+    if(move_uploaded_file($_FILES["file"]["tmp_name"],"../assets/photosEmpleados/". $link.'.'.$extension)){
     // echo "$fileName carga completa";
     echo "Fotografía, carga completa";
     
-    $ruta = "docs_expedientes/photos/". $link .'.'.$extension;
+    $ruta = "photosEmpleados/". $link .'.'.$extension;
     // $sqlinsert= "UPDATE documentos SET link4='$ruta_pptx' WHERE id_usr='$curp'";
     $sqlUpdate= "UPDATE empleados SET fotografia = '$ruta' WHERE curp = '$curp'";
     $resultado= $conn->query($sqlUpdate);

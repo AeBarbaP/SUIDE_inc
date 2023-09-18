@@ -1508,6 +1508,7 @@ function fotoEmp() {
         // document.getElementById('btnModal'+doc).disabled = true;
         // $(".bloqueo"+doc).attr("disabled", true);
         buscarPhotoEmp(idUsr);
+        buscarEmpleado();
     }
     
     function errorHandlerEmp(event) {

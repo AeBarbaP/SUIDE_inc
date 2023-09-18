@@ -87,6 +87,8 @@ include('prcd/qc/qc.php');
     <script src="js/usuarioTemp.js"></script>
     <script src="js/print.js"></script>
     <script src="js/credencialEmpleados.js"></script>
+    <link  href="prcd/cropperjs/cropper.css" rel="stylesheet">
+    <script src="prcd/cropperjs/cropper.js"></script>
 
     <style>
       body {

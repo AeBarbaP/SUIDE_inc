@@ -3,7 +3,7 @@ require('../prcd/qc/qc.php');
 sleep(1);
 if (isset($_POST)) {
     $username = (string)$_POST['username'];
- 
+
     $result = $conn->query(
         "SELECT * FROM datos_usuariot WHERE curp = '$username'"
     );

@@ -31,7 +31,7 @@ if ($resultado_QueryEmpleado->num_rows > 0){
             <!-- file photo-->
             <form id="upload_form" enctype="multipart/form-data" method="post">
             
-            <input type="file"  name="file_photo" id="file_photo" onchange="fotoEmp()" accept="image/png, image/gif, image/jpeg" class="h6 w-100 mt-3"><br>
+            <input type="file"  name="file_photo" id="file_photo" onchange="fotoEmp()" accept="image/jpeg" class="h6 w-100 mt-3"><br>
             
             <progress id="progressBar_photo" value="0" max="100" style="width:230px;"></progress>
             <small id="status_photo"></small>
