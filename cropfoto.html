@@ -11,6 +11,10 @@
   <script src="prcd/cropperjs/dist/cropper.js"></script>
   <script src="js/print.js"></script>
   <script src="js/credencialEmpleados.js"></script>
+  <script src="https://unpkg.com/jquery@3/dist/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/bootstrap@4/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <!-- <script src="../js/cropper.js"></script> -->
+  
   <style>
     .label {
       cursor: pointer;
@@ -32,10 +36,10 @@
 </head>
 <body>
   <div class="container">
-    <h1>Upload cropped image to server</h1>
-    <p>Please note that the image will be uploaded to a <a href="https://jsonplaceholder.typicode.com/">third-party fake API server</a>, which means that the upload process will sometimes fail.</p>
+    <!-- <h1>Upload cropped image to server</h1>
+    <p>Please note that the image will be uploaded to a <a href="https://jsonplaceholder.typicode.com/">third-party fake API server</a>, which means that the upload process will sometimes fail.</p> -->
     <label class="label" data-toggle="tooltip" title="Change your avatar">
-      <img class="rounded" id="avatar" src="https://avatars0.githubusercontent.com/u/3456749?s=160" alt="avatar">
+      <img class="rounded" id="avatar" src="img/no_profile.png" alt="avatar">
       <input type="file" class="sr-only" id="input" name="image" accept="image/*">
     </label>
     <div class="progress">
@@ -53,7 +57,7 @@
               </div>
               <div class="modal-body">
                 <div class="img-container">
-                  <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
+                  <img id="image" src="img/no_profile.png">
                 </div>
               </div>
               <div class="modal-footer">
@@ -64,9 +68,7 @@
           </div>
         </div>
       </div>
-  <script src="https://unpkg.com/jquery@3/dist/jquery.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/bootstrap@4/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  <!-- <script src="../js/cropper.js"></script> -->
+  
   <script>
     window.addEventListener('DOMContentLoaded', function () {
       var avatar = document.getElementById('avatar');
@@ -136,7 +138,7 @@
             var formData = new FormData();
 
             formData.append('avatar', blob, 'avatar.jpg');
-            $.ajax('assets/photosEmpleados', {
+            $.ajax('https://jsonplaceholder.typicode.com/posts', {
               method: 'POST',
               data: formData,
               processData: false,

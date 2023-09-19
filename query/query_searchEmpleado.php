@@ -28,18 +28,16 @@ if ($resultado_QueryEmpleado->num_rows > 0){
         <div class="col-md-4">
             <img id="profilePhoto" src="img/no_profile.png" width="100%">
             <div class="input-group">
-            <!-- file photo-->
-            <form id="upload_form" enctype="multipart/form-data" method="post">
-            
-            <input type="file"  name="file_photo" id="file_photo" onchange="fotoEmp()" accept="image/jpeg" class="h6 w-100 mt-3"><br>
-            
-            <progress id="progressBar_photo" value="0" max="100" style="width:230px;"></progress>
-            <small id="status_photo"></small>
-            <p id="loaded_n_total_photo"></p>
-            </form>
+                <!-- file photo-->
+                <form id="upload_form" enctype="multipart/form-data" method="post">
+                    <input type="file"  name="file_photo" id="file_photo" onchange="fotoEmp()" accept="image/jpeg" class="h6 w-100 mt-3"><br>        
+                    <progress id="progressBar_photo" value="0" max="100" style="width:230px;"></progress>
+                    <small id="status_photo"></small>
+                    <p id="loaded_n_total_photo"></p>
+                </form>
             </div>
-            </div>
-            <div class="col-md-8">
+        </div>
+        <div class="col-md-8">
             <div class="card-body text-start">
                 <input value="'.$foto.'" type="text" name="foto" id="foto" hidden>
                 <input value="'.$numEmpleado.'" type="text" name="numEmpleado" hidden>
