@@ -23,7 +23,7 @@ $('#input-file').on('change', () => {
         cropper = new Cropper(image, {
             aspectRatio: 1, // es la proporción en la que queremos que recorte en este caso 1:1
             preview: '.img-sample', // contenedor donde se va a ir viendo en tiempo real la imagen cortada
-            zoomable: false, //Para que no haga zoom 
+            zoomable: true, //Para que no haga zoom 
             viewMode: 1, //Para que no estire la imagen al contenedor
             responsive: false, //Para que no reacomode con zoom la imagen al contenedor
             dragMode: 'none', //Para que al arrastrar no haga nada
@@ -62,26 +62,16 @@ $('#cut').on('click', () => {
     let canva = cropper.getCroppedCanvas()
     let image = document.getElementById('img-cropper')
     let input = document.getElementById('input-file')
-    var img = canva.toDataURL("image/png"); 
+    /* var img = canva.toDataURL(["image/jpeg","image/jpg"]); */ 
 
-    $.ajax({
-        url: '../prcd/upload_photoTest.php',  
-        data:{ 
-            img: img
-        },                     
-        type: 'POST',   
-        success: function(data)
-        {
-            alert("Imagen guardada en servidor");                       
-        }
-    });                
-
+    
     canva.toBlob(function(blob){
         let url_cut = URL.createObjectURL(blob)
         crop_image.src = url_cut;
 
+        
+        foto3();
     })
-
     image.src = "";
     input.value = "";
 

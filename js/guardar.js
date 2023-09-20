@@ -53,25 +53,40 @@ function foto() {
     }
 }
 
-function foto2(x) {
+const $canvas = document.querySelector("#crop-image");
+
+function foto3() {
+    const data = $canvas.toDataURL("image/jpg","image/jpeg");
+    const fd = new FormData();
+    fd.append("imagen", data); // Se llama "imagen", en PHP lo recuperamos con $_POST["imagen"]
+    const respuestaHttp = fetch("../prcd/upload_photoTest.php", {
+        method: "POST",
+        body: fd,
+    });
+    const nombreImagenSubida = respuestaHttp.json();
+    console.log("La imagen ha sido enviada y tiene el nombre de: " + nombreImagenSubida);
+}
+
+function foto2() {
     var doc = "_photo";
-    var idUsr = document.getElementById('curp_exp').value;
+    var idUsr = document.getElementById('crop-image').value;
     //var file = _("file"+doc).files[0];
-    var file = _(x).files[0];
-    var documento = doc;
-    var idUsuario = idUsr;
+    //var file = _("file"+doc).files[0];
+    /* var documento = doc;
+    var idUsuario = idUsr; */
     var formdata = new FormData();
+    var files = $('#crop-image').files[0];
     // variable del name file
-    formdata.append("file", file);
+    formdata.append("file", files);
     // variables post
-    // formdata.append("documento", documento);
-    formdata.append("idUsuario", idUsuario);
+    /* formdata.append("documento", documento);
+    formdata.append("idUsuario", idUsuario); */
     var ajax = new XMLHttpRequest();
     /* ajax.upload.addEventListener("progress", progressHandler, false);
     ajax.addEventListener("load", completeHandler, false);
     ajax.addEventListener("error", errorHandler, false);
     ajax.addEventListener("abort", abortHandler, false); */
-    ajax.open("POST", "prcd/upload_photo.php"); 
+    ajax.open("POST", "../prcd/upload_photoTest.php");
     
     ajax.send(formdata);
     
