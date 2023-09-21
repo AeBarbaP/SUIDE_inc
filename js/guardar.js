@@ -53,18 +53,37 @@ function foto() {
     }
 }
 
-const $canvas = document.querySelector("#crop-image");
 
 function foto3() {
-    const data = $canvas.toDataURL("image/jpg","image/jpeg");
-    const fd = new FormData();
-    fd.append("imagen", data); // Se llama "imagen", en PHP lo recuperamos con $_POST["imagen"]
-    const respuestaHttp = fetch("../prcd/upload_photoTest.php", {
-        method: "POST",
-        body: fd,
+    const canvas = document.querySelector("#crop-image");
+    //const canvas = document.createElement("crop-image")
+    fetch(canvas.src)
+    .then(
+        res => res.blob()
+    )
+    .then(
+        blob => {
+        const file = new File([blob], "capture.jpg", {
+            type: 'image/jpeg'
+        });
+        var fd = new FormData();
+        fd.append("file", file);
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "../prcd/upload_photoTest.php",
+            data: fd,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: (data) => {
+                alert("yes");
+            },
+            error: function(xhr, status, error) {
+                alert(xhr.responseText);
+            }
+        });
     });
-    const nombreImagenSubida = respuestaHttp.json();
-    console.log("La imagen ha sido enviada y tiene el nombre de: " + nombreImagenSubida);
 }
 
 function foto2() {
@@ -75,7 +94,7 @@ function foto2() {
     /* var documento = doc;
     var idUsuario = idUsr; */
     var formdata = new FormData();
-    var files = $('#crop-image').files[0];
+    var files = $('#crop-image').fileInputElement.files[0];
     // variable del name file
     formdata.append("file", files);
     // variables post
@@ -1603,11 +1622,11 @@ function buscarPhotoEmp(curp){
             if (success == 1) {
                 var ruta = jsonData.ruta;
                 console.log(ruta);
-                document.getElementById("profilePhoto").setAttribute('src','');
-                document.getElementById("profilePhoto").setAttribute('src','assets/'+ruta);
+                document.getElementById("crop-image").setAttribute('src','');
+                document.getElementById("crop-image").setAttribute('src','assets/'+ruta);
             } else if (success == 0){
-                document.getElementById("profilePhoto").setAttribute('src','');
-                document.getElementById("profilePhoto").setAttribute('src','img/no_profile.png');
+                document.getElementById("crop-image").setAttribute('src','');
+                document.getElementById("crop-image").setAttribute('src','img/no_profile.png');
                 console.log("Sin foto");
             }
         }

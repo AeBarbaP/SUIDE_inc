@@ -26,16 +26,49 @@ if ($resultado_QueryEmpleado->num_rows > 0){
     
     echo'
         <div class="col-md-4">
-            <img id="profilePhoto" src="img/no_profile.png" width="100%">
-            <div class="input-group">
+            <!-- <img id="profilePhoto" src="img/no_profile.png" width="100%">
+            <div class="input-group"> -->
                 <!-- file photo-->
-                <form id="upload_form" enctype="multipart/form-data" method="post">
-                    <input type="file"  name="file_photo" id="file_photo" onchange="fotoEmp()" accept="image/jpeg" class="h6 w-100 mt-3"><br>        
+                <!-- <form id="upload_form" enctype="multipart/form-data" method="post">
+                    <input type="file" name="file_photo" id="file_photo" onchange="fotoEmp()" accept="image/jpeg" class="h6 w-100 mt-3"><br>        
                     <progress id="progressBar_photo" value="0" max="100" style="width:230px;"></progress>
                     <small id="status_photo"></small>
                     <p id="loaded_n_total_photo"></p>
                 </form>
+            </div> -->
+            <div class="container">
+                <!-- <button class="btn" onclick="foto3()">guardar foto</button> -->
+                <div class="group">
+                    <img src="img/no_profile.png" alt="" width="100%" class="crop-image" id="crop-image">
+                    <input type="file" name="input-file" id="input-file" accept=".png,.jpg,.jpeg">
+                    <label for="input-file" class="label-file">Haz click aquí para subir una imagen</label>
+                </div>
             </div>
+
+            <!-- Modal para cortar imagen -->
+
+            <div class="modal" id="cropModal">
+                <div class="modal-content" id="contentCropModal">
+                    <div class="modal-header">
+                        <p>Recorta tu foto</p>
+                    </div>
+                    <div class="modal-body">
+                        <div class="content-imagen-cropper">
+                            <img src="" alt="" class="img-cropper" id="img-cropper">
+                        </div>
+                        <div class="content-imagen-sample">
+                            <div src="" alt="" class="img-sample" id="img-croppered"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn primary" id="cut">Recortar</button>
+                        <button class="btn secundary" id="close">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Termina modal para cortar imagen -->
+
         </div>
         <div class="col-md-8">
             <div class="card-body text-start">
@@ -68,7 +101,7 @@ else{
 
     echo'
             <div class="col-md-4">
-                <img id="profilePhoto" src="img/no_profile.png" width="100%">
+                <img id="crop-image" src="img/no_profile.png" width="100%">
                 <div class="input-group">
                 <!-- file photo-->
             </div>

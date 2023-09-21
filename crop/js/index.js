@@ -21,7 +21,7 @@ $('#input-file').on('change', () => {
         image.src = imagenUrl
 
         cropper = new Cropper(image, {
-            aspectRatio: 1, // es la proporción en la que queremos que recorte en este caso 1:1
+            aspectRatio: 2/3, // es la proporción en la que queremos que recorte en este caso 1:1
             preview: '.img-sample', // contenedor donde se va a ir viendo en tiempo real la imagen cortada
             zoomable: true, //Para que no haga zoom 
             viewMode: 1, //Para que no estire la imagen al contenedor
@@ -33,11 +33,11 @@ $('#input-file').on('change', () => {
             }
         })
 
-        $('.modal').addClass('active')
-        $('.modal-content').addClass('active')
+        $('#cropModal').addClass('active')
+        $('#contentCropModal').addClass('active')
 
-        $('.modal').removeClass('remove')
-        $('.modal-content').removeClass('remove')
+        $('#cropModal').removeClass('remove')
+        $('#contentCropModal').removeClass('remove')
     }
 })
 
@@ -50,11 +50,11 @@ $('#close').on('click', () => {
 
     cropper.destroy()
 
-    $('.modal').addClass('remove')
-    $('.modal-content').addClass('remove')
+    $('#cropModal').addClass('remove')
+    $('#contentCropModal').addClass('remove')
 
-    $('.modal').removeClass('active')
-    $('.modal-content').removeClass('active')
+    $('#cropModal').removeClass('active')
+    $('#contentCropModal').removeClass('active')
 })
 
 $('#cut').on('click', () => {
@@ -68,18 +68,19 @@ $('#cut').on('click', () => {
     canva.toBlob(function(blob){
         let url_cut = URL.createObjectURL(blob)
         crop_image.src = url_cut;
-
-        
         foto3();
+        
     })
+
+    
     image.src = "";
     input.value = "";
-
+    
     cropper.destroy()
-
-    $('.modal').addClass('remove')
-    $('.modal-content').addClass('remove')
-
-    $('.modal').removeClass('active')
-    $('.modal-content').removeClass('active')
+    
+    $('#cropModal').addClass('remove')
+    $('#contentCropModal').addClass('remove')
+    
+    $('#cropModal').removeClass('active')
+    $('#contentCropModal').removeClass('active')
 })
