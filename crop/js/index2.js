@@ -1,8 +1,11 @@
 let cropper = null;
 
-$('#inputfile').on('click', () => {
+function cropPhoto() {
     let image = document.getElementById('img-cropper')
     let input = document.getElementById('input-file')
+
+    const myModal = new bootstrap.Modal(document.getElementById('cropModal'))
+    myModal.show
 
     let archivos = input.files
     let extensiones = input.value.substring(input.value.lastIndexOf('.'), input.value.lenght)
@@ -21,9 +24,9 @@ $('#inputfile').on('click', () => {
         image.src = imagenUrl
 
         cropper = new Cropper(image, {
-            aspectRatio: 1, // es la proporción en la que queremos que recorte en este caso 1:1
+            aspectRatio: 2/3, // es la proporción en la que queremos que recorte en este caso 1:1
             preview: '.img-sample', // contenedor donde se va a ir viendo en tiempo real la imagen cortada
-            zoomable: false, //Para que no haga zoom 
+            zoomable: true, //Para que no haga zoom 
             viewMode: 1, //Para que no estire la imagen al contenedor
             responsive: false, //Para que no reacomode con zoom la imagen al contenedor
             dragMode: 'none', //Para que al arrastrar no haga nada
@@ -32,17 +35,17 @@ $('#inputfile').on('click', () => {
                 document.querySelector('.cropper-container').style.height = '100%'
             }
         })
-        console.error(cropper);
+
+
+        /* $('.modal #credencialEmpleados').addClass('remove')
 
         $('.cropModal').addClass('active')
         $('.contentCropModal').addClass('active')
 
         $('.cropModal').removeClass('remove')
-        $('.contentCropModal').removeClass('remove')
+        $('#.ontentCropModal').removeClass('remove') */
     }
-})
-
-
+}
 
 $('#close').on('click', () => {
     let image = document.getElementById('img-cropper')
@@ -53,11 +56,11 @@ $('#close').on('click', () => {
 
     cropper.destroy()
 
-    $('.cropModal').addClass('remove')
-    $('.modal-content').addClass('remove')
+    $('#cropModal').addClass('remove')
+    $('#contentCropModal').addClass('remove')
 
-    $('.cropModal').removeClass('active')
-    $('.modal-content').removeClass('active')
+    $('#cropModal').removeClass('active')
+    $('#contentCropModal').removeClass('active')
 })
 
 $('#cut').on('click', () => {
@@ -65,20 +68,25 @@ $('#cut').on('click', () => {
     let canva = cropper.getCroppedCanvas()
     let image = document.getElementById('img-cropper')
     let input = document.getElementById('input-file')
+    /* var img = canva.toDataURL(["image/jpeg","image/jpg"]); */ 
 
+    
     canva.toBlob(function(blob){
         let url_cut = URL.createObjectURL(blob)
         crop_image.src = url_cut;
+        foto3();
+        
     })
 
+    
     image.src = "";
     input.value = "";
-
+    
     cropper.destroy()
-
-    $('.cropModal').addClass('remove')
-    $('.modal-content').addClass('remove')
-
-    $('.cropModal').removeClass('active')
-    $('.modal-content').removeClass('active')
+    
+    $('#cropModal').addClass('remove')
+    $('#contentCropModal').addClass('remove')
+    
+    $('#cropModal').removeClass('active')
+    $('#contentCropModal').removeClass('active')
 })

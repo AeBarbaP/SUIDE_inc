@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-}
 
 :root{
     --primary-color: rgb(58,79,105);
@@ -61,7 +55,7 @@ h1{
 
 /* ==== Modal estilos ==== */
 
-#cropModal{
+.cropModal{
     background-color: rgba(0, 0, 0, 0.247);
     backdrop-filter: blur(0px);
     position: fixed;
@@ -81,7 +75,7 @@ h1{
     overflow: auto;
     padding: 20px;
 }
-#contentCropModal{
+.contentCropModal{
     width: 1200px;
     margin: auto;
     background-color: rgb(250, 250, 250);
@@ -91,7 +85,7 @@ h1{
     opacity: 0;
     transition: 400ms 300ms all ease;
 }
-#contentCropModal .modal-header{
+.contentCropModal .modal-header{
     width: 100%;
     padding: 20px 10px;
     text-align: center;
@@ -99,34 +93,34 @@ h1{
     box-shadow: 0px -2px 7px 1px rgba(0, 0, 0, 0.281);
     font-size: 18px;
 }
-#contentCropModal .modal-body{
+.contentCropModal .modal-body{
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 10px;
     padding: 18px 10px;
 }
-.modal-body .content-imagen-cropper{
+.contentCropModal .modal-body .content-imagen-cropper{
     width: 80%;
     height: 400px;
     padding: 5px;
     outline: 1px solid var(--thir-color);
 }
-.content-imagen-cropper .img-cropper{
+.contentCropModal.content-imagen-cropper .img-cropper{
     width: 100%;
 }
-.modal-body .content-imagen-sample{
+.contentCropModal .modal-body .content-imagen-sample{
     height: 200px;
     width: 200px;
     outline: 1px solid var(--thir-color);
     border-radius: 100%;
     overflow: hidden;
 }
-.modal-body .content-imagen-sample .img-sample{
+.contentCropModal .modal-body .content-imagen-sample .img-sample{
     height: 100%;
     width: 100%;
 }
-#contentCropModal .modal-footer{
+.contentCropModal .modal-footer{
     width: 100%;
     padding: 10px 10px;
     text-align: center;
@@ -138,7 +132,7 @@ h1{
     justify-content: flex-end;
     gap: 15px;
 }
-.modal-footer .btn{
+.cropModal .modal-footer .btn{
     border: none;
     padding: 12px 70px;
     border-radius: 5px;
@@ -147,44 +141,44 @@ h1{
     color: #fff;
     transition: background-color 300ms ease;
 }
-.modal-footer .primary{
+.cropModal .modal-footer .primary{
     background-color: var(--primary-color);
 }
-.modal-footer .secundary{
+.cropModal .modal-footer .secundary{
     background-color: var(--secundary-color);
 }
-.modal-footer .primary:hover{
+.cropModal .modal-footer .primary:hover{
     background-color: var(--primary-color-hover);
 }
-.modal-footer .secundary:hover{
+.cropModal .modal-footer .secundary:hover{
     background-color: var(--secundary-color-hover);
 }
 
 /* ==== Modal estilos active ==== */
 
-.modal.active{
+.cropModal.active{
     opacity: 1;
     backdrop-filter: blur(3px);
     visibility: visible;
 }
-.modal-content.active{
+.contentCropModal.active{
     transform: scale(1);
     opacity: 1;
 }
-.modal.remove{
+.cropModal.remove{
     opacity: 0;
     backdrop-filter: blur(0px);
     visibility: hidden;
     transition: 150ms 150ms all ease-in-out;
 }
-#contentCropModal.remove{
+.contentCropModal.remove{
     transform: scale(0.9);
     opacity: 0;
     transition: 150ms all ease;
 }
 
 @media screen and (max-width: 1200px) {
-    #contentCropModal{
+    .contentCropModal{
         width: 100%;
     }
     .container{
@@ -203,14 +197,14 @@ h1{
     .content-imagen-sample{
         display: none;
     }
-    .modal-body .content-imagen-cropper{
+    .cropModal .modal-body .content-imagen-cropper{
         width: 100%;
     }
-    #contentCropModal .modal-footer{
+    .contentCropModal .modal-footer{
         flex-direction: column;
         gap: 5px;
     }
-    .modal-footer .btn{
+    .cropModal .modal-footer .btn{
         width: 100%;
     }
     .container{

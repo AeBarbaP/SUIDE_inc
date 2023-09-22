@@ -87,7 +87,7 @@ include('prcd/qc/qc.php');
     <script src="js/usuarioTemp.js"></script>
     <script src="js/print.js"></script>
     <script src="js/credencialEmpleados.js"></script>
-<link rel="stylesheet" href="crop/css/cropper.css">
+    <link rel="stylesheet" href="crop/css/cropper.css">
     <link rel="stylesheet" href="crop/css/index.css">
     <script src="crop/js/jquery.js"></script>
     <script src="crop/js/cropper.js"></script>
@@ -1174,6 +1174,38 @@ $(document).ready(function () {
 
   window.addEventListener('load', init, false); */
 
+</script>
+
+<!-- Modal para cortar imagen -->
+
+<div class="modal fade cropModal" id="cropModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content contentCropModal">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Cortar Foto</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="content-imagen-cropper">
+                                <img src="" alt="" class="img-cropper" id="img-cropper">
+                            </div>
+                            <div class="content-imagen-sample">
+                                <div src="" alt="" class="img-sample" id="img-croppered">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="cut" class="btn btn-primary" data-bs-dismiss="modal">Recortar</button>
+                            <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+
+            <!-- Termina modal para cortar imagen -->
+<script>
+  //console.error(cropPhoto())
 </script>
 
 <!-- Inicia Modal editar-->
