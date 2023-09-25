@@ -30,7 +30,7 @@ if ($resultado_QueryEmpleado->num_rows > 0){
             <div class="container">
             <div class="group">
             <img src="img/no_profile.png" alt="" width="100%" class="crop-image" id="crop-image">
-            <input type="file" name="input-file" id="input-file" accept=".png,.jpg,.jpeg" ">
+            <input type="file" name="input-file" id="input-file" accept=".png,.jpg,.jpeg" >
             <label for="input-file" class="label-file">Haz click aquí para subir una imagen</label>
             </div>
             </div>

@@ -91,7 +91,7 @@ include('prcd/qc/qc.php');
     <script src="js/usuarioTemp.js"></script>
     <link rel="stylesheet" href="crop/css/cropper.css">
     <link rel="stylesheet" href="crop/css/index.css">
-    <script src="crop/js/jquery.js"></script>
+    <!-- <script src="crop/js/jquery.js"></script> -->
     <script src="crop/js/cropper.js"></script>
     <script src="crop/js/index.js"></script>
 
@@ -279,24 +279,36 @@ include('prcd/qc/qc.php');
             <p class="h5">No. Expediente</p>
             <strong><span class="h4" id="numeroExpediente"></span></strong>
             <br>
+            <!-- <img id="profile" src="img/no_profile.png" width="100%"> -->
+            <div class="input-group">
+          <!-- file photo-->
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+
             <div class="container">
-              <div class="group">
-                <img src="css/user.png" alt="" class="crop-image" width="100%" id="crop-image">
-                <input type="file" name="input-file" id="input-file" accept=".png,.jpg,.jpeg">
-                <label for="input-file" class="label-file">Haz click aquí para subir una imagen</label>
-              </div>
+            <div class="group">
+            <img src="img/no_profile.png" alt="" width="100%" class="crop-image" id="crop-image">
+            <input type="file" name="input-file" id="input-file" accept=".png,.jpg,.jpeg">
+            <label for="input-file" class="label-file">Haz click aquí para subir una imagen</label>
             </div>
+            </div>
+                
+              <!-- <input type="file"  name="file_photo" id="file_photo" onchange="foto()" accept="image/png, image/gif, image/jpeg" class="h6 w-100 mt-3" disabled><br>
+            
+              <progress id="progressBar_photo" value="0" max="100" style="width:270px;"></progress>
+              <small id="status_photo"></small>
+              <p id="loaded_n_total_photo"></p> -->
+            </form>
           <!-- file photo-->
               <!-- <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload"> -->
+            </div>
+            <br>
+            <div id="imgQR">
+              <img id="img1" src="img/no_qr.png" width="100%" style="width:13rem">
+            </div>
+            <div class="d-grid gap-2">
+              <button type="button" class="btn btn-light">Generar QR</button>
+            </div>
           </div>
-          <br>
-          <div id="imgQR">
-            <img id="img1" src="img/no_qr.png" width="100%" style="width:13rem">
-          </div>
-          <div class="d-grid gap-2">
-            <button type="button" class="btn btn-light">Generar QR</button>
-          </div>
-        </div>
           <div class="col-sm-10">
             <nav>
               <div class="nav nav-tabs" id="nav-tab" role="tablist">
