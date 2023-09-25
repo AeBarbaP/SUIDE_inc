@@ -1,8 +1,8 @@
 let cropper = null;
 
-$('#inputfile').on('click', () => {
-    let image = document.getElementById('img-cropper')
-    let input = document.getElementById('input-file')
+$('#input-file').on('change', () => {
+    let image = document.getElementById('img-cropper');
+    let input = document.getElementById('input-file');
 
     let archivos = input.files
     let extensiones = input.value.substring(input.value.lastIndexOf('.'), input.value.lenght)
@@ -54,10 +54,10 @@ $('#close').on('click', () => {
     cropper.destroy()
 
     $('.cropModal').addClass('remove')
-    $('.modal-content').addClass('remove')
+    $('.contentCropModal').addClass('remove')
 
     $('.cropModal').removeClass('active')
-    $('.modal-content').removeClass('active')
+    $('.contentCropModal').removeClass('active')
 })
 
 $('#cut').on('click', () => {
@@ -77,8 +77,8 @@ $('#cut').on('click', () => {
     cropper.destroy()
 
     $('.cropModal').addClass('remove')
-    $('.modal-content').addClass('remove')
+    $('.contentCropModal').addClass('remove')
 
     $('.cropModal').removeClass('active')
-    $('.modal-content').removeClass('active')
+    $('.contentCropModal').removeClass('active')
 })
