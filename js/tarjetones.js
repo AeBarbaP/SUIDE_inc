@@ -73,14 +73,14 @@ function habilitaBTNadd(){
 }
 
 function mostrarTablaVehiculos(){
-    var curpTarjeton = document.getElementById('curpShows').innerHTML;
+    var curpTarjeton = document.getElementById('curpTarjeton').value;
 
     $.ajax({
         type: "POST",
         url: 'query/queryTablaTarjetones.php',
         dataType:'html',
         data: {
-            curpTarjeton:curpTarjeton,
+            curpTarjeton:curpTarjeton
         },
         success: function(data){
             $('#vehiculosTabla').fadeIn(1000).html(data);
@@ -93,7 +93,7 @@ function codigoQR(concatenado,expediente){
     var texto = concatenado.toString();
     /* document.getElementById('matriculaQR2').innerHTML = concatenado; */
     document.getElementById('qrTarjeton').innerHTML = "";
-   
+    
 // aquí
 
     var qrcode = new QRCode(document.getElementById("qrTarjeton"), {
@@ -201,7 +201,7 @@ function folioTarjetonPositivo(){
         document.getElementById("folioTPerm").disabled = true;
         document.getElementById("vigenciaPerm").disabled = true;
         document.getElementById("folioTPerm").value = folioT;
-        document.getElementById("vigenciaTarjeton").value = folioT;
+        document.getElementById("vigenciaTarjeton").value = vigenciaT;
         //document.getElementById("textoTarjeton").innerHTML = "<small class='text-danger'>Folio no disponible</small>";
 
 }
@@ -211,4 +211,50 @@ function folioTarjetonNegativo(){
     document.getElementById("folioTPerm").value = "";
     //document.getElementById("textoTarjeton").innerHTML = "<small class='text-primary'>Folio disponible</small>";
 
+}
+
+function borrarVehiculo(){
+
+    Swal.fire({
+    title: 'Desea eliminar el vehículo?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText: 'Sí',
+    denyButtonText: 'No',
+    }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+        borrarVehiculoDB();
+        Swal.fire('Vehículo eliminado!', '', 'success')
+    } else if (result.isDenied) {
+        Swal.fire('No se eliminó el vehículo', '', 'info')
+    }
+    })
+}
+
+function borrarVehiculoDB(){
+    var idV = document.getElementById('idVehiculoT').value;
+    var folioDV = document.getElementById('folioDT').value;
+
+    
+    $.ajax({
+        type: "POST",
+        url: 'prcd/borrarVehiculo.php',
+        dataType:'json',
+        data: {
+            idV:idV,
+            folioDV:folioDV
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            
+            if (success == 1) {
+                mostrarTablaVehiculos();
+            } else if (success == 0){
+                console.log(jsonData.error);
+            }
+        }
+
+    });
 }
