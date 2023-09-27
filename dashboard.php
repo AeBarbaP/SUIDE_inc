@@ -454,7 +454,8 @@ include('prcd/qc/qc.php');
                             <option value="2190">6 años</option>
                           </select>
                         </div>
-                        <label id="textoTarjeton"></label>
+                        <div class="form-text mb-2" id="basic-addon4"><a href="#" class="ms-2 link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Reemplazar tarjetón asignado...</a></div>
+                        <!-- <label id="textoTarjeton"></label> -->
                         <div class="col-md-12">
                           <div class="input-group mb-3">
                             <span class="input-group-text">Vehículo extranjero</span>
