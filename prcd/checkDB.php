@@ -18,28 +18,49 @@ if ($filas == 0){
     ));
 }
 else if ($filas == 1){
+    $fechaO = date_create($fecha_sistema);
     $row_SQL = $resultadoSQL->fetch_assoc();
     $fechaInicio = $row_SQL['fecha_entrega'];
-    $fechaInicio->format('Y-m-d h:i:s');
-    $intervalo = $fechaInicio->diff($fecha_sistema);
-    $año = $fechaInicio->Y+2;
-    $mes = $fechaInicio->m;
-    $dia = $fechaInicio->d;
-    $fechaFinal = strftime($año.'-'.$mes.'-'.$dia);
+    $fechaCalculo = date_create($fechaInicio);
+    $fechaFinal = date_add($fechaCalculo, date_interval_create_from_date_string("2 years"));
+    $fValido = date_format($fechaFinal,"d-m-Y");
+
+    $intervalo = diasEntreFechas($fecha_sistema, $fechaInicio);
+    
+    $sqlVehiculos = "SELECT * FROM tarjetones WHERE curp='$c'";
+    $resultado_sqlVehiculos = $conn->query($sqlVehiculos);
+    $filasV = $resultado_sqlVehiculos->num_rows;
+    
+    if ($filasV > 0){
+        while ($rowV = $resultado_sqlVehiculos->fetch_assoc()){
+            $datos[] = array('marca'=>$rowV['vehiculo_marca'],'modelo'=>$rowV['vehiculo_modelo'],'placas'=>$rowV['no_placa']);
+        }
+    }
+    else {
+        $datos = 'Sin datos';
+    }
 
     if ($intervalo < 720){
         $validacion = 1;
+        
+        echo json_encode(array(
+            'success'=>1,
+            'numExpediente'=>$row_SQL['numExpediente'],
+            'fechaIncio'=>$fechaInicio,
+            'fechaFinal'=>$fValido,
+            'datos'=>$datos
+        ));
     }
     else if ($intervalo > 720){
         $validacion = 0;
+        echo json_encode(array(
+            'success'=>2,
+            'fechaInicio'=>$fechaInicio,
+            'fechaFinal'=>$fechaFinal
+        ));
     }
-
-    echo json_encode(array(
-        'success'=>1,
-        'numExpediente'=>$row_SQL['numExpediente'],
-        'validacion'=>$validacion,
-        'fechaFinal'=>$fechaFinal
-    ));
 }
-
+function diasEntreFechas($fecha_sistema, $fechaInicio){
+    return ((strtotime($fecha_sistema)-strtotime($fechaInicio))/86400);
+}
 ?>

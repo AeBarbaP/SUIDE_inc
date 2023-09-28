@@ -88,33 +88,20 @@ function abrirCamara(){
               }
               else if (jsonData.success == "1")
               {
-                  // html
+                var jsonData = JSON.parse(JSON.stringify(response));  
+                
                   document.getElementById('textQR').value="";
-                  $.ajax({
-                    type:"POST",
-                    url:"prcd/datos_checkin.php",
-                    data:{
-                      c:c,
-                      evento:evento
-                    },
-                    dataType: "html",
-                    async:true,
-                    cache: false,
-                      success: function(response)
-                      {
-                        $("#checkDiv").html(response);
-                      }
-                    });  
-                  // html
-
+                  /* array.forEach(jsonData.datos => {
+                    
+                  }); */
                   // location.href = 'my_profile.php';
                   let timerInterval
                   Swal.fire({
                       icon: 'success',
-                      title: 'Usuario correcto',
-                      text: 'Credenciales correctas',
+                      title: 'Vigente',
+                      html: '<b>Tarjetón vigente</b><br>Número Expediente:'+jsonData.numExpediente+'<br>Vigente hasta:'+jsonData.fechaFinal+'<br>',
                       footer: 'Smart-Event | 2023',
-                      timer: 2000,
+                      timer: 10000,
                     timerProgressBar: true,
                     didOpen: () => {
                       Swal.showLoading()
