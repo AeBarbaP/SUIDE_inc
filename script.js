@@ -88,37 +88,52 @@ function abrirCamara(){
               }
               else if (jsonData.success == "1")
               {
-                var jsonData = JSON.parse(JSON.stringify(response));  
+                var jsonData = JSON.parse(JSON.stringify(response));
+                var datos = jsonData.datos;
+                document.getElementById('textQR').value="";
+                //var vehiculo = new Array();
+
+                /* var vehiculo = [
+                  vehiculo1=
+                ] */
                 
-                  document.getElementById('textQR').value="";
-                  /* array.forEach(jsonData.datos => {
-                    
-                  }); */
-                  // location.href = 'my_profile.php';
-                  let timerInterval
-                  Swal.fire({
-                      icon: 'success',
-                      title: 'Vigente',
-                      html: '<b>Tarjetón vigente</b><br>Número Expediente:'+jsonData.numExpediente+'<br>Vigente hasta:'+jsonData.fechaFinal+'<br>',
-                      footer: 'Smart-Event | 2023',
-                      timer: 10000,
-                    timerProgressBar: true,
-                    didOpen: () => {
-                      Swal.showLoading()
-                      const b = Swal.getHtmlContainer().querySelector('b')
-                      timerInterval = setInterval(() => {
-                        b.textContent = Swal.getTimerLeft()
-                      }, 100)
-                    },
-                    willClose: () => {
-                      clearInterval(timerInterval)
-                    }
-                  }).then((result) => {
-                    /* Read more about handling dismissals below */
-                    if (result.dismiss === Swal.DismissReason.timer) {
-                      console.log('Cerrara el contador de tiempo')
-                    }
-                  });
+                datos.forEach(function(vehiculos,i){
+                  console.log('Vehiculo '+i+' placa '+datos.no_placa);
+                })
+                
+                /* $.each(datos, function(key,val) {
+                  vehiculo.push(val.curp);
+                  marca.push(val.modelo[key]);
+                  marca.push(val.placas[key]);
+                  key++;
+                })
+                console.log(vehiculo); */
+              
+                // location.href = 'my_profile.php';
+                let timerInterval
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Vigente',
+                    html: '<b>Tarjetón vigente</b><br>Número Expediente:'+jsonData.numExpediente+'<br>Vigente hasta:'+jsonData.fechaFinal+'<br>',
+                    footer: 'Smart-Event | 2023',
+                    timer: 10000,
+                  timerProgressBar: true,
+                  didOpen: () => {
+                    Swal.showLoading()
+                    const b = Swal.getHtmlContainer().querySelector('b')
+                    timerInterval = setInterval(() => {
+                      b.textContent = Swal.getTimerLeft()
+                    }, 100)
+                  },
+                  willClose: () => {
+                    clearInterval(timerInterval)
+                  }
+                }).then((result) => {
+                  /* Read more about handling dismissals below */
+                  if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log('Cerrara el contador de tiempo')
+                  }
+                });
               }
               
         }           
@@ -129,7 +144,7 @@ function abrirCamara(){
 
       $('#botonCerrar').click(function () { 
         scanner.stop();
-        document.getElementById("imagenFCA").hidden = false; 
+        document.getElementById("imagenLogo").hidden = false; 
         document.getElementById("preview").hidden = true; 
       });
       // $('body').unload(function () { 

@@ -17,13 +17,14 @@ if ($filas == 0){
         'success'=>0
     ));
 }
-else if ($filas == 1){
+else if ($filas > 0){
     $fechaO = date_create($fecha_sistema);
     $row_SQL = $resultadoSQL->fetch_assoc();
     $fechaInicio = $row_SQL['fecha_entrega'];
     $fechaCalculo = date_create($fechaInicio);
     $fechaFinal = date_add($fechaCalculo, date_interval_create_from_date_string("2 years"));
     $fValido = date_format($fechaFinal,"d-m-Y");
+    $numExpediente = $row_SQL['numExpediente'];
 
     $intervalo = diasEntreFechas($fecha_sistema, $fechaInicio);
     
@@ -31,21 +32,19 @@ else if ($filas == 1){
     $resultado_sqlVehiculos = $conn->query($sqlVehiculos);
     $filasV = $resultado_sqlVehiculos->num_rows;
     
-    if ($filasV > 0){
-        while ($rowV = $resultado_sqlVehiculos->fetch_assoc()){
-            $datos[] = array('marca'=>$rowV['vehiculo_marca'],'modelo'=>$rowV['vehiculo_modelo'],'placas'=>$rowV['no_placa']);
-        }
+    while ($row_SQL2 = $resultado_sqlVehiculos->fetch_assoc()){
+        $datos = array(
+            'vehiculo'=> $row_SQL2
+        );
     }
-    else {
-        $datos = 'Sin datos';
-    }
+    
 
     if ($intervalo < 720){
         $validacion = 1;
         
         echo json_encode(array(
             'success'=>1,
-            'numExpediente'=>$row_SQL['numExpediente'],
+            'numExpediente'=>$numExpediente,
             'fechaIncio'=>$fechaInicio,
             'fechaFinal'=>$fValido,
             'datos'=>$datos

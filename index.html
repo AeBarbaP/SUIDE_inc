@@ -148,17 +148,18 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Validar QR</h5>
+              <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Validar Tarjetón</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <form action="#" id="form2"><!--form-->
                 <div class="row">
                   <p><input type="text" name="text" id="textQR" readonly="" class="form-control"></p>
-                  <div class="col-6 text-start mt-1">
-                    <p><button class="btn btn-primary" type="button" onclick="abrirCamara()"><i class="bi bi-qr-code-scan"></i> Escanear</button></p>
+                  <div class="col-8 text-start mt-1">
+                    <button class="btn btn-primary" type="button" onclick="abrirCamara()"><i class="bi bi-qr-code-scan"></i> Escanear</button>
+                    <button class="btn btn-danger"  id="botonCerrar"><i class="bi bi-qr-code"></i> Cerrar Cámara</button>
                   </div>
-                  <div class="col-6 mt-1 text-end">
+                  <div class="col-4 mt-1 text-end">
                     <p>
                       <select name="cameraCanje" class="form-select w-100">
                         <option value="1"><i class="bi bi-camera-video-fill"></i> Frontal Cam</option>
