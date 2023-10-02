@@ -33,7 +33,7 @@ else if ($filas > 0){
     $filasV = $resultado_sqlVehiculos->num_rows;
     
     while ($row_SQL2 = $resultado_sqlVehiculos->fetch_assoc()){
-        $datos = array(
+        $datos[] = array(
             'vehiculo'=> $row_SQL2
         );
     }

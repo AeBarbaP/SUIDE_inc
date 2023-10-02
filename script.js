@@ -97,9 +97,20 @@ function abrirCamara(){
                   vehiculo1=
                 ] */
                 
-                datos.forEach(function(vehiculos,i){
-                  console.log('Vehiculo '+i+' placa '+datos.no_placa);
-                })
+                /* datos.forEach(function(vehiculos,i){
+                  console.log('Vehiculo '+i+' placa '+vehiculos.no_placa);
+                }); */
+                
+                $.each(datos, function(key,val){
+                  console.log('Vehiculo '+key+' placa '+val.vehiculo.no_placa+' '+val.vehiculo.vehiculo_modelo);
+                  var htmlVehiculos = "<li>"+val.vehiculo.no_placa+" "+val.vehiculo.vehiculo_modelo+"</li>";
+                  //let htmlVehiculos = new Array(val.vehiculo.no_placa,val.vehiculo.vehiculo_modelo).toString();
+                  /* let htmlVehiculos2 = new Array(val.vehiculo.no_placa+' '+val.vehiculo.vehiculo_modelo);
+                  htmlVehiculos2.toString(); */
+                  
+                  document.getElementById('pruebaInner').innerHTML += '<li>Vehiculo '+key+' placa '+val.vehiculo.no_placa+' '+val.vehiculo.vehiculo_modelo+'</li>';
+                });
+                //console.log(htmlVehiculos2);
                 
                 /* $.each(datos, function(key,val) {
                   vehiculo.push(val.curp);
@@ -111,10 +122,11 @@ function abrirCamara(){
               
                 // location.href = 'my_profile.php';
                 let timerInterval
+                var texto = document.getElementById('pruebaInner').innerText;
                 Swal.fire({
                     icon: 'success',
                     title: 'Vigente',
-                    html: '<b>Tarjetón vigente</b><br>Número Expediente:'+jsonData.numExpediente+'<br>Vigente hasta:'+jsonData.fechaFinal+'<br>',
+                    html: '<b>Tarjetón vigente</b><br>Número Expediente:'+jsonData.numExpediente+'<br>Vigente hasta:'+jsonData.fechaFinal+'<br><ul id="listado">'+texto+'</ul>',
                     footer: 'Smart-Event | 2023',
                     timer: 10000,
                   timerProgressBar: true,
