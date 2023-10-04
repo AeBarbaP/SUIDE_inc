@@ -1,6 +1,6 @@
 //   abrir la cámara
 function abrirCamara(){
-
+  
   document.getElementById("imagenLogo").hidden = true;  
   document.getElementById("preview").hidden = false;  
   let scanner = new Instascan.Scanner({video:document.getElementById('preview') });
@@ -34,7 +34,6 @@ function abrirCamara(){
 
       // code front-back camera
       } else {
-        // console.error('No cameras found.');
         alert("No se encontró cámara");
       }
     }).catch(function (e){
@@ -55,7 +54,6 @@ function abrirCamara(){
         cache: false,
           success: function(response)
           {
-              // var jsonData = JSON.parse(response);
               var jsonData = JSON.parse(JSON.stringify(response));
 
               // user is logged in successfully in the back-end
@@ -63,6 +61,7 @@ function abrirCamara(){
               if (jsonData.success == "0")
               {
                 let timerInterval
+                
                 Swal.fire({
                   icon: 'warning',
                   title: 'No se encontró el registro',
@@ -79,6 +78,7 @@ function abrirCamara(){
                   willClose: () => {
                     clearInterval(timerInterval)
                   }
+                  
                 }).then((result) => {
                   /* Read more about handling dismissals below */
                   if (result.dismiss === Swal.DismissReason.timer) {
@@ -91,44 +91,21 @@ function abrirCamara(){
                 var jsonData = JSON.parse(JSON.stringify(response));
                 var datos = jsonData.datos;
                 document.getElementById('textQR').value="";
-                //var vehiculo = new Array();
-
-                /* var vehiculo = [
-                  vehiculo1=
-                ] */
-                
-                /* datos.forEach(function(vehiculos,i){
-                  console.log('Vehiculo '+i+' placa '+vehiculos.no_placa);
-                }); */
                 
                 $.each(datos, function(key,val){
                   console.log('Vehiculo '+key+' placa '+val.vehiculo.no_placa+' '+val.vehiculo.vehiculo_modelo);
-                  var htmlVehiculos = "<li>"+val.vehiculo.no_placa+" "+val.vehiculo.vehiculo_modelo+"</li>";
-                  //let htmlVehiculos = new Array(val.vehiculo.no_placa,val.vehiculo.vehiculo_modelo).toString();
-                  /* let htmlVehiculos2 = new Array(val.vehiculo.no_placa+' '+val.vehiculo.vehiculo_modelo);
-                  htmlVehiculos2.toString(); */
-                  
-                  document.getElementById('pruebaInner').innerHTML += '<li>Vehiculo '+key+' placa '+val.vehiculo.no_placa+' '+val.vehiculo.vehiculo_modelo+'</li>';
+                  document.getElementById('pruebaInner').innerHTML += val.vehiculo.vehiculo_modelo+' - '+val.vehiculo.no_placa+' <br>';
                 });
-                //console.log(htmlVehiculos2);
                 
-                /* $.each(datos, function(key,val) {
-                  vehiculo.push(val.curp);
-                  marca.push(val.modelo[key]);
-                  marca.push(val.placas[key]);
-                  key++;
-                })
-                console.log(vehiculo); */
               
-                // location.href = 'my_profile.php';
                 let timerInterval
-                var texto = document.getElementById('pruebaInner').innerText;
+                var texto = document.getElementById('pruebaInner').innerHTML;
                 Swal.fire({
                     icon: 'success',
                     title: 'Vigente',
-                    html: '<b>Tarjetón vigente</b><br>Número Expediente:'+jsonData.numExpediente+'<br>Vigente hasta:'+jsonData.fechaFinal+'<br><ul id="listado">'+texto+'</ul>',
-                    footer: 'Smart-Event | 2023',
-                    timer: 10000,
+                    html: '<b>Tarjetón vigente</b><br><font size="+3">Expediente: '+jsonData.numExpediente+'</font><br><br><b>Vigente hasta:'+jsonData.fechaFinal+'<br>Vehiculos Registrados:<br></br><span id="listado">'+texto+'</span>',
+                    footer: 'SUIDEV | 2023',
+                    timer: 30000,
                   timerProgressBar: true,
                   didOpen: () => {
                     Swal.showLoading()
@@ -139,10 +116,14 @@ function abrirCamara(){
                   },
                   willClose: () => {
                     clearInterval(timerInterval)
+                    document.getElementById('pruebaInner').innerHTML = "";
+                    document.getElementById('listado').innerHTML = "";
                   }
                 }).then((result) => {
                   /* Read more about handling dismissals below */
                   if (result.dismiss === Swal.DismissReason.timer) {
+                    document.getElementById('pruebaInner').innerHTML = "";
+                    document.getElementById('listado').innerHTML = "";
                     console.log('Cerrara el contador de tiempo')
                   }
                 });
@@ -150,8 +131,7 @@ function abrirCamara(){
               
         }           
         });
-        // event.preventDefault();
-      // scanner.stop();
+
       });
 
       $('#botonCerrar').click(function () { 
@@ -159,9 +139,7 @@ function abrirCamara(){
         document.getElementById("imagenLogo").hidden = false; 
         document.getElementById("preview").hidden = true; 
       });
-      // $('body').unload(function () { 
-      //   scanner.stop();
-      // });
+
 
   }
 

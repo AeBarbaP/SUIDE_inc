@@ -5,7 +5,7 @@ $empleado = $_POST['empleado'];
 /* header("content-type: image/jpeg"); */
 
 // Detalles del expediente
-$QueryEmpleado = "SELECT * FROM empleados WHERE numEmpleado LIKE '%$empleado%' OR nombre LIKE '%$empleado%' OR aPaterno LIKE '%$empleado%' OR aMaterno LIKE '%$empleado%'";
+$QueryFolio = "SELECT * FROM tarjetones WHERE numEmpleado LIKE '%$empleado%' OR nombre LIKE '%$empleado%' OR aPaterno LIKE '%$empleado%' OR aMaterno LIKE '%$empleado%'";
 $resultado_QueryEmpleado = $conn->query($QueryEmpleado);
 
 if ($resultado_QueryEmpleado->num_rows > 0){
@@ -28,11 +28,11 @@ if ($resultado_QueryEmpleado->num_rows > 0){
         <div class="col-md-4">
         
             <div class="container">
-            <div class="group">
-            <img src="img/no_profile.png" alt="" width="100%" class="crop-image" id="crop-image">
-            <input type="file" name="input-file" id="input-file" accept=".png,.jpg,.jpeg" >
-            <label for="input-file" class="label-file">Haz click aquí para subir una imagen</label>
-            </div>
+                <div class="group">
+                    <img src="img/no_profile.png" alt="" width="100%" class="crop-image" id="crop-image">
+                    <input type="file" name="input-file" id="input-file" accept=".png,.jpg,.jpeg" >
+                    <label for="input-file" class="label-file">Haz click aquí para subir una imagen</label>
+                </div>
             </div>
             <button class="btn-primary" type="button" id="inputfile">guardar foto</button>
 

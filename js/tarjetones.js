@@ -197,11 +197,11 @@ function revisarTarjeton(){
 
 function folioTarjetonPositivo(){
         var folioT = document.getElementById("folioTarjeton").value;
-        var vigenciaT = document.getElementById("folioTarjeton").value;
+        /* var vigenciaT = document.getElementById("").value; */
         document.getElementById("folioTPerm").disabled = true;
         document.getElementById("vigenciaPerm").disabled = true;
         document.getElementById("folioTPerm").value = folioT;
-        document.getElementById("vigenciaTarjeton").value = vigenciaT;
+        /* document.getElementById("vigenciaTarjeton").value = vigenciaT; */
         //document.getElementById("textoTarjeton").innerHTML = "<small class='text-danger'>Folio no disponible</small>";
 
 }
@@ -251,6 +251,76 @@ function borrarVehiculoDB(){
             
             if (success == 1) {
                 mostrarTablaVehiculos();
+            } else if (success == 0){
+                console.log(jsonData.error);
+            }
+        }
+
+    });
+}
+
+function editarVehiculo(){
+    var idV = document.getElementById('idVehiculoT').value;
+    var folioDV = document.getElementById('folioDT').value;
+    
+    $.ajax({
+        type: "POST",
+        url: 'prcd/editarVehiculo.php',
+        dataType:'json',
+        data: {
+            idV:idV,
+            folioDV:folioDV
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            
+            if (success == 1) {
+                document.getElementById('marcaPerm2').value = jsonData.marca;
+                document.getElementById('modeloPerm2').value = jsonData.modelo;
+                document.getElementById('annioPerm2').value = jsonData.annio;
+                document.getElementById('placasPerm2').value = jsonData.placa;
+                document.getElementById('seriePerm2').value = jsonData.serie;
+                document.getElementById('AutoSeguroInput').value = jsonData.autoSeguro;
+
+            } else if (success == 0){
+                console.log(jsonData.error);
+            }
+        }
+
+    });
+}
+
+function updateVehiculo(){
+    var idV = document.getElementById('idVehiculoT').value;
+    var folioDV = document.getElementById('folioDT').value;
+    var marca =document.getElementById('marcaPerm2').value;
+    var modelo =document.getElementById('modeloPerm2').value ;
+    var annio =document.getElementById('annioPerm2').value;
+    var placa =document.getElementById('placasPerm2').value;
+    var serie =document.getElementById('seriePerm2').value;
+    var aseguro =document.getElementById('AutoSeguroInput').value;
+    $.ajax({
+        type: "POST",
+        url: 'prcd/actualizarVehiculo.php',
+        dataType:'json',
+        data: {
+            idV:idV,
+            folioDV:folioDV,
+            marca:marca,
+            modelo:modelo,
+            annio:annio,
+            placa:placa,
+            serie:serie,
+            aseguro:aseguro
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            
+            if (success == 1) {
+                alert('Vehiculo actualizado!');
+
             } else if (success == 0){
                 console.log(jsonData.error);
             }

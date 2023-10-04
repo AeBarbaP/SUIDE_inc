@@ -12,6 +12,10 @@ $SQL = "SELECT * FROM tarjetones WHERE curp= '$c'";
 $resultadoSQL = $conn->query($SQL);
 $filas = $resultadoSQL->num_rows;
 
+$sql2 = "SELECT * FROM datos_generales WHERE curp='$c'";
+$resultadosql2 = $conn->query($sql2);
+$rowsql2 = $resultadosql2->fetch_assoc();
+
 if ($filas == 0){
     echo json_encode(array(
         'success'=>0
@@ -24,7 +28,7 @@ else if ($filas > 0){
     $fechaCalculo = date_create($fechaInicio);
     $fechaFinal = date_add($fechaCalculo, date_interval_create_from_date_string("2 years"));
     $fValido = date_format($fechaFinal,"d-m-Y");
-    $numExpediente = $row_SQL['numExpediente'];
+    $numExpediente = $rowsql2['numExpediente'];
 
     $intervalo = diasEntreFechas($fecha_sistema, $fechaInicio);
     
