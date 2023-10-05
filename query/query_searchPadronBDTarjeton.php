@@ -18,6 +18,7 @@ else{
     if($filasTarjeton > 0){
       $rowTarjeton = $resultadoTarjeton->fetch_assoc();
       $tarjeton = $rowTarjeton['folio_tarjeton'];
+      $vigencia = $rowTarjeton['vigencia'];
       echo '
       <script>
         folioTarjetonPositivo();
@@ -78,7 +79,8 @@ else{
           <br>
           <label class="card-text">Tarjetón asignado: </label><label id="tarjetonShows">'.$tarjeton.'</label>
           
-          <input type="text" id="folioTarjeton" value="'.$tarjeton.'" hidden> 
+          <input type="text" id="folioTarjeton" value="'.$tarjeton.'" hidden>
+          <input type="text" id="vigenciaTarjeton" value="'.$vigencia.'" hidden>
           <input type="text" id="numExpediente1" value="'.$folio.'" hidden> 
           <input type="text" id="curpTarjeton" value="'.$curpShow.'" hidden> 
         </div>

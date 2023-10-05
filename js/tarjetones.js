@@ -107,22 +107,22 @@ function codigoQR(concatenado,expediente){
     var canvas = document.querySelector("#codigo-qr canvas");
 
     // Crear un nuevo elemento de imagen para el logo
-    var logo = new Image();
-    logo.src = "imagen.png";
+    //var logo = new Image();
+    //logo.src = "imagen.png";
 
     // Esperar a que el logo se cargue antes de dibujarlo en el canvas
-    logo.onload = function() {
+    //logo.onload = function() {
         // Calcular la posición del logo en el centro del código QR
-        var logoSize = qrcode._htOption.width * 0.2; // Tamaño relativo del logo (20%)
-        var xPos = (canvas.width - logoSize) / 2;
-        var yPos = (canvas.height - logoSize) / 2;
+        //var logoSize = qrcode._htOption.width * 0.2; // Tamaño relativo del logo (20%)
+        //var xPos = (canvas.width - logoSize) / 2;
+        //var yPos = (canvas.height - logoSize) / 2;
 
         // Dibujar el logo en el canvas
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(logo, xPos, yPos, logoSize, logoSize);
-    };
+        //var ctx = canvas.getContext("2d");
+        //ctx.drawImage(logo, xPos, yPos, logoSize, logoSize);
+    //};
 
-    console.log();
+
 }
 
 function limpiarInputsVehiculo(){
@@ -197,11 +197,11 @@ function revisarTarjeton(){
 
 function folioTarjetonPositivo(){
         var folioT = document.getElementById("folioTarjeton").value;
-        /* var vigenciaT = document.getElementById("").value; */
+        var vigenciaT = document.getElementById("vigenciaTarjeton").value;
         document.getElementById("folioTPerm").disabled = true;
         document.getElementById("vigenciaPerm").disabled = true;
         document.getElementById("folioTPerm").value = folioT;
-        /* document.getElementById("vigenciaTarjeton").value = vigenciaT; */
+        document.getElementById("vigenciaPerm").value = vigenciaT;
         //document.getElementById("textoTarjeton").innerHTML = "<small class='text-danger'>Folio no disponible</small>";
 
 }
@@ -213,7 +213,9 @@ function folioTarjetonNegativo(){
 
 }
 
-function borrarVehiculo(){
+function borrarVehiculo(id,folio){
+    var id = id;
+    var folio = folio;
 
     Swal.fire({
     title: 'Desea eliminar el vehículo?',
@@ -224,7 +226,8 @@ function borrarVehiculo(){
     }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
-        borrarVehiculoDB();
+        borrarVehiculoDB(id,folio);
+        
         Swal.fire('Vehículo eliminado!', '', 'success')
     } else if (result.isDenied) {
         Swal.fire('No se eliminó el vehículo', '', 'info')
@@ -232,9 +235,9 @@ function borrarVehiculo(){
     })
 }
 
-function borrarVehiculoDB(){
-    var idV = document.getElementById('idVehiculoT').value;
-    var folioDV = document.getElementById('folioDT').value;
+function borrarVehiculoDB(id,folio){
+    var idV = id;
+    var folioDV = folio;
 
     
     $.ajax({
@@ -259,9 +262,9 @@ function borrarVehiculoDB(){
     });
 }
 
-function editarVehiculo(){
-    var idV = document.getElementById('idVehiculoT').value;
-    var folioDV = document.getElementById('folioDT').value;
+function editarVehiculo(id){
+    var idV = id;
+    var folioDV = document.getElementById('folioDT'+idV).value;
     
     $.ajax({
         type: "POST",
@@ -282,6 +285,8 @@ function editarVehiculo(){
                 document.getElementById('placasPerm2').value = jsonData.placa;
                 document.getElementById('seriePerm2').value = jsonData.serie;
                 document.getElementById('AutoSeguroInput').value = jsonData.autoSeguro;
+                document.getElementById('folioDT').value = folioDV;
+                document.getElementById('idVe').value = idV;
 
             } else if (success == 0){
                 console.log(jsonData.error);
@@ -292,7 +297,7 @@ function editarVehiculo(){
 }
 
 function updateVehiculo(){
-    var idV = document.getElementById('idVehiculoT').value;
+    var idV = document.getElementById('idVe').value;
     var folioDV = document.getElementById('folioDT').value;
     var marca =document.getElementById('marcaPerm2').value;
     var modelo =document.getElementById('modeloPerm2').value ;
@@ -317,8 +322,9 @@ function updateVehiculo(){
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));
             var success = jsonData.success;
-            
+            console.log(idV);
             if (success == 1) {
+                mostrarTablaVehiculos();
                 alert('Vehiculo actualizado!');
 
             } else if (success == 0){

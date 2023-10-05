@@ -535,11 +535,13 @@ include('prcd/qc/qc.php');
                   </div>
                   <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroInput" disabled>
                 </div>  
+                <input type="text" id="folioDT" hidden>
+                <input type="text" id="idVe" hidden>
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Close</button>
-              <button type="button" class="btn btn-primary">Guardar</button>
+              <button type="button" onclick="updateVehiculo()" class="btn btn-primary">Guardar</button>
             </div>
           </div>
         </div>

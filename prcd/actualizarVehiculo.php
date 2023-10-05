@@ -2,8 +2,8 @@
 
     include('../prcd/qc/qc.php');
 
-    date_default_timezone_set('America/Mexico_City');
-    setlocale(LC_TIME, 'es_MX.UTF-8');
+    /* date_default_timezone_set('America/Mexico_City');
+    setlocale(LC_TIME, 'es_MX.UTF-8'); */
     
     $id = $_POST['idV'];
     $folioDV = $_POST['folioDV'];
