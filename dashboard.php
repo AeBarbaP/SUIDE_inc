@@ -398,7 +398,7 @@ include('prcd/qc/qc.php');
                     <!-- Termina modal anidado para vista previa de credencial -->
                     <!-- Termina Modal para generar credencial -->
 
-                    <!-- Inicia Modal para generar tarjeton -->
+      <!-- Inicia Modal para generar tarjeton -->
 
       <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="tarjetongen" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -454,7 +454,7 @@ include('prcd/qc/qc.php');
                             <option value="2190">6 años</option>
                           </select>
                         </div>
-                        <div class="form-text mb-2" id="basic-addon4"><a href="#" class="ms-2 link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Reemplazar tarjetón asignado...</a></div>
+                        <div class="form-text mb-2" id="basic-addon4"><a href="#" class="ms-2 link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" data-bs-toggle="modal" data-bs-target="#reemplazarTarjeton">Reemplazar tarjetón asignado...</a></div>
                         <!-- <label id="textoTarjeton"></label> -->
                         <div class="col-md-12">
                           <div class="input-group mb-3">
@@ -507,7 +507,7 @@ include('prcd/qc/qc.php');
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualizar Vehículo</h1>
               <button type="button" class="btn-close" aria-label="Close" data-bs-toggle="modal" data-bs-target="#tarjetongen"></button>
             </div>
             <div class="modal-body">
@@ -549,6 +549,43 @@ include('prcd/qc/qc.php');
       
       <!-- Termina modal para editar información de vehículo en tarjetón de padrón -->
       
+      <!-- Inicia modal para reemplazar tarjetón de padrón asignado-->
+      
+      <div class="modal fade" id="reemplazarTarjeton" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Reemplazar Tarjetón</h1>
+              <button type="button" class="btn-close" aria-label="Close" data-bs-toggle="modal" data-bs-target="#tarjetongen"></button>
+            </div>
+            <div class="modal-body">
+              <label>Folio Tarjetón:</label>
+              <div class="input-group mt-2">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-123 "></i></span>
+                <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPerm2">
+              </div>
+              <label class="mt-1">Vigencia:</label>
+              <div class="input-group mt-2">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar4-range me-2"></i></span>
+                <select class="form-select" id="vigenciaPerm2" aria-label="Default select example">
+                  <option selected>Selecciona...</option>
+                  <option value="730">2 años</option>
+                  <option value="2190">6 años</option>
+                </select>
+              </div>
+              <input type="text" id="folioDT" hidden>
+              <input type="text" id="idVe" hidden>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Close</button>
+              <button type="button" onclick="reemplazaTarjeton()" class="btn btn-primary">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Termina modal para editar folio de tarjetón de padrón asignado -->
+      
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
@@ -578,10 +615,10 @@ include('prcd/qc/qc.php');
 
       <!-- Termina modal para imprimir qr -->
 
-              <!-- Inicia impresion modal -->
 
 
-      
+<!-- Inicia impresion modal -->
+
 <script>
 $(document).ready(function () {
     $('#printButton').on('click', function (event) {

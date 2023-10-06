@@ -334,3 +334,41 @@ function updateVehiculo(){
 
     });
 }
+
+function reemplazaTarjeton(){
+    var folioDV = document.getElementById('folioDT').value;
+    var marca =document.getElementById('marcaPerm2').value;
+    var modelo =document.getElementById('modeloPerm2').value ;
+    var annio =document.getElementById('annioPerm2').value;
+    var placa =document.getElementById('placasPerm2').value;
+    var serie =document.getElementById('seriePerm2').value;
+    var aseguro =document.getElementById('AutoSeguroInput').value;
+    $.ajax({
+        type: "POST",
+        url: 'prcd/actualizarVehiculo.php',
+        dataType:'json',
+        data: {
+            idV:idV,
+            folioDV:folioDV,
+            marca:marca,
+            modelo:modelo,
+            annio:annio,
+            placa:placa,
+            serie:serie,
+            aseguro:aseguro
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            console.log(idV);
+            if (success == 1) {
+                mostrarTablaVehiculos();
+                alert('Vehiculo actualizado!');
+
+            } else if (success == 0){
+                console.log(jsonData.error);
+            }
+        }
+
+    });
+}

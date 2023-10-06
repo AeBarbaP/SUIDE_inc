@@ -1,5 +1,6 @@
 <?php
 include('qc/qc.php');
+include('qc/qc2.php');
 
 date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
@@ -12,8 +13,8 @@ $SQL = "SELECT * FROM tarjetones WHERE curp= '$c'";
 $resultadoSQL = $conn->query($SQL);
 $filas = $resultadoSQL->num_rows;
 
-$sql2 = "SELECT * FROM datos_generales WHERE curp='$c'";
-$resultadosql2 = $conn->query($sql2);
+$sql2 = "SELECT * FROM Expedientes WHERE curp='$c'";
+$resultadosql2 = $conn2->query($sql2);
 $rowsql2 = $resultadosql2->fetch_assoc();
 
 if ($filas == 0){
@@ -28,7 +29,7 @@ else if ($filas > 0){
     $fechaCalculo = date_create($fechaInicio);
     $fechaFinal = date_add($fechaCalculo, date_interval_create_from_date_string("2 years"));
     $fValido = date_format($fechaFinal,"d-m-Y");
-    $numExpediente = $rowsql2['numExpediente'];
+    $numExpediente = $rowsql2['folio'];
 
     $intervalo = diasEntreFechas($fecha_sistema, $fechaInicio);
     
