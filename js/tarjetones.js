@@ -208,7 +208,6 @@ function folioTarjetonPositivo(){
 function folioTarjetonNegativo(){
     document.getElementById("folioTPerm").disabled = false;
     document.getElementById("folioTPerm").value = "";
-    
     //document.getElementById("textoTarjeton").innerHTML = "<small class='text-primary'>Folio disponible</small>";
 
 }
