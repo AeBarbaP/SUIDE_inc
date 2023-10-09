@@ -446,7 +446,7 @@ include('prcd/qc/qc.php');
                         </div>
                         <div class="input-group mb-1">
                           <span class="input-group-text" id="basic-addon1">Folio Tarjetón</span>
-                          <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPerm">
+                          <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" onclick="" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPerm">
                           <span class="input-group-text" id="basic-addon1">Vigencia</span>
                           <select class="form-select" id="vigenciaPerm" aria-label="Default select example">
                             <option selected>Selecciona...</option>
@@ -454,8 +454,8 @@ include('prcd/qc/qc.php');
                             <option value="2190">6 años</option>
                           </select>
                         </div>
-                        <div class="form-text mb-2" id="basic-addon4"><a href="#" class="ms-2 link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" data-bs-toggle="modal" data-bs-target="#reemplazarTarjeton">Reemplazar tarjetón asignado...</a></div>
-                        <!-- <label id="textoTarjeton"></label> -->
+                        <div class="form-text mb-2" id="basic-addon4"><a href="#" class="ms-2 link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" data-bs-toggle="modal" data-bs-target="#reemplazarTarjeton" onclick="editarTarjeton()">Reemplazar tarjetón asignado...</a></div>
+                        <label id="textoTarjeton"></label>
                         <div class="col-md-12">
                           <div class="input-group mb-3">
                             <span class="input-group-text">Vehículo extranjero</span>
@@ -578,7 +578,7 @@ include('prcd/qc/qc.php');
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Close</button>
-              <button type="button" onclick="reemplazaTarjeton()" class="btn btn-primary">Guardar</button>
+              <button type="button" onclick="editarTarjeton()" class="btn btn-primary">Guardar</button>
             </div>
           </div>
         </div>

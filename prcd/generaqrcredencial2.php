@@ -21,7 +21,7 @@ $tipoSangre = $_POST['tipoSangre'];
 $alergias = $_POST['alergias'];
 $cadena = $_POST['cadena'];
 $apellidosConcat = $apellidoPaterno.' '.$apellidoMaterno; 
-$concatNumIntNumCasa = $numeroCasa.'-'.$numeroInterior;
+$concatNumIntNumCasa = $numeroCasa.$numeroInterior;
 
 $alergiasNum = strlen($alergias);
 
@@ -85,8 +85,8 @@ if ($direccionMulti <= 25){
 	$this->Ln(30);
 }
 else{
-	$this->Ln(32);
-	$this->SetFont('Arial','B',25);
+	$this->Ln(15);
+	$this->SetFont('Arial','B',24);
 	$this->Cell(480,5,'','','','L','');
 	$this->MultiCell(350,24,utf8_decode($direccion),'','L','');
 }

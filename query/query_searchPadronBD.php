@@ -44,9 +44,29 @@ header("content-type: image/jpeg");
       $apellidoPaterno = $row_sql_expediente['apellidoPaterno'];
       $apellidoMaterno = $row_sql_expediente['apellidoMaterno'];
       $curp = $row_sql_expediente['curp'];
-      $direccion = $row_QueryDireccion['direccion'];
+      $tipoVialidad = $row_QueryDireccion['idCatTipoVialidad'];
+      
+      $queryVialidad = "SELECT * FROM cattipovialidades WHERE id = '$tipoVialidad'";
+      $resultado_QueryVialidades = $conn2->query($queryVialidad);
+      $row_QueryVialidad = $resultado_QueryVialidades->fetch_assoc();
+
+      if ($row_QueryVialidad['id'] == 22 || $row_QueryVialidad['id'] == 5){
+        $vialidad = "";
+      }
+      else {
+        $vialidad = $row_QueryVialidad['nombreVialidad'].' ';
+      }
+
+      $direccion = $vialidad.$row_QueryDireccion['direccion'];
       $numeroCasa = $row_QueryDireccion['numeroCasa'];
-      $numeroInterior = $row_QueryDireccion['numeroInterior'];
+
+      if ($row_QueryDireccion['numeroInterior'] == "S/N" || $row_QueryDireccion['numeroInterior'] == "" || $row_QueryDireccion['numeroInterior'] == null){
+        $numeroInterior = "";
+      }
+      else{
+        $numeroInterior = "-".$row_QueryDireccion['numeroInterior'];
+      }
+
       $colonia = $row_QueryDireccion['colonia'];
       $municipio = $row_QueryDireccion['idCatMunicipio'];
       $localidad = $row_QueryDireccion['idCatLocalidad'];

@@ -27,11 +27,12 @@ else{
     }
     else{
       $tarjeton = "No hay tarjetón registrado";
-/*       echo '
-      <script>
-      folioTarjetonNegativo();
-      </script>
-      '; */
+      $vigencia = "";
+      echo '
+        <script>
+          folioTarjetonNegativo();
+        </script>
+      ';
     }
 
 

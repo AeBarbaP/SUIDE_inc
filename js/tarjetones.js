@@ -202,13 +202,13 @@ function folioTarjetonPositivo(){
         document.getElementById("vigenciaPerm").disabled = true;
         document.getElementById("folioTPerm").value = folioT;
         document.getElementById("vigenciaPerm").value = vigenciaT;
-        //document.getElementById("textoTarjeton").innerHTML = "<small class='text-danger'>Folio no disponible</small>";
 
 }
 
 function folioTarjetonNegativo(){
     document.getElementById("folioTPerm").disabled = false;
     document.getElementById("folioTPerm").value = "";
+    
     //document.getElementById("textoTarjeton").innerHTML = "<small class='text-primary'>Folio disponible</small>";
 
 }
@@ -335,6 +335,39 @@ function updateVehiculo(){
     });
 }
 
+function editarTarjeton(folio){
+    var folioTV = folio;
+    
+    $.ajax({
+        type: "POST",
+        url: 'prcd/editarVehiculo.php',
+        dataType:'json',
+        data: {
+            idV:idV,
+            folioTV:folioTV
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            
+            if (success == 1) {
+                document.getElementById('marcaPerm2').value = jsonData.marca;
+                document.getElementById('modeloPerm2').value = jsonData.modelo;
+                document.getElementById('annioPerm2').value = jsonData.annio;
+                document.getElementById('placasPerm2').value = jsonData.placa;
+                document.getElementById('seriePerm2').value = jsonData.serie;
+                document.getElementById('AutoSeguroInput').value = jsonData.autoSeguro;
+                document.getElementById('folioDT').value = folioDV;
+                document.getElementById('idVe').value = idV;
+
+            } else if (success == 0){
+                console.log(jsonData.error);
+            }
+        }
+
+    });
+}
+
 function reemplazaTarjeton(){
     var folioDV = document.getElementById('folioDT').value;
     var marca =document.getElementById('marcaPerm2').value;
@@ -345,7 +378,7 @@ function reemplazaTarjeton(){
     var aseguro =document.getElementById('AutoSeguroInput').value;
     $.ajax({
         type: "POST",
-        url: 'prcd/actualizarVehiculo.php',
+        url: 'prcd/cambiarTarjeton.php',
         dataType:'json',
         data: {
             idV:idV,
