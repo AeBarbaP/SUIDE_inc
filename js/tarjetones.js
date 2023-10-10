@@ -187,7 +187,6 @@ function revisarTarjeton(){
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
-            
             document.getElementById('imprimirt').disabled = false;
         }
 
@@ -202,6 +201,12 @@ function folioTarjetonPositivo(){
         document.getElementById("vigenciaPerm").disabled = true;
         document.getElementById("folioTPerm").value = folioT;
         document.getElementById("vigenciaPerm").value = vigenciaT;
+
+}
+function folioTarjetonBloqueado(){
+        document.getElementById("folioTPerm").disabled = true;
+        document.getElementById("vigenciaPerm").disabled = true;
+
 
 }
 
@@ -403,4 +408,27 @@ function reemplazaTarjeton(){
         }
 
     });
+}
+
+function desbloquearInputsT(x){
+    var z = x.length;
+
+    if (z >= 1){
+        document.getElementById('marcaPerm').disabled = false;
+        document.getElementById('modeloPerm').disabled = false;
+        document.getElementById('placasPerm').disabled = false;
+        document.getElementById('annioPerm').disabled = false;
+        document.getElementById('seriePerm').disabled = false;
+        document.getElementById('folioTPerm').disabled = false; 
+        document.getElementById('vigenciaPerm').disabled = false; 
+    }
+    else{
+        document.getElementById('marcaPerm').disabled = true;
+        document.getElementById('modeloPerm').disabled = true;
+        document.getElementById('placasPerm').disabled = true;
+        document.getElementById('annioPerm').disabled = true;
+        document.getElementById('seriePerm').disabled = true;
+        document.getElementById('folioTPerm').disabled = true; 
+        document.getElementById('vigenciaPerm').disabled = true; 
+    }
 }
