@@ -55,7 +55,10 @@ function abrirCamara(){
           success: function(response)
           {
               var jsonData = JSON.parse(JSON.stringify(response));
-
+              scanner.stop();
+              document.getElementById("imagenLogo").hidden = false; 
+              document.getElementById("preview").hidden = true;
+              document.getElementById("textQR").value = "";
               // user is logged in successfully in the back-end
               // let's redirect
               if (jsonData.success == "0")
@@ -64,9 +67,9 @@ function abrirCamara(){
                 
                 Swal.fire({
                   icon: 'warning',
-                  title: 'No se encontró el registro',
-                  html: 'No Válido',
-                  timer: 2000,
+                  title: 'Tarjetón NO Válido',
+                  html: 'No se encontró el registro',
+                  timer: 3500,
                   timerProgressBar: true,
                   didOpen: () => {
                     Swal.showLoading()
