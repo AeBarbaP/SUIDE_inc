@@ -339,15 +339,15 @@ function updateVehiculo(){
     });
 }
 
-function editarTarjeton(folio){
-    var folioTV = folio;
-    
+function datosTarjeton(){
+    var folioTV = document.getElementById('folioTPerm').value;
+    var noExpediente = document.getElementById('ordenExpediente').value;
     $.ajax({
         type: "POST",
-        url: 'prcd/editarVehiculo.php',
+        url: 'prcd/editarFolioTarjeton.php',
         dataType:'json',
         data: {
-            idV:idV,
+            noExpediente:noExpediente,
             folioTV:folioTV
         },
         success: function(data){
@@ -355,15 +355,8 @@ function editarTarjeton(folio){
             var success = jsonData.success;
             
             if (success == 1) {
-                document.getElementById('marcaPerm2').value = jsonData.marca;
-                document.getElementById('modeloPerm2').value = jsonData.modelo;
-                document.getElementById('annioPerm2').value = jsonData.annio;
-                document.getElementById('placasPerm2').value = jsonData.placa;
-                document.getElementById('seriePerm2').value = jsonData.serie;
-                document.getElementById('AutoSeguroInput').value = jsonData.autoSeguro;
-                document.getElementById('folioDT').value = folioDV;
-                document.getElementById('idVe').value = idV;
-
+                document.getElementById('folioTPermC').value = folioTV;
+                document.getElementById('vigenciaPermC').value = jsonData.vigencia;
             } else if (success == 0){
                 console.log(jsonData.error);
             }
@@ -373,34 +366,26 @@ function editarTarjeton(folio){
 }
 
 function reemplazaTarjeton(){
-    var folioDV = document.getElementById('folioDT').value;
-    var marca =document.getElementById('marcaPerm2').value;
-    var modelo =document.getElementById('modeloPerm2').value ;
-    var annio =document.getElementById('annioPerm2').value;
-    var placa =document.getElementById('placasPerm2').value;
-    var serie =document.getElementById('seriePerm2').value;
-    var aseguro =document.getElementById('AutoSeguroInput').value;
+    var folioC = document.getElementById('folioTPermC').value;
+    var vigenciaC = document.getElementById('vigenciaPermC').value;
+    var noExpediente = document.getElementById('ordenExpediente').value;
+    
     $.ajax({
         type: "POST",
         url: 'prcd/cambiarTarjeton.php',
         dataType:'json',
         data: {
-            idV:idV,
-            folioDV:folioDV,
-            marca:marca,
-            modelo:modelo,
-            annio:annio,
-            placa:placa,
-            serie:serie,
-            aseguro:aseguro
+            folioC:folioC,
+            vigenciaC:vigenciaC,
+            noExpediente:noExpediente
         },
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));
             var success = jsonData.success;
-            console.log(idV);
+            
             if (success == 1) {
                 mostrarTablaVehiculos();
-                alert('Vehiculo actualizado!');
+                alert('Tarjetón actualizado!');
 
             } else if (success == 0){
                 console.log(jsonData.error);

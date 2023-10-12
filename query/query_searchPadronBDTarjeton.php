@@ -89,6 +89,7 @@ else{
           <input type="text" id="vigenciaTarjeton" value="'.$vigencia.'" hidden>
           <input type="text" id="numExpediente1" value="'.$folio.'" hidden> 
           <input type="text" id="curpTarjeton" value="'.$curpShow.'" hidden> 
+          <input type="text" id="ordenExpediente" value="'.$expediente.'" hidden> 
         </div>
 
       ';
