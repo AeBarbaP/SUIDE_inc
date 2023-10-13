@@ -405,7 +405,7 @@ function desbloquearInputsT(x){
         document.getElementById('annioPerm').disabled = false;
         document.getElementById('seriePerm').disabled = false;
         document.getElementById('folioTPerm').disabled = false; 
-        document.getElementById('vigenciaPerm').disabled = false; 
+        document.getElementById('vigenciaPerm').disabled = false;
     }
     else{
         document.getElementById('marcaPerm').disabled = true;
@@ -415,5 +415,6 @@ function desbloquearInputsT(x){
         document.getElementById('seriePerm').disabled = true;
         document.getElementById('folioTPerm').disabled = true; 
         document.getElementById('vigenciaPerm').disabled = true; 
+        document.getElementById('vehiculosTabla').innerHTML = "";
     }
 }
