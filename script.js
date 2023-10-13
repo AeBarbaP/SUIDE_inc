@@ -52,8 +52,9 @@ function abrirCamara(){
         dataType: "json",
         async:true,
         cache: false,
-          success: function(response)
-          {
+        success: function(response)
+        {
+            document.getElementById('pruebaInner').innerHTML = "";
               var jsonData = JSON.parse(JSON.stringify(response));
               scanner.stop();
               document.getElementById("imagenLogo").hidden = false; 
@@ -104,6 +105,7 @@ function abrirCamara(){
                 let timerInterval
                 var texto = document.getElementById('pruebaInner').innerHTML;
                 Swal.fire({
+                    
                     icon: 'success',
                     title: 'Vigente',
                     html: '<b>Tarjetón vigente</b><br><font size="+3">Expediente: '+jsonData.numExpediente+'</font><br><br><b>Vigente hasta:'+jsonData.fechaFinal+'<br>Vehiculos Registrados:<br></br><span id="listado">'+texto+'</span>',
