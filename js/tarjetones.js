@@ -243,7 +243,6 @@ function borrarVehiculoDB(id,folio){
     var idV = id;
     var folioDV = folio;
 
-    
     $.ajax({
         type: "POST",
         url: 'prcd/borrarVehiculo.php',
@@ -417,4 +416,50 @@ function desbloquearInputsT(x){
         document.getElementById('vigenciaPerm').disabled = true; 
         document.getElementById('vehiculosTabla').innerHTML = "";
     }
+}
+
+function LOSVehiculo(id,folio){
+    var idV = id;
+    var folioDV = folio;
+    
+    $.ajax({
+        type: "POST",
+        url: 'prcd/conteoTarjetones.php',
+        dataType:'json',
+        data: {
+            idV:idV,
+            folioDV:folioDV
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            
+            if (success == 1) {
+                Swal.fire({
+                    title: 'Estás Segur@?',
+                    html: "Se eliminará el último vehículo registrado y se dará de <b>BAJA</b> definitiva el <b>Tarjetón Asignado</b> al Usuario!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, eliminar!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        borrarVehiculoDB(idV,folioDV);
+                        Swal.fire(
+                            'Borrado!',
+                            'El ÚLTIMO vehículo y el TARJETÓN han sido eliminados.',
+                            'success'
+                        )
+                    }
+                })
+                mostrarTablaVehiculos();
+
+            } else if (success == 2){
+                borrarVehiculo(idV,folioDV);
+                console.log('Tiene más vehículos');
+            }
+        }
+
+    });
 }

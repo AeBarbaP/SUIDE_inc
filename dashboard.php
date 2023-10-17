@@ -664,10 +664,11 @@ $(document).ready(function () {
   </div>
 </div>
 
-      <!-- Termina modal para imprimir qr -->
+<!-- Termina modal para imprimir qr -->
 
-      <!-- Termina Modal para generar tarjeton -->
-                    <!-- Inicia Modal para generar tarjeton de préstamo-->
+<!-- Termina Modal para generar tarjeton -->
+
+<!-- Inicia Modal para generar tarjeton de préstamo-->
 
 <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="tarjetonPrestamo" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -678,6 +679,14 @@ $(document).ready(function () {
       </div>
       <div class="modal-body">
         <div class="container text-center">
+          <div class="input-group w-75 mb-3">
+            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username with two button addons">
+            <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="success-outlined">CURP</label>
+            <input type="radio" class="btn-check" onchange="cambiarAtrib()" name="options-outlined" id="danger-outlined" autocomplete="off">
+            <label class="btn btn-outline-primary" for="danger-outlined">RFC</label>
+          </div>
+          <!-- inicia body -->
           <div class="card mb-3" style="max-width: 100%;">
             <div class="row g-0 align-items-center">
               <div class="col-md-3">
@@ -685,6 +694,21 @@ $(document).ready(function () {
               </div>
               <div class="col-md-9">
                 <div class="card-body text-start" id="cardPrestamo">
+                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="usuario-tab" data-bs-toggle="tab" data-bs-target="#usuario-tab-pane" type="button" role="tab" aria-controls="usuario-tab-pane" aria-selected="true">Datos del Usuario</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="medic-tab" data-bs-toggle="tab" data-bs-target="#medic-tab-pane" type="button" role="tab" aria-controls="medic-tab-pane" aria-selected="false">Profile</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="usuario-tab-pane" role="tabpanel" aria-labelledby="usuario-tab" tabindex="0">...</div>
+                    <div class="tab-pane fade" id="medic-tab-pane" role="tabpanel" aria-labelledby="medic-tab" tabindex="0">...</div>
+                  </div>
                   <div id = "tarjetonPrestamo">
                     <h5 class="mb-3"><i class="bi bi-person"></i> Datos del Usuario</h5>
                     <div class="row">
@@ -692,7 +716,7 @@ $(document).ready(function () {
                         <div class="input-group mb-3">
                           <span class="input-group-text">Vehículo oficial</span>
                           <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" id="oficial" onchange="cambiarAtrib()" value="" aria-label="Checkbox for following text input">
+                            <input class="form-check-input mt-0" type="checkbox" id="oficial" onchange="" value="" aria-label="Checkbox for following text input">
                           </div>
                           
                         </div>  

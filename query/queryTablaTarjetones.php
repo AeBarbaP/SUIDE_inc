@@ -24,7 +24,7 @@
                 <td>'.$row_sql_Vehiculos['vehiculo_modelo'].'</td>
                 <td>'.$row_sql_Vehiculos['no_placa'].'</td>
                 <td>'.$row_sql_Vehiculos['folio_tarjeton'].'</td>
-                <td><a href="#" data-bs-toggle="modal" data-bs-target="#editarVehiculo" onclick="editarVehiculo('.$id.')"><i class="bi bi-pencil-square"></i></a> <a href="#" class="link-danger" onclick="borrarVehiculo('.$id.','.$folioD.')"><i class="bi bi-trash"></i></a>
+                <td><a href="#" data-bs-toggle="modal" data-bs-target="#editarVehiculo" onclick="editarVehiculo('.$id.')"><i class="bi bi-pencil-square"></i></a> <a href="#" class="link-danger" onclick="LOSVehiculo('.$id.','.$folioD.')"><i class="bi bi-trash"></i></a>
                 <input type="text" id="folioDT'.$id.'" value="'.$folioD.'" hidden></td>
                 <input type="text" id="idVehiculo'.$id.'" value="'.$id.'" hidden></td>
                 
