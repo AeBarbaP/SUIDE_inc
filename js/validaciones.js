@@ -155,7 +155,7 @@ function cambiarAtrib(){
         document.getElementById('fechaValTemp').disabled = true;
         document.getElementById('idClaveTemp').disabled = true;
     }
-    else{
+    else {
         document.getElementById('nombreTemp').setAttribute('onchange','');
         document.getElementById('curpTemp').setAttribute('onchange','validarInput2(this)');
         document.getElementById('spanRFC').innerHTML = "CURP";
@@ -172,5 +172,45 @@ function cambiarAtrib(){
         document.getElementById('cedulaTemp').disabled = false;
         document.getElementById('fechaValTemp').disabled = false;
         document.getElementById('idClaveTemp').disabled = false;
+    }
+}
+function cambiarAtribUSR(){
+    var casilla2 = document.getElementById('usuarioSD');
+
+    if (casilla2.checked){
+        document.getElementById('nombreTemp').setAttribute('onchange','');
+        document.getElementById('curpTemp').setAttribute('onchange','validarInput2(this)');
+        document.getElementById('spanRFC').innerHTML = "CURP";
+        document.getElementById('apPaterno').disabled = false;
+        document.getElementById('apMaterno').disabled = false;
+        document.getElementById('idClaveTemp').disabled = false;
+        document.getElementById('tipoDiscTemp').disabled = false;
+        document.getElementById('discapacidadTemp').disabled = false;
+        document.getElementById('gradoDiscTemp').disabled = false;
+        document.getElementById('dxTemp').disabled = false;
+        document.getElementById('temporalidad').disabled = false;
+        document.getElementById('institucionTemp').disabled = false;
+        document.getElementById('medicoTemp').disabled = false;
+        document.getElementById('cedulaTemp').disabled = false;
+        document.getElementById('fechaValTemp').disabled = false;
+        document.getElementById('idClaveTemp').disabled = false;
+    }
+    else {
+        document.getElementById('nombreTemp').setAttribute('onchange','habilitaBtnDatos()');
+        document.getElementById('curpTemp').setAttribute('onchange','');
+        document.getElementById('spanRFC').innerHTML = "RFC";
+        document.getElementById('apPaterno').disabled = true;
+        document.getElementById('apMaterno').disabled = true;
+        document.getElementById('idClaveTemp').disabled = true;
+        document.getElementById('tipoDiscTemp').disabled = true;
+        document.getElementById('discapacidadTemp').disabled = true;
+        document.getElementById('gradoDiscTemp').disabled = true;
+        document.getElementById('dxTemp').disabled = true;
+        document.getElementById('temporalidad').disabled = true;
+        document.getElementById('institucionTemp').disabled = true;
+        document.getElementById('medicoTemp').disabled = true;
+        document.getElementById('cedulaTemp').disabled = true;
+        document.getElementById('fechaValTemp').disabled = true;
+        document.getElementById('idClaveTemp').disabled = true;
     }
 }

@@ -14,18 +14,7 @@ function usuarioTempAdd(){
     var estadoTemp = document.getElementById('estadoTemp').value;
     var municipioTemp = document.getElementById('municipioTemp').value;
     var localidadTemp = document.getElementById('localidadTemp').value;
-    var tipoDiscTemp = document.getElementById('tipoDiscTemp').value;
-    var discapacidadTemp = document.getElementById('discapacidadTemp').value;
-    var gradoDiscTemp = document.getElementById('gradoDiscTemp').value;
-    var dxTemp = document.getElementById('dxTemp').value;
-    var temporalidad = document.getElementById('temporalidad').value;
-    var institucionTemp = document.getElementById('institucionTemp').value;
-    var medico = document.getElementById('medicoTemp').value;
-    var cedula = document.getElementById('cedulaTemp').value;
-    var fechaValTemp = document.getElementById('fechaValTemp').value;
     
-
-
     $.ajax({
         type: "POST",
         url: 'prcd/guardarUsuarioTemp.php',
@@ -45,7 +34,39 @@ function usuarioTempAdd(){
             CPTemp:CPTemp,
             estadoTemp:estadoTemp,
             municipioTemp:municipioTemp,
-            localidadTemp:localidadTemp,
+            localidadTemp:localidadTemp
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var verificador = jsonData.success;
+            if (verificador == 1) {
+            } else if (verificador == 0){
+                alert('no muestra tabla');
+            }
+            document.getElementById('agregarUsuarioTempBtn').disabled = true;
+        }
+        
+    });
+}
+
+function medicosTempAdd(){
+    var curp = document.getElementById('curpTemp').value;
+    var tipoDiscTemp = document.getElementById('tipoDiscTemp').value;
+    var discapacidadTemp = document.getElementById('discapacidadTemp').value;
+    var gradoDiscTemp = document.getElementById('gradoDiscTemp').value;
+    var dxTemp = document.getElementById('dxTemp').value;
+    var temporalidad = document.getElementById('temporalidad').value;
+    var institucionTemp = document.getElementById('institucionTemp').value;
+    var medico = document.getElementById('medicoTemp').value;
+    var cedula = document.getElementById('cedulaTemp').value;
+    var fechaValTemp = document.getElementById('fechaValTemp').value;
+    
+    $.ajax({
+        type: "POST",
+        url: 'prcd/guardarMedicosTemp.php', //falta el archivo de consulta
+        dataType:'json',
+        data: {
+            curp:curp,
             tipoDiscTemp:tipoDiscTemp,
             discapacidadTemp:discapacidadTemp,
             gradoDiscTemp:gradoDiscTemp,
