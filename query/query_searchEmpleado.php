@@ -12,8 +12,6 @@ if ($resultado_QueryEmpleado->num_rows > 0){
 /* if ($resultado_QueryEmpleado){ */
 
     $row_sql_empleado = $resultado_QueryEmpleado->fetch_assoc();
-    
-    // este es el id de tabla expedientes que nos llevaremos a datos médicos
     $numEmpleado = $row_sql_empleado['numEmpleado'];
     $nombre = $row_sql_empleado['nombre'];
     $aPaterno = $row_sql_empleado['aPaterno'];
@@ -31,10 +29,10 @@ if ($resultado_QueryEmpleado->num_rows > 0){
             <div class="group">
             <img src="img/no_profile.png" alt="" width="100%" class="crop-image" id="crop-image">
             <input type="file" name="input-file" id="input-file" accept=".png,.jpg,.jpeg" >
-            <label for="input-file" class="label-file">Haz click aquí para subir una imagen</label>
+            <!-- <label for="input-file" class="label-file">Haz click aquí para subir una imagen</label> -->
             </div>
             </div>
-            <button class="btn-primary" type="button" id="inputfile">guardar foto</button>
+            <!-- <button class="btn-primary" type="button" id="inputfile">guardar foto</button> -->
 
 
         </div>
@@ -53,10 +51,12 @@ if ($resultado_QueryEmpleado->num_rows > 0){
                 <p class="card-text" >Número de Empleado: '.$numEmpleado.'</p>
                 <p class="card-text" >NSS: '.$numSeguridad.'</p>
                 <p class="card-text">CURP: '.$curp.'</p>
-                <p class="card-text">Puesto: '.$puesto.'</p>
-                <p class="card-text" >Área: '.$area.'</p>
-                
+                <label class="card-text mb-1">Puesto:</label>
+                <input class="form-control" type="text" value="'.$puesto.'" type="text" name="puesto" disabled>
+                <label class="card-text mb-1" >Área:</label>
+                <input class="form-control" type="text" value="'.$area.'" type="text" name="area" disabled>
             </div>
+            
         </div>
     ';
     echo'

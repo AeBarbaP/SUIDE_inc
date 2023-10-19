@@ -718,17 +718,17 @@ $(document).ready(function () {
                           </div>
                           <div class="col-md-12">
                             <div class="input-group mb-3">
-                              <span class="input-group-text" id="basic-addon1">Apellido Paterno</span>
+                              <span class="input-group-text" id="lastname1">Apellido Paterno</span>
                               <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apPaterno">
-                              <span class="input-group-text" id="basic-addon1">Apellido Materno</span>
+                              <span class="input-group-text" id="lastname2">Apellido Materno</span>
                               <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apMaterno">
                             </div>  
                           </div>
                           <div class="col-md-12">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="spanRFC">CURP</span>
-                              <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="" onchange="validarInput2(this)" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
-                              <span class="input-group-text" id="basic-addon1">Clave INE / Folio ID:</span>
+                              <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="" onchange="validarInput2(this)" aria-label="" aria-describedby="basic-addon1" id="curpTemp" disabled>
+                              <span class="input-group-text" id="cveid">Clave INE / Folio ID:</span>
                               <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
                             </div>  
                           </div>
