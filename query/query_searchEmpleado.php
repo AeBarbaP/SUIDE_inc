@@ -55,8 +55,11 @@ if ($resultado_QueryEmpleado->num_rows > 0){
                 <input class="form-control" type="text" value="'.$puesto.'" type="text" name="puesto" disabled>
                 <label class="card-text mb-1" >Área:</label>
                 <input class="form-control" type="text" value="'.$area.'" type="text" name="area" disabled>
+                <div class="d-grid gap-2 mt-5">
+                    <button class="btn btn-primary" type="button" id="updateEmpleado" onclick="actualizarEmpleado()"><i class="bi bi-info-lg"></i> Actualizar Info</button>
+                    <button class="btn btn-primary" type="button" id="updateEmpleado" onclick="actualizarEmpleado()"><i class="bi bi-info-lg"></i> Actualizar Info</button>
+                </div>
             </div>
-            
         </div>
     ';
     echo'
