@@ -24,17 +24,14 @@ if ($resultado_QueryEmpleado->num_rows > 0){
     
     echo'
         <div class="col-md-4">
-        
             <div class="container">
-            <div class="group">
-            <img src="img/no_profile.png" alt="" width="100%" class="crop-image" id="crop-image">
-            <input type="file" name="input-file" id="input-file" accept=".png,.jpg,.jpeg" >
-            <!-- <label for="input-file" class="label-file">Haz click aquí para subir una imagen</label> -->
-            </div>
+                <div class="group">
+                    <img src="img/no_profile.png" alt="" width="100%" class="crop-image" id="crop-image">
+                    <input type="file" name="input-file" id="input-file" accept=".png,.jpg,.jpeg" >
+                    <!-- <label for="input-file" class="label-file">Haz click aquí para subir una imagen</label> -->
+                </div>
             </div>
             <!-- <button class="btn-primary" type="button" id="inputfile">guardar foto</button> -->
-
-
         </div>
         <div class="col-md-8">
             <div class="card-body text-start">
@@ -71,20 +68,18 @@ if ($resultado_QueryEmpleado->num_rows > 0){
 else{
 
     echo'
-            <div class="col-md-4">
-                <img id="crop-image" src="img/no_profile.png" width="100%">
-                <div class="input-group">
+        <div class="col-md-4">
+            <img id="crop-image" src="img/no_profile.png" width="100%">
+            <div class="input-group">
                 <!-- file photo-->
             </div>
         </div>
         <div class="col-md-8">
             <div class="card-body text-start">
-
-            <input value="" type="text" id="curpEmp" name="curp" hidden>
-            
+                <input value="" type="text" id="curpEmp" name="curp" hidden>
             </div>
-            </div>
-            ';
+        </div>
+        ';
 
     echo'
         <script>

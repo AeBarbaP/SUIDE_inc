@@ -29,7 +29,6 @@ function abrirCamara(){
           }
         }
         
-
       });
 
       // code front-back camera
@@ -144,7 +143,6 @@ function abrirCamara(){
         document.getElementById("imagenLogo").hidden = false; 
         document.getElementById("preview").hidden = true; 
       });
-
 
   }
 

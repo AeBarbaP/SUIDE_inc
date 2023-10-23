@@ -12,7 +12,6 @@ function buscarEmpleado(){
             $("#credencialEmpleado").html(data);
             var curpEmpPhoto = document.getElementById('curpEmp').value;
             buscarPhotoEmp(curpEmpPhoto);
-
         }               
     });
 }
