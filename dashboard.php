@@ -253,9 +253,131 @@ include('prcd/qc/qc.php');
         <p class="h3">Bienvenid@</p>
       </div>
       <p class="h6 mb-5  text-muted">Sistema Único de Identificación y Verificación</p>
-      <hr>
-      <h4 class="text-muted mt-4">Últimos documentos generados</h4>
-      <div class="table-responsive">
+      <!-- <hr> -->
+      <div class="row" style="justify-content:center">
+        <div class="col-md-12 col-lg-6 me-3 border rounded-1" style="width: 23%;">
+          <div class="container">
+            <h4 class="text-center text-muted mt-2"><b>Expedientes Nuevos</b></h4>
+            <div class="row">
+              <div class="col-5 mt-3 mb-3">
+                <img src="img/canvaschart.png" width="81px" height="35px">
+              </div>
+              <div class="col-7 mt-2">
+                <div class="text-end" style="font-size:x-large;">
+                  <span>46</span>
+                </div>
+                <div class="text-end mb-2" style="font-size: smaller;">
+                  <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-6 me-3 border rounded-1" style="width: 23%;">
+          <div class="container">
+            <h4 class="text-center text-muted mt-2"><b>Credenciales Diarias</b></h4>
+            <div class="row">
+              <div class="col-5 mt-3 mb-3">
+                <img src="img/canvasbars.png" width="81px" height="35px">
+              </div>
+              <div class="col-7 mt-2">
+                <div class="text-end" style="font-size:x-large;">
+                  <span>64</span>
+                </div>
+                <div class="text-end mb-2" style="font-size: smaller;">
+                  <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-6 me-3 border rounded-1" style="width: 23%;">
+          <div class="container">
+            <h4 class="text-center text-muted mt-2"><b>Tarjetones Diarios</b></h4>
+            <div class="row">
+            <div class="col-5 mt-3 mb-3">
+              <img src="img/canvaslines.png" width="81px" height="35px">
+            </div>
+            <div class="col-7 mt-2">
+              <div class="text-end" style="font-size:x-large;">
+                <span>37</span>
+              </div>
+              <div class="text-end mb-2" style="font-size: smaller;">
+                <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-6 me-3 border rounded-1" style="width: 23%;">
+          <div class="container">
+            <h4 class="text-center text-muted mt-2"><b>Expedientes Actualizados</b></h4>
+            <div class="row">
+              <div class="col-5 mt-3 mb-3">
+                <img src="img/canvasred.png" width="81px" height="35px">
+              </div>
+              <div class="col-7 mt-2">
+                <div class="text-end" style="font-size:x-large;">
+                  <span>46</span>
+                </div>
+                <div class="text-end mb-2" style="font-size: smaller;">
+                  <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <!-- <div class="col-md-12 col-lg-6 col-xl-3 me-3 border rounded-1" >
+          <div class="container">
+            <h4 class="text-center text-muted mt-2"><b>Credenciales Diarias</b></h4>
+            <div class="row">
+              <div class="col-5 mt-3 mb-3">
+                <img src="img/canvasbars.png" width="81px" height="35px">
+              </div>
+              <div class="col-7 mt-2">
+                <div class="text-end" style="font-size:x-large;">
+                  <span>64</span>
+                </div>
+                <div class="text-end" style="font-size: smaller;">
+                  <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-6 col-xl-3 me-3 border rounded-1" >
+          <div class="container">
+            <h4 class="text-center text-muted mt-2"><b>Tarjetones Diarios</b></h4>
+            <div class="row">
+            <div class="col-5 mt-3 mb-3">
+              <img src="img/canvaslines.png" width="81px" height="35px">
+            </div>
+            <div class="col-7 mt-2">
+              <div class="text-end" style="font-size:x-large;">
+                <span>37</span>
+              </div>
+              <div class="text-end" style="font-size: smaller;">
+                <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-12  border rounded-1">
+          <div class="container">
+            <div class="row">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <h4 class="text-muted mt-4">Últimos documentos generados</h4> -->
+      <!-- Inicia Tabla para documentos entregados -->
+      <!-- <div class="table-responsive">
             <table class="table table-hover table-bordered table-sm align-middle mt-4">
               <thead style="background-color:#B8B8B8;" class="text-light align-middle">
                 <tr class="text-center">
@@ -268,10 +390,10 @@ include('prcd/qc/qc.php');
                     <th scope="col">Tarjetón</th>
                 </tr>
               </thead>
-              <tbody id="myTable">
+              <tbody id="myTable"> -->
                 <?php
-                  include('prcd/query.php');
-                  $x = 0;
+                //  include('prcd/query.php');
+                /*  $x = 0;
                   while ($row_sqlQueryCredencial = $resultadoQueryCredencial->fetch_assoc()) {
                     $x++;
                     echo '
@@ -334,9 +456,11 @@ include('prcd/qc/qc.php');
                     ';
                     
                   }
-            echo'</table>';
+            echo'</table>';*/
             ?>
-          </div>
+          <!-- </div>-->
+          <!-- Termina tabla de documentos entregados -->
+        
         <!-- Inicia Modal para generar credencial -->
         <div class="modal fade" id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-scrollable modal-lg">
@@ -1410,3 +1534,5 @@ $(document).ready(function () {
       </div>
     </div>
     ';
+  ?>
+  
