@@ -328,49 +328,24 @@ include('prcd/qc/qc.php');
           </div>
         </div>
       </div>
-      <div class="row mt-3">
-        <!-- <div class="col-md-12 col-lg-6 col-xl-3 me-3 border rounded-1" >
+      <div class="row mt-3" style="justify-content:center">
+        <div class="col-md-12 me-3 border rounded-1" style="width: 95%;">
           <div class="container">
-            <h4 class="text-center text-muted mt-2"><b>Credenciales Diarias</b></h4>
             <div class="row">
-              <div class="col-5 mt-3 mb-3">
-                <img src="img/canvasbars.png" width="81px" height="35px">
-              </div>
-              <div class="col-7 mt-2">
-                <div class="text-end" style="font-size:x-large;">
-                  <span>64</span>
+              <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h3 text-muted"><b>Mi progreso</b></h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                  <div class="btn-group me-2">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                  </div>
+                  <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                    <span data-feather="calendar" class="align-text-bottom"></span>
+                    This week
+                  </button>
                 </div>
-                <div class="text-end" style="font-size: smaller;">
-                  <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
-                </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12 col-lg-6 col-xl-3 me-3 border rounded-1" >
-          <div class="container">
-            <h4 class="text-center text-muted mt-2"><b>Tarjetones Diarios</b></h4>
-            <div class="row">
-            <div class="col-5 mt-3 mb-3">
-              <img src="img/canvaslines.png" width="81px" height="35px">
-            </div>
-            <div class="col-7 mt-2">
-              <div class="text-end" style="font-size:x-large;">
-                <span>37</span>
-              </div>
-              <div class="text-end" style="font-size: smaller;">
-                <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-      </div>
-      <div class="row mt-3">
-        <div class="col-md-12  border rounded-1">
-          <div class="container">
-            <div class="row">
-
+              <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
             </div>
           </div>
         </div>
