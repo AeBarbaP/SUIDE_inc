@@ -71,6 +71,8 @@ include('prcd/qc/qc.php');
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
+
     <script src="js/guardar.js"></script>
     <script src="js/validate.js"></script>
     <script src="js/files.js"></script>

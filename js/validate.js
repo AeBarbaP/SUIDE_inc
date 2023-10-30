@@ -88,6 +88,7 @@ function protesisOp(x){
         document.getElementById('tipoProtesis').disabled = false;
     } else {
         document.getElementById('tipoProtesis').disabled = true;
+        document.getElementById('tipoProtesis').required = true;
     }
 }
 function rehabOp(x){

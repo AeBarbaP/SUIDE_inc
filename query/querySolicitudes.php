@@ -46,7 +46,8 @@
                     } 
                     echo '
                     <td>'.$rowSQL['entrega'].'</td>
-                    <td><a href=""><i class="bi bi-file-earmark-text-fill"></i> Acta de entrega</a></td>
+                    <td><a><i class="bi bi-file-earmark-text-fill"></i> Acta de entrega</a></td>
+                    
                 </tr>
             ';
         }

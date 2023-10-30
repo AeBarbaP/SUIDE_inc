@@ -30,12 +30,13 @@ $filaVar = $resultadoVariable->num_rows;
                 <td>'.$rowVar['discapacidad'].'</td>
                 <td>'.$rowVar['ingreso'].'</td>
                 <td>'.$rowVar['correoe'].'</td>
-                <td>'
+                <td>';
                 ?>
                 <a href="https://web.whatsapp.com/send/?phone=<?php echo $rowVar['telcel'] ?>" target="_blank" class="btn btn bg-success"><i class="bi bi-whatsapp text-light"></i></a>
                 <?php
-                '
+                echo '
                 </td>
+                <td><button class="btn btn-warning" onclick="editarFamiliar('.$rowVar['id'].')"><i class="bi bi-pencil-square text-white"></i></button> <button class="btn btn-danger" onclick="borrarFamiliar('.$rowVar['id'].')"><i class="bi bi-trash"></i></button></td>
             </tr>
         ';
         }

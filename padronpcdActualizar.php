@@ -74,6 +74,14 @@ include('prcd/qc/qc.php');
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <script src="js/guardar.js"></script>
     <script src="js/validate.js"></script>
+    <script src="instascan.min.js"></script>
+    <script src="script.js"></script>
+    <script src="print.js" type="text/javascript"></script>
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <audio id="myAudio">
+      <source src="beep.mp3" type="audio/mpeg">
+    </audio>
 
     <style>
       * {
@@ -243,9 +251,42 @@ include('prcd/qc/qc.php');
       <!-- <p class="h5"><strong>Padrón Estatal de Personas con Discapacidad</strong></p> -->
       <h3 class="text-muted mt-4">Actualización de Expediente</h3>
       <div class="input-group mb-5 mt-2">
-          <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-          <input class="form-control" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
-        </div><!-- input group -->
+        <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+        <input class="form-control w-50" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+        <!-- <div class="col-3 text-start"> -->
+        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#leerQr"><i class="bi bi-qr-code-scan"></i> Escanear</button>
+        <button class="btn btn-danger" id="botonCerrar2"><i class="bi bi-qr-code"></i> Cerrar Cámara</button>
+        <!-- </div> -->
+        <!-- <div class="col-2 mt-1 text-end">
+          <span id="pruebaInner" ></span> -->
+          <!-- <p> -->
+        
+          <!--<select name="cameraCanje" class="form-select">
+          <option value="1"><i class="bi bi-camera-video-fill"></i> Frontal Cam</option>
+          <option value="2"><i class="bi bi-camera-video"></i> Back Cam</option>
+        </select> </p> -->
+        <!-- </div>  -->  
+      </div><!-- input group -->
+      
+      <div class="modal fade" id="leerQr" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header" onload="abrirCamara2()">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <video id="preview2" class="w-100" hidden></video>
+              <img src="img/Logo_Gobierno_Inclusion_VColorPNG2.png" width="81%" alt="" style="padding-top: 45px;padding-bottom: 45px;padding-left: 10px;padding-right: 10px;border: 1px solid #ced4da; ;border-radius: 3px;" id="imagenLogo"></img>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 "> -->
         <!-- <p class="h5"><strong>Padrón Estatal de Personas con Discapacidad</strong></p> -->
       <!-- </div> -->

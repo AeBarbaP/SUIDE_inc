@@ -1454,7 +1454,7 @@ include('prcd/qc/qc.php');
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="estereo">
                             <label class="form-check-label" for="flexCheckDefault3">
-                              Estéreo
+                              Sistema de Sonido
                             </label>
                           </div>
                           <div class="form-check">
@@ -1482,7 +1482,7 @@ include('prcd/qc/qc.php');
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="dvd">
                             <label class="form-check-label" for="flexCheckDefault3">
-                              DVD
+                              Reproductor de Video
                             </label>
                           </div>
                           <div class="form-check">
@@ -1565,6 +1565,7 @@ include('prcd/qc/qc.php');
                               <th scope="col">Ingreso</th>
                               <th scope="col"><small><i class="bi bi-envelope"></i> Email</small></th>
                               <th scope="col"><small><i class="bi bi-whatsapp"></i> Teléfono</small></th>
+                              <th scope="col">Editar</th>
                             </tr>
                           </thead>
                           <tbody id="familiaresTab" class="text-center">
@@ -1596,6 +1597,7 @@ include('prcd/qc/qc.php');
                               <th scope="col">Profesión</th>
                               <th scope="col">Domicilio</th>
                               <th scope="col"><small><i class="bi bi-whatsapp"></i> Teléfono</small></th>
+                              <th scope="col"><small><i class="bi bi-pencil-square"></i> | <i class="bi bi-trash"></i></small></th>
                             </tr>
                           </thead>
                           <tbody id="referenciasTab" class="text-center">
