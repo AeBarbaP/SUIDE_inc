@@ -58,15 +58,17 @@ function editarFamiliar(id){
             var success = jsonData.success;
             
             if (success == 1) {
-                document.getElementById('nombreFam2').value = jsonData.nombreFam;
-                document.getElementById('parentescoFam2').value = jsonData.parentescoFam;
-                document.getElementById('edadFam2').value = jsonData.edadFam;
-                document.getElementById('escolaridadFam2').value = jsonData.escolaridadFam;
-                document.getElementById('discapacidadFam2').value = jsonData.discapacidadFam;
-                document.getElementById('descripcionDiscFam2').value = jsonData.descripcionDiscFam;
-                document.getElementById('ingresosFam2').value = folioDV;
-                document.getElementById('idVe').value = idV;
-
+                document.getElementById('nombreFamiliar2').value = jsonData.nombre;
+                document.getElementById('parentescoFam2').value = jsonData.parentesco;
+                document.getElementById('edadFam2').value = jsonData.edad;
+                document.getElementById('escolaridadFam2').value = jsonData.escolaridad;
+                document.getElementById('profesionFam2').value = jsonData.profesion;
+                document.getElementById('selectDiscapacidadFam2').value = jsonData.discapacidadSel;
+                document.getElementById('discapacidadFam2').value = jsonData.discapacidad;
+                document.getElementById('telFam2').value = jsonData.telefono;
+                document.getElementById('ingresoFam2').value = jsonData.ingreso;
+                document.getElementById('emailFam2').value = jsonData.correo;
+                document.getElementById('idFam').value = idF;
             } else if (success == 0){
                 console.log(jsonData.error);
             }

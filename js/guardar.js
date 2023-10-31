@@ -930,6 +930,67 @@ $(document).ready(function() {
     })
 })
 
+$(document).ready(function() {
+    $('#familiarEditForm').submit(function(e) {
+        /* Integración Familiar */
+        var curp_exp = document.getElementById('curp_exp').value;
+        var nombreFamiliar = document.getElementById('nombreFamiliar2').value;
+        var parentescoFam = document.getElementById('parentescoFam2').value;
+        var edadFam = document.getElementById('edadFam2').value;
+        var escolaridadFam = document.getElementById('escolaridadFam2').value;
+        var profesionFam = document.getElementById('profesionFam2').value;
+        var discapacidadFam = document.getElementById('discapacidadFam2').value;
+        var ingresoFam = document.getElementById('ingresoFam2').value;
+        var telFam = document.getElementById('telFam2').value;
+        var emailFam = document.getElementById('emailFam2').value;
+        var idF = document.getElementById('idFam').value;
+        
+        $.ajax({
+            type: "POST",
+            url: 'prcd/updateFamiliar.php',
+            dataType:'json',
+            data: {
+                curp_exp,
+                nombreFamiliar:nombreFamiliar,
+                parentescoFam:parentescoFam,
+                edadFam:edadFam,
+                escolaridadFam:escolaridadFam,
+                profesionFam:profesionFam,
+                discapacidadFam:discapacidadFam,
+                ingresoFam:ingresoFam,
+                telFam:telFam,
+                emailFam:emailFam,
+                idF:idF
+            },
+            success: function(response){
+                var jsonData = JSON.parse(JSON.stringify(response));
+                
+                var verificador = jsonData.success;
+                if (verificador = 1){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Datos del Familiar han sido Actualizados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    showMeFam();
+                }
+                else if (verificador = 2){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Datos del Familiar NO han sido Actualizado',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            }
+        })
+        e.preventDefault();
+    })
+})
+
 function showMeFam(){
     var curp_exp = document.getElementById('curp_exp').value;
     $.ajax({
