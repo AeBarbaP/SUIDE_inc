@@ -31,7 +31,7 @@ $filaVar = $resultadoVariable->num_rows;
                 <?php
                 echo'
                 </td>
-                <td><button class="btn btn-warning" onclick="editarReferencia('.$rowVar['id'].')"><i class="bi bi-pencil-square text-white"></i></button> <button class="btn btn-danger" onclick="borrarReferencia('.$rowVar['id'].')"><i class="bi bi-trash"></i></button></td>
+                <td><button class="btn btn-warning" onclick="editarReferencia('.$rowVar['id'].')" data-bs-toggle="modal" data-bs-target="#editaReferencia"><i class="bi bi-pencil-square text-white"></i></button> <button class="btn btn-danger" onclick="borrarReferencia('.$rowVar['id'].')"><i class="bi bi-trash"></i></button></td>
             </tr>
 
         ';

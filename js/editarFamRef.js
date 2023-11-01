@@ -22,7 +22,7 @@ function borrarFamiliar(id){
 
 function borrarFamiliarDB(id){
     var idF = id;
-
+    
     $.ajax({
         type: "POST",
         url: 'prcd/borrarFamiliar.php',
@@ -73,11 +73,84 @@ function editarFamiliar(id){
                 console.log(jsonData.error);
             }
         }
-
+        
     });
 }
 
-function updateVehiculo(){
+function borrarReferencia(id){
+    var id = id;
+
+    Swal.fire({
+    title: 'Desea eliminar el registro?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText: 'Sí',
+    denyButtonText: 'No',
+    }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+        borrarReferenciaDB(id);
+        
+        Swal.fire('Registro eliminado!', '', 'success')
+    } else if (result.isDenied) {
+        Swal.fire('No se eliminó el registro', '', 'info')
+    }
+    })
+}
+
+function borrarReferenciaDB(id){
+    var idR = id;
+    
+    $.ajax({
+        type: "POST",
+        url: 'prcd/borrarReferencia.php',
+        dataType:'json',
+        data: {
+            idR:idR,
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            
+            if (success == 1) {
+                showMeRef();
+            } else if (success == 0){
+                console.log(jsonData.error);
+            }
+        }
+    });
+}
+
+function editarReferencia(id){
+    var idR = id;
+    
+    $.ajax({
+        type: "POST",
+        url: 'query/buscarReferencia.php',
+        dataType:'json',
+        data: {
+            idR:idR
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            
+            if (success == 1) {
+                document.getElementById('nombreReferencia2').value = jsonData.nombre;
+                document.getElementById('parentescoRef2').value = jsonData.parentesco;
+                document.getElementById('telRef2').value = jsonData.telefono;
+                document.getElementById('profesionRef2').value = jsonData.profesion;
+                document.getElementById('domicilioRef2').value = jsonData.domicilio;
+                document.getElementById('idRef').value = idR;
+            } else if (success == 0){
+                console.log(jsonData.error);
+            }
+        }
+        
+    });
+}
+
+/* function updateVehiculo(){
     var idV = document.getElementById('idVe').value;
     var folioDV = document.getElementById('folioDT').value;
     var marca =document.getElementById('marcaPerm2').value;
@@ -240,4 +313,4 @@ function LOSVehiculo(id,folio){
         }
 
     });
-}
+} */

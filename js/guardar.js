@@ -1062,6 +1062,57 @@ $(document).ready(function() {
     })
 })
 
+$(document).ready(function() {
+    $('#referenciasEditForm').submit(function(e) { 
+        /* Referencias */
+        var nombreReferencia = document.getElementById('nombreReferencia2').value;
+        var parentescoRef = document.getElementById('parentescoRef2').value;
+        var telRef = document.getElementById('telRef2').value;
+        var profesionRef = document.getElementById('profesionRef2').value;
+        var domicilioRef = document.getElementById('domicilioRef2').value;
+        var idR = document.getElementById('idRef').value;
+        
+        $.ajax({
+            type: "POST",
+            url: 'prcd/updateReferencia.php',
+            dataType:'json',
+            data: {
+                nombreReferencia:nombreReferencia,
+                parentescoRef:parentescoRef,
+                telRef:telRef,
+                profesionRef:profesionRef,
+                domicilioRef:domicilioRef,
+                idR:idR
+            },
+            success: function(response){
+                var jsonData = JSON.parse(JSON.stringify(response));
+                
+                var verificador = jsonData.success;
+                if (verificador == 1){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Datos de Referencia han sido Actualizados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    showMeRef();
+                }
+                else if (verificador == 2){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Datos de Referencia NO han sido actualizados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            }
+        })
+        e.preventDefault();
+    })
+})
+
 function showMeRef(){
     var curp_exp = document.getElementById('curp_exp').value;
     $.ajax({

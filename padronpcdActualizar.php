@@ -255,7 +255,7 @@ include('prcd/qc/qc.php');
         <input class="form-control w-50" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
         <!-- <div class="col-3 text-start"> -->
         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#leerQr"><i class="bi bi-qr-code-scan"></i> Escanear</button>
-        <button class="btn btn-danger" id="botonCerrar2"><i class="bi bi-qr-code"></i> Cerrar Cámara</button>
+        <!-- <button class="btn btn-danger" id="botonCerrar2"><i class="bi bi-qr-code"></i> Cerrar Cámara</button> -->
         <!-- </div> -->
         <!-- <div class="col-2 mt-1 text-end">
           <span id="pruebaInner" ></span> -->
