@@ -267,6 +267,14 @@ include('prcd/qc/qc.php');
         </select> </p> -->
         <!-- </div>  -->  
       </div><!-- input group -->
+
+      <!-- inicia jquery para ejecutar script de modal leerQr -->
+      <script>
+        $('#leerQr').on('show.bs.modal', function () {
+          alert("Modal Mostrada con Evento de Boostrap");
+        })
+      </script>
+      <!-- termina jquery para ejecutar script de modal leerQr -->
       
       <div class="modal fade" id="leerQr" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">

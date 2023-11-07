@@ -201,7 +201,7 @@ include('prcd/qc/qc.php');
     
     <ul class="list-unstyled ps-0 mt-3">
       <li class="ms-2 mb-1">
-        <span class="d-inline-flex"><a href="dashboard.php" id="linkHome" class="link-dark"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
+        <span class="d-inline-flex"><a href="dashboard.php" id="linkHome" class="link-dark" onclick="descartarCambios()"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
       </li>
       <li class="mb-1 mt-2">
       <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-inboxes ms-3 me-2"></i>
@@ -311,7 +311,7 @@ include('prcd/qc/qc.php');
               </div>
             </nav>
             <div class="tab-content"  id="nav-tabContent">
-              <div class="tab-pane fade show active" id="nav-generales" role="tabpanel" aria-labelledby="nav-generales-tab" tabindex="0">
+              <div class="tab-pane fade show active" id="nav-generales" role="tabpanel" aria-labelledby="nav-generales-tab" tabindex="0" onload="descartarCambios(1)">
                 <div class="row ms-4 g-3 mt-3" style="width:95%">
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">Nombre:</label>
@@ -393,7 +393,7 @@ include('prcd/qc/qc.php');
                   <div class="col-sm-4">
                     <label for="edoCivil" class="form-label">Estado Civil:</label>
                     <select class="form-select" id="edoCivil" aria-label="Default select example">
-                      <option selected>Selecciona...</option>
+                      <option value="0" selected>Selecciona...</option>
                       <option value="Solter@">Solter@</option>
                       <option value="Casad@">Casad@</option>
                       <option value="Viud@">Viud@</option>
@@ -437,7 +437,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-6">
                     <label for="datos_usr" class="form-label">Entre vialidades:</label>
-                    <input type="text" class="form-control" id="entreVialidades" name="datos_usr" placeholder="Entre vialidades" required>
+                    <input type="text" class="form-control" id="entreVialidades" name="datos_usr" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
@@ -458,6 +458,7 @@ include('prcd/qc/qc.php');
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Municipio:</label>
                     <select class="form-select" id="municipiosList" onchange="localidadesSelect(this.value)" required>
+                      <option value="0" selected>Selecciona...</option>
 
                     </select>
                     <div class="invalid-feedback">
@@ -512,7 +513,7 @@ include('prcd/qc/qc.php');
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Nivel de Escolaridad:</label>
                     <select class="form-select" id="escolaridad" aria-label="Default select example">
-                      <option selected>Selecciona...</option>
+                      <option value="0" selected>Selecciona...</option>
                       <option value="Ninguno">Sin escolarizar</option>
                       <option value="Primaria">Primaria</option>
                       <option value="Secundaria">Secundaria</option>
@@ -632,7 +633,7 @@ include('prcd/qc/qc.php');
                   <div class="col-sm-4">
                     <label for="exampleDataListPeriodo" class="form-label">Periodicidad:</label>
                     <select class="form-select" aria-label="Default select example" id="periodo" disabled>
-                      <option selected>Selecciona...</option>
+                      <option value="0" selected>Selecciona...</option>
                       <option value="1">Mensual</option>
                       <option value="2">Bimestral</option>
                       <option value="3">Trimestral</option>
@@ -688,12 +689,12 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-3">
                       <label for="datos_usr" class="form-label">Discapacidad:</label>
-                      <input type="text" id="curp_exp" onchange="curpTemporal()">
+                      <input type="text" id="curp_exp" onchange="curpTemporal()" hidden>
+                      <!-- <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..."> -->
+                      <select class="form-select" id="discapacidadList" onchange="numExpGenerator(this.value)" required>
+                      
 
-                      <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..." onchange="numExpGenerator(this.value)" required>
-                      <datalist id="discapacidadList">
-
-                      </datalist>
+                      </select>
                       <div class="invalid-feedback">
                         * Campo requerido.
                       </div>

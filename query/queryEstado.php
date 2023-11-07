@@ -7,7 +7,7 @@ $var = "SELECT * FROM catestados";
 $resultadoVariable = $conn->query($var);
 
 echo '
-    <option value="Select">Selecciona...</option>
+    <option value="0" selected>Selecciona...</option>
 ';
 while ($rowEstado = $resultadoVariable->fetch_assoc()){
     echo '

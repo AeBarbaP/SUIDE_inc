@@ -10,7 +10,7 @@ $filas = $resultadoVariable->num_rows;
 if($filas > 1){
 
     echo '
-    <option value="Select">Selecciona...</option>
+    <option value="0" selected>Selecciona...</option>
     ';
     while ($rowLocalidad = $resultadoVariable->fetch_assoc()){
         echo '

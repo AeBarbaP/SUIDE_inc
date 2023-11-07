@@ -892,10 +892,10 @@ $(document).ready(function () {
                               <option value="Psicosocial">Psicosocial</option>
                             </select>
                             <span class="input-group-text" id="basic-addon1">Discapacidad:</span>
-                            <input class="form-control w-25" list="discapacidadList" id="discapacidadTemp" placeholder="Buscar..." required>
-                            <datalist class="list2" id="discapacidadList">
+                            <!-- <input class="form-control w-25" list="discapacidadList" id="discapacidadTemp" placeholder="Buscar..." > -->
+                            <select class="form-select" id="discapacidadList" required>
                             
-                            </datalist>
+                            </select>
                           </div>
                           <div class="col-md-12">
                             <div class="input-group mb-3">
