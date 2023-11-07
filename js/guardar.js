@@ -350,6 +350,7 @@ $(document).ready(function() {
                         height: 250,
                         correctLevel: QRCode.CorrectLevel.H
                     });
+                    cambiarTab();
                     document.getElementById('nav-medicos-tab').disabled = false;
                     document.getElementById('nav-generales-tab').disabled = true;
                     document.getElementById('curp_exp').value = curpSaved;
@@ -373,11 +374,19 @@ $(document).ready(function() {
     })
 })
 
+function cambiarTab(){
+    const triggerEl = document.querySelector('#medicos button[data-bs-target="#nav-medicos"]')
+    bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
+
+    /* const triggerFirstTabEl = document.querySelector('#myTab li:first-child button')
+    bootstrap.Tab.getInstance(triggerFirstTabEl).show() // Select first tab */
+}
+
 $(document).ready(function() {
     $('#medicosForm').submit(function(e) {
         /* Datos Médicos */
         var curp_exp = document.getElementById('curp_exp').value;
-        var discapacidad = document.getElementById('discapacidad').value;
+        var discapacidad = document.getElementById('discapacidadList').value;
         var gradoDisc = document.getElementById('gradoDisc').value;
         var tipoDisc = document.getElementById('tipoDisc').value;
         var descDisc = document.getElementById('descDisc').value;

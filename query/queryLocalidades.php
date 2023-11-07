@@ -10,18 +10,18 @@ $filas = $resultadoVariable->num_rows;
 if($filas > 1){
 
     echo '
-    <option value="0" selected>Selecciona...</option>
+    <option value="">Selecciona...</option>
     ';
     while ($rowLocalidad = $resultadoVariable->fetch_assoc()){
         echo '
-        <option value="'.$rowLocalidad['nombreLocalidad'].'" aria-label="'.$rowLocalidad['claveLocalidad'].'">'.$rowLocalidad['nombreLocalidad'].'</option>
+            <option value="'.$rowLocalidad['nombreLocalidad'].'" aria-label="'.$rowLocalidad['claveLocalidad'].'">'.$rowLocalidad['nombreLocalidad'].'</option>
         ';
     }
 }
 else{
     echo '
-    <option value="Select">Selecciona...</option>
-    <option value="Sin registro">Sin registro</option>
+        <option value="">Selecciona...</option>
+        <option value="Sin registro">Sin registro</option>
     ';
 }
 ?>

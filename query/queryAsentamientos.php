@@ -19,7 +19,7 @@ if($filas > 1){
 }
 else{
     echo '
-    <option value="Select">Selecciona...</option>
+    <option value="">Selecciona...</option>
     <option value="Sin registro"></option>
     ';
 }

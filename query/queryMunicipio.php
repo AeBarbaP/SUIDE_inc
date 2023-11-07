@@ -7,7 +7,7 @@ $var = "SELECT * FROM catmunicipios WHERE idCatEstado = '$estado' ORDER BY nombr
 $resultadoVariable = $conn->query($var);
 
 echo '
-    <option value="0" selected>Selecciona...</option>
+    <option value="" selected>Selecciona...</option>
 ';
 while ($rowEstado = $resultadoVariable->fetch_assoc()){
     echo '

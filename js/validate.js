@@ -1,4 +1,24 @@
-function descartarCambios(){
+function hrefsSet(x){
+    if (x == 1){
+        window.location.href="dashboard.php";
+    }
+    else if (x == 2){
+        window.location.href="padronpcdfull.php"
+    }
+    else if (x == 3){
+        window.location.href="padronpcd.php"
+    }
+    else if (x == 4){
+        window.location.href="padronpcdActualizar.php"
+    }
+    else if (x == 5){
+        window.location.href="prcd/sort.php"
+    }
+}
+
+function descartarCambios(x){
+    var hrefs = x;
+
     var nombre = document.getElementById('nombre').value;
     if(nombre != ""){
         var nombre2 = 1;
@@ -53,7 +73,7 @@ function descartarCambios(){
         var edad2 = 0;
     }
     var curp = document.getElementById('curp').value;
-     if(curp !== ""){
+    if(curp !== ""){
         var curp2 = 1;
     }
     else{
@@ -113,10 +133,10 @@ function descartarCambios(){
         var vialidad2 = 1;
     }
     else{
-       var vialidad2 = 0;
+        var vialidad2 = 0;
     }
     var colonia = document.getElementById('colonia').value;
-     if(colonia !== ""){
+    if(colonia !== ""){
         var colonia2 = 1;
     }
     else{
@@ -137,28 +157,28 @@ function descartarCambios(){
         var descripcionDomicilio2 = 0;
     }
     var estado = document.getElementById('estadosList').value;
-    if(estado !== 0){
+    if(estado != 0 || estado != ""){
         var estado2 = 1;
     }
     else{
         var estado2 = 0;
     }
     var municipio = document.getElementById('municipiosList').value;
-    if(municipio !== 0){
+    if(municipio != 0 || municipio != ""){
         var municipio2 = 1;
     }
     else{
         var municipio2 = 0;
     }
-    var localidad = document.getElementById('localidadesList').value;
-    if(localidad !== 0){
+    var localidad = document.getElementById('localidades').value;
+    if(localidad != 0 || localidad != ""){
         var localidad2 = 1;
     }
     else{
         var localidad2 = 0;
     }
-    var asentamiento = document.getElementById('asentamientosList').value;
-    if(asentamiento !== 0){
+    var asentamiento = document.getElementById('asentamiento').value;
+    if(asentamiento != 0 || asentamiento != ""){
         var asentamiento2 = 1;
     }
     else{
@@ -193,7 +213,7 @@ function descartarCambios(){
         var celular2 = 0;
     }
     var nivelEscolaridad = document.getElementById('escolaridad').value;
-    if(nivelEscolaridad !== 0){
+    if(nivelEscolaridad != 0 || nivelEscolaridad != ""){
         var nivelEscolaridad2 = 1;
     }
     else{
@@ -303,13 +323,26 @@ sumaVars.toString;
     if(sumaVars >= 1){
         console.log(sumaVars);
         console.log('nombre2 '+nombre2, ' aPaterno2 '+aPaterno2, ' apMaterno2 '+apMaterno2, ' generoF2 '+generoF2, ' generoM2 '+generoM2, ' generoO2 '+generoO2, ' edad2 '+edad2, ' curp2 '+curp2, ' rfc2 '+rfc2, ' fechaNacimiento2 '+fechaNacimiento2, ' lugarNacimiento2 '+lugarNacimiento2, ' estadoCivil2 '+estadoCivil2, ' domicilio2 '+domicilio2, ' numExt2 '+numExt2, ' numInt2 '+numInt2, ' vialidad2 '+vialidad2, ' colonia2 '+colonia2, ' entreVialidades2 '+entreVialidades2, ' descripcionDomicilio2 '+descripcionDomicilio2, ' estado2 '+estado2, ' municipio2 '+municipio2, ' localidad2 '+localidad2, ' asentamiento2 '+asentamiento2, ' codigoPostal2 '+codigoPostal2, ' email2 '+email2, ' telefonoParticular2 '+telefonoParticular2, ' celular2 '+celular2, ' nivelEscolaridad2 '+nivelEscolaridad2, ' estudiaSi2 '+estudiaSi2, ' estudiaNo2 '+estudiaNo2, ' habilidad2 '+habilidad2, ' profesion2 '+profesion2, ' trabajaSi2 '+trabajaSi2, ' trabajaNo2 '+trabajaNo2, ' asociacion2Si '+asociacion2Si, ' asociacion2No '+asociacion2No, ' sindicatoSi2 '+sindicatoSi2, ' sindicatoNo2 '+sindicatoNo2, ' pensionSi2 '+pensionSi2, ' pensionNo2 '+pensionNo2, ' seguridadsocial2 '+seguridadsocial2);
-        alert('Estás seguro de salir?');
+        Swal.fire({
+            title: "Deseas descartar cambios?",
+            showDenyButton: true,
+            confirmButtonText: "Sí, descartar!",
+            denyButtonText: `No`
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                Swal.fire("Cambios descartados", "", "success");
+                hrefsSet(hrefs);
+            } else if (result.isDenied) {
+                Swal.fire("Continua editando", "", "info");
+            }
+        });
     }
     else{
         console.log('nombre2'.nombre2, 'aPaterno2'.aPaterno2, 'apMaterno2'.apMaterno2, 'generoF2'.generoF2, 'generoM2'.generoM2, 'generoO2'.generoO2, 'edad2'.edad2, 'curp2'.curp2, 'rfc2'.rfc2, 'fechaNacimiento2'.fechaNacimiento2, 'lugarNacimiento2'.lugarNacimiento2, 'estadoCivil2'.estadoCivil2, 'domicilio2'.domicilio2, 'numExt2'.numExt2, 'numInt2'.numInt2, 'vialidad2'.vialidad2, 'colonia2'.colonia2, 'entreVialidades2'.entreVialidades2, 'descripcionDomicilio2'.descripcionDomicilio2, 'estado2'.estado2, 'municipio2'.municipio2, 'localidad2'.localidad2, 'asentamiento2'.asentamiento2, 'codigoPostal2'.codigoPostal2, 'email2'.email2, 'telefonoParticular2'.telefonoParticular2, 'celular2'.celular2, 'nivelEscolaridad2'.nivelEscolaridad2, 'estudiaSi2'.estudiaSi2, 'estudiaNo2'.estudiaNo2, 'habilidad2'.habilidad2, 'profesion2'.profesion2, 'trabajaSi2'.trabajaSi2, 'trabajaNo2'.trabajaNo2, 'asociacion2Si'.asociacion2Si, 'asociacion2No'.asociacion2No, 'sindicatoSi2'.sindicatoSi2, 'sindicatoNo2'.sindicatoNo2, 'pensionSi2'.pensionSi2, 'pensionNo2'.pensionNo2, 'seguridadsocial2'.seguridadsocial2);
         console.log(seguridadsocial2);
         console.log(sumaVars);
-        alert("No hay tacoooo!");
+        hrefsSet(hrefs);
     }
 
 }
