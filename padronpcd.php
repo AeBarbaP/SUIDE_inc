@@ -90,6 +90,8 @@ include('prcd/qc/qc.php');
     <script src="js/tarjetonesTemp.js"></script>
     <script src="js/usuarioTemp.js"></script>
     <script src="js/editarFamRef.js"></script>
+    <script src="js/print.js"></script>
+    <script src="js/credencialEmpleados.js"></script>
 
     <style>
       * {
@@ -301,13 +303,13 @@ include('prcd/qc/qc.php');
             <nav>
               <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <button class="nav-link active" id="nav-generales-tab" data-bs-toggle="tab" data-bs-target="#nav-generales" type="button" role="tab" aria-controls="nav-generales" aria-selected="true">Datos Generales</button>
-                <button class="nav-link" id="nav-medicos-tab" data-bs-toggle="tab" data-bs-target="#nav-medicos" type="button" role="tab" aria-controls="nav-medicos" aria-selected="false" disabled>Datos Médicos</button>
+                <button class="nav-link" id="nav-medicos-tab" name="medicos" data-bs-toggle="tab" data-bs-target="#nav-medicos" type="button" role="tab" aria-controls="nav-medicos" aria-selected="false" disabled>Datos Médicos</button>
                 <button class="nav-link" id="nav-vivienda-tab" data-bs-toggle="tab" data-bs-target="#nav-vivienda" type="button" role="tab" aria-controls="nav-vivienda" aria-selected="false" disabled>Vivienda</button>
                 <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-integracion" type="button" role="tab" aria-controls="nav-integracion" aria-selected="false" disabled>Integración Familiar</button>
-                <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-referencias" type="button" role="tab" aria-controls="nav-referencias" aria-selected="false" disabled>Referencias</button>
+                <button class="nav-link" id="nav-referencias-tab" data-bs-toggle="tab" data-bs-target="#nav-referencias" type="button" role="tab" aria-controls="nav-referencias" aria-selected="false" disabled>Referencias</button>
                 <button class="nav-link" id="nav-servicios-tab" data-bs-toggle="tab" data-bs-target="#nav-servicios-otorgados" type="button" role="tab" aria-controls="nav-servicios" aria-selected="false" disabled>Servicios Otorgados</button>
-                <button class="nav-link" id="nav-docs-tab" data-bs-toggle="tab" data-bs-target="#nav-docs" type="button" role="tab" aria-controls="nav-docs" aria-selected="false" disabled>Documentos</button>
                 <button class="nav-link" id="nav-formato-tab" data-bs-toggle="tab" data-bs-target="#nav-formato" type="button" role="tab" aria-controls="nav-formato" aria-selected="false" disabled>Imprimir Formato</button>
+                <button class="nav-link" id="nav-docs-tab" data-bs-toggle="tab" data-bs-target="#nav-docs" type="button" role="tab" aria-controls="nav-docs" aria-selected="false" disabled>Documentos</button>
               </div>
             </nav>
             <div class="tab-content"  id="nav-tabContent">
@@ -530,11 +532,11 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Estudia:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaSi" value="1">
+                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaSi" value="2">
                           <label class="form-check-label" for="estudia">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaNo" value="0">
+                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaNo" value="3">
                           <label class="form-check-label" for="estudia">No</label>
                         </div>
                         <input type="text" class="form-control" id="lugarEstudia" name="lugarEstudia" placeholder="Dónde estudia..." disabled>
@@ -689,7 +691,7 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-3">
                       <label for="datos_usr" class="form-label">Discapacidad:</label>
-                      <input type="text" id="curp_exp" onchange="curpTemporal()" hidden>
+                      <input type="text" id="curp_exp" onchange="curpTemporal()">
                       <!-- <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..."> -->
                       <select class="form-select" id="discapacidadList" onchange="numExpGenerator(this.value)" required>
                       
@@ -745,10 +747,10 @@ include('prcd/qc/qc.php');
                       <select class="form-select" id="temporalidad" aria-label="Default select example">
                         <option selected>Selecciona...</option>
                         <option value="1">Permanente</option>
-                        <option value="2">0 - 6 meses</option>
+                        <!-- <option value="2">0 - 6 meses</option>
                         <option value="3">7 - 12 meses</option>
                         <option value="4">13 - 18 meses</option>
-                        <option value="5">18 meses o más</option>
+                        <option value="5">18 meses o más</option> -->
                       </select>
                     </div>
                     <div class="col-sm-6">
@@ -1484,7 +1486,7 @@ include('prcd/qc/qc.php');
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="dvd">
                             <label class="form-check-label" for="flexCheckDefault3">
-                              Reproductor de Video
+                              Reproductor Video
                             </label>
                           </div>
                           <div class="form-check">
@@ -1541,7 +1543,7 @@ include('prcd/qc/qc.php');
                     <!-- dependencia económica -->
                     <br>
                     <div class="d-grid gap-2 mt-3">
-                      <button class="btn btn-primary" type="submit" id="guardarBTNpadron">Guardar</button>
+                      <button class="btn btn-primary" type="submit" onclick="cambiarTab" id="guardarBTNpadron">Guardar</button>
                       <!-- <button class="btn btn-primary" type="submit">Guardar</button> -->
                       </form>
                     </div>
@@ -1646,6 +1648,29 @@ include('prcd/qc/qc.php');
                     </div>
                   </div>
                 </div>
+                <div class="tab-pane fade " id="nav-formato" role="tabpanel" aria-labelledby="nav-formato-tab" tabindex="0">
+                  <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
+                    <label for="basic-url" class="form-label h4"><i class="bi bi-files"></i> Impresión de formatos:</label>
+                    <div class="col-md-6 d-flex justify-content-center mt-3">
+                      <div class="card" style="width: 18rem;">
+                        <img src="img/Registro.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Formato de Registro</h5>
+                          <a href="" onclick="estudioSocioeconomico()" target="_blank" class="btn btn-primary">Imprimir</a>
+                        </div>
+                      </div>  
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-center">
+                      <div class="card" style="width: 18rem;">
+                        <img src="img/Responsiva.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Acta Responsiva</h5>
+                          <a href="prcd/responsivaPDF.php" target="_blank" class="btn btn-primary">Imprimir</a>
+                        </div>
+                      </div>  
+                    </div>
+                  </div>
+                </div>
                 <div class="tab-pane fade" id="nav-docs" role="tabpanel" aria-labelledby="nav-docs-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <label for="basic-url" class="form-label h4"><i class="bi bi-list-check"></i> Requisitos para expediente de Personas con Discapacidad</label>
@@ -1720,30 +1745,7 @@ include('prcd/qc/qc.php');
                     </table>
                     <div id="elementH"></div>
                     <div class="d-grid gap-2">
-                      <a id="buttonCheck" class="btn btn-primary btn-lg"  type="button">Imprimir formato...</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane fade " id="nav-formato" role="tabpanel" aria-labelledby="nav-formato-tab" tabindex="0">
-                  <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
-                    <label for="basic-url" class="form-label h4"><i class="bi bi-files"></i> Impresión de formatos:</label>
-                    <div class="col-md-6 d-flex justify-content-center mt-3">
-                      <div class="card" style="width: 18rem;">
-                        <img src="img/Registro.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Formato de Registro</h5>
-                          <a href="prcd/registroPDF.php" target="_blank" class="btn btn-primary">Imprimir</a>
-                        </div>
-                      </div>  
-                    </div>
-                    <div class="col-md-6 d-flex justify-content-center">
-                      <div class="card" style="width: 18rem;">
-                        <img src="img/Responsiva.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Acta Responsiva</h5>
-                          <a href="prcd/responsivaPDF.php" target="_blank" class="btn btn-primary">Imprimir</a>
-                        </div>
-                      </div>  
+                      <a id="buttonCheck" class="btn btn-primary btn-lg" type="button">Finalizar Expediente e Imprimir formato...</a>
                     </div>
                   </div>
                 </div>

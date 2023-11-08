@@ -348,10 +348,10 @@ sumaVars.toString;
 }
 
 function estudiaOp(x){
-    var estudia = x;
+    var estudiaSi = x;
 
-    if (estudia == 1){
-        document.getElementById('habilidad').disabled = false;
+    if (estudiaSi == 2){
+        document.getElementById('lugarEstudia').disabled = false;
         
     } else {
         document.getElementById('lugarEstudia').disabled = true;

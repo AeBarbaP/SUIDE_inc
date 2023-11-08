@@ -375,11 +375,10 @@ $(document).ready(function() {
 })
 
 function cambiarTab(){
-    const triggerEl = document.querySelector('#medicos button[data-bs-target="#nav-medicos"]')
-    bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
-
-    /* const triggerFirstTabEl = document.querySelector('#myTab li:first-child button')
-    bootstrap.Tab.getInstance(triggerFirstTabEl).show() // Select first tab */
+    $("#nav-generales-tab").removeClass('active');
+    $("#nav-medicos-tab").addClass('active');
+    $("#nav-generales").removeClass('show active');
+    $("#nav-medicos").addClass('show active');
 }
 
 $(document).ready(function() {
@@ -492,6 +491,7 @@ $(document).ready(function() {
                     document.getElementById('nav-generales-tab').disabled = true;
                     document.getElementById('nav-vivienda-tab').disabled = false;
                     document.getElementById('guardarMedicosbtn').disabled = true;
+                    cambiarTab2();
                 }
                 else if (verificador = 2){
                     Swal.fire({
@@ -508,6 +508,13 @@ $(document).ready(function() {
 
     })
 })
+
+function cambiarTab2(){
+    $("#nav-medicos-tab").removeClass('active');
+    $("#nav-vivienda-tab").addClass('active');
+    $("#nav-medicos").removeClass('show active');
+    $("#nav-vivienda").addClass('show active');
+}
 
 function queryTabAlergias(x){
     var alergias = x;
@@ -854,7 +861,12 @@ $(document).ready(function() {
                     document.getElementById('nav-generales-tab').disabled = true;
                     document.getElementById('nav-vivienda-tab').disabled = true;
                     document.getElementById('guardarBTNpadron').disabled = true;
-                    
+                    cambiarTab3();
+                    document.getElementById('nav-integracion-tab').disabled = false;
+                    document.getElementById('nav-referencias-tab').disabled = false;
+                    document.getElementById('nav-servicios-tab').disabled = false;
+                    document.getElementById('nav-docs-tab').disabled = false;
+                    document.getElementById('nav-formato-tab').disabled = false;
                 }
                 else if (verificador = 2){
                     Swal.fire({
@@ -870,6 +882,13 @@ $(document).ready(function() {
         e.preventDefault();
     })
 })
+
+function cambiarTab3(){
+    $("#nav-vivienda-tab").removeClass('active');
+    $("#nav-integracion-tab").addClass('active');
+    $("#nav-vivienda").removeClass('show active');
+    $("#nav-integracion").addClass('show active');
+}
 
 $(document).ready(function() {
     $('#familiaForm').submit(function(e) {
@@ -1674,6 +1693,11 @@ function swalListaEspera(){
     )
         limpiarModalSolicitud();
         $("#solicitudAdd").modal('hide');
+}
+
+function estudioSocioeconomico() {
+    var curp = document.getElementById('curp_exp');
+    window.location.href = "prcd/registroPDF.php?curp="+curp;
 }
 
 function fotoEmp() {
