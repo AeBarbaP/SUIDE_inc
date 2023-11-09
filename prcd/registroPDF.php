@@ -1,4 +1,7 @@
 <?php
+session_start();
+$usr = $_SESSION['nombre'];
+
 include('qc/qc.php');
 require('fpdf/fpdf.php');
 
@@ -7,6 +10,19 @@ $curp =$_REQUEST['curp'];
 $sqlGenerales = "SELECT * FROM datos_generales WHERE curp = '$curp'";
 $resultadoGenerales = $conn->query($sqlGenerales);
 $rowSqlGenerales = $resultadoGenerales->fetch_assoc();
+
+$estado = $rowSqlGenerales['estado'];
+
+$sqlEstados = "SELECT * FROM catestados WHERE claveEstado = '$estado'";
+$resultadoEstados = $conn->query($sqlEstados);
+$rowSqlEstados = $resultadoEstados->fetch_assoc();
+
+$municipio = $rowSqlGenerales['municipio'];
+
+$sqlMunicipios = "SELECT * FROM catmunicipios WHERE claveMunicipio = '$municipio'";
+$resultadoMunicipios = $conn->query($sqlMunicipios);
+$rowSqlMunicipios = $resultadoMunicipios->fetch_assoc();
+
 
 $sqlMedicos = "SELECT * FROM datos_medicos WHERE curp = '$curp'";
 $resultadoMedicos = $conn->query($sqlMedicos);
@@ -29,21 +45,6 @@ $resultadoServicios = $conn->query($sqlServicios);
 $rowSqlServicios = $resultadoServicios->fetch_assoc();
 
 $genero = $rowSqlGenerales['genero'];
-if ($genero == 0){
-  $regGeneroH = "X";
-  $regGeneroM = " ";
-  $regGeneroO = " ";
-}
-else if ($genero == 1){
-  $regGeneroH = " ";
-  $regGeneroM = "X";
-  $regGeneroO = " ";
-}
-else if ($genero == 2){
-  $regGeneroH = " ";
-  $regGeneroM = " ";
-  $regGeneroO = "X";
-}
 
 $estadoCivil = $rowSqlGenerales['edo_civil'];
 if ($estadoCivil == 1){
@@ -82,104 +83,316 @@ else if ($regEscolaridad == 6){
 $estudia = $rowSqlGenerales['estudia'];
 if ($estudia == 0){
   $regEstudiaNo = "X";
-  $regEstudiaSi = " ";
+  $regEstudiaSi = "";
 }
 else if ($estudia == 1){
-  $regEstudiaNo = " ";
+  $regEstudiaNo = "";
   $regEstudiaSi = "X";
 }
 
 $trabaja = $rowSqlGenerales['trabaja'];
 if ($trabaja == 0){
   $regTrabajaNo = "X";
-  $regTrabajaSi = " ";
+  $regTrabajaSi = "";
 }
 else if ($trabaja == 1){
-  $regTrabajaNo = " ";
+  $regTrabajaNo = "";
   $regTrabajaSi = "X";
 }
 
 $sindicato = $rowSqlGenerales['sindicato'];
 if ($sindicato == 0){
   $regSindicatoNo = "X";
-  $regSindicatoSi = " ";
+  $regSindicatoSi = "";
 }
 else if ($sindicato == 1){
-  $regSindicatoNo = " ";
+  $regSindicatoNo = "";
   $regSindicatoSi = "X";
 }
 
 $ac = $rowSqlGenerales['asoc_civ'];
 if ($ac == 0){
   $regACNo = "X";
-  $regACSi = " ";
+  $regACSi = "";
 }
 else if ($trabaja == 1){
-  $regACNo = " ";
+  $regACNo = "";
   $regACSi = "X";
 }
 
 $pension = $rowSqlGenerales['pensionado'];
 if ($pension == 0){
   $regPensionNo = "X";
-  $regPensionSi = " ";
+  $regPensionSi = "";
 }
 else if ($pension == 1){
-  $regPensionNo = " ";
+  $regPensionNo = "";
   $regPensionSi = "X";
 }
 
 $ss = $rowSqlGenerales['seguridad_social'];
-if ($ss == 1){
-  $regSS1 = "X";
-  $regSS2 = " ";
-  $regSS3 = " ";
-  $regSS4 = " ";
+if ($ss == 'IMSS'){
+  $regIMSS = "X";
+  $regISSSTE = "";
+  $regSSZ = "";
+  $regNon = "";
+  $regOtro = "";
 }
-else if ($ss == 2){
-  $regSS1 = " ";
-  $regSS2 = "X";
-  $regSS3 = " ";
-  $regSS4 = " ";
+else if ($ss == 'ISSSTE'){
+  $regIMSS = "";
+  $regISSSTE = "X";
+  $regSSZ = "";
+  $regNon = "";
+  $regOtro = "";
 }
-else if ($ss == 3){
-  $regSS1 = " ";
-  $regSS2 = " ";
-  $regSS3 = "X";
-  $regSS4 = " ";
+else if ($ss == 'SSZ'){
+  $regIMSS = "";
+  $regISSSTE = "";
+  $regSSZ = "X";
+  $regNon = "";
+  $regOtro = "";
 }
-else if ($ss == 4){
-  $regSS1 = " ";
-  $regSS2 = " ";
-  $regSS3 = " ";
-  $regSS4 = "X";
+else if ($ss == 5){
+  $regIMSS = "";
+  $regISSSTE = "";
+  $regSSZ = "";
+  $regNon = "";
+  $regOtro = "X";
+}
+else{
+  $regIMSS = "";
+  $regISSSTE = "";
+  $regSSZ = "";
+  $regNon = "X";
+  $regOtro = "";
 }
 
 $discapacidad = $rowSqlMedicos['tipo_discapacidad'];
-if ($ss == 1){
-  $regSS1 = "X";
-  $regSS2 = " ";
-  $regSS3 = " ";
-  $regSS4 = " ";
+if ($discapacidad == 'Física'){
+  $regFisica = "X";
+  $regIntelectual = "";
+  $regSensorial = "";
+  $regMultiple = "";
+  $regPsicosocial = "";
 }
-else if ($ss == 2){
-  $regSS1 = " ";
-  $regSS2 = "X";
-  $regSS3 = " ";
-  $regSS4 = " ";
+else if ($discapacidad == 'Intelectual'){
+  $regFisica = "";
+  $regIntelectual = "X";
+  $regSensorial = "";
+  $regMultiple = "";
+  $regPsicosocial = "";
 }
-else if ($ss == 3){
-  $regSS1 = " ";
-  $regSS2 = " ";
-  $regSS3 = "X";
-  $regSS4 = " ";
+else if ($discapacidad == 'Sensorial'){
+  $regFisica = "";
+  $regIntelectual = "";
+  $regSensorial = "X";
+  $regMultiple = "";
+  $regPsicosocial = "";
 }
-else if ($ss == 4){
-  $regSS1 = " ";
-  $regSS2 = " ";
-  $regSS3 = " ";
-  $regSS4 = "X";
+else if ($discapacidad == 'Múltiple'){
+  $regFisica = "";
+  $regIntelectual = "";
+  $regSensorial = "";
+  $regMultiple = "X";
+  $regPsicosocial = "";
 }
+else if ($discapacidad == 'Psicosocial'){
+  $regFisica = "";
+  $regIntelectual = "";
+  $regSensorial = "";
+  $regMultiple = "";
+  $regPsicosocial = "X";
+}
+
+$idDiscapacidad = $rowSqlMedicos['discapacidad'];
+$causa = $rowSqlMedicos['causa'];
+
+if ($causa == 1){
+  $congenita = "X";
+  $adquirida = "";
+  $accidente = "";
+  $enfermedad = "";
+  $nacimiento = "";
+  $adiccion = "";
+  $otracausa = "";
+}
+else if ($causa == 2){
+  $congenita = "";
+  $adquirida = "X";
+  $accidente = "";
+  $enfermedad = "";
+  $nacimiento = "";
+  $adiccion = "";
+  $otracausa = "";
+}
+else if ($causa == 3){
+  $congenita = "";
+  $adquirida = "";
+  $accidente = "X";
+  $enfermedad = "";
+  $nacimiento = "";
+  $adiccion = "";
+  $otracausa = "";
+}
+else if ($causa == 4){
+  $congenita = "";
+  $adquirida = "";
+  $accidente = "";
+  $enfermedad = "X";
+  $nacimiento = "";
+  $adiccion = "";
+  $otracausa = "";
+}
+else if ($causa == 5){
+  $congenita = "";
+  $adquirida = "";
+  $accidente = "";
+  $enfermedad = "";
+  $nacimiento = "X";
+  $adiccion = "";
+  $otracausa = "";
+}
+else if ($causa == 6){
+  $congenita = "";
+  $adquirida = "";
+  $accidente = "";
+  $enfermedad = "";
+  $nacimiento = "";
+  $adiccion = "X";
+  $otracausa = "";
+}
+else if ($causa == 7){
+  $congenita = "";
+  $adquirida = "";
+  $accidente = "";
+  $enfermedad = "";
+  $nacimiento = "";
+  $adiccion = "";
+  $otracausa = $rowSqlMedicos['causa_otro'];
+}
+
+$idTemporalidad = $rowSqlMedicos['temporalidad'];
+if($idTemporalidad == 1){
+  $tempDisc ="Permanente";
+}
+else{
+  $tempDisc = $rowSqlMedicos['temporalidad'];
+}
+
+$idFValoracion = $rowSqlMedicos['valoracion'];
+if($idFValoracion == 1){
+  $idFValoracion2 ="IMSS";
+}
+else if($idFValoracion == 2){
+  $idFValoracion2 ="ISSSTE";
+}
+else if($idFValoracion == 3){
+  $idFValoracion2 ="SSZ";
+}
+else if($idFValoracion == 4){
+  $idFValoracion2 ="CREE";
+}
+else if($idFValoracion == 5){
+  $idFValoracion2 ="SMFA";
+}
+else if($idFValoracion == 6){
+  $idFValoracion2 ="UBR";
+}
+else{
+  $idFValoracion2 = "";
+}
+
+$idSangre = $rowSqlMedicos['tipo_sangre'];
+if($idSangre == 1){
+  $idSangre2 ="A Rh +";
+}
+else if($idSangre == 2){
+  $idSangre2 ="A Rh -";
+}
+else if($idSangre == 3){
+  $idSangre2 ="AB Rh +";
+}
+else if($idSangre == 4){
+  $idSangre2 ="AB Rh -";
+}
+else if($idSangre == 5){
+  $idSangre2 ="B Rh +";
+}
+else if($idSangre == 6){
+  $idSangre2 ="B Rh -";
+}
+else if($idSangre == 7){
+  $idSangre2 ="O Rh +";
+}
+else if($idSangre == 8){
+  $idSangre2 ="O Rh -";
+}
+
+$idRehab = $rowSqlMedicos['rehabilitacion'];
+if($idRehab == 1){
+  $idRehab2 ="X";
+  $idRehab3 ="";
+}
+else if($idRehab == 0){
+  $idRehab2 = "";
+  $idRehab3 = "X";
+}
+else{
+  $idRehab2 = "";
+  $idRehab3 = "";
+}
+
+$Duracion = $rowSqlMedicos['rehabilitacion_duracion'];
+if($Duracion == 1){
+  $Duracion2 ="0-6 meses";
+}
+else if($Duracion == 2){
+  $Duracion2 = "7-12 meses";
+}
+else if($Duracion == 3){
+  $Duracion2 = "13-18 meses";
+}
+else if($Duracion == 4){
+  $Duracion2 = "18 meses o más";
+}
+else{
+  $Duracion2 = "";
+}
+
+$idCirugias = $rowSqlMedicos['rehabilitacion'];
+if($idCirugias == 1 || $idCirugias == "SI"){
+  $idCirugias2 ="X";
+  $idCirugias3 ="";
+}
+else if($idCirugias == 0 || $idCirugias == "NO"){
+  $idCirugias2 = "";
+  $idCirugias3 = "X";
+}
+else{
+  $idCirugias2 = "";
+  $idCirugias3 = "";
+}
+
+$protesis = $rowSqlMedicos['protesis'];
+if($protesis == 1 || $protesis == "SI"){
+  $protesis2 ="X";
+  $protesis3 ="";
+}
+else if($protesis == 2 || $protesis == "NO"){
+  $protesis2 = "";
+  $protesis3 = "X";
+}
+else{
+  $protesis2 = "";
+  $protesis3 = "";
+}
+
+$sqlViviendas = "SELECT * FROM vivienda WHERE curp = '$curp'";
+$resultadoViv = $conn->query($sqlViviendas);
+$rowViviendas = $resultadoViv->fetch_assoc();
+
+
+
 class PDF extends FPDF
 {
 // Cabecera de página
@@ -226,13 +439,13 @@ $pdf->Multicell(190,8,utf8_decode('FORMATO DE TRABAJO SOCIAL / REGISTRO DE PERSO
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(44,5,utf8_decode('Número de Expediente: '),0,0,'R');
 $pdf->Cell(5,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','',10);
 $pdf->Cell(44,5,utf8_decode($rowSqlGenerales['numExpediente']),1,0,'C');
 $pdf->Cell(5,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(40,5,utf8_decode('Fecha de Registro'),0,0,'R');
 $pdf->Cell(5,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','',10);
 $pdf->Cell(40,5,utf8_decode($rowSqlGenerales['fecha_registro']),1,0,'C');
 $pdf->Cell(4,5,utf8_decode(''),0,0,'C');
 $pdf->Ln();
@@ -247,160 +460,148 @@ $pdf->Ln();
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(14,5,utf8_decode('Nombre:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(70,5,utf8_decode($rowSqlGenerales['nombre'].' '.$rowSqlGenerales['apellido_p'].' '.$rowSqlGenerales['apellido_m']),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(70,5,utf8_decode(' '.$rowSqlGenerales['nombre'].' '.$rowSqlGenerales['apellido_p'].' '.$rowSqlGenerales['apellido_m'].' '),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(5,5,utf8_decode('H:'),0,0,'L');
+$pdf->Cell(10,5,utf8_decode('Género:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode($regGeneroH),0,0,'C');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','B',8);
-$pdf->Cell(5,5,utf8_decode('M:'),0,0,'L');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode($regGeneroM),0,0,'C');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','B',8);
-$pdf->Cell(5,5,utf8_decode('O:'),0,0,'L');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode($regGeneroO),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(22,5,utf8_decode(' '.$genero.' '),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(10,5,utf8_decode('Edad:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(10,5,utf8_decode($rowSqlGenerales['edad']),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(10,5,utf8_decode(' '.$rowSqlGenerales['edad'].' '),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(20,5,utf8_decode('Estado Civil:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(29,5,utf8_decode($regEdoCivil),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(29,5,utf8_decode(' '.$rowSqlGenerales['edo_civil'].' '),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(32,5,utf8_decode('Fecha de nacimiento:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(24,5,utf8_decode($rowSqlGenerales['f_nacimiento']),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(24,5,utf8_decode(' '.$rowSqlGenerales['f_nacimiento'].' '),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(37,5,utf8_decode('Lugar de nacimiento:'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'L');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(95,5,utf8_decode($rowSqlGenerales['lugar_nacimiento']),0,0,'L');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(95,5,utf8_decode(' '.$rowSqlGenerales['lugar_nacimiento'].' '),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(12,5,utf8_decode('CURP:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(43,5,utf8_decode($rowSqlGenerales['curp']),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(43,5,utf8_decode(' '.$curp.' '),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(10,5,utf8_decode('RFC:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(33,5,utf8_decode($rowSqlGenerales['rfc']),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(33,5,utf8_decode(' '.$rowSqlGenerales['rfc'].' '),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(17,5,utf8_decode('Teléfono:'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(26,5,utf8_decode($rowSqlGenerales['telefono_part']),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(26,5,utf8_decode(' '.$rowSqlGenerales['telefono_part'].' '),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(17,5,utf8_decode('Celular:'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(26,5,utf8_decode($rowSqlGenerales['telefono_cel']),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(26,5,utf8_decode(' '.$rowSqlGenerales['telefono_cel'].' '),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(18,5,utf8_decode('Domicilio:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(105,5,utf8_decode($rowSqlGenerales['domicilio']),0,0,'L');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(105,5,utf8_decode(' '.$rowSqlGenerales['domicilio'].' '),0,0,'L');
 $pdf->Cell(2,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(13,5,utf8_decode('No. Ext:'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(18,5,utf8_decode($rowSqlGenerales['no_ext']),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(18,5,utf8_decode(' '.$rowSqlGenerales['no_ext'].' '),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(13,5,utf8_decode('No. Int.:'),0,0,'R');
 $pdf->Cell(1,6,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(18,5,utf8_decode($rowSqlGenerales['no_int']),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(18,5,utf8_decode(' '.$rowSqlGenerales['no_int'].' '),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(15,5,utf8_decode('Colonia:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(75,5,utf8_decode($rowSqlGenerales['colonia']),0,0,'L');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(75,5,utf8_decode(' '.$rowSqlGenerales['colonia'].' '),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(26,5,utf8_decode('Entre vialidades:'),0,0,'R');
-$pdf->Cell(1,5,utf8_decode($rowSqlGenerales['entre_vialidades']),0,0,'L');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(72,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'L');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(72,5,utf8_decode(' '.$rowSqlGenerales['entre_vialidades'].' '),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(50,5,utf8_decode('Descripción o referencia del lugar:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(140,5,utf8_decode($rowSqlGenerales['descr_referencias']),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(140,5,utf8_decode(' '.$rowSqlGenerales['descr_referencias'].' '),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(13,5,utf8_decode('Estado:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(30,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(30,5,utf8_decode(' '.$rowSqlEstados['nombreEstado'].' '),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(17,5,utf8_decode('Municipio:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(55,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(55,5,utf8_decode(' '.$rowSqlMunicipios['nombreMunicipio'].' '),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(17,5,utf8_decode('Localidad:'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(54,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(54,5,utf8_decode(' '.$rowSqlGenerales['localidad'].' '),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(22,5,utf8_decode('Asentamiento:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(59,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(59,5,utf8_decode(' '.$rowSqlGenerales['asentamiento'].' '),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(10,5,utf8_decode('C.P:'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(18,5,utf8_decode($rowSqlGenerales['cp']),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(18,5,utf8_decode(' '.$rowSqlGenerales['cp'].' '),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(17,5,utf8_decode('Correo-e:'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(60,5,utf8_decode($rowSqlGenerales['correo']),0,0,'L');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(60,5,utf8_decode(' '.$rowSqlGenerales['correo'].' '),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(26,5,utf8_decode('Nivel escolaridad:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(43,5,utf8_decode($regEscolaridad),0,0,'L');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(43,5,utf8_decode(' '.$rowSqlGenerales['escolaridad'].' '),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(14,5,utf8_decode('Estudia:'),0,0,'R');
@@ -408,33 +609,33 @@ $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','U',10);
 $pdf->Cell(4,5,utf8_decode($regEstudiaSi),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','U',10);
 $pdf->Cell(4,5,utf8_decode($regEstudiaNo),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(14,5,utf8_decode('Dónde?'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(66,5,utf8_decode($rowSqlGenerales['estudia_donde']),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(66,5,utf8_decode(' '.$rowSqlGenerales['estudia_donde'].' '),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(27,5,utf8_decode('Profesión u oficio:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(90,5,utf8_decode($rowSqlGenerales['profesión']),0,0,'L');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(90,5,utf8_decode(' '.$rowSqlGenerales['profesion'].' '),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(16,5,utf8_decode('Habilidad:'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(55,5,utf8_decode($rowSqlGenerales['estudia_habilidad']),0,0,'L');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(55,5,utf8_decode(' '.$rowSqlGenerales['estudia_habilidad'].' '),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -443,26 +644,26 @@ $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','U',10);
 $pdf->Cell(4,5,utf8_decode($regTrabajaSi),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','U',10);
 $pdf->Cell(4,5,utf8_decode($regTrabajaNo),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(14,5,utf8_decode('Dónde?'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(66,5,utf8_decode($rowSqlGenerales['trabaja_donde']),0,0,'C');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(66,5,utf8_decode(' '.$rowSqlGenerales['trabaja_donde'].' '),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'L');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(30,5,utf8_decode('Ingreso mensual: $'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(40,5,utf8_decode($rowSqlGenerales['trabaja_ingresos']),0,0,'L');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(40,5,utf8_decode(' '.$rowSqlGenerales['trabaja_ingresos'].' '),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -471,20 +672,20 @@ $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','U',10);
 $pdf->Cell(4,5,utf8_decode($regACSi),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','U',10);
 $pdf->Cell(4,5,utf8_decode($regACNo),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(13,5,utf8_decode('Cuál?'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(118,5,utf8_decode($rowSqlGenerales['asoc_cual']),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(118,5,utf8_decode(' '.$rowSqlGenerales['asoc_cual'].' '),0,0,'C');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -493,20 +694,20 @@ $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','U',8);
 $pdf->Cell(4,5,utf8_decode($regSindicatoSi),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','U',10);
 $pdf->Cell(4,5,utf8_decode($regSindicatoNo),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(13,5,utf8_decode('Cuál?'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(112,5,utf8_decode($rowSqlGenerales['sindicato_cual']),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(112,5,utf8_decode(' '.$rowSqlGenerales['sindicato_cual'].' '),0,0,'C');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -515,26 +716,31 @@ $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','U',10);
 $pdf->Cell(4,5,utf8_decode($regPensionSi),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','U',10);
 $pdf->Cell(4,5,utf8_decode($regPensionNo),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(13,5,utf8_decode('Cuál?'),0,0,'C');
+$pdf->Cell(13,5,utf8_decode('Dónde?'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(60,5,utf8_decode($rowSqlGenerales['pensionado_donde']),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(36,5,utf8_decode(' '.$rowSqlGenerales['pensionado_donde'].' '),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(30,5,utf8_decode('Monto pensión: $'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(40,5,utf8_decode($rowSqlGenerales['pension_monto']),0,0,'L');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(25,5,utf8_decode(' '.$rowSqlGenerales['pension_monto'].' '),0,0,'L');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(12,5,utf8_decode('Temporalidad:'),0,0,'R');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(26,5,utf8_decode(' '.$rowSqlGenerales['pension_temporalidad'].' '),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -543,32 +749,38 @@ $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(10,5,utf8_decode('IMSS:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode($regSS1),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($regIMSS),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(13,5,utf8_decode('ISSSTE:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode($regSS2),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($regISSSTE),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(8,5,utf8_decode('SSZ:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode($regSS3),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($regSSZ),0,0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(15,5,utf8_decode('Ninguno:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($regNon),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(10,5,utf8_decode('Otro:'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(30,5,utf8_decode($rowSqlGenerales['seguridad_social_donde']),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(20,5,utf8_decode($regOtro),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(17,5,utf8_decode('No. de SS:'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(43,5,utf8_decode($rowSqlGenerales['numSS']),0,0,'L');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(33,5,utf8_decode(' '.$rowSqlGenerales['numSS'].' '),0,0,'L');
 $pdf->Ln();
 $pdf->Ln();
 
@@ -578,46 +790,52 @@ $pdf->Cell(191,5,utf8_decode('DATOS MÉDICOS'),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(39,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(20,5,utf8_decode(''),0,0,'C');
 $pdf->Cell(32,5,utf8_decode('Tipo de discapacidad:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(11,5,utf8_decode('Física:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode($regDiscFisica),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($regFisica ),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(17,5,utf8_decode('Intelectual:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode($regDiscIntelectual),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($regIntelectual),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(16,5,utf8_decode('Sensorial:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode($regDiscSensorial),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($regSensorial),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(14,5,utf8_decode('Múltiple:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode($regDiscMultiple),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($regMultiple),0,0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(14,5,utf8_decode('Psicosocial:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($regPsicosocial),0,0,'C');
 $pdf->Cell(38,5,utf8_decode(''),0,0,'C');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(21,5,utf8_decode('Discapacidad:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(100,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(100,5,utf8_decode($idDiscapacidad),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(11,5,utf8_decode('Grado:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(56,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(56,5,utf8_decode($rowSqlMedicos['grado_discapacidad']),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -625,63 +843,63 @@ $pdf->Cell(12,5,utf8_decode('Causa:'),0,0,'L');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(17,5,utf8_decode('Congénita:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($congenita),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(16,5,utf8_decode('Adquirida:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($adquirida),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(17,5,utf8_decode('Accidente:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($accidente),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(19,5,utf8_decode('Enfermedad:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($enfermedad),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(18,5,utf8_decode('Nacimiento:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($nacimiento),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(15,5,utf8_decode('Adicción:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($adiccion),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(9,5,utf8_decode('Otro:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(31,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(31,5,utf8_decode($otracausa),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(22,5,utf8_decode('Temporalidad:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(36,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(36,5,utf8_decode($tempDisc),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(34,5,utf8_decode('Fuente de Valoración:'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(31,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(31,5,utf8_decode($idFValoracion2),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(32,5,utf8_decode('Fecha de Valoración:'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(31,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(31,5,utf8_decode($rowSqlMedicos['fecha_valoracion']),0,0,'C');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -690,39 +908,39 @@ $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($idRehab2),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($idRehab3),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(14,5,utf8_decode('Dónde?'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(29,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(29,5,utf8_decode($rowSqlMedicos['rehabilitacion_donde']),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(23,5,utf8_decode('Fecha de Inicio:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(22,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(22,5,utf8_decode($rowSqlMedicos['rehabilitacion_inicio']),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(18,5,utf8_decode('Duración:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(30,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(30,5,utf8_decode($Duracion2),0,0,'C');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(24,5,utf8_decode('Tipo de Sangre:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(15,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(15,5,utf8_decode($idSangre2),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(25,5,utf8_decode('Tiene cirugías?:'),0,0,'L');
@@ -730,20 +948,20 @@ $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($idCirugias2),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($idCirugias3),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(28,5,utf8_decode('Tipo de cirugía:'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(71,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(71,5,utf8_decode($rowSqlMedicos['tipo_cirugias']),0,0,'C');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -752,41 +970,41 @@ $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($protesis2),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(4,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode( $protesis3),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(38,5,utf8_decode('Tipo de prótesis u órtesis:'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(93,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(93,5,utf8_decode($rowSqlMedicos['protesis_tipo']),0,0,'C');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(18,5,utf8_decode('Alergias:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(172,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(172,5,utf8_decode($rowSqlMedicos['alergias_cual']),0,0,'C');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(23,5,utf8_decode('Enfermedades:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(167,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(167,5,utf8_decode($rowSqlMedicos['enfermedades_cual']),0,0,'C');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(25,5,utf8_decode('Medicamentos:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',8);
-$pdf->Cell(165,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(165,5,utf8_decode($rowSqlMedicos['medicamentos_cual']),0,0,'C');
 $pdf->Ln();
 $pdf->Ln();
 
@@ -863,7 +1081,7 @@ $pdf->SetFont('Arial','',8);
 $pdf->Cell(4,5,utf8_decode(''),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(10,5,utf8_decode('Otro:'),1,0,'L');
+$pdf->Cell(10,5,utf8_decode('Otro:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',8);
 $pdf->Cell(88,5,utf8_decode(''),0,0,'C');
@@ -994,13 +1212,13 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(29,5,utf8_decode('Electrodomésticos:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(17,5,utf8_decode('Lavadora:'),0,0,'L');
+$pdf->Cell(15,5,utf8_decode('Lavadora:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',8);
 $pdf->Cell(4,5,utf8_decode(''),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(15,5,utf8_decode('Estéreo:'),0,0,'L');
+$pdf->Cell(17,5,utf8_decode('Sistema Sonido:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',8);
 $pdf->Cell(4,5,utf8_decode(''),0,0,'C');
@@ -1040,7 +1258,7 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(29,5,utf8_decode(''),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(10,5,utf8_decode('DVD:'),0,0,'L');
+$pdf->Cell(25,5,utf8_decode('Reproductor Video:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',8);
 $pdf->Cell(4,5,utf8_decode(''),0,0,'C');
@@ -1049,7 +1267,7 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(11,5,utf8_decode('Otro:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',8);
-$pdf->Cell(35,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(20,5,utf8_decode(''),0,0,'C');
 $pdf->Ln();
 
 
@@ -1100,7 +1318,23 @@ $pdf->Cell(25,5,utf8_decode('Discapacidad:'),1,0,'C');
 $pdf->Cell(15,5,utf8_decode('Ingreso:'),1,0,'C');
 $pdf->Cell(15,5,utf8_decode('Teléfono:'),1,0,'C');
 $pdf->Ln();
-$pdf->Ln();
+
+$sqlFamiliares = "SELECT * FROM integracion WHERE curp = '$curp'";
+$resultadosqlFamiliares = $conn->query($sqlFamiliares);
+
+while ($rowSqlFamiliares = $resultadosqlFamiliares->fetch_assoc()){
+  $pdf->SetFont('Arial','',8);
+  $pdf->Cell(49,5,utf8_decode($rowSqlFamiliares['nombre']),1,0,'C');
+  $pdf->Cell(20,5,utf8_decode($rowSqlFamiliares['parentesco']),1,0,'C');
+  $pdf->Cell(12,5,utf8_decode($rowSqlFamiliares['edad']),1,0,'L');
+  $pdf->Cell(25,5,utf8_decode($rowSqlFamiliares['escolaridad']),1,0,'C');
+  $pdf->Cell(30,5,utf8_decode($rowSqlFamiliares['profesion_oficio']),1,0,'C');
+  $pdf->Cell(25,5,utf8_decode($rowSqlFamiliares['discapacidad']),1,0,'C');
+  $pdf->Cell(15,5,utf8_decode($rowSqlFamiliares['ingreso']),1,0,'C');
+  $pdf->Cell(15,5,utf8_decode($rowSqlFamiliares['telcel']),1,0,'C');
+  $pdf->Ln();
+}
+
 $pdf->Ln();
 
 $pdf->Line(10, 300, 210-10, 300); // 20mm from each edge
@@ -1116,8 +1350,22 @@ $pdf->Cell(70,5,utf8_decode('Domicilio:'),1,0,'C');
 $pdf->Cell(31,5,utf8_decode('Profesión u Oficio:'),1,0,'C');
 $pdf->Cell(15,5,utf8_decode('Teléfono:'),1,0,'C');
 $pdf->Ln();
+
+$sqlReferencias = "SELECT * FROM referencias WHERE curp = '$curp'";
+$resultadosqlReferencia = $conn->query($sqlReferencias);
+
+while ($rowSqlReferencia = $resultadosqlReferencia->fetch_assoc()){
+  $pdf->SetFont('Arial','',8);
+  $pdf->Cell(55,5,utf8_decode($rowSqlReferencia['nombre']),1,0,'C');
+  $pdf->Cell(20,5,utf8_decode($rowSqlReferencia['parentesco']),1,0,'C');
+  $pdf->Cell(70,5,utf8_decode($rowSqlReferencia['direccion']),1,0,'C');
+  $pdf->Cell(31,5,utf8_decode($rowSqlReferencia['profesion_oficio']),1,0,'C');
+  $pdf->Cell(15,5,utf8_decode($rowSqlReferencia['celular']),1,0,'C');
+  $pdf->Ln();
+}
+
 $pdf->Ln();
-$pdf->Ln();
+
 
 $pdf->Line(10, 300, 210-10, 300); // 20mm from each edge
 $pdf->SetFont('Arial','B',9);
@@ -1133,15 +1381,36 @@ $pdf->Cell(67,5,utf8_decode('Descripción:'),1,0,'C');
 $pdf->Cell(31,5,utf8_decode('Fecha Entrega:'),1,0,'C');
 $pdf->Cell(15,5,utf8_decode('Estatus:'),1,0,'C');
 $pdf->Ln();
-$pdf->Ln();
+
+$sqlServicios = "SELECT * FROM servicios WHERE curp = '$curp'";
+$resultadosqlServicios = $conn->query($sqlServicios);
+
+while ($rowSqlServicios = $resultadosqlServicios->fetch_assoc()){
+  $pdf->SetFont('Arial','',6);
+  $pdf->Cell(17,5,utf8_decode($rowSqlServicios['folio_solicitud']),1,0,'C');
+  $pdf->SetFont('Arial','',7);
+  $pdf->Cell(30,5,utf8_decode($rowSqlServicios['fecha_solicitud']),1,0,'C');
+  $pdf->Cell(30,5,utf8_decode($rowSqlServicios['tipo_solicitud']),1,0,'C');
+  $pdf->Cell(67,5,utf8_decode($rowSqlServicios['detalle_solicitud']),1,0,'C');
+  $pdf->Cell(31,5,utf8_decode($rowSqlServicios['fecha_entrega']),1,0,'C');
+  $pdf->Cell(15,5,utf8_decode($rowSqlServicios['estatus_s']),1,0,'C');
+  $pdf->Ln();
+}
+
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();
 
+
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(95,5,utf8_decode('Nombre y firma del responsable de Llenado:'),1,0,'C');
-$pdf->Cell(96,5,utf8_decode('Nombre y firma de Autorización de uso de Datos Personales:'),1,0,'C');
+$pdf->Cell(95,5,utf8_decode('Firma:'),1,0,'C');
+$pdf->Cell(96,5,utf8_decode('Firma de Autorización de uso de Datos Personales:'),1,0,'C');
 $pdf->Ln();
+$pdf->Cell(95,20,utf8_decode(''),1,0,'C');
+$pdf->Cell(96,20,utf8_decode(''),1,0,'C');
+$pdf->Ln();
+$pdf->Cell(95,5,utf8_decode($usr),1,0,'C');
+$pdf->Cell(96,5,utf8_decode($rowSqlGenerales['nombre'].' '.$rowSqlGenerales['apellido_p'].' '.$rowSqlGenerales['apellido_m']),1,0,'C');
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();
