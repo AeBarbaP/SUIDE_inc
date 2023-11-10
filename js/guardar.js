@@ -1699,6 +1699,10 @@ function estudioSocioeconomico() {
     var curp = document.getElementById('curp_exp');
     window.location.href = "prcd/registroPDF.php?curp="+curp;
 }
+function responsivaCarta() {
+    var curp = document.getElementById('curp_exp');
+    window.location.href = "prcd/responsivaPDF.php?curp="+curp;
+}
 
 function fotoEmp() {
     var doc = "_photo";

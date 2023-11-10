@@ -1,5 +1,46 @@
 <?php
+session_start();
+$usr = $_SESSION['nombre'];
+
+include('qc/qc.php');
 require('fpdf/fpdf.php');
+
+date_default_timezone_set('America/Mexico_City');
+setlocale(LC_TIME, 'es_MX.UTF-8');
+
+$fecha_actual = strftime("%d-%m-%Y");
+
+$curp =$_REQUEST['curp'];
+
+$sqlGenerales = "SELECT * FROM datos_generales WHERE curp = '$curp'";
+$resultadoGenerales = $conn->query($sqlGenerales);
+$rowSqlGenerales = $resultadoGenerales->fetch_assoc();
+
+$nombreCompleto = $rowSqlGenerales['nombre'].' '.$rowSqlGenerales['apellido_p'].' '.$rowSqlGenerales['apellido_m'];
+
+$estado = $rowSqlGenerales['estado'];
+
+$sqlEstados = "SELECT * FROM catestados WHERE claveEstado = '$estado'";
+$resultadoEstados = $conn->query($sqlEstados);
+$rowSqlEstados = $resultadoEstados->fetch_assoc();
+
+$municipio = $rowSqlGenerales['municipio'];
+
+$sqlMunicipios = "SELECT * FROM catmunicipios WHERE claveMunicipio = '$municipio'";
+$resultadoMunicipios = $conn->query($sqlMunicipios);
+$rowSqlMunicipios = $resultadoMunicipios->fetch_assoc();
+
+$sqlTarjeton = "SELECT * FROM tarjetones WHERE curp = '$curp' LIMIT 1";
+$resultadoTarjeton = $conn->query($sqlTarjeton);
+$filaT = $resultadoTarjeton->num_rows;
+
+if ($filaT == 0){
+    $folioTarjeton = "Sin Registro";
+}
+else {
+    $rowSqlTarjeton = $resultadoTarjeton->fetch_assoc();
+    $folioTarjeton = $rowSqlTarjeton['folio_tarjeton'];
+}
 
 class PDF extends FPDF
 {
@@ -49,7 +90,7 @@ $pdf->Ln();
 
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(98,5,'',0,0,'C');
-$pdf->Cell(33,5,utf8_decode('Zacatecas, Zac. a: '),0,0,'C');
+$pdf->Cell(33,5,utf8_decode('Zacatecas, Zac. a: '.$fecha_actual),0,0,'C');
 $pdf->Cell(5,5,utf8_decode(''),0,0,'C');
 $pdf->Cell(55,5,'',0,0,'C');
 $pdf->Ln();
@@ -59,77 +100,82 @@ $pdf->SetFont('Arial','B',10);
 $pdf->Cell(44,5,utf8_decode('Número de Expediente: '),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(44,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(44,5,utf8_decode($rowSqlGenerales['numExpediente']),0,0,'C');
 $pdf->Cell(5,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(12,5,utf8_decode('CURP:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(63,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(63,5,utf8_decode($curp),0,0,'C');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',10);
-$pdf->Cell(14,5,utf8_decode('Nombre completo:'),0,0,'L');
+$pdf->Cell(35,5,utf8_decode('Nombre completo:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(125,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(125,5,utf8_decode($nombreCompleto),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(18,5,utf8_decode('Domicilio:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(105,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(105,5,utf8_decode($rowSqlGenerales['domicilio']),0,0,'C');
 $pdf->Cell(2,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(13,5,utf8_decode('No. Ext:'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(18,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(18,5,utf8_decode($rowSqlGenerales['no_ext']),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(13,5,utf8_decode('No. Int.:'),0,0,'R');
 $pdf->Cell(1,6,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(18,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(18,5,utf8_decode($rowSqlGenerales['no_int']),0,0,'C');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(15,5,utf8_decode('Colonia:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(75,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(75,5,utf8_decode($rowSqlGenerales['colonia']),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(26,5,utf8_decode('Entre vialidades:'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(72,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(72,5,utf8_decode($rowSqlGenerales['entre_vialidades']),0,0,'C');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(13,5,utf8_decode('Estado:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(30,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(30,5,utf8_decode($rowSqlEstados['nombreEstado']),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(17,5,utf8_decode('Municipio:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(55,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(55,5,utf8_decode($rowSqlMunicipios['nombreMunicipio']),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(17,5,utf8_decode('Localidad:'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(54,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(54,5,utf8_decode($rowSqlGenerales['localidad']),0,0,'C');
 $pdf->Ln();
 
 $pdf->Ln();
 $pdf->SetFont('Arial','',10);
-$pdf->Multicell(185,5,utf8_decode('Recibí tarjetón que permite el uso de los espacios públicos exclusivos para Personas con Discapacidad con número de control: folioTarjeton'),0,'J',0);
+$pdf->Multicell(185,4,utf8_decode('Recibí tarjetón que permite el uso de los espacios públicos exclusivos para Personas con Discapacidad con número de control: '),0,'J',0);
 $pdf->Ln();
+$pdf->SetFont('Arial','B',11);
+$pdf->Cell(190,4,utf8_decode($folioTarjeton),0,0,'C');
+$pdf->Ln();
+$pdf->Ln();
+$pdf->SetFont('Arial','',10);
 $pdf->Multicell(190,5,utf8_decode('Por lo anterior me permito manifestar lo siguiente:'),0,'J',0);
 $pdf->Ln();
 $pdf->Cell(5,5,utf8_decode(' '),0,0,'L');
@@ -160,11 +206,10 @@ $pdf->Cell(191,5,utf8_decode('A T E N T A M E N T E :'),0,0,'C');
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();
-$pdf->Ln();
 $pdf->SetFont('Arial','',10);
 $pdf->Cell(191,5,utf8_decode('_________________________________________________'),0,0,'C');
 $pdf->Ln();
-$pdf->Cell(191,5,utf8_decode('variable para nombre completo'),0,0,'C');
+$pdf->Cell(191,5,utf8_decode($nombreCompleto),0,0,'C');
 $pdf->Ln();
 
 

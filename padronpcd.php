@@ -1665,7 +1665,7 @@ include('prcd/qc/qc.php');
                         <img src="img/Responsiva.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Acta Responsiva</h5>
-                          <a href="prcd/responsivaPDF.php" target="_blank" class="btn btn-primary">Imprimir</a>
+                          <a onclick="responsivaCarta()" target="_blank" class="btn btn-primary">Imprimir</a>
                         </div>
                       </div>  
                     </div>
