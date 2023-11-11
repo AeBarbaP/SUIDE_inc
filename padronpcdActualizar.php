@@ -250,11 +250,12 @@ include('prcd/qc/qc.php');
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <!-- <p class="h5"><strong>Padrón Estatal de Personas con Discapacidad</strong></p> -->
       <h3 class="text-muted mt-4">Actualización de Expediente</h3>
-      <div class="input-group mb-5 mt-2">
+      <div class="input-group mb-2 mt-2">
         <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
         <input class="form-control w-50" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
         <!-- <div class="col-3 text-start"> -->
         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#leerQr"><i class="bi bi-qr-code-scan"></i> Escanear</button>
+        
         <!-- <button class="btn btn-danger" id="botonCerrar2"><i class="bi bi-qr-code"></i> Cerrar Cámara</button> -->
         <!-- </div> -->
         <!-- <div class="col-2 mt-1 text-end">
@@ -267,6 +268,20 @@ include('prcd/qc/qc.php');
         </select> </p> -->
         <!-- </div>  -->  
       </div><!-- input group -->
+      <p class="w-100">
+        <div class="alert alert-warning" role="alert">
+          Ingresa el número de expediente o nombre para encontrar al beneficiario.
+        </div>
+      
+        <div class="alert alert-primary" role="alert">
+          # expediente:<br>
+          Nombre:
+        </div>
+    
+        <div class="alert alert-danger" role="alert">
+          No se encontró el expediente.
+        </div>
+      </p>
 
       <!-- inicia jquery para ejecutar script de modal leerQr -->
       <script>
