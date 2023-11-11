@@ -72,12 +72,14 @@ include('prcd/qc/qc.php');
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <script src="js/guardar.js"></script>
     <script src="js/validate.js"></script>
     <script src="instascan.min.js"></script>
     <script src="script.js"></script>
     <script src="print.js" type="text/javascript"></script>
-    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/edicionExp.js"></script>
 
     <audio id="myAudio">
       <source src="beep.mp3" type="audio/mpeg">
@@ -252,7 +254,7 @@ include('prcd/qc/qc.php');
       <h3 class="text-muted mt-4">Actualización de Expediente</h3>
       <div class="input-group mb-2 mt-2">
         <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-        <input class="form-control w-50" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+        <input class="form-control w-50" id="" oninput="buscarExpediente12(this.value)" onkeypress="ValidaSoloNumeros()" maxlength="20" pattern="[0-9]+" placeholder="Buscar...">
         <!-- <div class="col-3 text-start"> -->
         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#leerQr"><i class="bi bi-qr-code-scan"></i> Escanear</button>
         
@@ -269,16 +271,16 @@ include('prcd/qc/qc.php');
         <!-- </div>  -->  
       </div><!-- input group -->
       <p class="w-100">
-        <div class="alert alert-warning" role="alert">
+        <div class="alert alert-warning" role="alert" id="nada">
           Ingresa el número de expediente o nombre para encontrar al beneficiario.
         </div>
       
-        <div class="alert alert-primary" role="alert">
-          # expediente:<br>
-          Nombre:
+        <div class="alert alert-primary" role="alert" id="positivo" hidden>
+          # expediente: <span id="numExp1"></span><br>
+          Nombre: <span id="nombreExp1"></span>&nbsp<span id="apellidoPExp1"></span>&nbsp<span id="apellidoMExp1"></span>
         </div>
     
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger" role="alert" id="negativo" hidden>
           No se encontró el expediente.
         </div>
       </p>
