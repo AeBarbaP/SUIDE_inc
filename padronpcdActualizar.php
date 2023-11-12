@@ -278,7 +278,7 @@ include('prcd/qc/qc.php');
         <div class="alert alert-primary" role="alert" id="positivo" hidden>
         <div class="row">
           <div class="col-10 align-middle p-1">
-              <strong># Expediente:</strong> <span id="numExp1"></span>
+              <strong># Expediente:</strong> <span id="numExp1"></span> | 
               <strong>Nombre:</strong> <span id="nombreExp1"></span>&nbsp<span id="apellidoPExp1"></span>&nbsp<span id="apellidoMExp1"></span>
             
           </div>
