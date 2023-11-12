@@ -274,12 +274,21 @@ include('prcd/qc/qc.php');
         <div class="alert alert-warning" role="alert" id="nada">
           Ingresa el número de expediente o nombre para encontrar al beneficiario.
         </div>
-      
+        
         <div class="alert alert-primary" role="alert" id="positivo" hidden>
-          # expediente: <span id="numExp1"></span><br>
-          Nombre: <span id="nombreExp1"></span>&nbsp<span id="apellidoPExp1"></span>&nbsp<span id="apellidoMExp1"></span>
+        <div class="row">
+          <div class="col-10 align-middle p-1">
+              <strong># Expediente:</strong> <span id="numExp1"></span>
+              <strong>Nombre:</strong> <span id="nombreExp1"></span>&nbsp<span id="apellidoPExp1"></span>&nbsp<span id="apellidoMExp1"></span>
+            
+          </div>
+          <div class="col-2 text-end">
+            <button class="btn btn-primary btn-sm">Editar beneficiario</button>
+          </div>
         </div>
-    
+
+        </div>
+        
         <div class="alert alert-danger" role="alert" id="negativo" hidden>
           No se encontró el expediente.
         </div>
