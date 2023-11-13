@@ -22,11 +22,19 @@ $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
     $apellido_m = $rowDatos['apellido_m'];
     $curp = $rowDatos['curp'];
 
+    if ($curp == "" || $curp == null){
+        $curp2 = "Sin CURP";
+    }
+    else {
+        $curp2 = $curp;
+    }
+
     echo json_encode(array(
         'success'=>1,
-        'nombre'=>$rowDatos['nombr']e,
-        'apellido_p'=>$rowDatos['apellido_']p,
-        'apellido_m'=>$rowDatos['apellido_']m,
+        'curp'=>$curp2,
+        'nombre'=>$rowDatos['nombre'],
+        'apellido_p'=>$rowDatos['apellido_p'],
+        'apellido_m'=>$rowDatos['apellido_m'],
         'genero'=>$rowDatos['genero'], 
         'edad'=>$rowDatos['edad'], 
         'edo_civil'=>$rowDatos['edo_civil'], 
@@ -128,5 +136,5 @@ $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
         'electrodomesticos_otro'=>$rowDatosVivienda['electrodomesticos_otro'], 
         'personas_dependen'=>$rowDatosVivienda['personas_dependen'], 
         'deudas'=>$rowDatosVivienda['deudas'], 
-        'deudas_cuanto'=>$rowDatosVivienda['deudas_cuanto'], 
+        'deudas_cuanto'=>$rowDatosVivienda['deudas_cuanto'] //vivienda
     ));

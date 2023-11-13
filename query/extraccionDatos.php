@@ -3,7 +3,7 @@ include('../prcd/qc/qc.php');
 
 $datos = $_POST['cadenaTexto'];
 
-$sql = "SELECT * FROM datos_generales WHERE numExpediente = '$datos' OR curp = '$datos'";
+$sql = "SELECT * FROM datos_generales WHERE numExpediente LIKE '%$datos%' OR curp LIKE '%$datos%'";
 $resultadoSql = $conn->query($sql);
 $fila = $resultadoSql->num_rows;
 
