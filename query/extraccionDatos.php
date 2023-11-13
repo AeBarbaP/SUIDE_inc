@@ -14,12 +14,14 @@ if($fila == 1){
     $nombre = $rowDatos['nombre'];
     $apellido_p = $rowDatos['apellido_p'];
     $apellido_m = $rowDatos['apellido_m'];
+    $curp = $rowDatos['curp'];
 
     echo json_encode(array(
         'success'=>1,
         'nombre'=>$nombre,
         'apellido_p'=>$apellido_p,
         'apellido_m'=>$apellido_m,
+        'curp'=>$curp, 
         'numExpediente'=>$numExpediente 
     ));
 }

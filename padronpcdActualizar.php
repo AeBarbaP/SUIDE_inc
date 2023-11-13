@@ -293,6 +293,8 @@ include('prcd/qc/qc.php');
           No se encontró el expediente.
         </div>
       </p>
+      <input type="text" id="datosCompletos">
+      <input type="text" id="datosCompletosCURP">
 
       <!-- inicia jquery para ejecutar script de modal leerQr -->
       <script>
