@@ -757,12 +757,12 @@ include('prcd/qc/qc.php');
                       <label for="datos_usr" class="form-label">Fuente de Valoración:</label>
                       <select class="form-select" id="fuente" aria-label="Default select example">
                         <option selected>Selecciona...</option>
-                        <option value="1">IMSS</option>
-                        <option value="2">ISSSTE</option>
-                        <option value="3">SSZ</option>
-                        <option value="4">CREE</option>
-                        <option value="5">Servicios Médicos de la Fuerza Armada</option>
-                        <option value="6">UBR - Unidad Básica de Rehabilitación</option>
+                        <option value="IMSS">IMSS</option>
+                        <option value="ISSSTE">ISSSTE</option>
+                        <option value="SSZ">SSZ</option>
+                        <option value="CREE">CREE</option>
+                        <option value="SMFA">Servicios Médicos de la Fuerza Armada</option>
+                        <option value="UBR">UBR - Unidad Básica de Rehabilitación</option>
                       </select>
                     </div>
                     <div class="col-sm-4">

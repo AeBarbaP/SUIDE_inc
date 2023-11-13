@@ -1,18 +1,20 @@
 <?php
 include('../prcd/qc/qc.php');
 
-$curp = $_POST['curp'];
+$curp = $_POST['curp2'];
 $expediente = $_POST['expediente'];
 
-$sql = "SELECT * FROM datos_generales WHERE numExpediente = '$expediente' OR curp = '$curp'";
+//substr($expediente,6,5);
+
+$sql = "SELECT * FROM datos_generales WHERE numExpediente LIKE '%$expediente%'";
 $resultadoSql = $conn->query($sql);
 $rowDatos = $resultadoSql->fetch_assoc();
 //datos médicos
-$sqlMedicos = "SELECT * FROM datos_medicos WHERE numExpediente = '$expediente' OR curp = '$curp'";
+$sqlMedicos = "SELECT * FROM datos_medicos WHERE expediente LIKE '%$expediente%'";
 $resultadoSqlMedicos = $conn->query($sqlMedicos);
 $rowDatosMedicos = $resultadoSqlMedicos->fetch_assoc();
 //vivienda
-$sqlVivienda = "SELECT * FROM vivienda WHERE numExpediente = '$expediente' OR curp = '$curp'";
+$sqlVivienda = "SELECT * FROM vivienda WHERE expediente LIKE '%$expediente%'";
 $resultadoSqlVivienda = $conn->query($sqlVivienda);
 $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
 
@@ -28,7 +30,7 @@ $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
     else {
         $curp2 = $curp;
     }
-
+    
     echo json_encode(array(
         'success'=>1,
         'curp'=>$curp2,
@@ -44,8 +46,8 @@ $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
         'no_int'=>$rowDatos['no_int'], 
         'no_ext'=>$rowDatos['no_ext'], 
         'colonia'=>$rowDatos['colonia'], 
-        'entra_vialidades'=>$rowDatos['entra_vialidades'], 
-        'desc_referencias'=>$rowDatos['desc_referencias'], 
+        'entre_vialidades'=>$rowDatos['entre_vialidades'], 
+        'desc_referencias'=>$rowDatos['descr_referencias'], 
         'tipoVialidad'=>$rowDatos['tipoVialidad'], 
         'estado'=>$rowDatos['estado'], 
         'municipio'=>$rowDatos['municipio'], 
@@ -59,7 +61,7 @@ $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
         'profesion'=>$rowDatos['profesion'], 
         'rfc'=>$rowDatos['rfc'], 
         'estudia'=>$rowDatos['estudia'], 
-        'estdia_donde'=>$rowDatos['estdia_donde'], 
+        'estudia_donde'=>$rowDatos['estudia_donde'], 
         'estudia_habilidad'=>$rowDatos['estudia_habilidad'], 
         'trabaja'=>$rowDatos['trabaja'], 
         'trabaja_donde'=>$rowDatos['trabaja_donde'], 
@@ -74,7 +76,7 @@ $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
         'seguridad_social'=>$rowDatos['seguridad_social'], 
         'seguridad_social_otro'=>$rowDatos['seguridad_social_otro'], 
         'numSS'=>$rowDatos['numSS'], 
-        'photo'=>$rowDatos['photo, '],//hasta aquí datos generales 
+        'photo'=>$rowDatos['photo'],//hasta aquí datos generales 
         'discapacidad'=>$rowDatosMedicos['discapacidad'], 
         'grado_discapacidad'=>$rowDatosMedicos['grado_discapacidad'], 
         'tipo_discapacidad'=>$rowDatosMedicos['tipo_discapacidad'], 
@@ -112,7 +114,7 @@ $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
         'vivienda_banio'=>$rowDatosVivienda['vivienda_banio'], 
         'vivienda_otros'=>$rowDatosVivienda['vivienda_otros'], 
         'techo'=>$rowDatosVivienda['techo'], 
-        'techo_otros'=>$rowDatosVivienda['techo_otros'], 
+        'techo_otro'=>$rowDatosVivienda['techo_otro'], 
         'pared'=>$rowDatosVivienda['pared'], 
         'pared_otro'=>$rowDatosVivienda['pared_otro'], 
         'serv_basicos_agua'=>$rowDatosVivienda['serv_basicos_agua'], 
