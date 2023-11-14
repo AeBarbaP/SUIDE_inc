@@ -74,7 +74,7 @@ function queryDatos(){
             var telefono_part  = jsonData.telefono_part;
             var correo = jsonData.correo;
             var telefono_cel   = jsonData.telefono_cel;
-            var escolaridad= jsonData.escolaridad;
+            //var escolaridad= jsonData.escolaridad;
             var profesion  = jsonData.profesion;
             var rfc= jsonData.rfc;
             var estudia= jsonData.estudia;
@@ -156,18 +156,19 @@ function queryDatos(){
             var personas_dependen  = jsonData.personas_dependen;
             var deudas = jsonData.deudas;
             var deudas_cuanto  = jsonData.deudas_cuanto;
-            console.log(jsonData.curp);
+            console.log(jsonData.desc_referencias);
 
             if (success = 1) {
-                document.getElementById('curp').value = jsonData.curp; 
+                document.getElementById('curp').value = jsonData.curp;
+                cortarRFC2(); 
                 document.getElementById('nombre').value = jsonData.nombre; 
                 document.getElementById('apellidoP').value = jsonData.apellido_p; 
                 document.getElementById('apellidoM').value = jsonData.apellido_m; 
                 //document.getElementById('genero').value = jsonData.genero; 
                 document.getElementById('edad').value = jsonData.edad; 
-                //document.getElementById('edoCivil').value = jsonData.edo_civil; 
                 document.getElementById('fechaNacimiento').value = jsonData.f_nacimiento; 
                 document.getElementById('lugarNacimiento').value = jsonData.lugar_nacimiento; 
+                document.getElementById('edoCivil').value = jsonData.edo_civil; 
                 document.getElementById('domicilio').value = jsonData.domicilio; 
                 document.getElementById('numExt').value = jsonData.no_int; 
                 document.getElementById('numInt').value = jsonData.no_ext; 

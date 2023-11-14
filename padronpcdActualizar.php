@@ -173,7 +173,7 @@ include('prcd/qc/qc.php');
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body>
+  <body onload="estadosSelect()">
     
 <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
@@ -711,7 +711,7 @@ include('prcd/qc/qc.php');
                         <option value="ISSSTE">ISSSTE</option>
                         <option value="SSZ">SSZ</option>
                         <option value="Ninguno">Sin Seguridad Social</option>
-                        <option value="5">Otro</option>
+                        <option value="Otro">Otro</option>
                       </select>
                       <span class="input-group-text"> Especifique: </span>
                       <input type="text" class="form-control" id="otroSS" name="datos_usr" placeholder="Nombre de la Institución de Seguridad Social" disabled>

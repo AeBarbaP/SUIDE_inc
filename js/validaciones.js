@@ -133,6 +133,11 @@ function cortarRFC(curp){
     var rfcCutted = curp.substr(0,10);
     document.getElementById('rfcCut').innerHTML = rfcCutted;
 }
+function cortarRFC2(){
+    var curp = document.getElementById('curp').value;
+    var rfcCutted = curp.substr(0,10);
+    document.getElementById('rfcCut').innerHTML = rfcCutted;
+}
 
 function cambiarAtrib(){
     var casilla = document.getElementById('oficial');
