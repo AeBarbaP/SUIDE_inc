@@ -72,7 +72,6 @@ include('prcd/qc/qc.php');
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <script src="instascan.min.js"></script>
     <script src="script.js"></script>
@@ -173,7 +172,7 @@ include('prcd/qc/qc.php');
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body onload="estadosSelect()">
+  <body onload="estadosSelect(); catTipoVialidades()">
     
 <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
@@ -424,7 +423,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">CURP:</label>
-                    <input type="text" class="form-control" id="curp" name="datos_usr" placeholder="CURP" onkeyup="javascript:this.value=this.value.toUpperCase();" onchange="curp2date(this); cortarRFC(this.value)" required>
+                    <input type="text" class="form-control" id="curp" name="datos_usr" placeholder="CURP" onkeyup="javascript:this.value=this.value.toUpperCase();" onchange="curp2date(this)" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
@@ -518,7 +517,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Municipio:</label>
-                    <select class="form-select" id="municipiosList" placeholder="Selecciona..."onchange="localidadesSelect(this.value)" required>
+                    <select class="form-select" id="municipiosList" placeholder="Selecciona..." onchange="localidadesSelect(this.value)" required>
 
 
                     </select>
@@ -526,6 +525,7 @@ include('prcd/qc/qc.php');
                       * Campo requerido.
                     </div>
                   </div>
+
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Localidad:</label>
                     <input class="form-control" list="localidadesList" id="localidades" placeholder="Buscar..." onchange="asentamientosSelect(this.value)" required>
@@ -575,15 +575,15 @@ include('prcd/qc/qc.php');
                     <label for="exampleDataList" class="form-label">Nivel de Escolaridad:</label>
                     <select class="form-select" id="escolaridad" aria-label="Default select example">
                       <option value="" selected>Selecciona...</option>
-                      <option value="Ninguno">Sin escolarizar</option>
-                      <option value="Primaria">Primaria</option>
-                      <option value="Secundaria">Secundaria</option>
-                      <option value="Preparatoria">Preparatoria</option>
-                      <option value="Técnica">Carrera Técnica</option>
-                      <option value="Licenciatura">Licenciatura</option>
-                      <option value="Posgrado">Posgrado</option>
-                      <option value="Preescolar">Preescolar</option>
-                      <option value="Especial">Escuela de Educación Especial</option>
+                      <option value="NINGUNO">Sin escolarizar</option>
+                      <option value="PRIMARIA">Primaria</option>
+                      <option value="SECUNDARIA">Secundaria</option>
+                      <option value="PREPARATORIA">Preparatoria</option>
+                      <option value="TECNICA">Carrera Técnica</option>
+                      <option value="LICENCIATURA">Licenciatura</option>
+                      <option value="POSGRADO">Posgrado</option>
+                      <option value="PREESCOLAR">Preescolar</option>
+                      <option value="ESPECIAL">Escuela de Educación Especial</option>
                     </select>
                   </div>
                   <div class="col-sm-4">
@@ -2384,8 +2384,7 @@ include('prcd/qc/qc.php');
       <!-- Termina Modal para generar tarjeton de préstamo-->
       
     </main>
-    <script src="sidebars.js"></script>
-    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
   </div>
 </div>
 

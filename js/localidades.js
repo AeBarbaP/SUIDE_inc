@@ -14,6 +14,8 @@ function localidadesSelect(x){
                 success: function(response)
                 { 
                 $('#localidadesList').fadeIn(1000).html(response);
+                document.getElementById('localidadesList').removeAttribute('style');
+                document.getElementById('localidadesList').setAttribute('style','display:none;');
                 }
             });
     }

@@ -24,6 +24,7 @@ $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
     $apellido_m = $rowDatos['apellido_m'];
     $curp = $rowDatos['curp'];
 
+    
     if ($curp == "" || $curp == null){
         $curp2 = "Sin CURP";
     }
@@ -48,7 +49,7 @@ $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
         'colonia'=>$rowDatos['colonia'], 
         'entre_vialidades'=>$rowDatos['entre_vialidades'], 
         'desc_referencias'=>$rowDatos['descr_referencias'], 
-        //'tipoVialidad'=>$rowDatos['tipoVialidad'], 
+        'tipoVialidad'=>$rowDatos['tipoVialidad'], 
         'estado'=>$rowDatos['estado'], 
         'municipio'=>$rowDatos['municipio'], 
         'localidad'=>$rowDatos['localidad'], 

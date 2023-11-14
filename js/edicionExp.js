@@ -50,49 +50,12 @@ function queryDatos(){
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));
             var success = jsonData.success;
-            var curp   = jsonData.curp;
-            var nombre = jsonData.nombre;
-            var apellido_p = jsonData.apellido_p;
-            var apellido_m = jsonData.apellido_m;
             var genero = jsonData.genero;
-            var edad   = jsonData.edad;
-            //var edo_civil  = jsonData.edo_civil;
-            var f_nacimiento   = jsonData.f_nacimiento;
-            var lugar_nacimiento   = jsonData.lugar_nacimiento;
-            var domicilio  = jsonData.domicilio;
-            var no_int = jsonData.no_int;
-            var no_ext = jsonData.no_ext;
-            var colonia= jsonData.colonia;
-            var entre_vialidades   = jsonData.entre_vialidades;
-            var desc_referencias   = jsonData.desc_referencias;
-           // var tipoVialidad   = jsonData.tipoVialidad;
-            var estado = jsonData.estado;
-            var municipio  = jsonData.municipio;
-            var localidad  = jsonData.localidad;
-            var asentamiento   = jsonData.asentamiento;
-            var cp = jsonData.cp;
-            var telefono_part  = jsonData.telefono_part;
-            var correo = jsonData.correo;
-            var telefono_cel   = jsonData.telefono_cel;
-            //var escolaridad= jsonData.escolaridad;
-            var profesion  = jsonData.profesion;
-            var rfc= jsonData.rfc;
             var estudia= jsonData.estudia;
-            var estdia_donde   = jsonData.estdia_donde;
-            var estudia_habilidad  = jsonData.estudia_habilidad;
             var trabaja= jsonData.trabaja;
-            var trabaja_donde  = jsonData.trabaja_donde;
             var asoc_civ   = jsonData.asoc_civ;
-            var asoc_cual  = jsonData.asoc_cual;
             var pensionado = jsonData.pensionado;
-            var pensionado_donde   = jsonData.pensionado_donde;
-            var pension_monto  = jsonData.pension_monto;
-            var pension_temporalidad   = jsonData.pension_temporalidad;
             var sindicato  = jsonData.sindicato;
-            var sindicato_cual = jsonData.sindicato_cual;
-            var seguridad_social   = jsonData.seguridad_social;
-            var seguridad_social_otro  = jsonData.seguridad_social_otro;
-            var numSS  = jsonData.numSS;
             var photo  = jsonData.photo;
             var discapacidad   = jsonData.discapacidad;
             var grado_discapacidad = jsonData.grado_discapacidad;
@@ -156,7 +119,9 @@ function queryDatos(){
             var personas_dependen  = jsonData.personas_dependen;
             var deudas = jsonData.deudas;
             var deudas_cuanto  = jsonData.deudas_cuanto;
-            console.log(jsonData.desc_referencias);
+            console.log(jsonData.municipio);
+            
+            
 
             if (success = 1) {
                 document.getElementById('curp').value = jsonData.curp;
@@ -164,7 +129,17 @@ function queryDatos(){
                 document.getElementById('nombre').value = jsonData.nombre; 
                 document.getElementById('apellidoP').value = jsonData.apellido_p; 
                 document.getElementById('apellidoM').value = jsonData.apellido_m; 
-                //document.getElementById('genero').value = jsonData.genero; 
+
+                if (genero == 'FEMENINO' || genero == 'Femenino'){
+                    document.getElementById('generoF').checked = true;
+                } 
+                else if (genero == 'MASCULINO' || genero == 'Masculino') {
+                    document.getElementById('generoM').checked = true;
+                }
+                else if (genero == 'OTRO' || genero == 'Otro') {
+                    document.getElementById('generoO').checked = true;
+                }
+
                 document.getElementById('edad').value = jsonData.edad; 
                 document.getElementById('fechaNacimiento').value = jsonData.f_nacimiento; 
                 document.getElementById('lugarNacimiento').value = jsonData.lugar_nacimiento; 
@@ -176,10 +151,11 @@ function queryDatos(){
                 document.getElementById('entreVialidades').value = jsonData.entre_vialidades; 
                 document.getElementById('descripcionLugar').value = jsonData.desc_referencias; 
                 document.getElementById('tipoVialidad').value = jsonData.tipoVialidad; 
-                document.getElementById('estadosList').value = jsonData.estado; // pregunta
-                document.getElementById('municipiosList').value = jsonData.municipio; //
-                document.getElementById('localidades').value = jsonData.localidad; //
-                document.getElementById('asentamiento').value = jsonData.asentamiento; //
+                document.getElementById('estadosList').value = jsonData.estado; 
+                municipiosSelect(jsonData.estado);
+                document.getElementById('municipiosList').value = jsonData.municipio; 
+                document.getElementById('localidades').value = jsonData.localidad; 
+                document.getElementById('asentamiento').value = jsonData.asentamiento; 
                 document.getElementById('codigoPostal').value = jsonData.cp; 
                 document.getElementById('telFijo').value = jsonData.telefono_part; 
                 document.getElementById('correo').value = jsonData.correo; 
@@ -187,19 +163,59 @@ function queryDatos(){
                 document.getElementById('escolaridad').value = jsonData.escolaridad; 
                 document.getElementById('profesion').value = jsonData.profesion; 
                 //document.getElementById('rfc').value = jsonData.rfc; 
-                //document.getElementById('estudia').value = jsonData.estudia; //Si y No
-                document.getElementById('lugarEstudia').value = jsonData.estudia_donde; 
+
+                if (estudia == 'SI' || estudia == '2'){
+                    document.getElementById('estudiaSi').checked = true;
+                    document.getElementById('lugarEstudia').disabled = false; 
+                    document.getElementById('lugarEstudia').value = jsonData.estudia_donde; 
+                } 
+                else if (estudia == 'NO' || estudia == '3') {
+                    document.getElementById('estudiaNo').checked = true;
+                }
+
                 document.getElementById('habilidad').value = jsonData.estudia_habilidad; 
-                //document.getElementById('trabaja').value = jsonData.trabaja; // Si y No
-                document.getElementById('lugarTrabajo').value = jsonData.trabaja_donde; 
-                //document.getElementById('asoc_civ').value = jsonData.asoc_civ; // Si y No
-                document.getElementById('nombreAC').value = jsonData.asoc_cual; 
-                //document.getElementById('pensionado').value = jsonData.pensionado;  // Si y No
-                document.getElementById('instPension').value = jsonData.pensionado_donde; 
-                document.getElementById('montoP').value = jsonData.pension_monto; 
-                document.getElementById('periodo').value = jsonData.pension_temporalidad; 
-                //document.getElementById('sindicato').value = jsonData.sindicato; // Si y no
-                document.getElementById('nombreSindicato').value = jsonData.sindicato_cual; 
+
+                if (trabaja == 'SI' || trabaja == '1'){
+                    document.getElementById('trabajaSi').checked = true;
+                    document.getElementById('lugarTrabajo').disabled = false; 
+                    document.getElementById('ingresoMensual').disabled = false; 
+                    document.getElementById('lugarTrabajo').value = jsonData.trabaja_donde; 
+                } 
+                else if (trabaja == 'NO' || trabaja == '0') {
+                    document.getElementById('trabajaNo').checked = true;
+                }
+
+                if (asoc_civ == 'SI' || asoc_civ == '1'){
+                    document.getElementById('asociacionSi').checked = true;
+                    document.getElementById('nombreAC').disabled = false;  
+                    document.getElementById('nombreAC').value = jsonData.asoc_cual; 
+                } 
+                else if (asoc_civ == 'NO' || asoc_civ == '0') {
+                    document.getElementById('asociacionNo').checked = true;
+                }
+
+                if (pensionado == 'SI' || pensionado == '1'){
+                    document.getElementById('pensionSi').checked = true;
+                    document.getElementById('instPension').disabled = false;  
+                    document.getElementById('montoP').disabled = false;  
+                    document.getElementById('periodo').disabled = false;  
+                    document.getElementById('instPension').value = jsonData.pensionado_donde; 
+                    document.getElementById('montoP').value = jsonData.pension_monto; 
+                    document.getElementById('periodo').value = jsonData.pension_temporalidad; 
+                } 
+                else if (pensionado == 'NO' || pensionado == '0') {
+                    document.getElementById('pensionNo').checked = true;
+                }
+
+                if (sindicato == 'SI' || sindicato == '1'){
+                    document.getElementById('sindicatoSi').checked = true;
+                    document.getElementById('nombreSindicato').disabled = false;  
+                    document.getElementById('nombreSindicato').value = jsonData.asoc_cual; 
+                } 
+                else if (sindicato == 'NO' || sindicato == '2' || sindicato == "" || sindicato == null) {
+                    document.getElementById('sindicatoNo').checked = true;
+                }
+
                 document.getElementById('seguridadsocial').value = jsonData.seguridad_social; 
                 document.getElementById('otroSS').value = jsonData.seguridad_social_otro; 
                 document.getElementById('numss').value = jsonData.numSS; 
@@ -213,8 +229,8 @@ function queryDatos(){
                 document.getElementById('temporalidad').value = jsonData.temporalidad; 
                 document.getElementById('fuente').value = jsonData.valoracion; 
                 document.getElementById('fechaValoracion').value = jsonData.fecha_valoracion; 
-                document.getElementById('rehabilitacion').value = jsonData.rehabilitacion; 
-                document.getElementById('rehabilitacion_donde').value = jsonData.rehabilitacion_donde; 
+                //document.getElementById('rehabilitacion').value = jsonData.rehabilitacion; 
+                document.getElementById('lugarRehab').value = jsonData.rehabilitacion_donde; 
                 document.getElementById('rehabilitacion_inicio').value = jsonData.rehabilitacion_inicio; 
                 document.getElementById('rehabilitacion_duracion').value = jsonData.rehabilitacion_duracion; 
                 document.getElementById('tipo_sangre').value = jsonData.tipo_sangre; 

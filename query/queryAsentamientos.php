@@ -8,18 +8,15 @@ $resultadoVariable = $conn->query($var);
 $filas = $resultadoVariable->num_rows;
 
 if($filas > 1){
-    echo '
-    <option value=""><input type="text"></option>
-    ';
+    
     while ($rowLocalidad = $resultadoVariable->fetch_assoc()){
         echo '
-        <option value="'.$rowLocalidad['asentamiento'].'" aria-label="'.$rowLocalidad['idAsentamiento'].'">'.$rowLocalidad['asentamiento'].'</option>
+        <option value="'.$rowLocalidad['asentamiento'].'" aria-label="'.$rowLocalidad['id_asentamiento'].'">'.$rowLocalidad['asentamiento'].'</option>
         ';
     }
 }
 else{
     echo '
-    <option value="">Selecciona...</option>
     <option value="Sin registro"></option>
     ';
 }

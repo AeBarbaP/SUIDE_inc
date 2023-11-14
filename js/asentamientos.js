@@ -1,13 +1,13 @@
-$("#localidades").on('input', function () {
+/* $("#localidades").on('input', function () {
     var val = this.value;
     if($('#localidadesList option').filter(function(){
         return this.value.toUpperCase() === val.toUpperCase();        
     }).length) {
         //send ajax request
-        asentamientosSelect(this.value);
+        asentamientosSelect(val);
     }
 });
-
+ */
 
 function asentamientosSelect(x){
         document.getElementById('asentamiento').value = "";
@@ -23,6 +23,8 @@ function asentamientosSelect(x){
                 success: function(response)
                 { 
                 $('#asentamientosList').fadeIn(1000).html(response);
+                document.getElementById('asentamientosList').removeAttribute('style');
+                document.getElementById('asentamientosList').setAttribute('style','display:none;');
                 }
             });
     }

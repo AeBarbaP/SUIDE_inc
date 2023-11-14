@@ -9,9 +9,6 @@ $filas = $resultadoVariable->num_rows;
 
 if($filas > 1){
 
-    echo '
-    <option value="">Selecciona...</option>
-    ';
     while ($rowLocalidad = $resultadoVariable->fetch_assoc()){
         echo '
             <option value="'.$rowLocalidad['nombreLocalidad'].'" aria-label="'.$rowLocalidad['claveLocalidad'].'">'.$rowLocalidad['nombreLocalidad'].'</option>
@@ -20,7 +17,6 @@ if($filas > 1){
 }
 else{
     echo '
-        <option value="">Selecciona...</option>
         <option value="Sin registro">Sin registro</option>
     ';
 }
