@@ -23,7 +23,10 @@ function buscarExpediente12(x){
                 document.getElementById('estadoConsulta').value = jsonData.estado;
                 document.getElementById('municipioConsulta').value = jsonData.municipio;
                 var municipioQuery = jsonData.estado;
+                var discapacidadQuery = jsonData.tipoDiscapacidad;
                 municipiosSelect(municipioQuery);
+                discapacidadTab(discapacidadQuery);
+
 
                 document.getElementById('discapacidadConsulta').value = jsonData.discapacidad;
                 document.getElementById('tipoDiscapacidadConsulta').value = jsonData.tipoDiscapacidad;

@@ -4,7 +4,7 @@ include('../prcd/qc/qc.php');
 
 $disc = $_POST['disc'];
 
-$var = "SELECT * FROM discapacidades WHERE tipo = '$disc' ORDER BY nombre ASC";
+$var = "SELECT * FROM discapacidades WHERE tipo LIKE '%$disc%' ORDER BY nombre ASC";
 $resultadoVariable = $conn->query($var);
 $filas = $resultadoVariable->num_rows;
 
