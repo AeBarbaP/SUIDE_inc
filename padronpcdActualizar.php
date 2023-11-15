@@ -172,7 +172,9 @@ include('prcd/qc/qc.php');
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body onload="estadosSelect(); catTipoVialidades()">
+  <body onload="estadosSelect(); catTipoVialidades(); municipiosSelect(32)">
+ 
+ <!-- <body onload="estadosSelect(); catTipoVialidades()"> -->
     
 <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
@@ -508,7 +510,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Estado:</label>
-                    <select class="form-select" id="estadosList" onchange="municipiosSelect(this.value)" placeholder="Selecciona..." aria-label="Default select example">
+                    <select class="form-select" id="estadosList" oninput="municipiosSelect(this.value)" placeholder="Selecciona..." aria-label="Default select example">
       
                     </select>
                     <div class="invalid-feedback">

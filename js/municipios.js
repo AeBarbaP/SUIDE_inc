@@ -12,7 +12,7 @@ function municipiosSelect(x){
                 cveEstado:cveEstado
             },
             dataType: "html",
-            cache: false,
+            //cache: false,
                 success: function(response)
                 { 
                 $('#municipiosList').fadeIn(1000).html(response);

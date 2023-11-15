@@ -119,6 +119,9 @@ function queryDatos(){
             var personas_dependen  = jsonData.personas_dependen;
             var deudas = jsonData.deudas;
             var deudas_cuanto  = jsonData.deudas_cuanto;
+            var municipio  = jsonData.municipio;
+           /*  municipiosSelect(jsonData.estado); */
+
             console.log(jsonData.municipio);
             
             
@@ -151,9 +154,13 @@ function queryDatos(){
                 document.getElementById('entreVialidades').value = jsonData.entre_vialidades; 
                 document.getElementById('descripcionLugar').value = jsonData.desc_referencias; 
                 document.getElementById('tipoVialidad').value = jsonData.tipoVialidad; 
+                
                 document.getElementById('estadosList').value = jsonData.estado; 
-                municipiosSelect(jsonData.estado);
-                document.getElementById('municipiosList').value = jsonData.municipio; 
+                
+                //municipiosSelect(jsonData.estado);
+
+                document.getElementById('municipiosList').value = municipio; 
+
                 document.getElementById('localidades').value = jsonData.localidad; 
                 document.getElementById('asentamiento').value = jsonData.asentamiento; 
                 document.getElementById('codigoPostal').value = jsonData.cp; 
@@ -220,6 +227,8 @@ function queryDatos(){
                 document.getElementById('otroSS').value = jsonData.seguridad_social_otro; 
                 document.getElementById('numss').value = jsonData.numSS; 
                 //document.getElementById('file_photo').value = jsonData.photo; 
+                
+                //datos médicos
                 document.getElementById('discapacidadList').value = jsonData.discapacidad; 
                 document.getElementById('gradoDisc').value = jsonData.grado_discapacidad; 
                 document.getElementById('tipoDisc').value = jsonData.tipo_discapacidad; 
@@ -290,3 +299,4 @@ function queryDatos(){
     });
 
 }
+
