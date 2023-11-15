@@ -172,7 +172,7 @@ include('prcd/qc/qc.php');
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body onload="estadosSelect(); catTipoVialidades(); municipiosSelect(32)">
+  <body onload="estadosSelect(); catTipoVialidades(); discapacidadTab()">
  
  <!-- <body onload="estadosSelect(); catTipoVialidades()"> -->
     
@@ -311,6 +311,10 @@ include('prcd/qc/qc.php');
       </p>
       <input type="text" id="datosCompletos">
       <input type="text" id="datosCompletosCURP">
+      <input type="text" id="estadoConsulta" onchange="municipiosSelect(this.value)">
+      <input type="text" id="municipioConsulta" >
+      <input type="text" id="discapacidadConsulta" onchange="discapacidadTab(this.value)">
+      <input type="text" id="tipoDiscapacidadConsulta">
 
       <!-- inicia jquery para ejecutar script de modal leerQr -->
       <script>
@@ -740,11 +744,11 @@ include('prcd/qc/qc.php');
                       <label for="exampleDataListDisc" class="form-label">Tipo de Discapacidad:</label>
                       <select class="form-select" id="tipoDisc" onchange="discapacidadTab(this.value)" aria-label="Default select example">
                         <option selected>Selecciona...</option>
-                        <option value="Física">Física</option>
-                        <option value="Intelectual">Intelectual</option>
-                        <option value="Sensorial">Sensorial</option>
-                        <option value="Múltiple">Múltiple</option>
-                        <option value="Psicosocial">Psicosocial</option>
+                        <option value="FÍSICA">Física</option>
+                        <option value="INTELECTUAL">Intelectual</option>
+                        <option value="SENSORIAL">Sensorial</option>
+                        <option value="MÚLTIPLE">Múltiple</option>
+                        <option value="PSICOSOCIAL">Psicosocial</option>
                       </select>
                       <div class="invalid-feedback">
                         * Campo requerido.
@@ -752,7 +756,7 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-3">
                       <label for="datos_usr" class="form-label">Discapacidad:</label>
-                      <input type="text" id="curp_exp" onchange="curpTemporal()">
+                      <input type="text" id="curp_exp" onchange="curpTemporal()" hidden>
                       <!-- <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..."> -->
                       <select class="form-select" id="discapacidadList" onchange="numExpGenerator(this.value)" required>
                       
@@ -807,11 +811,11 @@ include('prcd/qc/qc.php');
                       <label for="datos_usr" class="form-label">Temporalidad:</label>
                       <select class="form-select" id="temporalidad" aria-label="Default select example">
                         <option selected>Selecciona...</option>
-                        <option value="1">Permanente</option>
-                        <!-- <option value="2">0 - 6 meses</option>
+                        <option value="1">Nacimiento</option>
+                        <option value="2">0 - 6 meses</option>
                         <option value="3">7 - 12 meses</option>
                         <option value="4">13 - 18 meses</option>
-                        <option value="5">18 meses o más</option> -->
+                        <option value="5">18 meses o más</option>
                       </select>
                     </div>
                     <div class="col-sm-6">

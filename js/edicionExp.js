@@ -20,6 +20,10 @@ function buscarExpediente12(x){
                 document.getElementById('numExp1').innerText = jsonData.numExpediente;
                 document.getElementById('datosCompletos').value = jsonData.numExpediente;
                 document.getElementById('datosCompletosCURP').value = jsonData.curp;
+                document.getElementById('estadoConsulta').value = jsonData.estado;
+                document.getElementById('municipioConsulta').value = jsonData.municipio;
+                document.getElementById('discapacidadConsulta').value = jsonData.discapacidad;
+                document.getElementById('tipoDiscapacidadConsulta').value = jsonData.tipoDiscapacidad;
                 document.getElementById('nombreExp1').innerText = jsonData.nombre;
                 document.getElementById('apellidoPExp1').innerText = jsonData.apellido_p;
                 document.getElementById('apellidoMExp1').innerText = jsonData.apellido_m;
@@ -34,6 +38,8 @@ function buscarExpediente12(x){
         }
     });
 }
+
+$('#estadoConsulta').on('inputchange', function() { console.log(this.value) });
 
 function queryDatos(){
     var expediente = document.getElementById('datosCompletos').value;
@@ -169,8 +175,18 @@ function queryDatos(){
                 document.getElementById('celular').value = jsonData.telefono_cel; 
                 document.getElementById('escolaridad').value = jsonData.escolaridad; 
                 document.getElementById('profesion').value = jsonData.profesion; 
-                //document.getElementById('rfc').value = jsonData.rfc; 
+                
+                var rfcCut = jsonData.rfc;
+                //document.getElementById('rfcHomo').value = rfcCut;
 
+                if (rfcCut.length > 10) {
+                    var rfcCutted = rfcCut.slice(-3);
+                    document.getElementById('rfcHomo').value = rfcCutted;
+                }
+                else {
+                    document.getElementById('rfcHomo').value = "";
+                }
+                
                 if (estudia == 'SI' || estudia == '2'){
                     document.getElementById('estudiaSi').checked = true;
                     document.getElementById('lugarEstudia').disabled = false; 
@@ -233,16 +249,56 @@ function queryDatos(){
                 document.getElementById('gradoDisc').value = jsonData.grado_discapacidad; 
                 document.getElementById('tipoDisc').value = jsonData.tipo_discapacidad; 
                 document.getElementById('descDisc').value = jsonData.descripcionDiscapacidad; 
-                document.getElementById('causaDisc').value = jsonData.causa; 
+                var causaDiscapacidadVar = jsonData.causa;
+                if (causaDiscapacidadVar == "CONGÉNITA" || causaDiscapacidadVar == "Congénita" || causaDiscapacidadVar == 1){
+                    var causaDiscapacidad = 1;
+                }
+                else if (causaDiscapacidadVar == "ADQUIRIDA" || causaDiscapacidadVar == "Adquirida" || causaDiscapacidadVar == 2){
+                    var causaDiscapacidad = 2;
+                }
+                else if (causaDiscapacidadVar == "ACCIDENTE" || causaDiscapacidadVar == "Accidente" || causaDiscapacidadVar == 3){
+                    var causaDiscapacidad = 3;
+                }
+                else if (causaDiscapacidadVar == "ENFERMEDAD" || causaDiscapacidadVar == "Enfermedad" || causaDiscapacidadVar == 4){
+                    var causaDiscapacidad = 4;
+                }
+                else if (causaDiscapacidadVar == "NACIMIENTO" || causaDiscapacidadVar == "Nacimiento" || causaDiscapacidadVar == 5){
+                    var causaDiscapacidad = 5;
+                }
+                else if (causaDiscapacidadVar == "ADICCIÓN" || causaDiscapacidadVar == "Adicción" || causaDiscapacidadVar == 6){
+                    var causaDiscapacidad = 6;
+                }
+                else if (causaDiscapacidadVar == "OTRA" || causaDiscapacidadVar == "Otra" || causaDiscapacidadVar == 7){
+                    var causaDiscapacidad = 7;
+                }
+                document.getElementById('causaDisc').value = causaDiscapacidad;
                 document.getElementById('especifiqueD').value = jsonData.causa_otro; 
                 document.getElementById('temporalidad').value = jsonData.temporalidad; 
                 document.getElementById('fuente').value = jsonData.valoracion; 
-                document.getElementById('fechaValoracion').value = jsonData.fecha_valoracion; 
-                //document.getElementById('rehabilitacion').value = jsonData.rehabilitacion; 
-                document.getElementById('lugarRehab').value = jsonData.rehabilitacion_donde; 
-                document.getElementById('rehabilitacion_inicio').value = jsonData.rehabilitacion_inicio; 
-                document.getElementById('rehabilitacion_duracion').value = jsonData.rehabilitacion_duracion; 
-                document.getElementById('tipo_sangre').value = jsonData.tipo_sangre; 
+                
+                var fechaValVar = jsonData.fecha_valoracion;
+                if (fechaValVar != "" || fechaValVar != null){
+                    document.getElementById('fechaValoracion').value = fechaValVar; 
+                }
+                else {
+                    document.getElementById('fechaValoracion').value = ""; 
+                }
+                
+                var rehabVar = jsonData.rehabilitacion;
+                if (rehabVar == 2 || rehabVar == null || rehabVar == ""){
+                    document.getElementById('rehabilitacionNo').checked = true;
+                }
+                else {
+                    document.getElementById('rehabilitacionSi').checked = true;
+                    document.getElementById('lugarRehab').disabled = false; 
+                    document.getElementById('lugarRehab').value = jsonData.rehabilitacion_donde; 
+                    document.getElementById('fechaIni').disabled = false; 
+                    document.getElementById('fechaIni').value = jsonData.rehabilitacion_inicio; 
+                    document.getElementById('duracion').disabled = false; 
+                    document.getElementById('duracion').value = jsonData.rehabilitacion_duracion; 
+                }
+
+                document.getElementById('tipoSangre').value = jsonData.tipo_sangre; 
                 document.getElementById('cirugias').value = jsonData.cirugias; 
                 document.getElementById('tipo_cirugias').value = jsonData.tipo_cirugias; 
                 document.getElementById('protesis').value = jsonData.protesis; 
