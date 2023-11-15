@@ -311,7 +311,7 @@ include('prcd/qc/qc.php');
       </p>
       <input type="text" id="datosCompletos">
       <input type="text" id="datosCompletosCURP">
-      <input type="text" id="estadoConsulta" onchange="municipiosSelect(this.value)">
+      <input type="text" id="estadoConsulta">
       <input type="text" id="municipioConsulta" >
       <input type="text" id="discapacidadConsulta" onchange="discapacidadTab(this.value)">
       <input type="text" id="tipoDiscapacidadConsulta">

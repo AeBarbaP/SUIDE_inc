@@ -22,6 +22,9 @@ function buscarExpediente12(x){
                 document.getElementById('datosCompletosCURP').value = jsonData.curp;
                 document.getElementById('estadoConsulta').value = jsonData.estado;
                 document.getElementById('municipioConsulta').value = jsonData.municipio;
+                var municipioQuery = jsonData.estado;
+                municipiosSelect(municipioQuery);
+
                 document.getElementById('discapacidadConsulta').value = jsonData.discapacidad;
                 document.getElementById('tipoDiscapacidadConsulta').value = jsonData.tipoDiscapacidad;
                 document.getElementById('nombreExp1').innerText = jsonData.nombre;
@@ -38,8 +41,6 @@ function buscarExpediente12(x){
         }
     });
 }
-
-$('#estadoConsulta').on('inputchange', function() { console.log(this.value) });
 
 function queryDatos(){
     var expediente = document.getElementById('datosCompletos').value;
