@@ -781,6 +781,11 @@ $(document).ready(function() {
         } else {
             var dvdc = 0;
         }
+        if (refri.checked){
+            var refrigerador = 1;
+        } else {
+            var refrigerador = 0;
+        }
         if (estufa.checked){
             var estufac = 1;
         } else {
@@ -839,6 +844,7 @@ $(document).ready(function() {
                 licuadorac:licuadorac,
                 dvdc:dvdc,
                 estufac:estufac,
+                refrigerador:refrigerador,
                 otroElectroInput:otroElectroInput,
                 dependientes:dependientes,
                 deudas:deudas,

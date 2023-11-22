@@ -691,7 +691,7 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-3">
                       <label for="datos_usr" class="form-label">Discapacidad:</label>
-                      <input type="text" id="curp_exp" onchange="curpTemporal()">
+                      <input type="text" id="curp_exp" onchange="curpTemporal()" >
                       <!-- <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..."> -->
                       <select class="form-select" id="discapacidadList" onchange="numExpGenerator(this.value)" required>
                       
@@ -743,18 +743,11 @@ include('prcd/qc/qc.php');
                       </div>
                     </div>
                     <div class="col-sm-4">
-                      <label for="datos_usr" class="form-label">Temporalidad:</label>
-                      <select class="form-select" id="temporalidad" aria-label="Default select example">
-                        <option selected>Selecciona...</option>
-                        <option value="1">Permanente</option>
-                        <!-- <option value="2">0 - 6 meses</option>
-                        <option value="3">7 - 12 meses</option>
-                        <option value="4">13 - 18 meses</option>
-                        <option value="5">18 meses o más</option> -->
-                      </select>
+                      <label for="temporalidad" class="form-label">Fecha en que adquirió la discapacidad:</label>
+                      <input type="date" class="form-control" id="temporalidad" name="temporalidad" placeholder="" disabled>
                     </div>
                     <div class="col-sm-6">
-                      <label for="datos_usr" class="form-label">Fuente de Valoración:</label>
+                      <label for="fuente" class="form-label">Fuente de Valoración:</label>
                       <select class="form-select" id="fuente" aria-label="Default select example">
                         <option selected>Selecciona...</option>
                         <option value="IMSS">IMSS</option>
@@ -1483,10 +1476,16 @@ include('prcd/qc/qc.php');
                           </div>
                         </div>
                         <div class="form-check form-check-inline">
-                          <div class="form-check">
+                          <div class="form-check" hidden>
                             <input class="form-check-input" type="checkbox" id="dvd">
                             <label class="form-check-label" for="flexCheckDefault3">
                               Reproductor Video
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="refri">
+                            <label class="form-check-label" for="flexCheckDefault3">
+                              Refrigerador
                             </label>
                           </div>
                           <div class="form-check">
@@ -1503,11 +1502,8 @@ include('prcd/qc/qc.php');
                               Otros:
                             </label>
                           </div>
-                        </div>
-                        <div class="form-check form-check-inline">
                           <input class="form-control" id="otroElectroInput" type="text" placeholder="Especifique..." disabled>
-                        </div>
-                        
+                        </div>                        
                       </div>
                     </div>
                     <!-- electrodomésticos -->
@@ -2127,16 +2123,17 @@ include('prcd/qc/qc.php');
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
                     <select class="form-select" id="parentescoFam" aria-label="Default select example">
-                      <option selected>Parentesco...</option>
+                    <option selected>Parentesco...</option>
                       <option value="Padre">Padre</option>
                       <option value="Madre">Madre</option>
-                      <option value="Herman@">Herman@</option>
-                      <option value="Espos@">Espos@</option>
-                      <option value="Tí@">Tí@</option>
-                      <option value="Sobrin@">Sobrin@</option>
-                      <option value="Abuel@">Abuel@</option>
-                      <option value="Prim@">Prim@</option>
-                      <option value="Otr@">Otr@</option>
+                      <option value="Tutor">Tutor</option>
+                      <option value="Hermano(a)">Hermano(a)</option>
+                      <option value="Esposo(a)">Esposo(a)</option>
+                      <option value="Tío(a)">Tío(a)</option>
+                      <option value="Sobrino(a)">Sobrino(a)</option>
+                      <option value="Abuelo(a)">Abuelo(a)</option>
+                      <option value="Primo(a)">Primo(a)</option>
+                      <option value="Otro(a)">Otro(a)</option>
                     </select>
                   </div>
                 </div>
@@ -2228,16 +2225,17 @@ include('prcd/qc/qc.php');
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
                     <select class="form-select" id="parentescoFam2" aria-label="Default select example">
-                      <option selected>Parentesco...</option>
+                    <option selected>Parentesco...</option>
                       <option value="Padre">Padre</option>
                       <option value="Madre">Madre</option>
-                      <option value="Herman@">Herman@</option>
-                      <option value="Espos@">Espos@</option>
-                      <option value="Tí@">Tí@</option>
-                      <option value="Sobrin@">Sobrin@</option>
-                      <option value="Abuel@">Abuel@</option>
-                      <option value="Prim@">Prim@</option>
-                      <option value="Otr@">Otr@</option>
+                      <option value="Tutor">Tutor</option>
+                      <option value="Hermano(a)">Hermano(a)</option>
+                      <option value="Esposo(a)">Esposo(a)</option>
+                      <option value="Tío(a)">Tío(a)</option>
+                      <option value="Sobrino(a)">Sobrino(a)</option>
+                      <option value="Abuelo(a)">Abuelo(a)</option>
+                      <option value="Primo(a)">Primo(a)</option>
+                      <option value="Otro(a)">Otro(a)</option>
                     </select>
                   </div>
                 </div>
@@ -2331,25 +2329,26 @@ include('prcd/qc/qc.php');
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
                     <select class="form-select" id="parentescoRef" aria-label="Default select example">
-                      <option selected>Parentesco...</option>
-                      <option value="Amig@">Amig@</option>
-                      <option value="Vecin@">Vecin@</option>
-                      <option value="Otr@">Otr@</option>
-                      <option value="Espos@">Espos@</option>
+                    <option selected>Parentesco...</option>
+                      <option value="Amigo(a)">Amigo(a)</option>
+                      <option value="Vecino(a)">Vecino(a)</option>
+                      <option value="Esposo(a)">Esposo(a)</option>
                       <option value="Padre">Padre</option>
                       <option value="Madre">Madre</option>
-                      <option value="Herman@">Herman@</option>
-                      <option value="Tí@">Tí@</option>
-                      <option value="Sobrin@">Sobrin@</option>
-                      <option value="Abuel@">Abuel@</option>
-                      <option value="Prim@">Prim@</option>
+                      <option value="Tutor">Tutor</option>
+                      <option value="Hermano(a)">Hermano(a)</option>
+                      <option value="Tío(a)">Tío(a)</option>
+                      <option value="Sobrino(a)">Sobrino(a)</option>
+                      <option value="Abuelo(a)">Abuelo(a)</option>
+                      <option value="Primo(a)">Primo(a)</option>
+                      <option value="Otro(a)">Otro(a)</option>
                     </select>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
-                    <input type="text" class="form-control" placeholder="# de Celular" onkeypress="ValidaSoloNumeros()" id="telRef"> <!-- validar solo numeros -->
+                    <input type="text" class="form-control" placeholder="# de Tel. o Celular" onkeypress="ValidaSoloNumeros()" id="telRef"> <!-- validar solo numeros -->
                   </div>
                 </div>
               </div>
@@ -2391,25 +2390,26 @@ include('prcd/qc/qc.php');
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
                     <select class="form-select" id="parentescoRef2" aria-label="Default select example">
-                      <option selected>Parentesco...</option>
-                      <option value="Amig@">Amig@</option>
-                      <option value="Vecin@">Vecin@</option>
-                      <option value="Otr@">Otr@</option>
-                      <option value="Espos@">Espos@</option>
+                    <option selected>Parentesco...</option>
+                      <option value="Amigo(a)">Amigo(a)</option>
+                      <option value="Vecino(a)">Vecino(a)</option>
+                      <option value="Esposo(a)">Esposo(a)</option>
                       <option value="Padre">Padre</option>
                       <option value="Madre">Madre</option>
-                      <option value="Herman@">Herman@</option>
-                      <option value="Tí@">Tí@</option>
-                      <option value="Sobrin@">Sobrin@</option>
-                      <option value="Abuel@">Abuel@</option>
-                      <option value="Prim@">Prim@</option>
+                      <option value="Tutor">Tutor</option>
+                      <option value="Hermano(a)">Hermano(a)</option>
+                      <option value="Tío(a)">Tío(a)</option>
+                      <option value="Sobrino(a)">Sobrino(a)</option>
+                      <option value="Abuelo(a)">Abuelo(a)</option>
+                      <option value="Primo(a)">Primo(a)</option>
+                      <option value="Otro(a)">Otro(a)</option>
                     </select>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
-                    <input type="text" class="form-control" placeholder="# de Celular" onkeypress="ValidaSoloNumeros()" id="telRef2"> <!-- validar solo numeros -->
+                    <input type="text" class="form-control" placeholder="# de Tel. o Celular" onkeypress="ValidaSoloNumeros()" id="telRef2"> <!-- validar solo numeros -->
                   </div>
                 </div>
               </div>

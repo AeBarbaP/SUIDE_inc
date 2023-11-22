@@ -81,7 +81,7 @@ $sqlinsert= "INSERT INTO datos_generales (
     estudia,
     estudia_donde,
     estudia_habilidad,
-    profesión,
+    profesion,
     trabaja,
     trabaja_donde,
     trabaja_ingresos,

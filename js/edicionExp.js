@@ -139,6 +139,12 @@ function queryDatos(){
             if (success = 1) {
                 document.getElementById('curp').value = jsonData.curp;
                 cortarRFC2(); 
+                var numExpediente2 = jsonData.numExpediente;
+                var expediente = numExpediente2.substr(0,7);
+                var expedienteNum = numExpediente2.substr(7,5);
+                document.getElementById('numeroTemporal').value = expedienteNum;
+                document.getElementById('numeroTemporal2').value = expediente;
+                document.getElementById('numeroExpediente').innerHTML = numExpediente2;
                 document.getElementById('nombre').value = jsonData.nombre; 
                 document.getElementById('apellidoP').value = jsonData.apellido_p; 
                 document.getElementById('apellidoM').value = jsonData.apellido_m; 
@@ -303,16 +309,36 @@ function queryDatos(){
                 }
 
                 document.getElementById('tipoSangre').value = jsonData.tipo_sangre; 
-                document.getElementById('cirugias').value = jsonData.cirugias; 
-                document.getElementById('tipo_cirugias').value = jsonData.tipo_cirugias; 
-                document.getElementById('protesis').value = jsonData.protesis; 
-                document.getElementById('protesis_tipo').value = jsonData.protesis_tipo; 
-                document.getElementById('alergias').value = jsonData.alergias; 
-                document.getElementById('alergias_cual').value = jsonData.alergias_cual; 
+                
+                if (cirugias == "" || cirugias == null || cirugias == 2 || cirugias == 'NO'){
+                    document.getElementById('cirugia').value = 2;
+                }
+                else {
+                    document.getElementById('cirugia').value = 1;
+                    document.getElementById('tipoCirugia').value = jsonData.tipo_cirugias; 
+                    document.getElementById('tipoCirugia').disabled = false; 
+                }
+            
+                if (protesis == "" || protesis == null || protesis == 2 || protesis == 'NO'){
+                    document.getElementById('protesis').value = 2; 
+                }
+                else {
+                    document.getElementById('protesis').value = 1; 
+                    document.getElementById('tipoProtesis').value = jsonData.protesis_tipo; 
+                    document.getElementById('tipoProtesis').disabled = false; 
+                }
+
+                document.getElementById('alergias').value = jsonData.alergias;
+                
+                var alergiasSplit = alergias_cual.split(',');
+                //document.getElementById('alergias_cual').value = jsonData.alergias_cual; 
+                
+                
                 document.getElementById('enfermedades').value = jsonData.enfermedades; 
-                document.getElementById('enfermedades_cual').value = jsonData.enfermedades_cual; 
+                document.getElementById('enfermedadesFull').value = jsonData.enfermedades_cual; 
                 document.getElementById('medicamentos').value = jsonData.medicamentos; 
-                document.getElementById('medicamentos_cual').value = jsonData.medicamentos_cual; 
+                document.getElementById('medicamentosFull').value = jsonData.medicamentos_cual; 
+                
                 document.getElementById('vivienda').value = jsonData.vivienda; 
                 document.getElementById('vivienda_renta').value = jsonData.vivienda_renta; 
                 document.getElementById('vivienda_pagando').value = jsonData.vivienda_pagando; 

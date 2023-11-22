@@ -309,12 +309,12 @@ include('prcd/qc/qc.php');
           No se encontró el expediente.
         </div>
       </p>
-      <input type="text" id="datosCompletos">
-      <input type="text" id="datosCompletosCURP">
-      <input type="text" id="estadoConsulta">
-      <input type="text" id="municipioConsulta" >
-      <input type="text" id="discapacidadConsulta" onchange="discapacidadTab(this.value)">
-      <input type="text" id="tipoDiscapacidadConsulta">
+      <input type="text" id="datosCompletos" hidden>
+      <input type="text" id="datosCompletosCURP" hidden>
+      <input type="text" id="estadoConsulta" hidden>
+      <input type="text" id="municipioConsulta"  hidden>
+      <input type="text" id="discapacidadConsulta" onchange="discapacidadTab(this.value)" hidden>
+      <input type="text" id="tipoDiscapacidadConsulta" hidden>
 
       <!-- inicia jquery para ejecutar script de modal leerQr -->
       <script>
@@ -352,13 +352,28 @@ include('prcd/qc/qc.php');
         <div class="row">
           <div class="col-sm-2 justify-content-between align-items-center">
             <p class="h4">No. Expediente</p>
+            <strong><span class="h4" id="numeroExpediente"></span></strong>
+            <input type="text" id="numeroTemporal" hidden>
+            <input type="text" id="numeroTemporal2" hidden>
+            <input type="text" id="municipioChange" hidden>
             <br>
             <img id="img1" src="img/no_profile.png" width="100%" style="width:14rem">
             <div class="input-group">
-              <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-            </div>
-            <br>
-            <img id="img1" src="img/no_qr.png" width="100%" style="width:14rem">
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+                
+                <input type="file"  name="file_photo" id="file_photo" onchange="foto()" accept="image/png, image/gif, image/jpeg" class="h6 w-100 mt-3" disabled><br>
+              
+                <progress id="progressBar_photo" value="0" max="100" style="width:270px;"></progress>
+                <small id="status_photo"></small>
+                <p id="loaded_n_total_photo"></p>
+              </form>
+            <!-- file photo-->
+                <!-- <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload"> -->
+              </div>
+              <br>
+              <div id="imgQR">
+                <img id="img1" src="img/no_qr.png" width="100%" style="width:13rem">
+              </div>
             <div class="d-grid gap-2">
               <button type="button" class="btn btn-light">Generar QR</button>
             </div>
@@ -758,7 +773,7 @@ include('prcd/qc/qc.php');
                       <label for="datos_usr" class="form-label">Discapacidad:</label>
                       <input type="text" id="curp_exp" onchange="curpTemporal()" hidden>
                       <!-- <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..."> -->
-                      <select class="form-select" id="discapacidadList" onchange="numExpGenerator(this.value)" required>
+                      <select class="form-select" id="discapacidadList" onchange="numExpUpdate(this.value)" required>
                       
 
                       </select>
@@ -808,15 +823,8 @@ include('prcd/qc/qc.php');
                       </div>
                     </div>
                     <div class="col-sm-4">
-                      <label for="datos_usr" class="form-label">Temporalidad:</label>
-                      <select class="form-select" id="temporalidad" aria-label="Default select example">
-                        <option selected>Selecciona...</option>
-                        <option value="1">Nacimiento</option>
-                        <option value="2">0 - 6 meses</option>
-                        <option value="3">7 - 12 meses</option>
-                        <option value="4">13 - 18 meses</option>
-                        <option value="5">18 meses o más</option>
-                      </select>
+                    <label for="temporalidad" class="form-label">Fecha en que adquirió la discapacidad:</label>
+                      <input type="date" class="form-control" id="temporalidad" name="temporalidad" placeholder="" disabled>
                     </div>
                     <div class="col-sm-6">
                       <label for="datos_usr" class="form-label">Fuente de Valoración:</label>
@@ -1548,10 +1556,16 @@ include('prcd/qc/qc.php');
                           </div>
                         </div>
                         <div class="form-check form-check-inline">
-                          <div class="form-check">
+                        <div class="form-check" hidden>
                             <input class="form-check-input" type="checkbox" id="dvd">
                             <label class="form-check-label" for="flexCheckDefault3">
                               Reproductor Video
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="refri">
+                            <label class="form-check-label" for="flexCheckDefault3">
+                              Refrigerador
                             </label>
                           </div>
                           <div class="form-check">
@@ -1568,9 +1582,9 @@ include('prcd/qc/qc.php');
                               Otros:
                             </label>
                           </div>
+                          <input class="form-control" id="otroElectroInput" type="text" placeholder="Especifique..." disabled>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-control" id="otroElectroInput" type="text" placeholder="Especifique..." disabled>
                         </div>
                         
                       </div>
@@ -1620,46 +1634,32 @@ include('prcd/qc/qc.php');
                     <!-- integración familiar -->
                     <div class="col-sm-12 mt-3 p-4">
                       <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Integración familiar</label>
-                      <table class="table table-bordered table-hover text-center">
-                        <thead style="background-color:#6d5973;color:white;">
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nombre completo</th>
-                            <th scope="col">Parentesco</th>
-                            <th scope="col">Edad</th>
-                            <th scope="col">Escolaridad</th>
-                            <th scope="col">Profesión</th>
-                            <th scope="col">Discapacidad</th>
-                            <th scope="col">Ingreso</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>Thornton</td>
-                            <td>Thornton</td>
-                            <td>Thornton</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-hover text-center">
+                          <thead style="background-color:#6d5973;color:white;">
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Nombre completo</th>
+                              <th scope="col">Parentesco</th><!-- select de parentesco -->
+                              <th scope="col">Edad</th>
+                              <th scope="col">Escolaridad</th>
+                              <th scope="col">Profesión</th>
+                              <th scope="col">Discapacidad</th>
+                              <th scope="col">Ingreso</th>
+                              <th scope="col"><small><i class="bi bi-envelope"></i> Email</small></th>
+                              <th scope="col"><small><i class="bi bi-whatsapp"></i> Teléfono</small></th>
+                              <th scope="col">Editar</th>
+                            </tr>
+                          </thead>
+                          <tbody id="familiaresTab" class="text-center">
+                            
+                          </tbody>
+                        </table>
+                      </div>  
                       <!-- integración familiar -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="button"><i class="bi bi-person-fill-add"></i> Agregar familiar</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#agregarFamiliar" ><i class="bi bi-person-fill-add"></i> Agregar familiar</button>
                       </div>
                     </div>
                   </div>
@@ -1670,46 +1670,28 @@ include('prcd/qc/qc.php');
                     <!-- referencias -->
                     <div class="col-sm-12 mt-3 p-4">
                       <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Referencias</label>
-                      <table class="table table-bordered table-hover text-center">
-                        <thead style="background-color:#6d5973;color:white;">
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Parentesco</th>
-                            <th scope="col">Edad</th>
-                            <th scope="col">Escolaridad</th>
-                            <th scope="col">Profesión</th>
-                            <th scope="col">Discapacidad</th>
-                            <th scope="col">Ingreso</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>Thornton</td>
-                            <td>Thornton</td>
-                            <td>Thornton</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-hover text-center">
+                          <thead style="background-color:#6d5973;color:white;">
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Nombre</th>
+                              <th scope="col">Parentesco</th> <!-- select de parentesco -->
+                              <th scope="col">Profesión</th>
+                              <th scope="col">Domicilio</th>
+                              <th scope="col"><small><i class="bi bi-whatsapp"></i> Teléfono</small></th>
+                              <th scope="col"><small><i class="bi bi-pencil-square"></i> | <i class="bi bi-trash"></i></small></th>
+                            </tr>
+                          </thead>
+                          <tbody id="referenciasTab" class="text-center">
+
+                          </tbody>
+                        </table>
+                      </div>
                       <!-- referencias -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="button"><i class="bi bi-person-fill-add"></i> Agregar referencia</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#agregarReferencia"><i class="bi bi-person-fill-add"></i> Agregar referencia</button>
                       </div>
                     </div>
                   </div>
@@ -1873,6 +1855,336 @@ include('prcd/qc/qc.php');
           </div>
         </div>
       </div>
+
+<!-- Inicia Moda para agregar Familiar en la tab de Integración Familiar -->
+<div class="modal fade" id="agregarFamiliar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Agregar Familiar</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="familiaForm">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1" id="nombreFamiliar" name="nombre" required>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
+                    <select class="form-select" id="parentescoFam" aria-label="Default select example">
+                    <option selected>Parentesco...</option>
+                      <option value="Padre">Padre</option>
+                      <option value="Madre">Madre</option>
+                      <option value="Tutor">Tutor</option>
+                      <option value="Hermano(a)">Hermano(a)</option>
+                      <option value="Esposo(a)">Esposo(a)</option>
+                      <option value="Tío(a)">Tío(a)</option>
+                      <option value="Sobrino(a)">Sobrino(a)</option>
+                      <option value="Abuelo(a)">Abuelo(a)</option>
+                      <option value="Primo(a)">Primo(a)</option>
+                      <option value="Otro(a)">Otro(a)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" >Edad</span>
+                    <input type="number" id="edadFam" onkeypress="ValidaSoloNumeros()" class="form-control" id="inputGroup01">
+                  </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-mortarboard"></i></span>
+                <select class="form-select" id="escolaridadFam" aria-label="Default select example">
+                  <option selected>Nivel de Escolaridad...</option>
+                  <option value="Preescolar">Preescolar</option>
+                  <option value="Primaria">Primaria</option>
+                  <option value="Secundaria">Secundaria</option>
+                  <option value="Preparatoria">Preparatoria</option>
+                  <option value="Carrera_Tecnica">Carrera Técnica</option>
+                  <option value="Licenciatura">Licenciatura</option>
+                  <option value="Posgrado">Posgrado</option>
+                </select>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
+                <input type="text" class="form-control" placeholder="Profesión" aria-label="profesionFam" id="profesionFam" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Tiene Discapacidad?</span>
+                <select class="form-select" id="selectDiscapacidadFam" onchange="familiarDisc(this.value)">
+                  <option selected>Selecciona...</option>
+                  <option value="1">Sí</option>
+                  <option value="2">No</option>
+                </select>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"  id="basic-addon1"><i class="bi bi-universal-access-circle"></i></span>
+                <input type="text" class="form-control" placeholder="Descripción de discapacidad" aria-label="discapacidad" id="discapacidadFam" aria-describedby="basic-addon1" disabled>
+              </div> 
+              <div class="row">
+                <div class="col-md-6">
+                <div class="input-group mb-3">  
+                  <span class="input-group-text">$</span>
+                  <input type="text" class="form-control" id="ingresoFam" onkeypress="ValidaSoloNumeros()" placeholder="Ingreso" aria-label="Ingreso mensual">
+                  <span class="input-group-text">.00</span>
+                </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
+                    <input type="text" class="form-control" placeholder="# Teléfono o Celular" onkeypress="ValidaSoloNumeros()" id="telFam"> <!-- validar solo numeros -->
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" ><i class="bi bi-envelope-at"></i></span>
+                    <input type="mail" class="form-control" placeholder="Correo electrónico" id="emailFam"> <!-- validar solo numeros -->
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Agregar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Termina Modal para agregar Familiar en la Tab de Integración Familiar -->
+
+    <!-- Inicia Modal para editar familiar de la tabla de integración Familiar -->
+    
+    <div class="modal fade" id="editarFamilia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Editar Familiar</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="familiarEditForm">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1" id="nombreFamiliar2" name="nombre" required>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
+                    <select class="form-select" id="parentescoFam2" aria-label="Default select example">
+                      <option selected>Parentesco...</option>
+                      <option value="Padre">Padre</option>
+                      <option value="Madre">Madre</option>
+                      <option value="Tutor">Tutor</option>
+                      <option value="Hermano(a)">Hermano(a)</option>
+                      <option value="Esposo(a)">Esposo(a)</option>
+                      <option value="Tío(a)">Tío(a)</option>
+                      <option value="Sobrino(a)">Sobrino(a)</option>
+                      <option value="Abuelo(a)">Abuelo(a)</option>
+                      <option value="Primo(a)">Primo(a)</option>
+                      <option value="Otro(a)">Otro(a)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" >Edad</span>
+                    <input type="number" id="edadFam2" onkeypress="ValidaSoloNumeros()" class="form-control" id="inputGroup01">
+                  </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-mortarboard"></i></span>
+                <select class="form-select" id="escolaridadFam2" aria-label="Default select example">
+                  <option selected>Nivel de Escolaridad...</option>
+                  <option value="Preescolar">Preescolar</option>
+                  <option value="Primaria">Primaria</option>
+                  <option value="Secundaria">Secundaria</option>
+                  <option value="Preparatoria">Preparatoria</option>
+                  <option value="Carrera_Tecnica">Carrera Técnica</option>
+                  <option value="Licenciatura">Licenciatura</option>
+                  <option value="Posgrado">Posgrado</option>
+                </select>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
+                <input type="text" class="form-control" placeholder="Profesión" aria-label="profesionFam" id="profesionFam2" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Tiene Discapacidad?</span>
+                <select class="form-select" id="selectDiscapacidadFam2" onchange="familiarDisc(this.value)">
+                  <option selected>Selecciona...</option>
+                  <option value="1">Sí</option>
+                  <option value="2">No</option>
+                </select>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"  id="basic-addon1"><i class="bi bi-universal-access-circle"></i></span>
+                <input type="text" class="form-control" placeholder="Descripción de discapacidad" aria-label="discapacidad" id="discapacidadFam2" aria-describedby="basic-addon1" disabled>
+              </div> 
+              <div class="row">
+                <div class="col-md-6">
+                <div class="input-group mb-3">  
+                  <span class="input-group-text">$</span>
+                  <input type="text" class="form-control" id="ingresoFam2" onkeypress="ValidaSoloNumeros()" placeholder="Ingreso" aria-label="Ingreso mensual">
+                  <span class="input-group-text">.00</span>
+                </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
+                    <input type="text" class="form-control" placeholder="# Teléfono o Celular" onkeypress="ValidaSoloNumeros()" id="telFam2"> <!-- validar solo numeros -->
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" ><i class="bi bi-envelope-at"></i></span>
+                    <input type="mail" class="form-control" placeholder="Correo electrónico" id="emailFam2"> <!-- validar solo numeros -->
+                    <input type="text" id="idFam" hidden>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Actualizar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Termina Modal para editar familiar de la tabla de integración Familiar -->
+
+
+<!-- Inicia Moda para agregar Referencia en la tab de Referencias -->
+<div class="modal fade" id="agregarReferencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Agregar Referencia</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="referenciasForm">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre completo" id="nombreReferencia" aria-describedby="basic-addon1" name="nombre" required>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
+                    <select class="form-select" id="parentescoRef" aria-label="Default select example">
+                      <option selected>Parentesco...</option>
+                      <option value="Amigo(a)">Amigo(a)</option>
+                      <option value="Vecino(a)">Vecino(a)</option>
+                      <option value="Esposo(a)">Esposo(a)</option>
+                      <option value="Padre">Padre</option>
+                      <option value="Madre">Madre</option>
+                      <option value="Tutor">Tutor</option>
+                      <option value="Hermano(a)">Hermano(a)</option>
+                      <option value="Tío(a)">Tío(a)</option>
+                      <option value="Sobrino(a)">Sobrino(a)</option>
+                      <option value="Abuelo(a)">Abuelo(a)</option>
+                      <option value="Primo(a)">Primo(a)</option>
+                      <option value="Otro(a)">Otro(a)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
+                    <input type="text" class="form-control" placeholder="# de Tel. o Celular" onkeypress="ValidaSoloNumeros()" id="telRef"> <!-- validar solo numeros -->
+                  </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
+                <input type="text" class="form-control" placeholder="Profesión" aria-label="profesion" id="profesionRef" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Domicilio</span>
+                <textarea type="text" class="form-control" placeholder="" aria-label="domicilio" id="domicilioRef" rows="2" aria-describedby="basic-addon1"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Agregar</button>
+                </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Termina Modal para agregar Referencia en la tab de Referencias -->
+
+    <!-- Inicia Moda para editar Referencia en la tab de Referencias -->
+    <div class="modal fade" id="editaReferencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Editar Referencia</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="referenciasEditForm">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre completo" id="nombreReferencia2" aria-describedby="basic-addon1" name="nombre" required>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-people"></i></span>
+                    <select class="form-select" id="parentescoRef2" aria-label="Default select example">
+                    <option selected>Parentesco...</option>
+                      <option value="Amigo(a)">Amigo(a)</option>
+                      <option value="Vecino(a)">Vecino(a)</option>
+                      <option value="Esposo(a)">Esposo(a)</option>
+                      <option value="Padre">Padre</option>
+                      <option value="Madre">Madre</option>
+                      <option value="Tutor">Tutor</option>
+                      <option value="Hermano(a)">Hermano(a)</option>
+                      <option value="Tío(a)">Tío(a)</option>
+                      <option value="Sobrino(a)">Sobrino(a)</option>
+                      <option value="Abuelo(a)">Abuelo(a)</option>
+                      <option value="Primo(a)">Primo(a)</option>
+                      <option value="Otro(a)">Otro(a)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" ><i class="bi bi-phone"></i></span>
+                    <input type="text" class="form-control" placeholder="# de Tel. o Celular" onkeypress="ValidaSoloNumeros()" id="telRef2"> <!-- validar solo numeros -->
+                  </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
+                <input type="text" class="form-control" placeholder="Profesión" aria-label="profesion" id="profesionRef2" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Domicilio</span>
+                <textarea type="text" class="form-control" placeholder="" aria-label="domicilio" id="domicilioRef2" rows="2" aria-describedby="basic-addon1"></textarea>
+                <input type="text" id="idRef" hidden>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-person-plus"></i> Agregar</button>
+                </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Termina Modal para editar Referencia en la tab de Referencias -->
+
       <!-- Modal para agregar solicitud -->
       <div class="modal fade" id="solicitudAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -2639,10 +2951,10 @@ include('prcd/qc/qc.php');
     }
   }
 
-  function init() {
+  /* function init() {
     var inputFile = document.getElementById('inputFile1');
     inputFile.addEventListener('change', mostrarImagen, false);
-  }
+  } */
   function mostrarImagen(event) {
   var file = event.target.files[0];
   var reader = new FileReader();
@@ -2653,7 +2965,7 @@ include('prcd/qc/qc.php');
   reader.readAsDataURL(file);
   }
 
-  window.addEventListener('load', init, false);
+  /* window.addEventListener('load', init, false); */
 
 </script>
 

@@ -40,6 +40,7 @@ $computadorac = $_POST['computadorac'];
 $licuadorac = $_POST['licuadorac'];
 $dvdc = $_POST['dvdc'];
 $estufac = $_POST['estufac'];
+$refrigerador = $_POST['refrigerador'];
 $otroElectroInput = $_POST['otroElectroInput'];
 $dependientes = $_POST['dependientes'];
 $deudas = $_POST['deudas'];
@@ -80,6 +81,7 @@ $sqlinsert= "INSERT INTO vivienda (
     electrodomesticos_licuadora,
     electrodomesticos_dvd,
     electrodomesticos_estufa,
+    electrodomesticos_refri,
     electrodomesticos_otro,
     personas_dependen,
     deudas,
@@ -120,6 +122,7 @@ VALUES(
     '$licuadorac',
     '$dvdc',
     '$estufac',
+    '$refrigerador',
     '$otroElectroInput',
     '$dependientes',
     '$deudas',

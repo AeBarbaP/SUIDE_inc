@@ -35,6 +35,7 @@ $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
     echo json_encode(array(
         'success'=>1,
         'curp'=>$curp2,
+        'numExpediente'=>$numExpediente,
         'nombre'=>$rowDatos['nombre'],
         'apellido_p'=>$rowDatos['apellido_p'],
         'apellido_m'=>$rowDatos['apellido_m'],

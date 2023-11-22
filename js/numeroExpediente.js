@@ -17,3 +17,10 @@ function numExpGenerator(x){
                 }
             });
     }
+function numExpUpdate(x){
+    var cveDiscapacidad = x.substr(0,2);
+    var numExpediente1 = document.getElementById('numeroTemporal2').value;
+    var numExpediente2 = document.getElementById('numeroTemporal').value;
+    var trimExpediente = numExpediente1.substr(0,4);
+    document.getElementById('numeroExpediente').innerHTML = trimExpediente+cveDiscapacidad+'-'+numExpediente2;
+}

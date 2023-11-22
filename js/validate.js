@@ -417,6 +417,13 @@ function causaDiscOp(x){
     } else {
         document.getElementById('especifiqueD').disabled = true;
     }
+    if (causaDisc == 2 || causaDisc == 3 || causaDisc == 4 || causaDisc == 6){
+        document.getElementById('temporalidad').disabled = false;
+        document.getElementById('temporalidad').required = true;
+    } else {
+        document.getElementById('temporalidad').disabled = true;
+        document.getElementById('temporalidad').required = false;
+    }
 }
 
 function cirugiasOp(x){
@@ -627,6 +634,7 @@ function electrodomesticos(){
         document.getElementById('computadora').checked = true;
         document.getElementById('licuadora').checked = true;
         document.getElementById('dvd').checked = true;
+        document.getElementById('refri').checked = true;
         document.getElementById('estufa').checked = true;
     } else {
         document.getElementById('tv').checked = false;
@@ -636,6 +644,7 @@ function electrodomesticos(){
         document.getElementById('computadora').checked = false;
         document.getElementById('licuadora').checked = false;
         document.getElementById('dvd').checked = false;
+        document.getElementById('refri').checked = false;
         document.getElementById('estufa').checked = false;
     }
 }
