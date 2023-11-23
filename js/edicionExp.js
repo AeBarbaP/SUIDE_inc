@@ -10,7 +10,6 @@ function buscarExpediente12(x){
         success: function(response)
         {
             var jsonData = JSON.parse(JSON.stringify(response));
-
             var success = jsonData.success;
 
             if(success == 1){
@@ -22,11 +21,11 @@ function buscarExpediente12(x){
                 document.getElementById('datosCompletosCURP').value = jsonData.curp;
                 document.getElementById('estadoConsulta').value = jsonData.estado;
                 document.getElementById('municipioConsulta').value = jsonData.municipio;
+                
                 var municipioQuery = jsonData.estado;
                 var discapacidadQuery = jsonData.tipoDiscapacidad;
                 municipiosSelect(municipioQuery);
                 discapacidadTab(discapacidadQuery);
-
 
                 document.getElementById('discapacidadConsulta').value = jsonData.discapacidad;
                 document.getElementById('tipoDiscapacidadConsulta').value = jsonData.tipoDiscapacidad;
@@ -40,7 +39,6 @@ function buscarExpediente12(x){
                 document.getElementById('negativo').hidden = false;
                 console.log('nada');
             }
-
         }
     });
 }
@@ -131,13 +129,14 @@ function queryDatos(){
             var deudas_cuanto  = jsonData.deudas_cuanto;
             var municipio  = jsonData.municipio;
            /*  municipiosSelect(jsonData.estado); */
-
             console.log(jsonData.municipio);
-            
+            document.getElementById('editarBeneficiario').hidden = true;
+            document.getElementById('cancelarEditar').hidden = false;
             
 
             if (success = 1) {
                 document.getElementById('curp').value = jsonData.curp;
+                document.getElementById('curp_exp').value = jsonData.curp;
                 cortarRFC2(); 
                 var numExpediente2 = jsonData.numExpediente;
                 var expediente = numExpediente2.substr(0,7);
@@ -148,7 +147,10 @@ function queryDatos(){
                 document.getElementById('nombre').value = jsonData.nombre; 
                 document.getElementById('apellidoP').value = jsonData.apellido_p; 
                 document.getElementById('apellidoM').value = jsonData.apellido_m; 
-
+                showMeFam();
+                showMeRef();
+                mostrarTablaServicios();
+                mostrarTabla();
                 if (genero == 'FEMENINO' || genero == 'Femenino'){
                     document.getElementById('generoF').checked = true;
                 } 
@@ -327,25 +329,33 @@ function queryDatos(){
                     document.getElementById('tipoProtesis').value = jsonData.protesis_tipo; 
                     document.getElementById('tipoProtesis').disabled = false; 
                 }
-
-                document.getElementById('alergias').value = jsonData.alergias;
+                
                 if (alergias_cual != null || alergias_cual != ""){
                     var alergiasSplit = alergias_cual.replace(/, /g,',');
-                    var alergiasSplit = alergiasSplit.split(',');
+                    alergiasSplit = alergiasSplit.split(',');
                     for (var i = 0; i < alergiasSplit.length; i++) {
                         console.log(alergiasSplit[i]);
-                        addA(alergiasSplit[i]);
+                        addA2(alergiasSplit[i]);
                     }
-
                 }
-
-                //document.getElementById('alergias_cual').value = jsonData.alergias_cual; 
                 
+                if (enfermedades_cual != null || enfermedades_cual != ""){
+                    var enfermedadesSplit = enfermedades_cual.replace(/, /g,',');
+                    enfermedadesSplit = enfermedadesSplit.split(',');
+                    for (var i = 0; i < enfermedadesSplit.length; i++) {
+                        console.log(enfermedadesSplit[i]);
+                        addB2(enfermedadesSplit[i]);
+                    }
+                }
                 
-                document.getElementById('enfermedades').value = jsonData.enfermedades; 
-                document.getElementById('enfermedadesFull').value = jsonData.enfermedades_cual; 
-                document.getElementById('medicamentos').value = jsonData.medicamentos; 
-                document.getElementById('medicamentosFull').value = jsonData.medicamentos_cual; 
+                if (medicamentos_cual != null || medicamentos_cual != ""){
+                    var medicamentosSplit = medicamentos_cual.replace(/, /g,',');
+                    medicamentosSplit = medicamentosSplit.split(',');
+                    for (var i = 0; i < medicamentosSplit.length; i++) {
+                        console.log(medicamentosSplit[i]);
+                        addC2(medicamentosSplit[i]);
+                    }
+                }
                 
                 document.getElementById('vivienda').value = jsonData.vivienda; 
                 document.getElementById('vivienda_renta').value = jsonData.vivienda_renta; 
@@ -391,6 +401,126 @@ function queryDatos(){
             }
         }
     });
-
 }
 
+function addA2(val) {
+    var p2;
+    var numeroA = ""; //remover al momento de programar guardar
+    var textarea = document.getElementById("alergiasFull");
+    if (val==null || val =="" || val == 0){
+        console.log('sin valor');
+    } else{
+        textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+        document.getElementById(val).setAttribute('onclick',"removeA2('"+val+"')");
+        document.getElementById(val).setAttribute('name',"'"+val+"'");
+      //document.querySelector('#tipoAlergia option[value='+val+']').remove();
+        
+      //remover al momento de programar guardar
+        const paragraphs = document.querySelectorAll('[class="valorFull"]');
+        paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
+        numeroA = numeroA.substr(0, numeroA.length - 2);
+        console.log(numeroA);
+        document.getElementById('numeroA').value = numeroA;
+    }
+}
+
+function removeA2(val) {
+    var numeroA = ""; //remover al momento de programar guardar
+    console.log(val);
+    var nameInput = document.getElementById(val).getAttribute("name");
+    if (nameInput){
+        document.getElementById(val).remove();
+      //$('#tipoAlergia').append("<option value='"+val+"'>"+val+"</option>");
+    }
+    else{
+        console.log("Nada");
+        document.getElementById(val).remove();
+
+    }
+    //remover al momento de programar guardar
+    const paragraphs = document.querySelectorAll('[class="valorFull"]');
+    paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
+    numeroA = numeroA.slice(0, numeroA.length - 2);
+    console.log(numeroA);
+    document.getElementById('numeroA').value = numeroA;
+}
+
+function addB2(val) {
+    var p2;
+    var numeroB = ""; //remover al momento de programar guardar
+    var textarea = document.getElementById("enfermedadesFull");
+    if (val==null || val =="" || val == 0){
+        console.log('sin valor');
+    } else {
+        textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorEFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+        document.getElementById(val).setAttribute('onclick',"removeB2('"+val+"')");
+        document.getElementById(val).setAttribute('name',"'"+val+"'");
+        //document.querySelector('#enfermedades option[value='+val+']').remove();
+    }
+    //remover al momento de programar guardar
+    const paragraphs = document.querySelectorAll('[class="valorEFull"]');
+    paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
+    numeroB = numeroB.slice(0, numeroB.length - 2);
+    console.log(numeroB);
+    document.getElementById('numeroB').value = numeroB;
+}
+
+function removeB2(val) {
+    var numeroB = ""; //remover al momento de programar guardar
+    console.log(val);
+    var nameInput = document.getElementById(val).getAttribute("name");
+    if (nameInput){
+        document.getElementById(val).remove();
+        //$('#enfermedades').append("<option value='"+val+"'>"+val+"</option>");
+    }
+    else{
+        console.log("Nada");
+        document.getElementById(val).remove();
+
+    }
+    //remover al momento de programar guardar
+    const paragraphs = document.querySelectorAll('[class="valorEFull"]');
+    paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
+    numeroB = numeroB.slice(0, numeroB.length - 2);
+    console.log(numeroB);
+    document.getElementById('numeroB').value = numeroB;
+}
+
+function addC2(val) {
+    var p2;
+    var numeroC = ""; //remover al momento de programar guardar
+    var textarea = document.getElementById("medicamentosFull");
+    if (val==null || val =="" || val == 0){
+        console.log('sin valor');
+    } else{
+        textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorMFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+        document.getElementById(val).setAttribute('onclick',"removeC2('"+val+"')");
+        //document.querySelector('#medicamentos option[value='+val+']').remove();
+    }
+    //remover al momento de programar guardar
+    const paragraphs = document.querySelectorAll('[class="valorMFull"]');
+    paragraphs.forEach(p2 => numeroC = numeroC + p2.id +', ');
+    numeroC = numeroC.slice(0, numeroC.length - 2);
+    console.log(numeroC);
+    document.getElementById('numeroC').value = numeroC;
+}
+
+function removeC2(val) {
+    var numeroC = ""; //remover al momento de programar guardar
+    console.log(val);
+    var nameInput = document.getElementById(val).getAttribute("name");
+    if (nameInput){
+        document.getElementById(val).remove();
+        //$('#medicamentos').append("<option value='"+val+"'>"+val+"</option>");
+    }
+    else{
+        console.log("Nada");
+        document.getElementById(val).remove();
+    }
+    //remover al momento de programar guardar
+    const paragraphs = document.querySelectorAll('[class="valorMFull"]');
+    paragraphs.forEach(p => numeroC = numeroC + p.id +', ');
+    numeroC = numeroC.slice(0, numeroC.length - 2);
+    console.log(numeroC);
+    /* document.getElementById('numeroC').value = numeroC; */
+}

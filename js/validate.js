@@ -956,3 +956,20 @@ function autoSeguroTCheck(){
         document.getElementById('AutoSeguroTemp').disabled = true;
     }
 }
+
+function cancelarActualizar(){
+    Swal.fire({
+        title: "Deseas descartar cambios?",
+        showDenyButton: true,
+        confirmButtonText: "Sí, descartar!",
+        denyButtonText: `No`
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            Swal.fire("Cambios descartados", "", "success");
+            window.location.href="padronpcdActualizar.php";
+        } else if (result.isDenied) {
+            Swal.fire("Continua editando", "", "info");
+        }
+    });
+}

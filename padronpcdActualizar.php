@@ -299,7 +299,8 @@ include('prcd/qc/qc.php');
             
           </div>
           <div class="col-2 text-end">
-            <button class="btn btn-primary btn-sm" onclick="queryDatos()">Editar beneficiario</button>
+            <button class="btn btn-primary btn-sm" id="editarBeneficiario" onclick="queryDatos()">Editar beneficiario</button>
+            <button class="btn btn-danger btn-sm" id="cancelarEditar" onclick="cancelarActualizar()" hidden>Cancelar edición</button>
           </div>
         </div>
 
@@ -979,7 +980,7 @@ include('prcd/qc/qc.php');
                               //remover al momento de programar guardar
                               const paragraphs = document.querySelectorAll('[class="valorFull"]');
                               paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
-                              numeroA = numeroA.slice(0, numeroA.length - 2);
+                              numeroA = numeroA.substr(0, numeroA.length - 2);
                               console.log(numeroA);
                               document.getElementById('numeroA').value = numeroA;
                             }
@@ -1208,8 +1209,8 @@ include('prcd/qc/qc.php');
                               const paragraphs = document.querySelectorAll('[class="valorFull"]');
                               paragraphs.forEach(p => numeroC = numeroC + p.id +', ');
                               numeroC = numeroC.slice(0, numeroC.length - 2);
-                              console.log(numeroB);
-                              document.getElementById('numeroB').value = numeroB;
+                              console.log(numeroC);
+                              document.getElementById('numeroC').value = numeroC;
                            // }
                           }
                           function removeC(val) {
@@ -1730,23 +1731,14 @@ include('prcd/qc/qc.php');
                             <th scope="col">Actualizar</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td>Otto</td>
-                            <td><a href=""><i class="bi bi-file-earmark-text h5"></i></a></td>
-                            <td><a href="" data-bs-toggle="modal" data-bs-target="#solicitudEdit"><i class="bi bi-arrow-clockwise h5"></i></a></td>
-                          </tr>
+                        <tbody id="tablaServicios">
+                          
                         </tbody>
                       </table>
                       <!-- integración familiar -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#solicitudAdd"><i class="bi bi-file-earmark-text"></i> Agregar solicitud</button>
+                      <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#solicitudAdd" onclick="folioApoyo(); mostrarTablaServicios()"><i class="bi bi-file-earmark-text"></i> Agregar solicitud</button>
                       </div>
                     </div>
                   </div>
@@ -2261,11 +2253,11 @@ include('prcd/qc/qc.php');
       </div>
       <!-- Termina Modal para agregar solicitud -->
       <!-- Modal para editar solicitud -->
-      <div class="modal fade" id="solicitudEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="solicitudEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-plus-lg"></i> Agregar Solicitud</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-plus-lg"></i> Actualizar Solicitud</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -2288,20 +2280,6 @@ include('prcd/qc/qc.php');
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fecha de autorización:</label>
                   <input type="date" class="form-control" id="fechaSolicitud" name="fechaSolicitud" placeholder="">
                 </div>
-                <!--<div class="col-sm-4">
-                  <div class="">
-                    <label for="basic-url" class="form-label">Tipo de solicitud:</label>
-                    <select class="form-select" aria-label="Default select example" disabled>
-                      <option selected>Selecciona...</option>
-                      <option value="1">Funcional</option>
-                      <option value="2">Extraordinario</option>
-                      <option value="3">Otro</option>
-                    </select>
-                    <div class="invalid-feedback">
-                    * Campo requerido.
-                    </div>
-                  </div> 
-                </div>-->
                 <div class="col-sm-8">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Solicitud recibida:</label>
                   <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="solicitud" disabled><!-- detalles de lo solicitado desde la tabla -->
@@ -2322,20 +2300,15 @@ include('prcd/qc/qc.php');
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Monto autorizado:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" aria-label="">
+                    <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" aria-label="">
                     <span class="input-group-text">.00</span>
                   </div>
                 </div>
-<!--                 <div class="col-sm-12">
-                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Observaciones:</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                </div> -->
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
               <button type="button" class="btn btn-primary">Actualizar Solicitud</button>
-              <button type="button" class="btn btn-success" onclick="swalEntrega()">Entregar</button>
             </div>
           </div>
         </div>
