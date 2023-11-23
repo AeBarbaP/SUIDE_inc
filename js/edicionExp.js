@@ -329,8 +329,16 @@ function queryDatos(){
                 }
 
                 document.getElementById('alergias').value = jsonData.alergias;
-                
-                var alergiasSplit = alergias_cual.split(',');
+                if (alergias_cual != null || alergias_cual != ""){
+                    var alergiasSplit = alergias_cual.replace(/, /g,',');
+                    var alergiasSplit = alergiasSplit.split(',');
+                    for (var i = 0; i < alergiasSplit.length; i++) {
+                        console.log(alergiasSplit[i]);
+                        addA(alergiasSplit[i]);
+                    }
+
+                }
+
                 //document.getElementById('alergias_cual').value = jsonData.alergias_cual; 
                 
                 
