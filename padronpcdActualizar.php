@@ -1264,7 +1264,7 @@ include('prcd/qc/qc.php');
                         <div class="form-check form-check-inline">
                           <div class="input-group mb-3 w-75">
                             <span class="input-group-text">$</span>
-                            <input type="text" class="form-control" id="montoVivienda" onkeypress="ValidaSoloNumeros()" aria-label="Amount (to the nearest dollar)" disabled>
+                            <input type="text" class="form-control" id="montoVivienda" onkeypress="ValidaSoloNumeros()" placeholder="Monto de Renta" aria-label="Amount (to the nearest dollar)" disabled>
                             <span class="input-group-text">.00</span>
                           </div>
                         </div>
@@ -1284,7 +1284,7 @@ include('prcd/qc/qc.php');
                         <div class="form-check form-check-inline">
                           <div class="input-group mb-3 w-75">
                             <span class="input-group-text">$</span>
-                            <input type="text" class="form-control" id="costoVivienda" onkeypress="ValidaSoloNumeros()" aria-label="Amount (to the nearest dollar)" disabled>
+                            <input type="text" class="form-control" id="costoVivienda" onkeypress="ValidaSoloNumeros()" placeholder="Monto de Pago" aria-label="Amount (to the nearest dollar)" disabled>
                             <span class="input-group-text">.00</span>
                           </div>
                         </div>

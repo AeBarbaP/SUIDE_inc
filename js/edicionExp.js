@@ -90,16 +90,13 @@ function queryDatos(){
             var medicamentos   = jsonData.medicamentos;
             var medicamentos_cual  = jsonData.medicamentos_cual;
             var vivienda   = jsonData.vivienda;
-            var vivienda_renta = jsonData.vivienda_renta;
             var vivienda_pagando   = jsonData.vivienda_pagando;
-            var vivienda_renta = jsonData.vivienda_renta;
-            var monto_pagando  = jsonData.monto_pagando;
-            var caracteristicas= jsonData.caracteristicas;
-            var caracteristicas_otro   = jsonData.caracteristicas_otro;
+            var caracteristicasV= jsonData.caracteristicas;
+            var caracteristicasV_otro   = jsonData.caracteristicas_otro;
             var num_habitaciones   = jsonData.num_habitaciones;
-            var vivienda_cocia = jsonData.vivienda_cocia;
-            var vivienda_sala  = jsonData.vivienda_sala;
-            var vivienda_banio = jsonData.vivienda_banio;
+            var cocina = jsonData.vivienda_cocia;
+            var sala  = jsonData.vivienda_sala;
+            var banio = jsonData.vivienda_banio;
             var vivienda_otros = jsonData.vivienda_otros;
             var techo  = jsonData.techo;
             var techo_otros= jsonData.techo_otros;
@@ -123,6 +120,7 @@ function queryDatos(){
             var electrodomesticos_licuadora= jsonData.electrodomesticos_licuadora;
             var electrodomesticos_dvd  = jsonData.electrodomesticos_dvd;
             var electrodomesticos_estufa   = jsonData.electrodomesticos_estufa;
+            var electrodomesticos_refri   = jsonData.electrodomesticos_refri;
             var electrodomesticos_otro = jsonData.electrodomesticos_otro;
             var personas_dependen  = jsonData.personas_dependen;
             var deudas = jsonData.deudas;
@@ -138,6 +136,7 @@ function queryDatos(){
                 document.getElementById('curp').value = jsonData.curp;
                 document.getElementById('curp_exp').value = jsonData.curp;
                 cortarRFC2(); 
+                
                 var numExpediente2 = jsonData.numExpediente;
                 var expediente = numExpediente2.substr(0,7);
                 var expedienteNum = numExpediente2.substr(7,5);
@@ -147,10 +146,6 @@ function queryDatos(){
                 document.getElementById('nombre').value = jsonData.nombre; 
                 document.getElementById('apellidoP').value = jsonData.apellido_p; 
                 document.getElementById('apellidoM').value = jsonData.apellido_m; 
-                showMeFam();
-                showMeRef();
-                mostrarTablaServicios();
-                mostrarTabla();
                 if (genero == 'FEMENINO' || genero == 'Femenino'){
                     document.getElementById('generoF').checked = true;
                 } 
@@ -357,44 +352,241 @@ function queryDatos(){
                     }
                 }
                 
-                document.getElementById('vivienda').value = jsonData.vivienda; 
-                document.getElementById('vivienda_renta').value = jsonData.vivienda_renta; 
-                document.getElementById('vivienda_pagando').value = jsonData.vivienda_pagando; 
-                document.getElementById('vivienda_renta').value = jsonData.vivienda_renta; 
-                document.getElementById('monto_pagando').value = jsonData.monto_pagando; 
-                document.getElementById('caracteristicas').value = jsonData.caracteristicas; 
-                document.getElementById('caracteristicas_otro').value = jsonData.caracteristicas_otro; 
-                document.getElementById('num_habitaciones').value = jsonData.num_habitaciones; 
-                document.getElementById('vivienda_cocia').value = jsonData.vivienda_cocia; 
-                document.getElementById('vivienda_sala').value = jsonData.vivienda_sala; 
-                document.getElementById('vivienda_banio').value = jsonData.vivienda_banio; 
-                document.getElementById('vivienda_otros').value = jsonData.vivienda_otros; 
-                document.getElementById('techo').value = jsonData.techo; 
-                document.getElementById('techo_otros').value = jsonData.techo_otros; 
-                document.getElementById('pared').value = jsonData.pared; 
-                document.getElementById('pared_otro').value = jsonData.pared_otro; 
-                document.getElementById('serv_basicos_agua').value = jsonData.serv_basicos_agua; 
-                document.getElementById('serv_basicos_luz').value = jsonData.serv_basicos_luz; 
-                document.getElementById('serv_basicos_drenaje').value = jsonData.serv_basicos_drenaje; 
-                document.getElementById('serv_basicos_cable').value = jsonData.serv_basicos_cable; 
-                document.getElementById('serv_basicos_internet').value = jsonData.serv_basicos_internet; 
-                document.getElementById('serv_basicos_celular').value = jsonData.serv_basicos_celular; 
-                document.getElementById('serv_basicos_carro').value = jsonData.serv_basicos_carro; 
-                document.getElementById('serv_basicos_gas').value = jsonData.serv_basicos_gas; 
-                document.getElementById('serv_basicos_telefono').value = jsonData.serv_basicos_telefono; 
-                document.getElementById('serv_basicos_otro').value = jsonData.serv_basicos_otro; 
-                document.getElementById('electrodomesticos_tv').value = jsonData.electrodomesticos_tv; 
-                document.getElementById('electrodomesticos_lavadora').value = jsonData.electrodomesticos_lavadora; 
-                document.getElementById('electrodomesticos_estereo').value = jsonData.electrodomesticos_estereo; 
-                document.getElementById('electrodomesticos_microondas').value = jsonData.electrodomesticos_microondas; 
-                document.getElementById('electrodomesticos_computadora').value = jsonData.electrodomesticos_computadora; 
-                document.getElementById('electrodomesticos_licuadora').value = jsonData.electrodomesticos_licuadora; 
-                document.getElementById('electrodomesticos_dvd').value = jsonData.electrodomesticos_dvd; 
-                document.getElementById('electrodomesticos_estufa').value = jsonData.electrodomesticos_estufa; 
-                document.getElementById('electrodomesticos_otro').value = jsonData.electrodomesticos_otro; 
-                document.getElementById('personas_dependen').value = jsonData.personas_dependen; 
-                document.getElementById('deudas').value = jsonData.deudas; 
-                document.getElementById('deudas_cuanto').value = jsonData.deudas_cuanto; 
+                if (vivienda == 1){
+                    document.getElementById('viviendaPro').checked = true;
+                    document.getElementById('viviendaPre').checked = false;
+                    document.getElementById('viviendaRe').checked = false;
+                }
+                else if (vivienda == 2){
+                    document.getElementById('viviendaPro').checked = false;
+                    document.getElementById('viviendaPre').checked = true;
+                    document.getElementById('viviendaRe').checked = false;
+                }
+                else if (vivienda == 3){
+                    document.getElementById('viviendaPro').checked = false;
+                    document.getElementById('viviendaPre').checked = false;
+                    document.getElementById('viviendaRe').checked = true;
+                    document.getElementById('montoVivienda').disabled = false; 
+                    document.getElementById('montoVivienda').value = jsonData.vivienda_renta; 
+                }
+                else if (vivienda == 4){
+                    document.getElementById('viviendaPSi').checked = true; 
+                    document.getElementById('costoVivienda').disabled = false; 
+                    document.getElementById('costoVivienda').value = jsonData.monto_pagando; 
+                }
+                else {
+                    document.getElementById('viviendaPro').checked = false;
+                    document.getElementById('viviendaPre').checked = false;
+                    document.getElementById('viviendaRe').checked = false;
+                    
+                }
+                
+                if (vivienda_pagando == 1){
+                    document.getElementById('viviendaPSi').checked = true; 
+                    document.getElementById('viviendaPNo').checked = false; 
+                    document.getElementById('costoVivienda').disabled = false; 
+                    document.getElementById('costoVivienda').value = jsonData.monto_pagando; 
+                }
+                else {
+                    document.getElementById('viviendaPSi').checked = false; 
+                    document.getElementById('viviendaPNo').checked = true; 
+                }
+                
+                if (caracteristicasV == 1){
+                    document.getElementById('tipoViviendaC').checked = true;
+                    document.getElementById('tipoViviendaD').checked = false;
+                    document.getElementById('tipoViviendaV').checked = false;
+                    document.getElementById('tipoViviendaO').checked = false;
+                }
+                else if (caracteristicasV == 2){
+                    document.getElementById('tipoViviendaC').checked = false;
+                    document.getElementById('tipoViviendaD').checked = true;
+                    document.getElementById('tipoViviendaV').checked = false;
+                    document.getElementById('tipoViviendaO').checked = false;
+                }
+                else if (caracteristicasV == 3){
+                    document.getElementById('tipoViviendaC').checked = false;
+                    document.getElementById('tipoViviendaD').checked = false;
+                    document.getElementById('tipoViviendaV').checked = true;
+                    document.getElementById('tipoViviendaO').checked = false;
+                }
+                else if (caracteristicasV == 4){
+                    document.getElementById('tipoViviendaC').checked = false;
+                    document.getElementById('tipoViviendaD').checked = false;
+                    document.getElementById('tipoViviendaV').checked = false;
+                    document.getElementById('tipoViviendaO').checked = true;
+                    document.getElementById('viviendaOtro').disabled = false;
+                    document.getElementById('viviendaOtro').value = caracteristicasV_otro;
+                }
+                else {
+                    document.getElementById('tipoViviendaC').checked = false;
+                    document.getElementById('tipoViviendaD').checked = false;
+                    document.getElementById('tipoViviendaV').checked = false;
+                    document.getElementById('tipoViviendaO').checked = false;
+                }
+
+                document.getElementById('numHabitaciones').value = jsonData.num_habitaciones; 
+
+                if (cocina == 1){
+                    document.getElementById('cocina').checked = true; 
+                }
+                if (sala == 1){
+                    document.getElementById('sala').checked = true; 
+                }
+                if (banio == 1){
+                    document.getElementById('bath').checked = true; 
+                }
+                if (vivienda_otros != "" || vivienda_otros != null || vivienda_otros != 0){
+                    document.getElementById('otroRoom').checked = true;
+                    document.getElementById('otroRoomInput').disabled = false;
+                    document.getElementById('otroRoomInput').value = vivienda_otros;
+                }
+                if (cocina == 1 && sala == 1 && banio == 1 && (vivienda_otros != "" || vivienda_otros != null || vivienda_otros != 0)){
+                    document.getElementById('checkAllRooms').checked = true;
+                }
+                
+                if (techo == 1){
+                    document.getElementById('lamina').checked = true; 
+                    document.getElementById('cemento').checked = false; 
+                    document.getElementById('otroTecho').checked = false;
+                }
+                else if (techo == 2){
+                    document.getElementById('lamina').checked = false; 
+                    document.getElementById('cemento').checked = true; 
+                    document.getElementById('otroTecho').checked = false;
+                }
+                else if (techo == 3){
+                    document.getElementById('lamina').checked = false; 
+                    document.getElementById('cemento').checked = false; 
+                    document.getElementById('otroTecho').checked = true;
+                    document.getElementById('otroTechoInput').value = jsonData.techo_otros; 
+                }
+
+                if (pared == 1){
+                    document.getElementById('block').checked = true; 
+                    document.getElementById('ladrillo').checked = false; 
+                    document.getElementById('adobe').checked = false;
+                    document.getElementById('otroPared').checked = false;
+                }
+                else if (pared == 2){
+                    document.getElementById('block').checked = false; 
+                    document.getElementById('ladrillo').checked = true; 
+                    document.getElementById('adobe').checked = false;
+                    document.getElementById('otroPared').checked = false;
+                }
+                else if (pared == 3){
+                    document.getElementById('block').checked = false; 
+                    document.getElementById('ladrillo').checked = false; 
+                    document.getElementById('adobe').checked = true;
+                    document.getElementById('otroPared').checked = false;
+                }
+                else if (pared == 4){
+                    document.getElementById('block').checked = false; 
+                    document.getElementById('ladrillo').checked = false; 
+                    document.getElementById('adobe').checked = true;
+                    document.getElementById('otroPared').checked = false;
+                    document.getElementById('otroParedInput').value = jsonData.pared_otro; 
+                }
+
+                if (serv_basicos_agua == 1){
+                    document.getElementById('agua').checked = true; 
+                }
+                if (serv_basicos_luz == 1){
+                    document.getElementById('luz').checked = true; 
+                }
+                if (serv_basicos_drenaje == 1) {
+                    document.getElementById('drenaje').checked = true; 
+                }
+                if (serv_basicos_cable == 1){
+                    document.getElementById('cable').checked = true; 
+                }
+                if (serv_basicos_carro == 1){
+                    document.getElementById('carro').checked = true; 
+                }
+                if (serv_basicos_celular == 1){
+                    document.getElementById('checkCelular').checked = true; 
+                }
+                if (serv_basicos_internet == 1){
+                    document.getElementById('internet').checked = true;
+                }
+                if (serv_basicos_gas == 1){
+                    document.getElementById('gas').checked = true;
+                }
+                if (serv_basicos_telefono == 1){
+                    document.getElementById('telefono').checked = true;
+                }
+                if (serv_basicos_otro == "" || serv_basicos_otro == null || serv_basicos_otro == 0){
+                    document.getElementById('otroServicios').checked = false;
+                    document.getElementById('otroServiciosInput').value = "";
+                }
+                else {
+                    document.getElementById('otroServicios').checked = true;
+                    document.getElementById('otroServiciosInput').value = jsonData.serv_basicos_otro;
+                }
+                
+                if (serv_basicos_agua == 1 && serv_basicos_luz == 1 && serv_basicos_drenaje == 1 && serv_basicos_cable == 1 && serv_basicos_carro == 1 && serv_basicos_celular == 1 && serv_basicos_internet == 1 && serv_basicos_gas == 1 && serv_basicos_telefono == 1){
+                    document.getElementById('checkAllServices').checked = true;
+                }
+                else {
+                    document.getElementById('checkAllServices').checked = false;
+                }
+
+                if (electrodomesticos_tv == 1){
+                    document.getElementById('tv').checked = true; 
+                }
+                if (electrodomesticos_lavadora == 1){
+                    document.getElementById('lavadora').checked = true; 
+                }
+                if (electrodomesticos_estereo == 1) {
+                    document.getElementById('estereo').checked = true; 
+                }
+                if (electrodomesticos_microondas == 1){
+                    document.getElementById('microondas').checked = true; 
+                }
+                if (electrodomesticos_computadora == 1){
+                    document.getElementById('computadora').checked = true; 
+                }
+                if (electrodomesticos_licuadora == 1){
+                    document.getElementById('licuadora').checked = true; 
+                }
+                if (electrodomesticos_dvd == 1){
+                    document.getElementById('dvd').checked = true;
+                }
+                if (electrodomesticos_refri == 1){
+                    document.getElementById('refri').checked = true;
+                }
+                if (electrodomesticos_estufa == 1){
+                    document.getElementById('estufa').checked = true;
+                }
+                if (electrodomesticos_otro == "" || electrodomesticos_otro == null || electrodomesticos_otro == 0){
+                    document.getElementById('otroElectro').checked = false;
+                    document.getElementById('otroElectroInput').value = "";
+                }
+                else {
+                    document.getElementById('otroElectro').checked = true;
+                    document.getElementById('otroElectroInput').value = jsonData.serv_basicos_otro;
+                }
+                if (electrodomesticos_tv == 1 && electrodomesticos_lavadora == 1 && electrodomesticos_estereo == 1 && electrodomesticos_microondas == 1 && electrodomesticos_computadora == 1 && electrodomesticos_licuadora == 1 && electrodomesticos_refri == 1 && electrodomesticos_estufa == 1){
+                    document.getElementById('checkAllElectro').checked = true;
+                }
+                else {
+                    document.getElementById('checkAllElectro').checked = false;
+                }
+
+                document.getElementById('dependenciaEconomica').value = jsonData.personas_dependen;
+
+                if (deudas == 1 || deudas == "SI"){
+                    document.getElementById('deudasSi').checked = true;
+                    document.getElementById('deudasInput').value = jsonData.deudas_cuanto; 
+                }
+                else if (deudas == 2 || deudas == "NO"){
+                    document.getElementById('deudasNo').checked = true;
+
+                }
+                showMeFam();
+                showMeRef();
+                mostrarTablaServicios();
+                //mostrarTabla();
                 
             } else if (success == 0){
                 console.log(jsonData.error);

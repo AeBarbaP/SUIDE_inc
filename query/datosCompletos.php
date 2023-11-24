@@ -137,6 +137,7 @@ $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
         'electrodomesticos_licuadora'=>$rowDatosVivienda['electrodomesticos_licuadora'], 
         'electrodomesticos_dvd'=>$rowDatosVivienda['electrodomesticos_dvd'], 
         'electrodomesticos_estufa'=>$rowDatosVivienda['electrodomesticos_estufa'], 
+        'electrodomesticos_refri'=>$rowDatosVivienda['electrodomesticos_refri'], 
         'electrodomesticos_otro'=>$rowDatosVivienda['electrodomesticos_otro'], 
         'personas_dependen'=>$rowDatosVivienda['personas_dependen'], 
         'deudas'=>$rowDatosVivienda['deudas'], 
