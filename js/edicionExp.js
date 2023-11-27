@@ -135,6 +135,15 @@ function queryDatos(){
             if (success = 1) {
                 document.getElementById('curp').value = jsonData.curp;
                 document.getElementById('curp_exp').value = jsonData.curp;
+                buscarPhoto(jsonData.curp);
+                document.getElementById('file_photo').disabled = false;
+                document.getElementById('img1').hidden = true;
+                    var qrcode = new QRCode(document.getElementById("imgQR"), {
+                        text: jsonData.curp,
+                        width: 250,
+                        height: 250,
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
                 cortarRFC2(); 
                 
                 var numExpediente2 = jsonData.numExpediente;

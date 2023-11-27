@@ -284,7 +284,7 @@ include('prcd/qc/qc.php');
                 
               <input type="file"  name="file_photo" id="file_photo" onchange="foto()" accept="image/png, image/gif, image/jpeg" class="h6 w-100 mt-3" disabled><br>
             
-              <progress id="progressBar_photo" value="0" max="100" style="width:270px;"></progress>
+              <progress id="progressBar_photo" value="0" max="100" style="width:230px;"></progress>
               <small id="status_photo"></small>
               <p id="loaded_n_total_photo"></p>
             </form>

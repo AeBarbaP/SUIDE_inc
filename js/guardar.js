@@ -350,6 +350,7 @@ $(document).ready(function() {
                         height: 250,
                         correctLevel: QRCode.CorrectLevel.H
                     });
+                    
                     cambiarTab();
                     document.getElementById('nav-medicos-tab').disabled = false;
                     document.getElementById('nav-generales-tab').disabled = true;
