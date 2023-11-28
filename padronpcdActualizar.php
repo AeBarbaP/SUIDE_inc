@@ -292,18 +292,17 @@ include('prcd/qc/qc.php');
         </div>
         
         <div class="alert alert-primary" role="alert" id="positivo" hidden>
-        <div class="row">
-          <div class="col-10 align-middle p-1">
-              <strong># Expediente:</strong> <span id="numExp1"></span> | 
-              <strong>Nombre:</strong> <span id="nombreExp1"></span>&nbsp<span id="apellidoPExp1"></span>&nbsp<span id="apellidoMExp1"></span>
-            
+          <div class="row">
+            <div class="col-10 align-middle p-1">
+                <strong># Expediente:</strong> <span id="numExp1"></span> | 
+                <strong>Nombre:</strong> <span id="nombreExp1"></span>&nbsp<span id="apellidoPExp1"></span>&nbsp<span id="apellidoMExp1"></span>
+              
+            </div>
+            <div class="col-2 text-end">
+              <button class="btn btn-primary btn-sm" id="editarBeneficiario" onclick="queryDatos()">Editar beneficiario</button>
+              <button class="btn btn-danger btn-sm" id="cancelarEditar" onclick="cancelarActualizar()" hidden>Cancelar edición</button>
+            </div>
           </div>
-          <div class="col-2 text-end">
-            <button class="btn btn-primary btn-sm" id="editarBeneficiario" onclick="queryDatos()">Editar beneficiario</button>
-            <button class="btn btn-danger btn-sm" id="cancelarEditar" onclick="cancelarActualizar()" hidden>Cancelar edición</button>
-          </div>
-        </div>
-
         </div>
         
         <div class="alert alert-danger" role="alert" id="negativo" hidden>

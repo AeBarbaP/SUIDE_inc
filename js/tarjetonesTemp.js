@@ -183,3 +183,73 @@ function limpiaModalTarjetonTemp(){
     document.getElementById('temporalidad').disabled = false;
     document.getElementById('habilitaimprimirtt').disabled = true;
 }
+
+function buscarTarjetonTemp(x){
+    var cadenaTexto = x;
+    $.ajax({
+        type:"POST",
+        url:"query/extraccionDatosT.php",
+        data:{
+            cadenaTexto:cadenaTexto
+        },
+        dataType:"JSON",
+        success: function(response)
+        {
+            var jsonData = JSON.parse(JSON.stringify(response));
+            var success = jsonData.success;
+
+            if(success == 1){
+                document.getElementById('nadaDoor').hidden = true;
+                document.getElementById('positivoT').hidden = false;
+                document.getElementById('negativoT').hidden = true;
+                document.getElementById('numTarjeton1').innerText = jsonData.folioTarjeton;
+                document.getElementById('datosCompletosT').value = jsonData.folioTarjeton;
+                document.getElementById('datosCompletosCURPT').value = jsonData.curp;
+                document.getElementById('estadoConsultaT').value = jsonData.estado;
+                document.getElementById('municipioConsultaT').value = jsonData.municipio;
+                
+                var municipioQuery = jsonData.estado;
+                var discapacidadQuery = jsonData.tipoDiscapacidad;
+                municipiosSelect(municipioQuery);
+                discapacidadTab(discapacidadQuery);
+
+                document.getElementById('discapacidadConsultaT').value = jsonData.discapacidad;
+                document.getElementById('tipoDiscapacidadConsultaT').value = jsonData.tipoDiscapacidad;
+                document.getElementById('nombreTarjeto1').innerText = jsonData.nombre;
+                document.getElementById('apellidoPT1').innerText = jsonData.apellido_p;
+                document.getElementById('apellidoMT1').innerText = jsonData.apellido_m;
+            }
+            else if (success == 0){
+                document.getElementById('nadaDoor').hidden = true;
+                document.getElementById('positivoT').hidden = true;
+                document.getElementById('negativoT').hidden = false;
+                console.log('nada');
+            }
+        }
+    });
+}
+
+function queryDatos(){
+    var folioTarjeton = document.getElementById('datosCompletosT').value;
+    var curp2 = document.getElementById('datosCompletosCURPT').value;
+
+    $.ajax({
+        type: "POST",
+        url: 'query/datosCompletos.php',
+        dataType:'JSON',
+        data: {
+            folioTarjeton:folioTarjeton,
+            curp2:curp2
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            var genero = jsonData.genero;
+            var estudia= jsonData.estudia;
+            var trabaja= jsonData.trabaja;
+            var asoc_civ   = jsonData.asoc_civ;
+            var pensionado = jsonData.pensionado;
+            var sindicato  = jsonData.sindicato;
+        }
+    });
+}

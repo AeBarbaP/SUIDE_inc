@@ -3,10 +3,10 @@ include('../prcd/qc/qc.php');
 if (isset($_POST['cadenaTexto'])){
     $datos = $_POST['cadenaTexto'];
 
-    $sql = "SELECT * FROM datos_generales WHERE RIGHT(numExpediente,5) LIKE '%$datos' LIMIT 1";
+    $sql = "SELECT * FROM tarjetones WHERE curp LIKE '$datos%' LIMIT 1";
     $resultadoSql = $conn->query($sql);
     $fila = $resultadoSql->num_rows;
-    $sql2 = "SELECT * FROM datos_medicos WHERE RIGHT(expediente,5) LIKE '%$datos' LIMIT 1";
+    $sql2 = "SELECT * FROM datos_usuariot WHERE curp LIKE '$datos%' LIMIT 1";
     $resultadoSql2 = $conn->query($sql2);
     $fila2 = $resultadoSql2->num_rows;
 
@@ -14,13 +14,13 @@ if (isset($_POST['cadenaTexto'])){
         $rowDatos = $resultadoSql->fetch_assoc();
         $rowDatos2 = $resultadoSql2->fetch_assoc();
 
-        $numExpediente = $rowDatos['numExpediente'];
-        $nombre = $rowDatos['nombre'];
-        $apellido_p = $rowDatos['apellido_p'];
-        $apellido_m = $rowDatos['apellido_m'];
+        $folioTarjeton = $rowDatos['folio_tarjeton'];
         $curp = $rowDatos['curp'];
-        $estado = $rowDatos['estado'];
-        $municipio = $rowDatos['municipio'];
+        $nombre = $rowDatos2['nombre'];
+        $apellido_p = $rowDatos2['apellido_p'];
+        $apellido_m = $rowDatos2['apellido_m'];
+        $estado = $rowDatos2['estado'];
+        $municipio = $rowDatos2['municipio'];
         $discapacidad = $rowDatos2['discapacidad'];
         $tipoDiscapacidad = $rowDatos2['tipo_discapacidad'];
 
@@ -30,7 +30,7 @@ if (isset($_POST['cadenaTexto'])){
             'apellido_p'=>$apellido_p,
             'apellido_m'=>$apellido_m,
             'curp'=>$curp, 
-            'numExpediente'=>$numExpediente,
+            'folioTarjeton'=>$folioTarjeton,
             'estado'=>$estado,
             'municipio'=>$municipio,
             'discapacidad'=>$discapacidad,

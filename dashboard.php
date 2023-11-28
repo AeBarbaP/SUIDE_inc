@@ -158,7 +158,7 @@ include('prcd/qc/qc.php');
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body>
+  <body onload="estadosSelect(); discapacidadTab()">
     
 <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
@@ -779,14 +779,38 @@ $(document).ready(function () {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="container text-center">
-          <div class="input-group w-75 mb-3">
-            <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar">
+        <div class="container ">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" oninput="buscarTarjetonTemp(this.value)" placeholder="Buscar..." aria-label="Buscar">
             <input type="radio" class="btn-check" onchange="cambiarAtribUSR()" name="options-outlined" id="usuarioSD" autocomplete="off" checked>
             <label class="btn btn-outline-primary" for="usuarioSD">CURP</label>
             <input type="radio" class="btn-check" onchange="cambiarAtrib()" name="options-outlined" id="oficial" autocomplete="off">
             <label class="btn btn-outline-primary" for="oficial">RFC</label>
           </div>
+          <div class="alert alert-warning" role="alert" id="nadaDoor">
+            Ingresa la CURP o RFC para encontrar al beneficiario.
+          </div>
+          <div class="alert alert-primary" role="alert" id="positivoT" hidden>
+            <div class="row">
+              <div class="col-10 align-middle p-1">
+                  <strong># Tarjetón:</strong> <span id="numTarjeton1"></span> | 
+                  <strong>Nombre:</strong> <span id="nombreTarjeto1"></span>&nbsp<span id="apellidoPT1"></span>&nbsp<span id="apellidoMT1"></span>
+              </div>
+              <div class="col-2 text-end">
+                <button class="btn btn-primary btn-sm" id="editarTarjeton" onclick="queryDatosT()">Editar beneficiario</button>
+                <button class="btn btn-danger btn-sm" id="cancelarEditar" onclick="cancelarActualizar()" hidden>Cancelar edición</button>
+              </div>
+            </div>
+          </div>
+          <div class="alert alert-danger" role="alert" id="negativoT" hidden>
+            No se encontró el expediente.
+          </div>
+          <input type="text" id="datosCompletosT" hidden>
+          <input type="text" id="datosCompletosCURPT" hidden>
+          <input type="text" id="estadoConsultaT" hidden>
+          <input type="text" id="municipioConsultaT" hidden>
+          <input type="text" id="discapacidadConsultaT" onchange="discapacidadTab(this.value)" hidden>
+          <input type="text" id="tipoDiscapacidadConsultaT" hidden>
           <!-- inicia body -->
           <div class="card mb-3" style="max-width: 100%;">
             <div class="row g-0 align-items-center">
@@ -862,12 +886,23 @@ $(document).ready(function () {
                           </div>
                           <div class="col-md-12">
                             <div class="input-group mb-3">
-                              <span class="input-group-text" id="basic-addon1">Estado:</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="estadoTemp">
+                              <span class="input-group-text">Estado:</span>
+                              <select class="form-select" id="estadosList" oninput="municipiosSelect(this.value)" placeholder="Selecciona..." aria-label="Default select example">
+                
+                              </select>
                               <span class="input-group-text" id="basic-addon1">Municipio:</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="municipioTemp">
+                              <select class="form-select" id="municipiosList" placeholder="Selecciona..." onchange="localidadesSelect(this.value)" required>
+
+                              </select>
                               <span class="input-group-text" id="basic-addon1">Localidad:</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="localidadTemp">
+                              <input class="form-control" list="localidadesList" id="localidades" placeholder="Buscar..." onchange="asentamientosSelect(this.value)" required>
+                              <datalist id="localidadesList">
+
+                              </datalist>
+                              <input class="form-control" list="asentamientosList" id="asentamiento" placeholder="Buscar..." hidden>
+                              <datalist id="asentamientosList" hidden>
+                                
+                              </datalist>
                             </div>  
                           </div>
                           <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">

@@ -57,10 +57,10 @@ $sqlInsert= "INSERT INTO datos_usuariot (
     fecha_valoracion
     )
 VALUES(
-    '$curp',
     '$nombre',
     '$apPaterno',
     '$apMaterno',
+    '$curp',
     '$idClaveTemp',
     '$telcelTemp',
     '$correoTemp',
