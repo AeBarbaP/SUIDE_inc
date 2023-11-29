@@ -824,7 +824,7 @@ $(document).ready(function () {
                       <button class="nav-link active" id="usuario-tab" data-bs-toggle="tab" data-bs-target="#usuario-tab-pane" type="button" role="tab" aria-controls="usuario-tab-pane" aria-selected="true">Datos del Usuario</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="medic-tab" data-bs-toggle="tab" data-bs-target="#medic-tab-pane" type="button" role="tab" aria-controls="medic-tab-pane" aria-selected="false">Valoración Médica</button>
+                      <button class="nav-link" id="medic-tab-temp" data-bs-toggle="tab" data-bs-target="#medic-tab-pane" type="button" role="tab" aria-controls="medic-tab-pane" aria-selected="false">Valoración Médica</button>
                     </li>
                     <li class="nav-item" role="presentation">
                       <button class="nav-link" id="vehiculoadd-tab" data-bs-toggle="tab" data-bs-target="#vehiculoadd-tab-pane" type="button" role="tab" aria-controls="vehiculoadd-tab-pane" aria-selected="false">Agregar Vehículos</button>
@@ -841,7 +841,7 @@ $(document).ready(function () {
                               <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp">
                             </div>  
                           </div>
-                          <div class="col-md-12">
+                          <div class="col-md-12" id="apellidosDiv">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="lastname1">Apellido Paterno</span>
                               <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apPaterno">
@@ -852,15 +852,27 @@ $(document).ready(function () {
                           <div class="col-md-12">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="spanRFC">CURP</span>
-                              <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="" onchange="validarInput2(this)" aria-label="" aria-describedby="basic-addon1" id="curpTemp" disabled>
+                              <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="" onchange="validarInput2(this)" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
                               <span class="input-group-text" id="cveid">Clave INE / Folio ID:</span>
                               <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
                             </div>  
                           </div>
-                          <div class="col-md-12">
+                          <div class="col-md-12" id="divEdad">
                             <div class="input-group mb-3">
+                              <span class="input-group-text" id="spanEdad">Edad</span>
+                              <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="edadTemp">
+                              <span class="input-group-text" id="sexoTag">Sexo:</span>
+                              <select class="form-select" id="sexoSel"  placeholder="Selecciona..." aria-label="Default select example">
+                                <option value="Mujer">Mujer</option>
+                                <option value="Hombre">Hombre</option>
+                                <option value="Otro">Otro</option>
+                              </select>
                               <span class="input-group-text" id="basic-addon1">Teléfono:</span>
                               <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="telcelTemp" onkeypress="ValidaSoloNumeros()">
+                            </div>  
+                          </div>
+                          <div class="col-md-12">
+                            <div class="input-group mb-3">
                               <span class="input-group-text" id="basic-addon1">Correo-e:</span>
                               <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toLowerCase()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="correoTemp">
                             </div>  
@@ -906,7 +918,7 @@ $(document).ready(function () {
                             </div>  
                           </div>
                           <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
-                            <button class="btn btn-primary me-md-2" id="agregarUsuarioTempBtn" onclick="usuarioTempAdd(); deshabilitaBtnDatos()" type="button" disabled><i class="bi bi-plus-lg"></i> Guardar Datos</button>
+                            <button class="btn btn-primary me-md-2" id="agregarUsuarioTempBtn" onclick="deshabilitaBtnDatos()" type="button" disabled><i class="bi bi-plus-lg"></i> Guardar Datos</button>
                           </div>
                         </div>
                       </div>
@@ -949,6 +961,16 @@ $(document).ready(function () {
                           </div>
                           <div class="col-md-12">
                             <div class="input-group mb-3">
+                            <span class="input-group-text" id="causaTag">Causa:</span>
+                              <select class="form-select" id="causaSel" onchange="causaDiscOp(this.value)" placeholder="Selecciona..." aria-label="Default select example">
+                                <option value="2">Adquirida</option>
+                                <option value="3">Accidente</option>
+                                <option value="4">Enfermedad</option>
+                                <option value="6">Adicción</option>
+                                <option value="7">Otra</option>
+                              </select>
+                              <span class="input-group-text" id="basic-addon1">Especifique:</span>
+                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="especifiqueD" disabled>
                               <span class="input-group-text" id="basic-addon1"><i class="bi bi-clock-history"></i> Temporalidad: </span>
                               <select class="form-select" id="temporalidad">
                                 <option selected>Temporalidad...</option>

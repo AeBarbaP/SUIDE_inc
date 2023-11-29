@@ -11,9 +11,18 @@ function usuarioTempAdd(){
     var intTemp = document.getElementById('intTemp').value;
     var coloniaTemp = document.getElementById('coloniaTemp').value;
     var CPTemp = document.getElementById('CPTemp').value;
-    var estadoTemp = document.getElementById('estadoTemp').value;
-    var municipioTemp = document.getElementById('municipioTemp').value;
-    var localidadTemp = document.getElementById('localidadTemp').value;
+    var estadoTemp = document.getElementById('estadosList').value;
+    var municipioTemp = document.getElementById('municipiosList').value;
+    var localidadTemp = document.getElementById('localidades').value;
+    var tipoDiscTemp = document.getElementById('tipoDiscTemp').value;
+    var discapacidadTemp = document.getElementById('discapacidadList').value;
+    var gradoDiscTemp = document.getElementById('gradoDiscTemp').value;
+    var dxTemp = document.getElementById('dxTemp').value;
+    var temporalidad = document.getElementById('temporalidad').value;
+    var institucionTemp = document.getElementById('institucionTemp').value;
+    var medico = document.getElementById('medicoTemp').value;
+    var cedula = document.getElementById('cedulaTemp').value;
+    var fechaValTemp = document.getElementById('fechaValTemp').value;
     
     $.ajax({
         type: "POST",
@@ -34,7 +43,16 @@ function usuarioTempAdd(){
             CPTemp:CPTemp,
             estadoTemp:estadoTemp,
             municipioTemp:municipioTemp,
-            localidadTemp:localidadTemp
+            localidadTemp:localidadTemp,
+            tipoDiscTemp:tipoDiscTemp,
+            discapacidadTemp:discapacidadTemp,
+            gradoDiscTemp:gradoDiscTemp,
+            dxTemp:dxTemp,
+            temporalidad:temporalidad,
+            institucionTemp:institucionTemp,
+            medico:medico,
+            cedula:cedula,
+            fechaValTemp:fechaValTemp
         },
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));
@@ -52,7 +70,7 @@ function usuarioTempAdd(){
 function medicosTempAdd(){
     var curp = document.getElementById('curpTemp').value;
     var tipoDiscTemp = document.getElementById('tipoDiscTemp').value;
-    var discapacidadTemp = document.getElementById('discapacidadTemp').value;
+    var discapacidadTemp = document.getElementById('discapacidadList').value;
     var gradoDiscTemp = document.getElementById('gradoDiscTemp').value;
     var dxTemp = document.getElementById('dxTemp').value;
     var temporalidad = document.getElementById('temporalidad').value;
@@ -99,7 +117,7 @@ function habilitaBtnDatos(){
     var tempCurp = document.getElementById('curpTemp').value;
     var ine = document.getElementById('idClaveTemp').value;
     var tipoDiscTemp = document.getElementById('tipoDiscTemp').value;
-    var discapacidadTemp= document.getElementById('discapacidadTemp').value;
+    var discapacidadTemp= document.getElementById('discapacidadList').value;
     var gradoDiscTemp = document.getElementById('gradoDiscTemp').value;
     var dxTemp = document.getElementById('dxTemp').value;
     var temporalidad = document.getElementById('temporalidad').value;
@@ -131,11 +149,14 @@ function deshabilitaBtnDatos(){
     document.getElementById('intTemp').disabled = true;
     document.getElementById('coloniaTemp').disabled = true;
     document.getElementById('CPTemp').disabled = true;
-    document.getElementById('estadoTemp').disabled = true;
-    document.getElementById('municipioTemp').disabled = true;
-    document.getElementById('localidadTemp').disabled = true;
+    document.getElementById('estadosList').disabled = true;
+    document.getElementById('municipiosList').disabled = true;
+    document.getElementById('localidades').disabled = true;
+    
+}
+function deshabilitaBtnDatosMed(){
     document.getElementById('tipoDiscTemp').disabled = true;
-    document.getElementById('discapacidadTemp').disabled = true;
+    document.getElementById('discapacidadList').disabled = true;
     document.getElementById('gradoDiscTemp').disabled = true;
     document.getElementById('dxTemp').disabled = true;
     document.getElementById('temporalidad').disabled = true;

@@ -130,9 +130,9 @@ function limpiaModalTarjetonTemp(){
     document.getElementById('intTemp').value = "";
     document.getElementById('coloniaTemp').value = "";
     document.getElementById('CPTemp').value = "";
-    document.getElementById('estadoTemp').value = "";
-    document.getElementById('municipioTemp').value = "";
-    document.getElementById('localidadTemp').value = "";
+    document.getElementById('estadosList').value = "";
+    document.getElementById('municipiosList').value = "";
+    document.getElementById('localidades').value = "";
     document.getElementById('tipoDiscTemp').value = "";
     document.getElementById('discapacidadTemp').value = "";
     document.getElementById('gradoDiscTemp').value = "";
@@ -186,56 +186,93 @@ function limpiaModalTarjetonTemp(){
 
 function buscarTarjetonTemp(x){
     var cadenaTexto = x;
-    $.ajax({
-        type:"POST",
-        url:"query/extraccionDatosT.php",
-        data:{
-            cadenaTexto:cadenaTexto
-        },
-        dataType:"JSON",
-        success: function(response)
-        {
-            var jsonData = JSON.parse(JSON.stringify(response));
-            var success = jsonData.success;
 
-            if(success == 1){
-                document.getElementById('nadaDoor').hidden = true;
-                document.getElementById('positivoT').hidden = false;
-                document.getElementById('negativoT').hidden = true;
-                document.getElementById('numTarjeton1').innerText = jsonData.folioTarjeton;
-                document.getElementById('datosCompletosT').value = jsonData.folioTarjeton;
-                document.getElementById('datosCompletosCURPT').value = jsonData.curp;
-                document.getElementById('estadoConsultaT').value = jsonData.estado;
-                document.getElementById('municipioConsultaT').value = jsonData.municipio;
-                
-                var municipioQuery = jsonData.estado;
-                var discapacidadQuery = jsonData.tipoDiscapacidad;
-                municipiosSelect(municipioQuery);
-                discapacidadTab(discapacidadQuery);
+    if (cadenaTexto.length != 0){
+        $.ajax({
+            type:"POST",
+            url:"query/extraccionDatosT.php",
+            data:{
+                cadenaTexto:cadenaTexto
+            },
+            dataType:"JSON",
+            success: function(response)
+            {
+                var jsonData = JSON.parse(JSON.stringify(response));
+                var success = jsonData.success;
 
-                document.getElementById('discapacidadConsultaT').value = jsonData.discapacidad;
-                document.getElementById('tipoDiscapacidadConsultaT').value = jsonData.tipoDiscapacidad;
-                document.getElementById('nombreTarjeto1').innerText = jsonData.nombre;
-                document.getElementById('apellidoPT1').innerText = jsonData.apellido_p;
-                document.getElementById('apellidoMT1').innerText = jsonData.apellido_m;
+                if(success == 1){
+                    document.getElementById('nadaDoor').hidden = true;
+                    document.getElementById('positivoT').hidden = false;
+                    document.getElementById('negativoT').hidden = true;
+                    document.getElementById('numTarjeton1').innerText = jsonData.folioTarjeton;
+                    document.getElementById('datosCompletosT').value = jsonData.folioTarjeton;
+                    document.getElementById('datosCompletosCURPT').value = jsonData.curp;
+                    document.getElementById('estadoConsultaT').value = jsonData.estado;
+                    document.getElementById('municipioConsultaT').value = jsonData.municipio;
+                    
+                    var municipioQuery = jsonData.estado;
+                    var discapacidadQuery = jsonData.tipoDiscapacidad;
+                    municipiosSelect(municipioQuery);
+                    discapacidadTab(discapacidadQuery);
+
+                    document.getElementById('discapacidadConsultaT').value = jsonData.discapacidad;
+                    document.getElementById('tipoDiscapacidadConsultaT').value = jsonData.tipoDiscapacidad;
+                    document.getElementById('nombreTarjeto1').innerText = jsonData.nombre;
+                    document.getElementById('apellidoPT1').innerText = jsonData.apellido_p;
+                    document.getElementById('apellidoMT1').innerText = jsonData.apellido_m;
+                }
+                else if (success == 0){
+                    document.getElementById('nadaDoor').hidden = true;
+                    document.getElementById('positivoT').hidden = true;
+                    document.getElementById('negativoT').hidden = false;
+                    console.log('nada');
+                }
             }
-            else if (success == 0){
-                document.getElementById('nadaDoor').hidden = true;
-                document.getElementById('positivoT').hidden = true;
-                document.getElementById('negativoT').hidden = false;
-                console.log('nada');
-            }
-        }
-    });
+        });
+    }
+    else if (cadenaTexto.length > 18){
+        
+    }
+
+    else{
+        document.getElementById('nombreTemp').value = "";
+        document.getElementById('apPaterno').value = "";
+        document.getElementById('apMaterno').value = "";
+        document.getElementById('curpTemp').value = "";
+        document.getElementById('idClaveTemp').value = "";
+        document.getElementById('edadTemp').value = "";
+        document.getElementById('sexoSel').value = "";
+        document.getElementById('telcelTemp').value = "";
+        document.getElementById('correoTemp').value = "";
+        document.getElementById('calleTemp').value = "";
+        document.getElementById('extTemp').value = "";
+        document.getElementById('intTemp').value = "";
+        document.getElementById('coloniaTemp').value = "";
+        document.getElementById('CPTemp').value = "";
+        document.getElementById('estadosList').value = "";
+        document.getElementById('municipiosList').value = "";
+        document.getElementById('localidades').value = "";
+        document.getElementById('tipoDiscTemp').value = "";
+        document.getElementById('discapacidadList').value = "";
+        document.getElementById('gradoDiscTemp').value = "";
+        document.getElementById('dxTemp').value = "";
+        document.getElementById('causaSel').value = "";
+        document.getElementById('especifiqueD').value = "";
+        document.getElementById('temporalidad').value = "";
+        document.getElementById('institucionTemp').value = "";
+        document.getElementById('medicoTemp').value = "";
+        document.getElementById('cedulaTemp').value = "";
+        document.getElementById('fechaValTemp').value = "";
+    }
 }
 
-function queryDatos(){
+function queryDatosT(){
     var folioTarjeton = document.getElementById('datosCompletosT').value;
     var curp2 = document.getElementById('datosCompletosCURPT').value;
 
     $.ajax({
         type: "POST",
-        url: 'query/datosCompletos.php',
+        url: 'query/datosCompletosT.php',
         dataType:'JSON',
         data: {
             folioTarjeton:folioTarjeton,
@@ -244,12 +281,62 @@ function queryDatos(){
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));
             var success = jsonData.success;
-            var genero = jsonData.genero;
-            var estudia= jsonData.estudia;
-            var trabaja= jsonData.trabaja;
-            var asoc_civ   = jsonData.asoc_civ;
-            var pensionado = jsonData.pensionado;
-            var sindicato  = jsonData.sindicato;
+            var nombre = jsonData.nombre;
+            var apellido_p = jsonData.apellido_p;
+            var apellido_m = jsonData.apellido_m;
+            var edad = jsonData.edad;
+            var sexo = jsonData.sexo;
+            var cve_id_ine = jsonData.cve_id_ine;
+            var telefono = jsonData.telefono;
+            var correo = jsonData.correo;
+            var calle = jsonData.calle;
+            var no_ext = jsonData.no_ext;
+            var no_int = jsonData.no_int;
+            var colonia = jsonData.colonia;
+            var cp = jsonData.cp;
+            var estado = jsonData.estado;
+            var municipio = jsonData.municipio;
+            var localidad = jsonData.localidad;
+            var tipo_discapacidad = jsonData.tipo_discapacidad;
+            var discapacidad = jsonData.discapacidad;
+            var grado_discapacidad = jsonData.grado_discapacidad;
+            var descripcionDiscapacidad = jsonData.descripcionDiscapacidad;
+            var causa = jsonData.causa;
+            var causa_otro = jsonData.causa_otro;
+            var temporalidad = jsonData.temporalidad;
+            var valoracion = jsonData.valoracion;
+            var medico = jsonData.medico;
+            var cedula = jsonData.cedula;
+            var fecha_valoracion = jsonData.fecha_valoracion;
+
+            document.getElementById('nombreTemp').value = nombre;
+            document.getElementById('apPaterno').value = apellido_p;
+            document.getElementById('apMaterno').value = apellido_m;
+            document.getElementById('curpTemp').value = curp2;
+            document.getElementById('idClaveTemp').value = cve_id_ine;
+            document.getElementById('edadTemp').value = edad;
+            document.getElementById('sexoSel').value = sexo;
+            document.getElementById('telcelTemp').value = telefono;
+            document.getElementById('correoTemp').value = correo;
+            document.getElementById('calleTemp').value = calle;
+            document.getElementById('extTemp').value = no_ext;
+            document.getElementById('intTemp').value = no_int;
+            document.getElementById('coloniaTemp').value = colonia;
+            document.getElementById('CPTemp').value = cp;
+            document.getElementById('estadosList').value = estado;
+            document.getElementById('municipiosList').value = municipio;
+            document.getElementById('localidades').value = localidad;
+            document.getElementById('tipoDiscTemp').value = tipo_discapacidad;
+            document.getElementById('discapacidadList').value = discapacidad;
+            document.getElementById('gradoDiscTemp').value = grado_discapacidad;
+            document.getElementById('dxTemp').value = descripcionDiscapacidad;
+            document.getElementById('causaSel').value = causa;
+            document.getElementById('especifiqueD').value = causa_otro;
+            document.getElementById('temporalidad').value = temporalidad;
+            document.getElementById('institucionTemp').value = valoracion;
+            document.getElementById('medicoTemp').value = medico;
+            document.getElementById('cedulaTemp').value = cedula;
+            document.getElementById('fechaValTemp').value = fecha_valoracion;
         }
     });
 }

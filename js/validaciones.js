@@ -155,8 +155,14 @@ function cambiarAtrib(){
         document.getElementById('lastname1').hidden = true;
         document.getElementById('lastname2').hidden = true;
         document.getElementById('cveid').hidden = true;
+        document.getElementById('sexoTag').hidden = true;
+        document.getElementById('sexoSel').hidden = true;
+        document.getElementById('spanEdad').hidden = true;
+        document.getElementById('edadTemp').hidden = true;
+        document.getElementById('divEdad').hidden = true;
+        document.getElementById('apellidosDiv').hidden = true;
         document.getElementById('tipoDiscTemp').disabled = true;
-        document.getElementById('discapacidadTemp').disabled = true;
+        document.getElementById('discapacidadList').disabled = true;
         document.getElementById('gradoDiscTemp').disabled = true;
         document.getElementById('dxTemp').disabled = true;
         document.getElementById('temporalidad').disabled = true;
@@ -165,7 +171,7 @@ function cambiarAtrib(){
         document.getElementById('cedulaTemp').disabled = true;
         document.getElementById('fechaValTemp').disabled = true;
         document.getElementById('idClaveTemp').disabled = true;
-        document.getElementById('medic-tab').hidden = true;
+        document.getElementById('medic-tab-temp').hidden = true;
     }
     else {
         document.getElementById('nombreTemp').setAttribute('onchange','');
@@ -180,8 +186,14 @@ function cambiarAtrib(){
         document.getElementById('lastname1').hidden = false;
         document.getElementById('lastname2').hidden = false;
         document.getElementById('cveid').hidden = false;
+        document.getElementById('sexoTag').hidden = false;
+        document.getElementById('sexoSel').hidden = false;
+        document.getElementById('spanEdad').hidden = false;
+        document.getElementById('edadTemp').hidden = false;
+        document.getElementById('divEdad').hidden = false;
+        document.getElementById('apellidosDiv').hidden = false;
         document.getElementById('tipoDiscTemp').disabled = false;
-        document.getElementById('discapacidadTemp').disabled = false;
+        document.getElementById('discapacidadList').disabled = false;
         document.getElementById('gradoDiscTemp').disabled = false;
         document.getElementById('dxTemp').disabled = false;
         document.getElementById('temporalidad').disabled = false;
@@ -190,7 +202,7 @@ function cambiarAtrib(){
         document.getElementById('cedulaTemp').disabled = false;
         document.getElementById('fechaValTemp').disabled = false;
         document.getElementById('idClaveTemp').disabled = false;
-        document.getElementById('medic-tab').hidden = false;
+        document.getElementById('medic-tab-temp').hidden = false;
     }
 }
 function cambiarAtribUSR(){
@@ -209,8 +221,14 @@ function cambiarAtribUSR(){
         document.getElementById('lastname1').hidden = false;
         document.getElementById('lastname2').hidden = false;
         document.getElementById('cveid').hidden = false;
+        document.getElementById('sexoTag').hidden = false;
+        document.getElementById('sexoSel').hidden = false;
+        document.getElementById('spanEdad').hidden = false;
+        document.getElementById('edadTemp').hidden = false;
+        document.getElementById('divEdad').hidden = false;
+        document.getElementById('apellidosDiv').hidden = false;
         document.getElementById('tipoDiscTemp').disabled = false;
-        document.getElementById('discapacidadTemp').disabled = false;
+        document.getElementById('discapacidadList').disabled = false;
         document.getElementById('gradoDiscTemp').disabled = false;
         document.getElementById('dxTemp').disabled = false;
         document.getElementById('temporalidad').disabled = false;
@@ -219,7 +237,7 @@ function cambiarAtribUSR(){
         document.getElementById('cedulaTemp').disabled = false;
         document.getElementById('fechaValTemp').disabled = false;
         document.getElementById('idClaveTemp').disabled = false;
-        document.getElementById('medic-tab').hidden = false;
+        document.getElementById('medic-tab-temp').hidden = false;
     }
     else {
         document.getElementById('nombreTemp').setAttribute('onchange','habilitaBtnDatos()');
@@ -234,8 +252,14 @@ function cambiarAtribUSR(){
         document.getElementById('lastname1').hidden = true;
         document.getElementById('lastname2').hidden = true;
         document.getElementById('cveid').hidden = true;
+        document.getElementById('sexoTag').hidden = true;
+        document.getElementById('sexoSel').hidden = true;
+        document.getElementById('spanEdad').hidden = true;
+        document.getElementById('edadTemp').hidden = true;
+        document.getElementById('divEdad').hidden = true;
+        document.getElementById('apellidosDiv').hidden = true;
         document.getElementById('tipoDiscTemp').disabled = true;
-        document.getElementById('discapacidadTemp').disabled = true;
+        document.getElementById('discapacidadList').disabled = true;
         document.getElementById('gradoDiscTemp').disabled = true;
         document.getElementById('dxTemp').disabled = true;
         document.getElementById('temporalidad').disabled = true;
@@ -244,6 +268,6 @@ function cambiarAtribUSR(){
         document.getElementById('cedulaTemp').disabled = true;
         document.getElementById('fechaValTemp').disabled = true;
         document.getElementById('idClaveTemp').disabled = true;
-        document.getElementById('medic-tab').hidden = true;
+        document.getElementById('medic-tab-temp').hidden = true;
     }
 }
