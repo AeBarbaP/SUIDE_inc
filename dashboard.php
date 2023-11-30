@@ -687,6 +687,43 @@ include('prcd/qc/qc.php');
       
       <!-- Termina modal para editar folio de tarjetón de padrón asignado -->
       
+      <!-- Inicia modal para reemplazar tarjetón Temporal asignado-->
+      
+      <div class="modal fade" id="reemplazarTarjetonTemp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Reemplazar Tarjetón</h1>
+              <button type="button" class="btn-close" aria-label="Close" data-bs-toggle="modal" data-bs-target="#tarjetongen"></button>
+            </div>
+            <div class="modal-body">
+              <label>Folio Tarjetón:</label>
+              <div class="input-group mt-2">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-123 "></i></span>
+                <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPermC">
+              </div>
+              <label class="mt-1">Vigencia:</label>
+              <div class="input-group mt-2">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar4-range me-2"></i></span>
+                <select class="form-select" id="vigenciaPermC" aria-label="Default select example">
+                  <option selected>Selecciona...</option>
+                  <option value="730">2 años</option>
+                  <option value="2190">6 años</option>
+                </select>
+              </div>
+              <input type="text" id="folioDT" hidden>
+              <input type="text" id="idVe" hidden>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Close</button>
+              <button type="button" onclick="reemplazaTarjeton(); buscarExpediente2()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Termina modal para editar folio de tarjetón Temporal asignado -->
+      
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
@@ -781,11 +818,11 @@ $(document).ready(function () {
       <div class="modal-body">
         <div class="container ">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" oninput="buscarTarjetonTemp(this.value)" placeholder="Buscar..." aria-label="Buscar">
+            <input type="text" class="form-control" oninput="buscarTarjetonTemp(this.value)" placeholder="Buscar CURP, RFC o # de Tarjetón..." aria-label="Buscar">
             <input type="radio" class="btn-check" onchange="cambiarAtribUSR()" name="options-outlined" id="usuarioSD" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="usuarioSD">CURP</label>
+            <label class="btn btn-outline-primary" for="usuarioSD">Usuario</label>
             <input type="radio" class="btn-check" onchange="cambiarAtrib()" name="options-outlined" id="oficial" autocomplete="off">
-            <label class="btn btn-outline-primary" for="oficial">RFC</label>
+            <label class="btn btn-outline-primary" for="oficial">Institución</label>
           </div>
           <div class="alert alert-warning" role="alert" id="nadaDoor">
             Ingresa la CURP o RFC para encontrar al beneficiario.
@@ -798,7 +835,8 @@ $(document).ready(function () {
               </div>
               <div class="col-2 text-end">
                 <button class="btn btn-primary btn-sm" id="editarTarjeton" onclick="queryDatosT()">Editar beneficiario</button>
-                <button class="btn btn-danger btn-sm" id="cancelarEditar" onclick="cancelarActualizar()" hidden>Cancelar edición</button>
+                <button class="btn btn-danger btn-sm" id="cancelarEditar" onclick="cancelarActualizarT()" hidden>Cancelar edición</button>
+                <button class="btn btn-danger btn-sm" id="finalizarEditar" onclick="finActualizarT()" hidden>Finalizar edición</button>
               </div>
             </div>
           </div>
@@ -838,7 +876,7 @@ $(document).ready(function () {
                           <div class="col-md-12">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="basic-addon1">Nombre (s)</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp">
+                              <input type="text" class="form-control" oninput="habilitaBTNsiguiente()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp">
                             </div>  
                           </div>
                           <div class="col-md-12" id="apellidosDiv">
@@ -918,7 +956,7 @@ $(document).ready(function () {
                             </div>  
                           </div>
                           <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
-                            <button class="btn btn-primary me-md-2" id="agregarUsuarioTempBtn" onclick="deshabilitaBtnDatos()" type="button" disabled><i class="bi bi-plus-lg"></i> Guardar Datos</button>
+                            <button class="btn btn-primary me-md-2" id="agregarUsuarioTempBtn" onclick="cambiarTabTT()" type="button" disabled> Siguente<i class="bi bi-skip-forward ms-2"></i></button>
                           </div>
                         </div>
                       </div>
@@ -998,11 +1036,11 @@ $(document).ready(function () {
                           <div class="col-md-8">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="basic-addon1">Fecha de valoración:</span>
-                              <input type="date" class="form-control" onchange="habilitaBtnDatos()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaValTemp">
+                              <input type="date" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaValTemp">
                             </div>  
                           </div>
                           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-primary me-md-2" id="agregarValoracionTempBtn" onclick="medicosTempAdd(); deshabilitaBtnDatosMed()" type="button" disabled><i class="bi bi-plus-lg"></i> Guardar Datos</button>
+                            <button class="btn btn-primary me-md-2" id="agregarValoracionTempBtn" onclick="usuarioTempAdd(); deshabilitaBtnDatos()" type="button"><i class="bi bi-plus-lg"></i> Guardar Datos</button>
                           </div>
                         </div>
                       </div>
@@ -1043,7 +1081,7 @@ $(document).ready(function () {
                           <option value="185">6 meses</option>
                         </select>
                       </div>
-                      <div class="form-text mb-2" id="basic-addon4"><a href="#" class="ms-2 link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" data-bs-toggle="modal" data-bs-target="#reemplazarTarjetonT" onclick="datosTarjetonT()">Reemplazar tarjetón asignado...</a></div>
+                      <div class="form-text mb-2" id="basic-addon4"><a href="#" class="ms-2 link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" data-bs-toggle="modal" data-bs-target="#reemplazarTarjetonTemp" onclick="datosTarjetonT()">Reemplazar tarjetón asignado...</a></div>
                         <label id="textoTarjeton" hidden></label>
                       <div class="col-md-12">
                         <div class="input-group mb-3">

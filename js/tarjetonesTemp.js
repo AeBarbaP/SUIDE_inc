@@ -53,6 +53,9 @@ function vehiculoTempAdd(){
 function habilitaBTNaddTemp(){
     document.getElementById('agregarVehiculoTempBtn').disabled = false;
 }
+function habilitaBTNsiguiente(){
+    document.getElementById('agregarUsuarioTempBtn').disabled = false;
+}
 
 function codigoQR(concatenado){
     var texto = concatenado.toString();
@@ -60,11 +63,11 @@ function codigoQR(concatenado){
     document.getElementById('qrTarjeton').innerHTML = "";
 // aquí
 
-var qrcode = new QRCode(document.getElementById("qrTarjeton"), {
-      text: texto,
-      width: 80,
-      height: 80,
-      correctLevel: QRCode.CorrectLevel.H
+    var qrcode = new QRCode(document.getElementById("qrTarjeton"), {
+        text: texto,
+        width: 80,
+        height: 80,
+        correctLevel: QRCode.CorrectLevel.H
     });
 
     // Obtener el elemento canvas generado por QRCode.js
@@ -127,6 +130,8 @@ function limpiaModalTarjetonTemp(){
     document.getElementById('correoTemp').value = "";
     document.getElementById('calleTemp').value = "";
     document.getElementById('extTemp').value = "";
+    document.getElementById('edadTemp').value = "";
+    document.getElementById('sexoSel').value = "";
     document.getElementById('intTemp').value = "";
     document.getElementById('coloniaTemp').value = "";
     document.getElementById('CPTemp').value = "";
@@ -134,9 +139,10 @@ function limpiaModalTarjetonTemp(){
     document.getElementById('municipiosList').value = "";
     document.getElementById('localidades').value = "";
     document.getElementById('tipoDiscTemp').value = "";
-    document.getElementById('discapacidadTemp').value = "";
+    document.getElementById('discapacidadList').value = "";
     document.getElementById('gradoDiscTemp').value = "";
     document.getElementById('dxTemp').value = "";
+    document.getElementById('causaSel').value = "";
     document.getElementById('temporalidad').value = "Selected";
     document.getElementById('institucionTemp').value = "";
     document.getElementById('medicoTemp').value = "";
@@ -309,6 +315,12 @@ function queryDatosT(){
             var cedula = jsonData.cedula;
             var fecha_valoracion = jsonData.fecha_valoracion;
 
+            document.getElementById('editarTarjeton').hidden = true;
+            document.getElementById('cancelarEditar').hidden = false;
+            document.getElementById('agregarUsuarioTempBtn').disabled = false;
+            document.getElementById('agregarValoracionTempBtn').removeAttribute('onclick','');
+            document.getElementById('agregarValoracionTempBtn').setAttribute('onclick','usuarioTempUpdate(); deshabilitaBtnDatos()');
+
             document.getElementById('nombreTemp').value = nombre;
             document.getElementById('apPaterno').value = apellido_p;
             document.getElementById('apMaterno').value = apellido_m;
@@ -337,6 +349,77 @@ function queryDatosT(){
             document.getElementById('medicoTemp').value = medico;
             document.getElementById('cedulaTemp').value = cedula;
             document.getElementById('fechaValTemp').value = fecha_valoracion;
+            //document.getElementById('agregarUsuarioTempBtn').disabled = false
+            mostrarTablaVehiculosTemp();
         }
+    });
+}
+
+function cambiarTabTT(){
+    $("#usuario-tab").removeClass('active');
+    $("#medic-tab-temp").addClass('active');
+    $("#usuario-tab-pane").removeClass('show active');
+    $("#medic-tab-pane").addClass('show active');
+}
+function cambiarTabTTV(){
+    $("#medic-tab-temp").removeClass('active');
+    $("#vehiculoadd-tab").addClass('active');
+    $("#medic-tab-pane").removeClass('show active');
+    $("#vehiculoadd-tab-pane").addClass('show active');
+}
+
+function datosTarjetonT(){
+    var folioTTemp = document.getElementById('datosCompletosT').value;
+    var noExpediente = document.getElementById('ordenExpediente').value;
+    $.ajax({
+        type: "POST",
+        url: 'prcd/editarFolioTarjeton.php',
+        dataType:'json',
+        data: {
+            noExpediente:noExpediente,
+            folioTV:folioTV
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            
+            if (success == 1) {
+                document.getElementById('folioTPermC').value = folioTV;
+                document.getElementById('vigenciaPermC').value = jsonData.vigencia;
+            } else if (success == 0){
+                console.log(jsonData.error);
+            }
+        }
+
+    });
+}
+
+function reemplazaTarjeton(){
+    var folioC = document.getElementById('folioTPermC').value;
+    var vigenciaC = document.getElementById('vigenciaPermC').value;
+    var noExpediente = document.getElementById('ordenExpediente').value;
+    
+    $.ajax({
+        type: "POST",
+        url: 'prcd/cambiarTarjeton.php',
+        dataType:'json',
+        data: {
+            folioC:folioC,
+            vigenciaC:vigenciaC,
+            noExpediente:noExpediente
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            
+            if (success == 1) {
+                mostrarTablaVehiculos();
+                alert('Tarjetón actualizado!');
+
+            } else if (success == 0){
+                console.log(jsonData.error);
+            }
+        }
+
     });
 }

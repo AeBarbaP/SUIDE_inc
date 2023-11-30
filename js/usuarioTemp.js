@@ -23,7 +23,12 @@ function usuarioTempAdd(){
     var medico = document.getElementById('medicoTemp').value;
     var cedula = document.getElementById('cedulaTemp').value;
     var fechaValTemp = document.getElementById('fechaValTemp').value;
-    
+    var edadTemp = document.getElementById('edadTemp').value;
+    var sexoSel = document.getElementById('sexoSel').value;
+    var causaSel = document.getElementById('causaSel').value;
+    var causaOtro = document.getElementById('especifiqueD').value;
+
+
     $.ajax({
         type: "POST",
         url: 'prcd/guardarUsuarioTemp.php',
@@ -52,12 +57,18 @@ function usuarioTempAdd(){
             institucionTemp:institucionTemp,
             medico:medico,
             cedula:cedula,
-            fechaValTemp:fechaValTemp
+            fechaValTemp:fechaValTemp,
+            edadTemp:edadTemp,
+            sexoSel:sexoSel,
+            causaSel:causaSel,
+            causaOtro:causaOtro
         },
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));
             var verificador = jsonData.success;
             if (verificador == 1) {
+                cambiarTabTTV();
+                habilitaDatosVehiculos();               
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
@@ -127,10 +138,10 @@ function habilitaBtnDatos(){
 
     if (paterno == "" || materno == "" || nombre == "" || tempCurp== "" || ine == "" || tipoDiscTemp == "" || discapacidadTemp == "" || gradoDiscTemp == "" || dxTemp == "" || temporalidad == "" || institucionTemp == "" || medicoTemp == "" || fechaValTemp == ""){
         alert("Hay campos vacíos");
-        document.getElementById('agregarUsuarioTempBtn').disabled = true;
+        document.getElementById('agregarValoracionTempBtn').disabled = true;
     }
     else {
-        document.getElementById('agregarUsuarioTempBtn').disabled = false;
+        document.getElementById('agregarValoracionTempBtn').disabled = false;
     }
 }
 
@@ -142,6 +153,8 @@ function deshabilitaBtnDatos(){
     document.getElementById('nombreTemp').disabled = true;
     document.getElementById('curpTemp').disabled = true;
     document.getElementById('idClaveTemp').disabled = true;
+    document.getElementById('edadTemp').disabled = true;
+    document.getElementById('sexoSel').disabled = true;
     document.getElementById('telcelTemp').disabled = true;
     document.getElementById('correoTemp').disabled = true;
     document.getElementById('calleTemp').disabled = true;
@@ -152,9 +165,6 @@ function deshabilitaBtnDatos(){
     document.getElementById('estadosList').disabled = true;
     document.getElementById('municipiosList').disabled = true;
     document.getElementById('localidades').disabled = true;
-    
-}
-function deshabilitaBtnDatosMed(){
     document.getElementById('tipoDiscTemp').disabled = true;
     document.getElementById('discapacidadList').disabled = true;
     document.getElementById('gradoDiscTemp').disabled = true;
@@ -165,6 +175,9 @@ function deshabilitaBtnDatosMed(){
     document.getElementById('cedulaTemp').disabled = true;
     document.getElementById('fechaValTemp').disabled = true;
     
+}
+
+function habilitaDatosVehiculos(){
     //habilita inputs datos del vehiculo
     document.getElementById('modeloTemp').disabled = false;
     document.getElementById('marcaTemp').disabled = false;
@@ -174,4 +187,94 @@ function deshabilitaBtnDatosMed(){
     document.getElementById('folioTTemp').disabled = false;
     document.getElementById('vigenciaTemp').disabled = false;
     document.getElementById('checkAutoST').disabled = false;
+}
+
+function usuarioTempUpdate(){
+    var curp = document.getElementById('curpTemp').value;
+    var nombre = document.getElementById('nombreTemp').value;
+    var apPaterno = document.getElementById('apPaterno').value;
+    var apMaterno = document.getElementById('apMaterno').value;
+    var idClaveTemp = document.getElementById('idClaveTemp').value;
+    var telcelTemp = document.getElementById('telcelTemp').value;
+    var correoTemp = document.getElementById('correoTemp').value;
+    var calleTemp = document.getElementById('calleTemp').value;
+    var extTemp = document.getElementById('extTemp').value;
+    var intTemp = document.getElementById('intTemp').value;
+    var coloniaTemp = document.getElementById('coloniaTemp').value;
+    var CPTemp = document.getElementById('CPTemp').value;
+    var estadoTemp = document.getElementById('estadosList').value;
+    var municipioTemp = document.getElementById('municipiosList').value;
+    var localidadTemp = document.getElementById('localidades').value;
+    var tipoDiscTemp = document.getElementById('tipoDiscTemp').value;
+    var discapacidadTemp = document.getElementById('discapacidadList').value;
+    var gradoDiscTemp = document.getElementById('gradoDiscTemp').value;
+    var dxTemp = document.getElementById('dxTemp').value;
+    var temporalidad = document.getElementById('temporalidad').value;
+    var institucionTemp = document.getElementById('institucionTemp').value;
+    var medico = document.getElementById('medicoTemp').value;
+    var cedula = document.getElementById('cedulaTemp').value;
+    var fechaValTemp = document.getElementById('fechaValTemp').value;
+    var edadTemp = document.getElementById('edadTemp').value;
+    var sexoSel = document.getElementById('sexoSel').value;
+    var causaSel = document.getElementById('causaSel').value;
+    var causaOtro = document.getElementById('especifiqueD').value;
+
+
+    $.ajax({
+        type: "POST",
+        url: 'prcd/updateUsuarioTemp.php',
+        dataType:'json',
+        data: {
+            curp:curp,
+            nombre:nombre,
+            apPaterno:apPaterno,
+            apMaterno:apMaterno,
+            idClaveTemp:idClaveTemp,
+            telcelTemp:telcelTemp,
+            correoTemp:correoTemp,
+            calleTemp:calleTemp,
+            extTemp:extTemp,
+            intTemp:intTemp,
+            coloniaTemp:coloniaTemp,
+            CPTemp:CPTemp,
+            estadoTemp:estadoTemp,
+            municipioTemp:municipioTemp,
+            localidadTemp:localidadTemp,
+            tipoDiscTemp:tipoDiscTemp,
+            discapacidadTemp:discapacidadTemp,
+            gradoDiscTemp:gradoDiscTemp,
+            dxTemp:dxTemp,
+            temporalidad:temporalidad,
+            institucionTemp:institucionTemp,
+            medico:medico,
+            cedula:cedula,
+            fechaValTemp:fechaValTemp,
+            edadTemp:edadTemp,
+            sexoSel:sexoSel,
+            causaSel:causaSel,
+            causaOtro:causaOtro
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var verificador = jsonData.success;
+            if (verificador == 1) {
+                cambiarTabTTV();
+                habilitaDatosVehiculos(); 
+                document.getElementById('finalizarEditar').hidden = false;
+                document.getElementById('cancelarEditar').hidden = true;
+                document.getElementById('editarTarjeton').hidden = true;
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Los datos han sido actualizados',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            } else if (verificador == 0){
+                alert('no muestra tabla');
+            }
+            document.getElementById('agregarUsuarioTempBtn').disabled = true;
+        }
+        
+    });
 }
