@@ -1,27 +1,30 @@
 <?php
 
-    include('../prcd/qc/qc.php');
+    include('qc/qc.php');
 
     $curp = $_POST['curp_exp'];
     $tipoSolicitud = $_POST['tipoSolicitud'];
     $fechaSolicitud = $_POST['fechaSolicitud'];
     $folioSolicitud = $_POST['folioSolicitud'];
-    $extraSolicitud = $_POST['extraSolicitud'];
+    $detalleSolicitud = $_POST['detalleSolicitud'];
     $cantidadArt = $_POST['cantidadArt'];
     $unitario = $_POST['unitario'];
-    $costoSolicitudExtra = $_POST['costoSolicitudExtra'];
-    
+    $montoSolicitud = $_POST['monto_solicitud'];
+
     $QueryInsert = "UPDATE servicios SET
         curp = '$curp',
         folio_solicitud = '$folioSolicitud',
         fecha_solicitud = '$fechaSolicitud',
         tipo_solicitud = '$tipoSolicitud',
-        detalle_solicitud = '$extraSolicitud',
+        detalle_solicitud = '$detalleSolicitud',
         cantidad = '$cantidadArt',
         monto_unitario = '$unitario',
-        monto_solicitud = '$costoSolicitudExtra'
-    WHERE curp = '$curp'
+        monto_solicitud = '$montoSolicitud',
+        monto_entregado = '$montoSolicitud'
+        WHERE curp = '$curp'    
     ";
+
+    
 
     $resultado_QueryInsert = $conn->query($QueryInsert);
 
