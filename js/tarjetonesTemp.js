@@ -143,6 +143,7 @@ function limpiaModalTarjetonTemp(){
     document.getElementById('gradoDiscTemp').value = "";
     document.getElementById('dxTemp').value = "";
     document.getElementById('causaSel').value = "";
+    document.getElementById('causaSel').disabled = true;
     document.getElementById('temporalidad').value = "Selected";
     document.getElementById('institucionTemp').value = "";
     document.getElementById('medicoTemp').value = "";
@@ -152,7 +153,11 @@ function limpiaModalTarjetonTemp(){
     document.getElementById('marcaTemp').value = "";
     document.getElementById('annioTemp').value = "";
     document.getElementById('placasTemp').value = "";
-    document.getElementById('serieTemp').value = "";
+    document.getElementById('serieTemp').value = ""; 
+    document.getElementById('folioTTemp').value = ""; 
+    document.getElementById('vigenciaTemp').value = ""; 
+    document.getElementById('folioTTemp').disabled = true; 
+    document.getElementById('vigenciaTemp').disabled = true; 
     document.getElementById('checkAutoST').checked = false;
     document.getElementById('AutoSeguroTemp').value = "";
     document.getElementById('modeloTemp').disabled = true;
@@ -236,10 +241,6 @@ function buscarTarjetonTemp(x){
             }
         });
     }
-    else if (cadenaTexto.length > 18){
-        
-    }
-
     else{
         document.getElementById('nombreTemp').value = "";
         document.getElementById('apPaterno').value = "";
@@ -317,7 +318,7 @@ function queryDatosT(){
 
             document.getElementById('editarTarjeton').hidden = true;
             document.getElementById('cancelarEditar').hidden = false;
-            document.getElementById('finalizarEditar').hidden = false;
+            document.getElementById('finalizarEditar').hidden = true;
             document.getElementById('agregarUsuarioTempBtn').disabled = false;
             document.getElementById('agregarValoracionTempBtn').removeAttribute('onclick','');
             document.getElementById('agregarValoracionTempBtn').setAttribute('onclick','usuarioTempUpdate(); deshabilitaBtnDatos()');
@@ -375,6 +376,12 @@ function cambiarTabTT(){
     $("#medic-tab-temp").addClass('active');
     $("#usuario-tab-pane").removeClass('show active');
     $("#medic-tab-pane").addClass('show active');
+}
+function cambiarTabTTFin(){
+    $("#vehiculoadd-tab").removeClass('active');
+    $("#usuario-tab").addClass('active');
+    $("#usuario-tab-pane").removeClass('show active');
+    $("#vehiculoadd-tab-pane").addClass('show active');
 }
 function cambiarTabTTV(){
     $("#medic-tab-temp").removeClass('active');

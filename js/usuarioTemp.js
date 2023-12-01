@@ -264,7 +264,7 @@ function usuarioTempUpdate(){
                 cambiarTabTTV();
                 habilitaDatosVehiculos(); 
                 document.getElementById('editarTarjeton').hidden = true;
-                document.getElementById('cancelarEditar').hidden = false;
+                document.getElementById('cancelarEditar').hidden = true;
                 document.getElementById('finalizarEditar').hidden = false;
                 Swal.fire({
                     position: 'top-end',
@@ -280,4 +280,9 @@ function usuarioTempUpdate(){
         }
         
     });
+}
+
+function finActualizarT(){
+    limpiaModalTarjetonTemp();
+    cambiarTabTTFin();
 }
