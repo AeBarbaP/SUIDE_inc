@@ -317,6 +317,7 @@ function queryDatosT(){
 
             document.getElementById('editarTarjeton').hidden = true;
             document.getElementById('cancelarEditar').hidden = false;
+            document.getElementById('finalizarEditar').hidden = false;
             document.getElementById('agregarUsuarioTempBtn').disabled = false;
             document.getElementById('agregarValoracionTempBtn').removeAttribute('onclick','');
             document.getElementById('agregarValoracionTempBtn').setAttribute('onclick','usuarioTempUpdate(); deshabilitaBtnDatos()');
@@ -351,6 +352,20 @@ function queryDatosT(){
             document.getElementById('fechaValTemp').value = fecha_valoracion;
             //document.getElementById('agregarUsuarioTempBtn').disabled = false
             mostrarTablaVehiculosTemp();
+            document.getElementById('folioTTemp').value = jsonData.folioTarjeton;
+            document.getElementById('vigenciaTemp').value = jsonData.vigencia;
+            document.getElementById('marcaTemp').disabled = false;
+            document.getElementById('modeloTemp').disabled = false;
+            document.getElementById('annioTemp').disabled = false;
+            document.getElementById('placasTemp').disabled = false;
+            document.getElementById('serieTemp').disabled = false;
+            document.getElementById('checkAutoST').disabled = false;
+            document.getElementById('cerrarEditarTarjeton').removeAttribute('data-bs-target','');
+            document.getElementById('cerrarEditarTarjeton').setAttribute('data-bs-target','#tarjetonPrestamo');
+            document.getElementById('closeEditarTarjeton').removeAttribute('data-bs-target','');
+            document.getElementById('closeEditarTarjeton').setAttribute('data-bs-target','#tarjetonPrestamo');
+            document.getElementById('guardarEditarTarjeton').removeAttribute('data-bs-target','');
+            document.getElementById('cerrarEditarTarjeton').setAttribute('data-bs-target','#tarjetonPrestamo');
         }
     });
 }
@@ -370,22 +385,22 @@ function cambiarTabTTV(){
 
 function datosTarjetonT(){
     var folioTTemp = document.getElementById('datosCompletosT').value;
-    var noExpediente = document.getElementById('ordenExpediente').value;
+    var curp = document.getElementById('datosCompletosCURPT').value;
     $.ajax({
         type: "POST",
         url: 'prcd/editarFolioTarjeton.php',
         dataType:'json',
         data: {
-            noExpediente:noExpediente,
-            folioTV:folioTV
+            curp:curp,
+            folioTTemp:folioTTemp
         },
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));
             var success = jsonData.success;
             
             if (success == 1) {
-                document.getElementById('folioTPermC').value = folioTV;
-                document.getElementById('vigenciaPermC').value = jsonData.vigencia;
+                document.getElementById('folioTTempC').value = folioTTemp;
+                document.getElementById('vigenciaTempC').value = jsonData.vigencia;
             } else if (success == 0){
                 console.log(jsonData.error);
             }
@@ -397,7 +412,7 @@ function datosTarjetonT(){
 function reemplazaTarjeton(){
     var folioC = document.getElementById('folioTPermC').value;
     var vigenciaC = document.getElementById('vigenciaPermC').value;
-    var noExpediente = document.getElementById('ordenExpediente').value;
+    var curp = document.getElementById('ordenExpediente').value;
     
     $.ajax({
         type: "POST",

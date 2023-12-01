@@ -68,7 +68,10 @@ function usuarioTempAdd(){
             var verificador = jsonData.success;
             if (verificador == 1) {
                 cambiarTabTTV();
-                habilitaDatosVehiculos();               
+                habilitaDatosVehiculos(); 
+                document.getElementById('editarTarjeton').hidden = false;
+                document.getElementById('cancelarEditar').hidden = false;
+                document.getElementById('finalizarEditar').hidden = true;              
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
@@ -260,9 +263,9 @@ function usuarioTempUpdate(){
             if (verificador == 1) {
                 cambiarTabTTV();
                 habilitaDatosVehiculos(); 
-                document.getElementById('finalizarEditar').hidden = false;
-                document.getElementById('cancelarEditar').hidden = true;
                 document.getElementById('editarTarjeton').hidden = true;
+                document.getElementById('cancelarEditar').hidden = false;
+                document.getElementById('finalizarEditar').hidden = false;
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',

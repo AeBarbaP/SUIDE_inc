@@ -16,6 +16,7 @@ $rowDatosUsuario = $resultadoSqlUsuario->fetch_assoc();
 
 
     $folioTarjeton = $rowDatos['folio_tarjeton'];
+    $vigencia = $rowDatos['vigencia'];
     $nombre = $rowDatosUsuario['nombre'];
     $apellido_p = $rowDatosUsuario['apellido_p'];
     $apellido_m = $rowDatosUsuario['apellido_m'];
@@ -34,6 +35,7 @@ $rowDatosUsuario = $resultadoSqlUsuario->fetch_assoc();
         'curp'=>$curp2,
         'folioTarjeton'=>$folioTarjeton,
         'nombre'=>$nombre,
+        'vigencia'=>$vigencia,
         'apellido_p'=>$apellido_p,
         'apellido_m'=>$apellido_m,
         'edad'=>$rowDatosUsuario['edad'], 

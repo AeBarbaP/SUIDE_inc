@@ -609,7 +609,7 @@ include('prcd/qc/qc.php');
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualizar Vehículo</h1>
-              <button type="button" class="btn-close" aria-label="Close" data-bs-toggle="modal" data-bs-target="#tarjetongen"></button>
+              <button type="button" class="btn-close" aria-label="Close" data-bs-toggle="modal" id="closeEditarTarjeton" data-bs-target="#tarjetongen"></button>
             </div>
             <div class="modal-body">
               <div class="input-group mb-3">
@@ -636,13 +636,13 @@ include('prcd/qc/qc.php');
                   </div>
                   <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroInput" disabled>
                 </div>  
-                <input type="text" id="folioDT" hidden>
-                <input type="text" id="idVe" hidden>
+                <input type="text" id="folioDTT" hidden>
+                <input type="text" id="idVeT" hidden>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Close</button>
-              <button type="button" onclick="updateVehiculo()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Guardar</button>
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" id="cerrarEditarTarjeton" data-bs-target="#tarjetongen">Close</button>
+              <button type="button" onclick="updateVehiculo()" class="btn btn-primary" id="guardarEditarTarjeton" data-bs-toggle="modal" data-bs-target="#tarjetongen">Guardar</button>
             </div>
           </div>
         </div>
@@ -700,23 +700,28 @@ include('prcd/qc/qc.php');
               <label>Folio Tarjetón:</label>
               <div class="input-group mt-2">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-123 "></i></span>
-                <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPermC">
+                <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTTempC">
               </div>
               <label class="mt-1">Vigencia:</label>
               <div class="input-group mt-2">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar4-range me-2"></i></span>
-                <select class="form-select" id="vigenciaPermC" aria-label="Default select example">
+                <select class="form-select" id="vigenciaTempC" aria-label="Default select example">
                   <option selected>Selecciona...</option>
-                  <option value="730">2 años</option>
-                  <option value="2190">6 años</option>
+                  <option value="15">15 días</option>
+                  <option value="30">1 mes</option>
+                  <option value="61">2 meses</option>
+                  <option value="92">3 meses</option>
+                  <option value="123">4 meses</option>
+                  <option value="154">5 meses</option>
+                  <option value="185">6 meses</option>
                 </select>
               </div>
               <input type="text" id="folioDT" hidden>
               <input type="text" id="idVe" hidden>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Close</button>
-              <button type="button" onclick="reemplazaTarjeton(); buscarExpediente2()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Guardar</button>
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo">Close</button>
+              <button type="button" onclick="reemplazaTarjeton(); buscarExpediente2()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo">Guardar</button>
             </div>
           </div>
         </div>
@@ -836,7 +841,7 @@ $(document).ready(function () {
               <div class="col-2 text-end">
                 <button class="btn btn-primary btn-sm" id="editarTarjeton" onclick="queryDatosT()">Editar beneficiario</button>
                 <button class="btn btn-danger btn-sm" id="cancelarEditar" onclick="cancelarActualizarT()" hidden>Cancelar edición</button>
-                <button class="btn btn-danger btn-sm" id="finalizarEditar" onclick="finActualizarT()" hidden>Finalizar edición</button>
+                <button class="btn btn-success btn-sm" id="finalizarEditar" onclick="finActualizarT()" hidden>Finalizar edición</button>
               </div>
             </div>
           </div>
