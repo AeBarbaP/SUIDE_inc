@@ -86,8 +86,7 @@ $sqlinsert= "UPDATE vivienda SET
     personas_dependen = '$dependientes',
     deudas = '$deudas',
     deudas_cuanto = '$deudasInput'
-
-   
+WHERE curp = '$curp'
     ";
 
 $resultado= $conn->query($sqlinsert);
