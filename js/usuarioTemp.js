@@ -150,7 +150,7 @@ function habilitaBtnDatos(){
 
 function deshabilitaBtnDatos(){
     document.getElementById('agregarUsuarioTempBtn').disabled = true;
-    document.getElementById('habilitaimprimirtt').disabled = true;
+    //document.getElementById('habilitaimprimirtt').disabled = true;
     document.getElementById('apPaterno').disabled = true;
     document.getElementById('apMaterno').disabled = true;
     document.getElementById('nombreTemp').disabled = true;
@@ -277,6 +277,10 @@ function usuarioTempUpdate(){
                 alert('no muestra tabla');
             }
             document.getElementById('agregarUsuarioTempBtn').disabled = true;
+            document.getElementById('folioTTemp').disabled = true;
+            document.getElementById('vigenciaTemp').disabled = true;
+            //document.getElementById('habilitaimprimirtt').disabled = false ;
+            document.getElementById('imprimirtt').disabled = false ;
         }
         
     });
@@ -285,4 +289,13 @@ function usuarioTempUpdate(){
 function finActualizarT(){
     limpiaModalTarjetonTemp();
     cambiarTabTTFin();
+    document.getElementById('nadaDoor').hidden = false;
+    document.getElementById('positivoT').hidden = true;
+    document.getElementById('negativoT').hidden = true;
+    document.getElementById('closeModalPrestamo').setAttribute('data-bs-dismiss','modal');
+    document.getElementById('closeModalPrestamo').removeAttribute('onclick','');
+    document.getElementById('closeModalPrestamo').setAttribute('onclick','limpiaModalTarjetonTemp()');
+    document.getElementById('cerrarModalPrestamo').setAttribute('data-bs-dismiss','modal');
+    document.getElementById('cerrarModalPrestamo').removeAttribute('onclick','');
+    document.getElementById('cerrarModalPrestamo').setAttribute('onclick','limpiaModalTarjetonTemp()');
 }

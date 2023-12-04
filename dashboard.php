@@ -738,7 +738,7 @@ include('prcd/qc/qc.php');
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Código QR Tarjetón</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#tarjetongen" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <strong><div class="text-center" style="font-family: Verdana, Geneva, Tahoma, sans-serif;  font-size:large" id="etiquetaNum">
@@ -748,9 +748,9 @@ include('prcd/qc/qc.php');
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Close</button>
         <a type="button" id="etiquetanumbtn"  class="btn btn-primary" href="javascript:imprimirEtiqueta('etiquetaNum')"><i class="bi bi-printer"></i> # Expediente</a>
-        <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('qrTarjeton')"><i class="bi bi-printer-fill"></i> Imprimir</a>
+        <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('qrTarjeton')"><i class="bi bi-printer-fill"></i> Imprimir QR</a>
       </div>
     </div>
   </div>
@@ -818,7 +818,7 @@ $(document).ready(function () {
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel"><strong><i class="bi bi-plus h2"></i> Tarjetón de Préstamo con QR</strong></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" id="closeModalPrestamo" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="container ">
@@ -1129,15 +1129,71 @@ $(document).ready(function () {
           </div>
         </div>  
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiaModalTarjetonTemp()">Cerrar</button>
-          <button type="button" class="btn btn-primary" id="habilitaimprimirtt" onclick="swaldatostrn()" disabled><i class="bi bi-save2"></i> Generar QR</button>
-          <button type="button" class="btn btn-primary" id="imprimirtt" data-bs-toggle="modal" data-bs-target="#qrShows" onclick="limpiaModalTarjetonTemp()" disabled><i class="bi bi-printer"></i> Imprimir</button>
+          <button type="button" class="btn btn-secondary" id="cerrarModalPrestamo" data-bs-dismiss="modal" onclick="limpiaModalTarjetonTemp()">Cerrar</button>
+          <!-- <button type="button" class="btn btn-primary" id="habilitaimprimirtt" onclick="swaldatostrn()" disabled><i class="bi bi-save2"></i> Generar QR</button> -->
+          <button type="button" class="btn btn-primary" id="imprimirtt" data-bs-toggle="modal" data-bs-target="#qrShowsT" onclick="limpiaModalTarjetonTemp()" disabled><i class="bi bi-printer"></i> Imprimir</button>
         </div>
       </div>
     </div>
   </div>
 </div>
       
+<!-- Inicia modal para imprimir qr -->
+<div class="modal fade" id="qrShowsT" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Código QR Tarjetón</h1>
+        <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo" onclick="cambiarTabTTFin()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <strong><div class="text-center" style="font-family: Verdana, Geneva, Tahoma, sans-serif;  font-size:large" id="etiquetaNumTemp">
+          
+        </div></strong>
+        <div class="text-center" id="qrTarjetonTemp">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo" onclick="finActualizarT()">Close</button>
+        <a type="button" id="etiquetanumbtnT"  class="btn btn-primary" href="javascript:imprimirEtiqueta('etiquetaNumTemp')"><i class="bi bi-printer"></i> # Expediente</a>
+        <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('qrTarjetonTemp')"><i class="bi bi-printer-fill"></i> Imprimir</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- Termina modal para imprimir qr -->
+
+
+
+<!-- Inicia impresion modal -->
+
+<script>
+$(document).ready(function () {
+    $('#printButton').on('click', function (event) {
+        if ($('.modal').is(':visible')) {
+            console.log('si');
+            var modalId = $(event.target).closest('.modal').attr('id');
+            $('body').css('visibility', 'hidden');
+            $('button').css('visibility', 'hidden');
+            $('#exampleModalLabel').css('visibility', 'hidden');
+            $("#" + modalId).css('visibility', 'visible');
+            $('#' + modalId).removeClass('modal');
+            window.print();
+            $('body').css('visibility', 'visible');
+            $('button').css('visibility', 'visible');
+            $('#exampleModalLabel').css('visibility', 'visible');
+            $('#' + modalId).addClass('modal');
+        } else {
+            window.print();
+        }
+    })
+});
+</script>
+<!-- Termina impresion modal -->
+
+
+
       <!-- Termina Modal para generar tarjeton de préstamo-->
 
       <!-- Inicia Modal para generar credencial empleados -->

@@ -89,7 +89,7 @@ function mostrarTablaVehiculos(){
 
 }
 
-function codigoQR(concatenado,expediente){
+function codigoQR(concatenado){
     var texto = concatenado.toString();
     /* document.getElementById('matriculaQR2').innerHTML = concatenado; */
     document.getElementById('qrTarjeton').innerHTML = "";

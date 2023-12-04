@@ -57,13 +57,13 @@ function habilitaBTNsiguiente(){
     document.getElementById('agregarUsuarioTempBtn').disabled = false;
 }
 
-function codigoQR(concatenado){
+function codigoQR2(concatenado){
     var texto = concatenado.toString();
     /* document.getElementById('matriculaQR2').innerHTML = concatenado; */
-    document.getElementById('qrTarjeton').innerHTML = "";
+    document.getElementById('qrTarjetonTemp').innerHTML = "";
 // aquí
 
-    var qrcode = new QRCode(document.getElementById("qrTarjeton"), {
+    var qrcode = new QRCode(document.getElementById("qrTarjetonTemp"), {
         text: texto,
         width: 80,
         height: 80,
@@ -117,7 +117,7 @@ function limpiarInputsVehiculoTemp(){
     document.getElementById('serieTemp').value = "";
     document.getElementById('checkAutoST').checked = false;
     document.getElementById('AutoSeguroTemp').value = "";
-    document.getElementById('habilitaimprimirtt').disabled = false;
+    //document.getElementById('habilitaimprimirtt').disabled = false;
 }
 
 function limpiaModalTarjetonTemp(){
@@ -179,11 +179,11 @@ function limpiaModalTarjetonTemp(){
     document.getElementById('intTemp').disabled = false;
     document.getElementById('coloniaTemp').disabled = false;
     document.getElementById('CPTemp').disabled = false;
-    document.getElementById('estadoTemp').disabled = false;
-    document.getElementById('municipioTemp').disabled = false;
-    document.getElementById('localidadTemp').disabled = false;
+    document.getElementById('estadosList').disabled = false;
+    document.getElementById('municipiosList').disabled = false;
+    document.getElementById('localidades').disabled = false;
     document.getElementById('tipoDiscTemp').disabled = false;
-    document.getElementById('discapacidadTemp').disabled = false;
+    document.getElementById('discapacidadList').disabled = false;
     document.getElementById('gradoDiscTemp').disabled = false;
     document.getElementById('dxTemp').disabled = false;
     document.getElementById('temporalidad').disabled = false;
@@ -192,7 +192,7 @@ function limpiaModalTarjetonTemp(){
     document.getElementById('cedulaTemp').disabled = false;
     document.getElementById('fechaValTemp').disabled = false;
     document.getElementById('temporalidad').disabled = false;
-    document.getElementById('habilitaimprimirtt').disabled = true;
+    //document.getElementById('habilitaimprimirtt').disabled = true;
 }
 
 function buscarTarjetonTemp(x){
@@ -231,6 +231,8 @@ function buscarTarjetonTemp(x){
                     document.getElementById('nombreTarjeto1').innerText = jsonData.nombre;
                     document.getElementById('apellidoPT1').innerText = jsonData.apellido_p;
                     document.getElementById('apellidoMT1').innerText = jsonData.apellido_m;
+                    codigoQR2(jsonData.curp);
+                    document.getElementById('etiquetaNumTemp').innerHTML = "PRÉSTAMO";
                 }
                 else if (success == 0){
                     document.getElementById('nadaDoor').hidden = true;
@@ -322,6 +324,12 @@ function queryDatosT(){
             document.getElementById('agregarUsuarioTempBtn').disabled = false;
             document.getElementById('agregarValoracionTempBtn').removeAttribute('onclick','');
             document.getElementById('agregarValoracionTempBtn').setAttribute('onclick','usuarioTempUpdate(); deshabilitaBtnDatos()');
+            document.getElementById('cerrarModalPrestamo').removeAttribute('data-bs-dismiss','');
+            document.getElementById('cerrarModalPrestamo').removeAttribute('onclick','');
+            document.getElementById('cerrarModalPrestamo').setAttribute('onclick','cancelarActualizarT()');
+            document.getElementById('closeModalPrestamo').removeAttribute('data-bs-dismiss','');
+            document.getElementById('closeModalPrestamo').removeAttribute('onclick','');
+            document.getElementById('closeModalPrestamo').setAttribute('onclick','cancelarActualizarT()');
 
             document.getElementById('nombreTemp').value = nombre;
             document.getElementById('apPaterno').value = apellido_p;
@@ -380,8 +388,8 @@ function cambiarTabTT(){
 function cambiarTabTTFin(){
     $("#vehiculoadd-tab").removeClass('active');
     $("#usuario-tab").addClass('active');
-    $("#usuario-tab-pane").removeClass('show active');
-    $("#vehiculoadd-tab-pane").addClass('show active');
+    $("#vehiculoadd-tab-pane").removeClass('show active');
+    $("#usuario-tab-pane").addClass('show active');
 }
 function cambiarTabTTV(){
     $("#medic-tab-temp").removeClass('active');

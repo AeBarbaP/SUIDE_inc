@@ -86,7 +86,7 @@ VALUES(
     '$gradoDiscTemp',
     '$dxTemp',
     '$causaSel',
-    '$causaOtro'
+    '$causaOtro',
     '$temporalidad',
     '$institucionTemp',
     '$medico',
