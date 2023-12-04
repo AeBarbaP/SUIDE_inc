@@ -11,26 +11,16 @@
     $unitario = $_POST['unitario'];
     $costoSolicitudExtra = $_POST['costoSolicitudExtra'];
     
-    $QueryInsert = "INSERT INTO servicios (
-        curp,
-        folio_solicitud,
-        fecha_solicitud,
-        tipo_solicitud,
-        detalle_solicitud,
-        cantidad,
-        monto_unitario,
-        monto_solicitud
-    )
-    VALUES (
-        '$curp',
-        '$folioSolicitud',
-        '$fechaSolicitud',
-        '$tipoSolicitud',
-        '$extraSolicitud',
-        '$cantidadArt',
-        '$unitario',
-        '$costoSolicitudExtra'
-    )
+    $QueryInsert = "UPDATE servicios SET
+        curp = '$curp',
+        folio_solicitud = '$folioSolicitud',
+        fecha_solicitud = '$fechaSolicitud',
+        tipo_solicitud = '$tipoSolicitud',
+        detalle_solicitud = '$extraSolicitud',
+        cantidad = '$cantidadArt',
+        monto_unitario = '$unitario',
+        monto_solicitud = '$costoSolicitudExtra'
+    WHERE curp = '$curp'
     ";
 
     $resultado_QueryInsert = $conn->query($QueryInsert);
