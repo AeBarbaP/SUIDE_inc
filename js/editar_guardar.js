@@ -334,7 +334,7 @@ $(document).ready(function() {
                 var jsonData = JSON.parse(JSON.stringify(response));
                 var verificador = jsonData.succes;
                 var curpSaved = jsonData.curp;
-                if (verificador == 1){
+                if (verificador = 1){
                     document.getElementById('btnGuardarGeneral').disabled=true;
                     Swal.fire({
                         position: 'top-end',
@@ -359,7 +359,7 @@ $(document).ready(function() {
                     /* var curpExp = document.getElementById('curp_exp').value;
                     document.getElementById('buttonCheck').setAttribute('href','prcd/checkListPDF.php?curp='+curpExp); */
                 }
-                else if (verificador == 2){
+                else if (verificador = 2){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'error',

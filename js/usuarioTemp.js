@@ -142,7 +142,7 @@ function habilitaBtnDatos(){
     var fechaValTemp = document.getElementById('fechaValTemp').value;
 
     if (paterno == "" || materno == "" || nombre == "" || tempCurp== "" || ine == "" || tipoDiscTemp == "" || discapacidadTemp == "" || gradoDiscTemp == "" || dxTemp == "" || temporalidad == "" || institucionTemp == "" || medicoTemp == "" || fechaValTemp == ""){
-        alert("Hay campos vacíos");
+        
         document.getElementById('agregarValoracionTempBtn').disabled = true;
     }
     else {

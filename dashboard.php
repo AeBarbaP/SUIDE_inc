@@ -786,29 +786,6 @@ $(document).ready(function () {
 </script>
 <!-- Termina impresion modal -->
 
-<!-- Inicia modal para imprimir qr -->
-<div class="modal fade" id="etiquetanumexpediente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Código QR Tarjetón</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="text-center" id="qrTarjeton">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <!-- <button type="button" id="printButton"  class="btn btn-primary"><i class="bi bi-printer"></i> Imprimir</button> -->
-        <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('qrTarjeton')"><i class="bi bi-printer-fill"></i> Imprimir</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Termina modal para imprimir qr -->
-
 <!-- Termina Modal para generar tarjeton -->
 
 <!-- Inicia Modal para generar tarjeton de préstamo-->

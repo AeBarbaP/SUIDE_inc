@@ -58,7 +58,7 @@ $sqlinsert= "UPDATE datos_medicos SET
     enfermedades_cual = '$enfermedadesFull',
     medicamentos = '$medicamentos',
     medicamentos_cual = '$medicamentosFull'
-WHERE curp = '$curp'
+WHERE curp = '$curp_exp'
 ";
 
 $resultado= $conn->query($sqlinsert);

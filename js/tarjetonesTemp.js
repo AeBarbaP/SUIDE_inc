@@ -233,7 +233,7 @@ function buscarTarjetonTemp(x){
                     document.getElementById('apellidoPT1').innerText = jsonData.apellido_p;
                     document.getElementById('apellidoMT1').innerText = jsonData.apellido_m;
                     codigoQR2(jsonData.curp);
-                    document.getElementById('etiquetaNumTemp').innerHTML = "PRÉSTAMO";
+                    document.getElementById('etiquetaNumTemp').innerHTML = "PRÉSTAMO<p style='margin-top:-3px'><small style='font-size: 6.5px'>http://inclusion.zacatecas.gob.mx/suidev/</small></p>";
                 }
                 else if (success == 0){
                     document.getElementById('nadaDoor').hidden = true;

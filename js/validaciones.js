@@ -207,6 +207,8 @@ function cambiarAtrib(){
         document.getElementById('idClaveTemp').disabled = true;
         document.getElementById('medic-tab-temp').hidden = true;
         document.getElementById('twoY').hidden = false;
+        document.getElementById('agregarUsuarioTempBtn').removeAttribute('onclick','');
+        document.getElementById('agregarUsuarioTempBtn').setAttribute('onclick','cambiarTabTTV()');
     }
         
     else {
@@ -241,6 +243,8 @@ function cambiarAtrib(){
         document.getElementById('fechaValTemp').disabled = false;
         document.getElementById('idClaveTemp').disabled = false;
         document.getElementById('medic-tab-temp').hidden = false;
+        document.getElementById('agregarUsuarioTempBtn').removeAttribute('onclick','');
+        document.getElementById('agregarUsuarioTempBtn').setAttribute('onclick','cambiarTabTT()');
     }
 }
 function cambiarAtribUSR(){
@@ -276,6 +280,8 @@ function cambiarAtribUSR(){
         document.getElementById('fechaValTemp').disabled = false;
         document.getElementById('idClaveTemp').disabled = false;
         document.getElementById('medic-tab-temp').hidden = false;
+        document.getElementById('agregarUsuarioTempBtn').removeAttribute('onclick','');
+        document.getElementById('agregarUsuarioTempBtn').setAttribute('onclick','cambiarTabTT()');
     }
     else {
         document.getElementById('nombreTemp').setAttribute('onchange','habilitaBtnDatos()');
@@ -307,5 +313,7 @@ function cambiarAtribUSR(){
         document.getElementById('fechaValTemp').disabled = true;
         document.getElementById('idClaveTemp').disabled = true;
         document.getElementById('medic-tab-temp').hidden = true;
+        document.getElementById('agregarUsuarioTempBtn').removeAttribute('onclick','');
+        document.getElementById('agregarUsuarioTempBtn').setAttribute('onclick','cambiarTabTTV()');
     }
 }
