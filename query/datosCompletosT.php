@@ -39,6 +39,7 @@ $rowDatosUsuario = $resultadoSqlUsuario->fetch_assoc();
         'apellido_p'=>$apellido_p,
         'apellido_m'=>$apellido_m,
         'edad'=>$rowDatosUsuario['edad'], 
+        'fechaNacimiento'=>$rowDatosUsuario['fecha_nacimiento'], 
         'sexo'=>$rowDatosUsuario['sexo'], 
         'cve_id_ine'=>$rowDatosUsuario['cve_id_ine'], 
         'telefono'=>$rowDatosUsuario['telefono'], 

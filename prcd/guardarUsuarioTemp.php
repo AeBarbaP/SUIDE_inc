@@ -32,6 +32,7 @@ $edadTemp = $_POST['edadTemp'];
 $sexoSel = $_POST['sexoSel'];
 $causaSel = $_POST['causaSel'];
 $causaOtro = $_POST['causaOtro'];
+$fechaNacimiento = $_POST['fechaNacimientoTemp'];
 
 $sqlInsert= "INSERT INTO datos_usuariot (
     nombre,
@@ -39,6 +40,7 @@ $sqlInsert= "INSERT INTO datos_usuariot (
     apellido_m,
     curp,
     edad,
+    fecha_nacimiento,
     sexo,
     cve_id_ine,
     telefono,
@@ -69,6 +71,7 @@ VALUES(
     '$apMaterno',
     '$curp',
     '$edadTemp',
+    '$fechaNacimiento',
     '$sexoSel',
     '$idClaveTemp',
     '$telcelTemp',

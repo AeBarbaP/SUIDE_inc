@@ -24,6 +24,7 @@ function usuarioTempAdd(){
     var cedula = document.getElementById('cedulaTemp').value;
     var fechaValTemp = document.getElementById('fechaValTemp').value;
     var edadTemp = document.getElementById('edadTemp').value;
+    var fechaNacimientoTemp = document.getElementById('fechaNacimientoTemp').value;
     var sexoSel = document.getElementById('sexoSel').value;
     var causaSel = document.getElementById('causaSel').value;
     var causaOtro = document.getElementById('especifiqueD').value;
@@ -59,6 +60,7 @@ function usuarioTempAdd(){
             cedula:cedula,
             fechaValTemp:fechaValTemp,
             edadTemp:edadTemp,
+            fechaNacimientoTemp:fechaNacimientoTemp,
             sexoSel:sexoSel,
             causaSel:causaSel,
             causaOtro:causaOtro
@@ -157,6 +159,7 @@ function deshabilitaBtnDatos(){
     document.getElementById('curpTemp').disabled = true;
     document.getElementById('idClaveTemp').disabled = true;
     document.getElementById('edadTemp').disabled = true;
+    document.getElementById('fechaNacimientoTemp').disabled = true;
     document.getElementById('sexoSel').disabled = true;
     document.getElementById('telcelTemp').disabled = true;
     document.getElementById('correoTemp').disabled = true;
@@ -218,6 +221,7 @@ function usuarioTempUpdate(){
     var cedula = document.getElementById('cedulaTemp').value;
     var fechaValTemp = document.getElementById('fechaValTemp').value;
     var edadTemp = document.getElementById('edadTemp').value;
+    var fechaNacimientoTemp = document.getElementById('fechaNacimientoTemp').value;
     var sexoSel = document.getElementById('sexoSel').value;
     var causaSel = document.getElementById('causaSel').value;
     var causaOtro = document.getElementById('especifiqueD').value;
@@ -253,6 +257,7 @@ function usuarioTempUpdate(){
             cedula:cedula,
             fechaValTemp:fechaValTemp,
             edadTemp:edadTemp,
+            fechaNacimientoTemp:fechaNacimientoTemp,
             sexoSel:sexoSel,
             causaSel:causaSel,
             causaOtro:causaOtro

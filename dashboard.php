@@ -895,7 +895,7 @@ $(document).ready(function () {
                           <div class="col-md-12">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="spanRFC">CURP</span>
-                              <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="" onchange="validarInput2(this)" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
+                              <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="" onchange="validarInput2(this);curp2date2(this)" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
                               <span class="input-group-text" id="cveid">Clave INE / Folio ID:</span>
                               <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
                             </div>  
@@ -903,21 +903,24 @@ $(document).ready(function () {
                           <div class="col-md-12" id="divEdad">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="spanEdad">Edad</span>
-                              <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="edadTemp">
+                              <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="edadTemp" disabled>
+                              <span class="input-group-text" id="fechaNacT">Fecha de Nacimiento:</span>
+                              <input type="date" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaNacimientoTemp" disabled>
                               <span class="input-group-text" id="sexoTag">Sexo:</span>
                               <select class="form-select" id="sexoSel"  placeholder="Selecciona..." aria-label="Default select example">
+                                <option value=Selected>Selecciona</option>
                                 <option value="Mujer">Mujer</option>
                                 <option value="Hombre">Hombre</option>
                                 <option value="Otro">Otro</option>
                               </select>
-                              <span class="input-group-text" id="basic-addon1">Teléfono:</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="telcelTemp" onkeypress="ValidaSoloNumeros()">
                             </div>  
                           </div>
                           <div class="col-md-12">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="basic-addon1">Correo-e:</span>
                               <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toLowerCase()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="correoTemp">
+                              <span class="input-group-text" id="basic-addon1">Teléfono:</span>
+                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="telcelTemp" onkeypress="ValidaSoloNumeros()">
                             </div>  
                           </div>
                           <h5 class="mb-3"><i class="bi bi-house-door"></i> Domicilio</h5>
@@ -926,7 +929,7 @@ $(document).ready(function () {
                               <span class="input-group-text" id="basic-addon1">Calle:</span>
                               <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="calleTemp">
                               <span class="input-group-text" id="basic-addon1">No. Ext.:</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="extTemp" onkeypress="ValidaSoloNumeros()">
+                              <input type="text" class="form-control" placeholder="" aria-label="" maxlength="11" aria-describedby="basic-addon1" id="extTemp" >
                               <span class="input-group-text" id="basic-addon1">No. Int.:</span>
                               <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="intTemp">
                             </div>  
@@ -1006,6 +1009,7 @@ $(document).ready(function () {
                             <div class="input-group mb-3">
                             <span class="input-group-text" id="causaTag">Causa:</span>
                               <select class="form-select" id="causaSel" onchange="causaDiscOp(this.value)" placeholder="Selecciona..." aria-label="Default select example">
+                                <option value=Selected>Selecciona</option>
                                 <option value="2">Adquirida</option>
                                 <option value="3">Accidente</option>
                                 <option value="4">Enfermedad</option>
@@ -1084,6 +1088,7 @@ $(document).ready(function () {
                           <option value="123">4 meses</option>
                           <option value="154">5 meses</option>
                           <option value="185">6 meses</option>
+                          <option value="730" id="twoY" hidden>2 años</option>
                         </select>
                       </div>
                       <div class="form-text mb-2" id="basic-addon4"><a href="#" class="ms-2 link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" data-bs-toggle="modal" data-bs-target="#reemplazarTarjetonTemp" onclick="datosTarjetonT()">Reemplazar tarjetón asignado...</a></div>

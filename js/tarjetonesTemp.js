@@ -130,6 +130,7 @@ function limpiaModalTarjetonTemp(){
     document.getElementById('correoTemp').value = "";
     document.getElementById('calleTemp').value = "";
     document.getElementById('extTemp').value = "";
+    document.getElementById('fechaNacimientoTemp').value = "";
     document.getElementById('edadTemp').value = "";
     document.getElementById('sexoSel').value = "";
     document.getElementById('intTemp').value = "";
@@ -250,6 +251,7 @@ function buscarTarjetonTemp(x){
         document.getElementById('curpTemp').value = "";
         document.getElementById('idClaveTemp').value = "";
         document.getElementById('edadTemp').value = "";
+        document.getElementById('fechaNacimientoTemp').value = "";
         document.getElementById('sexoSel').value = "";
         document.getElementById('telcelTemp').value = "";
         document.getElementById('correoTemp').value = "";
@@ -293,6 +295,7 @@ function queryDatosT(){
             var nombre = jsonData.nombre;
             var apellido_p = jsonData.apellido_p;
             var apellido_m = jsonData.apellido_m;
+            var fechaNacimiento = jsonData.fechaNacimiento;
             var edad = jsonData.edad;
             var sexo = jsonData.sexo;
             var cve_id_ine = jsonData.cve_id_ine;
@@ -337,6 +340,7 @@ function queryDatosT(){
             document.getElementById('curpTemp').value = curp2;
             document.getElementById('idClaveTemp').value = cve_id_ine;
             document.getElementById('edadTemp').value = edad;
+            document.getElementById('fechaNacimientoTemp').value = fechaNacimiento;
             document.getElementById('sexoSel').value = sexo;
             document.getElementById('telcelTemp').value = telefono;
             document.getElementById('correoTemp').value = correo;
