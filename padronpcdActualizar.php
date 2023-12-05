@@ -77,7 +77,7 @@ include('prcd/qc/qc.php');
     <script src="script.js"></script>
     <script src="js/edicionExp.js"></script>
 
-    <script src="js/guardar.js"></script>
+    <script src="js/editar_guardar.js"></script>
     <script src="js/validate.js"></script>
     <script src="js/files.js"></script>
     <script src="js/estados.js"></script>
