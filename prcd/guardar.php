@@ -1,10 +1,13 @@
 <?php
+session_start();
 include('qc/qc.php');
 
 date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
 
 $fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
+$usr = $_SESSION['usr'];
+$tipo_dato = 1; //1 para alta registros
 
 $nombre = $_POST['nombre'];
 $apellidoP = $_POST['apellidoP'];
@@ -147,6 +150,16 @@ VALUES(
 $resultado= $conn->query($sqlinsert);
 
 if ($resultado) {
+    $sqlInsertUsr = "INSERT INTO log_registro(
+        usr,
+        tipo_dato,
+        fecha)
+        VALUES(
+        '$usr',
+        '$tipo_dato',
+        '$fecha_registro')";
+    $resultadoUsr = $conn->query($sqlInsertUsr);
+
     echo json_encode(array(
         'success'=>1,
         'curp'=>$curp
