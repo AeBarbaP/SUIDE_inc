@@ -856,7 +856,7 @@ $(document).ready(function() {
                 
                 var verificador = jsonData.success;
                 
-                if (verificador = 1){
+                if (verificador == 1){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -875,7 +875,7 @@ $(document).ready(function() {
                     document.getElementById('nav-docs-tab').disabled = false;
                     document.getElementById('nav-formato-tab').disabled = false;
                 }
-                else if (verificador = 2){
+                else if (verificador == 2){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'error',

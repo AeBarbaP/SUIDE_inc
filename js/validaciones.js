@@ -34,51 +34,49 @@ function curp2date(curp) {
     // resultado.innerText = "Su edad es: " + edad + " años.";
     document.getElementById("edad").value = edad;
     console.log(edad);
-  }
-  
-  function calcularEdad(fecha) {
+}
+
+function calcularEdad(fecha) {
     var hoy = new Date();
     var cumpleanos = new Date(fecha);
     var edad = hoy.getFullYear() - cumpleanos.getFullYear();
     var m = hoy.getMonth() - cumpleanos.getMonth();
-  
+
     if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
-      edad--;
+        edad--;
     }
     return edad;
-  }
+}
 function curp2date2(curp) {
     var miCurp = curp.value.toUpperCase();
     var resultado = document.getElementById("edadTemp");
-  
+
     var m = miCurp.match(/^\w{4}(\w{2})(\w{2})(\w{2})/);  
     var anyo = parseInt(m[1], 10) + 1900;
     if (anyo < 1950) anyo += 100;
-    var mes = parseInt(m[2], 10) - 1;
-    var dia = parseInt(m[3], 10);  
-    var fechaNacimiento = new Date(anyo, mes, dia);
-    var edad = calcularEdad(fechaNacimiento);  
-    resultado.classList.add("ok");
-    // resultado.innerText = "Su edad es: " + edad + " años.";
-    document.getElementById("edadTemp").value = edad;
-    //document.getElementById("fechaNacimientoTemp").value = fechaNacimiento;
-    console.log(fechaNacimiento);
-    var newFecha = anyo+'-'+(mes+1)+'-'+dia;
-    document.getElementById("fechaNacimientoTemp").value = newFecha;
-    console.log(newFecha);
-  }
-  
-  function calcularEdad(fecha) {
+        var mes = parseInt(m[2], 10) - 1;
+        var dia = parseInt(m[3], 10);  
+        var fechaNacimiento = new Date(anyo, mes, dia);
+        var edad = calcularEdad(fechaNacimiento);  
+        resultado.classList.add("ok");
+        // resultado.innerText = "Su edad es: " + edad + " años.";
+        document.getElementById("edadTemp").value = edad;
+        //document.getElementById("fechaNacimientoTemp").value = fechaNacimiento;
+        console.log(fechaNacimiento);
+        document.getElementById("fechaNacimientoTemp").value = anyo+'-'+(mes+1)+'-'+dia;
+}
+
+function calcularEdad(fecha) {
     var hoy = new Date();
     var cumpleanos = new Date(fecha);
     var edad = hoy.getFullYear() - cumpleanos.getFullYear();
     var m = hoy.getMonth() - cumpleanos.getMonth();
-  
+
     if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
-      edad--;
+        edad--;
     }
     return edad;
-  }
+}
 
   //   VALIDACIÓN CURP
     function validarInput(input) {
@@ -105,27 +103,29 @@ function curp2date2(curp) {
     
             $.ajax({
                 type: "POST",
-                url: "query/verficacionCURPTemp.php",
+                url: "query/verificacionCURPTemp.php",
                 data: dataString,
+                dataType: "JSON",
                 success: function(response) {
                     var jsonData = JSON.parse(JSON.stringify(response));
                     var verificador = jsonData.success;
-                    if (verificador = 1){
+                    if (verificador == 1){
                         alert("Usuario ya registrado");
                         document.getElementById('agregarVehiculoBtn').disabled = true;
                     }
+                    
                 }
             });
         });              
     });   
 
     function validarInput2(input) {
-        var curp = input.value.toUpperCase(),
-            resultado = document.getElementById("result-username"),
-            valido = "No válido";
+        var curp = input.value.toUpperCase();
+            //resultado = document.getElementById("result-username"),
+            //valido = "No válido";
 
         if (curpValida(curp)) {
-            alert('CURP Válido');
+            //alert('CURP Válido');
             //document.getElementById('btnGuardarGeneral').disabled=false;
 
         } else {
@@ -207,8 +207,9 @@ function cambiarAtrib(){
         document.getElementById('idClaveTemp').disabled = true;
         document.getElementById('medic-tab-temp').hidden = true;
         document.getElementById('twoY').hidden = false;
+        document.getElementById('agregarUsuarioTempBtn').innerText = "Guardar";
         document.getElementById('agregarUsuarioTempBtn').removeAttribute('onclick','');
-        document.getElementById('agregarUsuarioTempBtn').setAttribute('onclick','cambiarTabTTV()');
+        document.getElementById('agregarUsuarioTempBtn').setAttribute('onclick','usuarioTempAdd();cambiarTabTTV()');
     }
         
     else {
@@ -243,6 +244,7 @@ function cambiarAtrib(){
         document.getElementById('fechaValTemp').disabled = false;
         document.getElementById('idClaveTemp').disabled = false;
         document.getElementById('medic-tab-temp').hidden = false;
+        document.getElementById('agregarUsuarioTempBtn').innerText = "Siguiente";
         document.getElementById('agregarUsuarioTempBtn').removeAttribute('onclick','');
         document.getElementById('agregarUsuarioTempBtn').setAttribute('onclick','cambiarTabTT()');
     }
@@ -265,6 +267,8 @@ function cambiarAtribUSR(){
         document.getElementById('cveid').hidden = false;
         document.getElementById('sexoTag').hidden = false;
         document.getElementById('sexoSel').hidden = false;
+        document.getElementById('fechaNacT').hidden = false;
+        document.getElementById('fechaNacimientoTemp').hidden = false;
         document.getElementById('spanEdad').hidden = false;
         document.getElementById('edadTemp').hidden = false;
         document.getElementById('divEdad').hidden = false;
@@ -280,6 +284,7 @@ function cambiarAtribUSR(){
         document.getElementById('fechaValTemp').disabled = false;
         document.getElementById('idClaveTemp').disabled = false;
         document.getElementById('medic-tab-temp').hidden = false;
+        document.getElementById('agregarUsuarioTempBtn').innerText = "Siguiente";
         document.getElementById('agregarUsuarioTempBtn').removeAttribute('onclick','');
         document.getElementById('agregarUsuarioTempBtn').setAttribute('onclick','cambiarTabTT()');
     }
@@ -298,6 +303,8 @@ function cambiarAtribUSR(){
         document.getElementById('cveid').hidden = true;
         document.getElementById('sexoTag').hidden = true;
         document.getElementById('sexoSel').hidden = true;
+        document.getElementById('fechaNacT').hidden = true;
+        document.getElementById('fechaNacimientoTemp').hidden = true;
         document.getElementById('spanEdad').hidden = true;
         document.getElementById('edadTemp').hidden = true;
         document.getElementById('divEdad').hidden = true;
@@ -313,7 +320,8 @@ function cambiarAtribUSR(){
         document.getElementById('fechaValTemp').disabled = true;
         document.getElementById('idClaveTemp').disabled = true;
         document.getElementById('medic-tab-temp').hidden = true;
+        document.getElementById('agregarUsuarioTempBtn').innerText = "Guardar";
         document.getElementById('agregarUsuarioTempBtn').removeAttribute('onclick','');
-        document.getElementById('agregarUsuarioTempBtn').setAttribute('onclick','cambiarTabTTV()');
+        document.getElementById('agregarUsuarioTempBtn').setAttribute('onclick','usuarioTempAdd();cambiarTabTTV()');
     }
 }

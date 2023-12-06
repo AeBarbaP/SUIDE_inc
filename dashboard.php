@@ -99,6 +99,7 @@ include('prcd/qc/qc.php');
       body {
         font-family: 'Quicksand', sans-serif;
       }
+      
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -266,7 +267,7 @@ include('prcd/qc/qc.php');
               </div>
               <div class="col-7 mt-2">
                 <div class="text-end" style="font-size:x-large;">
-                  <span>46</span>
+                  <span>0</span>
                 </div>
                 <div class="text-end mb-2" style="font-size: smaller;">
                   <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
@@ -284,7 +285,7 @@ include('prcd/qc/qc.php');
               </div>
               <div class="col-7 mt-2">
                 <div class="text-end" style="font-size:x-large;">
-                  <span>64</span>
+                  <span>0</span>
                 </div>
                 <div class="text-end mb-2" style="font-size: smaller;">
                   <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
@@ -302,7 +303,7 @@ include('prcd/qc/qc.php');
             </div>
             <div class="col-7 mt-2">
               <div class="text-end" style="font-size:x-large;">
-                <span>37</span>
+                <span>0</span>
               </div>
               <div class="text-end mb-2" style="font-size: smaller;">
                 <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
@@ -320,7 +321,7 @@ include('prcd/qc/qc.php');
               </div>
               <div class="col-7 mt-2">
                 <div class="text-end" style="font-size:x-large;">
-                  <span>46</span>
+                  <span>0</span>
                 </div>
                 <div class="text-end mb-2" style="font-size: smaller;">
                   <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
@@ -352,91 +353,7 @@ include('prcd/qc/qc.php');
           </div>
         </div>
       </div>
-      <!-- <h4 class="text-muted mt-4">Últimos documentos generados</h4> -->
-      <!-- Inicia Tabla para documentos entregados -->
-      <!-- <div class="table-responsive">
-            <table class="table table-hover table-bordered table-sm align-middle mt-4">
-              <thead style="background-color:#B8B8B8;" class="text-light align-middle">
-                <tr class="text-center">
-                    <th scope="col">#</th>
-                    <th scope="col">No. de Expediente</th>
-                    <th scope="col">Fecha de Entrega</th>
-                    <th scope="col">Vigencia</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Credencial</th>
-                    <th scope="col">Tarjetón</th>
-                </tr>
-              </thead>
-              <tbody id="myTable"> -->
-                <?php
-                //  include('prcd/query.php');
-                /*  $x = 0;
-                  while ($row_sqlQueryCredencial = $resultadoQueryCredencial->fetch_assoc()) {
-                    $x++;
-                    echo '
-                    <input id="imprime2" value="'.$row_sqlQueryCredencial['id'].'" hidden>
-                    <tr class="text-center bg-white">
-                      <td>' . $x . '</td>
-                      <td>' . $row_sqlQueryCredencial['id_ext'] . '</td>
-                      <td>' . $row_sqlQueryCredencial['fecha_c'] . '</td>
-                      <td>' . $row_sqlQueryCredencial['vigencia_cred'] . '</td>';
-                      $idusers= $row_sqlQueryCredencial['id_users'];
-                      $sqlUser= "SELECT * FROM users WHERE id ='$idusers'";
-                      $resultadoQueryUser = $conn->query($sqlUser);
-                      $row_sqlQueryUser = $resultadoQueryUser->fetch_assoc();
-                      echo '
-                      <td>' . $row_sqlQueryUser['nombre'] . '</td>';
-
-                      if($row_sqlQueryCredencial['entregado_c'] == 1){
-                        echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#CredencialQR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-check text-success"></i></a></td>';
-                      } elseif($row_sqlQueryCredencial['entregado_c'] == 0){
-                        echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-x text-danger"></a></i></td>';
-                      }
-
-                      if($row_sqlQueryCredencial['entregado_t'] == 1){
-                        echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#TarjetonQR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-check text-success"></i></a></td>';
-                      } elseif($row_sqlQueryCredencial['entregado_t'] == 0){
-                        echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-x text-danger"></i></a></td>';
-                      }
-                      echo '
-                    <tr>
-                    <!-- Modal para imprimir credencial-->
-                    <div class="modal fade" id="CredencialQR'.$row_sqlQueryCredencial['id'].'" tabindex="-1" aria-labelledby="QRLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-qr-code"></i> Información QR</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body" style="text-align: center; background-image: url(img/CredencialInclusionFront.jpg); background-repeat: no-repeat;background-attachment: fixed; background-size: cover;" id="div_print'.$row_sqlQueryCredencial['id'].'">
-                          
-                            <br>
-                            <center><h5 style="font-size: 1.5rem"><strong>Número de Expediente:</strong> ' . $row_sqlQueryCredencial['id_ext'] . ' </h5>
-                            <h5 style="font-size: 1.5rem"><strong>Fecha de expedición:</strong> ' . $row_sqlQueryCredencial['fecha_c'] . '</h5>
-                            <h5 style="font-size: 1.5rem"><strong>Expira:</strong> ' . $row_sqlQueryCredencial['vigencia_cred'] . ' </h5>
-                            <h5 style="font-size: 1.5rem"><strong>Atenidod por:</strong> ' . $row_sqlQueryCredencial['id_users'] . '</h5>
-                            <h5 style="font-size: 1.5rem"><strong></strong></h5></center>
-                            <p class="text-center"><img src="prcd/QR/codes/'. $row_sqlQueryCredencial['qr_cred'].'"></p>
-                          </div>
-                          <div class="modal-footer">';?>
-                          <!-- <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('div_print<?php echo $row_sqlQuery['id']?>')"><i class="bi bi-printer-fill"></i> Imprimir</a> -->
-                          <?php echo '
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    ';
-                    
-                  }
-            echo'</table>';*/
-            ?>
-          <!-- </div>-->
-          <!-- Termina tabla de documentos entregados -->
+      
         
         <!-- Inicia Modal para generar credencial -->
         <div class="modal fade" id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
@@ -641,7 +558,7 @@ include('prcd/qc/qc.php');
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" id="cerrarEditarTarjeton" data-bs-target="#tarjetongen">Close</button>
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" id="cerrarEditarTarjeton" data-bs-target="#tarjetongen">Cerrar</button>
               <button type="button" onclick="updateVehiculo()" class="btn btn-primary" id="guardarEditarTarjeton" data-bs-toggle="modal" data-bs-target="#tarjetongen">Guardar</button>
             </div>
           </div>
@@ -678,7 +595,7 @@ include('prcd/qc/qc.php');
               <input type="text" id="idVe" hidden>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Close</button>
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Cerrar</button>
               <button type="button" onclick="reemplazaTarjeton(); buscarExpediente2()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Guardar</button>
             </div>
           </div>
@@ -720,7 +637,7 @@ include('prcd/qc/qc.php');
               <input type="text" id="idVe" hidden>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo">Close</button>
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo">Cerrar</button>
               <button type="button" onclick="reemplazaTarjeton(); buscarExpediente2()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo">Guardar</button>
             </div>
           </div>
@@ -748,7 +665,7 @@ include('prcd/qc/qc.php');
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Cerrar</button>
         <a type="button" id="etiquetanumbtn"  class="btn btn-primary" href="javascript:imprimirEtiqueta('etiquetaNum')"><i class="bi bi-printer"></i> # Expediente</a>
         <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('qrTarjeton')"><i class="bi bi-printer-fill"></i> Imprimir QR</a>
       </div>
@@ -800,11 +717,11 @@ $(document).ready(function () {
       <div class="modal-body">
         <div class="container ">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" oninput="buscarTarjetonTemp(this.value)" placeholder="Buscar CURP, RFC o # de Tarjetón..." aria-label="Buscar">
             <input type="radio" class="btn-check" onchange="cambiarAtribUSR()" name="options-outlined" id="usuarioSD" autocomplete="off" checked>
             <label class="btn btn-outline-primary" for="usuarioSD">Usuario</label>
             <input type="radio" class="btn-check" onchange="cambiarAtrib()" name="options-outlined" id="oficial" autocomplete="off">
             <label class="btn btn-outline-primary" for="oficial">Institución</label>
+            <input type="text" class="form-control" oninput="buscarTarjetonTemp(this.value)" placeholder="Buscar CURP, RFC o # de Tarjetón..." aria-label="Buscar">
           </div>
           <div class="alert alert-warning" role="alert" id="nadaDoor">
             Ingresa la CURP o RFC para encontrar al beneficiario.
@@ -1136,9 +1053,9 @@ $(document).ready(function () {
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo" onclick="finActualizarT()">Close</button>
-        <a type="button" id="etiquetanumbtnT"  class="btn btn-primary" href="javascript:imprimirEtiqueta('etiquetaNumTemp')"><i class="bi bi-printer"></i> # Expediente</a>
-        <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('qrTarjetonTemp')"><i class="bi bi-printer-fill"></i> Imprimir</a>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo" onclick="finActualizarT()">Cerrar</button>
+        <a type="button" id="etiquetanumbtnT"  class="btn btn-primary" href="javascript:imprimirEtiqueta('etiquetaNumTemp')"><i class="bi bi-printer"></i> Etiqueta</a>
+        <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('qrTarjetonTemp')"><i class="bi bi-printer-fill"></i> Imprimir QR</a>
       </div>
     </div>
   </div>

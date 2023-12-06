@@ -12,7 +12,6 @@ if (isset($_POST)) {
         echo json_encode(array(
             'success' => 1
         ));
-
         
     } else {
         echo json_encode(array(

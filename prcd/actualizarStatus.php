@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    $usr = $_SESSION['usr'];
 
     include('../prcd/qc/qc.php');
 
@@ -30,6 +32,7 @@
     $rowMonto = $resultadoMonto->fetch_assoc();
     $montoTotal = $rowMonto['monto'];
     $fechaSolicitud = $fechaSolicitud;
+    $tipo_dato = 28;
    /*  $totalSolicitud = $totalSolicitud + $monto; */
 
     $sqlInsert = "INSERT INTO solicitud (
@@ -49,9 +52,18 @@
         '$fecha_entrega',
         '$estatus'
     )";
-
+    $fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
     $resultado_sqlInsert = $conn->query($sqlInsert);
     if ($resultado_sqlInsert) {
+        $sqlInsertUsr = "INSERT INTO log_registro(
+            usr,
+            tipo_dato,
+            fecha)
+            VALUES(
+            '$usr',
+            '$tipo_dato',
+            '$fecha_registro')";
+        $resultadoUsr = $conn->query($sqlInsertUsr);
         echo json_encode(array(
             'success' => 1,
             'monto' => $montoTotal

@@ -1,4 +1,6 @@
 <?php
+session_start();
+$usr = $_SESSION['usr'];
 include('qc/qc.php');
 
 date_default_timezone_set('America/Mexico_City');
@@ -49,6 +51,7 @@ $pensionTemporalidad = $_POST['pensionTemporalidad'];
 $seguridadsocial = $_POST['seguridadsocial'];
 $otroSS = $_POST['otroSS'];
 $numSS = $_POST['numSS'];
+$tipo_dato = 13;
 
 $sqlinsert= "UPDATE datos_generales SET 
     fecha_registro = '$fecha_registro',
@@ -101,6 +104,15 @@ $sqlinsert= "UPDATE datos_generales SET
 $resultado= $conn->query($sqlinsert);
 
 if ($resultado) {
+    $sqlInsertUsr = "INSERT INTO log_registro(
+        usr,
+        tipo_dato,
+        fecha)
+        VALUES(
+        '$usr',
+        '$tipo_dato',
+        '$fecha_registro')";
+    $resultadoUsr = $conn->query($sqlInsertUsr);
     echo json_encode(array(
         'success'=>1,
         'curp'=>$curp

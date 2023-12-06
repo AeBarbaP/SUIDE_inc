@@ -1,9 +1,11 @@
 <?php
-
+    session_start();
+    $usr = $_SESSION['usr'];
     include('../prcd/qc/qc.php');
 
-    /* date_default_timezone_set('America/Mexico_City');
-    setlocale(LC_TIME, 'es_MX.UTF-8'); */
+    date_default_timezone_set('America/Mexico_City');
+    setlocale(LC_TIME, 'es_MX.UTF-8');
+    $fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
     
     $id = $_POST['idV'];
     $folioDV = $_POST['folioDV'];
@@ -13,6 +15,7 @@
     $placa = $_POST['placa'];
     $serie = $_POST['serie'];
     $aseguro = $_POST['aseguro'];
+    $tipo_dato = 31;
 
     
     $sql="UPDATE tarjetones SET vehiculo_marca = '$marca', vehiculo_modelo = '$modelo', vehiculo_anyo = '$annio', no_placa = '$placa', no_serie = '$serie', autoseguro_reg = '$aseguro' WHERE id = '$id' AND folio_tarjeton = '$folioDV'";
@@ -20,6 +23,15 @@
     
     
     if ($resultado_sqlInsert) {
+        $sqlInsertUsr = "INSERT INTO log_registro(
+            usr,
+            tipo_dato,
+            fecha)
+            VALUES(
+            '$usr',
+            '$tipo_dato',
+            '$fecha_registro')";
+        $resultadoUsr = $conn->query($sqlInsertUsr);
         echo json_encode(array(
             'success' => 1,
             )

@@ -1,8 +1,12 @@
 <?php
+session_start();
+$usr = $_SESSION['usr'];
 include('qc/qc.php');
 
 date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
+
+$fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
 
 $fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
 
@@ -31,6 +35,7 @@ $enfermedades = $_POST['enfermedades'];
 $enfermedadesFull = $_POST['enfermedadesFull'];
 $medicamentos = $_POST['medicamentos'];
 $medicamentosFull = $_POST['medicamentosFull'];
+$tipo_dato = 6;
 
 $sqlinsert= "INSERT INTO datos_medicos (
     curp,
@@ -90,6 +95,15 @@ VALUES(
 $resultado= $conn->query($sqlinsert);
 
 if ($resultado) {
+    $sqlInsertUsr = "INSERT INTO log_registro(
+        usr,
+        tipo_dato,
+        fecha)
+        VALUES(
+        '$usr',
+        '$tipo_dato',
+        '$fecha_registro')";
+    $resultadoUsr = $conn->query($sqlInsertUsr);
     echo json_encode(array(
         'success'=>1
     ));

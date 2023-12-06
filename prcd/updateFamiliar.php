@@ -1,8 +1,12 @@
 <?php
+session_start();
+$usr = $_SESSION['usr'];
 include('qc/qc.php');
 
 date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
+
+$fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
 
 $fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
 
@@ -17,12 +21,22 @@ $ingresoFam = $_POST['ingresoFam'];
 $telFam = $_POST['telFam'];
 $emailFam = $_POST['emailFam'];
 $id = $_POST['idF'];
+$tipo_dato = 33;
 
 $sqlinsert= "UPDATE integracion SET curp='$curp_exp', nombre='$nombreFamiliar', parentesco='$parentescoFam', edad='$edadFam', escolaridad='$escolaridadFam', profesion_oficio='$profesionFam', discapacidad='$discapacidadFam', ingreso='$ingresoFam', telcel='$telFam', correoe='$emailFam' WHERE id = '$id'";
 
 $resultado= $conn->query($sqlinsert);
 
 if ($resultado) {
+    $sqlInsertUsr = "INSERT INTO log_registro(
+        usr,
+        tipo_dato,
+        fecha)
+        VALUES(
+        '$usr',
+        '$tipo_dato',
+        '$fecha_registro')";
+    $resultadoUsr = $conn->query($sqlInsertUsr);
     echo json_encode(array(
         'success'=>1
     ));

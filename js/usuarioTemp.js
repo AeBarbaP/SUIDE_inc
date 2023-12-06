@@ -71,7 +71,8 @@ function usuarioTempAdd(){
             if (verificador == 1) {
                 cambiarTabTTV();
                 habilitaDatosVehiculos(); 
-                document.getElementById('editarTarjeton').hidden = false;
+                document.getElementById('editarTarjeton').hidden = true;
+                document.getElementById('imprimirtt').disabled = false;
                 document.getElementById('cancelarEditar').hidden = false;
                 document.getElementById('finalizarEditar').hidden = true;              
             } else if (verificador == 0){
@@ -292,6 +293,7 @@ function usuarioTempUpdate(){
 }
 
 function finActualizarT(){
+    window.location.href="dashboard.php";
     limpiaModalTarjetonTemp();
     cambiarTabTTFin();
     document.getElementById('nadaDoor').hidden = false;

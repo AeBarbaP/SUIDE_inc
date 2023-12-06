@@ -1,8 +1,14 @@
 <?php
-
+session_start();
+$usr = $_SESSION['usr'];
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
+date_default_timezone_set('America/Mexico_City');
+setlocale(LC_TIME, 'es_MX.UTF-8');
+
+$fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
 
 ?>
 
@@ -21,9 +27,6 @@ error_reporting(E_ALL);
 include('qc/qc.php');
 include('QR/phpqrcode/qrlib.php'); 
 
-date_default_timezone_set('America/Mexico_City');
-setlocale(LC_TIME, 'es_MX.UTF-8');
-
 $fecha_creacion = strftime("%Y-%m-%d,%H:%M:%S");
 
 $nombre = $_POST['nombre'];
@@ -31,6 +34,7 @@ $username = $_POST['username'];
 $pwd = $_POST['pwd'];
 $perfil = $_POST['perfil'];
 $estatus = 1; 
+$tipo_dato = 9;
 
 function generarCodigo($longitud) {
     $key = '';
@@ -39,11 +43,20 @@ function generarCodigo($longitud) {
     for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
     return $key;
     }
-  
+
     $sqlinsertUsr= "INSERT INTO users(username,pwd,perfil,nombre,fecha_creacion,estatus) VALUES('$username','$pwd','$perfil','$nombre','$fecha_creacion','$estatus')";
     $resultadoUsr= $conn->query($sqlinsertUsr);
     
     if($resultadoUsr){
+        $sqlInsertUsr = "INSERT INTO log_registro(
+            usr,
+            tipo_dato,
+            fecha)
+            VALUES(
+            '$usr',
+            '$tipo_dato',
+            '$fecha_registro')";
+        $resultadoUsr = $conn->query($sqlInsertUsr);
         
         echo '<script>
         Swal.fire({

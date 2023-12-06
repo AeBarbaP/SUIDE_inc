@@ -1,16 +1,27 @@
 <?php
-
+session_start();
+$usr = $_SESSION['usr'];
 include('qc/qc.php');
 
 date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
-
+$fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
 $id = $_POST['idF'];
 
 $sql_delete= "DELETE FROM integracion WHERE id = '$id'";
 $resultado_sql_delete = $conn->query($sql_delete);
+$tipo_dato = 24;
 
 if ($resultado_sql_delete){
+    $sqlInsertUsr = "INSERT INTO log_registro(
+        usr,
+        tipo_dato,
+        fecha)
+        VALUES(
+        '$usr',
+        '$tipo_dato',
+        '$fecha_registro')";
+    $resultadoUsr = $conn->query($sqlInsertUsr);
     echo json_encode(array(
         'success'=>1
     ));

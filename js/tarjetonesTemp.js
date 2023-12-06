@@ -34,7 +34,9 @@ function vehiculoTempAdd(){
             var jsonData = JSON.parse(JSON.stringify(data));
             var verificador = jsonData.success;
             if (verificador == 1) {
-                codigoQR(curp);
+                document.getElementById('etiquetaNumTemp').innerHTML = "PRÉSTAMO<p style='margin-top:-3px'><small style='font-size: 6.5px'>http://inclusion.zacatecas.gob.mx/suidev/</small></p>";
+                codigoQR2(curp);
+
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
@@ -70,9 +72,11 @@ function codigoQR2(concatenado){
         correctLevel: QRCode.CorrectLevel.H
     });
 
+    
+    
     // Obtener el elemento canvas generado por QRCode.js
     var canvas = document.querySelector("#codigo-qr canvas");
-
+    
     // Crear un nuevo elemento de imagen para el logo
     //var logo = new Image();
     //logo.src = "imagen.png";
@@ -396,6 +400,8 @@ function cambiarTabTTFin(){
     $("#usuario-tab-pane").addClass('show active');
 }
 function cambiarTabTTV(){
+    $("#usuario-tab").removeClass('active');
+    $("#usuario-tab-pane").removeClass('show active');
     $("#medic-tab-temp").removeClass('active');
     $("#vehiculoadd-tab").addClass('active');
     $("#medic-tab-pane").removeClass('show active');
