@@ -267,8 +267,6 @@ function usuarioTempUpdate(){
             var jsonData = JSON.parse(JSON.stringify(data));
             var verificador = jsonData.success;
             if (verificador == 1) {
-                cambiarTabTTV();
-                habilitaDatosVehiculos(); 
                 document.getElementById('editarTarjeton').hidden = true;
                 document.getElementById('cancelarEditar').hidden = true;
                 document.getElementById('finalizarEditar').hidden = false;
@@ -277,8 +275,11 @@ function usuarioTempUpdate(){
                     icon: 'success',
                     title: 'Los datos han sido actualizados',
                     showConfirmButton: false,
-                    timer: 1500
-                })
+                    timer: 1000
+                });
+                cambiarTabTTV();
+                habilitaDatosVehiculos(); 
+                mostrarTablaVehiculosTemp();
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }

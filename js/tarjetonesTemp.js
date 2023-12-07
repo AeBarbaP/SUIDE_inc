@@ -36,7 +36,6 @@ function vehiculoTempAdd(){
             if (verificador == 1) {
                 document.getElementById('etiquetaNumTemp').innerHTML = "PRÉSTAMO<p style='margin-top:-3px'><small style='font-size: 6.5px'>http://inclusion.zacatecas.gob.mx/suidev/</small></p>";
                 codigoQR2(curp);
-
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
@@ -69,13 +68,14 @@ function codigoQR2(concatenado){
         text: texto,
         width: 80,
         height: 80,
-        correctLevel: QRCode.CorrectLevel.H
+        correctLevel: QRCode.CorrectLevel.H,
+        
     });
+    $("#qrcode > img").css({"margin":"auto"});
 
-    
-    
     // Obtener el elemento canvas generado por QRCode.js
     var canvas = document.querySelector("#codigo-qr canvas");
+    
     
     // Crear un nuevo elemento de imagen para el logo
     //var logo = new Image();
@@ -329,6 +329,8 @@ function queryDatosT(){
             document.getElementById('cancelarEditar').hidden = false;
             document.getElementById('finalizarEditar').hidden = true;
             document.getElementById('agregarUsuarioTempBtn').disabled = false;
+            document.getElementById('agregarUsuarioTempBtn').removeAttribute('onclick','');
+            document.getElementById('agregarUsuarioTempBtn').setAttribute('onclick','cambiarTabTTV();usuarioTempUpdate()');
             document.getElementById('agregarValoracionTempBtn').removeAttribute('onclick','');
             document.getElementById('agregarValoracionTempBtn').setAttribute('onclick','usuarioTempUpdate(); deshabilitaBtnDatos()');
             document.getElementById('cerrarModalPrestamo').removeAttribute('data-bs-dismiss','');
@@ -453,7 +455,7 @@ function reemplazaTarjeton(){
             var success = jsonData.success;
             
             if (success == 1) {
-                mostrarTablaVehiculos();
+                mostrarTablaVehiculosTemp();
                 alert('Tarjetón actualizado!');
 
             } else if (success == 0){

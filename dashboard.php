@@ -66,7 +66,7 @@ include('prcd/qc/qc.php');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link href="sidebars.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
@@ -99,7 +99,14 @@ include('prcd/qc/qc.php');
       body {
         font-family: 'Quicksand', sans-serif;
       }
-      
+      #qrTarjetonTemp img{
+        display: none;
+        margin: auto;
+      }
+      #qrTarjeton img{
+        display: none;
+        margin: auto;
+      }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -799,7 +806,7 @@ $(document).ready(function () {
                               <span class="input-group-text" id="spanEdad">Edad</span>
                               <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="edadTemp" disabled>
                               <span class="input-group-text" id="fechaNacT">Fecha de Nacimiento:</span>
-                              <input type="date" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaNacimientoTemp" disabled>
+                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaNacimientoTemp" disabled>
                               <span class="input-group-text" id="sexoTag">Sexo:</span>
                               <select class="form-select" id="sexoSel"  placeholder="Selecciona..." aria-label="Default select example">
                                 <option value=Selected>Selecciona</option>
@@ -1135,12 +1142,9 @@ $(document).ready(function () {
   </div>
 </div>
 
-
-
-      <!-- <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script> -->
   </body>
 </html>
+
 
 <script>
 
@@ -1332,7 +1336,7 @@ $(document).ready(function () {
                                 icon: 'error',
                                 title: 'NO EXISTE REGISTRO',
                                 text: 'Credenciales incorrectas',
-                                footer: 'UACYA | UAZ',
+                                footer: '',
                                 timer: 2000,
                                 timerProgressBar: true,
                                 didOpen: () => {
@@ -1394,20 +1398,20 @@ $(document).ready(function () {
       data:{
         expediente:expediente
       },
-      // dataType: "html",
+      dataType: "HTML",
       //contentType:false,
       //processData:false,
       cache: false,
       success: function(data) {
+        $("#tarjeton").html(data);
         document.getElementById('tarjeton').hidden = false;
         document.getElementById('folioTPerm').disabled = false;
         document.getElementById('vigenciaPerm').disabled = false;
-        $("#tarjeton").html(data);
         mostrarTablaVehiculos();
         var curp = document.getElementById('curpTarjeton').value;
         var folioExpediente = document.getElementById('numExpediente1').value;
         codigoQR(curp);
-        document.getElementById('etiquetaNum').innerHTML = folioExpediente;
+        document.getElementById('etiquetaNum').innerHTML = folioExpediente+"<p style='margin-top:-3px'><small style='font-size: 8.5px'>http://inclusion.zacatecas.gob.mx/suidev/</small></p>";;
 
       }               
     });

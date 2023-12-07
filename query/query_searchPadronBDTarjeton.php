@@ -14,7 +14,8 @@ if ($_POST['expediente'] == 0 || $_POST['expediente'] == null ||$_POST['expedien
 else{
 
     $expediente = $_POST['expediente'];
-    header("content-type: image/jpeg");
+    
+    //header("content-type: image/jpeg");
 
     $queryTarjeton ="SELECT * FROM tarjetones WHERE numExpediente = '$expediente'";
     $resultadoTarjeton = $conn -> query($queryTarjeton);
@@ -101,3 +102,4 @@ else{
       </>';
     }
 }
+?>

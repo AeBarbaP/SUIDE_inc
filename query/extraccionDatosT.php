@@ -3,7 +3,7 @@ include('../prcd/qc/qc.php');
 if (isset($_POST['cadenaTexto'])){
     $datos = $_POST['cadenaTexto'];
 
-    $sql = "SELECT * FROM tarjetones WHERE curp LIKE '$datos%' OR folio_tarjeton = '$datos' LIMIT 1";
+    $sql = "SELECT * FROM tarjetones WHERE tipo_tarjeton = 2  AND curp LIKE '$datos%' OR folio_tarjeton = '$datos' LIMIT 1";
     $resultadoSql = $conn->query($sql);
     $fila = $resultadoSql->num_rows;
     

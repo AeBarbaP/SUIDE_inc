@@ -62,7 +62,7 @@ function curp2date2(curp) {
         // resultado.innerText = "Su edad es: " + edad + " años.";
         document.getElementById("edadTemp").value = edad;
         //document.getElementById("fechaNacimientoTemp").value = fechaNacimiento;
-        console.log(fechaNacimiento);
+        console.log(anyo+'-'+(mes+1)+'-'+dia);
         document.getElementById("fechaNacimientoTemp").value = anyo+'-'+(mes+1)+'-'+dia;
 }
 
