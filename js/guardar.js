@@ -1704,13 +1704,15 @@ function swalListaEspera(){
 
 function estudioSocioeconomico() {
     
-    var curp = document.getElementById('curp_exp');
-    /* window.location.href = "prcd/registroPDF.php?curp="+curp; */
-    window.open = ("prcd/registroPDF.php?curp="+curp,"_blank");
+    var curp = document.getElementById('curp_exp').value;
+    document.getElementById('imprimeES').setAttribute("href", "prcd/registroPDF.php?curp="+curp);
+    
+
+    /* window.open = "prcd/registroPDF.php?curp="+curp; */
 }
 
 function responsivaCarta() {
-    var curp = document.getElementById('curp_exp');
+    var curp = document.getElementById('curp_exp').value;
     window.location.href = "prcd/responsivaPDF.php?curp="+curp;
 }
 

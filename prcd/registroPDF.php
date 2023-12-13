@@ -423,7 +423,7 @@ if($pagandoViv == 1){
   $pagandoSi ="X";
   $pagandoNo ="";
 }
-else if($pagandoViv == 2){
+else if($pagandoViv == 0){
   $pagandoSi ="";
   $pagandoNo ="X";
 }
