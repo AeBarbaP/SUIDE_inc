@@ -439,10 +439,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-6">
                     <label for="datos_usr" class="form-label">Entre vialidades:</label>
-                    <input type="text" class="form-control" id="entreVialidades" name="datos_usr" required>
-                    <div class="invalid-feedback">
-                      * Campo requerido.
-                    </div>
+                    <input type="text" class="form-control" id="entreVialidades" name="datos_usr">
                   </div>
                   <div class="col-sm-12">
                     <label for="exampleFormControlTextarea1" class="form-label">Descripción o referencia del lugar:</label>
@@ -610,7 +607,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-6">
                     <div class="mb-3">
-                      <label for="basic-url" class="form-label">Pensionado:</label>
+                      <label for="basic-url" class="form-label">Tiene Pensión, Beca o Apoyo:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" onclick="pensionOp(this.value)" name="pension" id="pensionSi" value="1">
@@ -1128,8 +1125,8 @@ include('prcd/qc/qc.php');
                               const paragraphs = document.querySelectorAll('[class="valorFull"]');
                               paragraphs.forEach(p => numeroC = numeroC + p.id +', ');
                               numeroC = numeroC.slice(0, numeroC.length - 2);
-                              console.log(numeroB);
-                              document.getElementById('numeroB').value = numeroB;
+                              console.log(numeroC);
+                              document.getElementById('numeroC').value = numeroC;
                            // }
                           }
                           function removeC(val) {
@@ -1639,7 +1636,19 @@ include('prcd/qc/qc.php');
                       <!-- Solicitudes -->
                       <hr>
                       <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#solicitudAdd" onclick="folioApoyo(); mostrarTablaServicios()"><i class="bi bi-file-earmark-text"></i> Agregar solicitud</button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#solicitudAdd" onclick="folioApoyo(); mostrarTablaServicios()"><i class="bi bi-file-earmark-text me-2"></i> Agregar solicitud</button>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="d-grid gap-2 mt-3">
+                            <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#credgen" onclick="mostrarTablaServicios()"><i class="bi bi-person-vcard me-2"></i> Entregar Credencial</button>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="d-grid gap-2 mt-3">
+                          <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#solicitudAdd" onclick="folioApoyo(); mostrarTablaServicios()"><i class="bi bi-person-badge me-2"></i> Entregar Tarjetón</button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

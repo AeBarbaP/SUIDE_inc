@@ -351,11 +351,11 @@ $(document).ready(function() {
                         correctLevel: QRCode.CorrectLevel.H
                     });
                     
-                    cambiarTab();
                     document.getElementById('nav-medicos-tab').disabled = false;
                     document.getElementById('nav-generales-tab').disabled = true;
                     document.getElementById('curp_exp').value = curpSaved;
                     document.getElementById('file_photo').disabled = false;
+                    cambiarTab();
                     /* var curpExp = document.getElementById('curp_exp').value;
                     document.getElementById('buttonCheck').setAttribute('href','prcd/checkListPDF.php?curp='+curpExp); */
                 }
@@ -1703,9 +1703,12 @@ function swalListaEspera(){
 }
 
 function estudioSocioeconomico() {
+    
     var curp = document.getElementById('curp_exp');
-    window.location.href = "prcd/registroPDF.php?curp="+curp;
+    /* window.location.href = "prcd/registroPDF.php?curp="+curp; */
+    window.open = ("prcd/registroPDF.php?curp="+curp,"_blank");
 }
+
 function responsivaCarta() {
     var curp = document.getElementById('curp_exp');
     window.location.href = "prcd/responsivaPDF.php?curp="+curp;
