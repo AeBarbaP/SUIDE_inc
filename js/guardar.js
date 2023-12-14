@@ -1739,7 +1739,6 @@ function finalizarExpediente(){
         text: "El expediente ha sido guardado.",
         icon: "success"
         });
-        window.location.href("padronpcd.php");
     }
     });
 }
