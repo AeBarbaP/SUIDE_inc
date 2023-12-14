@@ -189,7 +189,7 @@ $pdf->Cell(10,5,utf8_decode('III.'),0,0,'L');
 $pdf->Multicell(170,5,utf8_decode('Me comprometo a cuidar del Tarjetón, así también me responsabilizo en caso de que terceros, familiares o amigos sean sorprendidos utilizándolo, sin que la persona con discapacidad, se encuentre a bordo del vehículo.'),0,'J',0);
 $pdf->Cell(5,5,utf8_decode(' '),0,0,'L');
 $pdf->Cell(10,5,utf8_decode('IV.'),0,0,'L');
-$pdf->Multicell(170,5,utf8_decode('Acepto y reconozco que el Tarjetón solo puede ser utilizado en el vehículo para que fue registrado, o en el que viaje el titular de este derecho, no es trasferible, ni susceptible de préstamo a terceros.'),0,'J',0);
+$pdf->Multicell(170,5,utf8_decode('Acepto y reconozco que el Tarjetón solo puede ser utilizado en el(los) vehículo(s) que fue(ron) registrado(s), o en el que viaje el titular de este derecho, no es trasferible, ni susceptible de préstamo a terceros.'),0,'J',0);
 $pdf->Cell(5,5,utf8_decode(' '),0,0,'L');
 $pdf->Cell(10,5,utf8_decode('V.'),0,0,'L');
 $pdf->Multicell(170,5,utf8_decode('Reconozco y acepto que, en caso de hacer mal uso del mismo, seré sujeto de las sanciones contenidas en el Reglamento de Transito vigente, y en su caso, el tarjetón podrá ser puesto bajo resguardo del Instituto, además la falta quedará registrada como incidencia dentro de mi expediente personal.'),0,'J',0);

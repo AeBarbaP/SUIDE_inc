@@ -438,7 +438,7 @@ $(document).ready(function() {
         }
         if (medicamentosFull == ""){
             var medicamentos = 0;
-            medicamentosFull = "Enfermedades no reportadas";
+            medicamentosFull = "Medicamentos no reportadas";
         }
         else if (medicamentosFull != ""){
             var medicamentos = 1;
@@ -1713,7 +1713,35 @@ function estudioSocioeconomico() {
 
 function responsivaCarta() {
     var curp = document.getElementById('curp_exp').value;
-    window.location.href = "prcd/responsivaPDF.php?curp="+curp;
+    document.getElementById('imprimeCR').setAttribute("href", "prcd/responsivaPDF.php?curp="+curp);
+}
+
+function checkListDocs() {
+    var curp = document.getElementById('curp_exp').value;
+    document.getElementById('buttonCheck').setAttribute("href", "prcd/checkListPDF2.php?curp="+curp);
+    document.getElementById('nav-fin-tab').disabled = false;
+    document.getElementById('nav-fin-tab').setAttribute('onclick','finalizarExpediente()');
+}
+
+function finalizarExpediente(){
+    Swal.fire({
+        title: "Estas seguro?",
+        text: "terminaste la captura del Expediente Nuevo??",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, terminar!"
+    }).then((result) => {
+    if (result.isConfirmed) {
+        Swal.fire({
+        title: "Terminado!",
+        text: "El expediente ha sido guardado.",
+        icon: "success"
+        });
+        window.location.href("padronpcd.php");
+    }
+    });
 }
 
 function fotoEmp() {

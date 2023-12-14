@@ -15,7 +15,7 @@ $curp =$_REQUEST['curp'];
 $sqlCurp = "SELECT * FROM documentos_list WHERE id_ext = '$curp'";
 $resultadoCurp = $conn->query($sqlCurp);
 
-$sqlGenerales = "SELECT * FROM datos_generales WHERE id_ext = '$curp'";
+$sqlGenerales = "SELECT * FROM datos_generales WHERE curp = '$curp'";
 $resultadoGenerales = $conn->query($sqlGenerales);
 $rowSqlGenerales = $resultadoGenerales->fetch_assoc();
 

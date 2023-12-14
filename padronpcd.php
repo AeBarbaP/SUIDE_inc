@@ -307,9 +307,10 @@ include('prcd/qc/qc.php');
                 <button class="nav-link" id="nav-vivienda-tab" data-bs-toggle="tab" data-bs-target="#nav-vivienda" type="button" role="tab" aria-controls="nav-vivienda" aria-selected="false" disabled>Vivienda</button>
                 <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-integracion" type="button" role="tab" aria-controls="nav-integracion" aria-selected="false" disabled>Integración Familiar</button>
                 <button class="nav-link" id="nav-referencias-tab" data-bs-toggle="tab" data-bs-target="#nav-referencias" type="button" role="tab" aria-controls="nav-referencias" aria-selected="false" disabled>Referencias</button>
-                <button class="nav-link" id="nav-servicios-tab" data-bs-toggle="tab" data-bs-target="#nav-servicios-otorgados" type="button" role="tab" aria-controls="nav-servicios" aria-selected="false" disabled>Servicios Otorgados</button>
-                <button class="nav-link" id="nav-formato-tab" data-bs-toggle="tab" data-bs-target="#nav-formato" type="button" role="tab" aria-controls="nav-formato" aria-selected="false" disabled>Imprimir Formato</button>
+                <button class="nav-link" id="nav-servicios-tab" data-bs-toggle="tab" data-bs-target="#nav-servicios-otorgados" type="button" role="tab" aria-controls="nav-servicios" aria-selected="false" disabled>Solicitudes</button>
+                <button class="nav-link" id="nav-formato-tab" data-bs-toggle="tab" data-bs-target="#nav-formato" type="button" role="tab" aria-controls="nav-formato" aria-selected="false" disabled>Formatos</button>
                 <button class="nav-link" id="nav-docs-tab" data-bs-toggle="tab" data-bs-target="#nav-docs" type="button" role="tab" aria-controls="nav-docs" aria-selected="false" disabled>Documentos</button>
+                <button class="nav-link" id="nav-fin-tab" data-bs-toggle="tab" data-bs-target="#nav-fin" type="button" role="tab" aria-controls="nav-fin" aria-selected="false" disabled>Terminar</button>
               </div>
             </nav>
             <div class="tab-content"  id="nav-tabContent">
@@ -342,15 +343,15 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Género:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="genero" id="generoF" value="Mujer">
+                          <input class="form-check-input" type="radio" name="genero" id="generoF" value="Mujer" required>
                           <label class="form-check-label" for="inlineRadio1">Mujer</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="genero" id="generoM" value="Hombre">
+                          <input class="form-check-input" type="radio" name="genero" id="generoM" value="Hombre" required>
                           <label class="form-check-label" for="inlineRadio2">Hombre</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="genero" id="generoO" value="Otro">
+                          <input class="form-check-input" type="radio" name="genero" id="generoO" value="Otro" required>
                           <label class="form-check-label" for="inlineRadio2">Otro</label>
                         </div>
                       </div>
@@ -359,9 +360,6 @@ include('prcd/qc/qc.php');
                   <div class="col-sm-1">
                     <label for="edad" class="form-label">Edad:</label>
                     <input type="text" class="form-control" id="edad" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="" disabled>
-                    <div class="invalid-feedback">
-                      * Campo requerido.
-                    </div>
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">CURP:</label>
@@ -394,7 +392,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="edoCivil" class="form-label">Estado Civil:</label>
-                    <select class="form-select" id="edoCivil" aria-label="Default select example">
+                    <select class="form-select" id="edoCivil" aria-label="Default select example" required>
                       <option value="0" selected>Selecciona...</option>
                       <option value="Solter@">Solter@</option>
                       <option value="Casad@">Casad@</option>
@@ -402,6 +400,9 @@ include('prcd/qc/qc.php');
                       <option value="Divorciad@">Divorciad@</option>
                       <option value="Unión_Libre">Unión Libre</option>
                     </select>
+                    <div class="invalid-feedback">
+                      * Campo requerido.
+                    </div>
                   </div>
                   <div class="col-sm-5">
                     <label for="datos_pc" class="form-label">Domicilio:</label>
@@ -423,7 +424,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-3">
                     <label for="datos_pc" class="form-label">Tipo de Vialidad:</label>
-                    <select class="form-select" id="tipoVialidad" onfocus="catTipoVialidades()" aria-label="Default select example">
+                    <select class="form-select" id="tipoVialidad" onfocus="catTipoVialidades()" aria-label="Default select example" required>
 
                     </select>
                     <div class="invalid-feedback">
@@ -447,7 +448,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Estado:</label>
-                    <select class="form-select" id="estadosList" onchange="municipiosSelect(this.value)" placeholder="Selecciona..." aria-label="Default select example">
+                    <select class="form-select" id="estadosList" onchange="municipiosSelect(this.value)" placeholder="Selecciona..." aria-label="Default select example" required>
       
                     </select>
                     <div class="invalid-feedback">
@@ -497,9 +498,6 @@ include('prcd/qc/qc.php');
                       <span class="input-group-text" id="basic-addon1">@</span>
                       <input type="email" id="correo" class="form-control" onkeyup="javascript:this.value=this.value.toLowerCase();" placeholder="e-mail" aria-label="e-mail" aria-describedby="basic-addon1">
                     </div>
-                    <div class="invalid-feedback">
-                      * Campo requerido.
-                    </div>
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">Teléfono Particular:</label>
@@ -511,7 +509,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Nivel de Escolaridad:</label>
-                    <select class="form-select" id="escolaridad" aria-label="Default select example">
+                    <select class="form-select" id="escolaridad" aria-label="Default select example" required>
                       <option value="" selected>Selecciona...</option>
                       <option value="Ninguno">Sin escolarizar</option>
                       <option value="Primaria">Primaria</option>
@@ -523,18 +521,24 @@ include('prcd/qc/qc.php');
                       <option value="Preescolar">Preescolar</option>
                       <option value="Especial">Escuela de Educación Especial</option>
                     </select>
+                    <div class="invalid-feedback">
+                      * Campo requerido.
+                    </div>
                   </div>
                   <div class="col-sm-4">
                     <div class="mb-3">
                       <label for="basic-url" class="form-label">Estudia:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaSi" value="2">
+                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaSi" value="2" required>
                           <label class="form-check-label" for="estudia">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaNo" value="3">
+                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaNo" value="3" required>
                           <label class="form-check-label" for="estudia">No</label>
+                          <div class="invalid-feedback">
+                            * Campo requerido.
+                          </div>
                         </div>
                         <input type="text" class="form-control" id="lugarEstudia" name="lugarEstudia" placeholder="Dónde estudia..." disabled>
                       </div>
@@ -553,12 +557,15 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Trabaja:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="trabajaOp(this.value)" name="trabaja" id="trabajaSi" value="1">
+                          <input class="form-check-input" type="radio" onclick="trabajaOp(this.value)" name="trabaja" id="trabajaSi" value="1" required>
                           <label class="form-check-label" for="trabaja">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="trabajaOp(this.value)" name="trabaja" id="trabajaNo" value="0">
+                          <input class="form-check-input" type="radio" onclick="trabajaOp(this.value)" name="trabaja" id="trabajaNo" value="0" required>
                           <label class="form-check-label" for="trabaja">No</label>
+                          <div class="invalid-feedback">
+                            * Campo requerido.
+                          </div>
                         </div>
                         <input type="text" class="form-control" id="lugarTrabajo" name="lugarTrabajo" placeholder="Dónde trabaja..." disabled>
                       </div>
@@ -578,12 +585,15 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Pertenece a alguna Asociación Civil:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="asociacionOp(this.value)" name="asociacion" id="asociacionSi" value="1">
+                          <input class="form-check-input" type="radio" onclick="asociacionOp(this.value)" name="asociacion" id="asociacionSi" value="1" required>
                           <label class="form-check-label" for="inlineRadio1">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="asociacionOp(this.value)" name="asociacion" id="asociacionNo" value="0">
+                          <input class="form-check-input" type="radio" onclick="asociacionOp(this.value)" name="asociacion" id="asociacionNo" value="0" required>
                           <label class="form-check-label" for="inlineRadio2">No</label>
+                          <div class="invalid-feedback">
+                            * Campo requerido.
+                          </div>
                         </div>
                         <input type="text" class="form-control" id="nombreAC" name="datos_usr" placeholder="Nombre de la AC..." disabled>
                       </div>
@@ -594,12 +604,15 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Pertenece a algún Sindicato:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="sindicatoOp(this.value)" name="sindicato" id="sindicatoSi" value="1">
+                          <input class="form-check-input" type="radio" onclick="sindicatoOp(this.value)" name="sindicato" id="sindicatoSi" value="1" required>
                           <label class="form-check-label" for="sindicato">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="sindicatoOp(this.value)" name="sindicato" id="sindicatoNo" value="2">
+                          <input class="form-check-input" type="radio" onclick="sindicatoOp(this.value)" name="sindicato" id="sindicatoNo" value="2" required>
                           <label class="form-check-label" for="sindicato">No</label>
+                          <div class="invalid-feedback">
+                            * Campo requerido.
+                          </div>
                         </div>
                         <input type="text" class="form-control" id="nombreSindicato" name="datos_usr" placeholder="Nombre del Sindicato..." disabled>
                       </div>
@@ -610,12 +623,15 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Tiene Pensión, Beca o Apoyo:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="pensionOp(this.value)" name="pension" id="pensionSi" value="1">
+                          <input class="form-check-input" type="radio" onclick="pensionOp(this.value)" name="pension" id="pensionSi" value="1" required>
                           <label class="form-check-label" for="inlineRadio1">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="pensionOp(this.value)" name="pension" id="pensionNo" value="0">
+                          <input class="form-check-input" type="radio" onclick="pensionOp(this.value)" name="pension" id="pensionNo" value="0" required>
                           <label class="form-check-label" for="inlineRadio2">No</label>
+                          <div class="invalid-feedback">
+                            * Campo requerido.
+                          </div>
                         </div>
                         <input type="text" class="form-control" id="instPension" name="datos_usr" placeholder="Dónde..." disabled>
                       </div>
@@ -643,7 +659,7 @@ include('prcd/qc/qc.php');
                   <div class="col-sm-8 mb-3">
                     <label for="exampleDataListSS" class="form-label">Tipo de Seguridad Social:</label>
                     <div class="input-group">
-                      <select class="form-select" id="seguridadsocial" onchange="seguridadOp(this.value)" aria-label="Default select example">
+                      <select class="form-select" id="seguridadsocial" onchange="seguridadOp(this.value)" aria-label="Default select example" required>
                         <option selected>Selecciona...</option>
                         <option value="IMSS">IMSS</option>
                         <option value="ISSSTE">ISSSTE</option>
@@ -651,6 +667,9 @@ include('prcd/qc/qc.php');
                         <option value="Ninguno">Sin Seguridad Social</option>
                         <option value="5">Otro</option>
                       </select>
+                      <div class="invalid-feedback">
+                        * Campo requerido.
+                      </div>
                       <span class="input-group-text"> Especifique: </span>
                       <input type="text" class="form-control" id="otroSS" name="datos_usr" placeholder="Nombre de la Institución de Seguridad Social" disabled>
                     </div>
@@ -672,9 +691,9 @@ include('prcd/qc/qc.php');
                 <div class="tab-pane fade" id="nav-medicos" role="tabpanel" aria-labelledby="nav-medicos-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3" style="width:95%">
                     <div class="col-sm-3">
-                      <form id="medicosForm">
+                      <form id="medicosForm" onKeyPress="if(event.keyCode == 13) event.returnValue = false;">
                       <label for="exampleDataListDisc" class="form-label">Tipo de Discapacidad:</label>
-                      <select class="form-select" id="tipoDisc" onchange="discapacidadTab(this.value)" aria-label="Default select example">
+                      <select class="form-select" id="tipoDisc" onchange="discapacidadTab(this.value)" aria-label="Default select example" required>
                         <option selected>Selecciona...</option>
                         <option value="Física">Física</option>
                         <option value="Intelectual">Intelectual</option>
@@ -700,7 +719,7 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-2">
                       <label for="exampleDataListDisc" class="form-label">Grado:</label>
-                      <select class="form-select" id="gradoDisc" aria-label="Default select example">
+                      <select class="form-select" id="gradoDisc" aria-label="Default select example" required>
                         <option selected>Selecciona...</option>
                         <option value="1-Leve">1. Leve</option>
                         <option value="2-Moderado">2. Moderado</option>
@@ -722,21 +741,20 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-8">
                       <label for="exampleDataListCausa" class="form-label">Causa:</label>
                       <div class="input-group">
-                        <select class="form-select" id="causaDisc" onchange="causaDiscOp(this.value)" aria-label="Default select example">
+                        <select class="form-select" id="causaDisc" onchange="causaDiscOp(this.value)" aria-label="Default select example" required>
                           <option selected>Selecciona...</option>
-                          <option value="1">Congénita</option>
-                          <option value="2">Adquirida</option>
-                          <option value="3">Accidente</option>
-                          <option value="4">Enfermedad</option>
-                          <option value="5">Nacimiento</option>
+                          <option value="1">Nacimiento</option>
+                          <option value="4">Congénita</option>
+                          <option value="2">Accidente</option>
+                          <option value="3">Enfermedad</option>
                           <option value="6">Adicción</option>
-                          <option value="7">Otra</option>
+                          <option value="5">Otra</option>
                         </select>
+                        <div class="invalid-feedback">
+                          * Campo requerido.
+                        </div>
                         <span class="input-group-text"> Especifique: </span>
                         <input type="text" class="form-control" id="especifiqueD" name="datos_usr" placeholder="" disabled>
-                      </div>
-                      <div class="invalid-feedback">
-                        * Campo requerido.
                       </div>
                     </div>
                     <div class="col-sm-4">
@@ -745,7 +763,7 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-6">
                       <label for="fuente" class="form-label">Fuente de Valoración:</label>
-                      <select class="form-select" id="fuente" aria-label="Default select example">
+                      <select class="form-select" id="fuente" aria-label="Default select example" required>
                         <option selected>Selecciona...</option>
                         <option value="IMSS">IMSS</option>
                         <option value="ISSSTE">ISSSTE</option>
@@ -754,6 +772,9 @@ include('prcd/qc/qc.php');
                         <option value="SMFA">Servicios Médicos de la Fuerza Armada</option>
                         <option value="UBR">UBR - Unidad Básica de Rehabilitación</option>
                       </select>
+                      <div class="invalid-feedback">
+                        * Campo requerido.
+                      </div>
                     </div>
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label">Fecha Valoración:</label>
@@ -768,11 +789,14 @@ include('prcd/qc/qc.php');
                         <div class="input-group">
                           <div class="form-check form-check-inline mt-2">
                             <input class="form-check-input" type="radio" name="rehabilitacion" id="rehabilitacionSi" onclick="rehabOp(this.value)" value="1">
-                            <label class="form-check-label" for="rehabilitacion">Sí</label>
+                            <label class="form-check-label" for="rehabilitacion" required>Sí</label>
                           </div>
                           <div class="form-check form-check-inline mt-2">
-                            <input class="form-check-input" type="radio" name="rehabilitacion" id="rehabilitacionNo" onclick="rehabOp(this.value)" value="2">
+                            <input class="form-check-input" type="radio" name="rehabilitacion" id="rehabilitacionNo" onclick="rehabOp(this.value)" value="2" required>
                             <label class="form-check-label" for="rehabilitacion">No</label>
+                            <div class="invalid-feedback">
+                              * Campo requerido.
+                            </div>
                           </div>
                           <input type="text" class="form-control" id="lugarRehab" name="rehabilitacion" placeholder="Dónde..." disabled>
                         </div>
@@ -780,10 +804,7 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-2">
                       <label for="datos_usr" class="form-label">Fecha de Inicio:</label>
-                      <input type="date" class="form-control" id="fechaIni" name="fechaini" placeholder="" required disabled>
-                      <div class="invalid-feedback">
-                        * Campo requerido.
-                      </div>
+                      <input type="date" class="form-control" id="fechaIni" name="fechaini" placeholder="" disabled>
                     </div>
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label">Duración:</label>
@@ -798,7 +819,7 @@ include('prcd/qc/qc.php');
                     <br>
                     <div class="col-sm-2">
                       <label for="datos_usr" class="form-label"> Tipo de Sangre:</label>
-                      <select class="form-select" id="tipoSangre" aria-label="Default select example">
+                      <select class="form-select" id="tipoSangre" aria-label="Default select example" required>
                         <option selected>Selecciona...</option>
                         <option value="1">A Rh +</option>
                         <option value="2">A Rh -</option>
@@ -809,35 +830,38 @@ include('prcd/qc/qc.php');
                         <option value="7">O Rh +</option>
                         <option value="8">O Rh -</option>
                       </select>
+                      <div class="invalid-feedback">
+                        * Campo requerido.
+                      </div>
                     </div>
                     <div class="col-sm-8">
                       <label for="exampleDataListCausa" class="form-label">¿Tiene cirugías?</label>
                       <div class="input-group">
-                        <select class="form-select" id="cirugia" onchange="cirugiasOp(this.value)">
+                        <select class="form-select" id="cirugia" onchange="cirugiasOp(this.value)" required>
                           <option selected>Selecciona...</option>
                           <option value="1">Sí</option>
                           <option value="2">No</option>
                         </select>
+                        <div class="invalid-feedback">
+                          * Campo requerido.
+                        </div>
                         <span class="input-group-text"> Tipo de Cirugía: </span>
                         <input type="text" class="form-control  w-50" id="tipoCirugia" name="datos_usr" placeholder="" disabled>
-                      </div>
-                      <div class="invalid-feedback">
-                        * Campo requerido.
                       </div>
                     </div>
                     <div class="col-sm-10">
                       <label for="exampleDataListCausa" class="form-label">¿Usa prótesis u órtesis?</label>
                       <div class="input-group">
-                        <select class="form-select" id="protesis" onchange="protesisOp(this.value)">
+                        <select class="form-select" id="protesis" onchange="protesisOp(this.value)" required>
                           <option selected>Selecciona...</option>
                           <option value="1">Sí</option>
                           <option value="2">No</option>
                         </select>
+                        <div class="invalid-feedback">
+                          * Campo requerido.
+                        </div>
                         <span class="input-group-text"> ¿De qué tipo? </span>
                         <input type="text" class="form-control  w-50" id="tipoProtesis" name="datos_usr" placeholder="" disabled>
-                      </div>
-                      <div class="invalid-feedback">
-                        * Campo requerido.
                       </div>
                     </div>
                     <br>
@@ -1288,21 +1312,20 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Techo:</label>
                       <div class="input-group" style="height:max-content">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="lamina" value="1">
+                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="lamina" value="1" required>
                           <label class="form-check-label" for="techo">Lamina</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="cemento" value="2">
+                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="cemento" value="2" required>
                           <label class="form-check-label" for="techo">Cemento</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="otroTecho" value="3">
+                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="otroTecho" value="3" required>
                           <label class="form-check-label" for="techo">Otro</label>
                         </div>
                         <div class="form-check form-check-inline">
                           <input class="form-control" type="text" id="otroTechoInput" placeholder="Especifique..." disabled>
                         </div>
-                        
                       </div>
                     </div>
                     <!-- Vivienda -->
@@ -1311,19 +1334,19 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Pared:</label>
                       <div class="input-group" style="height:max-content">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="block" value="1">
+                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="block" value="1" required>
                           <label class="form-check-label" for="pared">Block</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="ladrillo" value="2">
+                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="ladrillo" value="2" required>
                           <label class="form-check-label" for="pared">Ladrillo</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="adobe" value="3">
+                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="adobe" value="3" required>
                           <label class="form-check-label" for="pared">Adobe</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="otroPared" value="4">
+                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="otroPared" value="4" required>
                           <label class="form-check-label" for="pared">Otro</label>
                         </div>
                         <div class="form-check form-check-inline">
@@ -1346,14 +1369,14 @@ include('prcd/qc/qc.php');
                         </div>
                         <div class="form-check form-check-inline">
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox"  id="agua">
-                            <label class="form-check-label" for="flexCheckDefault1">
+                            <input class="form-check-input" type="checkbox" id="agua">
+                            <label class="form-check-label" for="agua">
                               Agua potable
                             </label>
                           </div>
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox"  id="luz">
-                            <label class="form-check-label" for="flexCheckDefault2">
+                            <label class="form-check-label" for="luz">
                               Luz eléctrica
                             </label>
                           </div>
@@ -1361,13 +1384,13 @@ include('prcd/qc/qc.php');
                         <div class="form-check form-check-inline">
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox"  id="drenaje">
-                            <label class="form-check-label" for="flexCheckDefault3">
+                            <label class="form-check-label" for="drenaje">
                               Drenaje
                             </label>
                           </div>
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox"  id="cable">
-                            <label class="form-check-label" for="flexCheckDefault4">
+                            <label class="form-check-label" for="cable">
                               Cable
                             </label>
                           </div>
@@ -1375,13 +1398,13 @@ include('prcd/qc/qc.php');
                         <div class="form-check form-check-inline">
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox"  id="internet">
-                            <label class="form-check-label" for="flexCheckDefault3">
+                            <label class="form-check-label" for="internet">
                               Internet
                             </label>
                           </div>
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox"  id="checkCelular">
-                            <label class="form-check-label" for="flexCheckDefault4">
+                            <label class="form-check-label" for="checkCelular">
                               Celular
                             </label>
                           </div>
@@ -1389,13 +1412,13 @@ include('prcd/qc/qc.php');
                         <div class="form-check form-check-inline">
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox"  id="carro">
-                            <label class="form-check-label" for="flexCheckDefault3">
+                            <label class="form-check-label" for="carro">
                               Carro
                             </label>
                           </div>
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox"  id="gas">
-                            <label class="form-check-label" for="flexCheckDefault4">
+                            <label class="form-check-label" for="gas">
                               Gas
                             </label>
                           </div>
@@ -1403,7 +1426,7 @@ include('prcd/qc/qc.php');
                         <div class="form-check form-check-inline">
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox"  id="telefono">
-                            <label class="form-check-label" for="flexCheckDefault3">
+                            <label class="form-check-label" for="telefono">
                               Teléfono
                             </label>
                           </div>
@@ -1426,20 +1449,20 @@ include('prcd/qc/qc.php');
                       <div class="input-group">
                       <div class="form-check mt-3">
                           <input class="form-check-input" type="checkbox" onclick="electrodomesticos()" value="" id="checkAllElectro">
-                          <label class="form-check-label" for="flexCheckDefault2">
+                          <label class="form-check-label" for="checkElectro">
                             Selecciona todo
                           </label>
                         </div>
                         <div class="form-check form-check-inline">
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="tv">
-                            <label class="form-check-label" for="flexCheckDefault1">
+                            <label class="form-check-label" for="tv">
                               T.V.
                             </label>
                           </div>
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="lavadora">
-                            <label class="form-check-label" for="flexCheckDefault2">
+                            <label class="form-check-label" for="lavadora">
                               Lavadora
                             </label>
                           </div>
@@ -1447,13 +1470,13 @@ include('prcd/qc/qc.php');
                         <div class="form-check form-check-inline">
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="estereo">
-                            <label class="form-check-label" for="flexCheckDefault3">
+                            <label class="form-check-label" for="estereo">
                               Sistema de Sonido
                             </label>
                           </div>
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="microondas">
-                            <label class="form-check-label" for="flexCheckDefault4">
+                            <label class="form-check-label" for="microondas">
                               Microondas
                             </label>
                           </div>
@@ -1461,13 +1484,13 @@ include('prcd/qc/qc.php');
                         <div class="form-check form-check-inline">
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="computadora">
-                            <label class="form-check-label" for="flexCheckDefault3">
+                            <label class="form-check-label" for="computadora">
                               Computadora
                             </label>
                           </div>
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="licuadora">
-                            <label class="form-check-label" for="flexCheckDefault4">
+                            <label class="form-check-label" for="licuadora">
                               Licuadora
                             </label>
                           </div>
@@ -1475,19 +1498,19 @@ include('prcd/qc/qc.php');
                         <div class="form-check form-check-inline">
                           <div class="form-check" hidden>
                             <input class="form-check-input" type="checkbox" id="dvd">
-                            <label class="form-check-label" for="flexCheckDefault3">
+                            <label class="form-check-label" for="dvd">
                               Reproductor Video
                             </label>
                           </div>
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="refri">
-                            <label class="form-check-label" for="flexCheckDefault3">
+                            <label class="form-check-label" for="refri">
                               Refrigerador
                             </label>
                           </div>
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="estufa">
-                            <label class="form-check-label" for="flexCheckDefault4">
+                            <label class="form-check-label" for="estufa">
                               Estufa
                             </label>
                           </div>
@@ -1495,7 +1518,7 @@ include('prcd/qc/qc.php');
                         <div class="form-check form-check-inline">
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" onclick="otroElectros()" id="otroElectro">
-                            <label class="form-check-label" for="flexCheckDefault4">
+                            <label class="form-check-label" for="otroElectro">
                               Otros:
                             </label>
                           </div>
@@ -1509,7 +1532,7 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Personas que dependen económicamente de usted:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline">
-                            <input class="form-control" type="number" id="dependenciaEconomica" onkeypress="ValidaSoloNumeros()" placeholder="Personas que dependen económicamente">
+                            <input class="form-control" type="number" id="dependenciaEconomica" onkeypress="ValidaSoloNumeros()" placeholder="Personas que dependen económicamente" required>
                         </div>
                       </div>
                       <br>
@@ -1517,10 +1540,10 @@ include('prcd/qc/qc.php');
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" id="deudasSi" onclick="deudasOp(this.value)" type="radio" name="deudas" value="1">
-                          <label class="form-check-label" for="deudas1">Sí</label>
+                          <label class="form-check-label" for="deudas1" required>Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="deudasOp(this.value)"  name="deudas" id="deudasNo" value="0">
+                          <input class="form-check-input" type="radio" onclick="deudasOp(this.value)"  name="deudas" id="deudasNo" value="0" required>
                           <label class="form-check-label" for="deudas2">No</label>
                         </div>
                         <div class="form-check form-check-inline mb-3">
@@ -1750,7 +1773,7 @@ include('prcd/qc/qc.php');
                     </table>
                     <div id="elementH"></div>
                     <div class="d-grid gap-2">
-                      <a id="buttonCheck" class="btn btn-primary btn-lg" type="button">Finalizar Expediente e Imprimir formato...</a>
+                      <a id="buttonCheck" class="btn btn-primary btn-lg" type="button" onclick="checkListDocs()">Imprimir formato Check List</a>
                     </div>
                   </div>
                 </div>
@@ -2157,6 +2180,7 @@ include('prcd/qc/qc.php');
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-mortarboard"></i></span>
                 <select class="form-select" id="escolaridadFam" aria-label="Default select example">
                   <option selected>Nivel de Escolaridad...</option>
+                  <option value="Sin_Escolarizar">Sin Escolarizar</option>
                   <option value="Preescolar">Preescolar</option>
                   <option value="Primaria">Primaria</option>
                   <option value="Secundaria">Secundaria</option>
