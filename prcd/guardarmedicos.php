@@ -11,6 +11,7 @@ $fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
 $fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
 
 $curp_exp = $_POST['curp_exp'];
+$numExp = $_POST['numExp'];
 $discapacidad = $_POST['discapacidad'];
 $gradoDisc = $_POST['gradoDisc'];
 $descDisc = $_POST['descDisc'];
@@ -39,6 +40,7 @@ $tipo_dato = 6;
 
 $sqlinsert= "INSERT INTO datos_medicos (
     curp,
+    numExp,
     discapacidad,
     grado_discapacidad,
     tipo_discapacidad,
@@ -66,6 +68,7 @@ $sqlinsert= "INSERT INTO datos_medicos (
     )
 VALUES(
     '$curp_exp',
+    '$numExp',
     '$discapacidad',
     '$gradoDisc',
     '$tipoDisc',

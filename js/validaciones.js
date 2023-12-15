@@ -1,3 +1,4 @@
+
 // VALIDA USUARIO REGISTRADO
  
 $(document).ready(function() {	
@@ -22,7 +23,7 @@ $(document).ready(function() {
 function curp2date(curp) {
     var miCurp = curp.value.toUpperCase();
     var resultado = document.getElementById("edad");
-  
+
     var m = miCurp.match(/^\w{4}(\w{2})(\w{2})(\w{2})/);  
     var anyo = parseInt(m[1], 10) + 1900;
     if (anyo < 1950) anyo += 100;

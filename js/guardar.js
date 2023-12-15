@@ -184,6 +184,7 @@ $(document).ready(function() {
         var domicilio = document.getElementById('domicilio').value;
         var numExt = document.getElementById('numExt').value;
         var numInt = document.getElementById('numInt').value;
+        var tipoVialidad = document.getElementById('tipoVialidad').value;
         var colonia = document.getElementById('colonia').value;
         var entreVialidades = document.getElementById('entreVialidades').value;
         var descripcionLugar = document.getElementById('descripcionLugar').value;
@@ -299,6 +300,7 @@ $(document).ready(function() {
                 domicilio:domicilio,
                 numExt:numExt,
                 numInt:numInt,
+                tipoVialidad:tipoVialidad,
                 colonia:colonia,
                 entreVialidades:entreVialidades,
                 descripcionLugar:descripcionLugar,
@@ -386,6 +388,7 @@ $(document).ready(function() {
     $('#medicosForm').submit(function(e) {
         /* Datos Médicos */
         var curp_exp = document.getElementById('curp_exp').value;
+        var numExp = document.getElementById('numeroExpediente').innerHTML;
         var discapacidad = document.getElementById('discapacidadList').value;
         var gradoDisc = document.getElementById('gradoDisc').value;
         var tipoDisc = document.getElementById('tipoDisc').value;
@@ -450,6 +453,7 @@ $(document).ready(function() {
             dataType:'json',
             data: {
                 curp_exp:curp_exp,
+                numExp:numExp,
                 discapacidad:discapacidad,
                 gradoDisc:gradoDisc,
                 tipoDisc:tipoDisc,
@@ -1706,9 +1710,6 @@ function estudioSocioeconomico() {
     
     var curp = document.getElementById('curp_exp').value;
     document.getElementById('imprimeES').setAttribute("href", "prcd/registroPDF.php?curp="+curp);
-    
-
-    /* window.open = "prcd/registroPDF.php?curp="+curp; */
 }
 
 function responsivaCarta() {
@@ -1721,12 +1722,6 @@ function checkListDocs() {
     document.getElementById('buttonCheck').setAttribute("href", "prcd/checkListPDF2.php?curp="+curp);
     document.getElementById('nav-fin-tab').disabled = false;
     document.getElementById('nav-fin-tab').setAttribute('onclick','finalizarExpediente()');
-}
-function checkListDocsUpdate() {
-    var curp = document.getElementById('curp_exp').value;
-    document.getElementById('buttonCheck').setAttribute("href", "prcd/checkListPDF2.php?curp="+curp);
-    document.getElementById('nav-fin-tab').disabled = false;
-    document.getElementById('nav-fin-tab').setAttribute('onclick','finalizarUpdateExpediente()');
 }
 
 function finalizarExpediente(){

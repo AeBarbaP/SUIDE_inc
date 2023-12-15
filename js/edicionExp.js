@@ -145,8 +145,8 @@ function queryDatos(){
                 document.getElementById('lugarNacimiento').value = jsonData.lugar_nacimiento; 
                 document.getElementById('edoCivil').value = jsonData.edo_civil; 
                 document.getElementById('domicilio').value = jsonData.domicilio; 
-                document.getElementById('numExt').value = jsonData.no_int; 
-                document.getElementById('numInt').value = jsonData.no_ext; 
+                document.getElementById('numExt').value = jsonData.no_ext; 
+                document.getElementById('numInt').value = jsonData.no_int; 
                 document.getElementById('colonia').value = jsonData.colonia; 
                 document.getElementById('entreVialidades').value = jsonData.entre_vialidades; 
                 document.getElementById('descripcionLugar').value = jsonData.desc_referencias; 
@@ -178,24 +178,24 @@ function queryDatos(){
                     document.getElementById('rfcHomo').value = "";
                 }
                 
-                if (estudia == 'SI' || estudia == '2'){
+                if (estudia == 'SI' || estudia == 2){
                     document.getElementById('estudiaSi').checked = true;
                     document.getElementById('lugarEstudia').disabled = false; 
                     document.getElementById('lugarEstudia').value = jsonData.estudia_donde; 
                 } 
-                else if (estudia == 'NO' || estudia == '3') {
+                else if (estudia == 'NO' || estudia == 3 || estudia == 0) {
                     document.getElementById('estudiaNo').checked = true;
                 }
 
                 document.getElementById('habilidad').value = jsonData.estudia_habilidad; 
 
-                if (trabaja == 'SI' || trabaja == '1'){
+                if (trabaja == 'SI' || trabaja == 1){
                     document.getElementById('trabajaSi').checked = true;
                     document.getElementById('lugarTrabajo').disabled = false; 
                     document.getElementById('ingresoMensual').disabled = false; 
                     document.getElementById('lugarTrabajo').value = jsonData.trabaja_donde; 
                 } 
-                else if (trabaja == 'NO' || trabaja == '0') {
+                else if (trabaja == 'NO' || trabaja == 0) {
                     document.getElementById('trabajaNo').checked = true;
                 }
 
@@ -204,11 +204,11 @@ function queryDatos(){
                     document.getElementById('nombreAC').disabled = false;  
                     document.getElementById('nombreAC').value = jsonData.asoc_cual; 
                 } 
-                else if (asoc_civ == 'NO' || asoc_civ == '0') {
+                else if (asoc_civ == 'NO' || asoc_civ == 0) {
                     document.getElementById('asociacionNo').checked = true;
                 }
 
-                if (pensionado == 'SI' || pensionado == '1'){
+                if (pensionado == 'SI' || pensionado == 1){
                     document.getElementById('pensionSi').checked = true;
                     document.getElementById('instPension').disabled = false;  
                     document.getElementById('montoP').disabled = false;  
@@ -217,16 +217,16 @@ function queryDatos(){
                     document.getElementById('montoP').value = jsonData.pension_monto; 
                     document.getElementById('periodo').value = jsonData.pension_temporalidad; 
                 } 
-                else if (pensionado == 'NO' || pensionado == '0') {
+                else if (pensionado == 'NO' || pensionado == 0) {
                     document.getElementById('pensionNo').checked = true;
                 }
 
-                if (sindicato == 'SI' || sindicato == '1'){
+                if (sindicato == 'SI' || sindicato == 1){
                     document.getElementById('sindicatoSi').checked = true;
                     document.getElementById('nombreSindicato').disabled = false;  
                     document.getElementById('nombreSindicato').value = jsonData.asoc_cual; 
                 } 
-                else if (sindicato == 'NO' || sindicato == '2' || sindicato == "" || sindicato == null) {
+                else if (sindicato == 'NO' || sindicato == 2 || sindicato == 0 || sindicato == "" || sindicato == null) {
                     document.getElementById('sindicatoNo').checked = true;
                 }
 
@@ -276,7 +276,7 @@ function queryDatos(){
                 }
                 
                 var rehabVar = jsonData.rehabilitacion;
-                if (rehabVar == 2 || rehabVar == null || rehabVar == ""){
+                if (rehabVar == 2 || rehabVar == null || rehabVar == 0 || rehabVar == ""){
                     document.getElementById('rehabilitacionNo').checked = true;
                 }
                 else {
@@ -420,7 +420,10 @@ function queryDatos(){
                 if (banio == 1){
                     document.getElementById('bath').checked = true; 
                 }
-                if (vivienda_otros != "" || vivienda_otros != null || vivienda_otros != 0){
+                if (vivienda_otros == 0 || vivienda_otros == null || vivienda_otros == ""){
+                    document.getElementById('otroRoom').checked = false;
+                }
+                else {
                     document.getElementById('otroRoom').checked = true;
                     document.getElementById('otroRoomInput').disabled = false;
                     document.getElementById('otroRoomInput').value = vivienda_otros;
@@ -563,7 +566,7 @@ function queryDatos(){
                     document.getElementById('deudasSi').checked = true;
                     document.getElementById('deudasInput').value = jsonData.deudas_cuanto; 
                 }
-                else if (deudas == 2 || deudas == "NO"){
+                else if (deudas == 2 || deudas == "NO" || deudas == "" || deudas == 0){
                     document.getElementById('deudasNo').checked = true;
 
                 }
@@ -699,4 +702,22 @@ function removeC2(val) {
     numeroC = numeroC.slice(0, numeroC.length - 2);
     console.log(numeroC);
     /* document.getElementById('numeroC').value = numeroC; */
+}
+
+function estudioSocioeconomicoA() {
+    
+    var curp = document.getElementById('curp_exp').value;
+    document.getElementById('imprimeES').setAttribute("href", "prcd/registroPDF.php?curp="+curp);
+}
+
+function responsivaCartaA() {
+    var curp = document.getElementById('curp_exp').value;
+    document.getElementById('imprimeCR').setAttribute("href", "prcd/responsivaPDF.php?curp="+curp);
+}
+
+function checkListDocsUpdate() {
+    var curp = document.getElementById('curp_exp').value;
+    document.getElementById('buttonCheck').setAttribute("href", "prcd/checkListPDF2.php?curp="+curp);
+    document.getElementById('nav-fin-tab').disabled = false;
+    document.getElementById('nav-fin-tab').setAttribute('onclick','finalizarUpdateExpediente()');
 }

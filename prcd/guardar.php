@@ -22,6 +22,7 @@ $lugarNacimiento = $_POST['lugarNacimiento'];
 $domicilio = $_POST['domicilio'];
 $numExt = $_POST['numExt'];
 $numInt = $_POST['numInt'];
+$tipoVialidad = $_POST['tipoVialidad'];
 $colonia = $_POST['colonia'];
 $entreVialidades = $_POST['entreVialidades'];
 $descripcionLugar = $_POST['descripcionLugar'];
@@ -69,6 +70,7 @@ $sqlinsert= "INSERT INTO datos_generales (
     domicilio,
     no_ext,
     no_int,
+    tipoVialidad,
     colonia,
     entre_vialidades,
     descr_referencias,
@@ -115,6 +117,7 @@ VALUES(
     '$domicilio',
     '$numExt',
     '$numInt',
+    '$tipoVialidad',
     '$colonia',
     '$entreVialidades',
     '$descripcionLugar',

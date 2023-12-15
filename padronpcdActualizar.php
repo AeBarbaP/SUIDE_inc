@@ -270,7 +270,7 @@ include('prcd/qc/qc.php');
       <h3 class="text-muted mt-4">Actualización de Expediente</h3>
       <div class="input-group mb-2 mt-2">
         <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-        <input class="form-control w-50" id="" oninput="buscarExpediente12(this.value)" onkeypress="ValidaSoloNumeros()" maxlength="20" pattern="[0-9]+" placeholder="Buscar...">
+        <input class="form-control w-50" id="" oninput="buscarExpediente12(this.value)" placeholder="Buscar...">
         <!-- <div class="col-3 text-start"> -->
         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#leerQr"><i class="bi bi-qr-code-scan"></i> Escanear</button>
         
@@ -519,7 +519,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-6">
                     <label for="datos_usr" class="form-label">Entre vialidades:</label>
-                    <input type="text" class="form-control" id="entreVialidades" name="datos_usr" required>
+                    <input type="text" class="form-control" id="entreVialidades" name="datos_usr">
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
@@ -596,16 +596,16 @@ include('prcd/qc/qc.php');
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Nivel de Escolaridad:</label>
                     <select class="form-select" id="escolaridad" aria-label="Default select example">
-                      <option value="" selected>Selecciona...</option>
-                      <option value="NINGUNO">Sin escolarizar</option>
-                      <option value="PRIMARIA">Primaria</option>
-                      <option value="SECUNDARIA">Secundaria</option>
-                      <option value="PREPARATORIA">Preparatoria</option>
-                      <option value="TECNICA">Carrera Técnica</option>
-                      <option value="LICENCIATURA">Licenciatura</option>
-                      <option value="POSGRADO">Posgrado</option>
-                      <option value="PREESCOLAR">Preescolar</option>
-                      <option value="ESPECIAL">Escuela de Educación Especial</option>
+                    <option value="" selected>Selecciona...</option>
+                      <option value="Ninguno">Sin escolarizar</option>
+                      <option value="Primaria">Primaria</option>
+                      <option value="Secundaria">Secundaria</option>
+                      <option value="Preparatoria">Preparatoria</option>
+                      <option value="Técnica">Carrera Técnica</option>
+                      <option value="Licenciatura">Licenciatura</option>
+                      <option value="Posgrado">Posgrado</option>
+                      <option value="Preescolar">Preescolar</option>
+                      <option value="Especial">Escuela de Educación Especial</option>
                     </select>
                   </div>
                   <div class="col-sm-4">
@@ -759,12 +759,12 @@ include('prcd/qc/qc.php');
                       <form id="medicosForm">
                       <label for="exampleDataListDisc" class="form-label">Tipo de Discapacidad:</label>
                       <select class="form-select" id="tipoDisc" onchange="discapacidadTab(this.value)" aria-label="Default select example">
-                        <option selected>Selecciona...</option>
-                        <option value="FÍSICA">Física</option>
-                        <option value="INTELECTUAL">Intelectual</option>
-                        <option value="SENSORIAL">Sensorial</option>
-                        <option value="MÚLTIPLE">Múltiple</option>
-                        <option value="PSICOSOCIAL">Psicosocial</option>
+                      <option value="" selected>Selecciona...</option>
+                        <option value="Física">Física</option>
+                        <option value="Intelectual">Intelectual</option>
+                        <option value="Sensorial">Sensorial</option>
+                        <option value="Múltiple">Múltiple</option>
+                        <option value="Psicosocial">Psicosocial</option>
                       </select>
                       <div class="invalid-feedback">
                         * Campo requerido.
@@ -807,14 +807,13 @@ include('prcd/qc/qc.php');
                       <label for="exampleDataListCausa" class="form-label">Causa:</label>
                       <div class="input-group">
                         <select class="form-select" id="causaDisc" onchange="causaDiscOp(this.value)" aria-label="Default select example">
-                          <option selected>Selecciona...</option>
-                          <option value="1">Congénita</option>
-                          <option value="2">Adquirida</option>
-                          <option value="3">Accidente</option>
-                          <option value="4">Enfermedad</option>
-                          <option value="5">Nacimiento</option>
+                          <option value="" selected>Selecciona...</option>
+                          <option value="1">Nacimiento</option>
+                          <option value="4">Congénita</option>
+                          <option value="2">Accidente</option>
+                          <option value="3">Enfermedad</option>
                           <option value="6">Adicción</option>
-                          <option value="7">Otra</option>
+                          <option value="5">Otra</option>
                         </select>
                         <span class="input-group-text"> Especifique: </span>
                         <input type="text" class="form-control" id="especifiqueD" name="datos_usr" placeholder="" disabled>
@@ -829,7 +828,7 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-6">
                       <label for="datos_usr" class="form-label">Fuente de Valoración:</label>
-                      <select class="form-select" id="fuente" aria-label="Default select example">
+                      <select class="form-select" id="fuente" aria-label="Default select example" required>
                       <option selected>Selecciona...</option>
                         <option value="IMSS">IMSS</option>
                         <option value="ISSSTE">ISSSTE</option>
@@ -1816,7 +1815,7 @@ include('prcd/qc/qc.php');
                         </tbody>
                       </table>
                       <div class="d-grid gap-2">
-                        <button class="btn btn-primary btn-lg" type="button">Imprimir formato...</button>
+                        <a id="buttonCheck" class="btn btn-primary btn-lg" type="button" onclick="checkListDocsUpdate()" target="_blank">Imprimir formato Check List</a>
                       </div>
                   </div>
                 </div>
@@ -1828,7 +1827,7 @@ include('prcd/qc/qc.php');
                         <img src="img/Registro.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Formato de Registro</h5>
-                          <a href="#" class="btn btn-primary">Imprimir</a>
+                          <a class="btn btn-primary"  id="imprimeES" target="_blank" onclick="estudioSocioeconomicoA()">Imprimir</a>
                         </div>
                       </div>  
                     </div>
@@ -1837,7 +1836,7 @@ include('prcd/qc/qc.php');
                         <img src="img/Responsiva.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Acta Responsiva</h5>
-                          <a href="#" class="btn btn-primary">Imprimir</a>
+                          <a onclick="responsivaCartaA()" id="imprimeCR" target="_blank" class="btn btn-primary">Imprimir</a>
                         </div>
                       </div>  
                     </div>
@@ -1892,6 +1891,7 @@ include('prcd/qc/qc.php');
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-mortarboard"></i></span>
                 <select class="form-select" id="escolaridadFam" aria-label="Default select example">
                   <option selected>Nivel de Escolaridad...</option>
+                  <option value="Sin_escolarizar">Sin escolarizar</option>
                   <option value="Preescolar">Preescolar</option>
                   <option value="Primaria">Primaria</option>
                   <option value="Secundaria">Secundaria</option>
@@ -1994,6 +1994,7 @@ include('prcd/qc/qc.php');
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-mortarboard"></i></span>
                 <select class="form-select" id="escolaridadFam2" aria-label="Default select example">
                   <option selected>Nivel de Escolaridad...</option>
+                  <option value="Sin_escolarizar">Sin escolarizar</option>
                   <option value="Preescolar">Preescolar</option>
                   <option value="Primaria">Primaria</option>
                   <option value="Secundaria">Secundaria</option>
@@ -2177,81 +2178,362 @@ include('prcd/qc/qc.php');
     </div>
     <!-- Termina Modal para editar Referencia en la tab de Referencias -->
 
-      <!-- Modal para agregar solicitud -->
-      <div class="modal fade" id="solicitudAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Inician Modales para cargar archivos en pdf o jpg en Tab Documentos -->
+
+    <div class="modal fade" id="docUpload1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" name="file1" id="file1" accept="application/pdf" class="form-control">
+              </div>
+              <div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" value="0">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar1" value="0" max="100" style="height: 20px">
+                  <p id="loaded_n_total1"></p>
+                </div>
+              </div>
+              <small id="status1"></small>
+            </form>
+          
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btnModal1" onclick="uploadFile(1)">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="docUpload2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file2" id="file2" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar2" value="0" max="100">
+                  <p id="loaded_n_total2"></p>
+                </div>
+              </div>
+              <small id="status2"></small>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btnModal2" onclick="uploadFile(2)">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="docUpload3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file3" id="file3" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar3" value="0" max="100">
+                  <p id="loaded_n_total3"></p>
+                </div>
+              </div>
+              <small id="status3"></small>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btnModal3" onclick="uploadFile(3)" >Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="docUpload4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file4" id="file4" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria.valuenow="0" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar4" value="0" max="100">
+                  <p id="loaded_n_total4"></p>
+                </div>
+              </div>
+              <small id="status4"></small>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btnModal4" onclick="uploadFile(4)">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="docUpload5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file5" id="file5" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar5" value="0" max="100">
+                  <p id="loaded_n_total5"></p>
+                </div>
+              </div>
+              <small id="status5"></small>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btnModal5" onclick="uploadFile(5)">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="docUpload6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file6" id="file6" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar6" value="0" max="100">
+                  <p id="loaded_n_total6"></p>
+                </div>
+              </div>
+              <small id="status6"></small>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btnModal6" onclick="uploadFile(6)">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="docUpload7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel"><strong><i class="bi bi-cloud-arrow-up h2"></i> Subir Tarjeta de Circulación</strong></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="upload_form" enctype="multipart/form-data" method="post">
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file7" id="file7" accept="application/pdf">
+              </div>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="height: 20px">
+                <div class="progress-bar progress-bar" style="background-color:#917799" id="progressBar7" value="0" max="100">
+                  <small id="status7"></small>
+                </div>
+              </div>
+              <p id="loaded_n_total7"></p>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="btnModal7" onclick="uploadFile(7)">Subir Archivo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Terminan Modales para cargar archivo en pdf o jpg en Tab Documentos -->
+
+    <!-- Modal para agregar solicitud -->
+    <div class="modal fade" id="solicitudAdd" data-bs-backdrop="static" data-bs-keyboard="false"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-plus-lg"></i> Agregar Solicitud</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="limpiarModalSolicitud()" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <div class="row g-3">      
+              <form id="formSolicitudes">   
+              <div class="row g-3">   
                 <div class="col-sm-4">
-                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Folio:</label>
-                  <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="" readonly>
+                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Folio: </label>
+                  <div id="folioLabel"></div>
                 </div>
                 <div class="col-sm-4">
                 </div>
                 <div class="col-sm-4">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fecha:</label>
-                  <input type="date" class="form-control" id="datos_usr" name="datos_usr" placeholder="" readonly>
+                  <input type="date" class="form-control" id="fechaSolicitud" name="datos_usr" placeholder="" disabled>
                   <div class="invalid-feedback">
                     * Campo requerido.
                   </div>
                 </div>
-                <div class="col-sm-5">
+                <div class="col-sm-4">
                   <div class="">
                     <label for="basic-url" class="form-label">Tipo de solicitud:</label>
-                    <select class="form-select" aria-label="Default select example" required>
+                    <select class="form-select" onchange="queryTabFuncionales(this.value)" id="tipoSolicitud" aria-label="Default select example" required>
                       <option selected>Selecciona...</option>
                       <option value="1">Funcional</option>
                       <option value="2">Extraordinario</option>
                       <option value="3">Otro</option>
                     </select>
                     <div class="invalid-feedback">
-                    * Campo requerido.
+                      * Campo requerido.
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-8">
+                </div>
+                <div class="col-sm-6" id="descripcionFuncional" style="display: none;">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Especifica:</label>
-                  <select class="form-select" aria-label="Default select example" required>
+                  <select class="form-select" id="articuloSolicitud" onchange="limpiaInputsFunc()" aria-label="Default select example" required>
                     <option selected>Selecciona...</option>
-                    <option value="1">Bastón</option>
-                    <option value="2">Silla de Ruedas</option>
-                    <option value="3">Otro</option>
+                  </select>
+                  <div class="form-text" id="divTag" hidden><span id="disponible1"> Piezas disponibles </span><strong><span id="disponible"></span></strong></div>
+                  <div class="invalid-feedback">
+                    * Campo requerido.
+                  </div>
+                </div>
+                <div class="col-sm-2" id="cantidadFuncional" style="display: none;">
+                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Cantidad:</label>
+                  <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" oninput="queryCosto(this.value)" id="cantidadArt" name="folio" placeholder="">
+                  <input type="text" id="inputUnitario" hidden>
+                </div>
+                <div class="col-sm-3" id="costoFuncional" style="display: none;">
+                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Costo:</label>
+                  <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" id="costoSolicitud" aria-label="Amount (to the nearest dollar)" readonly>
+                    <span class="input-group-text">.00</span>
+                  </div>
+                </div>
+                <div class="col-sm-1" id="btnFuncK" style="display: none;">
+                  <label for="datos_usr" class="form-label text-light">.</label>
+                  <div class="input-group">
+                    <button class="btn btn-primary" type="button" onclick="guardarSolicitud()" id="agregarItemFunc"><i class="bi bi-plus-circle"></i></button>
+                  </div>
+                </div>
+                <div class="col-sm-8" id="descripcionExtra" style="display: none;">
+                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Especifica:</label>
+                  <select class="form-select" id="extraSolicitud" aria-label="Default select example" required>
+                    <option selected>Selecciona...</option>
                   </select>
                   <div class="invalid-feedback">
                     * Campo requerido.
                   </div>
                 </div>
-                <div class="col-sm-3">
-                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Costo:</label>
+                <div class="col-sm-3" id="costoExtra" style="display: none;">
+                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Monto solicitado:</label>
                   <div class="input-group">
                     <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <input type="text" class="form-control" id="costoSolicitudExtra" onkeypress="ValidaSoloNumeros()" aria-label="Amount (to the nearest dollar)">
                     <span class="input-group-text">.00</span>
+                  </div>
+                </div>
+                <div class="col-sm-1" id="btnExtra" style="display: none;">
+                  <label for="datos_usr" class="form-label text-light">.</label>
+                  <div class="input-group">
+                    <button class="btn btn-primary" type="button" id="agregarItemExtra" onclick="guardarSolicitudExtra()"><i class="bi bi-plus-circle"></i></button>
+                  </div>
+                </div>
+                <div class="col-sm-8" id="descripcionOtro" style="display: none;">
+                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Especifica:</label>
+                  <select class="form-select" id="otroSolicitud" onchange="limpiaInputsOtro()" aria-label="Default select example" required>
+                    <option selected>Selecciona...</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    * Campo requerido.
+                  </div>
+                </div>
+                <div class="col-sm-3" id="montoOtro" style="display: none;">
+                  <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Monto Solicitado:</label>
+                  <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" id="costoSolicitudOtro" onkeypress="ValidaSoloNumeros()" aria-label="Amount (to the nearest dollar)">
+                    <span class="input-group-text">.00</span>
+                  </div>
+                </div>
+                </form>
+                <div class="col-sm-1" id="btnOtro" style="display: none;">
+                  <label for="datos_usr" class="form-label text-light">.</label>
+                  <div class="input-group">
+                    <button class="btn btn-primary" type="button" id="agregarItemOtro" onclick="guardarSolicitudOtros()"><i class="bi bi-plus-circle"></i></button>
                   </div>
                 </div>
                 <div class="col-sm-12">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Descripción:</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                  <div class="invalid-feedback">
-                    * Campo requerido.
+                  <!-- <div id="NuevaSolicitud"></div> -->
+                  <div class="table-responsive" id="tablaSolicitud">
+                    <table class="table table-striped table-hover text-center" id="tablaPre">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Cantidad</th>
+                          <th scope="col">Descripción</th>
+                          <th scope="col">Costo Unitario</th>
+                          <th scope="col">Total</th>
+                        </tr>
+                      </thead>
+                      <tbody id="NuevaSolicitud">
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-primary">Agregar Solicitud</button>
-              <button type="button" class="btn btn-success" onclick="swalEntrega()">Entregar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="borrarSolicitud();limpiarModalSolicitud()">Cancelar</button>
+              <button type="button" class="btn btn-primary" id="btnlistaEspera" onclick="swalListaEspera()" disabled>Agregar Solicitud</button>
+              <button type="button" class="btn btn-success" id="btnEntregaApoyo" onclick="swalEntrega()" disabled>Entregar</button>
             </div>
           </div>
         </div>
       </div>
       <!-- Termina Modal para agregar solicitud -->
+
       <!-- Modal para editar solicitud -->
       <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="solicitudEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -2388,96 +2670,292 @@ include('prcd/qc/qc.php');
       </div><!-- modal -->
                   
       <!-- Termina Modal para generar credencial -->
-            <!-- Inicia Modal para generar tarjeton -->
+<!-- Inicia Modal para generar tarjeton -->
 
-            <div class="modal fade " id="tarjetongen" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"><strong><i class="bi bi-plus"></i> Generar Tarjetón con QR</strong></h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="input-group mb-1 mt-2 w-100">
-                <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
-              </div><!-- input group -->
-              <br>
-              <div class="container text-center">
-                <div class="card mb-3" style="max-width: 100%;">
-                  <div class="row g-0">
-                    <div class="col-md-4">
-                      <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body text-start" >
-                        <div id = "tarjeton">
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="tarjetongen" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><strong><i class="bi bi-plus"></i> Generar Tarjetón con QR</strong></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="input-group mb-1 mt-2 w-100">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+              <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2(); desbloquearInputsT(this.value)" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+              <!-- <input type="text" id="curpTarjeton" hidden>  -->
+            </div><!-- input group -->
+            <br>
+            <div class="container text-center">
+              <div class="card mb-3" style="max-width: 100%;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body text-start" >
+                      <div id = "tarjeton">
 
-                        </div>
-                        <hr>
-                        <h5 class="mb-3">Datos del vehículo</h5>
+                      </div>
+                      <hr>
+                      <h5 class="mb-3">Datos del vehículo</h5>
+                      <input type="text" id="tipoTarjeton" value="1" hidden>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Marca</span>
+                        <input type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaPerm" disabled>
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Modelo</span>
+                        <input type="text" class="form-control" placeholder="Modelo" id="modeloPerm" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="modelo" aria-describedby="basic-addon1" disabled>
+                        <span class="input-group-text">Año</span>
+                        <input type="text" onkeypress="ValidaSoloNumeros()" class="form-control" placeholder="Año" aria-label="anio" id="annioPerm" disabled>
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">No. de Placas</span>
+                        <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-describedby="basic-addon1" id="placasPerm" disabled>
+                        <span class="input-group-text" id="basic-addon1">No. de Serie</span>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" oninput="habilitaBTNadd()" placeholder="# de Serie del vehículo" aria-label="numeroserie" aria-describedby="basic-addon1" id="seriePerm" disabled>
+                      </div>
+                      <div class="input-group mb-1">
+                        <span class="input-group-text" id="basic-addon1">Folio Tarjetón</span>
+                        <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()"  placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPerm" disabled>
+                        <span class="input-group-text" id="basic-addon1">Vigencia</span>
+                        <select class="form-select" id="vigenciaPerm" aria-label="Default select example" disabled>
+                          <option selected>Selecciona...</option>
+                          <option value="730">2 años</option>
+                          <option value="2190">6 años</option>
+                        </select>
+                      </div>
+                      <div class="form-text mb-2" id="basic-addon4"><a href="#" class="ms-2 link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" data-bs-toggle="modal" data-bs-target="#reemplazarTarjeton" onclick="datosTarjeton()">Reemplazar tarjetón asignado...</a></div>
+                      <label id="textoTarjeton" hidden></label>
+                      <div class="col-md-12">
                         <div class="input-group mb-3">
-                          <span class="input-group-text" id="basic-addon1">Marca</span>
-                          <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaForm">
-                        </div>
-                        <div class="input-group mb-3">
-                          <span class="input-group-text" id="basic-addon1">Modelo</span>
-                          <input type="text" class="form-control" placeholder="Modelo" aria-label="modelo" aria-describedby="basic-addon1">
-                          <span class="input-group-text">Año</span>
-                          <input type="text" class="form-control" placeholder="Año" aria-label="anio" id="annioForm">
-                        </div>
-                        <div class="input-group mb-3">
-                          <span class="input-group-text" id="basic-addon1">No. de Placas</span>
-                          <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasForm">
-                        </div>
-                        <div class="input-group mb-3">
-                          <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-                          <input type="text" class="form-control" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieForm">
-                        </div>
-                        <div class="col-md-12">
-                          <div class="input-group mb-3">
-                            <span class="input-group-text">Vehículo extranjero</span>
-                            <div class="input-group-text">
-                              <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
-                            </div>
-                            <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguro" disabled>
-                          </div>  
-                        </div>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                          <button class="btn btn-primary me-md-2" type="button"><i class="bi bi-plus-lg"></i> Agregar</button>
-                        </div>
-                        <hr>
-                        <div class="table-responsive text-center">
-                          <table class="table table-hover">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Marca</th>
-                                <th scope="col">Modelo</th>
-                                <th scope="col"># de Placa</th>
-                              </tr>
-                            </thead>
-                            <tbody id="vehiculosTemp">
-                              
-                            </tbody>
-                          </table>
-                        </div>
+                          <span class="input-group-text">Vehículo extranjero</span>
+                          <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" onchange="autoSeguroCheck()" value="" id="checkAutoS" aria-label="Checkbox for following text input">
+                          </div>
+                          <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroInput" disabled>
+                        </div>  
+                      </div>
+                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary me-md-2" type="button" id="agregarVehiculoBtn" onclick="vehiculoAdd()" disabled><i class="bi bi-plus-lg"></i> Agregar</button>
+                      </div>
+                      <hr>
+                      <div class="table-responsive text-center">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Marca</th>
+                              <th scope="col">Modelo</th>
+                              <th scope="col"># de Placa</th>
+                              <th scope="col"># Tarjeton</th>
+                              <th scope="col">Editar</th>
+                            </tr>
+                          </thead>
+                          <tbody id="vehiculosTabla">
+                            
+                          </tbody>
+                        </table>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>  
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" id="habilitaimprimirt" onclick="swaldatostrn()"><i class="bi bi-save2"></i> Generar Tarjetón</button>
-              <button type="button" class="btn btn-primary" id="imprimirt" disabled><i class="bi bi-printer"></i> Imprimir</button>
             </div>
+          </div>  
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiaModalTarjeton()">Cerrar</button>
+            <!-- <button type="button" class="btn btn-primary" id="habilitaimprimirtp" onclick="swaldatostrn();limpiaModalTarjeton()" disabled><i class="bi bi-save2"></i> Generar QR</button> -->
+            <button type="button" class="btn btn-primary" id="imprimirt" data-bs-toggle="modal" data-bs-target="#qrShows" onclick="limpiaModalTarjeton()" disabled><i class="bi bi-printer"></i> Imprimir</button>
           </div>
         </div>
       </div>
-      
-      <!-- Termina Modal para generar tarjeton -->
+    </div>
+    
+    <!-- Inicia modal para editar información de vehículo en tarjetón de padrón -->
+    
+    <div class="modal fade" id="editarVehiculo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualizar Vehículo</h1>
+            <button type="button" class="btn-close" aria-label="Close" data-bs-toggle="modal" id="closeEditarTarjeton" data-bs-target="#tarjetongen"></button>
+          </div>
+          <div class="modal-body">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Marca</span>
+              <input type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaPerm2">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Modelo</span>
+              <input type="text" class="form-control" placeholder="Modelo" id="modeloPerm2" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="modelo" aria-describedby="basic-addon1">
+              <span class="input-group-text">Año</span>
+              <input type="text" onkeypress="ValidaSoloNumeros()" class="form-control" placeholder="Año" aria-label="anio" id="annioPerm2">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">No. de Placas</span>
+              <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-describedby="basic-addon1" id="placasPerm2">
+              <span class="input-group-text" id="basic-addon1">No. de Serie</span>
+              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" oninput="habilitaBTNadd()" placeholder="# de Serie del vehículo" aria-label="numeroserie" aria-describedby="basic-addon1" id="seriePerm2">
+            </div>
+            <div class="col-md-12">
+              <div class="input-group mb-3">
+                <span class="input-group-text">Vehículo extranjero</span>
+                <div class="input-group-text">
+                  <input class="form-check-input mt-0" type="checkbox" onchange="autoSeguroCheck()" value="" id="checkAutoS" aria-label="Checkbox for following text input">
+                </div>
+                <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroInput" disabled>
+              </div>  
+              <input type="text" id="folioDTT" hidden>
+              <input type="text" id="idVeT" hidden>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" id="cerrarEditarTarjeton" data-bs-target="#tarjetongen">Cerrar</button>
+            <button type="button" onclick="updateVehiculo()" class="btn btn-primary" id="guardarEditarTarjeton" data-bs-toggle="modal" data-bs-target="#tarjetongen">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Termina modal para editar información de vehículo en tarjetón de padrón -->
+    
+    <!-- Inicia modal para reemplazar tarjetón de padrón asignado-->
+    
+    <div class="modal fade" id="reemplazarTarjeton" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Reemplazar Tarjetón</h1>
+            <button type="button" class="btn-close" aria-label="Close" data-bs-toggle="modal" data-bs-target="#tarjetongen"></button>
+          </div>
+          <div class="modal-body">
+            <label>Folio Tarjetón:</label>
+            <div class="input-group mt-2">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-123 "></i></span>
+              <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPermC">
+            </div>
+            <label class="mt-1">Vigencia:</label>
+            <div class="input-group mt-2">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar4-range me-2"></i></span>
+              <select class="form-select" id="vigenciaPermC" aria-label="Default select example">
+                <option selected>Selecciona...</option>
+                <option value="730">2 años</option>
+                <option value="2190">6 años</option>
+              </select>
+            </div>
+            <input type="text" id="folioDT" hidden>
+            <input type="text" id="idVe" hidden>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Cerrar</button>
+            <button type="button" onclick="reemplazaTarjeton(); buscarExpediente2()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Termina modal para editar folio de tarjetón de padrón asignado -->
+    
+    <!-- Inicia modal para reemplazar tarjetón Temporal asignado-->
+    
+    <div class="modal fade" id="reemplazarTarjetonTemp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Reemplazar Tarjetón</h1>
+            <button type="button" class="btn-close" aria-label="Close" data-bs-toggle="modal" data-bs-target="#tarjetongen"></button>
+          </div>
+          <div class="modal-body">
+            <label>Folio Tarjetón:</label>
+            <div class="input-group mt-2">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-123 "></i></span>
+              <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTTempC">
+            </div>
+            <label class="mt-1">Vigencia:</label>
+            <div class="input-group mt-2">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar4-range me-2"></i></span>
+              <select class="form-select" id="vigenciaTempC" aria-label="Default select example">
+                <option selected>Selecciona...</option>
+                <option value="15">15 días</option>
+                <option value="30">1 mes</option>
+                <option value="61">2 meses</option>
+                <option value="92">3 meses</option>
+                <option value="123">4 meses</option>
+                <option value="154">5 meses</option>
+                <option value="185">6 meses</option>
+              </select>
+            </div>
+            <input type="text" id="folioDT" hidden>
+            <input type="text" id="idVe" hidden>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo">Cerrar</button>
+            <button type="button" onclick="reemplazaTarjeton(); buscarExpediente2()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Termina modal para editar folio de tarjetón Temporal asignado -->
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <!-- Inicia modal para imprimir qr -->
+    <div class="modal fade" id="qrShows" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="exampleModalLabel">Código QR Tarjetón</h1>
+      <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#tarjetongen" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <strong><div class="text-center" style="font-family: Verdana, Geneva, Tahoma, sans-serif;  font-size:large" id="etiquetaNum">
+        
+      </div></strong>
+      <div class="text-center" id="qrTarjeton">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Cerrar</button>
+      <a type="button" id="etiquetanumbtn"  class="btn btn-primary" href="javascript:imprimirEtiqueta('etiquetaNum')"><i class="bi bi-printer"></i> # Expediente</a>
+      <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('qrTarjeton')"><i class="bi bi-printer-fill"></i> Imprimir QR</a>
+    </div>
+  </div>
+</div>
+</div>
+
+    <!-- Termina modal para imprimir qr -->
+
+<!-- Inicia impresion modal -->
+
+<script>
+$(document).ready(function () {
+  $('#printButton').on('click', function (event) {
+      if ($('.modal').is(':visible')) {
+          console.log('si');
+          var modalId = $(event.target).closest('.modal').attr('id');
+          $('body').css('visibility', 'hidden');
+          $('button').css('visibility', 'hidden');
+          $('#exampleModalLabel').css('visibility', 'hidden');
+          $("#" + modalId).css('visibility', 'visible');
+          $('#' + modalId).removeClass('modal');
+          window.print();
+          $('body').css('visibility', 'visible');
+          $('button').css('visibility', 'visible');
+          $('#exampleModalLabel').css('visibility', 'visible');
+          $('#' + modalId).addClass('modal');
+      } else {
+          window.print();
+      }
+  })
+});
+</script>
+<!-- Termina impresion modal -->
+
+<!-- Termina Modal para generar tarjeton -->
       
     </main>
     <script src="sidebars.js"></script>
@@ -2490,189 +2968,389 @@ include('prcd/qc/qc.php');
 
 <!-- Inicia Modal para generar tarjeton de préstamo-->
 
-<div class="modal fade " id="tarjetonPrestamo" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"><strong><i class="bi bi-plus h2"></i> Tarjetón de Préstamo con QR</strong></h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="tarjetonPrestamo" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-xl">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel"><strong><i class="bi bi-plus h2"></i> Tarjetón de Préstamo con QR</strong></h5>
+      <button type="button" class="btn-close" id="closeModalPrestamo" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container ">
+        <div class="input-group mb-3">
+          <input type="radio" class="btn-check" onchange="cambiarAtribUSR()" name="options-outlined" id="usuarioSD" autocomplete="off" checked>
+          <label class="btn btn-outline-primary" for="usuarioSD">Usuario</label>
+          <input type="radio" class="btn-check" onchange="cambiarAtrib()" name="options-outlined" id="oficial" autocomplete="off">
+          <label class="btn btn-outline-primary" for="oficial">Institución</label>
+          <input type="text" class="form-control" oninput="buscarTarjetonTemp(this.value)" placeholder="Buscar CURP, RFC o # de Tarjetón..." aria-label="Buscar">
+        </div>
+        <div class="alert alert-warning" role="alert" id="nadaDoor">
+          Ingresa la CURP o RFC para encontrar al beneficiario.
+        </div>
+          <div class="alert alert-primary" role="alert" id="positivoT" hidden>
+            <div class="row">
+              <div class="col-10 align-middle p-1">
+                  <strong># Tarjetón:</strong> <span id="numTarjeton1"></span> | 
+                  <strong>Nombre:</strong> <span id="nombreTarjeto1"></span>&nbsp<span id="apellidoPT1"></span>&nbsp<span id="apellidoMT1"></span>
+              </div>
+              <div class="col-2 text-end">
+                <button class="btn btn-primary btn-sm" id="editarTarjeton" onclick="queryDatosT()">Editar beneficiario</button>
+                <button class="btn btn-danger btn-sm" id="cancelarEditar" onclick="cancelarActualizarT()" hidden>Cancelar edición</button>
+                <button class="btn btn-success btn-sm" id="finalizarEditar" onclick="finActualizarT()" hidden>Finalizar edición</button>
+              </div>
             </div>
-            <div class="modal-body">
-              <div class="container text-center">
-                <div class="card mb-3" style="max-width: 100%;">
-                  <div class="row g-0 align-items-center">
-                    <div class="col-md-3">
-                      <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-9">
-                      <div class="card-body text-start" id="cardPrestamo">
-                        <div id = "tarjetonPrestamo">
-                          <h5 class="mb-3"><i class="bi bi-person"></i> Datos del Usuario</h5>
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Apellido Paterno</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apPaterno">
-                                <span class="input-group-text" id="basic-addon1">Apellido Materno</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apMaterno">
-                              </div>  
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Nombre (s)</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">CURP</span>
-                                <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
-                                <span class="input-group-text" id="basic-addon1">Clave INE / Folio ID:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Teléfono:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
-                                <span class="input-group-text" id="basic-addon1">Correo-e:</span>
-                                <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
-                              </div>  
-                            </div>
-                            <h5 class="mb-3"><i class="bi bi-house-door"></i> Domicilio</h5>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Calle:</span>
-                                <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="calleTemp">
-                                <span class="input-group-text" id="basic-addon1">No. Int.:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="intTemp">
-                                <span class="input-group-text" id="basic-addon1">No. Ext.:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="extTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Colonia:</span>
-                                <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="coloniaTemp">
-                                <span class="input-group-text" id="basic-addon1">C.P.:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="referenciaTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Estado:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="estadoTemp">
-                                <span class="input-group-text" id="basic-addon1">Municipio:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="municipioTemp">
-                                <span class="input-group-text" id="basic-addon1">Localidad:</span>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="localidadTemp">
-                              </div>  
-                            </div>
-                            <h5 class="mb-3"><i class="bi bi-heart-pulse"></i> Valoración Médica:</h5>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Diagnóstico:</span>
-                                <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="dxTemp">
-                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-clock-history"></i></span>
-                                <select class="form-select" id="inputGroupSelect02">
-                                  <option selected>Temporalidad...</option>
-                                  <option value="1">0 - 3 meses</option>
-                                  <option value="2">4 - 6 meses</option>
-                                  <option value="3">7 - 11 meses</option>
-                                  <option value="4">12 meses o más</option>
-                                </select>
-                              </div>  
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Nombre del Médico:</span>
-                                <input type="text" class="form-control" placeholder="Nombre del Médico que lo expide" aria-label="" aria-describedby="basic-addon1" id="medicoTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-12">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Institución:</span>
-                                <input type="text" class="form-control" placeholder="Nombre de la Institución donde se expide" aria-label="" aria-describedby="basic-addon1" id="institucionTemp">
-                              </div>  
-                            </div>
-                            <div class="col-md-8">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Fecha de valoración:</span>
-                                <input type="date" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaValTemp">
-                              </div>  
-                            </div>
+          </div>
+          <div class="alert alert-danger" role="alert" id="negativoT" hidden>
+            No se encontró el expediente.
+          </div>
+          <input type="text" id="datosCompletosT" hidden>
+          <input type="text" id="datosCompletosCURPT" hidden>
+          <input type="text" id="estadoConsultaT" hidden>
+          <input type="text" id="municipioConsultaT" hidden>
+          <input type="text" id="discapacidadConsultaT" onchange="discapacidadTab(this.value)" hidden>
+          <input type="text" id="tipoDiscapacidadConsultaT" hidden>
+          <!-- inicia body -->
+          <div class="card mb-3" style="max-width: 100%;">
+            <div class="row g-0 align-items-center">
+              <div class="col-md-3">
+                <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-9">
+                <div class="card-body text-start" id="cardPrestamo">
+                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="usuario-tab" data-bs-toggle="tab" data-bs-target="#usuario-tab-pane" type="button" role="tab" aria-controls="usuario-tab-pane" aria-selected="true">Datos del Usuario</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="medic-tab-temp" data-bs-toggle="tab" data-bs-target="#medic-tab-pane" type="button" role="tab" aria-controls="medic-tab-pane" aria-selected="false">Valoración Médica</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="vehiculoadd-tab" data-bs-toggle="tab" data-bs-target="#vehiculoadd-tab-pane" type="button" role="tab" aria-controls="vehiculoadd-tab-pane" aria-selected="false">Agregar Vehículos</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="usuario-tab-pane" role="tabpanel" aria-labelledby="usuario-tab" tabindex="0">
+                      <div id = "tarjetonPrestamo">
+                        <h5 class="mb-3 mt-3"><i class="bi bi-person"></i> Datos del Usuario</h5>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text" id="basic-addon1">Nombre (s)</span>
+                              <input type="text" class="form-control" oninput="habilitaBTNsiguiente()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp">
+                            </div>  
                           </div>
-                        </div>
-                        <hr>
-                        <h5 class="mb-3"><i class="bi bi-car-front-fill"></i> Datos del vehículo</h5>
-                        <div class="col-md-12">
-                          <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1">Marca</span>
-                            <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaTempForm">
-                            <span class="input-group-text" id="basic-addon1">Modelo</span>
-                            <input type="text" class="form-control" placeholder="Modelo" aria-label="modelo" id="modeloTempForm" aria-describedby="basic-addon1">
-                            <span class="input-group-text">Año</span>
-                            <input type="text" class="form-control" placeholder="Año" aria-label="anio" id="annioTempForm">
+                          <div class="col-md-12" id="apellidosDiv">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text" id="lastname1">Apellido Paterno</span>
+                              <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apPaterno">
+                              <span class="input-group-text" id="lastname2">Apellido Materno</span>
+                              <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apMaterno">
+                            </div>  
                           </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1">No. de Placas</span>
-                            <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasTempForm">
-                            <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-                            <input type="text" class="form-control" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieTempForm">
+                          <div class="col-md-12">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text" id="spanRFC">CURP</span>
+                              <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="" onchange="validarInput2(this);curp2date2(this)" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
+                              <span class="input-group-text" id="cveid">Clave INE / Folio ID:</span>
+                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
+                            </div>  
                           </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1">Tarjeta de Circulación</span>
-                            <input type="text" class="form-control" placeholder="# Tarjeta de Circulación" aria-label="" aria-describedby="basic-addon1" id="circulacionTempForm">
+                          <div class="col-md-12" id="divEdad">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text" id="spanEdad">Edad</span>
+                              <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="edadTemp" disabled>
+                              <span class="input-group-text" id="fechaNacT">Fecha de Nacimiento:</span>
+                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaNacimientoTemp" disabled>
+                              <span class="input-group-text" id="sexoTag">Sexo:</span>
+                              <select class="form-select" id="sexoSel"  placeholder="Selecciona..." aria-label="Default select example">
+                                <option value=Selected>Selecciona</option>
+                                <option value="Mujer">Mujer</option>
+                                <option value="Hombre">Hombre</option>
+                                <option value="Otro">Otro</option>
+                              </select>
+                            </div>  
                           </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="input-group mb-3">
-                            <span class="input-group-text">Vehículo extranjero</span>
-                            <div class="input-group-text">
-                              <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
-                            </div>
-                            <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguro" disabled>
-                          </div>  
-                        </div>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                          <button class="btn btn-primary me-md-2" type="button"><i class="bi bi-plus-lg"></i> Agregar</button>
-                        </div>
-                        <hr>
-                        <div class="table-responsive text-center">
-                          <table class="table table-hover">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Marca</th>
-                                <th scope="col">Modelo</th>
-                                <th scope="col"># de Placa</th>
-                              </tr>
-                            </thead>
-                            <tbody id="vehiculosTemp">
-                              
-                            </tbody>
-                          </table>
+                          <div class="col-md-12">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text" id="basic-addon1">Correo-e:</span>
+                              <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toLowerCase()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="correoTemp">
+                              <span class="input-group-text" id="basic-addon1">Teléfono:</span>
+                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="telcelTemp" onkeypress="ValidaSoloNumeros()">
+                            </div>  
+                          </div>
+                          <h5 class="mb-3"><i class="bi bi-house-door"></i> Domicilio</h5>
+                          <div class="col-md-12">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text" id="basic-addon1">Calle:</span>
+                              <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="calleTemp">
+                              <span class="input-group-text" id="basic-addon1">No. Ext.:</span>
+                              <input type="text" class="form-control" placeholder="" aria-label="" maxlength="11" aria-describedby="basic-addon1" id="extTemp" >
+                              <span class="input-group-text" id="basic-addon1">No. Int.:</span>
+                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="intTemp">
+                            </div>  
+                          </div>
+                          <div class="col-md-12">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text" id="basic-addon1">Colonia:</span>
+                              <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="coloniaTemp">
+                              <span class="input-group-text" id="basic-addon1">C.P.:</span>
+                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="CPTemp" onkeypress="ValidaSoloNumeros()">
+                            </div>  
+                          </div>
+                          <div class="col-md-12">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text">Estado:</span>
+                              <select class="form-select" id="estadosList" oninput="municipiosSelect(this.value)" placeholder="Selecciona..." aria-label="Default select example">
+                
+                              </select>
+                              <span class="input-group-text" id="basic-addon1">Municipio:</span>
+                              <select class="form-select" id="municipiosList" placeholder="Selecciona..." onchange="localidadesSelect(this.value)" required>
+
+                              </select>
+                              <span class="input-group-text" id="basic-addon1">Localidad:</span>
+                              <input class="form-control" list="localidadesList" id="localidades" placeholder="Buscar..." onchange="asentamientosSelect(this.value)" required>
+                              <datalist id="localidadesList">
+
+                              </datalist>
+                              <input class="form-control" list="asentamientosList" id="asentamiento" placeholder="Buscar..." hidden>
+                              <datalist id="asentamientosList" hidden>
+                                
+                              </datalist>
+                            </div>  
+                          </div>
+                          <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+                            <button class="btn btn-primary me-md-2" id="agregarUsuarioTempBtn" onclick="cambiarTabTT()" type="button" disabled> Siguente<i class="bi bi-skip-forward ms-2"></i></button>
+                          </div>
                         </div>
                       </div>
+                    </div>
+                    <div class="tab-pane fade" id="medic-tab-pane" role="tabpanel" aria-labelledby="medic-tab" tabindex="0">
+                      <div id = "tarjetonPrestamo" >
+                        <input type="text" id="curp_rfc" hidden>
+                        <h5 class="mb-3 mt-3"><i class="bi bi-heart-pulse"></i> Valoración Médica:</h5>
+                        <div class="col-md-12">
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Tipo Discapacidad:</span>
+                            <select class="form-select" id="tipoDiscTemp" onchange="discapacidadTab(this.value)" aria-label="Default select example">
+                              <option selected>Selecciona...</option>
+                              <option value="Física">Física</option>
+                              <option value="Intelectual">Intelectual</option>
+                              <option value="Sensorial">Sensorial</option>
+                              <option value="Múltiple">Múltiple</option>
+                              <option value="Psicosocial">Psicosocial</option>
+                            </select>
+                            <span class="input-group-text" id="basic-addon1">Discapacidad:</span>
+                            <!-- <input class="form-control w-25" list="discapacidadList" id="discapacidadTemp" placeholder="Buscar..." > -->
+                            <select class="form-select" id="discapacidadList" required>
+                            
+                            </select>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text" id="basic-addon1">Grado</i></span>
+                              <select class="form-select" id="gradoDiscTemp" aria-label="Default select example">
+                                <option selected>Selecciona...</option>
+                                <option value="1-Leve">1. Leve</option>
+                                <option value="2-Moderado">2. Moderado</option>
+                                <option value="3-Grave">3. Grave</option>
+                                <option value="4-Severo">4. Severo</option>
+                                <option value="5-Profundo">5. Profundo</option>
+                              </select>
+                              <span class="input-group-text" id="basic-addon1">Descripción Dx:</span>
+                              <input type="text" class="form-control w-25" placeholder="Descripción del diagnóstico" aria-label="" aria-describedby="basic-addon1" id="dxTemp">
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="input-group mb-3">
+                            <span class="input-group-text" id="causaTag">Causa:</span>
+                              <select class="form-select" id="causaSel" onchange="causaDiscOp(this.value)" placeholder="Selecciona..." aria-label="Default select example">
+                                <option value=Selected>Selecciona</option>
+                                <option value="2">Adquirida</option>
+                                <option value="3">Accidente</option>
+                                <option value="4">Enfermedad</option>
+                                <option value="6">Adicción</option>
+                                <option value="7">Otra</option>
+                              </select>
+                              <span class="input-group-text" id="basic-addon1">Especifique:</span>
+                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="especifiqueD" disabled>
+                              <span class="input-group-text" id="basic-addon1"><i class="bi bi-clock-history"></i> Temporalidad: </span>
+                              <select class="form-select" id="temporalidad">
+                                <option selected>Temporalidad...</option>
+                                <option value="0">0 - 3 meses</option>
+                                <option value="2">4 - 6 meses</option>
+                                <option value="3">7 - 11 meses</option>
+                                <option value="4">12 meses o más</option>
+                              </select>
+                            </div>
+                          </div>  
+                          <div class="col-md-12">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text" id="basic-addon1">Institución:</span>
+                              <input type="text" class="form-control" placeholder="Nombre de la Institución donde se expide la valoración" aria-label="" aria-describedby="basic-addon1" id="institucionTemp">
+                            </div>  
+                          </div>
+                          <div class="col-md-12">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text" id="basic-addon1">Nombre del Médico:</span>
+                              <input type="text" class="form-control w-25" placeholder="Nombre del Médico" aria-label="" aria-describedby="basic-addon1" id="medicoTemp">
+                              <span class="input-group-text" id="basic-addon1"># de Cédula:</span>
+                              <input type="text" class="form-control" placeholder="# de Cédula" aria-label="" aria-describedby="basic-addon1" id="cedulaTemp">
+                            </div>  
+                          </div>
+                          <div class="col-md-8">
+                            <div class="input-group mb-3">
+                              <span class="input-group-text" id="basic-addon1">Fecha de valoración:</span>
+                              <input type="date" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaValTemp">
+                            </div>  
+                          </div>
+                          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button class="btn btn-primary me-md-2" id="agregarValoracionTempBtn" onclick="usuarioTempAdd(); deshabilitaBtnDatos()" type="button"><i class="bi bi-plus-lg"></i> Guardar Datos</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="vehiculoadd-tab-pane" role="tabpanel" aria-labelledby="vehiculoadd-tab" tabindex="0">
+                      <h5 class="mb-3 mt-3"><i class="bi bi-car-front-fill"></i> Datos del vehículo</h5>
+                      <div class="col-md-12">
+                        <div class="input-group mb-3">
+                          <input type="text" id="tipoTarjeton" value="Temporal" hidden>
+                          <span class="input-group-text" id="basic-addon1">Marca</span>
+                          <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase()" oninput="habilitaBTNaddTemp()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaTemp" disabled>
+                          <span class="input-group-text" id="basic-addon1">Modelo</span>
+                          <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Modelo" aria-label="modelo" id="modeloTemp" aria-describedby="basic-addon1" disabled>
+                          <span class="input-group-text">Año</span>
+                          <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="Año" aria-label="anio" id="annioTemp" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">No. de Placas</span>
+                          <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasTemp" disabled>
+                          <span class="input-group-text" id="basic-addon1">No. de Serie</span>
+                          <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieTemp" disabled>
+                        </div>
+                      </div>
+                      <div class="input-group mb-2">
+                        <span class="input-group-text" id="basic-addon1">Folio Tarjetón</span>
+                        <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTTemp" disabled>
+                        <span class="input-group-text" id="basic-addon1">Vigencia</span>
+                        <select class="form-select" id="vigenciaTemp" aria-label="Default select example" disabled>
+                          <option selected>Selecciona...</option>
+                          <option value="15">15 días</option>
+                          <option value="30">1 mes</option>
+                          <option value="61">2 meses</option>
+                          <option value="92">3 meses</option>
+                          <option value="123">4 meses</option>
+                          <option value="154">5 meses</option>
+                          <option value="185">6 meses</option>
+                          <option value="730" id="twoY" hidden>2 años</option>
+                        </select>
+                      </div>
+                      <div class="form-text mb-2" id="basic-addon4"><a href="#" class="ms-2 link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" data-bs-toggle="modal" data-bs-target="#reemplazarTarjetonTemp" onclick="datosTarjetonT()">Reemplazar tarjetón asignado...</a></div>
+                        <label id="textoTarjeton" hidden></label>
+                      <div class="col-md-12">
+                        <div class="input-group mb-3">
+                          <span class="input-group-text">Vehículo extranjero</span>
+                          <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" id="checkAutoST" onchange="autoSeguroTCheck()" value="" aria-label="Checkbox for following text input" disabled>
+                          </div>
+                          <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroTemp" disabled>
+                        </div>  
+                      </div>
+                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary me-md-2" id="agregarVehiculoTempBtn" onclick="vehiculoTempAdd(); limpiarInputsVehiculoTemp()" type="button" disabled><i class="bi bi-plus-lg"></i> Agregar</button>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <div id = "tarjetonPrestamo">
+                    <hr>
+                    <div class="table-responsive text-center">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Marca</th>
+                            <th scope="col">Modelo</th>
+                            <th scope="col"># de Placa</th>
+                            <th scope="col"># Tarjeton</th>
+                            <th scope="col">Editar</th>
+                          </tr>
+                        </thead>
+                        <tbody id="vehiculosTemp">
+                          
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>  
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" id="habilitaimprimirt" onclick="swaldatostrn()"><i class="bi bi-save2"></i> Generar Tarjetón</button>
-              <button type="button" class="btn btn-primary" id="imprimirt" disabled><i class="bi bi-printer"></i> Imprimir</button>
             </div>
           </div>
+        </div>  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cerrarModalPrestamo" data-bs-dismiss="modal" onclick="limpiaModalTarjetonTemp()">Cerrar</button>
+          <!-- <button type="button" class="btn btn-primary" id="habilitaimprimirtt" onclick="swaldatostrn()" disabled><i class="bi bi-save2"></i> Generar QR</button> -->
+          <button type="button" class="btn btn-primary" id="imprimirtt" data-bs-toggle="modal" data-bs-target="#qrShowsT" onclick="limpiaModalTarjetonTemp()" disabled><i class="bi bi-printer"></i> Imprimir</button>
         </div>
       </div>
+    </div>
+  </div>
+</div>
       
-      <!-- Termina Modal para generar tarjeton de préstamo-->
+<!-- Inicia modal para imprimir qr -->
+<div class="modal fade" id="qrShowsT" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Código QR Tarjetón</h1>
+        <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo" onclick="cambiarTabTTFin()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <strong><div class="text-center" style="font-family: Verdana, Geneva, Tahoma, sans-serif;  font-size:large" id="etiquetaNumTemp">
+          
+        </div></strong>
+        <div class="text-center" id="qrTarjetonTemp">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo" onclick="finActualizarT()">Cerrar</button>
+        <a type="button" id="etiquetanumbtnT"  class="btn btn-primary" href="javascript:imprimirEtiqueta('etiquetaNumTemp')"><i class="bi bi-printer"></i> Etiqueta</a>
+        <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('qrTarjetonTemp')"><i class="bi bi-printer-fill"></i> Imprimir QR</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Termina modal para imprimir qr -->
+
+<!-- Inicia impresion modal -->
+
+<script>
+$(document).ready(function () {
+    $('#printButton').on('click', function (event) {
+        if ($('.modal').is(':visible')) {
+            console.log('si');
+            var modalId = $(event.target).closest('.modal').attr('id');
+            $('body').css('visibility', 'hidden');
+            $('button').css('visibility', 'hidden');
+            $('#exampleModalLabel').css('visibility', 'hidden');
+            $("#" + modalId).css('visibility', 'visible');
+            $('#' + modalId).removeClass('modal');
+            window.print();
+            $('body').css('visibility', 'visible');
+            $('button').css('visibility', 'visible');
+            $('#exampleModalLabel').css('visibility', 'visible');
+            $('#' + modalId).addClass('modal');
+        } else {
+            window.print();
+        }
+    })
+});
+</script>
+<!-- Termina impresion modal -->
+
+<!-- Termina Modal para generar tarjeton de préstamo-->
       
     </main>
 

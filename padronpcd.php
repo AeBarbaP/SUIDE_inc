@@ -276,6 +276,9 @@ include('prcd/qc/qc.php');
           <div class="col-sm-2 justify-content-center align-items-center text-center">
             <p class="h5">No. Expediente</p>
             <strong><span class="h4" id="numeroExpediente"></span></strong>
+            <input type="text" id="numeroTemporal" hidden>
+            <input type="text" id="numeroTemporal2" hidden>
+            <input type="text" id="municipioChange" hidden>
             <br>
             <img id="profile" src="img/no_profile.png" width="100%">
             <div class="input-group">
@@ -665,7 +668,7 @@ include('prcd/qc/qc.php');
                         <option value="ISSSTE">ISSSTE</option>
                         <option value="SSZ">SSZ</option>
                         <option value="Ninguno">Sin Seguridad Social</option>
-                        <option value="5">Otro</option>
+                        <option value="Otro">Otro</option>
                       </select>
                       <div class="invalid-feedback">
                         * Campo requerido.
@@ -742,7 +745,7 @@ include('prcd/qc/qc.php');
                       <label for="exampleDataListCausa" class="form-label">Causa:</label>
                       <div class="input-group">
                         <select class="form-select" id="causaDisc" onchange="causaDiscOp(this.value)" aria-label="Default select example" required>
-                          <option selected>Selecciona...</option>
+                          <option value="" selected>Selecciona...</option>
                           <option value="1">Nacimiento</option>
                           <option value="4">Congénita</option>
                           <option value="2">Accidente</option>
@@ -2025,6 +2028,7 @@ include('prcd/qc/qc.php');
       </div><!-- modal -->
                   
       <!-- Termina Modal para generar credencial -->
+
 <!-- Inicia Modal para generar tarjeton -->
 
 <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="tarjetongen" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
@@ -2283,9 +2287,7 @@ include('prcd/qc/qc.php');
 </div>
 
     <!-- Termina modal para imprimir qr -->
-
-
-
+    
 <!-- Inicia impresion modal -->
 
 <script>
@@ -2329,10 +2331,12 @@ $(document).ready(function () {
           <input type="radio" class="btn-check" onchange="cambiarAtribUSR()" name="options-outlined" id="usuarioSD" autocomplete="off" checked>
           <label class="btn btn-outline-primary" for="usuarioSD">Usuario</label>
           <input type="radio" class="btn-check" onchange="cambiarAtrib()" name="options-outlined" id="oficial" autocomplete="off">
-          </div>
-          <div class="alert alert-warning" role="alert" id="nadaDoor">
-            Ingresa la CURP o RFC para encontrar al beneficiario.
-          </div>
+          <label class="btn btn-outline-primary" for="oficial">Institución</label>
+          <input type="text" class="form-control" oninput="buscarTarjetonTemp(this.value)" placeholder="Buscar CURP, RFC o # de Tarjetón..." aria-label="Buscar">
+        </div>
+        <div class="alert alert-warning" role="alert" id="nadaDoor">
+          Ingresa la CURP o RFC para encontrar al beneficiario.
+        </div>
           <div class="alert alert-primary" role="alert" id="positivoT" hidden>
             <div class="row">
               <div class="col-10 align-middle p-1">
@@ -2892,6 +2896,7 @@ $(document).ready(function () {
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-mortarboard"></i></span>
                 <select class="form-select" id="escolaridadFam2" aria-label="Default select example">
                   <option selected>Nivel de Escolaridad...</option>
+                  <option value="Sin_escolarizar">Sin escolarizar</option>
                   <option value="Preescolar">Preescolar</option>
                   <option value="Primaria">Primaria</option>
                   <option value="Secundaria">Secundaria</option>

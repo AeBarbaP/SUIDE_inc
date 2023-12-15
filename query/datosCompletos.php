@@ -6,15 +6,15 @@ $expediente = $_POST['expediente'];
 
 //substr($expediente,6,5);
 
-$sql = "SELECT * FROM datos_generales WHERE numExpediente LIKE '%$expediente%'";
+$sql = "SELECT * FROM datos_generales WHERE numExpediente LIKE '%$expediente%' OR curp LIKE '$curp'";
 $resultadoSql = $conn->query($sql);
 $rowDatos = $resultadoSql->fetch_assoc();
 //datos médicos
-$sqlMedicos = "SELECT * FROM datos_medicos WHERE expediente LIKE '%$expediente%'";
+$sqlMedicos = "SELECT * FROM datos_medicos WHERE expediente LIKE '%$expediente%' OR curp LIKE '$curp'";
 $resultadoSqlMedicos = $conn->query($sqlMedicos);
 $rowDatosMedicos = $resultadoSqlMedicos->fetch_assoc();
 //vivienda
-$sqlVivienda = "SELECT * FROM vivienda WHERE expediente LIKE '%$expediente%'";
+$sqlVivienda = "SELECT * FROM vivienda WHERE expediente LIKE '%$expediente%' OR curp LIKE '$curp'";
 $resultadoSqlVivienda = $conn->query($sqlVivienda);
 $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
 

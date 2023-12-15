@@ -725,10 +725,12 @@ $(document).ready(function () {
     </div>
     <div class="modal-body">
       <div class="container ">
-        <div class="input-group mb-3">
-          <input type="radio" class="btn-check" onchange="cambiarAtribUSR()" name="options-outlined" id="usuarioSD" autocomplete="off" checked>
-          <label class="btn btn-outline-primary" for="usuarioSD">Usuario</label>
-          <input type="radio" class="btn-check" onchange="cambiarAtrib()" name="options-outlined" id="oficial" autocomplete="off">
+      <div class="input-group mb-3">
+            <input type="radio" class="btn-check" onchange="cambiarAtribUSR()" name="options-outlined" id="usuarioSD" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="usuarioSD">Usuario</label>
+            <input type="radio" class="btn-check" onchange="cambiarAtrib()" name="options-outlined" id="oficial" autocomplete="off">
+            <label class="btn btn-outline-primary" for="oficial">Institución</label>
+            <input type="text" class="form-control" oninput="buscarTarjetonTemp(this.value)" placeholder="Buscar CURP, RFC o # de Tarjetón..." aria-label="Buscar">
           </div>
           <div class="alert alert-warning" role="alert" id="nadaDoor">
             Ingresa la CURP o RFC para encontrar al beneficiario.

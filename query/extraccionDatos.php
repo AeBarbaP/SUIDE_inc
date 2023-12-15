@@ -3,10 +3,10 @@ include('../prcd/qc/qc.php');
 if (isset($_POST['cadenaTexto'])){
     $datos = $_POST['cadenaTexto'];
 
-    $sql = "SELECT * FROM datos_generales WHERE RIGHT(numExpediente,5) LIKE '%$datos' LIMIT 1";
+    $sql = "SELECT * FROM datos_generales WHERE RIGHT(numExpediente,5) LIKE '%$datos' OR curp LIKE '$datos%' LIMIT 1";
     $resultadoSql = $conn->query($sql);
     $fila = $resultadoSql->num_rows;
-    $sql2 = "SELECT * FROM datos_medicos WHERE RIGHT(expediente,5) LIKE '%$datos' LIMIT 1";
+    $sql2 = "SELECT * FROM datos_medicos WHERE RIGHT(expediente,5) LIKE '%$datos' OR curp LIKE '$datos%' LIMIT 1";
     $resultadoSql2 = $conn->query($sql2);
     $fila2 = $resultadoSql2->num_rows;
 

@@ -484,7 +484,7 @@ $(document).ready(function() {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: 'Datos Médicos han sido guardados',
+                        title: 'Datos Médicos han sido actualizados',
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -498,7 +498,7 @@ $(document).ready(function() {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'error',
-                        title: 'Datos Médicos NO han sido guardados',
+                        title: 'Datos Médicos NO han sido actualizados',
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -860,7 +860,7 @@ $(document).ready(function() {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: 'Datos de Vivienda han sido guardados',
+                        title: 'Datos de Vivienda han sido actualizados',
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -879,7 +879,7 @@ $(document).ready(function() {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'error',
-                        title: 'Datos de Vivienda NO han sido guardados',
+                        title: 'Datos de Vivienda NO han sido actualizados',
                         showConfirmButton: false,
                         timer: 1500
                     })
