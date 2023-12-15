@@ -1722,6 +1722,12 @@ function checkListDocs() {
     document.getElementById('nav-fin-tab').disabled = false;
     document.getElementById('nav-fin-tab').setAttribute('onclick','finalizarExpediente()');
 }
+function checkListDocsUpdate() {
+    var curp = document.getElementById('curp_exp').value;
+    document.getElementById('buttonCheck').setAttribute("href", "prcd/checkListPDF2.php?curp="+curp);
+    document.getElementById('nav-fin-tab').disabled = false;
+    document.getElementById('nav-fin-tab').setAttribute('onclick','finalizarUpdateExpediente()');
+}
 
 function finalizarExpediente(){
     Swal.fire({
@@ -1733,13 +1739,37 @@ function finalizarExpediente(){
         cancelButtonColor: "#d33",
         confirmButtonText: "Sí, terminar!"
     }).then((result) => {
-    if (result.isConfirmed) {
-        Swal.fire({
-        title: "Terminado!",
-        text: "El expediente ha sido guardado.",
-        icon: "success"
-        });
-    }
+        if (result.isConfirmed) {
+            Swal.fire({
+            title: "Terminado!",
+            text: "El expediente ha sido guardado.",
+            icon: "success",
+            showConfirmButton: false,
+            });
+        }
+        location.reload();
+    });
+}
+
+function finalizarUpdateExpediente(){
+    Swal.fire({
+        title: "Estas seguro?",
+        text: "terminaste de actualizar el Expediente??",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, terminar!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+            title: "Terminado!",
+            text: "El expediente ha sido actualizado.",
+            icon: "success",
+            showConfirmButton: false,
+            });
+        }
+        location.reload();
     });
 }
 
