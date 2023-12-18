@@ -139,6 +139,7 @@ function foto2() {
     }
 }
 
+
 function buscarPhoto(curp){
     $.ajax({
         type: "POST",
