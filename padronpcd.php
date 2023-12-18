@@ -2029,6 +2029,41 @@ include('prcd/qc/qc.php');
                   
       <!-- Termina Modal para generar credencial -->
 
+      <!-- Inicia Modal para generar credencial desde expediente-->
+      <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="credgenExp" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-vcard"></i> Generar Credencial con QR</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="height: 620px;">
+              <div class="input-group mb-1 mt-2 w-50">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                <input class="form-control" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+              </div><!-- input group -->
+              <br>
+              <div class="container text-center">
+                <div class="card mb-3" style="max-width: 100%;">
+                <form action="prcd/generaqrcredencial.php" id="form-id" method="POST"><!--form-->
+                  <div class="row g-0" id="credencial">
+                    
+                  </div><!-- row -->
+                </form>
+                </div><!-- card -->
+              </div><!-- container -->
+            </div><!-- modal body -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd()"><i class="bi bi-save2"></i> Generar Credencial</button>
+              <button type="button" class="btn btn-primary" id="imprimirc" disabled><i class="bi bi-printer"></i> Imprimir</button>
+            </div><!-- modal footer -->
+          </div><!-- modal content -->
+        </div><!-- modal dialog -->
+      </div><!-- modal -->
+                  
+      <!-- Termina Modal para generar credencial desde expediente-->
+
 <!-- Inicia Modal para generar tarjeton -->
 
 <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="tarjetongen" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
