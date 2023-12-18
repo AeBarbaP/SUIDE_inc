@@ -155,7 +155,7 @@ function buscarPhoto(curp){
             var ruta = jsonData.ruta;
             
             if (success == 1) {
-                document.getElementById("profile").setAttribute('src','assets/'+ruta);
+                document.getElementById("profile").setAttribute('src','fotos_expedientes/'+ruta);
             } else if (success == 0){
                 console.log("Sin foto");
             }

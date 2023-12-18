@@ -93,6 +93,7 @@ include('prcd/qc/qc.php');
     <script src="js/usuarioTemp.js"></script>
     <script src="js/editarFamRef.js"></script>
     <script src="js/print.js"></script>
+    <script src="js/guardar.js"></script>
     <script src="js/credencialEmpleados.js"></script>
 
     <audio id="myAudio">
