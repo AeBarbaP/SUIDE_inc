@@ -597,35 +597,24 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
     $NumHabitaciones = $rowViviendas['numeroHabitaciones'];
     $vivienda = $rowCatViviendas['nombreVivienda'];
     $NumPersonas = $rowViviendas['numeroPersonas'];
-    $pagoVivienda = 0;
+    $pagoVivienda = $rowViviendas['pagoVivienda'];
     $valorVivienda = $rowViviendas['valorVivienda'];
     
     if ($idCatVivienda == 1){
-        $vivienda = 1;
-        //renta 
-        $pagoVivienda = 0;
-        //pagando vivienda 
+        $catVivienda = 1;
         $vivienda_pagando = 0;
     }
     else if ($idCatVivienda == 2){
-        $vivienda = 2;
-        //renta 
-        $pagoVivienda = 0;
-        //pagando vivienda 
+        $catVivienda = 2;
         $vivienda_pagando = 0;
     }
     else if ($idCatVivienda == 5){
-        $vivienda = 3;
-         //renta 
-         $pagoVivienda = $rowViviendas['pagoVivienda'];
-         //pagando vivienda 
-         $vivienda_pagando = 0;
-        
+        $catVivienda = 3;
+        $vivienda_pagando = 0;
     }
     else if ($idCatVivienda == 4){
-        $vivienda = 0;
+        $catVivienda = 4;
         $vivienda_pagando = 1;
-        // lo demás se lo trae de monto
     }
 
     $idTecho = $rowTecho['id'];
