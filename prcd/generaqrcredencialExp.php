@@ -88,7 +88,14 @@ $rowSqlMedicos = $resultadoMedicos->fetch_assoc();
 
 $discapacidad = $rowSqlMedicos['discapacidad'];
 $discapacidadShow = substr($discapacidad,3);
-$tipoSangre = $rowSqlMedicos['tipo_sangre'];
+$tipoSangredb = $rowSqlMedicos['tipo_sangre'];
+
+$sqlSangre = "SELECT * FROM tiposangre WHERE id = '$tipoSangredb'";
+$resultadoSangre = $conn->query($sqlSangre);
+$rowSqlSangre = $resultadoSangre->fetch_assoc();
+
+$tipoSangre = $rowSqlSangre['tipoSangre'];
+
 $alergias = $rowSqlMedicos['alergias_cual'];
 $cadena = strlen($alergias);
 
