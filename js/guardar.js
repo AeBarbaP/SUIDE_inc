@@ -1753,13 +1753,33 @@ function credencialExp() {
 }
 
 function entregarTarjetonExp(){
-    var numExp = 1;
+    var numExp = document.getElementById('numeroExpediente').innerHTML;
     $("#tarjetongen").modal('show');
     document.getElementById('searchDBInclusion2').setAttribute('onfocus','buscarExpediente2(); desbloquearInputsT(this.value)');
     document.getElementById('searchDBInclusion2').value = numExp;
-    /* $('#searchDBInclusion2').on('change',function(){
-        buscarExpediente2();
-    }); */
+    var curp = document.getElementById('curp_exp').value;
+    var tipoDoc = 2;
+
+    $.ajax({
+        type: "POST",
+        url: 'prcd/guardarDocumento.php',
+        dataType:'json',
+        data: {
+            curp:curp,
+            tipoDoc:tipoDoc,
+            numExp:numExp
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            
+            if (success == 1) {
+                document.getElementById('tarjetonExpedienteBtn').disabled = true;
+            } else if (success == 0){
+                alert("No se pudo entregar el tarjetón");
+            }
+        }
+    });
 }
 
 function finalizarExpediente(){

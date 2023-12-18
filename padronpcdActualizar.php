@@ -1739,6 +1739,18 @@ include('prcd/qc/qc.php');
                       <div class="d-grid gap-2 mt-3">
                       <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#solicitudAdd" onclick="folioApoyo(); mostrarTablaServicios()"><i class="bi bi-file-earmark-text"></i> Agregar solicitud</button>
                       </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="d-grid gap-2 mt-3">
+                            <button class="btn btn-secondary" type="button" id="credencialExpedienteBtn" target="_blank" onclick="credencialExp()" ><i class="bi bi-person-vcard me-2"></i> Entregar Credencial</button>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="d-grid gap-2 mt-3">
+                          <button class="btn btn-secondary" type="button" id="tarjetonExpedienteBtn" onclick="entregarTarjetonExp()"><i class="bi bi-person-badge me-2"></i> Entregar Tarjetón</button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
