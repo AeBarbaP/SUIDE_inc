@@ -106,7 +106,6 @@ function queryDatos(){
             document.getElementById('editarBeneficiario').hidden = true;
             document.getElementById('cancelarEditar').hidden = false;
             
-
             if (success = 1) {
                 document.getElementById('curp').value = jsonData.curp;
                 document.getElementById('curp_exp').value = jsonData.curp;

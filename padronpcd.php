@@ -276,9 +276,9 @@ include('prcd/qc/qc.php');
           <div class="col-sm-2 justify-content-center align-items-center text-center">
             <p class="h5">No. Expediente</p>
             <strong><span class="h4" id="numeroExpediente"></span></strong>
-            <input type="text" id="numeroTemporal" hidden>
-            <input type="text" id="numeroTemporal2" hidden>
-            <input type="text" id="municipioChange" hidden>
+            <input type="text" id="numeroTemporal" >
+            <input type="text" id="numeroTemporal2" >
+            <input type="text" id="municipioChange" >
             <br>
             <img id="profile" src="img/no_profile.png" width="100%">
             <div class="input-group">
@@ -397,10 +397,10 @@ include('prcd/qc/qc.php');
                     <label for="edoCivil" class="form-label">Estado Civil:</label>
                     <select class="form-select" id="edoCivil" aria-label="Default select example" required>
                       <option value="0" selected>Selecciona...</option>
-                      <option value="Solter@">Solter@</option>
-                      <option value="Casad@">Casad@</option>
-                      <option value="Viud@">Viud@</option>
-                      <option value="Divorciad@">Divorciad@</option>
+                      <option value="Soltero(a)">Soltero(a)</option>
+                      <option value="Casado(a)">Casado(a)</option>
+                      <option value="Viudo(a)">Viudo(a)</option>
+                      <option value="Divorciado(a)">Divorciado(a)</option>
                       <option value="Unión_Libre">Unión Libre</option>
                     </select>
                     <div class="invalid-feedback">
@@ -686,6 +686,7 @@ include('prcd/qc/qc.php');
                   <br>
                     <div class="d-grid gap-2 mt-3">
                       <button class="btn btn-primary" type="submit" id="btnGuardarGeneral">Guardar</button>
+                      <button class="btn btn-primary" type="submit" id="btnGuardarGeneralUpdate" hidden>Guardar</button>
                       </form>
                     </div>
                     
@@ -1181,6 +1182,7 @@ include('prcd/qc/qc.php');
                     <br>
                     <div class="d-grid gap-2 mt-3">
                       <button class="btn btn-primary" type="submit" id="guardarMedicosbtn">Guardar</button>
+                      <button class="btn btn-primary" type="submit" id="guardarMedicosbtnUpdate" hidden>Guardar</button>
                       </form>
                     </div>
                   </div>
@@ -1563,7 +1565,8 @@ include('prcd/qc/qc.php');
                     <br>
                     <div class="d-grid gap-2 mt-3">
                       <button class="btn btn-primary" type="submit" onclick="cambiarTab" id="guardarBTNpadron">Guardar</button>
-                      <!-- <button class="btn btn-primary" type="submit">Guardar</button> -->
+                      <button class="btn btn-primary" type="submit" onclick="cambiarTab" id="guardarBTNVivienda1" hidden>Guardar</button>
+                      
                       </form>
                     </div>
                   </div>
@@ -1776,7 +1779,7 @@ include('prcd/qc/qc.php');
                     </table>
                     <div id="elementH"></div>
                     <div class="d-grid gap-2">
-                      <a id="buttonCheck" class="btn btn-primary btn-lg" type="button" onclick="checkListDocs()">Imprimir formato Check List</a>
+                      <a id="buttonCheck" class="btn btn-primary btn-lg" type="button" onclick="checkListDocs()" target="_blank" disabled>Imprimir formato Check List</a>
                     </div>
                   </div>
                 </div>

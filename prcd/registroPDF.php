@@ -278,29 +278,29 @@ else if ($causa == 7){
 
 $idTemporalidad = $rowSqlMedicos['temporalidad'];
 if($idTemporalidad == 1){
-  $tempDisc ="Permanente";
+  $tempDisc ="";
 }
 else{
   $tempDisc = $rowSqlMedicos['temporalidad'];
 }
 
 $idFValoracion = $rowSqlMedicos['valoracion'];
-if($idFValoracion == 1){
+if($idFValoracion == 1 || $idFValoracion == 'IMSS'){
   $idFValoracion2 ="IMSS";
 }
-else if($idFValoracion == 2){
+else if($idFValoracion == 2 || $idFValoracion == 'ISSSTE'){
   $idFValoracion2 ="ISSSTE";
 }
-else if($idFValoracion == 3){
+else if($idFValoracion == 3 || $idFValoracion == 'SSZ'){
   $idFValoracion2 ="SSZ";
 }
-else if($idFValoracion == 4){
+else if($idFValoracion == 4 || $idFValoracion == 'CREE'){
   $idFValoracion2 ="CREE";
 }
-else if($idFValoracion == 5){
+else if($idFValoracion == 5 || $idFValoracion == 'SMFA'){
   $idFValoracion2 ="SMFA";
 }
-else if($idFValoracion == 6){
+else if($idFValoracion == 6 || $idFValoracion == 'UBR'){
   $idFValoracion2 ="UBR";
 }
 else{
@@ -346,6 +346,21 @@ else{
   $idRehab2 = "";
   $idRehab3 = "";
 }
+$rehabDonde1 = $rowSqlMedicos['rehabilitacion_donde'];
+if ($rehabDonde1 == "" || $rehabDonde1 == "0"){
+  $rehabDonde = "";
+}
+else {
+  $rehabDonde = $rehabDonde1;
+}
+$rehabInicio = $rowSqlMedicos['rehabilitacion_inicio'];
+if ($rehabInicio == "" || $rehabInicio == "0000-00-00" || $rehabInicio == null){
+  $rehabInicio1 = "";
+}
+else {
+  $rehabInicio1 = $rehabInicio;
+}
+
 
 $Duracion = $rowSqlMedicos['rehabilitacion_duracion'];
 if($Duracion == 1){
@@ -364,7 +379,7 @@ else{
   $Duracion2 = "";
 }
 
-$idCirugias = $rowSqlMedicos['rehabilitacion'];
+$idCirugias = $rowSqlMedicos['cirugias'];
 if($idCirugias == 1 || $idCirugias == "SI"){
   $idCirugias2 ="X";
   $idCirugias3 ="";
@@ -418,6 +433,14 @@ else {
   $rentada ="";
 }
 
+$viviendaRentaMXN = $rowViviendas['vivienda_renta'];
+if ($viviendaRentaMXN == "" || $viviendaRentaMXN == null || $viviendaRentaMXN == 0){
+  $viviendaRentaMXN1 = "";
+}
+else{
+  $viviendaRentaMXN1 = $viviendaRentaMXN;
+}
+
 $pagandoViv = $rowViviendas['vivienda_pagando'];
 if($pagandoViv == 1){
   $pagandoSi ="X";
@@ -426,6 +449,13 @@ if($pagandoViv == 1){
 else if($pagandoViv == 0){
   $pagandoSi ="";
   $pagandoNo ="X";
+}
+$montoPagando = $rowViviendas['monto_pagando'];
+if ($montoPagando == 0 || $montoPagando == null || $montoPagando == ""){
+  $montoPagando1 = "";
+}
+else{
+  $montoPagando1 = $montoPagando;
 }
 
 $tipoCasa = $rowViviendas['caracteristicas'];
@@ -591,10 +621,10 @@ else {
 
 $serviciosOtro = $rowViviendas['serv_basicos_otro'];
 if ($serviciosOtro == 1){
-  $otroServ = "";
-}
-else {
   $otroServ = $serviciosOtro;
+}
+else if ($serviciosOtro == 0 || $serviciosOtro == null || $serviciosOtro == "") {
+  $otroServ = "";
 }
 
 $electroLavadora = $rowViviendas['electrodomesticos_lavadora'];
@@ -662,10 +692,10 @@ else {
 }
 
 $electroOtro = $rowViviendas['electrodomesticos_otro'];
-if ($electroOtro != 0 || $electroOtro != ""){
-  $otroElectro = "X    ".$electroOtro;
+if ($electroOtro == 1){
+  $otroElectro = $electroOtro;
 }
-else {
+else if ($electroOtro == 0 || $electroOtro == "" || $electroOtro == null){
   $otroElectro = "";
 }
 
@@ -686,6 +716,14 @@ if ($deudas == 1){
 else {
   $deudasSi = "";
   $deudasNo = "X";
+}
+
+$montoDeuda = $rowViviendas['deudas_cuanto'];
+if ($montoDeuda == 0 || $montoDeuda == "" || $montoDeuda == null){
+  $montoDeuda1 = "";
+}
+else {
+  $montoDeuda1 = $montoDeuda;
 }
 
 class PDF extends FPDF
@@ -1179,10 +1217,10 @@ $pdf->Cell(31,5,utf8_decode($otracausa),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(22,5,utf8_decode('Temporalidad:'),0,0,'L');
+$pdf->Cell(34,5,utf8_decode('Fecha inicio discapacidad :'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','U',10);
-$pdf->Cell(36,5,utf8_decode($tempDisc),0,0,'C');
+$pdf->Cell(28,5,utf8_decode($tempDisc),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(34,5,utf8_decode('Fuente de Valoración:'),0,0,'C');
@@ -1216,13 +1254,13 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(14,5,utf8_decode('Dónde?'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','U',10);
-$pdf->Cell(29,5,utf8_decode($rowSqlMedicos['rehabilitacion_donde']),0,0,'C');
+$pdf->Cell(29,5,utf8_decode($rehabDonde),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(23,5,utf8_decode('Fecha de Inicio:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','U',10);
-$pdf->Cell(22,5,utf8_decode($rowSqlMedicos['rehabilitacion_inicio']),0,0,'C');
+$pdf->Cell(22,5,utf8_decode($rehabInicio1),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(18,5,utf8_decode('Duración:'),0,0,'L');
@@ -1331,7 +1369,7 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(29,5,utf8_decode('Monto de la renta: $'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','U',10);
-$pdf->Cell(16,5,utf8_decode(' '.$rowViviendas['vivienda_renta'].' '),0,0,'C');
+$pdf->Cell(16,5,utf8_decode($viviendaRentaMXN1),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(27,5,utf8_decode('La está pagando?:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
@@ -1351,7 +1389,7 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(15,5,utf8_decode('Monto: $'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','U',10);
-$pdf->Cell(17,5,utf8_decode(' '.$rowViviendas['monto_pagando'].' '),0,0,'L');
+$pdf->Cell(17,5,utf8_decode($montoPagando1),0,0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -1593,7 +1631,7 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(23,5,utf8_decode('Monto deuda: $'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','U',10);
-$pdf->Cell(40,5,utf8_decode(' '.$rowViviendas['deudas_cuanto'].' '),0,0,'L');
+$pdf->Cell(40,5,utf8_decode($montoDeuda1),0,0,'L');
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();

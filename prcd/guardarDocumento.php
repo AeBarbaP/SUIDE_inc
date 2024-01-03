@@ -38,6 +38,11 @@ $resultadoUsr= $conn->query($sqlinsertUsr);
             '$tipo_dato',
             '$fecha_entrega')";
         $resultadoUsr = $conn->query($sqlInsertUsr);
+        /* $sqlInsertServicio = "INSERT INTO servicios(
+            curp,
+            expediente,
+            usr,
+        )"; */
         echo json_encode(array('success'=>1));
         }
         else{

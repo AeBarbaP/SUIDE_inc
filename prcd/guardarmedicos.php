@@ -40,7 +40,7 @@ $tipo_dato = 6;
 
 $sqlinsert= "INSERT INTO datos_medicos (
     curp,
-    numExp,
+    expediente,
     discapacidad,
     grado_discapacidad,
     tipo_discapacidad,
