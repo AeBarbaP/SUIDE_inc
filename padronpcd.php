@@ -276,9 +276,9 @@ include('prcd/qc/qc.php');
           <div class="col-sm-2 justify-content-center align-items-center text-center">
             <p class="h5">No. Expediente</p>
             <strong><span class="h4" id="numeroExpediente"></span></strong>
-            <input type="text" id="numeroTemporal" >
-            <input type="text" id="numeroTemporal2" >
-            <input type="text" id="municipioChange" >
+            <input type="text" id="numeroTemporal" hidden>
+            <input type="text" id="numeroTemporal2" hidden>
+            <input type="text" id="municipioChange" hidden>
             <br>
             <img id="profile" src="img/no_profile.png" width="100%">
             <div class="input-group">
@@ -686,7 +686,7 @@ include('prcd/qc/qc.php');
                   <br>
                     <div class="d-grid gap-2 mt-3">
                       <button class="btn btn-primary" type="submit" id="btnGuardarGeneral">Guardar</button>
-                      <button class="btn btn-primary" type="submit" id="btnGuardarGeneralUpdate" hidden>Guardar</button>
+                      <button class="btn btn-primary" type="button" id="btnGuardarGeneralUpdate" onclick="updateGeneralesForm()" hidden>Guardar</button>
                       </form>
                     </div>
                     
@@ -1182,7 +1182,7 @@ include('prcd/qc/qc.php');
                     <br>
                     <div class="d-grid gap-2 mt-3">
                       <button class="btn btn-primary" type="submit" id="guardarMedicosbtn">Guardar</button>
-                      <button class="btn btn-primary" type="submit" id="guardarMedicosbtnUpdate" hidden>Guardar</button>
+                      <button class="btn btn-primary" type="button" id="guardarMedicosbtnUpdate" onclick="updateDatosMedicos()" hidden>Guardar</button>
                       </form>
                     </div>
                   </div>
@@ -1564,8 +1564,8 @@ include('prcd/qc/qc.php');
                     <!-- dependencia económica -->
                     <br>
                     <div class="d-grid gap-2 mt-3">
-                      <button class="btn btn-primary" type="submit" onclick="cambiarTab" id="guardarBTNpadron">Guardar</button>
-                      <button class="btn btn-primary" type="submit" onclick="cambiarTab" id="guardarBTNVivienda1" hidden>Guardar</button>
+                      <button class="btn btn-primary" type="submit" id="guardarBTNpadron">Guardar</button>
+                      <button class="btn btn-primary" type="button" onclick="updateVivienda()" id="guardarBTNVivienda1"  hidden>Guardar</button>
                       
                       </form>
                     </div>

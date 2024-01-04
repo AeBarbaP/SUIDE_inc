@@ -335,10 +335,10 @@ $(document).ready(function() {
                 var jsonData = JSON.parse(JSON.stringify(response));
                 var verificador = jsonData.succes;
                 var curpSaved = jsonData.curp;
-                if (verificador == 1){
+                if (verificador = 1){
                     document.getElementById('btnGuardarGeneral').hidden = true;
                     document.getElementById('btnGuardarGeneralUpdate').hidden = false;
-                    document.getElementById('generalesForm').setAttribute('id','generalesForm1');
+                    document.getElementById('generalesForm').setAttribute('id','updateGeneralesForm');
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -378,9 +378,8 @@ $(document).ready(function() {
     })
 })
 
-$(document).ready(function() {
-    $('#generalesForm1').submit(function(e) {
-        
+
+function updateGeneralesForm(){
         /* Datos Generales */
         var nombre = document.getElementById('nombre').value;
         var apellidoP = document.getElementById('apellidoP').value;
@@ -585,10 +584,9 @@ $(document).ready(function() {
                 }
             }
         });
-        e.preventDefault();
+        //e.preventDefault();
 
-    })
-})
+}
 
 function cambiarTab(){
     $("#nav-generales-tab").removeClass('active');
@@ -601,7 +599,7 @@ $(document).ready(function() {
     $('#medicosForm').submit(function(e) {
         /* Datos Médicos */
         var curp_exp = document.getElementById('curp_exp').value;
-        var numExp = document.getElementById('numeroExpediente').innerHTML;
+        var numExp = document.getElementById('numeroExpediente').innerText;
         var discapacidad = document.getElementById('discapacidadList').value;
         var gradoDisc = document.getElementById('gradoDisc').value;
         var tipoDisc = document.getElementById('tipoDisc').value;
@@ -728,10 +726,10 @@ $(document).ready(function() {
     })
 })
 
-$(document).ready(function() {
-    $('#medicosForm1').submit(function(e) {
+function updateDatosMedicos(){
         /* Datos Médicos */
         var curp_exp = document.getElementById('curp_exp').value;
+        var numExp = document.getElementById('numeroExpediente').innerText;
         var discapacidad = document.getElementById('discapacidadList').value;
         var gradoDisc = document.getElementById('gradoDisc').value;
         var tipoDisc = document.getElementById('tipoDisc').value;
@@ -796,6 +794,7 @@ $(document).ready(function() {
             dataType:'json',
             data: {
                 curp_exp:curp_exp,
+                numExp:numExp,
                 discapacidad:discapacidad,
                 gradoDisc:gradoDisc,
                 tipoDisc:tipoDisc,
@@ -851,10 +850,9 @@ $(document).ready(function() {
                 }
             }
         });
-        e.preventDefault();
+        //e.preventDefault();
 
-    })
-})
+}
 
 function cambiarTab2(){
     $("#nav-medicos-tab").removeClass('active');
@@ -913,6 +911,7 @@ $(document).ready(function() {
 
         /* Datos Médicos */
         var curp_exp = document.getElementById('curp_exp').value;
+        var numExp = document.getElementById('numeroExpediente').innerText;
         var viviendaPro = document.getElementById('viviendaPro');
         var viviendaPre = document.getElementById('viviendaPre');
         var viviendaRe = document.getElementById('viviendaRe');
@@ -1158,6 +1157,7 @@ $(document).ready(function() {
             async: true,
             data: {
                 curp_exp:curp_exp,
+                numExp:numExp,
                 vivienda:vivienda,
                 montoRenta:montoRenta,
                 viviendaDebe:viviendaDebe,
@@ -1238,11 +1238,10 @@ $(document).ready(function() {
     })
 })
 
-$(document).ready(function() {
-    $("#Formvivienda1").submit(function(e) {
-
+function updateVivienda() {
         /* Datos Médicos */
         var curp_exp = document.getElementById('curp_exp').value;
+        var numExp = document.getElementById('numeroExpediente').innerText;
         var viviendaPro = document.getElementById('viviendaPro');
         var viviendaPre = document.getElementById('viviendaPre');
         var viviendaRe = document.getElementById('viviendaRe');
@@ -1286,8 +1285,6 @@ $(document).ready(function() {
         var dependientes = document.getElementById('dependenciaEconomica').value;
         var deudasSi = document.getElementById('deudasSi');
         var deudasNo = document.getElementById('deudasNo');
-        
-        
         
         if(viviendaPro.checked){
             var vivienda = 1;
@@ -1488,6 +1485,7 @@ $(document).ready(function() {
             async: true,
             data: {
                 curp_exp:curp_exp,
+                numExp:numExp,
                 vivienda:vivienda,
                 montoRenta:montoRenta,
                 viviendaDebe:viviendaDebe,
@@ -1561,9 +1559,7 @@ $(document).ready(function() {
                 }
             }
         });
-        e.preventDefault();
-    })
-})
+}
 
 function cambiarTab3(){
     $("#nav-vivienda-tab").removeClass('active');

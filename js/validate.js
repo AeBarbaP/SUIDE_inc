@@ -417,12 +417,16 @@ function causaDiscOp(x){
     } else {
         document.getElementById('especifiqueD').disabled = true;
     }
-    if (causaDisc == 2 || causaDisc == 3 || causaDisc == 4 || causaDisc == 6){
+    if (causaDisc == 2 || causaDisc == 3 || causaDisc == 6){
         document.getElementById('temporalidad').disabled = false;
         document.getElementById('temporalidad').required = true;
     } else {
         document.getElementById('temporalidad').disabled = true;
         document.getElementById('temporalidad').required = false;
+    }
+    if (causaDisc == 5){
+        document.getElementById('especifiqueD').disabled = false;
+        document.getElementById('especifiqueD').required = true;
     }
 }
 

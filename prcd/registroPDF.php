@@ -384,7 +384,7 @@ if($idCirugias == 1 || $idCirugias == "SI"){
   $idCirugias2 ="X";
   $idCirugias3 ="";
 }
-else if($idCirugias == 0 || $idCirugias == "NO"){
+else if($idCirugias == 2 || $idCirugias == "NO"){
   $idCirugias2 = "";
   $idCirugias3 = "X";
 }
@@ -536,15 +536,37 @@ else if ($techo == 2) {
 else if ($techo == 3) {
   $lamina = "";
   $cemento = "";
-  $otroTecho = "X";
+  $otroTecho = $rowViviendas['techo_otro'];
 }
 
-$techoOtro = $rowViviendas['techo_otro'];
-if ($techoOtro == 0){
-  $techoOtroVal = "";
+
+$pared  = $rowViviendas['pared'];
+if ($pared == 1){
+  $block = "X";
+  $ladrillo = "";
+  $adobe = "";
+  $otroPared = "";
+  $paredOtroVal = "";
 }
-else{
-  $techoOtroVal = $techoOtro;
+else if ($pared == 2){
+  $block = "";
+  $ladrillo = "X";
+  $adobe = "";
+  $otroPared = "";
+  $paredOtroVal = "";
+}
+else if ($pared == 3){
+  $block = "";
+  $ladrillo = "";
+  $adobe = "X";
+  $otroPared = "";
+  $paredOtroVal = "";
+}
+else if ($pared == 4){
+  $block = "";
+  $ladrillo = "";
+  $adobe = "";
+  $otroPared = $rowViviendas['pared_otro'];
 }
 
 $serviciosAgua = $rowViviendas['serv_basicos_agua'];
@@ -1471,7 +1493,34 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(10,5,utf8_decode('Otro:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','U',10);
-$pdf->Cell(126,5,utf8_decode($otroTecho.$techoOtroVal),0,0,'L');$pdf->Ln();
+$pdf->Cell(22,5,utf8_decode($otroTecho),0,0,'L');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(10,5,utf8_decode('Pared:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(16,5,utf8_decode('Block:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($block),0,0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(13,5,utf8_decode('Ladrillo:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($ladrillo),0,0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(13,5,utf8_decode('Adobe:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(4,5,utf8_decode($adobe),0,0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(10,5,utf8_decode('Otro:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','U',10);
+$pdf->Cell(26,5,utf8_decode($otroPared),0,0,'L');
+$pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(27,5,utf8_decode('Servicios básicos:'),0,0,'L');

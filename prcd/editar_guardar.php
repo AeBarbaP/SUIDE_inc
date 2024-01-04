@@ -9,6 +9,7 @@ setlocale(LC_TIME, 'es_MX.UTF-8');
 $fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
 
 $nombre = $_POST['nombre'];
+$numExp = $_POST['numExp'];
 $apellidoP = $_POST['apellidoP'];
 $apellidoM = $_POST['apellidoM'];
 $genero = $_POST['genero'];
@@ -54,6 +55,7 @@ $numSS = $_POST['numSS'];
 $tipo_dato = 13;
 
 $sqlinsert= "UPDATE datos_generales SET 
+    numExpediente = '$numExp',
     fecha_registro = '$fecha_registro',
     nombre = '$nombre',
     apellido_p = '$apellidoP',

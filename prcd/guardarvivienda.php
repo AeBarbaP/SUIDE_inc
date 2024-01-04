@@ -11,6 +11,7 @@ $fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
 $fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
 
 $curp_exp = $_POST['curp_exp'];
+$numExp = $_POST['numExp'];
 $vivienda = $_POST['vivienda'];
 $montoRenta = $_POST['montoRenta'];
 $viviendaDebe = $_POST['viviendaDebe'];
@@ -53,6 +54,7 @@ $tipo_dato = 12;
 
 $sqlinsert= "INSERT INTO vivienda (
     curp,
+    expediente,
     vivienda,
     vivienda_renta,
     vivienda_pagando,
@@ -94,6 +96,7 @@ $sqlinsert= "INSERT INTO vivienda (
     )
 VALUES(
     '$curp_exp',
+    '$numExp',
     '$vivienda',
     '$montoRenta',
     '$viviendaDebe',

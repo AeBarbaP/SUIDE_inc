@@ -11,6 +11,7 @@ $fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
 $fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
 
 $curp_exp = $_POST['curp_exp'];
+$numExp = $_POST['numExp'];
 $vivienda = $_POST['vivienda'];
 $montoRenta = $_POST['montoRenta'];
 $viviendaDebe = $_POST['viviendaDebe'];
@@ -53,6 +54,7 @@ $tipo_dato = 21;
 
 $sqlinsert= "UPDATE vivienda SET
     curp = '$curp_exp',
+    expediente = '$numExp',
     vivienda = '$vivienda',
     vivienda_renta = '$montoRenta',
     vivienda_pagando = '$viviendaDebe',
