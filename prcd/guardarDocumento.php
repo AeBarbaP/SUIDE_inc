@@ -20,14 +20,16 @@ $tipoDoc = $_POST['tipoDoc'];
 $numExp = $_POST['numExp'];
 if ($tipoDoc == 1){
     $tipo_dato = 37;
+    $detalle = "Credencial";
 }
 else if ($tipoDoc == 2){
     $tipo_dato = 38;
+    $detalle = "Tarjetón";
 }
 
 $sqlinsertUsr= "INSERT INTO documentos(curp,numExpediente,tipoDoc,fecha_entrega,id_users) VALUES('$curp','$numExp','$tipoDoc','$fecha_entrega','$usr')";
 $resultadoUsr= $conn->query($sqlinsertUsr);
-    
+
     if($resultadoUsr){
         $sqlInsertUsr = "INSERT INTO log_registro(
             usr,
@@ -38,11 +40,28 @@ $resultadoUsr= $conn->query($sqlinsertUsr);
             '$tipo_dato',
             '$fecha_entrega')";
         $resultadoUsr = $conn->query($sqlInsertUsr);
-        /* $sqlInsertServicio = "INSERT INTO servicios(
+        
+        $sqlInsertServicio = "INSERT INTO servicios(
             curp,
             expediente,
-            usr,
-        )"; */
+            usuario_entrega,
+            fecha_solicitud,
+            tipo_solicitud,
+            detalle_solicitud,
+            fecha_entrega,
+            estatus
+        ) VALUES (
+            '$curp',
+            '$numExp',
+            '$usr',
+            '$fecha_entrega',
+            3,
+            '$detalle',
+            '$fecha_entrega',
+            1
+        )";
+        $resultadoServicios = $conn->query($sqlInsertServicio);
+
         echo json_encode(array('success'=>1));
         }
         else{

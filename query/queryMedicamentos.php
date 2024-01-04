@@ -10,7 +10,7 @@
 
     while ($row_sql_catalogo = $resultado_Query->fetch_assoc()){
         echo '
-        <option value="'.utf8_decode($row_sql_catalogo['nombre']).'">'.$row_sql_catalogo['nombre'].'</option>
+        <option value="'.$row_sql_catalogo['nombre'].'">'.$row_sql_catalogo['nombre'].'</option>
         ';
     }
     if ($fila == 0){

@@ -1045,12 +1045,12 @@ include('prcd/qc/qc.php');
                             //if (val==null || val =="" || val == 0){
                               //console.log('sin valor');
                             //} else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorEFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeB('"+val+"')");
                               document.getElementById("enfermedadInput").value ="";
 
                               //remover al momento de programar guardar          
-                              const paragraphs = document.querySelectorAll('[class="valorFull"]');
+                              const paragraphs = document.querySelectorAll('[class="valorEFull"]');
                               paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
                               numeroB = numeroB.slice(0, numeroB.length - 2);
                               console.log(numeroB);
@@ -1145,12 +1145,12 @@ include('prcd/qc/qc.php');
                             //if (val==null || val =="" || val == 0){
                               //console.log('sin valor');
                             //} else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorMFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeC('"+val+"')");
                               document.getElementById("medicamentoInput").value ="";
 
                               //remover al momento de programar guardar          
-                              const paragraphs = document.querySelectorAll('[class="valorFull"]');
+                              const paragraphs = document.querySelectorAll('[class="valorMFull"]');
                               paragraphs.forEach(p => numeroC = numeroC + p.id +', ');
                               numeroC = numeroC.slice(0, numeroC.length - 2);
                               console.log(numeroC);

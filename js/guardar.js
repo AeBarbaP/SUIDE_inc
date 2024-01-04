@@ -381,6 +381,7 @@ $(document).ready(function() {
 
 function updateGeneralesForm(){
         /* Datos Generales */
+        var numExp = document.getElementById('numeroExpediente').innerText;
         var nombre = document.getElementById('nombre').value;
         var apellidoP = document.getElementById('apellidoP').value;
         var apellidoM = document.getElementById('apellidoM').value;
@@ -500,6 +501,7 @@ function updateGeneralesForm(){
             url: 'prcd/editar_guardar.php',
             dataType:'json',
             data: {
+                numExp:numExp,
                 nombre:nombre,
                 apellidoP:apellidoP,
                 apellidoM:apellidoM,
@@ -822,9 +824,7 @@ function updateDatosMedicos(){
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
-
                 var verificador = jsonData.succes;
-                document.getElementById('medicosForm').setAttribute('id','medicosForm1');
                 if (verificador = 1){
                     Swal.fire({
                         position: 'top-end',
@@ -2485,8 +2485,8 @@ function finalizarExpediente(){
             icon: "success",
             showConfirmButton: false,
             });
+            location.reload();
         }
-        location.reload();
     });
 }
 
@@ -2507,8 +2507,8 @@ function finalizarUpdateExpediente(){
             icon: "success",
             showConfirmButton: false,
             });
+            location.reload();
         }
-        location.reload();
     });
 }
 
