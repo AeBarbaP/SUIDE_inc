@@ -2399,9 +2399,9 @@ function checkListDocs() {
             var success = jsonData.success;
             
             if (success == 1) {
-                document.getElementById('buttonCheck').setAttribute("href", "prcd/checkListPDF2.php?curp="+curp);
                 document.getElementById('nav-fin-tab').disabled = false;
                 document.getElementById('nav-fin-tab').setAttribute('onclick','finalizarExpediente()');
+                window.open("prcd/checkListPDF2.php?curp="+curp, "_blank");
             } else if (success == 0){
                 alert("No haz cargado documentos");
             }
@@ -2413,7 +2413,7 @@ function credencialExp() {
     var tipoDoc = 1;
     var curp = document.getElementById('curp_exp').value;
     document.getElementById('credencialExpedienteBtn').setAttribute("href", "prcd/generaqrcredencialExp.php?curp="+curp);
-    var numExp = document.getElementById('numeroExpediente').innerHTML;
+    var numExp = document.getElementById('numeroExpediente').innerText;
 
     $.ajax({
         type: "POST",
@@ -2431,6 +2431,7 @@ function credencialExp() {
             if (success == 1) {
                 document.getElementById('credencialExpedienteBtn').disabled = true;
                 window.open("prcd/generaqrcredencialExp.php?curp="+curp, "_blank");
+                mostrarTablaServicios();
             } else if (success == 0){
                 alert("No se pudo entregar la credencial");
             }

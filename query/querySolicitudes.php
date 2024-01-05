@@ -30,6 +30,16 @@
                             <td>Otros</td>
                         ';
                     } 
+                    else if ($tipoNombre == 4){
+                        echo '
+                            <td>Credencial</td>
+                        ';
+                    } 
+                    else if ($tipoNombre == 5){
+                        echo '
+                            <td>Tarjetón</td>
+                        ';
+                    } 
                     echo '
                     <td>'.$rowSQL['total_solicitud'].'</td>
                     ';

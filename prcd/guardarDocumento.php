@@ -20,11 +20,13 @@ $tipoDoc = $_POST['tipoDoc'];
 $numExp = $_POST['numExp'];
 if ($tipoDoc == 1){
     $tipo_dato = 37;
-    $detalle = "Credencial";
+    $detalle = 4;
+    $costo = 76;
 }
 else if ($tipoDoc == 2){
     $tipo_dato = 38;
-    $detalle = "Tarjetón";
+    $detalle = 5;
+    $costo = 120;
 }
 
 $sqlinsertUsr= "INSERT INTO documentos(curp,numExpediente,tipoDoc,fecha_entrega,id_users) VALUES('$curp','$numExp','$tipoDoc','$fecha_entrega','$usr')";
@@ -41,22 +43,20 @@ $resultadoUsr= $conn->query($sqlinsertUsr);
             '$fecha_entrega')";
         $resultadoUsr = $conn->query($sqlInsertUsr);
         
-        $sqlInsertServicio = "INSERT INTO servicios(
+        $sqlInsertServicio = "INSERT INTO solicitud(
+            folio_solicitud,
             curp,
-            expediente,
-            usuario_entrega,
+            tipo,
+            total_solicitud,
             fecha_solicitud,
-            tipo_solicitud,
-            detalle_solicitud,
-            fecha_entrega,
+            entrega,
             estatus
         ) VALUES (
-            '$curp',
             '$numExp',
-            '$usr',
-            '$fecha_entrega',
-            3,
+            '$curp',
             '$detalle',
+            '$costo',
+            '$fecha_entrega',
             '$fecha_entrega',
             1
         )";
