@@ -333,6 +333,7 @@ sumaVars.toString;
             if (result.isConfirmed) {
                 Swal.fire("Cambios descartados", "", "success");
                 hrefsSet(hrefs);
+                eliminarRegistrosDB();
             } else if (result.isDenied) {
                 Swal.fire("Continua editando", "", "info");
             }
@@ -990,6 +991,31 @@ function cancelarActualizarT(){
             window.location.href="dashboard.php";
         } else if (result.isDenied) {
             Swal.fire("Continua editando", "", "info");
+        }
+    });
+}
+
+function eliminarRegistrosDB(){
+    var numExp = document.getElementById('numeroExpediente').innerHTML;
+    var curp = document.getElementById('curp_exp').value;
+    
+    $.ajax({
+        type: "POST",
+        url: 'prcd/eliminarRegistros.php',
+        dataType:'json',
+        data: {
+            curp:curp,
+            numExp:numExp
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            
+            if (success == 1) {
+                console.log('Registros borrados de todas las tablas');
+            } else if (success == 0){
+                alert("No se borraron los registros");
+            }
         }
     });
 }

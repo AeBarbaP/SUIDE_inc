@@ -2407,8 +2407,27 @@ function checkListDocs() {
             }
         }
     });
-
 }
+
+function nona(){
+    var registroNo = document.getElementById('registroNo');
+    var registroNA = document.getElementById('registroNA');
+    var valoracionNo = document.getElementById('valoracionNo');
+    var valoracionNA = document.getElementById('valoracionNA');
+    var actaNo = document.getElementById('actaNo');
+    var actaNA = document.getElementById('actaNA');
+    var curpNo = document.getElementById('curpNo');
+    var curpNA = document.getElementById('curpNA');
+    var ineNo = document.getElementById('ineNo');
+    var ineNA = document.getElementById('ineNA');
+    var comprobanteNo = document.getElementById('comprobanteNo');
+    var comprobanteNA = document.getElementById('comprobanteNA');
+    var circulacionNo = document.getElementById('circulacionNo');
+    var circulacionNA = document.getElementById('circulacionNA');
+
+    
+}
+
 function credencialExp() {
     var tipoDoc = 1;
     var curp = document.getElementById('curp_exp').value;

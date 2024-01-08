@@ -1771,7 +1771,7 @@ include('prcd/qc/qc.php');
                         <tr>
                           <th scope="row">DOS FOTOGRAFÍAS<br><p class="fw-lighter fst-italic">En cualquier formato, preferentemente impresas.</p></th>
                           <td><input class="form-check-input" type="checkbox" id="fotosSi" value="" onclick="valoracionCheck(19)" aria-label="..."></td>
-                          <td><input class="form-check-input" type="checkbox" id="fotosNo" value="" onclick="valoracionCheck(20)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="fotosNo" value="20" onclick="valoracionCheck(20)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="fotosNA" value="" onclick="valoracionCheck(21)" aria-label="..."></td>
                           <td></td>
                         </tr>
