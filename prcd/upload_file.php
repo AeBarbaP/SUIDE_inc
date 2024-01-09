@@ -7,7 +7,7 @@
     // $id=$_SESSION['id'];
     $idUsr = $_POST['idUsuario'];
     $doc = $_POST['documento'];
-    // $tipo_doc = 1;
+    $tipo_doc = $_POST['tipoDoc'];
     $fecha_sistema = strftime("%Y-%m-%d,%H:%M:%S");
     $link= 'archivo'.$doc;
     // $validacion = 1;
@@ -35,13 +35,15 @@ $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
         id_ext,
         tipo_doc,
         ruta_doc,
-        fecha
+        fecha,
+        documento
         ) 
     VALUES(
         '$idUsr',
         '$doc',
         '$ruta',
-        '$fecha_sistema'
+        '$fecha_sistema',
+        '$tipo_doc'
         )";
     $resultado= $conn->query($sqlInsert);
     

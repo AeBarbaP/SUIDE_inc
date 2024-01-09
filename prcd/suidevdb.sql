@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2023 at 10:34 PM
+-- Generation Time: Jan 09, 2024 at 10:38 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -9996,6 +9996,13 @@ CREATE TABLE `datos_generales` (
   `estatus` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `datos_generales`
+--
+
+INSERT INTO `datos_generales` (`id`, `numExpediente`, `fecha_registro`, `fecha_actualizacion`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `tipoVialidad`, `estado`, `municipio`, `localidad`, `asentamiento`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `profesion`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `sindicato`, `sindicato_cual`, `seguridad_social`, `seguridad_social_otro`, `numSS`, `photo`, `estatus`) VALUES
+(1, 'C-4920-1', '2024-01-05 13:37:08', NULL, 'Noemi Esperanza', 'Pitones', 'Alamillo', 'Femenino', 42, 'Soltero(a)', '1981-08-19', 'Valparaiso, Zac.', 'García Salinas', '', '108', 'Centro', 'Felipe Ángeles y 20 de Noviembre', 'Cerca de la Escuela', 'CALLE', '32', 32049, 'VALPARAISO', 'ZONA CENTRO', '99250', '4579361805', '', '', 'Secundaria', 'Hogar', 'PIAN810819MZSTLM05', 'PIAN810819', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '1', 'Apoyo de Discapacidad', '2950', '1', 0, 'N/A', 'Ninguno', '', '', '../fotos_expedientes/archivo_PIAN810819MZSTLM05.jpg', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -10031,6 +10038,13 @@ CREATE TABLE `datos_medicos` (
   `medicamentos` varchar(11) DEFAULT NULL,
   `medicamentos_cual` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `datos_medicos`
+--
+
+INSERT INTO `datos_medicos` (`id`, `curp`, `expediente`, `tipo_discapacidad`, `discapacidad`, `grado_discapacidad`, `descripcionDiscapacidad`, `causa`, `causa_otro`, `temporalidad`, `valoracion`, `fecha_valoracion`, `rehabilitacion`, `rehabilitacion_donde`, `rehabilitacion_inicio`, `rehabilitacion_duracion`, `tipo_sangre`, `cirugias`, `tipo_cirugias`, `protesis`, `protesis_tipo`, `alergias`, `alergias_cual`, `enfermedades`, `enfermedades_cual`, `medicamentos`, `medicamentos_cual`) VALUES
+(1, 'PIAN810819MZSTLM05', 'C-4920-1', 'Física', '20-Escoliosis', '2-Moderado', 'Escoliosis con dolor lumbar crónico', '4', '', '0000-00-00', 'SSZ', '2023-09-29', '0', '0', '0000-00-00', '0', '7', '1', 'Pies', '2', '', '0', 'Sin alergias', '1', 'Escoliosis', '1', 'Antiinflamatorios, Piroxicam');
 
 -- --------------------------------------------------------
 
@@ -10177,6 +10191,14 @@ CREATE TABLE `documentos` (
   `id_users` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `documentos`
+--
+
+INSERT INTO `documentos` (`id`, `curp`, `numExpediente`, `tipoDoc`, `fecha_entrega`, `id_users`) VALUES
+(1, 'PIAN810819MZSTLM05', 'C-4920-1', 1, '2024-01-05', 0),
+(2, 'PIAN810819MZSTLM05', '\n    <label>C-4920-1</label>\n', 2, '2024-01-05', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -10188,7 +10210,8 @@ CREATE TABLE `documentos_list` (
   `id_ext` varchar(20) NOT NULL,
   `tipo_doc` int(11) DEFAULT NULL,
   `ruta_doc` varchar(150) DEFAULT NULL,
-  `fecha` datetime NOT NULL
+  `fecha` datetime NOT NULL,
+  `documento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -10305,6 +10328,13 @@ CREATE TABLE `extraordinarios` (
   `nombre` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `extraordinarios`
+--
+
+INSERT INTO `extraordinarios` (`id`, `nombre`) VALUES
+(1, 'Viáticos CDMX');
+
 -- --------------------------------------------------------
 
 --
@@ -10377,6 +10407,14 @@ CREATE TABLE `integracion` (
   `telcel` int(10) DEFAULT NULL,
   `correoe` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `integracion`
+--
+
+INSERT INTO `integracion` (`id`, `curp`, `expediente`, `nombre`, `parentesco`, `edad`, `escolaridad`, `profesion_oficio`, `discapacidad`, `ingreso`, `telcel`, `correoe`) VALUES
+(1, 'PIAN810819MZSTLM05', NULL, 'Antonio Pitones Bonilla', 'Padre', 70, 'Primaria', 'Ninguno', '', '2400', 0, ''),
+(2, 'PIAN810819MZSTLM05', NULL, 'Catalina Alamillo López', 'Madre', 65, 'Primaria', 'Hogar', '', '2400', 0, '');
 
 -- --------------------------------------------------------
 
@@ -10567,7 +10605,97 @@ INSERT INTO `log_registro` (`id`, `usr`, `tipo_dato`, `fecha`) VALUES
 (154, 'annaeliza', 37, '2023-12-18 13:31:39'),
 (155, 'annaeliza', 37, '2023-12-18 13:37:09'),
 (156, 'annaeliza', 32, '2023-12-18 13:37:56'),
-(157, 'annaeliza', 32, '2023-12-18 13:43:37');
+(157, 'annaeliza', 32, '2023-12-18 13:43:37'),
+(158, 'annaeliza', 37, '2024-01-03 10:37:28'),
+(159, 'annaeliza', 38, '2024-01-03 10:37:40'),
+(160, 'annaeliza', 1, '2024-01-03 10:46:05'),
+(161, 'annaeliza', 1, '2024-01-03 11:02:58'),
+(162, 'annaeliza', 6, '2024-01-03 11:07:18'),
+(163, 'annaeliza', 12, '2024-01-03 12:15:00'),
+(164, 'annaeliza', 5, '2024-01-03 12:28:23'),
+(165, 'annaeliza', 5, '2024-01-03 12:28:51'),
+(166, 'annaeliza', 7, '2024-01-03 12:29:42'),
+(167, 'annaeliza', 37, '2024-01-03 12:29:49'),
+(168, 'annaeliza', 38, '2024-01-03 12:30:41'),
+(169, 'annaeliza', 1, '2024-01-03 13:31:52'),
+(170, 'annaeliza', 1, '2024-01-03 13:35:21'),
+(171, 'annaeliza', 1, '2024-01-03 13:37:56'),
+(172, 'annaeliza', 6, '2024-01-03 13:42:18'),
+(173, 'annaeliza', 12, '2024-01-03 13:43:34'),
+(174, 'annaeliza', 37, '2024-01-03 13:43:44'),
+(175, 'annaeliza', 1, '2024-01-03 14:51:59'),
+(176, 'annaeliza', 1, '2024-01-03 14:59:46'),
+(177, 'annaeliza', 6, '2024-01-03 15:02:05'),
+(178, 'annaeliza', 12, '2024-01-03 15:12:30'),
+(179, 'annaeliza', 1, '2024-01-03 15:23:36'),
+(180, 'annaeliza', 1, '2024-01-03 15:23:45'),
+(181, 'annaeliza', 1, '2024-01-03 15:28:11'),
+(182, 'annaeliza', 1, '2024-01-04 08:47:58'),
+(183, 'annaeliza', 1, '2024-01-04 08:48:13'),
+(184, 'annaeliza', 1, '2024-01-04 08:49:12'),
+(185, 'annaeliza', 1, '2024-01-04 08:51:29'),
+(186, 'annaeliza', 6, '2024-01-04 08:56:02'),
+(187, 'annaeliza', 12, '2024-01-04 09:00:05'),
+(188, 'annaeliza', 5, '2024-01-04 09:00:43'),
+(189, 'annaeliza', 5, '2024-01-04 09:01:08'),
+(190, 'annaeliza', 7, '2024-01-04 09:01:38'),
+(191, 'annaeliza', 1, '2024-01-04 09:02:52'),
+(192, 'annaeliza', 1, '2024-01-04 09:10:09'),
+(193, 'annaeliza', 6, '2024-01-04 09:11:46'),
+(194, 'annaeliza', 12, '2024-01-04 09:12:46'),
+(195, 'annaeliza', 1, '2024-01-04 09:13:53'),
+(196, 'annaeliza', 1, '2024-01-04 09:39:59'),
+(197, 'annaeliza', 6, '2024-01-04 09:41:45'),
+(198, 'annaeliza', 12, '2024-01-04 09:42:35'),
+(199, 'annaeliza', 13, '2024-01-04 09:43:03'),
+(200, 'annaeliza', 1, '2024-01-04 10:15:10'),
+(201, 'annaeliza', 6, '2024-01-04 10:16:05'),
+(202, 'annaeliza', 12, '2024-01-04 10:16:34'),
+(203, 'annaeliza', 18, '2024-01-04 12:07:05'),
+(204, 'annaeliza', 21, '2024-01-04 12:43:46'),
+(205, 'annaeliza', 1, '2024-01-04 12:49:35'),
+(206, 'annaeliza', 6, '2024-01-04 12:55:02'),
+(207, 'annaeliza', 12, '2024-01-04 12:57:00'),
+(208, 'annaeliza', 12, '2024-01-04 13:06:14'),
+(209, 'annaeliza', 5, '2024-01-04 13:07:03'),
+(210, 'annaeliza', 5, '2024-01-04 13:07:27'),
+(211, 'annaeliza', 7, '2024-01-04 13:07:54'),
+(212, 'annaeliza', 18, '2024-01-04 13:57:14'),
+(213, 'annaeliza', 18, '2024-01-04 14:15:04'),
+(214, 'annaeliza', 1, '2024-01-04 14:43:45'),
+(215, 'annaeliza', 6, '2024-01-04 14:48:33'),
+(216, 'annaeliza', 12, '2024-01-04 14:50:07'),
+(217, 'annaeliza', 5, '2024-01-04 14:50:45'),
+(218, 'annaeliza', 5, '2024-01-04 14:51:15'),
+(219, 'annaeliza', 7, '2024-01-04 14:51:56'),
+(220, 'annaeliza', 37, '2024-01-04 14:52:02'),
+(221, 'annaeliza', 13, '2024-01-04 14:53:04'),
+(222, 'annaeliza', 18, '2024-01-04 14:56:31'),
+(223, 'annaeliza', 21, '2024-01-04 14:56:56'),
+(224, 'annaeliza', 21, '2024-01-04 14:58:48'),
+(225, 'annaeliza', 32, '2024-01-04 15:24:32'),
+(226, 'annaeliza', 2, '2024-01-04 15:24:42'),
+(227, 'annaeliza', 1, '2024-01-05 09:52:29'),
+(228, 'annaeliza', 6, '2024-01-05 09:54:27'),
+(229, 'annaeliza', 12, '2024-01-05 09:54:59'),
+(230, 'annaeliza', 5, '2024-01-05 09:55:47'),
+(231, 'annaeliza', 7, '2024-01-05 09:56:11'),
+(232, 'annaeliza', 37, '2024-01-05 09:56:30'),
+(233, 'annaeliza', 37, '2024-01-05 12:24:59'),
+(234, 'annaeliza', 32, '2024-01-05 12:26:43'),
+(235, 'annaeliza', 32, '2024-01-05 12:28:21'),
+(236, 'annaeliza', 32, '2024-01-05 12:28:49'),
+(237, 'annaeliza', 32, '2024-01-05 12:28:59'),
+(238, 'annaeliza', 3, '2024-01-05 12:29:12'),
+(239, 'annaeliza', 1, '2024-01-05 13:37:08'),
+(240, 'annaeliza', 6, '2024-01-05 13:39:04'),
+(241, 'annaeliza', 12, '2024-01-05 13:40:18'),
+(242, 'annaeliza', 12, '2024-01-05 13:41:09'),
+(243, 'annaeliza', 5, '2024-01-05 13:41:34'),
+(244, 'annaeliza', 5, '2024-01-05 13:41:59'),
+(245, 'annaeliza', 7, '2024-01-05 13:42:28'),
+(246, 'annaeliza', 37, '2024-01-05 13:42:37'),
+(247, 'annaeliza', 38, '2024-01-05 13:44:11');
 
 -- --------------------------------------------------------
 
@@ -10766,7 +10894,18 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (164, 1, '2023-12-15 15:01:49', NULL),
 (165, 1, '2023-12-18 09:13:12', NULL),
 (166, 1, '2023-12-18 15:09:16', NULL),
-(167, 0, NULL, '2023-12-18 15:17:36');
+(167, 0, NULL, '2023-12-18 15:17:36'),
+(168, 1, '2024-01-03 10:36:53', NULL),
+(169, 0, NULL, '2024-01-03 10:37:15'),
+(170, 1, '2024-01-04 08:19:46', NULL),
+(171, 0, NULL, '2024-01-05 09:38:34'),
+(172, 1, '2024-01-05 09:38:38', NULL),
+(173, 0, NULL, '2024-01-05 09:53:17'),
+(174, 0, NULL, '2024-01-08 10:48:40'),
+(175, 1, '2024-01-08 10:48:43', NULL),
+(176, 0, NULL, '2024-01-08 10:56:56'),
+(177, 1, '2024-01-09 09:15:09', NULL),
+(178, 0, NULL, '2024-01-09 09:16:08');
 
 -- --------------------------------------------------------
 
@@ -10874,6 +11013,13 @@ CREATE TABLE `referencias` (
   `email` varchar(72) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `referencias`
+--
+
+INSERT INTO `referencias` (`id`, `curp`, `expediente`, `nombre`, `parentesco`, `direccion`, `edad`, `escolaridad`, `profesion_oficio`, `discapacidad`, `ingreso`, `celular`, `email`) VALUES
+(1, 'PIAN810819MZSTLM05', NULL, 'David Rodríguez Alamillo', 'Primo(a)', '20 de Noviembre', NULL, NULL, 'Empleado', NULL, NULL, '4931674393', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -10914,6 +11060,14 @@ CREATE TABLE `solicitud` (
   `entrega` datetime NOT NULL,
   `estatus` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `solicitud`
+--
+
+INSERT INTO `solicitud` (`id`, `folio_solicitud`, `curp`, `tipo`, `total_solicitud`, `fecha_solicitud`, `entrega`, `estatus`) VALUES
+(1, 'C-4920-1', 'PIAN810819MZSTLM05', 4, '76', '2024-01-05 13:42:37', '2024-01-05 13:42:37', 1),
+(2, 'C-4920-1', 'PIAN810819MZSTLM05', 5, '120', '2024-01-05 13:44:11', '2024-01-05 13:44:11', 1);
 
 -- --------------------------------------------------------
 
@@ -11056,6 +11210,13 @@ CREATE TABLE `vivienda` (
   `deudas` varchar(11) DEFAULT NULL,
   `deudas_cuanto` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `vivienda`
+--
+
+INSERT INTO `vivienda` (`id`, `curp`, `expediente`, `vivienda`, `vivienda_renta`, `vivienda_pagando`, `monto_pagando`, `caracteristicas`, `caracteristicas_otro`, `num_habitaciones`, `vivienda_cocia`, `vivienda_sala`, `vivienda_banio`, `vivienda_otros`, `techo`, `techo_otro`, `pared`, `pared_otro`, `serv_basicos_agua`, `serv_basicos_luz`, `serv_basicos_drenaje`, `serv_basicos_cable`, `serv_basicos_internet`, `serv_basicos_celular`, `serv_basicos_carro`, `serv_basicos_gas`, `serv_basicos_telefono`, `serv_basicos_otro`, `electrodomesticos_tv`, `electrodomesticos_lavadora`, `electrodomesticos_estereo`, `electrodomesticos_microondas`, `electrodomesticos_computadora`, `electrodomesticos_licuadora`, `electrodomesticos_dvd`, `electrodomesticos_estufa`, `electrodomesticos_refri`, `electrodomesticos_otro`, `personas_dependen`, `deudas`, `deudas_cuanto`) VALUES
+(1, 'PIAN810819MZSTLM05', 'C-4920-1', '1', '0', 0, '0', 1, '0', '2', 1, 1, 1, '0', '3', 'Aterrado', '3', '0', 1, 1, 1, 0, 0, 0, 0, 1, 1, '0', 1, 1, 0, 0, 0, 1, 0, 1, 1, '0', '0', '0', '0');
 
 --
 -- Indexes for dumped tables
@@ -11273,13 +11434,13 @@ ALTER TABLE `cat_logs`
 -- AUTO_INCREMENT for table `datos_generales`
 --
 ALTER TABLE `datos_generales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `datos_medicos`
 --
 ALTER TABLE `datos_medicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `datos_usuariot`
@@ -11297,7 +11458,7 @@ ALTER TABLE `discapacidades`
 -- AUTO_INCREMENT for table `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `documentos_list`
@@ -11321,7 +11482,7 @@ ALTER TABLE `enfermedades`
 -- AUTO_INCREMENT for table `extraordinarios`
 --
 ALTER TABLE `extraordinarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `funcionales`
@@ -11333,7 +11494,7 @@ ALTER TABLE `funcionales`
 -- AUTO_INCREMENT for table `integracion`
 --
 ALTER TABLE `integracion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `log_entregas`
@@ -11345,13 +11506,13 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_registro`
 --
 ALTER TABLE `log_registro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
 
 --
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
 
 --
 -- AUTO_INCREMENT for table `medicamentos`
@@ -11381,7 +11542,7 @@ ALTER TABLE `prestamo`
 -- AUTO_INCREMENT for table `referencias`
 --
 ALTER TABLE `referencias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `servicios`
@@ -11393,7 +11554,7 @@ ALTER TABLE `servicios`
 -- AUTO_INCREMENT for table `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tarjetones`
@@ -11423,7 +11584,7 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT for table `vivienda`
 --
 ALTER TABLE `vivienda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

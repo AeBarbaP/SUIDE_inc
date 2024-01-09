@@ -2410,22 +2410,184 @@ function checkListDocs() {
 }
 
 function nona(){
-    var registroNo = document.getElementById('registroNo');
-    var registroNA = document.getElementById('registroNA');
-    var valoracionNo = document.getElementById('valoracionNo');
-    var valoracionNA = document.getElementById('valoracionNA');
-    var actaNo = document.getElementById('actaNo');
-    var actaNA = document.getElementById('actaNA');
-    var curpNo = document.getElementById('curpNo');
-    var curpNA = document.getElementById('curpNA');
-    var ineNo = document.getElementById('ineNo');
-    var ineNA = document.getElementById('ineNA');
-    var comprobanteNo = document.getElementById('comprobanteNo');
-    var comprobanteNA = document.getElementById('comprobanteNA');
-    var circulacionNo = document.getElementById('circulacionNo');
-    var circulacionNA = document.getElementById('circulacionNA');
+    var curp = document.getElementById('curp_exp').value;
+    var registroNo1 = document.getElementById('registroNo');
+    var registroNA1 = document.getElementById('registroNA');
+    var valoracionNo1 = document.getElementById('valoracionNo');
+    var valoracionNA1 = document.getElementById('valoracionNA');
+    var actaNo1 = document.getElementById('actaNo');
+    var actaNA1 = document.getElementById('actaNA');
+    var curpNo1 = document.getElementById('curpNo');
+    var curpNA1 = document.getElementById('curpNA');
+    var ineNo1 = document.getElementById('ineNo');
+    var ineNA1 = document.getElementById('ineNA');
+    var comprobanteNo1 = document.getElementById('comprobanteNo');
+    var comprobanteNA1 = document.getElementById('comprobanteNA');
+    var circulacionNo1 = document.getElementById('circulacionNo');
+    var circulacionNA1 = document.getElementById('circulacionNA');
+    var registroDoc, valoracionDoc, actaDoc, curpDoc, ineDoc, comprobanteDoc, circulacionDoc;
 
-    
+    if (registroNo1.checked){
+        var registroNo = 8;
+        registroDoc = 1;
+    }
+    else {
+        var registroNo = "";
+        registroDoc = 1;
+    }
+    if (registroNA1.checked){
+        var registroNA = 15;
+        registroDoc = 1;
+    }
+    else {
+        var registroNA = "";
+        registroDoc = 1;
+    }
+    if (valoracionNo1.checked){
+        var valoracionNo  = 9;
+        valoracionDoc = 2;
+    }
+    else {
+        var valoracionNo = "";
+        valoracionDoc = 2;
+    }
+    if (valoracionNA1.checked){
+        var valoracionNA = 16;
+        valoracionDoc = 2;
+    }
+    else {
+        var valoracionNA = "";
+        valoracionDoc = 2;
+    }
+    if (actaNo1.checked){
+        var actaNo = 10;
+        actaDoc = 3;
+    }
+    else {
+        var actaNo = "";
+        actaDoc = 3;
+    }
+    if (actaNA1.checked){
+        var actaNA = 17;
+        actaDoc = 3;
+    }
+    else {
+        var actaNA = "";
+        actaDoc = 3;
+    }
+    if (curpNo1.checked){
+        var curpNo = 11;
+        curpDoc = 4;
+    }
+    else {
+        var curpNo = "";
+        curpDoc = 4;
+    }
+    if (curpNA1.checked){
+        var curpNA = 18;
+        curpDoc = 4;
+    }
+    else {
+        var curpNA = "";
+        curpDoc = 4;
+    }
+    if (ineNo1.checked){
+        var ineNo = 12;
+        ineDoc = 5
+    }
+    else {
+        var ineNo = "";
+        ineDoc = 5
+    }
+    if (ineNA1.checked){
+        var ineNA = 19;
+        ineDoc = 5
+    }
+    else {
+        var ineNA = "";
+        ineDoc = 5
+    }
+    if (comprobanteNo1.checked){
+        var comprobanteNo = 13;
+        comprobanteDoc = 6;
+    }
+    else {
+        var comprobanteNo = "";
+        comprobanteDoc = 6;
+    }
+    if (comprobanteNA1.checked){
+        var comprobanteNA = 20;
+        comprobanteDoc = 6;
+    }
+    else {
+        var comprobanteNA = "";
+        comprobanteDoc = 6;
+    }
+    if (circulacionNo1.checked){
+        var circulacionNo = 14;
+        circulacionDoc = 7;
+    }
+    else {
+        var circulacionNo = "";
+        circulacionDoc = 7;
+    }
+    if (circulacionNA1.checked){
+        var circulacionNA = 21;
+        circulacionDoc = 7;
+    }
+    else {
+        var circulacionNA = "";
+        circulacionDoc = 7;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: 'prcd/guardarDocumentoNoNA.php',
+        dataType:'json',
+        data: {
+            curp:curp,
+            registroNo:registroNo,
+            registroNA:registroNA,
+            valoracionNo:valoracionNo,
+            valoracionNA:valoracionNA,
+            actaNo:actaNo,
+            actaNA:actaNA,
+            curpNo:curpNo,
+            curpNA:curpNA,
+            ineNo:ineNo,
+            ineNA:ineNA,
+            comprobanteNo:comprobanteNo,
+            comprobanteNA:comprobanteNA,
+            circulacionNo:circulacionNo,
+            circulacionNA:circulacionNA,
+            registroDoc:registroDoc,
+            valoracionDoc:valoracionDoc,
+            actaDoc:actaDoc,
+            curpDoc:curpDoc,
+            ineDoc:ineDoc,
+            comprobanteDoc:comprobanteDoc,
+            circulacionDoc:circulacionDoc
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            console.log(success);
+            
+
+            if (success = 10) {
+                console.log('si llega');
+                document.querySelectorAll("input[type=checkbox]").forEach(function(checkElement) {
+                    checkElement.disabled = true;
+                });
+
+                /* els.forEach((v) => {
+                    v.disabled = true
+                }); */
+            } else if (success = 0){
+                console.log("No se registro NoNA");
+            }
+        }
+    });
 }
 
 function credencialExp() {

@@ -2,11 +2,12 @@ function _(el) {
     return document.getElementById(el);
   }
   
-  function uploadFile(doc) {
+  function uploadFile(doc,tipoDoc) {
     var idUsr = document.getElementById('curp_exp').value;
     var file = _("file"+doc).files[0];
     var documento = doc;
     var idUsuario = idUsr;
+    var tipoDoc = tipoDoc;
     // alert(file.name+" | "+file.size+" | "+file.type);
     var formdata = new FormData();
     // variable del name file
@@ -14,6 +15,7 @@ function _(el) {
     // variables post
     formdata.append("documento", documento);
     formdata.append("idUsuario", idUsuario);
+    formdata.append("tipoDoc", tipoDoc);
     var ajax = new XMLHttpRequest();
     ajax.upload.addEventListener("progress", progressHandler, false);
     ajax.addEventListener("load", completeHandler, false);
