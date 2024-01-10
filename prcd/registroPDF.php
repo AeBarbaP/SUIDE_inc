@@ -126,7 +126,9 @@ else if ($trabaja == 1){
   $regACNo = "";
   $regACSi = $check;
 }
-
+$frecuencia = "";
+$montoPensionBD = $rowSqlGenerales['pension_monto'];
+$montoPension = "";
 $pension = $rowSqlGenerales['pensionado'];
 if ($pension == 0){
   $regPensionNo = $check;
@@ -150,6 +152,12 @@ else if ($pension == 1){
   }
   else if ($frecuenciaP == 5){
     $frecuencia = "Semestral";
+  }
+  if ($montoPensionBD == null || $montoPensionBD == "" || $montoPensionBD == 0){
+    $montoPension = "";
+  }
+  else{
+    $montoPension = $montoPensionBD.'00';
   }
 }
 
@@ -1110,7 +1118,7 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(25,5,utf8_decode('Monto pensión: $'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(21,5,utf8_decode(' '.$rowSqlGenerales['pension_monto'].'.00'),'B',0,'L');
+$pdf->Cell(21,5,utf8_decode($montoPension),'B',0,'L');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(2,5,utf8_decode(''),0,0,'C');
 $pdf->Cell(12,5,utf8_decode('Frecuencia:'),0,0,'R');

@@ -2622,7 +2622,7 @@ function credencialExp() {
 
 function entregarTarjetonExp(){
     var numExp = document.getElementById('numeroExpediente').innerHTML;
-    $("#tarjetongen").modal('show');
+    
     document.getElementById('searchDBInclusion2').setAttribute('onfocus','buscarExpediente2(); desbloquearInputsT(this.value)');
     document.getElementById('searchDBInclusion2').value = numExp;
     var curp = document.getElementById('curp_exp').value;
@@ -2667,7 +2667,25 @@ function finalizarExpediente(){
             icon: "success",
             showConfirmButton: false,
             });
+            logFinalizarExpediente();
             location.reload();
+        }
+    });
+}
+
+function logFinalizarExpediente(){
+    $.ajax({
+        type: "POST",
+        url: 'prcd/logFin.php',
+        dataType:'json',
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            if (success == 1) {
+                console.log('Proceso finalizado correctamente');
+            } else if (success == 0){
+                console.log('No se finalizó el proceso');
+            }
         }
     });
 }

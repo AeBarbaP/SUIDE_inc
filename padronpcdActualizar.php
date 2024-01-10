@@ -423,7 +423,7 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Género:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="genero" id="generoF" value="Mujer">
+                          <input class="form-check-input" type="radio" name="genero" id="generoF" value="Mujer" required>
                           <label class="form-check-label" for="inlineRadio1">Mujer</label>
                         </div>
                         <div class="form-check form-check-inline">
@@ -614,7 +614,7 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Estudia:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaSi" value="2">
+                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaSi" value="2" required>
                           <label class="form-check-label" for="estudia">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
@@ -638,7 +638,7 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Trabaja:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="trabajaOp(this.value)" name="trabaja" id="trabajaSi" value="1">
+                          <input class="form-check-input" type="radio" onclick="trabajaOp(this.value)" name="trabaja" id="trabajaSi" value="1" required>
                           <label class="form-check-label" for="trabaja">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
@@ -663,7 +663,7 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Pertenece a alguna Asociación Civil:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="asociacionOp(this.value)" name="asociacion" id="asociacionSi" value="1">
+                          <input class="form-check-input" type="radio" onclick="asociacionOp(this.value)" name="asociacion" id="asociacionSi" value="1" required>
                           <label class="form-check-label" for="inlineRadio1">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
@@ -679,7 +679,7 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label">Pertenece a algún Sindicato:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="sindicatoOp(this.value)" name="sindicato" id="sindicatoSi" value="1">
+                          <input class="form-check-input" type="radio" onclick="sindicatoOp(this.value)" name="sindicato" id="sindicatoSi" value="1" required>
                           <label class="form-check-label" for="sindicato">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
@@ -1297,7 +1297,7 @@ include('prcd/qc/qc.php');
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
                           
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaC" value="1">
+                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaC" value="1" required>
                           <label class="form-check-label" for="tipoVivienda">Casa</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
@@ -1372,7 +1372,7 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Techo:</label>
                       <div class="input-group" style="height:max-content">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="lamina" value="1">
+                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="lamina" value="1" required>
                           <label class="form-check-label" for="techo">Lamina</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
@@ -1395,7 +1395,7 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Pared:</label>
                       <div class="input-group" style="height:max-content">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="block" value="1">
+                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="block" value="1" required>
                           <label class="form-check-label" for="pared">Block</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
@@ -1603,7 +1603,7 @@ include('prcd/qc/qc.php');
                       <label for="basic-url" class="form-label"><i class="bi bi-house"></i> ¿Tiene deudas?:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" id="deudasSi" onclick="deudasOp(this.value)" type="radio" name="deudas" value="1">
+                          <input class="form-check-input" id="deudasSi" onclick="deudasOp(this.value)" type="radio" name="deudas" value="1" required>
                           <label class="form-check-label" for="deudas1">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
