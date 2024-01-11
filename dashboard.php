@@ -260,15 +260,27 @@ include('prcd/qc/qc.php');
     </div>
     </nav>
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="alert alert-success text-center" role="alert">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 overflow-auto">
+      <div class="alert alert-secondary text-center" role="alert">
         <p class="h3">Bienvenid@</p>
         <p class="h6 mb-1 text-muted">Sistema Único de Identificación y Verificación</p>
       </div>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
       </div>
-      <!-- <hr> -->
       <div class="row" style="justify-content:center">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-2">
+          <h1 class="h3 text-muted"><b>Mi progreso</b></h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+              <button type="button" class="btn btn-sm btn-outline-secondary">Compartir</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+              Esta semana
+            </button>
+          </div>
+        </div>
+        <hr class="mb-4">
         <div class="col-md-12 col-lg-6 me-3 border rounded-1" style="width: 23%;">
           <div class="container">
             <h4 class="text-center text-muted mt-2"><b>Expedientes Nuevos</b></h4>
@@ -342,32 +354,28 @@ include('prcd/qc/qc.php');
           </div>
         </div>
       </div>
+      <style>
+        canvas{
+          margin: 0 auto;
+        }
+      </style>
       <div class="row mt-3" style="justify-content:center">
         <div class="col-md-12 me-3 border rounded-1" style="width: 95%;">
           <div class="container">
             <div class="row">
-              <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h3 text-muted"><b>Mi progreso</b></h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                  <div class="btn-group me-2">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Compartir</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>
-                  </div>
-                  <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                    <span data-feather="calendar" class="align-text-bottom"></span>
-                    Esta semana
-                  </button>
+              <div class="col-md-12 mt-3 mb-3">
+                <div class="chart-container" style="position:relative; height:60vh; width:auto">
+                  <canvas id="myChart" width="800" height="800"></canvas>
                 </div>
               </div>
-          <canvas id="myChart" width="400" height="40S"></canvas>
             </div>
           </div>
         </div>
       </div>
       
         
-      <label class="btn btn-outline-primary" for="oficial">Institución</label>
-      <input type="text" class="form-control" oninput="buscarTarjetonTemp(this.value)" placeholder="Buscar CURP, RFC o # de Tarjetón..." aria-label="Buscar">
+      <!-- <label class="btn btn-outline-primary" for="oficial">Institución</label>
+      <input type="text" class="form-control" oninput="buscarTarjetonTemp(this.value)" placeholder="Buscar CURP, RFC o # de Tarjetón..." aria-label="Buscar"> -->
       <!-- Inicia Modal para generar credencial -->
       <div class="modal fade" id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-scrollable modal-lg">

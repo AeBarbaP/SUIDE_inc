@@ -38,15 +38,15 @@ var ctx = document.getElementById("myChart").getContext("2d");
   var myChart = new Chart(ctx,{
     type:'doughnut',
     data:{
-      labels:['Nuevos','Credenciales','Tarjetones','Expendientes'],
+      labels:['Creados','Credenciales','Tarjetones','Acualizados'],
       datasets:[{
         label:'Num datos',
         data:[x1,y1,z1,a1],
         backgroundColor:[
-          '#6C94D9',
-          '#DB3536',
-          '#0FCCEB',
-          '#EBDA0E'
+          '#4b8bf5',
+          '#fbbc05',
+          '#34a853',
+          '#eb5145'
 
         ]
       }]

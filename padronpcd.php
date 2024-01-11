@@ -2137,7 +2137,7 @@ include('prcd/qc/qc.php');
     
 <!-- Inicia Modal para generar tarjeton desde expediente nuevo -->
 
-<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="tarjetongen2" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="tarjetongen2" tabindex="-1" aria-labelledby="generatarjeton2" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
           <div class="modal-header">
@@ -3521,7 +3521,8 @@ $(document).ready(function () {
     var curp = document.getElementById('curp_exp').value;
     var expediente = document.getElementById('numeroExpediente').innerText;
     $("#tarjetongen2").modal('show');
-
+    var longitud = expediente.length;
+    expediente = expediente.substr(7,longitud);
     $.ajax({
       type:"POST",
       url:"query/query_searchPadronBDTarjeton.php",
@@ -3534,6 +3535,17 @@ $(document).ready(function () {
         success: function(data) {
           $("#tarjeton2").html(data);
           document.getElementById('tarjeton').hidden = false;
+          document.getElementById('searchDBInclusion2').hidden = true;
+          document.getElementById('modeloPerm').disabled = false;
+          document.getElementById('marcaPerm').disabled = false;
+          document.getElementById('annioPerm').disabled = false;
+          document.getElementById('placasPerm').disabled = false;
+          document.getElementById('seriePerm').disabled = false;
+          document.getElementById('folioTPerm').disabled = false;
+          document.getElementById('vigenciaPerm').disabled = false;
+          document.getElementById('checkAutoS').checked = false;
+          document.getElementById('AutoSeguroInput').value = "";
+          document.getElementById('agregarVehiculoBtn').disabled = false;
       }               
     });
   }
