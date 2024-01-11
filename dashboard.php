@@ -89,6 +89,7 @@ include('prcd/qc/qc.php');
     <script src="js/usuarioTemp.js"></script>
     <script src="js/print.js"></script>
     <script src="js/credencialEmpleados.js"></script>
+    <script src="js/graficas.js"></script>
     <!-- <link rel="stylesheet" href="crop/css/cropper.css">
     <link rel="stylesheet" href="crop/css/index.css"> -->
     <!-- <script src="crop/js/jquery.js"></script> -->
@@ -166,7 +167,7 @@ include('prcd/qc/qc.php');
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body onload="estadosSelect(); discapacidadTab()">
+  <body onload="estadosSelect(); discapacidadTab(); conteoExpNews()">
     
 <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
@@ -259,10 +260,12 @@ include('prcd/qc/qc.php');
     </nav>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
+      <div class="alert alert-success text-center" role="alert">
         <p class="h3">Bienvenid@</p>
+        <p class="h6 mb-1 text-muted">Sistema Único de Identificación y Verificación</p>
       </div>
-      <p class="h6 mb-5  text-muted">Sistema Único de Identificación y Verificación</p>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
+      </div>
       <!-- <hr> -->
       <div class="row" style="justify-content:center">
         <div class="col-md-12 col-lg-6 me-3 border rounded-1" style="width: 23%;">
@@ -274,7 +277,7 @@ include('prcd/qc/qc.php');
               </div>
               <div class="col-7 mt-2">
                 <div class="text-end" style="font-size:x-large;">
-                  <span>0</span>
+                  <span id="ExpNews"></span>
                 </div>
                 <div class="text-end mb-2" style="font-size: smaller;">
                   <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
@@ -292,7 +295,7 @@ include('prcd/qc/qc.php');
               </div>
               <div class="col-7 mt-2">
                 <div class="text-end" style="font-size:x-large;">
-                  <span>0</span>
+                  <span id="CredD"></span>
                 </div>
                 <div class="text-end mb-2" style="font-size: smaller;">
                   <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
@@ -310,7 +313,7 @@ include('prcd/qc/qc.php');
             </div>
             <div class="col-7 mt-2">
               <div class="text-end" style="font-size:x-large;">
-                <span>0</span>
+                <span id="TarjD"></span>
               </div>
               <div class="text-end mb-2" style="font-size: smaller;">
                 <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
@@ -328,7 +331,7 @@ include('prcd/qc/qc.php');
               </div>
               <div class="col-7 mt-2">
                 <div class="text-end" style="font-size:x-large;">
-                  <span>0</span>
+                  <span id="ExpD"></span>
                 </div>
                 <div class="text-end mb-2" style="font-size: smaller;">
                   <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
