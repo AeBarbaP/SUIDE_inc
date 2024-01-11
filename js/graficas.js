@@ -21,8 +21,39 @@ function conteoExpNews(){
                 document.getElementById('CredD').innerHTML = filasExp;
                 document.getElementById('TarjD').innerHTML = filasTar;
                 document.getElementById('ExpD').innerHTML = filasAct;
+
+                graph(filas,filasExp,filasTar,filasAct);
                 
             }
         });
 
+}
+function graph(x,y,z,a){
+var x1 = x;
+var y1 = y;
+var z1 = z;
+var a1 = a;
+console.log(x+','+y+','+z+','+a)
+var ctx = document.getElementById("myChart").getContext("2d");
+  var myChart = new Chart(ctx,{
+    type:'doughnut',
+    data:{
+      labels:['Nuevos','Credenciales','Tarjetones','Expendientes'],
+      datasets:[{
+        label:'Num datos',
+        data:[x1,y1,z1,a1],
+        backgroundColor:[
+          '#6C94D9',
+          '#DB3536',
+          '#0FCCEB',
+          '#EBDA0E'
+
+        ]
+      }]
+    },
+    options:{
+      
+    }
+  }
+  );
 }

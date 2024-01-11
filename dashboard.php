@@ -90,6 +90,7 @@ include('prcd/qc/qc.php');
     <script src="js/print.js"></script>
     <script src="js/credencialEmpleados.js"></script>
     <script src="js/graficas.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- <link rel="stylesheet" href="crop/css/cropper.css">
     <link rel="stylesheet" href="crop/css/index.css"> -->
     <!-- <script src="crop/js/jquery.js"></script> -->
@@ -167,8 +168,8 @@ include('prcd/qc/qc.php');
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body onload="estadosSelect(); discapacidadTab(); conteoExpNews()">
-    
+  <body onload="estadosSelect(); discapacidadTab(); conteoExpNews();">
+  
 <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -358,7 +359,7 @@ include('prcd/qc/qc.php');
                   </button>
                 </div>
               </div>
-              <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+          <canvas id="myChart" width="400" height="40S"></canvas>
             </div>
           </div>
         </div>
