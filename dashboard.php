@@ -275,9 +275,16 @@ include('prcd/qc/qc.php');
               <button type="button" class="btn btn-sm btn-outline-secondary">Compartir</button>
               <button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>
             </div>
-            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-              Esta semana
-            </button>
+            <div class="dropdown">
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Esta semana
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Este mes</a></li>
+                <li><a class="dropdown-item" href="#">Este año</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+              </ul>
+            </div>
           </div>
         </div>
         <hr class="mb-4">
