@@ -1748,7 +1748,7 @@ include('prcd/qc/qc.php');
                         </div>
                         <div class="col-md-6">
                           <div class="d-grid gap-2 mt-3">
-                          <button class="btn btn-secondary" type="button" id="tarjetonExpedienteBtn" onclick="entregarTarjetonExp()"><i class="bi bi-person-badge me-2"></i> Entregar Tarjetón</button>
+                          <button class="btn btn-secondary" type="button" id="tarjetonExpedienteBtn" onclick="buscarExpediente3()"><i class="bi bi-person-badge me-2"></i> Entregar Tarjetón</button>
                           </div>
                         </div>
                       </div>
@@ -1757,79 +1757,80 @@ include('prcd/qc/qc.php');
                 </div>
                 <div class="tab-pane fade" id="nav-docs" role="tabpanel" aria-labelledby="nav-docs-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
-                  <label for="basic-url" class="form-label h4"><i class="bi bi-files"></i> Requisitos para expediente de Personas con Discapacidad</label>
-                      <table class="table table-bordered table-hover align-middle text-center">
-                        <thead style="background-color:darkgray;color:white;">
-                          <tr>
-                            <th class="align-middle" scope="col">DOCUMENTO</th>
-                            <th scope="col">SI<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></th>
-                            <th scope="col">NO<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></th>
-                            <th class="align-middle" scope="col">NO APLICA</th>
-                            <th class="align-middle" scope="col">ARCHIVO<br><label class="fw-lighter fst-italic lh-1">(PDF o JPG)</label></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">HOJA DE REGISTRO<br><p class="fw-lighter fst-italic">Estudio Socioeconómico.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">DOCUMENTO MÉDICO<br><p class="fw-lighter fst-italic">Que indique el tipo y grado de discapacidad, expedido por institución pública de salud.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">COPIA DE ACTA DE NACIMIENTO<br><p class="fw-lighter fst-italic">O documento que acredite la condición jurídica de la persona beneficiaria.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">COPIA DE LA C.U.R.P.</th>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">COPIA DE LA IDENTIFICACIÓN OFICIAL DEL BENEFICIARIO<br><p class="fw-lighter fst-italic">Credencial de elector, pasaporte, credencial del INAPAM u otro documento que acredite la identidad del beneficiario.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">COPIA DE COMPROBANTE DE DOMICILIO<br><p class="fw-lighter fst-italic">Reciente a la apertura o actualización del expediente, no mayor a 90 días.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">DOS FOTOGRAFÍAS<br><p class="fw-lighter fst-italic">En cualquier formato, preferentemente impresas.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">COPIA DE LA TARJETA DE CIRCULACIÓN<br><p class="fw-lighter fst-italic">Del vehículo en el que se traslada la Persona con Discapacidad.</p></th>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="..."></td>
-                            <td><a href=""><i class="bi bi-cloud-arrow-up h2"></i></a></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <div class="d-grid gap-2">
-                        <a id="buttonCheck" class="btn btn-primary btn-lg" type="button" onclick="checkListDocsUpdate()" target="_blank">Imprimir formato Check List</a>
-                      </div>
+                    <label for="basic-url" class="form-label h4"><i class="bi bi-list-check"></i> Requisitos para expediente de Personas con Discapacidad</label>
+                    <table class="table table-bordered table-hover align-middle text-center" id="tablaCheckPDF">
+                      <thead style="background-color:darkgray;color:white;">
+                        <tr>
+                          <th class="align-middle" scope="col">DOCUMENTO</th>
+                          <th scope="col">SI<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkAllSi" value="" onchange="checkAll1()" aria-label="..."></th>
+                          <th scope="col">NO<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkAllNo" value="" onchange="checkAll2()" aria-label="..."></th>
+                          <th class="align-middle" scope="col">NO APLICA</th>
+                          <th class="align-middle" scope="col">ARCHIVO<br><label class="fw-lighter fst-italic lh-1">(PDF o JPG)</label></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">HOJA DE REGISTRO<br><p class="fw-lighter fst-italic">Estudio Socioeconómico.</p></th>
+                          <td><input class="form-check-input bloqueo1" type="checkbox" id="registroSi" value="" onclick="valoracionCheck(1)" aria-label="..."></td>
+                          <td><input class="form-check-input bloqueo1" type="checkbox" id="registroNo" value="" onclick="valoracionCheck(2)" aria-label="..."></td>
+                          <td><input class="form-check-input bloqueo1" type="checkbox" id="registroNA" value="" onclick="valoracionCheck(3)" aria-label="..."></td>
+                          <td><button class="btn bloqueo1" type="button" style="color: #917799;" id="registroDoc1" data-bs-toggle="modal" data-bs-target="#docUpload1" disabled><i class="bi bi-cloud-arrow-up h2"></i></button></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">DOCUMENTO MÉDICO<br><p class="fw-lighter fst-italic">Que indique el tipo y grado de discapacidad, expedido por institución pública de salud.</p></th>
+                          <td><input class="form-check-input bloqueo2" type="checkbox" id="valoracionSi" value="" onclick="valoracionCheck(4)" aria-label="..."></td>
+                          <td><input class="form-check-input bloqueo2" type="checkbox" id="valoracionNo" value="" onclick="valoracionCheck(5)" aria-label="..."></td>
+                          <td><input class="form-check-input bloqueo2" type="checkbox" id="valoracionNA" value="" onclick="valoracionCheck(6)" aria-label="..."></td>
+                          <td><button class="btn bloqueo2" type="button" style="color: #917799;" id="registroDoc2" data-bs-toggle="modal" data-bs-target="#docUpload2" disabled><i class="bi bi-cloud-arrow-up h2"></i></button></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">COPIA DE ACTA DE NACIMIENTO<br><p class="fw-lighter fst-italic">O documento que acredite la condición jurídica de la persona beneficiaria.</p></th>
+                          <td><input class="form-check-input bloqueo3" type="checkbox" id="actaSi" value="" onclick="valoracionCheck(7)" aria-label="..."></td>
+                          <td><input class="form-check-input bloqueo3" type="checkbox" id="actaNo" value="" onclick="valoracionCheck(8)" aria-label="..."></td>
+                          <td><input class="form-check-input bloqueo3" type="checkbox" id="actaNA" value="" onclick="valoracionCheck(9)" aria-label="..."></td>
+                          <td><button class="btn bloqueo3" type="button" style="color: #917799;" id="registroDoc3" data-bs-toggle="modal" data-bs-target="#docUpload3" disabled><i class="bi bi-cloud-arrow-up h2"></i></button></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">COPIA DE LA C.U.R.P.</th>
+                          <td><input class="form-check-input bloqueo4" type="checkbox" id="curpSi" value="" onclick="valoracionCheck(10)" aria-label="..."></td>
+                          <td><input class="form-check-input bloqueo4" type="checkbox" id="curpNo" value="" onclick="valoracionCheck(11)" aria-label="..."></td>
+                          <td><input class="form-check-input bloqueo4" type="checkbox" id="curpNA" value="" onclick="valoracionCheck(12)" aria-label="..."></td>
+                          <td><button class="btn bloqueo4" type="button" style="color: #917799;" id="registroDoc4" data-bs-toggle="modal" data-bs-target="#docUpload4" disabled><i class="bi bi-cloud-arrow-up h2"></i></button></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">COPIA DE LA IDENTIFICACIÓN OFICIAL DEL BENEFICIARIO<br><p class="fw-lighter fst-italic">Credencial de elector, pasaporte, credencial del INAPAM u otro documento que acredite la identidad del beneficiario.</p></th>
+                          <td><input class="form-check-input bloqueo5" type="checkbox" id="ineSi" value="" onclick="valoracionCheck(13)" aria-label="..."></td>
+                          <td><input class="form-check-input bloqueo5" type="checkbox" id="ineNo" value="" onclick="valoracionCheck(14)" aria-label="..."></td>
+                          <td><input class="form-check-input bloqueo5" type="checkbox" id="ineNA" value="" onclick="valoracionCheck(15)" aria-label="..."></td>
+                          <td><button class="btn bloqueo5" type="button" style="color: #917799;" id="registroDoc5" data-bs-toggle="modal" data-bs-target="#docUpload5" disabled><i class="bi bi-cloud-arrow-up h2"></i></button></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">COPIA DE COMPROBANTE DE DOMICILIO<br><p class="fw-lighter fst-italic">Reciente a la apertura o actualización del expediente, no mayor a 90 días.</p></th>
+                          <td><input class="form-check-input bloqueo6" type="checkbox" id="comprobanteSi" value="" onclick="valoracionCheck(16)" aria-label="..."></td>
+                          <td><input class="form-check-input bloqueo6" type="checkbox" id="comprobanteNo" value="" onclick="valoracionCheck(17)" aria-label="..."></td>
+                          <td><input class="form-check-input bloqueo6" type="checkbox" id="comprobanteNA" value="" onclick="valoracionCheck(18)" aria-label="..."></td>
+                          <td><button class="btn bloqueo6" type="button" style="color: #917799;" id="registroDoc6" data-bs-toggle="modal" data-bs-target="#docUpload6" disabled><i class="bi bi-cloud-arrow-up h2"></i></button></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">COPIA DE LA TARJETA DE CIRCULACIÓN<br><p class="fw-lighter fst-italic">Del vehículo en el que se traslada la Persona con Discapacidad.</p></th>
+                          <td><input class="form-check-input bloqueo7" type="checkbox" id="circulacionSi" value="" onclick="valoracionCheck(22)" aria-label="..."></td>
+                          <td><input class="form-check-input bloqueo7" type="checkbox" id="circulacionNo" value="" onclick="valoracionCheck(23)" aria-label="..."></td>
+                          <td><input class="form-check-input bloqueo7" type="checkbox" id="circulacionNA" value="" onclick="valoracionCheck(24)" aria-label="..."></td>
+                          <td><button class="btn bloqueo7" type="button" style="color: #917799;" id="registroDoc7" data-bs-toggle="modal" data-bs-target="#docUpload7" disabled><i class="bi bi-cloud-arrow-up h2"></i></button></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">DOS FOTOGRAFÍAS<br><p class="fw-lighter fst-italic">En cualquier formato, preferentemente impresas.</p></th>
+                          <td><input class="form-check-input" type="checkbox" id="fotosSi" value="" onclick="valoracionCheck(19)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="fotosNo" value="20" onclick="valoracionCheck(20)" aria-label="..."></td>
+                          <td><input class="form-check-input" type="checkbox" id="fotosNA" value="" onclick="valoracionCheck(21)" aria-label="..."></td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div id="elementH"></div>
+                    <div class="d-grid gap-2">
+                      <a id="buttonCheck" class="btn btn-primary btn-lg" type="button" onclick="checkListDocs();nona()" target="_blank" disabled>Imprimir formato Check List</a>
+                    </div>
                   </div>
                 </div>
                 <div class="tab-pane fade" id="nav-formato" role="tabpanel" aria-labelledby="nav-formato-tab" tabindex="0">
@@ -2785,7 +2786,110 @@ include('prcd/qc/qc.php');
         </div>
       </div>
     </div>
-    
+    <!-- Inicia Modal para generar tarjeton desde expediente nuevo -->
+
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="tarjetongen2" tabindex="-1" aria-labelledby="generatarjeton2" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><strong><i class="bi bi-plus"></i> Generar Tarjetón con QR</strong></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="input-group mb-1 mt-2 w-100">
+              <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+              <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2(); desbloquearInputsT(this.value)" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+              <!-- <input type="text" id="curpTarjeton" hidden>  -->
+            </div><!-- input group -->
+            <br>
+            <div class="container text-center">
+              <div class="card mb-3" style="max-width: 100%;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body text-start" >
+                      <div id = "tarjeton2">
+
+                      </div>
+                      <hr>
+                      <h5 class="mb-3">Datos del vehículo</h5>
+                      <input type="text" id="tipoTarjeton" value="1" hidden>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Marca</span>
+                        <input type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaPerm" disabled>
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Modelo</span>
+                        <input type="text" class="form-control" placeholder="Modelo" id="modeloPerm" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="modelo" aria-describedby="basic-addon1" disabled>
+                        <span class="input-group-text">Año</span>
+                        <input type="text" onkeypress="ValidaSoloNumeros()" class="form-control" placeholder="Año" aria-label="anio" id="annioPerm" disabled>
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">No. de Placas</span>
+                        <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-describedby="basic-addon1" id="placasPerm" disabled>
+                        <span class="input-group-text" id="basic-addon1">No. de Serie</span>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" oninput="habilitaBTNadd()" placeholder="# de Serie del vehículo" aria-label="numeroserie" aria-describedby="basic-addon1" id="seriePerm" disabled>
+                      </div>
+                      <div class="input-group mb-1">
+                        <span class="input-group-text" id="basic-addon1">Folio Tarjetón</span>
+                        <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()"  placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPerm" disabled>
+                        <span class="input-group-text" id="basic-addon1">Vigencia</span>
+                        <select class="form-select" id="vigenciaPerm" aria-label="Default select example" disabled>
+                          <option selected>Selecciona...</option>
+                          <option value="730">2 años</option>
+                          <option value="2190">6 años</option>
+                        </select>
+                      </div>
+                      <div class="form-text mb-2" id="basic-addon4"><a href="#" class="ms-2 link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" data-bs-toggle="modal" data-bs-target="#reemplazarTarjeton" onclick="datosTarjeton()">Reemplazar tarjetón asignado...</a></div>
+                      <label id="textoTarjeton" hidden></label>
+                      <div class="col-md-12">
+                        <div class="input-group mb-3">
+                          <span class="input-group-text">Vehículo extranjero</span>
+                          <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" onchange="autoSeguroCheck()" value="" id="checkAutoS" aria-label="Checkbox for following text input">
+                          </div>
+                          <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroInput" disabled>
+                        </div>  
+                      </div>
+                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary me-md-2" type="button" id="agregarVehiculoBtn" onclick="vehiculoAdd()" disabled><i class="bi bi-plus-lg"></i> Agregar</button>
+                      </div>
+                      <hr>
+                      <div class="table-responsive text-center">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Marca</th>
+                              <th scope="col">Modelo</th>
+                              <th scope="col"># de Placa</th>
+                              <th scope="col"># Tarjeton</th>
+                              <th scope="col">Editar</th>
+                            </tr>
+                          </thead>
+                          <tbody id="vehiculosTabla">
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>  
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiaModalTarjeton()">Cerrar</button>
+            <!-- <button type="button" class="btn btn-primary" id="habilitaimprimirtp" onclick="swaldatostrn();limpiaModalTarjeton()" disabled><i class="bi bi-save2"></i> Generar QR</button> -->
+            <button type="button" class="btn btn-primary" id="imprimirt" data-bs-toggle="modal" data-bs-target="#qrShows2" onclick="limpiaModalTarjeton()" disabled><i class="bi bi-printer"></i> Imprimir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Termina modal para entregar tarjeton desde expediente nuevo -->
+
     <!-- Inicia modal para editar información de vehículo en tarjetón de padrón -->
     
     <div class="modal fade" id="editarVehiculo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -2938,6 +3042,32 @@ include('prcd/qc/qc.php');
     </div>
   </div>
 </div>
+</div>
+
+    <!-- Termina modal para imprimir qr -->
+
+    <!-- Inicia modal para imprimir qr -->
+<div class="modal fade" id="qrShows2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Código QR Tarjetón</h1>
+        <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#tarjetongen2" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <strong><div class="text-center" style="font-family: Verdana, Geneva, Tahoma, sans-serif;  font-size:large" id="etiquetaNum">
+          
+        </div></strong>
+        <div class="text-center" id="qrTarjeton">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen2">Cerrar</button>
+        <a type="button" id="etiquetanumbtn"  class="btn btn-primary" href="javascript:imprimirEtiqueta('etiquetaNum')"><i class="bi bi-printer"></i> # Expediente</a>
+        <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('qrTarjeton')"><i class="bi bi-printer-fill"></i> Imprimir QR</a>
+      </div>
+    </div>
+  </div>
 </div>
 
     <!-- Termina modal para imprimir qr -->
@@ -3615,6 +3745,40 @@ $(document).ready(function () {
     }
   }
 
+  
+
+  function buscarExpediente3(){
+    var curp = document.getElementById('curp_exp').value;
+    var expediente = document.getElementById('numeroExpediente').innerText;
+    $("#tarjetongen2").modal('show');
+    var longitud = expediente.length;
+    expediente = expediente.substr(7,longitud);
+    $.ajax({
+      type:"POST",
+      url:"query/query_searchPadronBDTarjeton.php",
+      dataType: 'html',
+      data:{
+        expediente:expediente,
+        curp:curp
+      },
+      cache: false,
+        success: function(data) {
+          $("#tarjeton2").html(data);
+          document.getElementById('tarjeton').hidden = false;
+          document.getElementById('searchDBInclusion2').hidden = true;
+          document.getElementById('modeloPerm').disabled = false;
+          document.getElementById('marcaPerm').disabled = false;
+          document.getElementById('annioPerm').disabled = false;
+          document.getElementById('placasPerm').disabled = false;
+          document.getElementById('seriePerm').disabled = false;
+          document.getElementById('folioTPerm').disabled = false;
+          document.getElementById('vigenciaPerm').disabled = false;
+          document.getElementById('checkAutoS').checked = false;
+          document.getElementById('AutoSeguroInput').value = "";
+          document.getElementById('agregarVehiculoBtn').disabled = false;
+      }               
+    });
+  }
   /* function init() {
     var inputFile = document.getElementById('inputFile1');
     inputFile.addEventListener('change', mostrarImagen, false);

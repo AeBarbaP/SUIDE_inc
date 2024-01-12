@@ -1675,7 +1675,7 @@ include('prcd/qc/qc.php');
                         </div>
                         <div class="col-md-6">
                           <div class="d-grid gap-2 mt-3">
-                          <button class="btn btn-secondary" type="button" onclick=";buscarExpediente3()"><i class="bi bi-person-badge me-2"></i> Entregar Tarjetón</button>
+                          <button class="btn btn-secondary" type="button" onclick="buscarExpediente3()"><i class="bi bi-person-badge me-2"></i> Entregar Tarjetón</button>
                           </div>
                         </div>
                       </div>
@@ -2232,7 +2232,7 @@ include('prcd/qc/qc.php');
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiaModalTarjeton()">Cerrar</button>
             <!-- <button type="button" class="btn btn-primary" id="habilitaimprimirtp" onclick="swaldatostrn();limpiaModalTarjeton()" disabled><i class="bi bi-save2"></i> Generar QR</button> -->
-            <button type="button" class="btn btn-primary" id="imprimirt" data-bs-toggle="modal" data-bs-target="#qrShows" onclick="limpiaModalTarjeton()" disabled><i class="bi bi-printer"></i> Imprimir</button>
+            <button type="button" class="btn btn-primary" id="imprimirt" data-bs-toggle="modal" data-bs-target="#qrShows2" onclick="limpiaModalTarjeton()" disabled><i class="bi bi-printer"></i> Imprimir</button>
           </div>
         </div>
       </div>
@@ -2391,6 +2391,32 @@ include('prcd/qc/qc.php');
     </div>
   </div>
 </div>
+</div>
+
+    <!-- Termina modal para imprimir qr -->
+    
+<!-- Inicia modal para imprimir qr -->
+<div class="modal fade" id="qrShows2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Código QR Tarjetón</h1>
+        <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#tarjetongen2" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <strong><div class="text-center" style="font-family: Verdana, Geneva, Tahoma, sans-serif;  font-size:large" id="etiquetaNum">
+          
+        </div></strong>
+        <div class="text-center" id="qrTarjeton">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen2">Cerrar</button>
+        <a type="button" id="etiquetanumbtn"  class="btn btn-primary" href="javascript:imprimirEtiqueta('etiquetaNum')"><i class="bi bi-printer"></i> # Expediente</a>
+        <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('qrTarjeton')"><i class="bi bi-printer-fill"></i> Imprimir QR</a>
+      </div>
+    </div>
+  </div>
 </div>
 
     <!-- Termina modal para imprimir qr -->

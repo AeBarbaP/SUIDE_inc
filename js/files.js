@@ -4,6 +4,7 @@ function _(el) {
   
   function uploadFile(doc,tipoDoc) {
     var idUsr = document.getElementById('curp_exp').value;
+    var idExp = document.getElementById('numeroExpediente').innerText;
     var file = _("file"+doc).files[0];
     var documento = doc;
     var idUsuario = idUsr;
@@ -15,6 +16,7 @@ function _(el) {
     // variables post
     formdata.append("documento", documento);
     formdata.append("idUsuario", idUsuario);
+    formdata.append("idExpediente", idExp);
     formdata.append("tipoDoc", tipoDoc);
     var ajax = new XMLHttpRequest();
     ajax.upload.addEventListener("progress", progressHandler, false);

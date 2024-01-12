@@ -14,9 +14,17 @@ $sqlMedicos = "SELECT * FROM datos_medicos WHERE expediente LIKE '%$expediente%'
 $resultadoSqlMedicos = $conn->query($sqlMedicos);
 $rowDatosMedicos = $resultadoSqlMedicos->fetch_assoc();
 //vivienda
-$sqlVivienda = "SELECT * FROM vivienda WHERE expediente LIKE '%$expediente%' OR curp LIKE '$curp'";
+$sqlVivienda = "SELECT * FROM vivienda WHERE curp LIKE '$curp'";
 $resultadoSqlVivienda = $conn->query($sqlVivienda);
 $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
+//documentos
+$sqlDocumentos = "SELECT * FROM documentos_list WHERE expediente LIKE '%$expediente%' OR curp LIKE '$curp'";
+$resultadoSqlDocumentos = $conn->query($sqlDocumentos);
+while ($rowDatosDocumentos = $resultadoSqlDocumentos->fetch_assoc()){
+    $ruta[]=$rowDatosDocumentos['ruta'];
+    $documento[]=$rowDatosDocumentos['documento'];
+    $tipo_doc[]=$rowDatosDocumentos['tipo_doc'];
+}
 
     $numExpediente = $rowDatos['numExpediente'];
     $nombre = $rowDatos['nombre'];
@@ -141,5 +149,8 @@ $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
         'electrodomesticos_otro'=>$rowDatosVivienda['electrodomesticos_otro'], 
         'personas_dependen'=>$rowDatosVivienda['personas_dependen'], 
         'deudas'=>$rowDatosVivienda['deudas'], 
-        'deudas_cuanto'=>$rowDatosVivienda['deudas_cuanto'] //vivienda
+        'deudas_cuanto'=>$rowDatosVivienda['deudas_cuanto'], //vivienda
+        'tipo_doc'=>$tipo_doc,
+        'ruta'=>$ruta,
+        'documento'=>$documento
     ));

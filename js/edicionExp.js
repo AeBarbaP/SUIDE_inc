@@ -101,6 +101,9 @@ function queryDatos(){
             var electrodomesticos_otro = jsonData.electrodomesticos_otro;
             var deudas = jsonData.deudas;
             var municipio  = jsonData.municipio;
+            var tipo_doc  = jsonData.tipo_doc;
+            var ruta  = jsonData.ruta;
+            var documento  = jsonData.documento;
            /*  municipiosSelect(jsonData.estado); */
             console.log(jsonData.municipio);
             document.getElementById('editarBeneficiario').hidden = true;

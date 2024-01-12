@@ -6,6 +6,7 @@
     
     // $id=$_SESSION['id'];
     $idUsr = $_POST['idUsuario'];
+    $idExp = $_POST['idExpediente'];
     $doc = $_POST['documento'];
     $tipo_doc = $_POST['tipoDoc'];
     $fecha_sistema = strftime("%Y-%m-%d,%H:%M:%S");
@@ -32,7 +33,8 @@ $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
     $ruta = "docs_expedientes/". $link .'_'. $idUsr .'.'.$extension;
     // $sqlinsert= "UPDATE documentos SET link4='$ruta_pptx' WHERE id_usr='$curp'";
     $sqlInsert= "INSERT INTO documentos_list (
-        id_ext,
+        curp,
+        numExp,
         tipo_doc,
         ruta_doc,
         fecha,
@@ -40,6 +42,7 @@ $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
         ) 
     VALUES(
         '$idUsr',
+        '$idExp',
         '$doc',
         '$ruta',
         '$fecha_sistema',
