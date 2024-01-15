@@ -20,11 +20,66 @@ $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
 //documentos
 $sqlDocumentos = "SELECT * FROM documentos_list WHERE expediente LIKE '%$expediente%' OR curp LIKE '$curp'";
 $resultadoSqlDocumentos = $conn->query($sqlDocumentos);
-while ($rowDatosDocumentos = $resultadoSqlDocumentos->fetch_assoc()){
-    $ruta[]=$rowDatosDocumentos['ruta'];
-    $documento[]=$rowDatosDocumentos['documento'];
-    $tipo_doc[]=$rowDatosDocumentos['tipo_doc'];
-}
+$rowDatosDocumentos = $resultadoSqlDocumentos->fetch_assoc();
+$tipoDocumento = $rowDatosDocumentos['tipo_doc'];
+
+echo json_encode(array(
+    'HojaRegistro'=>$tipo_documento
+));
+
+$sqlDocumentos = "SELECT * FROM documentos_list WHERE expediente LIKE '%$expediente%' OR curp LIKE '$curp' AND documento = 2";
+$resultadoSqlDocumentos = $conn->query($sqlDocumentos);
+$rowDatosDocumentos = $resultadoSqlDocumentos->fetch_assoc();
+$tipoDocumento = $rowDatosDocumentos['tipo_doc'];
+
+echo json_encode(array(
+    'valoracion'=>$tipo_documento
+));
+
+$sqlDocumentos = "SELECT * FROM documentos_list WHERE expediente LIKE '%$expediente%' OR curp LIKE '$curp' AND documento = 3";
+$resultadoSqlDocumentos = $conn->query($sqlDocumentos);
+$rowDatosDocumentos = $resultadoSqlDocumentos->fetch_assoc();
+$tipoDocumento = $rowDatosDocumentos['tipo_doc'];
+
+echo json_encode(array(
+    'actaNacimiento'=>$tipo_documento
+));
+
+$sqlDocumentos = "SELECT * FROM documentos_list WHERE expediente LIKE '%$expediente%' OR curp LIKE '$curp' AND documento = 4";
+$resultadoSqlDocumentos = $conn->query($sqlDocumentos);
+$rowDatosDocumentos = $resultadoSqlDocumentos->fetch_assoc();
+$tipoDocumento = $rowDatosDocumentos['tipo_doc'];
+
+echo json_encode(array(
+    'curpDoc'=>$tipo_documento
+));
+
+$sqlDocumentos = "SELECT * FROM documentos_list WHERE expediente LIKE '%$expediente%' OR curp LIKE '$curp' AND documento = 5";
+$resultadoSqlDocumentos = $conn->query($sqlDocumentos);
+$rowDatosDocumentos = $resultadoSqlDocumentos->fetch_assoc();
+$tipoDocumento = $rowDatosDocumentos['tipo_doc'];
+
+echo json_encode(array(
+    'ine'=>$tipo_documento
+));
+
+$sqlDocumentos = "SELECT * FROM documentos_list WHERE expediente LIKE '%$expediente%' OR curp LIKE '$curp' AND documento = 6";
+$resultadoSqlDocumentos = $conn->query($sqlDocumentos);
+$rowDatosDocumentos = $resultadoSqlDocumentos->fetch_assoc();
+$tipoDocumento = $rowDatosDocumentos['tipo_doc'];
+
+echo json_encode(array(
+    'comprobante'=>$tipo_documento
+));
+
+$sqlDocumentos = "SELECT * FROM documentos_list WHERE expediente LIKE '%$expediente%' OR curp LIKE '$curp' AND documento = 7";
+$resultadoSqlDocumentos = $conn->query($sqlDocumentos);
+$rowDatosDocumentos = $resultadoSqlDocumentos->fetch_assoc();
+$tipoDocumento = $rowDatosDocumentos['tipo_doc'];
+
+echo json_encode(array(
+    'tarjetaCirculacion'=>$tipo_documento
+));
 
     $numExpediente = $rowDatos['numExpediente'];
     $nombre = $rowDatos['nombre'];
@@ -149,8 +204,6 @@ while ($rowDatosDocumentos = $resultadoSqlDocumentos->fetch_assoc()){
         'electrodomesticos_otro'=>$rowDatosVivienda['electrodomesticos_otro'], 
         'personas_dependen'=>$rowDatosVivienda['personas_dependen'], 
         'deudas'=>$rowDatosVivienda['deudas'], 
-        'deudas_cuanto'=>$rowDatosVivienda['deudas_cuanto'], //vivienda
-        'tipo_doc'=>$tipo_doc,
-        'ruta'=>$ruta,
-        'documento'=>$documento
+        'deudas_cuanto'=>$rowDatosVivienda['deudas_cuanto'] //vivienda
+        
     ));

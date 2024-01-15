@@ -101,9 +101,13 @@ function queryDatos(){
             var electrodomesticos_otro = jsonData.electrodomesticos_otro;
             var deudas = jsonData.deudas;
             var municipio  = jsonData.municipio;
-            var tipo_doc  = jsonData.tipo_doc;
-            var ruta  = jsonData.ruta;
-            var documento  = jsonData.documento;
+            var hojaRegistro  = jsonData.hojaRegistro;
+            var valoracion  = jsonData.valoracion;
+            var actaNacimiento  = jsonData.actaNacimiento;
+            var curpDoc  = jsonData.curpDoc;
+            var ine  = jsonData.ine;
+            var comprobanteDomicilio  = jsonData.comprobanteDomicilio;
+            var tarjetaCirculacion  = jsonData.tarjetaCirculacion;
            /*  municipiosSelect(jsonData.estado); */
             console.log(jsonData.municipio);
             document.getElementById('editarBeneficiario').hidden = true;
@@ -572,6 +576,62 @@ function queryDatos(){
                     document.getElementById('deudasNo').checked = true;
 
                 }
+
+                if(hojaRegistro == 1){
+                    document.getElementById('registroSi').checked = true;            
+                }
+                else if (hojaRegistro == 8){
+                    document.getElementById('registroNo').checked = true; 
+                }
+                else if (hojaRegistro == 15){
+                    document.getElementById('registroNA').checked = true; 
+                }
+
+                if(valoracion == 2){
+                    document.getElementById('valoracionSi').checked = true;            
+                }
+                else if (valoracion == 9){
+                    document.getElementById('valoracionNo').checked = true; 
+                }
+                else if (valoracion == 16){
+                    document.getElementById('valoracionNA').checked = true; 
+                }
+
+                if(actaNacimiento == 3){
+                    document.getElementById('actaSi').checked = true;            
+                }
+                else if (actaNacimiento == 10){
+                    document.getElementById('actaNo').checked = true; 
+                }
+                else if (actaNacimiento == 17){
+                    document.getElementById('actaNA').checked = true; 
+                }
+
+                if(curpDoc == 4){
+                    document.getElementById('curpSi').checked = true;            
+                }
+                else if (curpDoc == 11){
+                    document.getElementById('curpNo').checked = true; 
+                }
+                else if (curpDoc == 18){
+                    document.getElementById('curpNA').checked = true; 
+                }
+
+                if(ine == 5){
+                    document.getElementById('ineSi').checked = true;            
+                }
+                else if (ine == 12){
+                    document.getElementById('ineNo').checked = true; 
+                }
+                else if (ine == 19){
+                    document.getElementById('ineNA').checked = true; 
+                }
+/* 
+
+curpDoc
+ine
+comprobanteDomicilio
+tarjetaCirculacion */
                 showMeFam();
                 showMeRef();
                 mostrarTablaServicios();
