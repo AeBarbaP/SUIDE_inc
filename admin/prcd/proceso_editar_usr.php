@@ -11,12 +11,14 @@ include('../../prcd/qc/qc.php');
     $user = $_POST['user'];
     $perfil = $_POST['perfil'];
     $estatus = $_POST['estatus'];
+    $color = $_POST['color'];
 
     $sqlInsert ="UPDATE users SET 
         nombre = '$nombre',
         username = '$user',
         perfil = '$perfil',
-        estatus = '$estatus' 
+        estatus = '$estatus',
+        color = '$color'
         WHERE id = '$id'";
     $resultadosqlInsert = $conn->query($sqlInsert);
 

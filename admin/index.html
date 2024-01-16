@@ -19,6 +19,8 @@
     
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +28,8 @@
     <script src="js/usuarios.js"></script>
 
     <style>
+     
+
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -110,7 +114,7 @@
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body onload="calendario()">
+  <body onload="calendario();colaboradoresDashboard();conteoGeneral()">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -124,6 +128,10 @@
       </symbol>
       <symbol id="sun-fill" viewBox="0 0 16 16">
         <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+      </symbol>
+      <symbol id="person" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
       </symbol>
     </svg>
 
@@ -295,68 +303,16 @@
             
           </ul>
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-            <span>Departamentos</span>
-            <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span><i class="bi bi-people-fill"></i> Colaboradores</span>
+            <a class="link-secondary" aria-label="Colapsar listado" data-bs-toggle="collapse" href="#collapse1" aria-expanded="false" aria-controls="collapseExample">
               <svg class="bi"><use xlink:href="#plus-circle"/></svg>
             </a>
           </h6>
-          <ul class="nav flex-column mb-auto">
-            <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <span class="badge rounded-pill text-bg-primary"><svg class="bi"><use xlink:href="#file-earmark-text"/></svg></span>
-                <span class="badge rounded-pill text-bg-primary">Departamento 1</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <span class="badge rounded-pill text-bg-secondary"><svg class="bi"><use xlink:href="#file-earmark-text"/></svg></span>
-                <span class="badge rounded-pill text-bg-secondary">Departamento 2</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <span class="badge rounded-pill text-bg-success"><svg class="bi"><use xlink:href="#file-earmark-text"/></svg></span>
-                <span class="badge rounded-pill text-bg-success">Departamento 3</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <span class="badge rounded-pill text-bg-danger"><svg class="bi"><use xlink:href="#file-earmark-text"/></svg></span>
-                <span class="badge rounded-pill text-bg-danger">Departamento 4</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <span class="badge rounded-pill text-bg-warning"><svg class="bi"><use xlink:href="#file-earmark-text"/></svg></span>
-                <span class="badge rounded-pill text-bg-warning">Departamento 5</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <span class="badge rounded-pill text-bg-info"><svg class="bi"><use xlink:href="#file-earmark-text"/></svg></span>
-                <span class="badge rounded-pill text-bg-info">Departamento 6</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <span class="badge rounded-pill text-bg-primary"><svg class="bi"><use xlink:href="#file-earmark-text"/></svg></span>
-                <span class="badge rounded-pill text-bg-primary">Departamento 7</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <span class="badge rounded-pill text-bg-light"><svg class="bi"><use xlink:href="#file-earmark-text"/></svg></span>
-                <span class="badge rounded-pill text-bg-light">Departamento 8</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <span class="badge rounded-pill text-bg-dark"><svg class="bi"><use xlink:href="#file-earmark-text"/></svg></span>
-                <span class="badge rounded-pill text-bg-dark">Departamento 9</span>
-              </a>
-            </li>
-            
-          </ul>
+          <div id="collapse1" class="panel-collapse collapse">
+            <ul class="nav flex-column mb-auto" id="queryColaboradoresDashboard">
+              
+            </ul>
+          </div>
 
           <hr class="my-3">
 
@@ -473,6 +429,10 @@
           <span class="input-group-text" id="basic-addon1"><i class="bi bi-passport"></i></span>
           <input type="password" class="form-control" placeholder="Agregar contraseña" aria-label="Agregar contraseña" aria-describedby="basic-addon1" id="pass">
         </div>        
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1"><i class="bi bi-passport"></i></span>
+          <input type="color" class="form-control" placeholder="Agregar color" aria-label="Agregar color" aria-describedby="basic-addon1" id="color">
+        </div>        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
@@ -481,6 +441,7 @@
     </div>
   </div>
 </div>
+
 <!-- Modal editar usuario -->
 <div class="modal fade" id="editarUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -512,6 +473,10 @@
             <option value="1">Activo</option>
             <option value="0">Inactivo</option>
           </select>
+        </div>        
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1"><i class="bi bi-palette"></i></span>
+          <input type="color" class="form-control" placeholder="Color" aria-label="Color" aria-describedby="basic-addon1" id="colorEditar">
         </div>        
       </div>
       <div class="modal-footer">
