@@ -39,10 +39,14 @@ include('../../prcd/qc/qc.php');
         }
         echo '<td>';
         if($row["estatus"] == 1){
+            echo '<a class="btn btn-primary btn-sm me-1" href="javascript:void(0)" onclick="activarUsuario('.$row["id"].')"><i class="bi bi-pencil-square"></i></a>';
+            
             echo '<a class="btn btn-danger btn-sm" href="javascript:void(0)" onclick="desactivarUsuario('.$row["id"].')"><i class="bi bi-caret-down-square-fill"></i></a>';
         }
         else{
-            echo '<a class="btn btn-success btn-sm" href="javascript:void(0)" onclick="activarUsuario('.$row["id"].')"><i class="bi bi-caret-up-square-fill"></i></a>';
+            echo '<a class="btn btn-success btn-sm me-1" href="javascript:void(0)" onclick="activarUsuario('.$row["id"].')"><i class="bi bi-pencil-square"></i></a>';
+        
+            echo '<a class="btn btn-primary btn-sm" href="javascript:void(0)" onclick="activarUsuario('.$row["id"].')"><i class="bi bi-caret-up-square-fill"></i></a>';
         }
         echo '</td>';
         echo '</tr>';
