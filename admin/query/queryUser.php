@@ -24,10 +24,10 @@ include('../../prcd/qc/qc.php');
         echo '<td>'.$x.'</td>';
         echo '<td>'.$row["nombre"].'</td>';
         echo '<td>'.$row["username"].'</td>';
-        if ($row["perfil"] == 1 ){
+        if ($row["perfil"] == 2 ){
             echo '<td><span class="badge rounded-pill text-bg-primary">Usuario</span></td>';
         }
-        else if ($row["perfil"] == 2 ){
+        else if ($row["perfil"] == 1 ){
             echo '<td><span class="badge rounded-pill text-bg-warning">Administrador</span></td>';
         }
 
@@ -38,16 +38,11 @@ include('../../prcd/qc/qc.php');
             echo '<td><span class="badge rounded-pill text-bg-danger">Inactivo</span></td>';
         }
         echo '<td>';
-        if($row["estatus"] == 1){
-            echo '<a class="btn btn-primary btn-sm me-1" href="javascript:void(0)" onclick="activarUsuario('.$row["id"].')"><i class="bi bi-pencil-square"></i></a>';
-            
-            echo '<a class="btn btn-danger btn-sm" href="javascript:void(0)" onclick="desactivarUsuario('.$row["id"].')"><i class="bi bi-caret-down-square-fill"></i></a>';
-        }
-        else{
-            echo '<a class="btn btn-success btn-sm me-1" href="javascript:void(0)" onclick="activarUsuario('.$row["id"].')"><i class="bi bi-pencil-square"></i></a>';
-        
-            echo '<a class="btn btn-primary btn-sm" href="javascript:void(0)" onclick="activarUsuario('.$row["id"].')"><i class="bi bi-caret-up-square-fill"></i></a>';
-        }
+            echo '<a class="btn btn-primary btn-sm me-1" href="javascript:void(0)" onclick="actualizarUsuario('.$row["id"].',\''.$row["nombre"].'\',\''.$row["username"].'\',\''.$row["estatus"].'\',\''.$row["perfil"].'\')"><i class="bi bi-pencil-square"></i></a>';
+        /* else{
+            echo '<a class="btn btn-primary btn-sm me-1" href="javascript:void(0)" onclick="actualizarUsuario('.$row["id"].','.$row["nombre"].','.$row["username"].','.$row["estatus"].','.$row["perfil"].')"><i class="bi bi-pencil-square"></i></a>
+            ';
+        } */
         echo '</td>';
         echo '</tr>';
         

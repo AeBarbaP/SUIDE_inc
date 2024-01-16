@@ -6,26 +6,18 @@ include('../../prcd/qc/qc.php');
 
     $fechaSistema = strftime("%Y-%m-%d,%H:%M:%S");
 
+    $id = $_POST['idHidden'];
     $nombre = $_POST['nombre'];
-    $alias = $_POST['alias'];
-    $pass = $_POST['pass'];
-    $pass = md5($pass);
+    $user = $_POST['user'];
+    $perfil = $_POST['perfil'];
+    $estatus = $_POST['estatus'];
 
-    $sqlInsert ="INSERT INTO users (
-        nombre,
-        username,
-        pwd,
-        fecha_creacion,
-        perfil,
-        estatus) 
-        VALUES(
-            '$nombre',
-            '$alias',
-            '$pass',
-            '$fechaSistema',
-            2,
-            1
-            )";
+    $sqlInsert ="UPDATE users SET 
+        nombre = '$nombre',
+        username = '$user',
+        perfil = '$perfil',
+        estatus = '$estatus' 
+        WHERE id = '$id'";
     $resultadosqlInsert = $conn->query($sqlInsert);
 
     if($resultadosqlInsert){

@@ -381,7 +381,6 @@ include('prcd/qc/qc.php');
                                     }
                                   } 
                                   </script>
-                                  
                             </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>

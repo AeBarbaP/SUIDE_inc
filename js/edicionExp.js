@@ -628,8 +628,6 @@ function queryDatos(){
                 }
 /* 
 
-curpDoc
-ine
 comprobanteDomicilio
 tarjetaCirculacion */
                 showMeFam();
