@@ -9,6 +9,7 @@ include('../../prcd/qc/qc.php');
     $nombre = $_POST['nombre'];
     $alias = $_POST['alias'];
     $pass = $_POST['pass'];
+    $pass = md5($pass);
 
     $sqlInsert ="INSERT INTO users (
         nombre,

@@ -20,7 +20,7 @@ function agregarUsuarios(){
             var jsonData = JSON.parse(JSON.stringify(data));
             var success = jsonData.success;
             
-            if (success = 1) {
+            if (success == 1) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Colaborador agregado',
@@ -29,7 +29,7 @@ function agregarUsuarios(){
                     footer: 'INCLUSIÓN'
                 });
                 $('#agregarUser').modal('hide'); 
-            } else if (success = 0){
+            } else if (success == 0){
                 Swal.fire({
                     icon: 'success',
                     title: 'Colaborador no agregado',
