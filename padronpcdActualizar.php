@@ -1766,6 +1766,7 @@ include('prcd/qc/qc.php');
                           <th scope="col">NO<br><label class="fw-lighter fst-italic lh-1">Sel. Todo</label><br><input class="form-check-input" type="checkbox" id="checkAllNo" value="" onchange="checkAll2()" aria-label="..."></th>
                           <th class="align-middle" scope="col">NO APLICA</th>
                           <th class="align-middle" scope="col">ARCHIVO<br><label class="fw-lighter fst-italic lh-1">(PDF o JPG)</label></th>
+                          <th class="align-middle" scope="col">VER<br><label class="fw-lighter fst-italic lh-1">Archivo</label></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -1775,6 +1776,8 @@ include('prcd/qc/qc.php');
                           <td><input class="form-check-input bloqueo1" type="checkbox" id="registroNo" value="" onclick="valoracionCheck(2)" aria-label="..."></td>
                           <td><input class="form-check-input bloqueo1" type="checkbox" id="registroNA" value="" onclick="valoracionCheck(3)" aria-label="..."></td>
                           <td><button class="btn bloqueo1" type="button" style="color: #917799;" id="registroDoc1" data-bs-toggle="modal" data-bs-target="#docUpload1" disabled><i class="bi bi-cloud-arrow-up h2"></i></button></td>
+                          <td><a href="" target="_blank" class="btn bloqueo1" type="button" style="color: #917799;" id="verDoc1" disabled><i class="bi bi-eye-fill h2"></i></a></td>
+                          
                         </tr>
                         <tr>
                           <th scope="row">DOCUMENTO MÉDICO<br><p class="fw-lighter fst-italic">Que indique el tipo y grado de discapacidad, expedido por institución pública de salud.</p></th>
@@ -1782,6 +1785,7 @@ include('prcd/qc/qc.php');
                           <td><input class="form-check-input bloqueo2" type="checkbox" id="valoracionNo" value="" onclick="valoracionCheck(5)" aria-label="..."></td>
                           <td><input class="form-check-input bloqueo2" type="checkbox" id="valoracionNA" value="" onclick="valoracionCheck(6)" aria-label="..."></td>
                           <td><button class="btn bloqueo2" type="button" style="color: #917799;" id="registroDoc2" data-bs-toggle="modal" data-bs-target="#docUpload2" disabled><i class="bi bi-cloud-arrow-up h2"></i></button></td>
+                          <td><a target="_blank" class="btn bloqueo1" type="button" style="color: #917799;" id="verDoc2" disabled><i class="bi bi-eye-fill h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE ACTA DE NACIMIENTO<br><p class="fw-lighter fst-italic">O documento que acredite la condición jurídica de la persona beneficiaria.</p></th>
@@ -1789,6 +1793,7 @@ include('prcd/qc/qc.php');
                           <td><input class="form-check-input bloqueo3" type="checkbox" id="actaNo" value="" onclick="valoracionCheck(8)" aria-label="..."></td>
                           <td><input class="form-check-input bloqueo3" type="checkbox" id="actaNA" value="" onclick="valoracionCheck(9)" aria-label="..."></td>
                           <td><button class="btn bloqueo3" type="button" style="color: #917799;" id="registroDoc3" data-bs-toggle="modal" data-bs-target="#docUpload3" disabled><i class="bi bi-cloud-arrow-up h2"></i></button></td>
+                          <td><a href="" target="_blank" class="btn bloqueo1" type="button" style="color: #917799;" id="verDoc3" disabled><i class="bi bi-eye-fill h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE LA C.U.R.P.</th>
@@ -1796,6 +1801,7 @@ include('prcd/qc/qc.php');
                           <td><input class="form-check-input bloqueo4" type="checkbox" id="curpNo" value="" onclick="valoracionCheck(11)" aria-label="..."></td>
                           <td><input class="form-check-input bloqueo4" type="checkbox" id="curpNA" value="" onclick="valoracionCheck(12)" aria-label="..."></td>
                           <td><button class="btn bloqueo4" type="button" style="color: #917799;" id="registroDoc4" data-bs-toggle="modal" data-bs-target="#docUpload4" disabled><i class="bi bi-cloud-arrow-up h2"></i></button></td>
+                          <td><a href="" target="_blank" class="btn bloqueo1" type="button" style="color: #917799;" id="verDoc4" disabled><i class="bi bi-eye-fill h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE LA IDENTIFICACIÓN OFICIAL DEL BENEFICIARIO<br><p class="fw-lighter fst-italic">Credencial de elector, pasaporte, credencial del INAPAM u otro documento que acredite la identidad del beneficiario.</p></th>
@@ -1803,6 +1809,7 @@ include('prcd/qc/qc.php');
                           <td><input class="form-check-input bloqueo5" type="checkbox" id="ineNo" value="" onclick="valoracionCheck(14)" aria-label="..."></td>
                           <td><input class="form-check-input bloqueo5" type="checkbox" id="ineNA" value="" onclick="valoracionCheck(15)" aria-label="..."></td>
                           <td><button class="btn bloqueo5" type="button" style="color: #917799;" id="registroDoc5" data-bs-toggle="modal" data-bs-target="#docUpload5" disabled><i class="bi bi-cloud-arrow-up h2"></i></button></td>
+                          <td><a href="" target="_blank" class="btn bloqueo1" type="button" style="color: #917799;" id="verDoc5" disabled><i class="bi bi-eye-fill h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE COMPROBANTE DE DOMICILIO<br><p class="fw-lighter fst-italic">Reciente a la apertura o actualización del expediente, no mayor a 90 días.</p></th>
@@ -1810,6 +1817,7 @@ include('prcd/qc/qc.php');
                           <td><input class="form-check-input bloqueo6" type="checkbox" id="comprobanteNo" value="" onclick="valoracionCheck(17)" aria-label="..."></td>
                           <td><input class="form-check-input bloqueo6" type="checkbox" id="comprobanteNA" value="" onclick="valoracionCheck(18)" aria-label="..."></td>
                           <td><button class="btn bloqueo6" type="button" style="color: #917799;" id="registroDoc6" data-bs-toggle="modal" data-bs-target="#docUpload6" disabled><i class="bi bi-cloud-arrow-up h2"></i></button></td>
+                          <td><a href="" target="_blank" class="btn bloqueo1" type="button" style="color: #917799;" id="verDoc6" disabled><i class="bi bi-eye-fill h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">COPIA DE LA TARJETA DE CIRCULACIÓN<br><p class="fw-lighter fst-italic">Del vehículo en el que se traslada la Persona con Discapacidad.</p></th>
@@ -1817,13 +1825,14 @@ include('prcd/qc/qc.php');
                           <td><input class="form-check-input bloqueo7" type="checkbox" id="circulacionNo" value="" onclick="valoracionCheck(23)" aria-label="..."></td>
                           <td><input class="form-check-input bloqueo7" type="checkbox" id="circulacionNA" value="" onclick="valoracionCheck(24)" aria-label="..."></td>
                           <td><button class="btn bloqueo7" type="button" style="color: #917799;" id="registroDoc7" data-bs-toggle="modal" data-bs-target="#docUpload7" disabled><i class="bi bi-cloud-arrow-up h2"></i></button></td>
+                          <td><a href="" target="_blank" class="btn bloqueo1" type="button" style="color: #917799;" id="verDoc7" disabled><i class="bi bi-eye-fill h2"></i></a></td>
                         </tr>
                         <tr>
                           <th scope="row">DOS FOTOGRAFÍAS<br><p class="fw-lighter fst-italic">En cualquier formato, preferentemente impresas.</p></th>
                           <td><input class="form-check-input" type="checkbox" id="fotosSi" value="" onclick="valoracionCheck(19)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="fotosNo" value="20" onclick="valoracionCheck(20)" aria-label="..."></td>
                           <td><input class="form-check-input" type="checkbox" id="fotosNA" value="" onclick="valoracionCheck(21)" aria-label="..."></td>
-                          <td></td>
+                          <td colspan="2" style="background-color: #a9a9a9;"></td>
                         </tr>
                       </tbody>
                     </table>

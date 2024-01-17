@@ -105,11 +105,85 @@ function queryDatos(){
             var valoracion  = jsonData.valoracion;
             var actaNacimiento  = jsonData.actaNacimiento;
             var curpDoc  = jsonData.curpDoc;
-            var ineDoc  = jsonData.ine;
+            var ineDoc  = jsonData.ineDoc;
             var comprobante  = jsonData.comprobante;
             var tarjetaCirculacion  = jsonData.tarjetaCirculacion;
-           /*  municipiosSelect(jsonData.estado); */
-            console.log(jsonData.municipio);
+
+            var hojaRegistroDoc  = jsonData.HojaRegistroDoc;
+            var valoracionDoc  = jsonData.valoracionDoc;
+            var actaNacimientoDoc  = jsonData.actaNacimientoDoc;
+            var curpDocDoc  = jsonData.curpDocDoc;
+            var ineDocDoc  = jsonData.ineDocDoc;
+            var comprobanteDoc  = jsonData.comprobanteDoc;
+            var tarjetaCirculacionDoc  = jsonData.tarjetaCirculacionDoc;
+
+            
+            /*  municipiosSelect(jsonData.estado); */
+            console.log(jsonData.HojaRegistro,jsonData.valoracion,jsonData.actaNacimiento,jsonData.curpDoc,jsonData.ineDoc,jsonData.comprobante,jsonData.tarjetaCirculacion);
+            console.log(jsonData.HojaRegistroDoc,jsonData.valoracionDoc,jsonData.actaNacimientoDoc,jsonData.curpDocDoc,jsonData.ineDocDoc,jsonData.comprobanteDoc,jsonData.tarjetaCirculacionDoc);
+            if(hojaRegistro == 1) {
+                document.getElementById('verDoc1').href = 'assets/'+hojaRegistroDoc;
+                document.getElementById('registroDoc1').disabled = false;
+                document.getElementById('verDoc1').disabled = false;
+            }
+            else{
+                document.getElementById('registroDoc1').disabled = true;
+                document.getElementById('verDoc1').disabled = true;
+            }
+            if(valoracion == 2) {
+                document.getElementById('verDoc2').href = 'assets/'+valoracionDoc;
+                document.getElementById('registroDoc2').disabled = false;
+                document.getElementById('verDoc2').disabled = false;
+            }
+            else{
+                document.getElementById('registroDoc2').disabled = true;
+                document.getElementById('verDoc2').disabled = true;
+            }
+            if(actaNacimiento == 3) {
+                document.getElementById('verDoc3').href = 'assets/'+actaNacimientoDoc;
+                document.getElementById('registroDoc3').disabled = false;
+                document.getElementById('verDoc3').disabled = false;
+            }
+            else{
+                document.getElementById('registroDoc3').disabled = true;
+                document.getElementById('verDoc3').disabled = true;
+            }
+            if(curpDoc == 4) {
+                document.getElementById('verDoc4').href = 'assets/'+curpDocDoc;
+                document.getElementById('registroDoc4').disabled = false;
+                document.getElementById('verDoc4').disabled = false;
+            }
+            else{
+                document.getElementById('registroDoc4').disabled = true;
+                document.getElementById('verDoc4').disabled = true;
+            }
+            if(ineDoc == 5) {
+                document.getElementById('verDoc5').href = 'assets/'+ineDocDoc;
+                document.getElementById('registroDoc5').disabled = false;
+                document.getElementById('verDoc5').disabled = false;
+            }
+            else{
+                document.getElementById('registroDoc5').disabled = true;
+                document.getElementById('verDoc5').disabled = true;
+            }
+            if(comprobante == 6) {
+                document.getElementById('verDoc6').href = 'assets/'+comprobanteDoc;
+                document.getElementById('registroDoc6').disabled = false;
+                document.getElementById('verDoc6').disabled = false;
+            }
+            else{
+                document.getElementById('registroDoc6').disabled = true;
+                document.getElementById('verDoc6').disabled = true;
+            }
+            if(tarjetaCirculacion == 7) {
+                document.getElementById('verDoc7').href = 'assets/'+tarjetaCirculacionDoc;
+                document.getElementById('registroDoc7').disabled = false;
+                document.getElementById('verDoc7').disabled = false;
+            }
+            else{
+                document.getElementById('registroDoc7').disabled = true;
+                document.getElementById('verDoc7').disabled = true;
+            }
             document.getElementById('editarBeneficiario').hidden = true;
             document.getElementById('cancelarEditar').hidden = false;
             
@@ -617,13 +691,13 @@ function queryDatos(){
                     document.getElementById('curpNA').checked = true; 
                 }
 
-                if(ine == 5){
+                if(ineDoc == 5){
                     document.getElementById('ineSi').checked = true;            
                 }
-                else if (ine == 12){
+                else if (ineDoc == 12){
                     document.getElementById('ineNo').checked = true; 
                 }
-                else if (ine == 19){
+                else if (ineDoc == 19){
                     document.getElementById('ineNA').checked = true; 
                 }
 
@@ -640,13 +714,13 @@ function queryDatos(){
                 if(tarjetaCirculacion == 7){
                     document.getElementById('circulacionSi').checked = true;            
                 }
-                else if (circulacion == 14){
+                else if (tarjetaCirculacion == 14){
                     document.getElementById('circulacionNo').checked = true; 
                 }
-                else if (circulacion == 21){
+                else if (tarjetaCirculacion == 21){
                     document.getElementById('circulacionNA').checked = true; 
                 }
-                
+
                 showMeFam();
                 showMeRef();
                 mostrarTablaServicios();
