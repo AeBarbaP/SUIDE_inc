@@ -79,7 +79,7 @@ include('prcd/qc/qc.php');
 
     <script src="js/editar_guardar.js"></script>
     <script src="js/validate.js"></script>
-    <script src="js/files.js"></script>
+    <script src="js/files_update.js"></script>
     <script src="js/estados.js"></script>
     <script src="js/municipios.js"></script>
     <script src="js/localidades.js"></script>
@@ -2207,7 +2207,7 @@ include('prcd/qc/qc.php');
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Subir Archivo</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar Archivo</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
