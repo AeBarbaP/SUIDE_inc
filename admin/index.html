@@ -28,7 +28,6 @@
     <script src="js/usuarios.js"></script>
 
     <style>
-     
 
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -114,7 +113,7 @@
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body onload="calendario();colaboradoresDashboard();conteoGeneral()">
+  <body onload="calendario();colaboradoresDashboard();queryUser_Tab()">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -349,41 +348,50 @@
         </div>
       </div>
 
-      
-
       <div class="row">
-
 
         <div class="col-4">
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar-event-fill"></i></span>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Mes</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select class="form-select" aria-label="Default select example" id="mes">
+              <option value="">Mes</option>
+              <option value="1">Enero</option>
+              <option value="2">Febrero</option>
+              <option value="3">Marzo</option>
+              <option value="4">Abril</option>
+              <option value="5">Mayo</option>
+              <option value="6">Junio</option>
+              <option value="7">Julio</option>
+              <option value="8">Agosto</option>
+              <option value="9">Septiembre</option>
+              <option value="10">Octubre</option>
+              <option value="11">Noviembre</option>
+              <option value="12">Diciembre</option>
             </select>
           </div>
         </div>
         <div class="col-4">
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar-event-fill"></i></span>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Año</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select class="form-select" aria-label="Default select example" id="annio">
+              <option value="">Año</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+              <option value="2027">2027</option>
+              
             </select>
           </div>
         </div>
         <div class="col-4">
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1"><i class="bi bi-clipboard-check-fill"></i></span>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Colaborador</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select class="form-select" aria-label="Default select example" id="colaborador" onchange="conteoFiltrado()">
+             
             </select>
           </div>
         </div>

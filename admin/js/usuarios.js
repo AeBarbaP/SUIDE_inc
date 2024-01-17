@@ -109,6 +109,17 @@ function queryUser(){
     });
 }
 
+function queryUser_Tab(){
+    $.ajax({
+        type: "POST",
+        url: 'query/queryUser_tab.php',
+        dataType:'html',
+        success: function(data){
+            $('#colaborador').fadeIn(1000).html(data);
+        }
+    });
+}
+
 function actualizarUsuario(id, nombre, usuario, estatus, perfil, color){
     $('#queryColaboradores').modal('hide'); 
     document.getElementById('idHidden').value = id;
