@@ -26,7 +26,7 @@ $tarjeta_circna = "";
 
 // $curp = $_POST['curp'];
 $curp =$_REQUEST['curp'];
-$sqlCurp = "SELECT * FROM documentos_list WHERE id_ext = '$curp'";
+$sqlCurp = "SELECT * FROM documentos_list WHERE curp = '$curp'";
 $resultadoCurp = $conn->query($sqlCurp);
 
 $sqlGenerales = "SELECT * FROM datos_generales WHERE curp = '$curp'";

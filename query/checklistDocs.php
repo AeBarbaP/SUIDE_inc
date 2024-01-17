@@ -4,7 +4,7 @@ include('../prcd/qc/qc.php');
 $curp = $_POST['curp'];
 
 
-$var = "SELECT * FROM documentos_list WHERE id_ext = '$curp'";
+$var = "SELECT * FROM documentos_list WHERE curp = '$curp'";
 $resultadoVariable = $conn->query($var);
 $filaVar = $resultadoVariable->num_rows;
 

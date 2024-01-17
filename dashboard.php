@@ -203,10 +203,10 @@ include('prcd/qc/qc.php');
       <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-inboxes ms-3 me-2"></i>
           Padrón PCD
         </a></span>
-        <div class="collapse" id="padron-collapse" hidden>
+        <div class="collapse" id="padron-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="padronpcdfull.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-inboxes ms-2 me-3"></i> Padrón PCD</a></li>
-            <li><a href="padronpcd.php" class="link-dark d-inline-flex text-decoration-none rounded" readonly><i class="bi bi-folder-plus ms-2 me-3"></i> Agregar nuevo</a></li>
+            <li><a href="padronpcd.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-folder-plus ms-2 me-3"></i> Agregar nuevo</a></li>
             <li><a href="padronpcdActualizar.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-journals ms-2 me-3"></i> Actualizar expediente</a></li>
             
           </ul>

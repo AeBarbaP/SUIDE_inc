@@ -101,12 +101,12 @@ function queryDatos(){
             var electrodomesticos_otro = jsonData.electrodomesticos_otro;
             var deudas = jsonData.deudas;
             var municipio  = jsonData.municipio;
-            var hojaRegistro  = jsonData.hojaRegistro;
+            var hojaRegistro  = jsonData.HojaRegistro;
             var valoracion  = jsonData.valoracion;
             var actaNacimiento  = jsonData.actaNacimiento;
             var curpDoc  = jsonData.curpDoc;
-            var ine  = jsonData.ine;
-            var comprobanteDomicilio  = jsonData.comprobanteDomicilio;
+            var ineDoc  = jsonData.ine;
+            var comprobante  = jsonData.comprobante;
             var tarjetaCirculacion  = jsonData.tarjetaCirculacion;
            /*  municipiosSelect(jsonData.estado); */
             console.log(jsonData.municipio);
@@ -626,10 +626,27 @@ function queryDatos(){
                 else if (ine == 19){
                     document.getElementById('ineNA').checked = true; 
                 }
-/* 
 
-comprobanteDomicilio
-tarjetaCirculacion */
+                if(comprobante == 6){
+                    document.getElementById('comprobanteSi').checked = true;            
+                }
+                else if (comprobante == 13){
+                    document.getElementById('comprobanteNo').checked = true; 
+                }
+                else if (comprobante == 20){
+                    document.getElementById('comprobanteNA').checked = true; 
+                }
+
+                if(tarjetaCirculacion == 7){
+                    document.getElementById('circulacionSi').checked = true;            
+                }
+                else if (circulacion == 14){
+                    document.getElementById('circulacionNo').checked = true; 
+                }
+                else if (circulacion == 21){
+                    document.getElementById('circulacionNA').checked = true; 
+                }
+                
                 showMeFam();
                 showMeRef();
                 mostrarTablaServicios();

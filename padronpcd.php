@@ -322,21 +322,21 @@ include('prcd/qc/qc.php');
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">Nombre:</label>
                     <form id="generalesForm">
-                    <input type="text" class="form-control" id="nombre" name="datos_usr" placeholder="Nombre(s)" required>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="nombre" name="datos_usr" placeholder="Nombre(s)" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">Apellido Paterno:</label>
-                    <input type="text" class="form-control" id="apellidoP" name="datos_usr" placeholder="Apellido Paterno" required>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="apellidoP" name="datos_usr" placeholder="Apellido Paterno" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">Apellido Materno:</label>
-                    <input type="text" class="form-control" id="apellidoM" name="datos_usr" placeholder="Apellido Materno" required>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="apellidoM" name="datos_usr" placeholder="Apellido Materno" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
@@ -388,7 +388,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-6">   
                   <label for="datos_usr" class="form-label">Lugar Nacimiento:</label>
-                    <input type="text" class="form-control" id="lugarNacimiento" name="datos_usr" placeholder="Lugar de Nacimiento" required>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="lugarNacimiento" name="datos_usr" placeholder="Lugar de Nacimiento" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
@@ -409,7 +409,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-5">
                     <label for="datos_pc" class="form-label">Domicilio:</label>
-                    <input type="text" class="form-control" id="domicilio" name="datos_pc" placeholder="Nombre de la calle o vialidad" required>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="domicilio" name="datos_pc" placeholder="Nombre de la calle o vialidad" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
@@ -423,7 +423,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-2">
                     <label for="datos_usr" class="form-label">Núm. Interior</label>
-                    <input type="text" class="form-control" id="numInt" name="datos_usr" placeholder="# Interior">
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="numInt" name="datos_usr" placeholder="# Interior">
                   </div>
                   <div class="col-sm-3">
                     <label for="datos_pc" class="form-label">Tipo de Vialidad:</label>
@@ -436,14 +436,14 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-6">
                     <label for="datos_pc" class="form-label">Colonia:</label>
-                    <input type="text" class="form-control" id="colonia" name="datos_pc" placeholder="Colonia" required>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="colonia" name="datos_pc" placeholder="Colonia" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <label for="datos_usr" class="form-label">Entre vialidades:</label>
-                    <input type="text" class="form-control" id="entreVialidades" name="datos_usr">
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="entreVialidades" name="datos_usr">
                   </div>
                   <div class="col-sm-12">
                     <label for="exampleFormControlTextarea1" class="form-label">Descripción o referencia del lugar:</label>
@@ -543,17 +543,17 @@ include('prcd/qc/qc.php');
                             * Campo requerido.
                           </div>
                         </div>
-                        <input type="text" class="form-control" id="lugarEstudia" name="lugarEstudia" placeholder="Dónde estudia..." disabled>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="lugarEstudia" name="lugarEstudia" placeholder="Dónde estudia..." disabled>
                       </div>
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">Habilidad:</label>
-                    <input type="text" class="form-control" id="habilidad" name="datos_usr" placeholder="Habilidad">
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="habilidad" name="datos_usr" placeholder="Habilidad">
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">Profesión u Oficio:</label>
-                    <input type="text" class="form-control" id="profesion" name="datos_usr" placeholder="Profesión u Oficio">
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="profesion" name="datos_usr" placeholder="Profesión u Oficio">
                   </div>
                   <div class="col-sm-4">
                     <div class="mb-3">
@@ -570,7 +570,7 @@ include('prcd/qc/qc.php');
                             * Campo requerido.
                           </div>
                         </div>
-                        <input type="text" class="form-control" id="lugarTrabajo" name="lugarTrabajo" placeholder="Dónde trabaja..." disabled>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="lugarTrabajo" name="lugarTrabajo" placeholder="Dónde trabaja..." disabled>
                       </div>
                     </div>
                   </div>
@@ -598,7 +598,7 @@ include('prcd/qc/qc.php');
                             * Campo requerido.
                           </div>
                         </div>
-                        <input type="text" class="form-control" id="nombreAC" name="datos_usr" placeholder="Nombre de la AC..." disabled>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="nombreAC" name="datos_usr" placeholder="Nombre de la AC..." disabled>
                       </div>
                     </div>
                   </div>
@@ -617,7 +617,7 @@ include('prcd/qc/qc.php');
                             * Campo requerido.
                           </div>
                         </div>
-                        <input type="text" class="form-control" id="nombreSindicato" name="datos_usr" placeholder="Nombre del Sindicato..." disabled>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="nombreSindicato" name="datos_usr" placeholder="Nombre del Sindicato..." disabled>
                       </div>
                     </div>
                   </div>
@@ -636,7 +636,7 @@ include('prcd/qc/qc.php');
                             * Campo requerido.
                           </div>
                         </div>
-                        <input type="text" class="form-control" id="instPension" name="datos_usr" placeholder="Dónde..." disabled>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="instPension" name="datos_usr" placeholder="Dónde..." disabled>
                       </div>
                     </div>
                   </div>
@@ -674,13 +674,13 @@ include('prcd/qc/qc.php');
                         * Campo requerido.
                       </div>
                       <span class="input-group-text"> Especifique: </span>
-                      <input type="text" class="form-control" id="otroSS" name="datos_usr" placeholder="Nombre de la Institución de Seguridad Social" disabled>
+                      <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="otroSS" name="datos_usr" placeholder="Nombre de la Institución de Seguridad Social" disabled>
                     </div>
                   </div>
                   <div class="col-sm-4 mb-3">
                     <div class="mb-3">
                       <label for="numss" class="form-label">Número de Seguridad Social:</label>
-                      <input type="text" class="form-control" id="numss" placeholder="">
+                      <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="numss" placeholder="">
                     </div>
                   </div>
                   <br>
@@ -711,7 +711,7 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-3">
                       <label for="datos_usr" class="form-label">Discapacidad:</label>
-                      <input type="text" id="curp_exp" onchange="curpTemporal()" >
+                      <input type="text" id="curp_exp" onchange="curpTemporal()" hidden>
                       <!-- <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..."> -->
                       <select class="form-select" id="discapacidadList" onchange="numExpGenerator(this.value)" required>
                       
@@ -737,7 +737,7 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label">Descripción:</label>
-                      <input type="text" class="form-control" id="descDisc" name="datos_usr" placeholder="Describe la discapacidad" required>
+                      <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="descDisc" name="datos_usr" placeholder="Describe la discapacidad" required>
                       <div class="invalid-feedback">
                         * Campo requerido.
                       </div>
@@ -758,7 +758,7 @@ include('prcd/qc/qc.php');
                           * Campo requerido.
                         </div>
                         <span class="input-group-text"> Especifique: </span>
-                        <input type="text" class="form-control" id="especifiqueD" name="datos_usr" placeholder="" disabled>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="especifiqueD" name="datos_usr" placeholder="" disabled>
                       </div>
                     </div>
                     <div class="col-sm-4">
@@ -775,6 +775,7 @@ include('prcd/qc/qc.php');
                         <option value="CREE">CREE</option>
                         <option value="SMFA">Servicios Médicos de la Fuerza Armada</option>
                         <option value="UBR">UBR - Unidad Básica de Rehabilitación</option>
+                        <option value="Particular">Particular</option>
                       </select>
                       <div class="invalid-feedback">
                         * Campo requerido.
@@ -802,7 +803,7 @@ include('prcd/qc/qc.php');
                               * Campo requerido.
                             </div>
                           </div>
-                          <input type="text" class="form-control" id="lugarRehab" name="rehabilitacion" placeholder="Dónde..." disabled>
+                          <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="lugarRehab" name="rehabilitacion" placeholder="Dónde..." disabled>
                         </div>
                       </div>
                     </div>
@@ -850,7 +851,7 @@ include('prcd/qc/qc.php');
                           * Campo requerido.
                         </div>
                         <span class="input-group-text"> Tipo de Cirugía: </span>
-                        <input type="text" class="form-control  w-50" id="tipoCirugia" name="datos_usr" placeholder="" disabled>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control  w-50" id="tipoCirugia" name="datos_usr" placeholder="" disabled>
                       </div>
                     </div>
                     <div class="col-sm-10">
@@ -865,7 +866,7 @@ include('prcd/qc/qc.php');
                           * Campo requerido.
                         </div>
                         <span class="input-group-text"> ¿De qué tipo? </span>
-                        <input type="text" class="form-control  w-50" id="tipoProtesis" name="datos_usr" placeholder="" disabled>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control  w-50" id="tipoProtesis" name="datos_usr" placeholder="" disabled>
                       </div>
                     </div>
                     <br>
@@ -891,7 +892,7 @@ include('prcd/qc/qc.php');
                           <div class="modal-body">
                             <div class="input-group">
                               <span class="input-group-text"> Alergia:</span>
-                              <input type="text" class="form-control  w-50" id="alergiaInput" name="alergiaInput" value="" placeholder="">
+                              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control  w-50" id="alergiaInput" name="alergiaInput" value="" placeholder="">
                             </div>
                           </div>
                           <div class="modal-footer">
@@ -1258,7 +1259,7 @@ include('prcd/qc/qc.php');
                           <label class="form-check-label" for="tipoVivienda">Otra:</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-control" id="viviendaOtro" type="text" placeholder="Especifique..." disabled>
+                          <input class="form-control" id="viviendaOtro" type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Especifique..." disabled>
                         </div>
                       </div>
                     </div>
@@ -1329,7 +1330,7 @@ include('prcd/qc/qc.php');
                           <label class="form-check-label" for="techo">Otro</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-control" type="text" id="otroTechoInput" placeholder="Especifique..." disabled>
+                          <input class="form-control" type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" id="otroTechoInput" placeholder="Especifique..." disabled>
                         </div>
                       </div>
                     </div>
@@ -1355,7 +1356,7 @@ include('prcd/qc/qc.php');
                           <label class="form-check-label" for="pared">Otro</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-control" id="otroParedInput" type="text" placeholder="Especifique..." disabled>
+                          <input class="form-control" id="otroParedInput" type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Especifique..." disabled>
                         </div>
                         
                       </div>
@@ -1443,7 +1444,7 @@ include('prcd/qc/qc.php');
                           </div>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-control" id="otroServiciosInput" type="text" placeholder="Especifique..." disabled>
+                          <input class="form-control" id="otroServiciosInput" type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Especifique..." disabled>
                         </div>
                       </div>
                     </div>
@@ -1527,7 +1528,7 @@ include('prcd/qc/qc.php');
                               Otros:
                             </label>
                           </div>
-                          <input class="form-control" id="otroElectroInput" type="text" placeholder="Especifique..." disabled>
+                          <input class="form-control" id="otroElectroInput" type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Especifique..." disabled>
                         </div>                        
                       </div>
                     </div>
@@ -1957,7 +1958,7 @@ include('prcd/qc/qc.php');
                 </div>
                 <div class="col-sm-8">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> No. Autorización:</label>
-                  <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="# Acta de Junta de Gobierno">
+                  <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="datos_usr" name="datos_usr" placeholder="# Acta de Junta de Gobierno">
                 </div>
                 <div class="col-sm-4">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Fecha de autorización:</label>
@@ -1977,7 +1978,7 @@ include('prcd/qc/qc.php');
                 </div>
                 <div class="col-sm-8">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Observaciones:</label>
-                  <input type="text" class="form-control" id="datos_usr" name="datos_usr" placeholder="">
+                  <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="datos_usr" name="datos_usr" placeholder="">
                 </div>
                 <div class="col-sm-4">
                   <label for="datos_usr" class="form-label"><i class="bi bi-person"></i> Monto autorizado:</label>
@@ -2096,7 +2097,7 @@ include('prcd/qc/qc.php');
                           <div class="input-group-text">
                             <input class="form-check-input mt-0" type="checkbox" onchange="autoSeguroCheck()" value="" id="checkAutoS" aria-label="Checkbox for following text input">
                           </div>
-                          <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroInput" disabled>
+                          <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroInput" disabled>
                         </div>  
                       </div>
                       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -2199,7 +2200,7 @@ include('prcd/qc/qc.php');
                           <div class="input-group-text">
                             <input class="form-check-input mt-0" type="checkbox" onchange="autoSeguroCheck()" value="" id="checkAutoS" aria-label="Checkbox for following text input">
                           </div>
-                          <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroInput" disabled>
+                          <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroInput" disabled>
                         </div>  
                       </div>
                       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -2271,7 +2272,7 @@ include('prcd/qc/qc.php');
                 <div class="input-group-text">
                   <input class="form-check-input mt-0" type="checkbox" onchange="autoSeguroCheck()" value="" id="checkAutoS" aria-label="Checkbox for following text input">
                 </div>
-                <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroInput" disabled>
+                <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroInput" disabled>
               </div>  
               <input type="text" id="folioDTT" hidden>
               <input type="text" id="idVeT" hidden>
@@ -2465,7 +2466,7 @@ $(document).ready(function () {
           <label class="btn btn-outline-primary" for="usuarioSD">Usuario</label>
           <input type="radio" class="btn-check" onchange="cambiarAtrib()" name="options-outlined" id="oficial" autocomplete="off">
           <label class="btn btn-outline-primary" for="oficial">Institución</label>
-          <input type="text" class="form-control" oninput="buscarTarjetonTemp(this.value)" placeholder="Buscar CURP, RFC o # de Tarjetón..." aria-label="Buscar">
+          <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" oninput="buscarTarjetonTemp(this.value)" placeholder="Buscar CURP, RFC o # de Tarjetón..." aria-label="Buscar">
         </div>
         <div class="alert alert-warning" role="alert" id="nadaDoor">
           Ingresa la CURP o RFC para encontrar al beneficiario.
@@ -2519,15 +2520,15 @@ $(document).ready(function () {
                           <div class="col-md-12">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="basic-addon1">Nombre (s)</span>
-                              <input type="text" class="form-control" oninput="habilitaBTNsiguiente()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp">
+                              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" oninput="habilitaBTNsiguiente()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp">
                             </div>  
                           </div>
                           <div class="col-md-12" id="apellidosDiv">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="lastname1">Apellido Paterno</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apPaterno">
+                              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apPaterno">
                               <span class="input-group-text" id="lastname2">Apellido Materno</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apMaterno">
+                              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apMaterno">
                             </div>  
                           </div>
                           <div class="col-md-12">
@@ -2535,7 +2536,7 @@ $(document).ready(function () {
                               <span class="input-group-text" id="spanRFC">CURP</span>
                               <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="" onchange="validarInput2(this);curp2date2(this)" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
                               <span class="input-group-text" id="cveid">Clave INE / Folio ID:</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
+                              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
                             </div>  
                           </div>
                           <div class="col-md-12" id="divEdad">
@@ -2565,17 +2566,17 @@ $(document).ready(function () {
                           <div class="col-md-12">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="basic-addon1">Calle:</span>
-                              <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="calleTemp">
+                              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="calleTemp">
                               <span class="input-group-text" id="basic-addon1">No. Ext.:</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" maxlength="11" aria-describedby="basic-addon1" id="extTemp" >
+                              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="" aria-label="" maxlength="11" aria-describedby="basic-addon1" id="extTemp" >
                               <span class="input-group-text" id="basic-addon1">No. Int.:</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="intTemp">
+                              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="intTemp">
                             </div>  
                           </div>
                           <div class="col-md-12">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="basic-addon1">Colonia:</span>
-                              <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="coloniaTemp">
+                              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="coloniaTemp">
                               <span class="input-group-text" id="basic-addon1">C.P.:</span>
                               <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="CPTemp" onkeypress="ValidaSoloNumeros()">
                             </div>  
@@ -2640,7 +2641,7 @@ $(document).ready(function () {
                                 <option value="5-Profundo">5. Profundo</option>
                               </select>
                               <span class="input-group-text" id="basic-addon1">Descripción Dx:</span>
-                              <input type="text" class="form-control w-25" placeholder="Descripción del diagnóstico" aria-label="" aria-describedby="basic-addon1" id="dxTemp">
+                              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" placeholder="Descripción del diagnóstico" aria-label="" aria-describedby="basic-addon1" id="dxTemp">
                             </div>
                           </div>
                           <div class="col-md-12">
@@ -2655,7 +2656,7 @@ $(document).ready(function () {
                                 <option value="7">Otra</option>
                               </select>
                               <span class="input-group-text" id="basic-addon1">Especifique:</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="especifiqueD" disabled>
+                              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="especifiqueD" disabled>
                               <span class="input-group-text" id="basic-addon1"><i class="bi bi-clock-history"></i> Temporalidad: </span>
                               <select class="form-select" id="temporalidad">
                                 <option selected>Temporalidad...</option>
@@ -2669,15 +2670,15 @@ $(document).ready(function () {
                           <div class="col-md-12">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="basic-addon1">Institución:</span>
-                              <input type="text" class="form-control" placeholder="Nombre de la Institución donde se expide la valoración" aria-label="" aria-describedby="basic-addon1" id="institucionTemp">
+                              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="Nombre de la Institución donde se expide la valoración" aria-label="" aria-describedby="basic-addon1" id="institucionTemp">
                             </div>  
                           </div>
                           <div class="col-md-12">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="basic-addon1">Nombre del Médico:</span>
-                              <input type="text" class="form-control w-25" placeholder="Nombre del Médico" aria-label="" aria-describedby="basic-addon1" id="medicoTemp">
+                              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" placeholder="Nombre del Médico" aria-label="" aria-describedby="basic-addon1" id="medicoTemp">
                               <span class="input-group-text" id="basic-addon1"># de Cédula:</span>
-                              <input type="text" class="form-control" placeholder="# de Cédula" aria-label="" aria-describedby="basic-addon1" id="cedulaTemp">
+                              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="# de Cédula" aria-label="" aria-describedby="basic-addon1" id="cedulaTemp">
                             </div>  
                           </div>
                           <div class="col-md-8">
@@ -2737,7 +2738,7 @@ $(document).ready(function () {
                           <div class="input-group-text">
                             <input class="form-check-input mt-0" type="checkbox" id="checkAutoST" onchange="autoSeguroTCheck()" value="" aria-label="Checkbox for following text input" disabled>
                           </div>
-                          <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroTemp" disabled>
+                          <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroTemp" disabled>
                         </div>  
                       </div>
                       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -2894,7 +2895,7 @@ $(document).ready(function () {
             <form id="familiaForm">
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
-                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1" id="nombreFamiliar" name="nombre" required>
+                <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1" id="nombreFamiliar" name="nombre" required>
               </div>
               <div class="row">
                 <div class="col-md-6">
@@ -2938,7 +2939,7 @@ $(document).ready(function () {
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
-                <input type="text" class="form-control" placeholder="Profesión" aria-label="profesionFam" id="profesionFam" aria-describedby="basic-addon1">
+                <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="Profesión" aria-label="profesionFam" id="profesionFam" aria-describedby="basic-addon1">
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Tiene Discapacidad?</span>
@@ -2950,7 +2951,7 @@ $(document).ready(function () {
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text"  id="basic-addon1"><i class="bi bi-universal-access-circle"></i></span>
-                <input type="text" class="form-control" placeholder="Descripción de discapacidad" aria-label="discapacidad" id="discapacidadFam" aria-describedby="basic-addon1" disabled>
+                <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="Descripción de discapacidad" aria-label="discapacidad" id="discapacidadFam" aria-describedby="basic-addon1" disabled>
               </div> 
               <div class="row">
                 <div class="col-md-6">
@@ -3041,7 +3042,7 @@ $(document).ready(function () {
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
-                <input type="text" class="form-control" placeholder="Profesión" aria-label="profesionFam" id="profesionFam2" aria-describedby="basic-addon1">
+                <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="Profesión" aria-label="profesionFam" id="profesionFam2" aria-describedby="basic-addon1">
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Tiene Discapacidad?</span>
@@ -3053,7 +3054,7 @@ $(document).ready(function () {
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text"  id="basic-addon1"><i class="bi bi-universal-access-circle"></i></span>
-                <input type="text" class="form-control" placeholder="Descripción de discapacidad" aria-label="discapacidad" id="discapacidadFam2" aria-describedby="basic-addon1" disabled>
+                <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="Descripción de discapacidad" aria-label="discapacidad" id="discapacidadFam2" aria-describedby="basic-addon1" disabled>
               </div> 
               <div class="row">
                 <div class="col-md-6">
@@ -3072,7 +3073,7 @@ $(document).ready(function () {
                 <div class="col-md-12">
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1" ><i class="bi bi-envelope-at"></i></span>
-                    <input type="mail" class="form-control" placeholder="Correo electrónico" id="emailFam2"> <!-- validar solo numeros -->
+                    <input type="mail" onkeyup="javascript:this.value=this.value.toLowerCase()" class="form-control" placeholder="Correo electrónico" id="emailFam2"> <!-- validar solo numeros -->
                     <input type="text" id="idFam" hidden>
                   </div>
                 </div>
@@ -3102,7 +3103,7 @@ $(document).ready(function () {
             <form id="referenciasForm">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
-                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre completo" id="nombreReferencia" aria-describedby="basic-addon1" name="nombre" required>
+                <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="Nombre" aria-label="Nombre completo" id="nombreReferencia" aria-describedby="basic-addon1" name="nombre" required>
               </div>
               <div class="row">
                 <div class="col-md-6">
@@ -3134,11 +3135,11 @@ $(document).ready(function () {
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
-                <input type="text" class="form-control" placeholder="Profesión" aria-label="profesion" id="profesionRef" aria-describedby="basic-addon1">
+                <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="Profesión" aria-label="profesion" id="profesionRef" aria-describedby="basic-addon1">
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Domicilio</span>
-                <textarea type="text" class="form-control" placeholder="" aria-label="domicilio" id="domicilioRef" rows="2" aria-describedby="basic-addon1"></textarea>
+                <textarea type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="" aria-label="domicilio" id="domicilioRef" rows="2" aria-describedby="basic-addon1"></textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
@@ -3163,7 +3164,7 @@ $(document).ready(function () {
             <form id="referenciasEditForm">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
-                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre completo" id="nombreReferencia2" aria-describedby="basic-addon1" name="nombre" required>
+                <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="Nombre" aria-label="Nombre completo" id="nombreReferencia2" aria-describedby="basic-addon1" name="nombre" required>
               </div>
               <div class="row">
                 <div class="col-md-6">
@@ -3195,11 +3196,11 @@ $(document).ready(function () {
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Profesión/Oficio</span>
-                <input type="text" class="form-control" placeholder="Profesión" aria-label="profesion" id="profesionRef2" aria-describedby="basic-addon1">
+                <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="Profesión" aria-label="profesion" id="profesionRef2" aria-describedby="basic-addon1">
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Domicilio</span>
-                <textarea type="text" class="form-control" placeholder="" aria-label="domicilio" id="domicilioRef2" rows="2" aria-describedby="basic-addon1"></textarea>
+                <textarea type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" placeholder="" aria-label="domicilio" id="domicilioRef2" rows="2" aria-describedby="basic-addon1"></textarea>
                 <input type="text" id="idRef" hidden>
               </div>
               <div class="modal-footer">

@@ -26,7 +26,7 @@ function curp2date(curp) {
 
     var m = miCurp.match(/^\w{4}(\w{2})(\w{2})(\w{2})/);  
     var anyo = parseInt(m[1], 10) + 1900;
-    if (anyo < 1950) anyo += 100;
+    if (anyo < 1930) anyo += 100;
     var mes = parseInt(m[2], 10) - 1;
     var dia = parseInt(m[3], 10);  
     var fechaNacimiento = new Date(anyo, mes, dia);
