@@ -95,6 +95,7 @@ function conteoFiltrado(){
               var filasExp = jsonData.filasExp;
               var filasTar = jsonData.filasTar;
               var filasAct = jsonData.filasAct;
+              var color = jsonData.color;
 
               console.log("Nuevos registros: "+filas);
               console.log("Entrega credenciales: "+filasExp);
@@ -132,7 +133,7 @@ function conteoFiltrado(){
                       ],
                       lineTension: 0,
                       backgroundColor: '',
-                      borderColor: '#007bff',
+                      borderColor: color,
                       borderWidth: 4,
                       pointBackgroundColor: '#007bff'
                     }]

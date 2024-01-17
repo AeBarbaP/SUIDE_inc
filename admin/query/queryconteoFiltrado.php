@@ -5,6 +5,10 @@
     $annio = $_POST['annio'];
     $usr = $_POST['usr'];
 
+$sqlDatos = "SELECT * FROM users WHERE username = '$usr'";
+$resultadoDatos = $conn->query($sqlDatos);
+$rowDatos = $resultadoDatos->fetch_assoc();
+
 $sql = "SELECT * FROM log_registro WHERE MONTH(fecha) = '$mes' AND YEAR(fecha) = '$annio' AND usr = '$usr' AND tipo_dato = 39";
 $resultado = $conn->query($sql);
 $fila = $resultado->num_rows;
@@ -26,7 +30,8 @@ $filaAct = $resultadoAct->num_rows;
         'filas'=>$fila,
         'filasExp'=>$filaExp,
         'filasTar'=>$filaTar,
-        'filasAct'=>$filaAct
+        'filasAct'=>$filaAct,
+        'color'=>$rowDatos['color']
     ));
 
 ?>
