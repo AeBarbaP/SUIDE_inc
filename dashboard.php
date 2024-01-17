@@ -165,13 +165,15 @@ include('prcd/qc/qc.php');
         -webkit-overflow-scrolling: touch;
       }
     </style>
+
+    
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
   <body onload="estadosSelect(); discapacidadTab(); conteoExpNews();">
   
-<nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
+<nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-3 text-white" style="background-color: #917799;">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light text-center" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -245,7 +247,6 @@ include('prcd/qc/qc.php');
         <div class="collapse" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#editarUser"><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
-            <!-- <li><a href="cuentasusuario.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-people ms-2 me-3"></i>Gestión de usuarios</a></li> -->
           </ul>
           <li class="border-top my-3"></li>
       <li class="ms-2 mb-1">
@@ -261,9 +262,9 @@ include('prcd/qc/qc.php');
     </nav>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 overflow-auto">
-      <div class="alert alert-secondary text-center" role="alert">
-        <p class="h3">Bienvenid@</p>
-        <p class="h6 mb-1 text-muted">Sistema Único de Identificación y Verificación</p>
+      <div class="alert alert-secondary text-center" role="alert" style="background-color: #917799;">
+        <p class="h3 text-light">Bienvenid@</p>
+        <p class="h6 mb-1 text-light">Sistema Único de Identificación y Verificación</p>
       </div>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
       </div>
@@ -282,79 +283,78 @@ include('prcd/qc/qc.php');
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Este mes</a></li>
                 <li><a class="dropdown-item" href="#">Este año</a></li>
-                <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
               </ul>
             </div>
           </div>
         </div>
         <hr class="mb-4">
-        <div class="col-md-12 col-lg-6 me-3 border rounded-1" style="width: 23%;">
+        <div class="col-md-12 col-lg-6 me-3 text-bg-primary border border-2 border-primary rounded-1" style="width: 23%;">
           <div class="container">
-            <h4 class="text-center text-muted mt-2"><b>Expedientes Nuevos</b></h4>
             <div class="row">
-              <div class="col-5 mt-3 mb-3">
-                <img src="img/canvaschart.png" width="81px" height="35px">
+              <div class="col-5 my-auto text-center align-middle border-end border-light">
+                <i class="bi bi-folder-check h1"></i>
               </div>
-              <div class="col-7 mt-2">
-                <div class="text-end" style="font-size:x-large;">
-                  <span id="ExpNews"></span>
+              <div class="col-7 mt-3">
+                <h4 class="text-center mt-2 "><strong>Expedientes Nuevos</strong></h4>
+                <div class="text-center" style="font-size:x-large;">
+                  <span id="ExpNews" class="h3"></span>
                 </div>
                 <div class="text-end mb-2" style="font-size: smaller;">
-                  <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
+                  <a style="font-size: smaller; text-decoration:none;" href="text-bg-primary" class="text-bg-primary"><span><i class="bi bi-align-end"></i></span></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-12 col-lg-6 me-3 border rounded-1" style="width: 23%;">
+        <div class="col-md-12 col-lg-6 me-3 text-bg-warning border border-2 border-warning rounded-1" style="width: 23%;">
           <div class="container">
-            <h4 class="text-center text-muted mt-2"><b>Credenciales Diarias</b></h4>
             <div class="row">
-              <div class="col-5 mt-3 mb-3">
-                <img src="img/canvasbars.png" width="81px" height="35px">
+              <div class="col-5 my-auto text-center align-middle border-end border-dark">
+              <i class="bi bi-person-vcard-fill h1"></i>
               </div>
-              <div class="col-7 mt-2">
-                <div class="text-end" style="font-size:x-large;">
-                  <span id="CredD"></span>
+              <div class="col-7 mt-3">
+                <h4 class="text-center mt-2"><b>Credenciales Diarias</b></h4>
+                <div class="text-center" style="font-size:x-large;">
+                  <span id="CredD" class="" class="h3"></span>
                 </div>
                 <div class="text-end mb-2" style="font-size: smaller;">
-                  <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
+                  <a style="font-size: smaller; text-decoration:none;" href="" class="text-bg-warning"><span> <i class="bi bi-align-end"></i></span></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-12 col-lg-6 me-3 border rounded-1" style="width: 23%;">
+        <div class="col-md-12 col-lg-6 me-3 text-bg-success border border-2 border-success rounded-1" style="width: 23%;">
           <div class="container">
-            <h4 class="text-center text-muted mt-2"><b>Tarjetones Diarios</b></h4>
             <div class="row">
-            <div class="col-5 mt-3 mb-3">
-              <img src="img/canvaslines.png" width="81px" height="35px">
-            </div>
-            <div class="col-7 mt-2">
-              <div class="text-end" style="font-size:x-large;">
-                <span id="TarjD"></span>
+              <div class="col-5 my-auto text-center align-middle border-end border-light">
+                <i class="bi bi-person-badge-fill h1"></i>
+              </div>
+              <div class="col-7 mt-3">
+              <h4 class="text-center mt-2"><b>Tarjetones Diarios</b></h4>
+              <div class="text-center" style="font-size:x-large;">
+                <span id="TarjD" class=""></span>
               </div>
               <div class="text-end mb-2" style="font-size: smaller;">
-                <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
+                <a style="font-size: smaller; text-decoration:none;" href="" class="text-bg-success"><span> <i class="bi bi-align-end"></i></span></a>
               </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-12 col-lg-6 me-3 border rounded-1" style="width: 23%;">
+        <div class="col-md-12 col-lg-6 me-3 border border-2 border-danger text-bg-danger rounded-1" style="width: 23%;">
           <div class="container">
-            <h4 class="text-center text-muted mt-2"><b>Expedientes Actualizados</b></h4>
             <div class="row">
-              <div class="col-5 mt-3 mb-3">
-                <img src="img/canvasred.png" width="81px" height="35px">
+              <div class="col-5 my-auto text-center align-middle border-end border-light">
+              <i class="bi bi-file-earmark-break-fill h1"></i>
               </div>
-              <div class="col-7 mt-2">
-                <div class="text-end" style="font-size:x-large;">
-                  <span id="ExpD"></span>
+              <div class="col-7 mt-3">
+                <h4 class="text-center mt-2"><b>Expedientes Actualizados</b></h4>
+                <div class="text-center" style="font-size:x-large;">
+                  <span id="ExpD" class=""></span>
                 </div>
                 <div class="text-end mb-2" style="font-size: smaller;">
-                  <a style="font-size: smaller; text-decoration:none;" href=""><span>más ></span></a>
+                  <a style="font-size: smaller; text-decoration:none;" href="" class="text-bg-danger"><span><i class="bi bi-align-end"></i></span></a>
                 </div>
               </div>
             </div>
@@ -364,14 +364,15 @@ include('prcd/qc/qc.php');
       <style>
         canvas{
           margin: 0 auto;
+          
         }
       </style>
       <div class="row mt-3" style="justify-content:center">
-        <div class="col-md-12 me-3 border rounded-1" style="width: 95%;">
+        <div class="col-md-12 me-3 rounded-1" style="width: 95%; border: 1px solid #6d5973;">
           <div class="container">
             <div class="row">
               <div class="col-md-12 mt-3 mb-3">
-                <div class="chart-container" style="position:relative; height:60vh; width:auto">
+                <div class="chart-container" style="position:relative; height:60vh; width:auto;">
                   <canvas id="myChart" width="800" height="800"></canvas>
                 </div>
               </div>
@@ -379,11 +380,11 @@ include('prcd/qc/qc.php');
           </div>
         </div>
       </div>
+
+      <div class="container mt-5 mb-3">
+
+      </div>
       
-        
-      <!-- <label class="btn btn-outline-primary" for="oficial">Institución</label>
-      <input type="text" class="form-control" oninput="buscarTarjetonTemp(this.value)" placeholder="Buscar CURP, RFC o # de Tarjetón..." aria-label="Buscar"> -->
-      <!-- Inicia Modal para generar credencial -->
       <div class="modal fade" id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-scrollable modal-lg">
                       <div class="modal-content">
@@ -416,33 +417,7 @@ include('prcd/qc/qc.php');
                       </div><!-- modal content -->
                     </div><!-- modal dialog -->
                   </div><!-- modal -->
-                  <!-- Inicia modal anidado para vista previa de credencial -->
-                  <!-- <div class="modal fade" id="credencialpreview" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Vista previa</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <div class="row">
-                            <div class="col text-center">
-                              <img src="img/CredencialInclusionFront.jpg" style="max-width: 50%" alt="">
-                              <br>
-                              <img src="img/CredencialInclusionBack.jpg" style="max-width: 50%" alt="">
-                            </div>
-                          </div>  
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" onclick="limiarmodalcredencial()" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                          <button class="btn btn-primary" data-bs-target="#credgen" data-bs-toggle="modal"><i class="bi bi-chevron-double-left me-2"></i>Regresar</button>
-                          <button type="button" class="btn btn-primary" id="imprimirp" ><i class="bi bi-printer"></i> Imprimir</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
-                  <!-- Termina modal anidado para vista previa de credencial -->
-                  <!-- Termina Modal para generar credencial -->
+                 
 
     <!-- Inicia Modal para generar tarjeton -->
 
