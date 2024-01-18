@@ -861,6 +861,21 @@ function cambiarTab2(){
     $("#nav-vivienda").addClass('show active');
 }
 
+function buscarGrupo(){
+    var grupo = document.getElementById('grupoSearch').value;
+    $.ajax({
+        type: "POST",
+        url: 'query/queryGruposVulnerables.php',
+        dataType:'html',
+        data: {
+            grupo:grupo
+        },
+        success: function(data){
+            $('#grupos').fadeIn(1000).html(data);
+        }
+    });
+}
+
 function queryTabAlergias(x){
     var alergias = x;
     $.ajax({

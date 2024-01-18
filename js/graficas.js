@@ -43,9 +43,9 @@ var ctx = document.getElementById("myChart").getContext("2d");
         label:'Num datos',
         data:[x1,y1,z1,a1],
         backgroundColor:[
-          '#4b8bf5',
-          '#fbbc05',
           '#34a853',
+          '#fbbc05',
+          '#4b8bf5',
           '#eb5145'
 
         ]

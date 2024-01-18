@@ -349,13 +349,12 @@ sumaVars.toString;
 }
 
 function estudiaOp(x){
-    var estudiaSi = x;
+    var estudiaOption = x;
 
-    if (estudiaSi == 2){
-        document.getElementById('lugarEstudia').disabled = false;
-        
+    if (estudiaOption == "Técnica" || estudiaOption == "Licenciatura" || estudiaOption == "Posgrado"){
+        document.getElementById('carrera').disabled = false;
     } else {
-        document.getElementById('lugarEstudia').disabled = true;
+        document.getElementById('carrera').disabled = true;
     }
 }
 function trabajaOp(x){
@@ -363,12 +362,20 @@ function trabajaOp(x){
 
     if (trabaja == 1){
         document.getElementById('lugarTrabajo').disabled = false;
-        document.getElementById('ingresoMensual').disabled = false;
     } else {
         document.getElementById('lugarTrabajo').disabled = true;
-        document.getElementById('ingresoMensual').disabled = true;
     }
 }
+function trabajaOtro(x){
+    var otro = x;
+
+    if (otro == 5){
+        document.getElementById('lugarTrabajoOtro').disabled = false;
+    } else {
+        document.getElementById('lugarTrabajoOtro').disabled = true;
+    }
+}
+
 function asociacionOp(x){
     var asociacion = x;
 

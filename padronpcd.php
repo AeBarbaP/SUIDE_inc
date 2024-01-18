@@ -372,13 +372,14 @@ include('prcd/qc/qc.php');
                     </div>
                     <div id="result-username2"></div>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-3">
                     <label for="datos_usr" class="form-label">RFC:</label>
                     <div class="input-group">
-                      <span class="input-group-text w-50" id="rfcCut"></span>
+                      <span class="input-group-text w-75" id="rfcCut"></span>
                       <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" maxlength="3" id="rfcHomo" aria-describedby="basic-addon3 basic-addon4">
                     </div>
                   </div>
+                  <br>
                   <div class="col-sm-2">
                     <label for="datos_usr" class="form-label">Fecha Nacimiento:</label>
                     <input type="date" class="form-control" id="fechaNacimiento" name="datos_usr" placeholder="" required>
@@ -502,60 +503,63 @@ include('prcd/qc/qc.php');
                       <input type="email" id="correo" class="form-control" onkeyup="javascript:this.value=this.value.toLowerCase();" placeholder="e-mail" aria-label="e-mail" aria-describedby="basic-addon1">
                     </div>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <label for="datos_usr" class="form-label">Teléfono Particular:</label>
                     <input type="text" class="form-control" id="telFijo" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Teléfono particular">
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <label for="datos_usr" class="form-label">Celular:</label>
                     <input type="text" class="form-control" id="celular" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Celular">
                   </div>
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Nivel de Escolaridad:</label>
-                    <select class="form-select" id="escolaridad" aria-label="Default select example" required>
+                    <select class="form-select" id="escolaridad" onchange="estudiaOp(this.value)" aria-label="Default select example" required>
                       <option value="" selected>Selecciona...</option>
                       <option value="Ninguno">Sin escolarizar</option>
+                      <option value="Preescolar">Preescolar</option>
                       <option value="Primaria">Primaria</option>
                       <option value="Secundaria">Secundaria</option>
                       <option value="Preparatoria">Preparatoria</option>
                       <option value="Técnica">Carrera Técnica</option>
                       <option value="Licenciatura">Licenciatura</option>
                       <option value="Posgrado">Posgrado</option>
-                      <option value="Preescolar">Preescolar</option>
-                      <option value="Especial">Escuela de Educación Especial</option>
                     </select>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-4"> <!-- antes era estudia_donde -->
+                    <label for="datos_usr" class="form-label">Nombre de la carrera:</label>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="carrera" name="carrera" placeholder="Nombre de la carrera" disabled>
+                  </div>
+                  <div class="col-sm-4"> <!-- antes era estudia si/no -->
                     <div class="mb-3">
-                      <label for="basic-url" class="form-label">Estudia:</label>
+                      <label for="basic-url" class="form-label">Nivel Concluido</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaSi" value="2" required>
-                          <label class="form-check-label" for="estudia">Sí</label>
+                          <input class="form-check-input" type="radio" name="conclusion" id="estudiaSi" value="2" required>
+                          <label class="form-check-label" for="estudia">Concluído</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaNo" value="3" required>
-                          <label class="form-check-label" for="estudia">No</label>
+                          <input class="form-check-input" type="radio" name="conclusion" id="estudiaNo" value="3" required>
+                          <label class="form-check-label" for="estudia">Trunco</label>
                           <div class="invalid-feedback">
                             * Campo requerido.
                           </div>
                         </div>
-                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="lugarEstudia" name="lugarEstudia" placeholder="Dónde estudia..." disabled>
+                        <!-- <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="lugarEstudia" name="lugarEstudia" placeholder="Qué estudia..." disabled> -->
                       </div>
                     </div>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-3">
                     <label for="datos_usr" class="form-label">Habilidad:</label>
                     <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="habilidad" name="datos_usr" placeholder="Habilidad">
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-3">
                     <label for="datos_usr" class="form-label">Profesión u Oficio:</label>
                     <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="profesion" name="datos_usr" placeholder="Profesión u Oficio">
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <div class="mb-3">
                       <label for="basic-url" class="form-label">Trabaja:</label>
                       <div class="input-group">
@@ -570,19 +574,26 @@ include('prcd/qc/qc.php');
                             * Campo requerido.
                           </div>
                         </div>
-                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="lugarTrabajo" name="lugarTrabajo" placeholder="Dónde trabaja..." disabled>
+                        <select class="form-select" id="lugarTrabajo" onchange="trabajaOtro(this.value)" aria-label="Default select example" required disabled>
+                          <option value="" selected>Selecciona...</option>
+                          <option value="1">Iniciativa Privada</option>
+                          <option value="2">Gobierno Estatal</option>
+                          <option value="3">Gobierno Federal</option>
+                          <option value="4">Gobierno Municipal</option>
+                          <option value="5">Otro</option>
+                        </select>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="lugarTrabajoOtro" name="lugarTrabajoOtro" placeholder="Especifique..." disabled>
                       </div>
                     </div>
                   </div>
-                  <div class="col-sm-2">
+                  <!-- <div class="col-sm-2">
                     <label for="basic-url" class="form-label">Ingreso mensual:</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text">$</span>
                       <input type="text" class="form-control" id="ingresoMensual" onkeypress="ValidaSoloNumeros()" aria-label="Amount (to the nearest dollar)" disabled>
                       <span class="input-group-text">.00</span>
                     </div>
-                  </div>
-                  <br>
+                  </div> -->
                   <div class="col-sm-6">
                     <div class="mb-3">
                       <label for="basic-url" class="form-label">Pertenece a alguna Asociación Civil:</label>
@@ -602,25 +613,7 @@ include('prcd/qc/qc.php');
                       </div>
                     </div>
                   </div>
-                  <div class="col-sm-6">
-                    <div class="mb-3">
-                      <label for="basic-url" class="form-label">Pertenece a algún Sindicato:</label>
-                      <div class="input-group">
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="sindicatoOp(this.value)" name="sindicato" id="sindicatoSi" value="1" required>
-                          <label class="form-check-label" for="sindicato">Sí</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="sindicatoOp(this.value)" name="sindicato" id="sindicatoNo" value="2" required>
-                          <label class="form-check-label" for="sindicato">No</label>
-                          <div class="invalid-feedback">
-                            * Campo requerido.
-                          </div>
-                        </div>
-                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="nombreSindicato" name="datos_usr" placeholder="Nombre del Sindicato..." disabled>
-                      </div>
-                    </div>
-                  </div>
+                  <br>
                   <div class="col-sm-6">
                     <div class="mb-3">
                       <label for="basic-url" class="form-label">Tiene Pensión, Beca o Apoyo:</label>
@@ -683,6 +676,107 @@ include('prcd/qc/qc.php');
                       <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="numss" placeholder="">
                     </div>
                   </div>
+                  <div class="col-sm-5">
+                      <label for="datos_usr" class="form-label"> Pertenece a otro Grupo Vulnerable?:</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="grupoSearch" onfocus="buscarGrupo()" aria-label="Buscar...">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                      </div>
+                      <select class="form-select" id="grupos" onclick="addG(this.value)" onselect="grupoOp(this.value)" multiple aria-label="multiple select example">
+                      </select>
+                      <div class="form-text" style="color:red" id="noesta"></div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="input-group mt-4" style="height:max-content">
+                        <span class="input-group-text mt-2">Grupos Vulnerables <br>seleccionados:</span>
+                        <div contenteditable="false" class="editable form-control mt-2" id="gruposFull">
+                          <input type="text" id="numeroG" hidden>
+                        </div>
+                        <!-- Modal para agregar enfermedad -->
+                        <div class="modal fade" id="grupoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar Grupo Vulnerable</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="input-group">
+                                  <span class="input-group-text"> Grupo Vulnerable:</span>
+                                  <input type="text" class="form-control  w-50" id="grupoInput" name="grupoInput" value="" placeholder="">
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary" onclick="addInputG()" data-bs-dismiss="modal">Agregar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Termina modal para agregar enfermedad -->
+                        <script>
+                          function addG(val) {
+                            var p2;
+                            var numeroG = ""; //remover al momento de programar guardar
+                            var textarea = document.getElementById("gruposFull");
+                            if (val==null || val =="" || val == 0){
+                              console.log('sin valor');
+                            } else {
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorGFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              document.getElementById(val).setAttribute('onclick',"removeG('"+val+"')");
+                              document.getElementById(val).setAttribute('name',"'"+val+"'");
+                              document.querySelector('#grupos option[value='+val+']').remove();
+                            }
+                            //remover al momento de programar guardar
+                            const paragraphs = document.querySelectorAll('[class="valorGFull"]');
+                            paragraphs.forEach(p => numeroG = numeroG + p.id +', ');
+                            numeroG = numeroG.slice(0, numeroG.length - 2);
+                            console.log(numeroG);
+                            document.getElementById('numeroG').value = numeroG;
+                          }
+                          function addInputG() {
+                            var numeroG = "";//remover al momento de programar guardar
+                            var val = document.getElementById("grupoInput").value;
+                            var textarea = document.getElementById("gruposFull");
+                            //if (val==null || val =="" || val == 0){
+                              //console.log('sin valor');
+                            //} else{
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorGFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              document.getElementById(val).setAttribute('onclick',"removeG('"+val+"')");
+                              document.getElementById("grupoInput").value ="";
+
+                              //remover al momento de programar guardar          
+                              const paragraphs = document.querySelectorAll('[class="valorGFull"]');
+                              paragraphs.forEach(p => numeroG = numeroG + p.id +', ');
+                              numeroG = numeroG.slice(0, numeroG.length - 2);
+                              console.log(numeroG);
+                              document.getElementById('numeroG').value = numeroG;
+                           // }
+                          }
+                          function removeG(val) {
+                            var numeroG = ""; //remover al momento de programar guardar
+                            console.log(val);
+                            var nameInput = document.getElementById(val).getAttribute("name");
+                            if (nameInput){
+                              document.getElementById(val).remove();
+                              $('#grupos').append("<option value='"+val+"'>"+val+"</option>");
+                            }
+                            else{
+                              console.log("Nada");
+                              document.getElementById(val).remove();
+  
+                            }
+                            //remover al momento de programar guardar
+                              const paragraphs = document.querySelectorAll('[class="valorGFull"]');
+                              paragraphs.forEach(p => numeroG = numeroG + p.id +', ');
+                              numeroG = numeroG.slice(0, numeroG.length - 2);
+                              console.log(numeroG);
+                              document.getElementById('numeroG').value = numeroG;
+                          }
+                        </script>
+                      </div>
+                      
+                    </div>
                   <br>
                     <div class="d-grid gap-2 mt-3">
                       <button class="btn btn-primary" type="submit" id="btnGuardarGeneral">Guardar</button>

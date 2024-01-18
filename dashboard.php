@@ -188,7 +188,7 @@ include('prcd/qc/qc.php');
   <div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse mt-3">
       <p class="sidebar-heading d-flex justify-content-center text-center align-items-center px-3 mt-4 mb-1 text-muted" style="font-size: 1rem;">
-        <span class="" style="font-family: 'Montserrat', sans-serif;"><strong>Bienvenid@<br><i class="fas fa-user"></i> 
+        <span class="" style="font-family: 'Montserrat', sans-serif;"><strong>Bienvenid@<br><i class="fas fa-user me-2"></i> 
           <?php
             echo ($nombre);
           ?></strong>
@@ -262,9 +262,9 @@ include('prcd/qc/qc.php');
     </nav>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 overflow-auto">
-      <div class="alert alert-secondary text-center" role="alert" style="background-color: #917799;">
-        <p class="h3 text-light">Bienvenid@</p>
-        <p class="h6 mb-1 text-light">Sistema Único de Identificación y Verificación</p>
+      <div class="alert alert-secondary text-center" role="alert" style="background-color: #aa96b0;">
+        <p class="h1 text-light"><strong>Bienvenid@</strong></p>
+        <!-- <p class="h6 mb-1 text-light" style="font-style:oblique">Sistema Único de Identificación y Verificación</p> -->
       </div>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
       </div>
@@ -288,7 +288,7 @@ include('prcd/qc/qc.php');
           </div>
         </div>
         <hr class="mb-4">
-        <div class="col-md-12 col-lg-6 me-3 text-bg-primary border border-2 border-primary rounded-1" style="width: 23%;">
+        <div class="col-md-12 col-lg-6 me-3 text-bg-success border border-2 border-success rounded-1" style="width: 23%;">
           <div class="container">
             <div class="row">
               <div class="col-5 my-auto text-center align-middle border-end border-light">
@@ -300,7 +300,7 @@ include('prcd/qc/qc.php');
                   <span id="ExpNews" class="h3"></span>
                 </div>
                 <div class="text-end mb-2" style="font-size: smaller;">
-                  <a style="font-size: smaller; text-decoration:none;" href="text-bg-primary" class="text-bg-primary"><span><i class="bi bi-align-end"></i></span></a>
+                  <a style="font-size: smaller; text-decoration:none;" href="text-bg-success" class="text-bg-success"><span><i class="bi bi-align-end"></i></span></a>
                 </div>
               </div>
             </div>
@@ -309,22 +309,22 @@ include('prcd/qc/qc.php');
         <div class="col-md-12 col-lg-6 me-3 text-bg-warning border border-2 border-warning rounded-1" style="width: 23%;">
           <div class="container">
             <div class="row">
-              <div class="col-5 my-auto text-center align-middle border-end border-dark">
-              <i class="bi bi-person-vcard-fill h1"></i>
+              <div class="col-5 my-auto text-center align-middle border-end border-white">
+              <i class="bi bi-person-vcard-fill h1" style="color:white"></i>
               </div>
               <div class="col-7 mt-3">
-                <h4 class="text-center mt-2"><b>Credenciales Diarias</b></h4>
+                <h4 class="text-center mt-2" style="color:white"><b>Credenciales Diarias</b></h4>
                 <div class="text-center" style="font-size:x-large;">
-                  <span id="CredD" class="" class="h3"></span>
+                  <span id="CredD" class="h3" style="color:white"></span>
                 </div>
                 <div class="text-end mb-2" style="font-size: smaller;">
-                  <a style="font-size: smaller; text-decoration:none;" href="" class="text-bg-warning"><span> <i class="bi bi-align-end"></i></span></a>
+                  <a style="font-size: smaller; text-decoration:none;" href="" class="text-bg-warning"><span> <i class="bi bi-align-end" style="color:white"></i></span></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-12 col-lg-6 me-3 text-bg-success border border-2 border-success rounded-1" style="width: 23%;">
+        <div class="col-md-12 col-lg-6 me-3 text-bg-primary border border-2 border-primary rounded-1" style="width: 23%;">
           <div class="container">
             <div class="row">
               <div class="col-5 my-auto text-center align-middle border-end border-light">
@@ -336,7 +336,7 @@ include('prcd/qc/qc.php');
                 <span id="TarjD" class=""></span>
               </div>
               <div class="text-end mb-2" style="font-size: smaller;">
-                <a style="font-size: smaller; text-decoration:none;" href="" class="text-bg-success"><span> <i class="bi bi-align-end"></i></span></a>
+                <a style="font-size: smaller; text-decoration:none;" href="" class="text-bg-primary"><span> <i class="bi bi-align-end"></i></span></a>
               </div>
               </div>
             </div>
@@ -417,7 +417,7 @@ include('prcd/qc/qc.php');
                       </div><!-- modal content -->
                     </div><!-- modal dialog -->
                   </div><!-- modal -->
-                 
+                
 
     <!-- Inicia Modal para generar tarjeton -->
 
