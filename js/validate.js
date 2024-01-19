@@ -353,17 +353,35 @@ function estudiaOp(x){
 
     if (estudiaOption == "Técnica" || estudiaOption == "Licenciatura" || estudiaOption == "Posgrado"){
         document.getElementById('carrera').disabled = false;
+        document.getElementById('concluidoNA').checked = false;
+    } else if (estudiaOption == "Ninguno"){
+        document.getElementById('carrera').disabled = true;
+        document.getElementById('concluidoNA').checked = true;
     } else {
         document.getElementById('carrera').disabled = true;
+        document.getElementById('concluidoNA').checked = false;
     }
 }
+
+function estudiaOp2(x){
+    var estudiaOption1 = x;
+
+    if (estudiaOption1 == 1){
+        document.getElementById('lugarEstudia').disabled = false;
+    } else {
+        document.getElementById('lugarEstudia').disabled = true;
+    }
+}
+
 function trabajaOp(x){
     var trabaja = x;
 
     if (trabaja == 1){
         document.getElementById('lugarTrabajo').disabled = false;
+        document.getElementById('ingresoMensual').disabled = false;
     } else {
         document.getElementById('lugarTrabajo').disabled = true;
+        document.getElementById('ingresoMensual').disabled = true;
     }
 }
 function trabajaOtro(x){
@@ -385,15 +403,66 @@ function asociacionOp(x){
         document.getElementById('nombreAC').disabled = true;
     }
 }
-function sindicatoOp(x){
-    var sindicato = x;
+function informanteOp(x){
+    var informante = x;
 
-    if (sindicato == 1){
-        document.getElementById('nombreSindicato').disabled = false;
-    } else {
-        document.getElementById('nombreSindicato').disabled = true;
+    if (informante == 1){
+        document.getElementById('informanteRel').disabled = true;
+        document.getElementById('nombreInformante').disabled = true;
+        document.getElementById('informanteRel').required = false;
+        document.getElementById('divNombre').hidden = true;
+        document.getElementById('divSelect').hidden = true;
+    } else if (informante == 2){
+        document.getElementById('informanteRel').disabled = false;
+        document.getElementById('nombreInformante').disabled = false;
+        document.getElementById('informanteRel').required = true;
+        document.getElementById('divNombre').hidden = false;
+        document.getElementById('divSelect').hidden = false;
     }
 }
+
+function informanteOtro(x){
+    var informante = x;
+
+    if (informante == "Otro(a)"){
+        document.getElementById('otraRel').disabled = false;
+        document.getElementById('otraRel').required = true;
+    } else {
+        document.getElementById('otraRel').disabled = true;
+        document.getElementById('otraRel').required = false;
+    }
+}
+function dependienteOp(x){
+    var dependiente = x;
+
+    if (dependiente == 1){
+        document.getElementById('dependienteEsp').disabled = false;
+        document.getElementById('dependienteEsp').required = true;
+        document.getElementById('dependientesSi').disabled = true;
+        document.getElementById('dependientesNo').disabled = true;
+    } else {
+        document.getElementById('dependienteEsp').disabled = true;
+        document.getElementById('dependienteEsp').required = false;
+        document.getElementById('dependientesSi').disabled = false;
+        document.getElementById('dependientesNo').disabled = false;
+    }
+}
+function dependientesOp(x){
+    var dependientes = x;
+    
+    if (dependientes == 1){
+        document.getElementById('dependientes').disabled = false;
+        document.getElementById('dependientes').required = true;
+        document.getElementById('dependienteSi').disabled = true;
+        document.getElementById('dependienteNo').disabled = true;
+    } else {
+        document.getElementById('dependientes').disabled = true;
+        document.getElementById('dependientes').required = false;
+        document.getElementById('dependienteSi').disabled = false;
+        document.getElementById('dependienteNo').disabled = false;
+    }
+}
+
 function pensionOp(x){
     var pension = x;
 
@@ -472,13 +541,20 @@ function rehabOp(x){
     }
 }
 
-function deudasOp(x){
-    var deudas = x;
+function bathSel(){
+    var bath = document.getElementById('bath');
 
-    if (deudas == 1){
-        document.getElementById('deudasInput').disabled = false;
+    if (bath.checked){
+        document.getElementById('bathNum').disabled = false;
+        document.getElementById('interior').disabled = false;
+        document.getElementById('exterior').disabled = false;
+        document.getElementById('interior').required = true;
     } else {
-        document.getElementById('deudasInput').disabled = true;
+        document.getElementById('bathNum').disabled = true;
+        document.getElementById('interior').disabled = true;
+        document.getElementById('exterior').disabled = true;
+        document.getElementById('interior').required = false;
+        
     }
 }
 function viviendaOp(x){
@@ -579,12 +655,21 @@ function roomsCheck(){
             document.getElementById('cocina').checked = true;
             document.getElementById('sala').checked = true;
             document.getElementById('bath').checked = true;
-
+            document.getElementById('bathNum').disabled = false;
+            document.getElementById('interior').disabled = false;
+            document.getElementById('exterior').disabled = false;
+            document.getElementById('bathNum').required = true;
+            document.getElementById('interior').required = true;
+            
         } else {
             document.getElementById('cocina').checked = false;
             document.getElementById('sala').checked = false;
             document.getElementById('bath').checked = false;
-
+            document.getElementById('interior').disabled = true;
+            document.getElementById('exterior').disabled = true;
+            document.getElementById('interior').required = false;
+            document.getElementById('bathNum').disabled = true;
+            document.getElementById('bathNum').required = false;
         }
 }
 function otrosRoom(){

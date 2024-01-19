@@ -265,10 +265,14 @@ include('prcd/qc/qc.php');
     </nav>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
+    <div class="alert alert-secondary text-center" role="alert" style="background-color: #87CD97;">
+        <p class="h1 text-light"><strong>Registro Nuevo</strong></p>
+        <!-- <p class="h6 mb-1 text-light" style="font-style:oblique">Sistema Único de Identificación y Verificación</p> -->
+      </div>
+      <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
         <p class="h5"><strong>Padrón Estatal de Personas con Discapacidad</strong></p>
       </div>
-      <h3 class="text-muted mt-4">Nuevo Registro</h3>
+      <h3 class="text-muted mt-4">Nuevo Registro</h3> -->
       <br>
 <!--       <h4 class="text-muted mt-4">Últimos documentos generados</h4> -->
       <div class="container-fluid">
@@ -306,14 +310,14 @@ include('prcd/qc/qc.php');
             <nav>
               <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <button class="nav-link active" id="nav-generales-tab" data-bs-toggle="tab" data-bs-target="#nav-generales" type="button" role="tab" aria-controls="nav-generales" aria-selected="true">Datos Generales</button>
-                <button class="nav-link" id="nav-medicos-tab" name="medicos" data-bs-toggle="tab" data-bs-target="#nav-medicos" type="button" role="tab" aria-controls="nav-medicos" aria-selected="false" disabled>Datos Médicos</button>
-                <button class="nav-link" id="nav-vivienda-tab" data-bs-toggle="tab" data-bs-target="#nav-vivienda" type="button" role="tab" aria-controls="nav-vivienda" aria-selected="false" disabled>Vivienda</button>
-                <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-integracion" type="button" role="tab" aria-controls="nav-integracion" aria-selected="false" disabled>Integración Familiar</button>
-                <button class="nav-link" id="nav-referencias-tab" data-bs-toggle="tab" data-bs-target="#nav-referencias" type="button" role="tab" aria-controls="nav-referencias" aria-selected="false" disabled>Referencias</button>
-                <button class="nav-link" id="nav-servicios-tab" data-bs-toggle="tab" data-bs-target="#nav-servicios-otorgados" type="button" role="tab" aria-controls="nav-servicios" aria-selected="false" disabled>Solicitudes</button>
-                <button class="nav-link" id="nav-formato-tab" data-bs-toggle="tab" data-bs-target="#nav-formato" type="button" role="tab" aria-controls="nav-formato" aria-selected="false" disabled>Formatos</button>
-                <button class="nav-link" id="nav-docs-tab" data-bs-toggle="tab" data-bs-target="#nav-docs" type="button" role="tab" aria-controls="nav-docs" aria-selected="false" disabled>Documentos</button>
-                <button class="nav-link" id="nav-fin-tab" data-bs-toggle="tab" data-bs-target="#nav-fin" type="button" role="tab" aria-controls="nav-fin" aria-selected="false" disabled>Finalizar</button>
+                <button class="nav-link" id="nav-medicos-tab" name="medicos" data-bs-toggle="tab" data-bs-target="#nav-medicos" type="button" role="tab" aria-controls="nav-medicos" aria-selected="false" >Datos Médicos</button>
+                <button class="nav-link" id="nav-vivienda-tab" data-bs-toggle="tab" data-bs-target="#nav-vivienda" type="button" role="tab" aria-controls="nav-vivienda" aria-selected="false" >Vivienda</button>
+                <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-integracion" type="button" role="tab" aria-controls="nav-integracion" aria-selected="false" >Integración Familiar</button>
+                <button class="nav-link" id="nav-referencias-tab" data-bs-toggle="tab" data-bs-target="#nav-referencias" type="button" role="tab" aria-controls="nav-referencias" aria-selected="false" >Referencias</button>
+                <button class="nav-link" id="nav-servicios-tab" data-bs-toggle="tab" data-bs-target="#nav-servicios-otorgados" type="button" role="tab" aria-controls="nav-servicios" aria-selected="false" >Solicitudes</button>
+                <button class="nav-link" id="nav-formato-tab" data-bs-toggle="tab" data-bs-target="#nav-formato" type="button" role="tab" aria-controls="nav-formato" aria-selected="false" >Formatos</button>
+                <button class="nav-link" id="nav-docs-tab" data-bs-toggle="tab" data-bs-target="#nav-docs" type="button" role="tab" aria-controls="nav-docs" aria-selected="false" >Documentos</button>
+                <button class="nav-link" id="nav-fin-tab" data-bs-toggle="tab" data-bs-target="#nav-fin" type="button" role="tab" aria-controls="nav-fin" aria-selected="false" >Finalizar</button>
               </div>
             </nav>
             <div class="tab-content"  id="nav-tabContent">
@@ -344,7 +348,7 @@ include('prcd/qc/qc.php');
                   <div class="col-sm-3">
                     <div class="mb-3">
                       <label for="basic-url" class="form-label">Género:</label>
-                      <div class="input-group">
+                      <div class="input-group mt-2">
                         <div class="form-check form-check-inline">
                           <input class="form-check-input" type="radio" name="genero" id="generoF" value="Mujer" required>
                           <label class="form-check-label" for="inlineRadio1">Mujer</label>
@@ -511,7 +515,52 @@ include('prcd/qc/qc.php');
                     <label for="datos_usr" class="form-label">Celular:</label>
                     <input type="text" class="form-control" id="celular" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Celular">
                   </div>
+                  <div class="col-sm-2"> <!-- antes era estudia si/no -->
+                    <div class="mb-3">
+                      <label for="basic-url" class="form-label">Sabe leer y escribir?</label>
+                      <div class="input-group">
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="leer" id="leerSi" value="1" required>
+                          <label class="form-check-label" for="estudia">Sí</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="leer" id="leerNo" value="2">
+                          <label class="form-check-label" for="estudia">No</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="col-sm-4">
+                    <div class="mb-3">
+                      <label for="basic-url" class="form-label">Estudia?</label>
+                      <div class="input-group">
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="estudia" id="estudiaSi" value="1"  onclick="estudiaOp2(this.value)" required>
+                          <label class="form-check-label" for="estudiaSi">Sí</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="estudia" id="estudiaNo" value="2" onclick="estudiaOp2(this.value)">
+                          <label class="form-check-label" for="estudiaNo">No</label>
+                        </div>
+                        <select class="form-select" id="lugarEstudia" aria-label="Default select example" required disabled>
+                          <option value="" selected>Selecciona...</option>
+                          <option value="1">Pública Especial</option>
+                          <option value="2">Pública Regular</option>
+                          <option value="3">Privada Especial</option>
+                          <option value="4">Privada Regular</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <label for="datos_usr" class="form-label">Habilidad:</label>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="habilidad" name="datos_usr" placeholder="Habilidad">
+                  </div>
+                  <div class="col-sm-3">
+                    <label for="datos_usr" class="form-label">Profesión u Oficio:</label>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="profesion" name="datos_usr" placeholder="Profesión u Oficio">
+                  </div>
+                  <div class="col-sm-2">
                     <label for="exampleDataList" class="form-label">Nivel de Escolaridad:</label>
                     <select class="form-select" id="escolaridad" onchange="estudiaOp(this.value)" aria-label="Default select example" required>
                       <option value="" selected>Selecciona...</option>
@@ -524,52 +573,45 @@ include('prcd/qc/qc.php');
                       <option value="Licenciatura">Licenciatura</option>
                       <option value="Posgrado">Posgrado</option>
                     </select>
-                    <div class="invalid-feedback">
-                      * Campo requerido.
-                    </div>
                   </div>
                   <div class="col-sm-4"> <!-- antes era estudia_donde -->
                     <label for="datos_usr" class="form-label">Nombre de la carrera:</label>
                     <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="carrera" name="carrera" placeholder="Nombre de la carrera" disabled>
                   </div>
-                  <div class="col-sm-4"> <!-- antes era estudia si/no -->
+                  <div class="col-sm-5"> <!-- antes era estudia si/no -->
                     <div class="mb-3">
-                      <label for="basic-url" class="form-label">Nivel Concluido</label>
-                      <div class="input-group">
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="conclusion" id="estudiaSi" value="2" required>
-                          <label class="form-check-label" for="estudia">Concluído</label>
+                      <!-- <label for="basic-url" class="form-label"> </label> -->
+                      <div class="input-group mt-4">
+                        <div class="form-check form-check-inline mt-3">
+                          <input class="form-check-input" type="radio" name="conclusion" id="concluidoSi" value="1" required>
+                          <label class="form-check-label" for="concluidoSi">Concluída</label>
                         </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="conclusion" id="estudiaNo" value="3" required>
-                          <label class="form-check-label" for="estudia">Trunco</label>
-                          <div class="invalid-feedback">
-                            * Campo requerido.
-                          </div>
+                        <div class="form-check form-check-inline mt-3">
+                          <input class="form-check-input" type="radio" name="conclusion" id="concluidoNo" value="2" >
+                          <label class="form-check-label" for="concluidoNo">Trunca</label>
                         </div>
-                        <!-- <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="lugarEstudia" name="lugarEstudia" placeholder="Qué estudia..." disabled> -->
+                        <div class="form-check form-check-inline mt-3">
+                          <input class="form-check-input" type="radio" name="conclusion" id="concluidoCur" value="3" >
+                          <label class="form-check-label" for="concluidoNo">Cursando</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-3" id="divConclusionNA">
+                          <input class="form-check-input" type="radio" name="conclusion" id="concluidoNA" value="4">
+                          <label class="form-check-label" for="concluidoNA">No Aplica</label>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-sm-3">
-                    <label for="datos_usr" class="form-label">Habilidad:</label>
-                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="habilidad" name="datos_usr" placeholder="Habilidad">
-                  </div>
-                  <div class="col-sm-3">
-                    <label for="datos_usr" class="form-label">Profesión u Oficio:</label>
-                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="profesion" name="datos_usr" placeholder="Profesión u Oficio">
-                  </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-8">
                     <div class="mb-3">
                       <label for="basic-url" class="form-label">Trabaja:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" onclick="trabajaOp(this.value)" name="trabaja" id="trabajaSi" value="1" required>
-                          <label class="form-check-label" for="trabaja">Sí</label>
+                          <label class="form-check-label" for="trabajaSi">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="trabajaOp(this.value)" name="trabaja" id="trabajaNo" value="0" required>
-                          <label class="form-check-label" for="trabaja">No</label>
+                          <input class="form-check-input" type="radio" onclick="trabajaOp(this.value)" name="trabaja" id="trabajaNo" value="0" >
+                          <label class="form-check-label" for="trabajaNo">No</label>
                           <div class="invalid-feedback">
                             * Campo requerido.
                           </div>
@@ -586,15 +628,20 @@ include('prcd/qc/qc.php');
                       </div>
                     </div>
                   </div>
-                  <!-- <div class="col-sm-2">
+                  <div class="col-sm-4">
                     <label for="basic-url" class="form-label">Ingreso mensual:</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text">$</span>
-                      <input type="text" class="form-control" id="ingresoMensual" onkeypress="ValidaSoloNumeros()" aria-label="Amount (to the nearest dollar)" disabled>
-                      <span class="input-group-text">.00</span>
+                      <select class="form-select" id="ingresoMensual" aria-label="Default select example" required disabled>
+                          <option value="" selected>Selecciona...</option>
+                          <option value="1">menos de 9,999</option>
+                          <option value="2">10,000 a 14,999</option>
+                          <option value="3">15,000 a 19,999</option>
+                          <option value="4">mas de 20,000</option>
+                        </select>
                     </div>
-                  </div> -->
-                  <div class="col-sm-6">
+                  </div>
+                  <div class="col-sm-8">
                     <div class="mb-3">
                       <label for="basic-url" class="form-label">Pertenece a alguna Asociación Civil:</label>
                       <div class="input-group">
@@ -623,7 +670,7 @@ include('prcd/qc/qc.php');
                           <label class="form-check-label" for="inlineRadio1">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="pensionOp(this.value)" name="pension" id="pensionNo" value="0" required>
+                          <input class="form-check-input" type="radio" onclick="pensionOp(this.value)" name="pension" id="pensionNo" value="0">
                           <label class="form-check-label" for="inlineRadio2">No</label>
                           <div class="invalid-feedback">
                             * Campo requerido.
@@ -670,7 +717,7 @@ include('prcd/qc/qc.php');
                       <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="otroSS" name="datos_usr" placeholder="Nombre de la Institución de Seguridad Social" disabled>
                     </div>
                   </div>
-                  <div class="col-sm-4 mb-3">
+                  <div class="col-sm-4 ">
                     <div class="mb-3">
                       <label for="numss" class="form-label">Número de Seguridad Social:</label>
                       <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="numss" placeholder="">
@@ -692,7 +739,7 @@ include('prcd/qc/qc.php');
                         <div contenteditable="false" class="editable form-control mt-2" id="gruposFull">
                           <input type="text" id="numeroG" hidden>
                         </div>
-                        <!-- Modal para agregar enfermedad -->
+                        <!-- Modal para agregar grupo vulnerable -->
                         <div class="modal fade" id="grupoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -713,7 +760,7 @@ include('prcd/qc/qc.php');
                             </div>
                           </div>
                         </div>
-                        <!-- Termina modal para agregar enfermedad -->
+                        <!-- Termina modal para agregar grupo vulnerable -->
                         <script>
                           function addG(val) {
                             var p2;
@@ -776,6 +823,46 @@ include('prcd/qc/qc.php');
                         </script>
                       </div>
                       
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="mb-3">
+                        <label for="basic-url" class="form-label">Persona que brinda la información:</label>
+                        <select class="form-select" id="informante" onchange="informanteOp(this.value)" aria-label="Default select example" required>
+                          <option value="" selected>Selecciona...</option>
+                          <option value="1">Usuario</option>
+                          <option value="2">Otro</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-4" id="divNombre" hidden>
+                      <div class="mb-3">
+                        <label for="basic-url" class="form-label">Nombre completo:</label>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="nombreInformante" name="relacion" placeholder="Nombre completo" disabled>
+                      </div>
+                    </div>
+                    <div class="col-sm-5" id="divSelect" hidden>
+                      <div class="mb-3">
+                        <label for="basic-url" class="form-label">Relación que tiene con el Usuario:</label>
+                        <div class="input-group">
+                          <select class="form-select" id="informanteRel" onchange="informanteOtro(this.value)" aria-label="Default select example" disabled>
+                            <option selected>Selecciona...</option>
+                            <option value="Padre">Padre</option>
+                            <option value="Madre">Madre</option>
+                            <option value="Tutor">Tutor</option>
+                            <option value="Hermano(a)">Hermano(a)</option>
+                            <option value="Hijo(a)">Hijo(a)</option>
+                            <option value="Esposo(a)">Esposo(a)</option>
+                            <option value="Cónyuge">Cónyuge</option>
+                            <option value="Tío(a)">Tío(a)</option>
+                            <option value="Sobrino(a)">Sobrino(a)</option>
+                            <option value="Abuelo(a)">Abuelo(a)</option>
+                            <option value="Primo(a)">Primo(a)</option>
+                            <option value="Enlace_Municipal">Enlace Municipal</option>
+                            <option value="Otro(a)">Otro(a)</option>
+                          </select>
+                          <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="otraRel" name="relacion" placeholder="Especifique..." disabled>
+                        </div>
+                      </div>
                     </div>
                   <br>
                     <div class="d-grid gap-2 mt-3">
@@ -1285,126 +1372,135 @@ include('prcd/qc/qc.php');
                 <div class="tab-pane fade" id="nav-vivienda" role="tabpanel" aria-labelledby="nav-vivienda-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <!-- Vivienda -->
-                    <div class="col-sm-7">
-                      <form id="Formvivienda">
-                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Vivienda:</label>
-                      <div class="input-group" style="height:max-content">
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="viviendaPro" value="1" required>
-                          <label class="form-check-label" for="vivienda">Propia</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="viviendaPre" value="2">
-                          <label class="form-check-label" for="vivienda">Prestada</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="viviendaRe" value="3">
-                          <label class="form-check-label" for="vivienda">Rentada</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <div class="input-group mb-3 w-75">
-                            <span class="input-group-text">$</span>
-                            <input type="text" class="form-control" id="montoVivienda" onkeypress="ValidaSoloNumeros()" aria-label="Amount (to the nearest dollar)" disabled>
-                            <span class="input-group-text">.00</span>
+                    <form id="Formvivienda">
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Vivienda:</label>
+                        <div class="input-group mb-3" style="height:max-content">
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="viviendaPro" value="1" required>
+                            <label class="form-check-label" for="vivienda">Propia</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="viviendaPre" value="2">
+                            <label class="form-check-label" for="vivienda">Prestada</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="viviendaRe" value="3">
+                            <label class="form-check-label" for="vivienda">Rentada</label>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-sm-5">
-                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> La está págando:</label>
-                      <div class="input-group" style="height:max-content">
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="viviendaDOp(this.value)" name="viviendaP" id="viviendaPSi" value="1" required>
-                          <label class="form-check-label" for="viviendaP">Sí</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="viviendaDOp(this.value)" name="viviendaP" id="viviendaPNo" value="2">
-                          <label class="form-check-label" for="viviendaP">No</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <div class="input-group mb-3 w-75">
-                            <span class="input-group-text">$</span>
-                            <input type="text" class="form-control" id="costoVivienda" onkeypress="ValidaSoloNumeros()" aria-label="Amount (to the nearest dollar)" disabled>
-                            <span class="input-group-text">.00</span>
+                      <div class="col-sm-8">
+                        <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Tipo de vivienda:</label>
+                        <div class="input-group">
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaC" value="1" required>
+                            <label class="form-check-label" for="tipoVivienda">Casa</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaD" value="2">
+                            <label class="form-check-label" for="tipoVivienda">Departamento</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaV" value="3">
+                            <label class="form-check-label" for="tipoVivienda">Vecindad</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaO" value="4">
+                            <label class="form-check-label" for="tipoVivienda">Otra:</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-control" id="viviendaOtro" type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Especifique..." disabled>
                           </div>
                         </div>
                       </div>
                     </div>
                     <!-- Vivienda -->
-                    <!-- características -->
-                    <div class="col-sm-12">
-                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Tipo de vivienda:</label>
-                      <div class="input-group">
-                        <div class="form-check form-check-inline mt-2">
+                    <!-- habitaciones -->
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <label for="basic-url" class="form-label mt-2"><i class="bi bi-house"></i> Número de habitaciones:</label>
+                        <div class="input-group">
+                          <div class="form-check form-check-inline">
+                            <input class="form-control mt-2" type="number" id="numHabitaciones" onkeypress="ValidaSoloNumeros()" placeholder="# Dormitorios">
+                          </div>
+                          <div class="form-check mt-3">
+                            <input class="form-check-input" type="checkbox" onclick="roomsCheck()" id="checkAllRooms">
+                            <label class="form-check-label" for="flexCheckDefault2">
+                              Selecciona todo
+                            </label>
+                          </div>
+                          <div class="form-check form-check-inline mt-1">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="cocina">
+                              <label class="form-check-label" for="flexCheckDefault1">
+                                Cocina
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input mt-2" type="checkbox" id="sala">
+                              <label class="form-check-label" for="flexCheckDefault2">
+                                Sala
+                              </label>
+                            </div>
+                          </div>
+                          <div class="form-check form-check-inline mt-1">
+                            <div class="form-check">
+                              <div class="input-group input-group-sm">
+                                <input class="form-check-input mt-1" onchange="bathSel()" type="checkbox" id="bath">
+                                <label class="form-check-label ms-3" for="flexCheckDefault3">
+                                  Baño(s)
+                                </label>
+                                <input type="text" id="bathNum" class="form-control ms-4" style="width: 80px;" aria-label="Sizing example input" placeholder="# Baños" disabled>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input ms-1" type="radio" name="baths" id="interior" value="1" disabled>
+                                  <label class="form-check-label" for="baths">Interior</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="baths" id="exterior" value="2" disabled>
+                                  <label class="form-check-label" for="baths">Exterior</label>
+                                </div>
+                              </div> 
+                            </div>
+                            <div class="form-check">
+                              <div class="input-group input-group-sm mb-3">
+                                <input class="form-check-input" type="checkbox" onclick="otrosRoom()" id="otroRoom">
+                                <label class="form-check-label ms-3" for="otroRoom">
+                                  Otros:
+                                </label>
+                                <input class="form-control ms-3" type="text" id="otroRoomInput" placeholder="Especifique..." disabled>
+                              </div>
+                            </div>
+                          </div>
                           
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaC" value="1" required>
-                          <label class="form-check-label" for="tipoVivienda">Casa</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaD" value="2">
-                          <label class="form-check-label" for="tipoVivienda">Departamento</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaV" value="3">
-                          <label class="form-check-label" for="tipoVivienda">Vecindad</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaO" value="4">
-                          <label class="form-check-label" for="tipoVivienda">Otra:</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-control" id="viviendaOtro" type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Especifique..." disabled>
                         </div>
                       </div>
-                    </div>
-                    <!-- características -->
-                    <!-- habitaciones -->
-                    <div class="col-sm-12">
-                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Número de habitaciones:</label>
-                      <div class="input-group">
-                        <div class="form-check form-check-inline">
-                          <input class="form-control mt-2" type="number" id="numHabitaciones" onkeypress="ValidaSoloNumeros()" placeholder="# Habitaciones">
-                        </div>
-                        <div class="form-check mt-3">
-                          <input class="form-check-input" type="checkbox" onclick="roomsCheck()" id="checkAllRooms">
-                          <label class="form-check-label" for="flexCheckDefault2">
-                            Selecciona todo
-                          </label>
-                        </div>
-                        <div class="form-check form-check-inline mt-1">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="cocina">
-                            <label class="form-check-label" for="flexCheckDefault1">
-                              Cocina
-                            </label>
+                      <!-- <div class="col-sm-5">
+                        <div class="input-group ">
+                          <div class="form-check form-check-inline">
+                            <div class="input-group mb-3">
+                              <input type="text" class="form-control" id="costoVivienda" onkeypress="ValidaSoloNumeros()" aria-label="Amount (to the nearest dollar)" disabled>
+                            </div>
                           </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="sala">
-                            <label class="form-check-label" for="flexCheckDefault2">
-                              Sala
-                            </label>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="viviendaDOp(this.value)" name="viviendaP" id="viviendaPSi" value="1" required>
+                            <label class="form-check-label" for="viviendaP">Interior</label>
                           </div>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <div class="form-check mt-1">
-                            <input class="form-check-input" type="checkbox" id="bath">
-                            <label class="form-check-label" for="flexCheckDefault3">
-                              Baño
-                            </label>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="viviendaDOp(this.value)" name="viviendaP" id="viviendaPNo" value="2">
+                            <label class="form-check-label" for="viviendaP">Exterior</label>
                           </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" onclick="otrosRoom()" id="otroRoom">
-                            <label class="form-check-label" for="flexCheckDefault4">
-                              Otros:
-                            </label>
-                          </div>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-control" type="text" id="otroRoomInput" placeholder="Especifique..." disabled>
                         </div>
                         
-                      </div>
+                        </div>
+                      </div> -->
                     </div>
+                    <!-- <div class="col-sm-2">
+                      <input class="form-control w-50 mt-4" type="text" id="bathNum" placeholder="# baños" disabled>
+                      <input class="form-control w-50" type="text" id="otroRoomInput" placeholder="Especifique..." disabled>
+                      </div>
+                    </div> -->
                     <!-- habitaciones -->
                     
                     <!-- Vivienda -->
@@ -1489,9 +1585,9 @@ include('prcd/qc/qc.php');
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox"  id="cable">
-                            <label class="form-check-label" for="cable">
-                              Cable
+                            <input class="form-check-input" type="checkbox"  id="gas">
+                            <label class="form-check-label" for="gas">
+                              Gas
                             </label>
                           </div>
                         </div>
@@ -1517,27 +1613,21 @@ include('prcd/qc/qc.php');
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox"  id="gas">
-                            <label class="form-check-label" for="gas">
-                              Gas
-                            </label>
-                          </div>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <div class="form-check">
                             <input class="form-check-input" type="checkbox"  id="telefono">
                             <label class="form-check-label" for="telefono">
                               Teléfono
                             </label>
                           </div>
-                          <div class="form-check">
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <div class="form-check mt-2">
                             <input class="form-check-input" type="checkbox" onclick="otroServicio()" id="otroServicios">
                             <label class="form-check-label" for="otroServicios">
-                              Otros:
+                              Otro:
                             </label>
                           </div>
                         </div>
-                        <div class="form-check form-check-inline mt-2">
+                        <div class="form-check form-check-inline">
                           <input class="form-control" id="otroServiciosInput" type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Especifique..." disabled>
                         </div>
                       </div>
@@ -1628,33 +1718,49 @@ include('prcd/qc/qc.php');
                     </div>
                     <!-- electrodomésticos -->
                     <!-- dependencia económica -->
-                    <div class="col-sm-12">
-                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Personas que dependen económicamente de usted:</label>
-                      <div class="input-group">
-                        <div class="form-check form-check-inline">
-                            <input class="form-control" type="number" id="dependenciaEconomica" onkeypress="ValidaSoloNumeros()" placeholder="Personas que dependen económicamente" required>
-                        </div>
-                      </div>
-                      <br>
-                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> ¿Tiene deudas?:</label>
-                      <div class="input-group">
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" id="deudasSi" onclick="deudasOp(this.value)" type="radio" name="deudas" value="1">
-                          <label class="form-check-label" for="deudas1" required>Sí</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="deudasOp(this.value)"  name="deudas" id="deudasNo" value="0" required>
-                          <label class="form-check-label" for="deudas2">No</label>
-                        </div>
-                        <div class="form-check form-check-inline mb-3">
-                          <div class="input-group w-75">
-                            <span class="input-group-text">$</span>
-                            <input type="text" class="form-control" id="deudasInput" onkeypress="ValidaSoloNumeros()" aria-label="Monto" placeholder="Monto Deuda" disabled>
-                            <span class="input-group-text">.00</span>
+                    <div class="col-sm-6">
+                      <div class="mb-3 mt-2">
+                        <label for="basic-url" class="form-label">Es dependiente económico?</label>
+                        <div class="input-group">
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="dependienteOp(this.value)" name="dependienteEco" id="dependienteSi" value="1" required>
+                            <label class="form-check-label" for="dependienteSi">Sí</label>
                           </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="dependienteOp(this.value)" name="dependienteEco" id="dependienteNo" value="0" >
+                            <label class="form-check-label" for="dependienteNo">No</label>
+                            <div class="invalid-feedback">
+                              * Campo requerido.
+                            </div>
+                          </div>
+                          <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="dependienteEsp" name="dependienteEco" placeholder="Especifique de quién es dependiente económico(a)" disabled>
                         </div>
                       </div>
-                      
+                    </div>
+                    <div class="col-sm-1">
+
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="mb-3 mt-2">
+                        <label for="basic-url" class="form-label">Tiene dependientes económicos?</label>
+                        <div class="input-group">
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="dependientesOp(this.value)" name="dependienteEco" id="dependientesSi" value="1" required>
+                            <label class="form-check-label" for="dependienteSi">Sí</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="dependientesOp(this.value)" name="dependienteEco" id="dependientesNo" value="0" >
+                            <label class="form-check-label" for="dependienteNo">No</label>
+                            <div class="invalid-feedback">
+                              * Campo requerido.
+                            </div>
+                          </div>
+                          <input type="number" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-50" id="dependientes" name="dependendientes" placeholder="# dependientes" disabled>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-1">
+
                     </div>
                     <!-- dependencia económica -->
                     <br>
