@@ -34,13 +34,15 @@ $codigoPostal = $_POST['codigoPostal'];
 $correo = $_POST['correo'];
 $telFijo = $_POST['telFijo'];
 $celular = $_POST['celular'];
+$leer = $_POST['leer'];
 $escolaridad = $_POST['escolaridad'];
+$concluida = $_POST['concluida'];
 $estudia = $_POST['estudia'];
 $estudiaLugar = $_POST['estudiaLugar'];
 $habilidad = $_POST['habilidad'];
 $profesion = $_POST['profesion'];
-$trabaja = $_POST['trabaja'];
 $trabajaLugar = $_POST['trabajaLugar'];
+$lugartrabajoOtro = $_POST['lugartrabajoOtro'];
 $ingresoMensual = $_POST['ingresoMensual'];
 $asociacion = $_POST['asociacion'];
 $nombreAC = $_POST['nombreAC'];
@@ -53,6 +55,7 @@ $pensionTemporalidad = $_POST['pensionTemporalidad'];
 $seguridadsocial = $_POST['seguridadsocial'];
 $otroSS = $_POST['otroSS'];
 $numSS = $_POST['numSS'];
+$gruposFull = $_POST['gruposFull'];
 
 
 $sqlinsert= "INSERT INTO datos_generales (
@@ -82,7 +85,9 @@ $sqlinsert= "INSERT INTO datos_generales (
     correo,
     telefono_part,
     telefono_cel,
+    leer_escribir,
     escolaridad,
+    nivel_concluido,
     estudia,
     estudia_donde,
     estudia_habilidad,
@@ -100,7 +105,8 @@ $sqlinsert= "INSERT INTO datos_generales (
     pension_temporalidad,
     seguridad_social,
     seguridad_social_otro,
-    numSS
+    numSS,
+    gpo_vulnerable
     )
 VALUES(
     '$fecha_registro',
@@ -129,7 +135,9 @@ VALUES(
     '$correo',
     '$telFijo',
     '$celular',
+    '$celular',
     '$escolaridad',
+    '$concluida',
     '$estudia',
     '$estudiaLugar',
     '$habilidad',
@@ -147,7 +155,8 @@ VALUES(
     '$pensionTemporalidad',
     '$seguridadsocial',
     '$otroSS',
-    '$numSS'
+    '$numSS',
+    '$gruposFull'
 )";
 
 $resultado= $conn->query($sqlinsert);

@@ -455,11 +455,39 @@ function dependientesOp(x){
         document.getElementById('dependientes').required = true;
         document.getElementById('dependienteSi').disabled = true;
         document.getElementById('dependienteNo').disabled = true;
+        document.getElementById('dependienteNo').checked = true;
     } else {
         document.getElementById('dependientes').disabled = true;
         document.getElementById('dependientes').required = false;
         document.getElementById('dependienteSi').disabled = false;
         document.getElementById('dependienteNo').disabled = false;
+    }
+}
+
+function discapacidadVA(x){
+    var discapacidad = x;
+
+    if (discapacidad == "22-Auditiva Anacusia" || discapacidad == "21-Auditiva Hipoacusia"){
+        document.getElementById('auditiva').hidden = false;
+        document.getElementById('auditiva2').hidden = false;
+        document.getElementById('lsmSi').required = true;
+        document.getElementById('labiofacialSi').required = true;
+        document.getElementById('visual').hidden = true;
+        document.getElementById('braileSi').required = false;
+    } else if (discapacidad == "24-Visual" || discapacidad == "25-Baja Visión") {
+        document.getElementById('auditiva').hidden = true;
+        document.getElementById('auditiva2').hidden = true;
+        document.getElementById('lsmSi').required = false;
+        document.getElementById('labiofacialSi').required = false;
+        document.getElementById('visual').hidden = false;
+        document.getElementById('braileSi').required = true;
+    } else {
+        document.getElementById('auditiva').hidden = true;
+        document.getElementById('auditiva2').hidden = true;
+        document.getElementById('lsmSi').required = false;
+        document.getElementById('labiofacialSi').required = false;
+        document.getElementById('visual').hidden = true;
+        document.getElementById('braileSi').required = false;
     }
 }
 
@@ -489,23 +517,13 @@ function seguridadOp(x){
 function causaDiscOp(x){
     var causaDisc = x;
 
-    if (causaDisc == 7){
-        document.getElementById('especifiqueD').disabled = false;
-    } else {
+    if (causaDisc == 6){
         document.getElementById('especifiqueD').disabled = true;
-    }
-    if (causaDisc == 2 || causaDisc == 3 || causaDisc == 6){
-        document.getElementById('temporalidad').disabled = false;
-        document.getElementById('temporalidad').required = true;
     } else {
-        document.getElementById('temporalidad').disabled = true;
-        document.getElementById('temporalidad').required = false;
-    }
-    if (causaDisc == 5){
         document.getElementById('especifiqueD').disabled = false;
-        document.getElementById('especifiqueD').required = true;
     }
 }
+
 
 function cirugiasOp(x){
     var cirugia = x;
@@ -560,11 +578,13 @@ function bathSel(){
 function viviendaOp(x){
     var vivienda = x;
 
-    if (vivienda == 3){
-        document.getElementById('montoVivienda').disabled = false;
+    if (vivienda == 1){
+        document.getElementById('propiedad').hidden = false;
+        document.getElementById('viviendaPropSi').required = true;
         
     } else {
-        document.getElementById('montoVivienda').disabled = true;
+        document.getElementById('propiedad').hidden = true;
+        document.getElementById('viviendaPropSi').required = false;
     }
 }
 function viviendaDOp(x){
@@ -650,28 +670,42 @@ function medicamentosOp(x){
 
 function roomsCheck(){
     var checkAllRooms = document.getElementById('checkAllRooms');
-
-        if (checkAllRooms.checked){
-            document.getElementById('cocina').checked = true;
-            document.getElementById('sala').checked = true;
-            document.getElementById('bath').checked = true;
-            document.getElementById('bathNum').disabled = false;
-            document.getElementById('interior').disabled = false;
-            document.getElementById('exterior').disabled = false;
-            document.getElementById('bathNum').required = true;
-            document.getElementById('interior').required = true;
-            
-        } else {
-            document.getElementById('cocina').checked = false;
-            document.getElementById('sala').checked = false;
-            document.getElementById('bath').checked = false;
-            document.getElementById('interior').disabled = true;
-            document.getElementById('exterior').disabled = true;
-            document.getElementById('interior').required = false;
-            document.getElementById('bathNum').disabled = true;
-            document.getElementById('bathNum').required = false;
-        }
+    
+    if (checkAllRooms.checked){
+        document.getElementById('cocina').checked = true;
+        document.getElementById('sala').checked = true;
+        document.getElementById('bath').checked = true;
+        document.getElementById('bathNum').disabled = false;
+        document.getElementById('interior').disabled = false;
+        document.getElementById('exterior').disabled = false;
+        document.getElementById('bathNum').required = true;
+        document.getElementById('interior').required = true;
+    }
+    else {
+        document.getElementById('cocina').checked = false;
+        document.getElementById('sala').checked = false;
+        document.getElementById('bath').checked = false;
+        document.getElementById('interior').disabled = true;
+        document.getElementById('exterior').disabled = true;
+        document.getElementById('interior').required = false;
+        document.getElementById('bathNum').disabled = true;
+        document.getElementById('bathNum').required = false;
+    }
 }
+
+function roomsCheck2(){
+    var uno = document.getElementById('cocina');
+    var dos = document.getElementById('sala');
+    var tres = document.getElementById('bath');
+
+    if (uno.checked && dos.checked && tres.checked){
+        document.getElementById('checkAllRooms').checked = true;
+    }
+    else {
+        document.getElementById('checkAllRooms').checked = false;
+    }
+}
+
 function otrosRoom(){
     var otroRoom = document.getElementById('otroRoom');
 
@@ -689,17 +723,15 @@ var checkAllServices = document.getElementById('checkAllServices');
             document.getElementById('agua').checked = true;
             document.getElementById('luz').checked = true;
             document.getElementById('drenaje').checked = true;
-            document.getElementById('cable').checked = true;
+            document.getElementById('gas').checked = true;
             document.getElementById('internet').checked = true;
             document.getElementById('checkCelular').checked = true;
             document.getElementById('carro').checked = true;
-            document.getElementById('gas').checked = true;
             document.getElementById('telefono').checked = true;
         } else {
             document.getElementById('agua').checked = false;
             document.getElementById('luz').checked = false;
             document.getElementById('drenaje').checked = false;
-            document.getElementById('cable').checked = false;
             document.getElementById('internet').checked = false;
             document.getElementById('checkCelular').checked = false;
             document.getElementById('carro').checked = false;
@@ -708,17 +740,36 @@ var checkAllServices = document.getElementById('checkAllServices');
         }
     }
 
-    function otroServicio(){
-        var otroServicios = document.getElementById('otroServicios');
+function otroServicio(){
+    var otroServicios = document.getElementById('otroServicios');
 /*         var otroServiciosInput = document.getElementById('otroServiciosInput'); */
-        if (otroServicios.checked){
-            document.getElementById('otroServiciosInput').disabled = false;
+    if (otroServicios.checked){
+        document.getElementById('otroServiciosInput').disabled = false;
 /*             var otroServiciosInput = document.getElementById('otroServiciosInput').value; */
-        } else {
-            document.getElementById('otroServiciosInput').disabled = true;
+    } else {
+        document.getElementById('otroServiciosInput').disabled = true;
 /*             var otroServiciosInput = ""; */
-        }
     }
+}
+
+function servicesCheck(){
+    var uno = document.getElementById('agua');
+    var dos = document.getElementById('luz');
+    var tres = document.getElementById('drenaje');
+    var cuatro = document.getElementById('cable');
+    var cinco = document.getElementById('internet');
+    var seis = document.getElementById('checkCelular');
+    var siete = document.getElementById('carro');
+    var ocho = document.getElementById('gas');
+    var nueve = document.getElementById('telefono');
+    
+    if (uno.checked && dos.checked && tres.checked && cuatro.checked && cinco.checked && seis.checked && siete.checked && ocho.checked && nueve.checked){
+        document.getElementById('checkAllServices').checked = true;
+    }
+    else {
+        document.getElementById('checkAllServices').checked = false;
+    }
+}
 
 function electrodomesticos(){
     var checkAllElectro = document.getElementById('checkAllElectro');
@@ -726,7 +777,7 @@ function electrodomesticos(){
     if (checkAllElectro.checked){
         document.getElementById('tv').checked = true;
         document.getElementById('lavadora').checked = true;
-        document.getElementById('estereo').checked = true;
+        document.getElementById('estereo').checked = true; //estereo es para dispositivo inteligente
         document.getElementById('microondas').checked = true;
         document.getElementById('computadora').checked = true;
         document.getElementById('licuadora').checked = true;
@@ -754,6 +805,25 @@ function otroElectros(){
     } else {
         document.getElementById('otroElectroInput').disabled = true;
     }
+}
+
+function electroCheck(){
+    var uno = document.getElementById('tv');
+    var dos = document.getElementById('lavadora');
+    var tres = document.getElementById('estereo');
+    var cuatro = document.getElementById('microondas');
+    var cinco = document.getElementById('computadora');
+    var seis = document.getElementById('licuadora');
+    var siete = document.getElementById('refri');
+    var ocho = document.getElementById('estufa');
+
+    if (uno.checked && dos.checked && tres.checked && cuatro.checked && cinco.checked && seis.checked && siete.checked && ocho.checked){
+        document.getElementById('checkAllElectro').checked = true;
+    }
+    else {
+        document.getElementById('checkAllElectro').checked = false;
+    }
+
 }
 
 function valoracionCheck(x){

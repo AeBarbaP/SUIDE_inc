@@ -195,7 +195,13 @@ $(document).ready(function() {
         var correo = document.getElementById('correo').value;
         var telFijo = document.getElementById('telFijo').value;
         var celular = document.getElementById('celular').value;
+        var leerSi = document.getElementById('leerSi').value;
+        var leerNo = document.getElementById('leerNo').value;
         var escolaridad = document.getElementById('escolaridad').value;
+        var concluidaSi = documento.getElementById('concluidoSi').value;
+        var concluidaNo = document.getElementById('concluidoNo').value;
+        var concluidaNA = document.getElementById('concluidoNA').value;
+        var concluidaCur = document.getElementById('concluidoCur').value;
         var estudiaSi = document.getElementById('estudiaSi');
         var estudiaNo = document.getElementById('estudiaNo');
         var habilidad = document.getElementById('habilidad').value;
@@ -212,6 +218,7 @@ $(document).ready(function() {
         var seguridadsocial = document.getElementById('seguridadsocial').value;
         var otroSS = document.getElementById('otroSS').value;
         var numSS = document.getElementById('numss').value;
+        var gruposFull = document.getElementById('gruposFull').value;
 
         if(generoF.checked){
             var genero = "Femenino";
@@ -222,6 +229,27 @@ $(document).ready(function() {
         else if (generoO.checked){
             var genero = "Otro";
         }
+
+        if (leerSi.checked){
+            var leer = 1;
+        }
+        else if (leerNo.checked){
+            var leer = 0;
+        }
+        
+        if (concluidaSi.checked){
+            var concluida = 1;
+        }
+        else if (concluidaNo.checked){
+            var concluida = 0;
+        }
+        else if (concluidaNA.checked){
+            var concluida = 2;
+        }
+        else if (concluidaCur.checked){
+            var concluida = 3;
+        }
+
         if(estudiaSi.checked){
             var estudia = 1;
             var estudiaLugar = document.getElementById('lugarEstudia').value;
@@ -233,15 +261,19 @@ $(document).ready(function() {
             document.getElementById('lugarEstudia').required = false;
         }
         if(trabajaSi.checked){
-            var trabaja = 1;
             var trabajaLugar = document.getElementById('lugarTrabajo').value;
             document.getElementById('lugarTrabajo').required = true;
+            if (trabajaLugar == "Otro"){
+                var lugarTrabajoOtro = document.getElementById('lugarTrabajoOtro').value;
+            }
+            
         }
         else if (trabajaNo.checked){
-            var trabaja = 0;
             var trabajaLugar = "N/A";
+            var lugartrabajoOtro = "N/A";
             document.getElementById('lugarTrabajo').required = false;
         }
+
         if(asociacionSi.checked){
             var asociacion = 1;
             var nombreAC = document.getElementById('nombreAC').value;
@@ -311,13 +343,15 @@ $(document).ready(function() {
                 correo:correo,
                 telFijo:telFijo,
                 celular:celular,
+                leer:leer,
                 escolaridad:escolaridad,
+                concluida:concluida,
                 estudia:estudia,
                 estudiaLugar:estudiaLugar,
                 habilidad:habilidad,
                 profesion:profesion,
-                trabaja:trabaja,
                 trabajaLugar:trabajaLugar,
+                lugartrabajoOtro:lugartrabajoOtro,
                 ingresoMensual:ingresoMensual,
                 asociacion:asociacion,
                 nombreAC:nombreAC,
@@ -329,7 +363,8 @@ $(document).ready(function() {
                 pensionTemporalidad:pensionTemporalidad,
                 seguridadsocial:seguridadsocial,
                 otroSS:otroSS,
-                numSS:numSS
+                numSS:numSS,
+                gruposFull:gruposFull
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
