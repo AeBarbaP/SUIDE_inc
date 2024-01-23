@@ -36,6 +36,10 @@ $enfermedades = $_POST['enfermedades'];
 $enfermedadesFull = $_POST['enfermedadesFull'];
 $medicamentos = $_POST['medicamentos'];
 $medicamentosFull = $_POST['medicamentosFull'];
+$asistencia = $_POST['asistencia'];
+$braile = $_POST['braile'];
+$lsm = $_POST['lsm'];
+$labiofacial = $_POST['labiofacial'];
 $tipo_dato = 6;
 
 $sqlinsert= "INSERT INTO datos_medicos (
@@ -64,7 +68,11 @@ $sqlinsert= "INSERT INTO datos_medicos (
     enfermedades,
     enfermedades_cual,
     medicamentos,
-    medicamentos_cual
+    medicamentos_cual,
+    asistencia,
+    braile,
+    lsm,
+    labiofacial
     )
 VALUES(
     '$curp_exp',
@@ -92,7 +100,11 @@ VALUES(
     '$enfermedades',
     '$enfermedadesFull',
     '$medicamentos',
-    '$medicamentosFull'
+    '$medicamentosFull',
+    '$asistencia',
+    '$braile',
+    '$lsm',
+    '$labiofacial'
 )";
 
 $resultado= $conn->query($sqlinsert);

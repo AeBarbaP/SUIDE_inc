@@ -13,15 +13,15 @@ $fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
 $curp_exp = $_POST['curp_exp'];
 $numExp = $_POST['numExp'];
 $vivienda = $_POST['vivienda'];
-$montoRenta = $_POST['montoRenta'];
-$viviendaDebe = $_POST['viviendaDebe'];
-$costoVivienda = $_POST['costoVivienda'];
+$viviendaProp = $_POST['viviendaProp'];
 $tipoVivienda = $_POST['tipoVivienda'];
 $viviendaOtro = $_POST['viviendaOtro'];
 $numHabitaciones = $_POST['numHabitaciones'];
 $cocinav = $_POST['cocinav'];
 $salav = $_POST['salav'];
 $bathv = $_POST['bathv'];
+$bathNumInput = $_POST['bathNum'];
+$localizacion = $_POST['localizacion'];
 $otroRoomInput = $_POST['otroRoomInput'];
 $techo = $_POST['techo'];
 $otroTechoInput = $_POST['otroTechoInput'];
@@ -30,7 +30,6 @@ $otroParedInput = $_POST['otroParedInput'];
 $aguac = $_POST['aguac'];
 $luzc = $_POST['luzc'];
 $drenajec = $_POST['drenajec'];
-$cablec = $_POST['cablec'];
 $internetc = $_POST['internetc'];
 $celularc = $_POST['celularc'];
 $carroc = $_POST['carroc'];
@@ -39,32 +38,31 @@ $telefonoc = $_POST['telefonoc'];
 $otroServiciosInput = $_POST['otroServiciosInput'];
 $tvc = $_POST['tvc'];
 $lavadorac = $_POST['lavadorac'];
-$estereoc = $_POST['estereoc'];
+$dispositivoC = $_POST['dispositivoC'];
 $microondasc = $_POST['microondasc'];
 $computadorac = $_POST['computadorac'];
 $licuadorac = $_POST['licuadorac'];
-$dvdc = $_POST['dvdc'];
 $estufac = $_POST['estufac'];
 $refrigerador = $_POST['refrigerador'];
 $otroElectroInput = $_POST['otroElectroInput'];
+$dependiente = $_POST['dependiente'];
+$financiador = $_POST['financiador'];
 $dependientes = $_POST['dependientes'];
-$deudas = $_POST['deudas'];
-$deudasInput = $_POST['deudasInput'];
 $tipo_dato = 12;
 
 $sqlinsert= "INSERT INTO vivienda (
     curp,
     expediente,
     vivienda,
-    vivienda_renta,
-    vivienda_pagando,
-    monto_pagando,
+    propietario,
     caracteristicas,
     caracteristicas_otro,
     num_habitaciones,
     vivienda_cocia,
     vivienda_sala,
     vivienda_banio,
+    num_banio,
+    localizacion,
     vivienda_otros,
     techo,
     techo_otro,
@@ -73,7 +71,6 @@ $sqlinsert= "INSERT INTO vivienda (
     serv_basicos_agua,
     serv_basicos_luz,
     serv_basicos_drenaje,
-    serv_basicos_cable,
     serv_basicos_internet,
     serv_basicos_celular,
     serv_basicos_carro,
@@ -82,31 +79,30 @@ $sqlinsert= "INSERT INTO vivienda (
     serv_basicos_otro,
     electrodomesticos_tv,
     electrodomesticos_lavadora,
-    electrodomesticos_estereo,
+    electrodomesticos_dispositivo,
     electrodomesticos_microondas,
     electrodomesticos_computadora,
     electrodomesticos_licuadora,
-    electrodomesticos_dvd,
     electrodomesticos_estufa,
     electrodomesticos_refri,
     electrodomesticos_otro,
-    personas_dependen,
-    deudas,
-    deudas_cuanto
+    dependiente,
+    financiador,
+    personas_dependen
     )
 VALUES(
     '$curp_exp',
     '$numExp',
     '$vivienda',
-    '$montoRenta',
-    '$viviendaDebe',
-    '$costoVivienda',
+    '$viviendaProp',
     '$tipoVivienda',
     '$viviendaOtro',
     '$numHabitaciones',
     '$cocinav',
     '$salav',
     '$bathv',
+    '$bathNumInput',
+    '$localizacion',
     '$otroRoomInput',
     '$techo',
     '$otroTechoInput',
@@ -115,7 +111,6 @@ VALUES(
     '$aguac',
     '$luzc',
     '$drenajec',
-    '$cablec',
     '$internetc',
     '$celularc',
     '$carroc',
@@ -124,17 +119,16 @@ VALUES(
     '$otroServiciosInput',
     '$tvc',
     '$lavadorac',
-    '$estereoc',
+    '$dispositivoC',
     '$microondasc',
     '$computadorac',
     '$licuadorac',
-    '$dvdc',
     '$estufac',
     '$refrigerador',
     '$otroElectroInput',
-    '$dependientes',
-    '$deudas',
-    '$deudasInput'
+    '$dependiente',
+    '$financiador',
+    '$dependientes'
 )";
 
 $resultado= $conn->query($sqlinsert);

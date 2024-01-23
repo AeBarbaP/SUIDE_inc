@@ -87,6 +87,42 @@ else if ($regEscolaridad == 6){
 
 $check = "4";
 
+$leer_escribir = $rowSqlGenerales['leer_escribir'];
+if ($leer_escribir == 1){
+  $leerSi = $check;
+  $leerNo = "";
+}
+else if ($leer_escribir == 0){
+  $leerSi = "";
+  $leerNo = $check; 
+}
+
+$nivelConcluido = $rowSqlGenerales['nivel_concluido'];
+if ($nivelConcluido == 1){
+  $concluidaSi = $check;
+  $concluidaNo = "";
+  $concluidaCur = "";
+  $concluidaNA = "";
+}
+else if ($nivelConcluido == 0){
+  $concluidaSi = "";
+  $concluidaNo = $check;
+  $concluidaCur = "";
+  $concluidaNA = "";
+}
+else if ($nivelConcluido == 2){
+  $concluidaSi = "";
+  $concluidaNo = "";
+  $concluidaNA = $check;
+  $concluidaCur = "";
+}
+else if ($nivelConcluido == 3){
+  $concluidaSi = "";
+  $concluidaNo = "";
+  $concluidaNA = "";
+  $concluidaCur = $check;
+}
+
 $estudia = $rowSqlGenerales['estudia'];
 if ($estudia == 0){
   $regEstudiaNo = $check;
@@ -107,7 +143,7 @@ else if ($trabaja == 1){
   $regTrabajaSi = $check;
 }
 
-$sindicato = $rowSqlGenerales['sindicato'];
+/* $sindicato = $rowSqlGenerales['sindicato'];
 if ($sindicato == 0){
   $regSindicatoNo = $check;
   $regSindicatoSi = "";
@@ -115,14 +151,14 @@ if ($sindicato == 0){
 else if ($sindicato == 1){
   $regSindicatoNo = "";
   $regSindicatoSi = $check;
-}
+} */
 
 $ac = $rowSqlGenerales['asoc_civ'];
 if ($ac == 0){
   $regACNo = $check;
   $regACSi = "";
 }
-else if ($trabaja == 1){
+else if ($ac == 1){
   $regACNo = "";
   $regACSi = $check;
 }
@@ -619,13 +655,13 @@ else {
   $drenaje ="";
 }
 
-$serviciosCable = $rowViviendas['serv_basicos_cable'];
+/* $serviciosCable = $rowViviendas['serv_basicos_cable'];
 if ($serviciosCable == 1){
   $cable = $check;
 }
 else {
   $cable ="";
-}
+} */
 
 $serviciosInternet = $rowViviendas['serv_basicos_internet'];
 if ($serviciosInternet == 1){
@@ -683,12 +719,12 @@ else {
   $lavadora = "";
 }
 
-$electroEstereo = $rowViviendas['electrodomesticos_estereo'];
-if ($electroEstereo == 1){
-  $estereo = $check;
+$electroDispositivo = $rowViviendas['electrodomesticos_dispositivo'];
+if ($electroDispositivo == 1){
+  $dispositivo = $check;
 }
 else {
-  $estereo = "";
+  $dispositivo = "";
 }
 
 $electroMicroondas = $rowViviendas['electrodomesticos_microondas'];
@@ -731,13 +767,13 @@ else {
   $estufa = "";
 }
 
-$electroVideo = $rowViviendas['electrodomesticos_dvd'];
+/* $electroVideo = $rowViviendas['electrodomesticos_dvd'];
 if ($electroVideo == 1){
   $video = $check;
 }
 else {
   $video = "";
-}
+} */
 
 $electroOtro = $rowViviendas['electrodomesticos_otro'];
 if ($electroOtro == 1){
@@ -981,10 +1017,19 @@ $pdf->Cell(60,5,utf8_decode(' '.$rowSqlGenerales['correo'].' '),'B',0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(26,5,utf8_decode('Nivel escolaridad:'),0,0,'L');
+$pdf->Cell(16,5,utf8_decode('Sabe Leer?'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',10);
-$pdf->Cell(43,5,utf8_decode(' '.$rowSqlGenerales['escolaridad'].' '),'B',0,'L');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode($leerSi),'BR',0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode($leerNo),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(14,5,utf8_decode('Estudia:'),0,0,'R');
@@ -1005,20 +1050,51 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(14,5,utf8_decode('Dónde?'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(66,5,utf8_decode(' '.$rowSqlGenerales['estudia_donde'].' '),'B',0,'L');
-$pdf->Ln();
-
-$pdf->SetFont('Arial','B',8);
-$pdf->Cell(27,5,utf8_decode('Profesión u oficio:'),0,0,'L');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',10);
-$pdf->Cell(90,5,utf8_decode(' '.$rowSqlGenerales['profesion'].' '),'B',0,'L');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(44,5,utf8_decode(' '.$rowSqlGenerales['estudia_donde'].' '),'B',0,'L');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(16,5,utf8_decode('Habilidad:'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(55,5,utf8_decode(' '.$rowSqlGenerales['estudia_habilidad'].' '),'B',0,'L');
+$pdf->Cell(35,5,utf8_decode(' '.$rowSqlGenerales['estudia_habilidad'].' '),'B',0,'L');
+$pdf->Ln();
+
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(26,5,utf8_decode('Nivel escolaridad:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','',10);
+$pdf->Cell(28,5,utf8_decode(' '.$rowSqlGenerales['escolaridad'].' '),'B',0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(10,5,utf8_decode('Concluída:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode($concluidaSi),'BR',0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(10,5,utf8_decode('Trunca:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode($concluidaNo),'BR',0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(10,5,utf8_decode('Cursando:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode($concluidaCur),'BR',0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(10,5,utf8_decode('No Aplica:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode($concluidaNA),'BR',0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(27,5,utf8_decode('Profesión u oficio:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','',10);
+$pdf->Cell(40,5,utf8_decode(' '.$rowSqlGenerales['profesion'].' '),'B',0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -1078,19 +1154,19 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode($regSindicatoSi),'BR',0,'C');
+$pdf->Cell(4,5,utf8_decode(' '),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode($regSindicatoNo),'BR',0,'C');
+$pdf->Cell(4,5,utf8_decode(' '),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(13,5,utf8_decode('Cuál?'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(112,5,utf8_decode(' '.$rowSqlGenerales['sindicato_cual'].' '),'B',0,'C');
+$pdf->Cell(112,5,utf8_decode(' '),'B',0,'C');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -1580,7 +1656,7 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(12,5,utf8_decode('Cable:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode($cable),'BR',0,'C');
+$pdf->Cell(4,5,utf8_decode('$cable'),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(14,5,utf8_decode('Internet:'),0,0,'L');
@@ -1636,7 +1712,7 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(25,5,utf8_decode('Sistema Sonido:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode($estereo),'BR',0,'C');
+$pdf->Cell(4,5,utf8_decode($dispositivo),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(19,5,utf8_decode('Microondas:'),0,0,'L');
@@ -1677,7 +1753,7 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(30,5,utf8_decode('Reproductor Video:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode($video),'BR',0,'C');
+$pdf->Cell(4,5,utf8_decode('$video'),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(11,5,utf8_decode('Otro:'),0,0,'L');

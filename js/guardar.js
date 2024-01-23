@@ -195,13 +195,13 @@ $(document).ready(function() {
         var correo = document.getElementById('correo').value;
         var telFijo = document.getElementById('telFijo').value;
         var celular = document.getElementById('celular').value;
-        var leerSi = document.getElementById('leerSi').value;
-        var leerNo = document.getElementById('leerNo').value;
+        var leerSi = document.getElementById('leerSi');
+        var leerNo = document.getElementById('leerNo');
         var escolaridad = document.getElementById('escolaridad').value;
-        var concluidaSi = documento.getElementById('concluidoSi').value;
-        var concluidaNo = document.getElementById('concluidoNo').value;
-        var concluidaNA = document.getElementById('concluidoNA').value;
-        var concluidaCur = document.getElementById('concluidoCur').value;
+        var concluidaSi = document.getElementById('concluidoSi');
+        var concluidaNo = document.getElementById('concluidoNo');
+        var concluidaNA = document.getElementById('concluidoNA');
+        var concluidaCur = document.getElementById('concluidoCur');
         var estudiaSi = document.getElementById('estudiaSi');
         var estudiaNo = document.getElementById('estudiaNo');
         var habilidad = document.getElementById('habilidad').value;
@@ -211,14 +211,16 @@ $(document).ready(function() {
         var ingresoMensual = document.getElementById('ingresoMensual').value;
         var asociacionSi = document.getElementById('asociacionSi');
         var asociacionNo = document.getElementById('asociacionNo');
-        var sindicatoSi = document.getElementById('sindicatoSi');
-        var sindicatoNo = document.getElementById('sindicatoNo');
         var pensionSi = document.getElementById('pensionSi');
         var pensionNo = document.getElementById('pensionNo');
         var seguridadsocial = document.getElementById('seguridadsocial').value;
         var otroSS = document.getElementById('otroSS').value;
         var numSS = document.getElementById('numss').value;
-        var gruposFull = document.getElementById('gruposFull').value;
+        var gruposFull = document.getElementById('gruposFull').innerText;
+        var informanteCheck = document.getElementById('informante').value;
+        var informante = document.getElementById('nombreInformante').value;
+        var informanteRelacion1 = document.getElementById('informanteRel').value;
+        var informanteRelacionOtro = document.getElementById('otraRel').value;
 
         if(generoF.checked){
             var genero = "Femenino";
@@ -262,15 +264,15 @@ $(document).ready(function() {
         }
         if(trabajaSi.checked){
             var trabajaLugar = document.getElementById('lugarTrabajo').value;
-            document.getElementById('lugarTrabajo').required = true;
             if (trabajaLugar == "Otro"){
-                var lugarTrabajoOtro = document.getElementById('lugarTrabajoOtro').value;
+            document.getElementById('lugarTrabajoOtro').required = true;
+            var lugarTrabajoOtro = document.getElementById('lugarTrabajoOtro').value;
             }
             
         }
         else if (trabajaNo.checked){
             var trabajaLugar = "N/A";
-            var lugartrabajoOtro = "N/A";
+            lugarTrabajoOtro = "N/A";
             document.getElementById('lugarTrabajo').required = false;
         }
 
@@ -284,16 +286,7 @@ $(document).ready(function() {
             var nombreAC = "N/A";
             document.getElementById('nombreAC').required = false;
         }
-        if(sindicatoSi.checked){
-            var sindicato = 1;
-            var nombreSindicato = document.getElementById('nombreSindicato').value;
-            document.getElementById('nombreSindicato').required = true;
-        }
-        else if(sindicatoNo.checked){
-            var sindicato = 0;
-            var nombreSindicato = "N/A";
-            document.getElementById('nombreSindicato').required = false;
-        }
+        
         if(pensionSi.checked){
             var pension = 1;
             var pensionInst = document.getElementById('instPension').value;
@@ -311,6 +304,20 @@ $(document).ready(function() {
             document.getElementById('instPension').required = false;
             document.getElementById('montoP').required = false;
             document.getElementById('periodo').required = false;
+        }
+
+        if (informanteCheck == 1){
+            var informanteLog = nombre+' '+apellidoP+' '+apellidoM;
+            var informanteRelacion = "";
+            var informanteRelacionOtro1 = ""; 
+        } else if (informanteCheck == 2){
+            var informanteLog = informante;
+            var informanteRelacion = informanteRelacion1;
+            var informanteRelacionOtro1 = informanteRelacionOtro;
+        } else {
+            var informanteLog = "";
+            var informanteRelacion = "";
+            var informanteRelacionOtro1 = "";
         }
 
         $.ajax({
@@ -351,16 +358,17 @@ $(document).ready(function() {
                 habilidad:habilidad,
                 profesion:profesion,
                 trabajaLugar:trabajaLugar,
-                lugartrabajoOtro:lugartrabajoOtro,
+                lugarTrabajoOtro:lugarTrabajoOtro,
                 ingresoMensual:ingresoMensual,
                 asociacion:asociacion,
                 nombreAC:nombreAC,
-                sindicato:sindicato,
-                nombreSindicato:nombreSindicato,
                 pension:pension,
                 pensionInst:pensionInst,
                 pensionMonto:pensionMonto,
                 pensionTemporalidad:pensionTemporalidad,
+                informanteLog:informanteLog,
+                informanteRelacion:informanteRelacion,
+                informanteRelacionOtro1:informanteRelacionOtro1,
                 seguridadsocial:seguridadsocial,
                 otroSS:otroSS,
                 numSS:numSS,
@@ -417,6 +425,7 @@ $(document).ready(function() {
 function updateGeneralesForm(){
         /* Datos Generales */
         var numExp = document.getElementById('numeroExpediente').innerText;
+        /* Datos Generales */
         var nombre = document.getElementById('nombre').value;
         var apellidoP = document.getElementById('apellidoP').value;
         var apellidoM = document.getElementById('apellidoM').value;
@@ -434,6 +443,7 @@ function updateGeneralesForm(){
         var domicilio = document.getElementById('domicilio').value;
         var numExt = document.getElementById('numExt').value;
         var numInt = document.getElementById('numInt').value;
+        var tipoVialidad = document.getElementById('tipoVialidad').value;
         var colonia = document.getElementById('colonia').value;
         var entreVialidades = document.getElementById('entreVialidades').value;
         var descripcionLugar = document.getElementById('descripcionLugar').value;
@@ -445,7 +455,13 @@ function updateGeneralesForm(){
         var correo = document.getElementById('correo').value;
         var telFijo = document.getElementById('telFijo').value;
         var celular = document.getElementById('celular').value;
+        var leerSi = document.getElementById('leerSi');
+        var leerNo = document.getElementById('leerNo');
         var escolaridad = document.getElementById('escolaridad').value;
+        var concluidaSi = document.getElementById('concluidoSi');
+        var concluidaNo = document.getElementById('concluidoNo');
+        var concluidaNA = document.getElementById('concluidoNA');
+        var concluidaCur = document.getElementById('concluidoCur');
         var estudiaSi = document.getElementById('estudiaSi');
         var estudiaNo = document.getElementById('estudiaNo');
         var habilidad = document.getElementById('habilidad').value;
@@ -455,13 +471,16 @@ function updateGeneralesForm(){
         var ingresoMensual = document.getElementById('ingresoMensual').value;
         var asociacionSi = document.getElementById('asociacionSi');
         var asociacionNo = document.getElementById('asociacionNo');
-        var sindicatoSi = document.getElementById('sindicatoSi');
-        var sindicatoNo = document.getElementById('sindicatoNo');
         var pensionSi = document.getElementById('pensionSi');
         var pensionNo = document.getElementById('pensionNo');
         var seguridadsocial = document.getElementById('seguridadsocial').value;
         var otroSS = document.getElementById('otroSS').value;
         var numSS = document.getElementById('numss').value;
+        var gruposFull = document.getElementById('gruposFull').innerText;
+        var informanteCheck = document.getElementById('informante').value;
+        var informante = document.getElementById('nombreInformante').value;
+        var informanteRelacion1 = document.getElementById('informanteRel').value;
+        var informanteRelacionOtro = document.getElementById('otraRel').value;
 
         if(generoF.checked){
             var genero = "Femenino";
@@ -472,6 +491,27 @@ function updateGeneralesForm(){
         else if (generoO.checked){
             var genero = "Otro";
         }
+
+        if (leerSi.checked){
+            var leer = 1;
+        }
+        else if (leerNo.checked){
+            var leer = 0;
+        }
+        
+        if (concluidaSi.checked){
+            var concluida = 1;
+        }
+        else if (concluidaNo.checked){
+            var concluida = 0;
+        }
+        else if (concluidaNA.checked){
+            var concluida = 2;
+        }
+        else if (concluidaCur.checked){
+            var concluida = 3;
+        }
+
         if(estudiaSi.checked){
             var estudia = 1;
             var estudiaLugar = document.getElementById('lugarEstudia').value;
@@ -483,15 +523,19 @@ function updateGeneralesForm(){
             document.getElementById('lugarEstudia').required = false;
         }
         if(trabajaSi.checked){
-            var trabaja = 1;
             var trabajaLugar = document.getElementById('lugarTrabajo').value;
-            document.getElementById('lugarTrabajo').required = true;
+            if (trabajaLugar == "Otro"){
+            document.getElementById('lugarTrabajoOtro').required = true;
+            var lugarTrabajoOtro = document.getElementById('lugarTrabajoOtro').value;
+            }
+            
         }
         else if (trabajaNo.checked){
-            var trabaja = 0;
             var trabajaLugar = "N/A";
+            lugarTrabajoOtro = "N/A";
             document.getElementById('lugarTrabajo').required = false;
         }
+
         if(asociacionSi.checked){
             var asociacion = 1;
             var nombreAC = document.getElementById('nombreAC').value;
@@ -502,16 +546,7 @@ function updateGeneralesForm(){
             var nombreAC = "N/A";
             document.getElementById('nombreAC').required = false;
         }
-        if(sindicatoSi.checked){
-            var sindicato = 1;
-            var nombreSindicato = document.getElementById('nombreSindicato').value;
-            document.getElementById('nombreSindicato').required = true;
-        }
-        else if(sindicatoNo.checked){
-            var sindicato = 0;
-            var nombreSindicato = "N/A";
-            document.getElementById('nombreSindicato').required = false;
-        }
+        
         if(pensionSi.checked){
             var pension = 1;
             var pensionInst = document.getElementById('instPension').value;
@@ -529,6 +564,20 @@ function updateGeneralesForm(){
             document.getElementById('instPension').required = false;
             document.getElementById('montoP').required = false;
             document.getElementById('periodo').required = false;
+        }
+
+        if (informanteCheck == 1){
+            var informanteLog = nombre+' '+apellidoP+' '+apellidoM;
+            var informanteRelacion = "";
+            var informanteRelacionOtro1 = ""; 
+        } else if (informanteCheck == 2){
+            var informanteLog = informante;
+            var informanteRelacion = informanteRelacion1;
+            var informanteRelacionOtro1 = informanteRelacionOtro;
+        } else {
+            var informanteLog = "";
+            var informanteRelacion = "";
+            var informanteRelacionOtro1 = "";
         }
 
         $.ajax({
@@ -550,6 +599,7 @@ function updateGeneralesForm(){
                 domicilio:domicilio,
                 numExt:numExt,
                 numInt:numInt,
+                tipoVialidad:tipoVialidad,
                 colonia:colonia,
                 entreVialidades:entreVialidades,
                 descripcionLugar:descripcionLugar,
@@ -561,25 +611,29 @@ function updateGeneralesForm(){
                 correo:correo,
                 telFijo:telFijo,
                 celular:celular,
+                leer:leer,
                 escolaridad:escolaridad,
+                concluida:concluida,
                 estudia:estudia,
                 estudiaLugar:estudiaLugar,
                 habilidad:habilidad,
                 profesion:profesion,
-                trabaja:trabaja,
                 trabajaLugar:trabajaLugar,
+                lugarTrabajoOtro:lugarTrabajoOtro,
                 ingresoMensual:ingresoMensual,
                 asociacion:asociacion,
                 nombreAC:nombreAC,
-                sindicato:sindicato,
-                nombreSindicato:nombreSindicato,
                 pension:pension,
                 pensionInst:pensionInst,
                 pensionMonto:pensionMonto,
                 pensionTemporalidad:pensionTemporalidad,
+                informanteLog:informanteLog,
+                informanteRelacion:informanteRelacion,
+                informanteRelacionOtro1:informanteRelacionOtro1,
                 seguridadsocial:seguridadsocial,
                 otroSS:otroSS,
-                numSS:numSS
+                numSS:numSS,
+                gruposFull:gruposFull
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
@@ -656,6 +710,46 @@ $(document).ready(function() {
         var alergias = document.getElementById('alergias').value;
         var enfermedadesFull = document.getElementById('numeroB').value;
         var medicamentosFull = document.getElementById('numeroC').value;
+        var braileSi1 = document.getElementById('braileSi');
+        var braileNo1 = document.getElementById('braileNo');
+        var braileNA1 = document.getElementById('braileNA');
+        var lsmSi1 = document.getElementById('lsmSi');
+        var lsmNo1 = document.getElementById('lsmNo');
+        var lsmNA1 = document.getElementById('lsmNA');
+        var labiofacialSi1 = document.getElementById('labiofacialSi');
+        var labiofacialNo1 = document.getElementById('labiofacialNo');
+        var labiofacialNA1 = document.getElementById('labiofacialNA');
+        var asistencia = document.getElementById('asistencia').value;
+        
+        if (braileSi1.checked){
+            var braile = 1;
+        } else if (braileNo1.checked){
+            var braile = 2;
+        } else if (braileNA1.checked){
+            var braile = 0;
+        } else {
+            var braile = '';
+        }
+        
+        if (lsmSi1.checked){
+            var lsm = 1;
+        } else if (lsmNo1.checked){
+            var lsm = 2;
+        } else if (lsmNA1.checked){
+            var lsm = 0;
+        } else {
+            var lsm = '';
+        }
+        
+        if (labiofacialSi1.checked){
+            var labiofacial = 1;
+        } else if (labiofacialNo1.checked){
+            var labiofacial = 2;
+        } else if (labiofacialNA1.checked){
+            var labiofacial = 0;
+        } else {
+            var labiofacial = '';
+        }
         
         if(rehabilitacionSi.checked){
             var rehabilitacion = 1;
@@ -725,7 +819,11 @@ $(document).ready(function() {
                 enfermedades:enfermedades,
                 enfermedadesFull:enfermedadesFull,
                 medicamentos:medicamentos,
-                medicamentosFull:medicamentosFull
+                medicamentosFull:medicamentosFull,
+                asistencia:asistencia,
+                braile:braile,
+                lsm:lsm,
+                labiofacial:labiofacial
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
@@ -786,6 +884,46 @@ function updateDatosMedicos(){
         var alergias = document.getElementById('alergias').value;
         var enfermedadesFull = document.getElementById('numeroB').value;
         var medicamentosFull = document.getElementById('numeroC').value;
+        var braileSi1 = document.getElementById('braileSi');
+        var braileNo1 = document.getElementById('braileNo');
+        var braileNA1 = document.getElementById('braileNA');
+        var lsmSi1 = document.getElementById('lsmSi');
+        var lsmNo1 = document.getElementById('lsmNo');
+        var lsmNA1 = document.getElementById('lsmNA');
+        var labiofacialSi1 = document.getElementById('labiofacialSi');
+        var labiofacialNo1 = document.getElementById('labiofacialNo');
+        var labiofacialNA1 = document.getElementById('labiofacialNA');
+        var asistencia = document.getElementById('asistencia').value;
+        
+        if (braileSi1.checked){
+            var braile = 1;
+        } else if (braileNo1.checked){
+            var braile = 2;
+        } else if (braileNA1.checked){
+            var braile = 0;
+        } else {
+            var braile = '';
+        }
+        
+        if (lsmSi1.checked){
+            var lsm = 1;
+        } else if (lsmNo1.checked){
+            var lsm = 2;
+        } else if (lsmNA1.checked){
+            var lsm = 0;
+        } else {
+            var lsm = '';
+        }
+        
+        if (labiofacialSi1.checked){
+            var labiofacial = 1;
+        } else if (labiofacialNo1.checked){
+            var labiofacial = 2;
+        } else if (labiofacialNA1.checked){
+            var labiofacial = 0;
+        } else {
+            var labiofacial = '';
+        }
         
         if(rehabilitacionSi.checked){
             var rehabilitacion = 1;
@@ -819,7 +957,7 @@ function updateDatosMedicos(){
         }
         if (medicamentosFull == ""){
             var medicamentos = 0;
-            medicamentosFull = "Enfermedades no reportadas";
+            medicamentosFull = "Medicamentos no reportadas";
         }
         else if (medicamentosFull != ""){
             var medicamentos = 1;
@@ -855,7 +993,11 @@ function updateDatosMedicos(){
                 enfermedades:enfermedades,
                 enfermedadesFull:enfermedadesFull,
                 medicamentos:medicamentos,
-                medicamentosFull:medicamentosFull
+                medicamentosFull:medicamentosFull,
+                asistencia:asistencia,
+                braile:braile,
+                lsm:lsm,
+                labiofacial:labiofacial
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
@@ -965,8 +1107,8 @@ $(document).ready(function() {
         var viviendaPro = document.getElementById('viviendaPro');
         var viviendaPre = document.getElementById('viviendaPre');
         var viviendaRe = document.getElementById('viviendaRe');
-        var viviendaDebeSi = document.getElementById('viviendaPSi');
-        var viviendaDebeNo = document.getElementById('viviendaPNo');
+        var viviendaPropSi = document.getElementById('viviendaPropSi');
+        var viviendaPropNo = document.getElementById('viviendaPropNo');
         var tipoViviendaC = document.getElementById('tipoViviendaC');
         var tipoViviendaD = document.getElementById('tipoViviendaD');
         var tipoViviendaV = document.getElementById('tipoViviendaV');
@@ -975,6 +1117,9 @@ $(document).ready(function() {
         var cocina = document.getElementById('cocina');
         var sala = document.getElementById('sala');
         var bath = document.getElementById('bath');
+        var bathNumInput = document.getElementById('bathNum').value;
+        var interior = document.getElementById('interior');
+        var exterior = document.getElementById('exterior');
         var otroRoom = document.getElementById('otroRoom');
         var lamina = document.getElementById('lamina');
         var cemento = document.getElementById('cemento');
@@ -986,47 +1131,65 @@ $(document).ready(function() {
         var agua = document.getElementById('agua');
         var luz = document.getElementById('luz');
         var drenaje = document.getElementById('drenaje');
-        var cable = document.getElementById('cable');
+        var gas = document.getElementById('gas');
         var internet = document.getElementById('internet');
         var celular = document.getElementById('celular');
         var carro = document.getElementById('carro');
-        var gas = document.getElementById('gas');
         var telefono = document.getElementById('telefono');
         var otroServicios = document.getElementById('otroServicios');
         var tv = document.getElementById('tv');
         var lavadora = document.getElementById('lavadora');
-        var estereo = document.getElementById('estereo');
+        var dispositivo = document.getElementById('dispositivo');
         var microondas = document.getElementById('microondas');
         var computadora = document.getElementById('computadora');
         var licuadora = document.getElementById('licuadora');
-        var dvd = document.getElementById('dvd');
         var estufa = document.getElementById('estufa');
+        var refri = document.getElementById('refri');
         var otroElectro = document.getElementById('otroElectro');
-        var dependientes = document.getElementById('dependenciaEconomica').value;
-        var deudasSi = document.getElementById('deudasSi');
-        var deudasNo = document.getElementById('deudasNo');
+        var dependienteSi = document.getElementById('dependienteSi');
+        var dependienteNo = document.getElementById('dependienteNo');
+        var dependienteEco = document.getElementById('dependienteEsp').value;
+        var dependientesSi = document.getElementById('dependientesSi');
+        var dependientesNo = document.getElementById('dependientesNo');
         
+        //var deudasSi = document.getElementById('deudasSi');
+        //var deudasNo = document.getElementById('deudasNo');
         
+        if (dependienteSi.checked){
+            var dependiente = 1;
+            var financiador = dependienteEco;
+        } else if (dependienteNo.checked){
+            var dependiente = 0;
+            var financiador = '';
+        }
+
+        if (dependientesSi.checked){
+            var dependientes = document.getElementById('dependientes').value;
+        } else if (dependientesNo.checked){
+            var dependientes = '';
+        } else {
+            dependientes = '';
+        }
         
         if(viviendaPro.checked){
             var vivienda = 1;
-            var montoRenta = 0;
+            //var montoRenta = 0;
         }
         else if (viviendaPre.checked){
             var vivienda = 2;
-            var montoRenta = 0;
+            //var montoRenta = 0;
         }
         else if (viviendaRe.checked){
             var vivienda = 3;
-            var montoRenta = document.getElementById('montoVivienda').value;
+            //var montoRenta = document.getElementById('montoVivienda').value;
         }
-        if(viviendaDebeSi.checked){
-            var viviendaDebe = 1;
-            var costoVivienda = document.getElementById('costoVivienda').value;
+        if(viviendaPropSi.checked){
+            var viviendaProp = 1;
+            //var costoVivienda = document.getElementById('costoVivienda').value;
         }
-        else if (viviendaDebeNo.checked){
-            var viviendaDebe = 0;
-            var costoVivienda = 0;
+        else if (viviendaPropNo.checked){
+            var viviendaProp = 0;
+            //var costoVivienda = 0;
         }
         if(tipoViviendaC.checked){
             var tipoVivienda = 1;
@@ -1056,9 +1219,19 @@ $(document).ready(function() {
         }
         if (bath.checked){
             var bathv = 1;
+            var bathNum = bathNumInput;
         } else {
             var bathv = 0;
+            var bathNum = '';
         }
+        if (interior.checked){
+            var localizacion = 1;
+        } else if (exterior.checked){
+            var localizacion = 2;
+        } else {
+            var localizacion = 0;
+        }
+
         if (otroRoom.checked){
             var otroRoomInput = document.getElementById('otroRoomInput').value;
         }
@@ -1107,11 +1280,7 @@ $(document).ready(function() {
         } else {
             var drenajec = 0;
         }
-        if (cable.checked){
-            var cablec = 1;
-        } else {
-            var cablec = 0;
-        }
+        
         if (internet.checked){
             var internetc = 1;
         } else {
@@ -1152,10 +1321,10 @@ $(document).ready(function() {
         } else {
             var lavadorac = 0;
         }
-        if (estereo.checked){
-            var estereoc = 1;
+        if (dispositivo.checked){
+            var dispositivoC = 1;
         } else {
-            var estereoc = 0;
+            var dispositivoC = 0;
         }
         if (microondas.checked){
             var microondasc = 1;
@@ -1172,11 +1341,7 @@ $(document).ready(function() {
         } else {
             var licuadorac = 0;
         }
-        if (dvd.checked){
-            var dvdc = 1;
-        } else {
-            var dvdc = 0;
-        }
+
         if (refri.checked){
             var refrigerador = 1;
         } else {
@@ -1192,14 +1357,7 @@ $(document).ready(function() {
         } else {
             var otroElectroInput = 0;
         }
-        if (deudasSi.checked){
-            var deudas = 1;
-            var deudasInput = document.getElementById('deudasInput').value;
-        }
-        if (deudasNo.checked) {
-            var deudas = 0;
-            var deudasInput = 0;
-        }
+        
         $.ajax({
             type: "POST",
             url: 'prcd/guardarvivienda.php',
@@ -1209,15 +1367,15 @@ $(document).ready(function() {
                 curp_exp:curp_exp,
                 numExp:numExp,
                 vivienda:vivienda,
-                montoRenta:montoRenta,
-                viviendaDebe:viviendaDebe,
-                costoVivienda:costoVivienda,
+                viviendaProp:viviendaProp,
                 tipoVivienda:tipoVivienda,
                 viviendaOtro:viviendaOtro,
                 numHabitaciones:numHabitaciones,
                 cocinav:cocinav,
                 salav:salav,
                 bathv:bathv,
+                bathNum:bathNum,
+                localizacion:localizacion,
                 otroRoomInput:otroRoomInput,
                 techo:techo,
                 otroTechoInput:otroTechoInput,
@@ -1226,7 +1384,6 @@ $(document).ready(function() {
                 aguac:aguac,
                 luzc:luzc,
                 drenajec:drenajec,
-                cablec:cablec,
                 internetc:internetc,
                 celularc:celularc,
                 carroc:carroc,
@@ -1235,17 +1392,16 @@ $(document).ready(function() {
                 otroServiciosInput:otroServiciosInput,
                 tvc:tvc,
                 lavadorac:lavadorac,
-                estereoc:estereoc,
+                dispositivoC:dispositivoC,
                 microondasc:microondasc,
                 computadorac:computadorac,
                 licuadorac:licuadorac,
-                dvdc:dvdc,
                 estufac:estufac,
                 refrigerador:refrigerador,
                 otroElectroInput:otroElectroInput,
-                dependientes:dependientes,
-                deudas:deudas,
-                deudasInput:deudasInput
+                dependiente:dependiente,
+                financiador:financiador,
+                dependientes:dependientes
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
@@ -1295,8 +1451,8 @@ function updateVivienda() {
         var viviendaPro = document.getElementById('viviendaPro');
         var viviendaPre = document.getElementById('viviendaPre');
         var viviendaRe = document.getElementById('viviendaRe');
-        var viviendaDebeSi = document.getElementById('viviendaPSi');
-        var viviendaDebeNo = document.getElementById('viviendaPNo');
+        var viviendaPropSi = document.getElementById('viviendaPropSi');
+        var viviendaPropNo = document.getElementById('viviendaPropNo');
         var tipoViviendaC = document.getElementById('tipoViviendaC');
         var tipoViviendaD = document.getElementById('tipoViviendaD');
         var tipoViviendaV = document.getElementById('tipoViviendaV');
@@ -1305,6 +1461,9 @@ function updateVivienda() {
         var cocina = document.getElementById('cocina');
         var sala = document.getElementById('sala');
         var bath = document.getElementById('bath');
+        var bathNumInput = document.getElementById('bathNum').value;
+        var interior = document.getElementById('interior');
+        var exterior = document.getElementById('exterior');
         var otroRoom = document.getElementById('otroRoom');
         var lamina = document.getElementById('lamina');
         var cemento = document.getElementById('cemento');
@@ -1316,45 +1475,65 @@ function updateVivienda() {
         var agua = document.getElementById('agua');
         var luz = document.getElementById('luz');
         var drenaje = document.getElementById('drenaje');
-        var cable = document.getElementById('cable');
+        var gas = document.getElementById('gas');
         var internet = document.getElementById('internet');
         var celular = document.getElementById('celular');
         var carro = document.getElementById('carro');
-        var gas = document.getElementById('gas');
         var telefono = document.getElementById('telefono');
         var otroServicios = document.getElementById('otroServicios');
         var tv = document.getElementById('tv');
         var lavadora = document.getElementById('lavadora');
-        var estereo = document.getElementById('estereo');
+        var dispositivo = document.getElementById('dispositivo');
         var microondas = document.getElementById('microondas');
         var computadora = document.getElementById('computadora');
         var licuadora = document.getElementById('licuadora');
-        var dvd = document.getElementById('dvd');
         var estufa = document.getElementById('estufa');
+        var refri = document.getElementById('refri');
         var otroElectro = document.getElementById('otroElectro');
-        var dependientes = document.getElementById('dependenciaEconomica').value;
-        var deudasSi = document.getElementById('deudasSi');
-        var deudasNo = document.getElementById('deudasNo');
+        var dependienteSi = document.getElementById('dependienteSi');
+        var dependienteNo = document.getElementById('dependienteNo');
+        var dependienteEco = document.getElementById('dependienteEsp').value;
+        var dependientesSi = document.getElementById('dependientesSi');
+        var dependientesNo = document.getElementById('dependientesNo');
+        
+        //var deudasSi = document.getElementById('deudasSi');
+        //var deudasNo = document.getElementById('deudasNo');
+        
+        if (dependienteSi.checked){
+            var dependiente = 1;
+            var financiador = dependienteEco;
+        } else if (dependienteNo.checked){
+            var dependiente = 0;
+            var financiador = '';
+        }
+
+        if (dependientesSi.checked){
+            var dependientes = document.getElementById('dependientes').value;
+        } else if (dependientesNo.checked){
+            var dependientes = '';
+        } else {
+            dependientes = '';
+        }
         
         if(viviendaPro.checked){
             var vivienda = 1;
-            var montoRenta = 0;
+            //var montoRenta = 0;
         }
         else if (viviendaPre.checked){
             var vivienda = 2;
-            var montoRenta = 0;
+            //var montoRenta = 0;
         }
         else if (viviendaRe.checked){
             var vivienda = 3;
-            var montoRenta = document.getElementById('montoVivienda').value;
+            //var montoRenta = document.getElementById('montoVivienda').value;
         }
-        if(viviendaDebeSi.checked){
-            var viviendaDebe = 1;
-            var costoVivienda = document.getElementById('costoVivienda').value;
+        if(viviendaPropSi.checked){
+            var viviendaProp = 1;
+            //var costoVivienda = document.getElementById('costoVivienda').value;
         }
-        else if (viviendaDebeNo.checked){
-            var viviendaDebe = 0;
-            var costoVivienda = 0;
+        else if (viviendaPropNo.checked){
+            var viviendaProp = 0;
+            //var costoVivienda = 0;
         }
         if(tipoViviendaC.checked){
             var tipoVivienda = 1;
@@ -1384,9 +1563,19 @@ function updateVivienda() {
         }
         if (bath.checked){
             var bathv = 1;
+            var bathNum = bathNumInput;
         } else {
             var bathv = 0;
+            var bathNum = '';
         }
+        if (interior.checked){
+            var localizacion = 1;
+        } else if (exterior.checked){
+            var localizacion = 2;
+        } else {
+            var localizacion = 0;
+        }
+
         if (otroRoom.checked){
             var otroRoomInput = document.getElementById('otroRoomInput').value;
         }
@@ -1435,11 +1624,7 @@ function updateVivienda() {
         } else {
             var drenajec = 0;
         }
-        if (cable.checked){
-            var cablec = 1;
-        } else {
-            var cablec = 0;
-        }
+        
         if (internet.checked){
             var internetc = 1;
         } else {
@@ -1480,10 +1665,10 @@ function updateVivienda() {
         } else {
             var lavadorac = 0;
         }
-        if (estereo.checked){
-            var estereoc = 1;
+        if (dispositivo.checked){
+            var dispositivoC = 1;
         } else {
-            var estereoc = 0;
+            var dispositivoC = 0;
         }
         if (microondas.checked){
             var microondasc = 1;
@@ -1500,11 +1685,7 @@ function updateVivienda() {
         } else {
             var licuadorac = 0;
         }
-        if (dvd.checked){
-            var dvdc = 1;
-        } else {
-            var dvdc = 0;
-        }
+
         if (refri.checked){
             var refrigerador = 1;
         } else {
@@ -1520,14 +1701,6 @@ function updateVivienda() {
         } else {
             var otroElectroInput = 0;
         }
-        if (deudasSi.checked){
-            var deudas = 1;
-            var deudasInput = document.getElementById('deudasInput').value;
-        }
-        if (deudasNo.checked) {
-            var deudas = 0;
-            var deudasInput = 0;
-        }
         $.ajax({
             type: "POST",
             url: 'prcd/editar_guardarvivienda.php',
@@ -1537,15 +1710,15 @@ function updateVivienda() {
                 curp_exp:curp_exp,
                 numExp:numExp,
                 vivienda:vivienda,
-                montoRenta:montoRenta,
-                viviendaDebe:viviendaDebe,
-                costoVivienda:costoVivienda,
+                viviendaProp:viviendaProp,
                 tipoVivienda:tipoVivienda,
                 viviendaOtro:viviendaOtro,
                 numHabitaciones:numHabitaciones,
                 cocinav:cocinav,
                 salav:salav,
                 bathv:bathv,
+                bathNum:bathNum,
+                localizacion:localizacion,
                 otroRoomInput:otroRoomInput,
                 techo:techo,
                 otroTechoInput:otroTechoInput,
@@ -1554,7 +1727,6 @@ function updateVivienda() {
                 aguac:aguac,
                 luzc:luzc,
                 drenajec:drenajec,
-                cablec:cablec,
                 internetc:internetc,
                 celularc:celularc,
                 carroc:carroc,
@@ -1563,17 +1735,16 @@ function updateVivienda() {
                 otroServiciosInput:otroServiciosInput,
                 tvc:tvc,
                 lavadorac:lavadorac,
-                estereoc:estereoc,
+                dispositivoC:dispositivoC,
                 microondasc:microondasc,
                 computadorac:computadorac,
                 licuadorac:licuadorac,
-                dvdc:dvdc,
                 estufac:estufac,
                 refrigerador:refrigerador,
                 otroElectroInput:otroElectroInput,
-                dependientes:dependientes,
-                deudas:deudas,
-                deudasInput:deudasInput
+                dependiente:dependiente,
+                financiador:financiador,
+                dependientes:dependientes
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));

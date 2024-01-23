@@ -36,6 +36,10 @@ $enfermedades = $_POST['enfermedades'];
 $enfermedadesFull = $_POST['enfermedadesFull'];
 $medicamentos = $_POST['medicamentos'];
 $medicamentosFull = $_POST['medicamentosFull'];
+$asistencia = $_POST['asistencia'];
+$braile = $_POST['braile'];
+$lsm = $_POST['lsm'];
+$labiofacial = $_POST['labiofacial'];
 $tipo_dato = 18;
 
 $sqlinsert= "UPDATE datos_medicos SET
@@ -64,7 +68,11 @@ $sqlinsert= "UPDATE datos_medicos SET
     enfermedades = '$enfermedades',
     enfermedades_cual = '$enfermedadesFull',
     medicamentos = '$medicamentos',
-    medicamentos_cual = '$medicamentosFull'
+    medicamentos_cual = '$medicamentosFull',
+    asistencia = '$asistencia',
+    braile = '$braile',
+    lsm = '$lsm',
+    labiofacial = '$labiofacial'
 WHERE curp = '$curp_exp'
 ";
 

@@ -42,16 +42,17 @@ $estudiaLugar = $_POST['estudiaLugar'];
 $habilidad = $_POST['habilidad'];
 $profesion = $_POST['profesion'];
 $trabajaLugar = $_POST['trabajaLugar'];
-$lugartrabajoOtro = $_POST['lugartrabajoOtro'];
+$lugartrabajoOtro = $_POST['lugarTrabajoOtro'];
 $ingresoMensual = $_POST['ingresoMensual'];
 $asociacion = $_POST['asociacion'];
 $nombreAC = $_POST['nombreAC'];
-$sindicato = $_POST['sindicato'];
-$nombreSindicato = $_POST['nombreSindicato'];
 $pension = $_POST['pension'];
 $pensionInst = $_POST['pensionInst'];
 $pensionMonto = $_POST['pensionMonto'];
 $pensionTemporalidad = $_POST['pensionTemporalidad'];
+$informanteLog = $_POST['informanteLog'];
+$informanteRelacion = $_POST['informanteRelacion'];
+$informanteRelacionOtro1 = $_POST['informanteRelacionOtro1'];
 $seguridadsocial = $_POST['seguridadsocial'];
 $otroSS = $_POST['otroSS'];
 $numSS = $_POST['numSS'];
@@ -97,12 +98,13 @@ $sqlinsert= "INSERT INTO datos_generales (
     trabaja_ingresos,
     asoc_civ,
     asoc_cual,
-    sindicato,
-    sindicato_cual,
     pensionado,
     pensionado_donde,
     pension_monto,
     pension_temporalidad,
+    informante,
+    informante_parentesco,
+    otro_parentesco,
     seguridad_social,
     seguridad_social_otro,
     numSS,
@@ -135,24 +137,25 @@ VALUES(
     '$correo',
     '$telFijo',
     '$celular',
-    '$celular',
+    '$leer',
     '$escolaridad',
     '$concluida',
     '$estudia',
     '$estudiaLugar',
     '$habilidad',
     '$profesion',
-    '$trabaja',
     '$trabajaLugar',
+    '$lugartrabajoOtro',
     '$ingresoMensual',
     '$asociacion',
     '$nombreAC',
-    '$sindicato',
-    '$nombreSindicato',
     '$pension',
     '$pensionInst',
     '$pensionMonto',
     '$pensionTemporalidad',
+    '$informanteLog',
+    '$informanteRelacion',
+    '$informanteRelacionOtro1',
     '$seguridadsocial',
     '$otroSS',
     '$numSS',

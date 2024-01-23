@@ -893,7 +893,7 @@ include('prcd/qc/qc.php');
                       </div>
                       <div class="col-sm-3">
                         <label for="datos_usr" class="form-label">Discapacidad:</label>
-                        <input type="text" id="curp_exp" onchange="curpTemporal()" hidden>
+                        <input type="text" id="curp_exp" onchange="curpTemporal()">
                         <!-- <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..."> -->
                         <select class="form-select" id="discapacidadList" onchange="numExpGenerator(this.value);discapacidadVA(this.value)" required>
                         
@@ -969,7 +969,7 @@ include('prcd/qc/qc.php');
                             <label class="form-check-label" for="braile">No</label>
                           </div>
                           <div class="form-check form-check-inline mt-2">
-                            <input class="form-check-input" type="radio" name="braile" id="braileNo" value="0" >
+                            <input class="form-check-input" type="radio" name="braile" id="braileNA" value="0" >
                             <label class="form-check-label" for="braile">No Aplica</label>
                           </div>
                         </div>
@@ -986,7 +986,7 @@ include('prcd/qc/qc.php');
                             <label class="form-check-label" for="lsm">No</label>
                           </div>
                           <div class="form-check form-check-inline mt-2">
-                            <input class="form-check-input" type="radio" name="lsm" id="lsmNo" value="0" >
+                            <input class="form-check-input" type="radio" name="lsm" id="lsmNA" value="0" >
                             <label class="form-check-label" for="lsm">No Aplica</label>
                           </div>
                         </div>
@@ -1003,7 +1003,7 @@ include('prcd/qc/qc.php');
                             <label class="form-check-label" for="labiofacial">No</label>
                           </div>
                           <div class="form-check form-check-inline mt-2">
-                            <input class="form-check-input" type="radio" name="labiofacial" id="labiofacialNo" value="0" >
+                            <input class="form-check-input" type="radio" name="labiofacial" id="labiofacialNA" value="0" >
                             <label class="form-check-label" for="labiofacial">No Aplica</label>
                           </div>
                         </div>
@@ -1743,8 +1743,8 @@ include('prcd/qc/qc.php');
                           </div>
                           <div class="form-check form-check-inline">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" onchange="electroCheck()" id="estereo">
-                              <label class="form-check-label" for="estereo">
+                              <input class="form-check-input" type="checkbox" onchange="electroCheck()" id="dispositivo">
+                              <label class="form-check-label" for="dispositivo">
                                 Dispositivo Inteligente
                               </label>
                             </div>
@@ -1770,12 +1770,6 @@ include('prcd/qc/qc.php');
                             </div>
                           </div>
                           <div class="form-check form-check-inline">
-                            <div class="form-check" hidden>
-                              <input class="form-check-input" type="checkbox" id="dvd">
-                              <label class="form-check-label" for="dvd">
-                                Reproductor Video
-                              </label>
-                            </div>
                             <div class="form-check">
                               <input class="form-check-input" type="checkbox" onchange="electroCheck()" id="refri">
                               <label class="form-check-label" for="refri">

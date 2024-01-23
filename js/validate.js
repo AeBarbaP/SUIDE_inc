@@ -387,7 +387,7 @@ function trabajaOp(x){
 function trabajaOtro(x){
     var otro = x;
 
-    if (otro == 5){
+    if (otro == "Otro"){
         document.getElementById('lugarTrabajoOtro').disabled = false;
     } else {
         document.getElementById('lugarTrabajoOtro').disabled = true;
@@ -507,7 +507,7 @@ function pensionOp(x){
 function seguridadOp(x){
     var seguridadsocial = x;
 
-    if (seguridadsocial == 5){
+    if (seguridadsocial == 'Otro'){
         document.getElementById('otroSS').disabled = false;
     } else {
         document.getElementById('otroSS').disabled = true;
@@ -756,14 +756,13 @@ function servicesCheck(){
     var uno = document.getElementById('agua');
     var dos = document.getElementById('luz');
     var tres = document.getElementById('drenaje');
-    var cuatro = document.getElementById('cable');
     var cinco = document.getElementById('internet');
     var seis = document.getElementById('checkCelular');
     var siete = document.getElementById('carro');
     var ocho = document.getElementById('gas');
     var nueve = document.getElementById('telefono');
     
-    if (uno.checked && dos.checked && tres.checked && cuatro.checked && cinco.checked && seis.checked && siete.checked && ocho.checked && nueve.checked){
+    if (uno.checked && dos.checked && tres.checked && cinco.checked && seis.checked && siete.checked && ocho.checked && nueve.checked){
         document.getElementById('checkAllServices').checked = true;
     }
     else {
@@ -777,21 +776,19 @@ function electrodomesticos(){
     if (checkAllElectro.checked){
         document.getElementById('tv').checked = true;
         document.getElementById('lavadora').checked = true;
-        document.getElementById('estereo').checked = true; //estereo es para dispositivo inteligente
+        document.getElementById('dispositivo').checked = true; //estereo es para dispositivo inteligente
         document.getElementById('microondas').checked = true;
         document.getElementById('computadora').checked = true;
         document.getElementById('licuadora').checked = true;
-        document.getElementById('dvd').checked = true;
         document.getElementById('refri').checked = true;
         document.getElementById('estufa').checked = true;
     } else {
         document.getElementById('tv').checked = false;
         document.getElementById('lavadora').checked = false;
-        document.getElementById('estereo').checked = false;
+        document.getElementById('dispositivo').checked = false;
         document.getElementById('microondas').checked = false;
         document.getElementById('computadora').checked = false;
         document.getElementById('licuadora').checked = false;
-        document.getElementById('dvd').checked = false;
         document.getElementById('refri').checked = false;
         document.getElementById('estufa').checked = false;
     }
@@ -810,7 +807,7 @@ function otroElectros(){
 function electroCheck(){
     var uno = document.getElementById('tv');
     var dos = document.getElementById('lavadora');
-    var tres = document.getElementById('estereo');
+    var tres = document.getElementById('dispositivo');
     var cuatro = document.getElementById('microondas');
     var cinco = document.getElementById('computadora');
     var seis = document.getElementById('licuadora');
