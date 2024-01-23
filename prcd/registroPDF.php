@@ -275,67 +275,108 @@ $idDiscapacidad = $rowSqlMedicos['discapacidad'];
 $causa = $rowSqlMedicos['causa'];
 
 if ($causa == 1){
-  $congenita = "";
-  $adquirida = "";
-  $accidente = "";
-  $enfermedad = "";
   $nacimiento = $check;
-  $adiccion = "";
-  $otracausa = "";
-}
-else if ($causa == 2){
   $congenita = "";
-  $adquirida = "";
-  $accidente = $check;
+  $genetica = "";
+  $hereditaria = "";
   $enfermedad = "";
-  $nacimiento = "";
+  $accidente = "";
+  $violencia = "";
   $adiccion = "";
   $otracausa = "";
+  $desconoce = "";
+  $causaotrad = "";
+}
+else if ($causa == 2){ 
+  $nacimiento = "";
+  $congenita = "";
+  $genetica = "";
+  $hereditaria = "";
+  $enfermedad = "";
+  $accidente = $check;
+  $violencia = "";
+  $adiccion = "";
+  $otracausa = "";
+  $desconoce = "";
+  $causaotrad = "";
 }
 else if ($causa == 3){
+  $nacimiento = "";
   $congenita = "";
-  $adquirida = "";
-  $accidente = "";
+  $genetica = "";
+  $hereditaria = "";
   $enfermedad = $check;
-  $nacimiento = "";
+  $accidente = "";
+  $violencia = "";
   $adiccion = "";
   $otracausa = "";
+  $desconoce = "";
+  $causaotrad = "";
 }
-else if ($causa == 4){
+else if($causa == 4){
+  $nacimiento = "";
   $congenita = $check;
-  $adquirida = "";
-  $accidente = "";
+  $genetica = "";
+  $hereditaria = "";
   $enfermedad = "";
-  $nacimiento = "";
+  $accidente = "";
+  $violencia = "";
   $adiccion = "";
   $otracausa = "";
-}
-/* else if ($causa == 5){
-  $congenita = "";
-  $adquirida = "";
-  $accidente = "";
-  $enfermedad = "";
-  $nacimiento = $check;
-  $adiccion = "";
-  $otracausa = "";
-} */
-else if ($causa == 6){
-  $congenita = "";
-  $adquirida = "";
-  $accidente = "";
-  $enfermedad = "";
-  $nacimiento = "";
-  $adiccion = $check;
-  $otracausa = "";
+  $desconoce = "";
+  $causaotrad = "";
 }
 else if ($causa == 5){
-  $congenita = "";
-  $adquirida = "";
-  $accidente = "";
-  $enfermedad = "";
   $nacimiento = "";
+  $congenita = "";
+  $genetica = "";
+  $hereditaria = "";
+  $enfermedad = "";
+  $accidente = "";
+  $violencia = "";
   $adiccion = "";
-  $otracausa = $rowSqlMedicos['causa_otro'];
+  $otracausa = $check;
+  $desconoce = "";
+  $causaotrad = "";
+}
+else if($causa == 6){
+  $nacimiento = "";
+  $congenita = "";
+  $genetica = "";
+  $hereditaria = "";
+  $enfermedad = "";
+  $accidente = "";
+  $violencia = "";
+  $adiccion = "";
+  $otracausa = "";
+  $desconoce = $check;
+  $causaotrad = "";
+}
+else if($causa == 7){
+  $nacimiento = "";
+  $congenita = "";
+  $genetica = "";
+  $hereditaria = "";
+  $enfermedad = "";
+  $accidente = "";
+  $violencia = $check;
+  $adiccion = "";
+  $otracausa = "";
+  $desconoce = "";
+  $causaotrad = "";
+}
+else if($causa == 8){
+  $nacimiento = "";
+  $congenita = "";
+  $genetica = "";
+  $hereditaria = "";
+  $enfermedad = "";
+  $accidente = "";
+  $violencia = "";
+  $adiccion = $check;
+  $otracausa = "";
+  $desconoce = "";
+  $causaotrad = "";
 }
 
 $idTemporalidad = $rowSqlMedicos['temporalidad'];
@@ -467,6 +508,55 @@ else if($protesis == 2 || $protesis == "NO"){
 else{
   $protesis2 = "";
   $protesis3 = "";
+}
+
+$seguridadS = $rowSqlGenerales['seguridad_social'];
+if ($seguridadS == "IMSS" || $seguridadS == "imss"){
+  $regImss = $check;
+  $regISSSTE = "";
+  $regSSZ = "";
+  $regNon = "";
+  $regOtro = "";
+}
+else if ($seguridadS == "ISSSTE" || $seguridadS == "issste"){
+  $regImss = "";
+  $regISSSTE = $check;
+  $regSSZ = "";
+  $regNon = "";
+  $regOtro = "";
+}
+else if ($seguridadS == "SSZ" || $seguridadS == "ssz"){
+  $regImss = "";
+  $regISSSTE = "";
+  $regSSZ = $check;
+  $regNon = "";
+  $regOtro = "";
+}
+else if ($seguridadS == "NON" || $seguridadS == "non"){
+  $regImss = "";
+  $regISSSTE = "";
+  $regSSZ = "";
+  $regNon = $check;
+  $regOtro = "";
+}
+else if ($seguridadS == "OTRO" || $seguridadS == "Otro"){
+  $regImss = "";
+  $regISSSTE = "";
+  $regSSZ = "";
+  $regNon = "";
+  $regOtro = $rowSqlGenerales['seguridad_social_otro'];
+}
+
+$vulnerables = $rowSqlGenerales['gpo_vulnerable'];
+if ($vulnerables == "" || $vulnerables == null){
+  $vulnerablesNo =$check;
+  $vulnerablesSi ="";
+  $gruposVulnerables = "";
+}
+else {
+  $vulnerablesNo = "";
+  $vulnerablesSi = $check;
+  $gruposVulnerables = $vulnerables;
 }
 
 $sqlViviendas = "SELECT * FROM vivienda WHERE curp = '$curp'";
@@ -1062,37 +1152,31 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(26,5,utf8_decode('Nivel escolaridad:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(28,5,utf8_decode(' '.$rowSqlGenerales['escolaridad'].' '),'B',0,'L');
+$pdf->Cell(38,5,utf8_decode(' '.$rowSqlGenerales['escolaridad'].' '),'B',0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(10,5,utf8_decode('Concluída:'),0,0,'L');
+$pdf->Cell(17,5,utf8_decode('Concluída:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
 $pdf->Cell(4,5,utf8_decode($concluidaSi),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(10,5,utf8_decode('Trunca:'),0,0,'L');
+$pdf->Cell(14,5,utf8_decode('Trunca:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
 $pdf->Cell(4,5,utf8_decode($concluidaNo),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(10,5,utf8_decode('Cursando:'),0,0,'L');
+$pdf->Cell(17,5,utf8_decode('Cursando:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
 $pdf->Cell(4,5,utf8_decode($concluidaCur),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(10,5,utf8_decode('No Aplica:'),0,0,'L');
+$pdf->Cell(17,5,utf8_decode('No Aplica:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
 $pdf->Cell(4,5,utf8_decode($concluidaNA),'BR',0,'C');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','B',8);
-$pdf->Cell(27,5,utf8_decode('Profesión u oficio:'),0,0,'L');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',10);
-$pdf->Cell(40,5,utf8_decode(' '.$rowSqlGenerales['profesion'].' '),'B',0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 
 $pdf->Ln();
@@ -1116,13 +1200,20 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(14,5,utf8_decode('Dónde?'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(66,5,utf8_decode(' '.$rowSqlGenerales['trabaja_donde'].' '),'B',0,'L');
+$pdf->Cell(37,5,utf8_decode(' '.$rowSqlGenerales['trabaja_donde'].' '),'B',0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'L');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(30,5,utf8_decode('Ingreso mensual: $'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(40,5,utf8_decode(' '.$rowSqlGenerales['trabaja_ingresos'].' '),'B',0,'L');
+$pdf->Cell(12,5,utf8_decode(' '.$rowSqlGenerales['trabaja_ingresos'].' '),'B',0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(24,5,utf8_decode('Profesión/Oficio:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','',10);
+$pdf->Cell(31,5,utf8_decode(' '.$rowSqlGenerales['profesion'].' '),'B',0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -1144,29 +1235,7 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(13,5,utf8_decode('Cuál?'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(118,5,utf8_decode(' '.$rowSqlGenerales['asoc_cual'].' '),'B',0,'C');
-$pdf->Ln();
-
-$pdf->SetFont('Arial','B',8);
-$pdf->Cell(40,5,utf8_decode('Pertenece a algún Sindicato:'),0,0,'L');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','B',8);
-$pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode(' '),'BR',0,'C');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','B',8);
-$pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode(' '),'BR',0,'C');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','B',8);
-$pdf->Cell(13,5,utf8_decode('Cuál?'),0,0,'C');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',10);
-$pdf->Cell(112,5,utf8_decode(' '),'B',0,'C');
+$pdf->Cell(118,5,utf8_decode(' '.$rowSqlGenerales['asoc_cual'].' '),'B',0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -1234,14 +1303,37 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(10,5,utf8_decode('Otro:'),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(20,5,utf8_decode($regOtro),'B',0,'C');
+$pdf->Cell(32,5,utf8_decode($regOtro),'B',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(17,5,utf8_decode('No. de SS:'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',10);
-$pdf->Cell(32,5,utf8_decode(' '.$rowSqlGenerales['numSS'].' '),'B',0,'L');
+$pdf->SetFont('Arial','',8);
+$pdf->Cell(20,5,utf8_decode(' '.$rowSqlGenerales['numSS'].' '),'B',0,'L');
 $pdf->Ln();
+
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(48,5,utf8_decode('Pertenece a otro Grupo Vulnerable:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode($vulnerablesSi),'BR',0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode($vulnerablesNo),'BR',0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(13,5,utf8_decode('Cuál(es)?'),0,0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','',10);
+$pdf->Cell(104,5,utf8_decode($gruposVulnerables),'B',0,'L');
+$pdf->Ln();
+
 $pdf->Ln();
 
 $pdf->SetLineWidth(0.5);
@@ -1291,17 +1383,23 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(21,5,utf8_decode('Discapacidad:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(100,5,utf8_decode($idDiscapacidad),'B',0,'L');
+$pdf->Cell(47,5,utf8_decode($idDiscapacidad),'B',0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(11,5,utf8_decode('Grado:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(56,5,utf8_decode($rowSqlMedicos['grado_discapacidad']),'B',0,'L');
+$pdf->Cell(22,5,utf8_decode($rowSqlMedicos['grado_discapacidad']),'B',0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(12,5,utf8_decode('Causa:'),0,0,'L');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(17,5,utf8_decode('Nacimiento:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode($nacimiento),'BR',0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(17,5,utf8_decode('Congénita:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
@@ -1309,16 +1407,16 @@ $pdf->SetFont('ZapfDingbats','', 10);
 $pdf->Cell(4,5,utf8_decode($congenita),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(16,5,utf8_decode('Adquirida:'),0,0,'L');
+$pdf->Cell(15,5,utf8_decode('Genética:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode($adquirida),'BR',0,'C');
+$pdf->Cell(4,5,utf8_decode($genetica),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(17,5,utf8_decode('Accidente:'),0,0,'L');
+$pdf->Cell(17,5,utf8_decode('Hereditaria:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode($accidente),'BR',0,'C');
+$pdf->Cell(4,5,utf8_decode($hereditaria),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(19,5,utf8_decode('Enfermedad:'),0,0,'L');
@@ -1327,10 +1425,16 @@ $pdf->SetFont('ZapfDingbats','', 10);
 $pdf->Cell(4,5,utf8_decode($enfermedad),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(18,5,utf8_decode('Nacimiento:'),0,0,'L');
+$pdf->Cell(16,5,utf8_decode('Accidente:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode($nacimiento),'BR',0,'C');
+$pdf->Cell(4,5,utf8_decode($accidente),'BR',0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(15,5,utf8_decode('Violencia:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode($violencia),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(15,5,utf8_decode('Adicción:'),0,0,'L');
@@ -1339,10 +1443,19 @@ $pdf->SetFont('ZapfDingbats','', 10);
 $pdf->Cell(4,5,utf8_decode($adiccion),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(9,5,utf8_decode('Otro:'),0,0,'L');
+$pdf->Cell(9,5,utf8_decode('Otra:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode($otra),'BR',0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
 $pdf->Cell(31,5,utf8_decode($otracausa),'B',0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(9,5,utf8_decode('Desconoce:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode($desconoce),'B',0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
