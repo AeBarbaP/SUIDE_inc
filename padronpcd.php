@@ -266,7 +266,7 @@ include('prcd/qc/qc.php');
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="alert alert-secondary text-center" role="alert" style="background-color: #87CD97;">
-        <p class="h1 text-light"><strong>Registro Nuevo</strong></p>
+        <p class="h1 text-light"><strong><i class="bi bi-person-plus-fill"></i> Registro Nuevo</strong></p>
         <!-- <p class="h6 mb-1 text-light" style="font-style:oblique">Sistema Único de Identificación y Verificación</p> -->
       </div>
       <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
@@ -893,7 +893,7 @@ include('prcd/qc/qc.php');
                       </div>
                       <div class="col-sm-3">
                         <label for="datos_usr" class="form-label">Discapacidad:</label>
-                        <input type="text" id="curp_exp" onchange="curpTemporal()">
+                        <input type="text" id="curp_exp" onchange="curpTemporal()" hidden>
                         <!-- <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..."> -->
                         <select class="form-select" id="discapacidadList" onchange="numExpGenerator(this.value);discapacidadVA(this.value)" required>
                         

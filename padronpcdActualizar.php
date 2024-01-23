@@ -267,8 +267,10 @@ include('prcd/qc/qc.php');
     </nav>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <!-- <p class="h5"><strong>Padrón Estatal de Personas con Discapacidad</strong></p> -->
-      <h3 class="text-muted mt-4">Actualización de Expediente</h3>
+    <div class="alert alert-warning text-center" role="alert">
+        <p class="h1 text-dark"><strong><i class="bi bi-pencil-square"></i> Actualizar Registro</strong></p>
+        <!-- <p class="h6 mb-1 text-light" style="font-style:oblique">Sistema Único de Identificación y Verificación</p> -->
+      </div>
       <div class="input-group mb-2 mt-2">
         <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
         <input class="form-control w-50" id="" oninput="buscarExpediente12(this.value)" placeholder="Buscar...">
@@ -296,7 +298,8 @@ include('prcd/qc/qc.php');
           <div class="row">
             <div class="col-10 align-middle p-1">
                 <strong># Expediente:</strong> <span id="numExp1"></span> | 
-                <strong>Nombre:</strong> <span id="nombreExp1"></span>&nbsp<span id="apellidoPExp1"></span>&nbsp<span id="apellidoMExp1"></span>
+                <strong>Nombre:</strong> <span id="nombreExp1"></span>&nbsp<span id="apellidoPExp1"></span>&nbsp<span id="estatusExpediente"></span> | 
+                <strong>Estatus:</strong>
               
             </div>
             <div class="col-2 text-end">
@@ -394,26 +397,29 @@ include('prcd/qc/qc.php');
               </div>
             </nav>
             <div class="tab-content"  id="nav-tabContent">
+            
+            <!-- inicia nuevo nav generales  -->
+
             <div class="tab-pane fade show active" id="nav-generales" role="tabpanel" aria-labelledby="nav-generales-tab" tabindex="0" onload="descartarCambios(1)">
                 <div class="row ms-4 g-3 mt-3" style="width:95%">
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">Nombre:</label>
                     <form id="generalesForm">
-                    <input type="text" class="form-control" id="nombre" name="datos_usr" placeholder="Nombre(s)" required>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="nombre" name="datos_usr" placeholder="Nombre(s)" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">Apellido Paterno:</label>
-                    <input type="text" class="form-control" id="apellidoP" name="datos_usr" placeholder="Apellido Paterno" required>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="apellidoP" name="datos_usr" placeholder="Apellido Paterno" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">Apellido Materno:</label>
-                    <input type="text" class="form-control" id="apellidoM" name="datos_usr" placeholder="Apellido Materno" required>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="apellidoM" name="datos_usr" placeholder="Apellido Materno" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
@@ -421,17 +427,17 @@ include('prcd/qc/qc.php');
                   <div class="col-sm-3">
                     <div class="mb-3">
                       <label for="basic-url" class="form-label">Género:</label>
-                      <div class="input-group">
+                      <div class="input-group mt-2">
                         <div class="form-check form-check-inline">
                           <input class="form-check-input" type="radio" name="genero" id="generoF" value="Mujer" required>
                           <label class="form-check-label" for="inlineRadio1">Mujer</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="genero" id="generoM" value="Hombre">
+                          <input class="form-check-input" type="radio" name="genero" id="generoM" value="Hombre" required>
                           <label class="form-check-label" for="inlineRadio2">Hombre</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="genero" id="generoO" value="Otro">
+                          <input class="form-check-input" type="radio" name="genero" id="generoO" value="Otro" required>
                           <label class="form-check-label" for="inlineRadio2">Otro</label>
                         </div>
                       </div>
@@ -440,25 +446,23 @@ include('prcd/qc/qc.php');
                   <div class="col-sm-1">
                     <label for="edad" class="form-label">Edad:</label>
                     <input type="text" class="form-control" id="edad" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="" disabled>
-                    <div class="invalid-feedback">
-                      * Campo requerido.
-                    </div>
                   </div>
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">CURP:</label>
-                    <input type="text" class="form-control" id="curp" name="datos_usr" placeholder="CURP" onkeyup="javascript:this.value=this.value.toUpperCase();" onchange="curp2date(this)" required>
+                    <input type="text" class="form-control" id="curp" name="datos_usr" placeholder="CURP" onkeyup="javascript:this.value=this.value.toUpperCase();" onchange="curp2date(this); validarInput(this); cortarRFC(this.value)" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                     <div id="result-username2"></div>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-3">
                     <label for="datos_usr" class="form-label">RFC:</label>
                     <div class="input-group">
-                      <span class="input-group-text w-50" id="rfcCut"></span>
+                      <span class="input-group-text w-75" id="rfcCut"></span>
                       <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" maxlength="3" id="rfcHomo" aria-describedby="basic-addon3 basic-addon4">
                     </div>
                   </div>
+                  <br>
                   <div class="col-sm-2">
                     <label for="datos_usr" class="form-label">Fecha Nacimiento:</label>
                     <input type="date" class="form-control" id="fechaNacimiento" name="datos_usr" placeholder="" required>
@@ -468,25 +472,28 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-6">   
                   <label for="datos_usr" class="form-label">Lugar Nacimiento:</label>
-                    <input type="text" class="form-control" id="lugarNacimiento" name="datos_usr" placeholder="Lugar de Nacimiento" required>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="lugarNacimiento" name="datos_usr" placeholder="Lugar de Nacimiento" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <label for="edoCivil" class="form-label">Estado Civil:</label>
-                    <select class="form-select" id="edoCivil" aria-label="Default select example">
+                    <select class="form-select" id="edoCivil" aria-label="Default select example" required>
                       <option value="0" selected>Selecciona...</option>
-                      <option value="Solter@">Solter@</option>
-                      <option value="Casad@">Casad@</option>
-                      <option value="Viud@">Viud@</option>
-                      <option value="Divorciad@">Divorciad@</option>
+                      <option value="Soltero(a)">Soltero(a)</option>
+                      <option value="Casado(a)">Casado(a)</option>
+                      <option value="Viudo(a)">Viudo(a)</option>
+                      <option value="Divorciado(a)">Divorciado(a)</option>
                       <option value="Unión_Libre">Unión Libre</option>
                     </select>
+                    <div class="invalid-feedback">
+                      * Campo requerido.
+                    </div>
                   </div>
                   <div class="col-sm-5">
                     <label for="datos_pc" class="form-label">Domicilio:</label>
-                    <input type="text" class="form-control" id="domicilio" name="datos_pc" placeholder="Nombre de la calle o vialidad" required>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="domicilio" name="datos_pc" placeholder="Nombre de la calle o vialidad" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
@@ -500,11 +507,11 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-2">
                     <label for="datos_usr" class="form-label">Núm. Interior</label>
-                    <input type="text" class="form-control" id="numInt" name="datos_usr" placeholder="# Interior">
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="numInt" name="datos_usr" placeholder="# Interior">
                   </div>
                   <div class="col-sm-3">
                     <label for="datos_pc" class="form-label">Tipo de Vialidad:</label>
-                    <select class="form-select" id="tipoVialidad" onfocus="catTipoVialidades()" aria-label="Default select example">
+                    <select class="form-select" id="tipoVialidad" onfocus="catTipoVialidades()" aria-label="Default select example" required>
 
                     </select>
                     <div class="invalid-feedback">
@@ -513,17 +520,14 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-6">
                     <label for="datos_pc" class="form-label">Colonia:</label>
-                    <input type="text" class="form-control" id="colonia" name="datos_pc" placeholder="Colonia" required>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="colonia" name="datos_pc" placeholder="Colonia" required>
                     <div class="invalid-feedback">
                       * Campo requerido.
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <label for="datos_usr" class="form-label">Entre vialidades:</label>
-                    <input type="text" class="form-control" id="entreVialidades" name="datos_usr">
-                    <div class="invalid-feedback">
-                      * Campo requerido.
-                    </div>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="entreVialidades" name="datos_usr">
                   </div>
                   <div class="col-sm-12">
                     <label for="exampleFormControlTextarea1" class="form-label">Descripción o referencia del lugar:</label>
@@ -531,7 +535,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Estado:</label>
-                    <select class="form-select" id="estadosList" oninput="municipiosSelect(this.value)" placeholder="Selecciona..." aria-label="Default select example">
+                    <select class="form-select" id="estadosList" onchange="municipiosSelect(this.value)" placeholder="Selecciona..." aria-label="Default select example" required>
       
                     </select>
                     <div class="invalid-feedback">
@@ -540,7 +544,7 @@ include('prcd/qc/qc.php');
                   </div>
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Municipio:</label>
-                    <select class="form-select" id="municipiosList" placeholder="Selecciona..." onchange="localidadesSelect(this.value)" required>
+                    <select class="form-select" id="municipiosList" placeholder="Selecciona..."onchange="localidadesSelect(this.value)" required>
 
 
                     </select>
@@ -548,7 +552,6 @@ include('prcd/qc/qc.php');
                       * Campo requerido.
                     </div>
                   </div>
-
                   <div class="col-sm-4">
                     <label for="exampleDataList" class="form-label">Localidad:</label>
                     <input class="form-control" list="localidadesList" id="localidades" placeholder="Buscar..." onchange="asentamientosSelect(this.value)" required>
@@ -582,83 +585,142 @@ include('prcd/qc/qc.php');
                       <span class="input-group-text" id="basic-addon1">@</span>
                       <input type="email" id="correo" class="form-control" onkeyup="javascript:this.value=this.value.toLowerCase();" placeholder="e-mail" aria-label="e-mail" aria-describedby="basic-addon1">
                     </div>
-                    <div class="invalid-feedback">
-                      * Campo requerido.
-                    </div>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <label for="datos_usr" class="form-label">Teléfono Particular:</label>
                     <input type="text" class="form-control" id="telFijo" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Teléfono particular">
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <label for="datos_usr" class="form-label">Celular:</label>
                     <input type="text" class="form-control" id="celular" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Celular">
                   </div>
+                  <div class="col-sm-2"> <!-- antes era estudia si/no -->
+                    <div class="mb-3">
+                      <label for="basic-url" class="form-label">Sabe leer y escribir?</label>
+                      <div class="input-group">
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="leer" id="leerSi" value="1" required>
+                          <label class="form-check-label" for="leerSi">Sí</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="leer" id="leerNo" value="2">
+                          <label class="form-check-label" for="leerNo">No</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="col-sm-4">
+                    <div class="mb-3">
+                      <label for="basic-url" class="form-label">Estudia?</label>
+                      <div class="input-group">
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="estudia" id="estudiaSi" value="1"  onclick="estudiaOp2(this.value)" required>
+                          <label class="form-check-label" for="estudiaSi">Sí</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-2">
+                          <input class="form-check-input" type="radio" name="estudia" id="estudiaNo" value="2" onclick="estudiaOp2(this.value)">
+                          <label class="form-check-label" for="estudiaNo">No</label>
+                        </div>
+                        <select class="form-select" id="lugarEstudia" aria-label="Default select example" required disabled>
+                          <option value="" selected>Selecciona...</option>
+                          <option value="Pública Especial">Pública Especial</option>
+                          <option value="Pública Regular">Pública Regular</option>
+                          <option value="Privada Especial">Privada Especial</option>
+                          <option value="Privada Regular">Privada Regular</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <label for="datos_usr" class="form-label">Habilidad:</label>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="habilidad" name="datos_usr" placeholder="Habilidad">
+                  </div>
+                  <div class="col-sm-3">
+                    <label for="datos_usr" class="form-label">Profesión u Oficio:</label>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="profesion" name="datos_usr" placeholder="Profesión u Oficio">
+                  </div>
+                  <div class="col-sm-2">
                     <label for="exampleDataList" class="form-label">Nivel de Escolaridad:</label>
-                    <select class="form-select" id="escolaridad" aria-label="Default select example">
-                    <option value="" selected>Selecciona...</option>
+                    <select class="form-select" id="escolaridad" onchange="estudiaOp(this.value)" aria-label="Default select example" required>
+                      <option value="" selected>Selecciona...</option>
                       <option value="Ninguno">Sin escolarizar</option>
+                      <option value="Preescolar">Preescolar</option>
                       <option value="Primaria">Primaria</option>
                       <option value="Secundaria">Secundaria</option>
                       <option value="Preparatoria">Preparatoria</option>
                       <option value="Técnica">Carrera Técnica</option>
                       <option value="Licenciatura">Licenciatura</option>
                       <option value="Posgrado">Posgrado</option>
-                      <option value="Preescolar">Preescolar</option>
-                      <option value="Especial">Escuela de Educación Especial</option>
                     </select>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-4"> <!-- antes era estudia_donde -->
+                    <label for="datos_usr" class="form-label">Nombre de la carrera:</label>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="carrera" name="carrera" placeholder="Nombre de la carrera" disabled>
+                  </div>
+                  <div class="col-sm-5"> <!-- antes era estudia si/no -->
                     <div class="mb-3">
-                      <label for="basic-url" class="form-label">Estudia:</label>
-                      <div class="input-group">
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaSi" value="2" required>
-                          <label class="form-check-label" for="estudia">Sí</label>
+                      <!-- <label for="basic-url" class="form-label"> </label> -->
+                      <div class="input-group mt-4">
+                        <div class="form-check form-check-inline mt-3">
+                          <input class="form-check-input" type="radio" name="conclusion" id="concluidoSi" value="1" required>
+                          <label class="form-check-label" for="concluidoSi">Concluída</label>
                         </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="estudiaOp(this.value)" name="estudia" id="estudiaNo" value="3">
-                          <label class="form-check-label" for="estudia">No</label>
+                        <div class="form-check form-check-inline mt-3">
+                          <input class="form-check-input" type="radio" name="conclusion" id="concluidoNo" value="2" >
+                          <label class="form-check-label" for="concluidoNo">Trunca</label>
                         </div>
-                        <input type="text" class="form-control" id="lugarEstudia" name="lugarEstudia" placeholder="Dónde estudia..." disabled>
+                        <div class="form-check form-check-inline mt-3">
+                          <input class="form-check-input" type="radio" name="conclusion" id="concluidoCur" value="3" >
+                          <label class="form-check-label" for="concluidoCur">Cursando</label>
+                        </div>
+                        <div class="form-check form-check-inline mt-3" id="divConclusionNA">
+                          <input class="form-check-input" type="radio" name="conclusion" id="concluidoNA" value="4">
+                          <label class="form-check-label" for="concluidoNA">No Aplica</label>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-sm-4">
-                    <label for="datos_usr" class="form-label">Habilidad:</label>
-                    <input type="text" class="form-control" id="habilidad" name="datos_usr" placeholder="Habilidad">
-                  </div>
-                  <div class="col-sm-4">
-                    <label for="datos_usr" class="form-label">Profesión u Oficio:</label>
-                    <input type="text" class="form-control" id="profesion" name="datos_usr" placeholder="Profesión u Oficio">
-                  </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-8">
                     <div class="mb-3">
                       <label for="basic-url" class="form-label">Trabaja:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" onclick="trabajaOp(this.value)" name="trabaja" id="trabajaSi" value="1" required>
-                          <label class="form-check-label" for="trabaja">Sí</label>
+                          <label class="form-check-label" for="trabajaSi">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="trabajaOp(this.value)" name="trabaja" id="trabajaNo" value="0">
-                          <label class="form-check-label" for="trabaja">No</label>
+                          <input class="form-check-input" type="radio" onclick="trabajaOp(this.value)" name="trabaja" id="trabajaNo" value="0" >
+                          <label class="form-check-label" for="trabajaNo">No</label>
+                          <div class="invalid-feedback">
+                            * Campo requerido.
+                          </div>
                         </div>
-                        <input type="text" class="form-control" id="lugarTrabajo" name="lugarTrabajo" placeholder="Dónde trabaja..." disabled>
+                        <select class="form-select" id="lugarTrabajo" onchange="trabajaOtro(this.value)" aria-label="Default select example" required disabled>
+                          <option value="" selected>Selecciona...</option>
+                          <option value="Iniciativa Privada">Iniciativa Privada</option>
+                          <option value="Gobierno Estatal">Gobierno Estatal</option>
+                          <option value="Gobierno Federal">Gobierno Federal</option>
+                          <option value="Gobierno Municipal">Gobierno Municipal</option>
+                          <option value="Otro">Otro</option>
+                        </select>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="lugarTrabajoOtro" name="lugarTrabajoOtro" placeholder="Especifique..." disabled>
                       </div>
                     </div>
                   </div>
-                  <div class="col-sm-2">
+                  <div class="col-sm-4">
                     <label for="basic-url" class="form-label">Ingreso mensual:</label>
                     <div class="input-group mb-3">
                       <span class="input-group-text">$</span>
-                      <input type="text" class="form-control" id="ingresoMensual" onkeypress="ValidaSoloNumeros()" aria-label="Amount (to the nearest dollar)" disabled>
-                      <span class="input-group-text">.00</span>
+                      <select class="form-select" id="ingresoMensual" aria-label="Default select example" required disabled>
+                          <option value="" selected>Selecciona...</option>
+                          <option value="1">menos de 9,999</option>
+                          <option value="2">10,000 a 14,999</option>
+                          <option value="3">15,000 a 19,999</option>
+                          <option value="4">mas de 20,000</option>
+                        </select>
                     </div>
                   </div>
-                  <br>
-                  <div class="col-sm-6">
+                  <div class="col-sm-8">
                     <div class="mb-3">
                       <label for="basic-url" class="form-label">Pertenece a alguna Asociación Civil:</label>
                       <div class="input-group">
@@ -667,42 +729,33 @@ include('prcd/qc/qc.php');
                           <label class="form-check-label" for="inlineRadio1">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="asociacionOp(this.value)" name="asociacion" id="asociacionNo" value="0">
+                          <input class="form-check-input" type="radio" onclick="asociacionOp(this.value)" name="asociacion" id="asociacionNo" value="0" required>
                           <label class="form-check-label" for="inlineRadio2">No</label>
+                          <div class="invalid-feedback">
+                            * Campo requerido.
+                          </div>
                         </div>
-                        <input type="text" class="form-control" id="nombreAC" name="datos_usr" placeholder="Nombre de la AC..." disabled>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="nombreAC" name="datos_usr" placeholder="Nombre de la AC..." disabled>
                       </div>
                     </div>
                   </div>
+                  <br>
                   <div class="col-sm-6">
                     <div class="mb-3">
-                      <label for="basic-url" class="form-label">Pertenece a algún Sindicato:</label>
+                      <label for="basic-url" class="form-label">Tiene Pensión, Beca o Apoyo:</label>
                       <div class="input-group">
                         <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="sindicatoOp(this.value)" name="sindicato" id="sindicatoSi" value="1" required>
-                          <label class="form-check-label" for="sindicato">Sí</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="sindicatoOp(this.value)" name="sindicato" id="sindicatoNo" value="2">
-                          <label class="form-check-label" for="sindicato">No</label>
-                        </div>
-                        <input type="text" class="form-control" id="nombreSindicato" name="datos_usr" placeholder="Nombre del Sindicato..." disabled>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="mb-3">
-                      <label for="basic-url" class="form-label">Pensionado:</label>
-                      <div class="input-group">
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="pensionOp(this.value)" name="pension" id="pensionSi" value="1">
+                          <input class="form-check-input" type="radio" onclick="pensionOp(this.value)" name="pension" id="pensionSi" value="1" required>
                           <label class="form-check-label" for="inlineRadio1">Sí</label>
                         </div>
                         <div class="form-check form-check-inline mt-2">
                           <input class="form-check-input" type="radio" onclick="pensionOp(this.value)" name="pension" id="pensionNo" value="0">
                           <label class="form-check-label" for="inlineRadio2">No</label>
+                          <div class="invalid-feedback">
+                            * Campo requerido.
+                          </div>
                         </div>
-                        <input type="text" class="form-control" id="instPension" name="datos_usr" placeholder="Dónde..." disabled>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="instPension" name="datos_usr" placeholder="Dónde..." disabled>
                       </div>
                     </div>
                   </div>
@@ -728,7 +781,7 @@ include('prcd/qc/qc.php');
                   <div class="col-sm-8 mb-3">
                     <label for="exampleDataListSS" class="form-label">Tipo de Seguridad Social:</label>
                     <div class="input-group">
-                      <select class="form-select" id="seguridadsocial" onchange="seguridadOp(this.value)" aria-label="Default select example">
+                      <select class="form-select" id="seguridadsocial" onchange="seguridadOp(this.value)" aria-label="Default select example" required>
                         <option selected>Selecciona...</option>
                         <option value="IMSS">IMSS</option>
                         <option value="ISSSTE">ISSSTE</option>
@@ -736,114 +789,347 @@ include('prcd/qc/qc.php');
                         <option value="Ninguno">Sin Seguridad Social</option>
                         <option value="Otro">Otro</option>
                       </select>
+                      <div class="invalid-feedback">
+                        * Campo requerido.
+                      </div>
                       <span class="input-group-text"> Especifique: </span>
-                      <input type="text" class="form-control" id="otroSS" name="datos_usr" placeholder="Nombre de la Institución de Seguridad Social" disabled>
+                      <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="otroSS" name="datos_usr" placeholder="Nombre de la Institución de Seguridad Social" disabled>
                     </div>
                   </div>
-                  <div class="col-sm-4 mb-3">
+                  <div class="col-sm-4 ">
                     <div class="mb-3">
                       <label for="numss" class="form-label">Número de Seguridad Social:</label>
-                      <input type="text" class="form-control" id="numss" placeholder="">
+                      <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="numss" placeholder="">
                     </div>
                   </div>
+                  <div class="col-sm-5">
+                      <label for="datos_usr" class="form-label"> Pertenece a otro Grupo Vulnerable?:</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="grupoSearch" onfocus="buscarGrupo()" aria-label="Buscar...">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                      </div>
+                      <select class="form-select" id="grupos" onclick="addG(this.value)" onselect="grupoOp(this.value)" multiple aria-label="multiple select example">
+                      </select>
+                      <div class="form-text" style="color:red" id="noesta"></div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="input-group mt-4" style="height:max-content">
+                        <span class="input-group-text mt-2">Grupos Vulnerables <br>seleccionados:</span>
+                        <div contenteditable="false" class="editable form-control mt-2" id="gruposFull">
+                          <input type="text" id="numeroG" hidden>
+                        </div>
+                        <!-- Modal para agregar grupo vulnerable -->
+                        <div class="modal fade" id="grupoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar Grupo Vulnerable</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="input-group">
+                                  <span class="input-group-text"> Grupo Vulnerable:</span>
+                                  <input type="text" class="form-control  w-50" id="grupoInput" name="grupoInput" value="" placeholder="">
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary" onclick="addInputG()" data-bs-dismiss="modal">Agregar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Termina modal para agregar grupo vulnerable -->
+                        <script>
+                          function addG(val) {
+                            var p2;
+                            var numeroG = ""; //remover al momento de programar guardar
+                            var textarea = document.getElementById("gruposFull");
+                            if (val==null || val =="" || val == 0){
+                              console.log('sin valor');
+                            } else {
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorGFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              document.getElementById(val).setAttribute('onclick',"removeG('"+val+"')");
+                              document.getElementById(val).setAttribute('name',"'"+val+"'");
+                              document.querySelector('#grupos option[value='+val+']').remove();
+                            }
+                            //remover al momento de programar guardar
+                            const paragraphs = document.querySelectorAll('[class="valorGFull"]');
+                            paragraphs.forEach(p => numeroG = numeroG + p.id +', ');
+                            numeroG = numeroG.slice(0, numeroG.length - 2);
+                            console.log(numeroG);
+                            document.getElementById('numeroG').value = numeroG;
+                          }
+                          function addInputG() {
+                            var numeroG = "";//remover al momento de programar guardar
+                            var val = document.getElementById("grupoInput").value;
+                            var textarea = document.getElementById("gruposFull");
+                            //if (val==null || val =="" || val == 0){
+                              //console.log('sin valor');
+                            //} else{
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorGFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              document.getElementById(val).setAttribute('onclick',"removeG('"+val+"')");
+                              document.getElementById("grupoInput").value ="";
+
+                              //remover al momento de programar guardar          
+                              const paragraphs = document.querySelectorAll('[class="valorGFull"]');
+                              paragraphs.forEach(p => numeroG = numeroG + p.id +', ');
+                              numeroG = numeroG.slice(0, numeroG.length - 2);
+                              console.log(numeroG);
+                              document.getElementById('numeroG').value = numeroG;
+                           // }
+                          }
+                          function removeG(val) {
+                            var numeroG = ""; //remover al momento de programar guardar
+                            console.log(val);
+                            var nameInput = document.getElementById(val).getAttribute("name");
+                            if (nameInput){
+                              document.getElementById(val).remove();
+                              $('#grupos').append("<option value='"+val+"'>"+val+"</option>");
+                            }
+                            else{
+                              console.log("Nada");
+                              document.getElementById(val).remove();
+  
+                            }
+                            //remover al momento de programar guardar
+                              const paragraphs = document.querySelectorAll('[class="valorGFull"]');
+                              paragraphs.forEach(p => numeroG = numeroG + p.id +', ');
+                              numeroG = numeroG.slice(0, numeroG.length - 2);
+                              console.log(numeroG);
+                              document.getElementById('numeroG').value = numeroG;
+                          }
+                        </script>
+                      </div>
+                      
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="mb-3">
+                        <label for="basic-url" class="form-label">Persona que brinda la información:</label>
+                        <select class="form-select" id="informante" onchange="informanteOp(this.value)" aria-label="Default select example" required>
+                          <option value="" selected>Selecciona...</option>
+                          <option value="1">Usuario</option>
+                          <option value="2">Otro</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-4" id="divNombre" hidden>
+                      <div class="mb-3">
+                        <label for="basic-url" class="form-label">Nombre completo:</label>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="nombreInformante" name="relacion" placeholder="Nombre completo" disabled>
+                      </div>
+                    </div>
+                    <div class="col-sm-5" id="divSelect" hidden>
+                      <div class="mb-3">
+                        <label for="basic-url" class="form-label">Relación que tiene con el Usuario:</label>
+                        <div class="input-group">
+                          <select class="form-select" id="informanteRel" onchange="informanteOtro(this.value)" aria-label="Default select example" disabled>
+                            <option selected>Selecciona...</option>
+                            <option value="Padre">Padre</option>
+                            <option value="Madre">Madre</option>
+                            <option value="Tutor">Tutor</option>
+                            <option value="Hermano(a)">Hermano(a)</option>
+                            <option value="Hijo(a)">Hijo(a)</option>
+                            <option value="Esposo(a)">Esposo(a)</option>
+                            <option value="Cónyuge">Cónyuge</option>
+                            <option value="Tío(a)">Tío(a)</option>
+                            <option value="Sobrino(a)">Sobrino(a)</option>
+                            <option value="Abuelo(a)">Abuelo(a)</option>
+                            <option value="Primo(a)">Primo(a)</option>
+                            <option value="Enlace_Municipal">Enlace Municipal</option>
+                            <option value="Otro(a)">Otro(a)</option>
+                          </select>
+                          <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="otraRel" name="relacion" placeholder="Especifique..." disabled>
+                        </div>
+                      </div>
+                    </div><!-- /.row -->
+                    <div class="row">
+                      <div class="col-6">
+                      <div class="mb-3">
+                        <label for="basic-url" class="form-label">Estatus del expediente:</label>
+                        <select class="form-select" id="estatus" required>
+                          <option value="" selected>Selecciona...</option>
+                          <option value="1">Creado (Activo)</option>
+                          <option value="2">Inactivo</option>
+                          <option value="3">Inactivo (Finado)</option>
+                        </select>
+                      </div>
+                      </div>
+                      <div class="col-6"></div>
+                    </div>
                   <br>
                     <div class="d-grid gap-2 mt-3">
                       <button class="btn btn-primary" type="submit" id="btnGuardarGeneral">Guardar</button>
+                      <button class="btn btn-primary" type="button" id="btnGuardarGeneralUpdate" onclick="updateGeneralesForm()" hidden>Guardar</button>
                       </form>
                     </div>
                     
                 </div>
               </div>
-              <div class="tab-pane fade" id="nav-medicos" role="tabpanel" aria-labelledby="nav-medicos-tab" tabindex="0">
-                  <div class="row g-3 ms-4 mt-3" style="width:95%">
-                    <div class="col-sm-3">
-                      <form id="medicosForm">
-                      <label for="exampleDataListDisc" class="form-label">Tipo de Discapacidad:</label>
-                      <select class="form-select" id="tipoDisc" onchange="discapacidadTab(this.value)" aria-label="Default select example">
-                      <option value="" selected>Selecciona...</option>
-                        <option value="Física">Física</option>
-                        <option value="Intelectual">Intelectual</option>
-                        <option value="Sensorial">Sensorial</option>
-                        <option value="Múltiple">Múltiple</option>
-                        <option value="Psicosocial">Psicosocial</option>
-                      </select>
-                      <div class="invalid-feedback">
-                        * Campo requerido.
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <label for="datos_usr" class="form-label">Discapacidad:</label>
-                      <input type="text" id="curp_exp" onchange="curpTemporal()" hidden>
-                      <!-- <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..."> -->
-                      <select class="form-select" id="discapacidadList" onchange="numExpUpdate(this.value)" required>
-                      
 
-                      </select>
-                      <div class="invalid-feedback">
-                        * Campo requerido.
-                      </div>
-                    </div>
-                    <div class="col-sm-2">
-                      <label for="exampleDataListDisc" class="form-label">Grado:</label>
-                      <select class="form-select" id="gradoDisc" aria-label="Default select example">
-                        <option selected>Selecciona...</option>
-                        <option value="1-Leve">1. Leve</option>
-                        <option value="2-Moderado">2. Moderado</option>
-                        <option value="3-Grave">3. Grave</option>
-                        <option value="4-Severo">4. Severo</option>
-                        <option value="5-Profundo">5. Profundo</option>
-                      </select>
-                      <div class="invalid-feedback">
-                        * Campo requerido.
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <label for="datos_usr" class="form-label">Descripción:</label>
-                      <input type="text" class="form-control" id="descDisc" name="datos_usr" placeholder="Describe la discapacidad" required>
-                      <div class="invalid-feedback">
-                        * Campo requerido.
-                      </div>
-                    </div>
-                    <div class="col-sm-8">
-                      <label for="exampleDataListCausa" class="form-label">Causa:</label>
-                      <div class="input-group">
-                        <select class="form-select" id="causaDisc" onchange="causaDiscOp(this.value)" aria-label="Default select example">
-                          <option value="" selected>Selecciona...</option>
-                          <option value="1">Nacimiento</option>
-                          <option value="4">Congénita</option>
-                          <option value="2">Accidente</option>
-                          <option value="3">Enfermedad</option>
-                          <option value="6">Adicción</option>
-                          <option value="5">Otra</option>
+            <!-- fin nuevo nav generales  -->
+            <!-- inicia nuevo nav médicos  -->
+
+            <div class="tab-pane fade" id="nav-medicos" role="tabpanel" aria-labelledby="nav-medicos-tab" tabindex="0">
+                  <div class="row g-3 ms-4 mt-3" style="width:95%">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <form id="medicosForm" onKeyPress="if(event.keyCode == 13) event.returnValue = false;">
+                        <label for="exampleDataListDisc" class="form-label">Tipo de Discapacidad:</label>
+                        <select class="form-select" id="tipoDisc" onchange="discapacidadTab(this.value)" aria-label="Default select example" required>
+                          <option selected>Selecciona...</option>
+                          <option value="Física">Física</option>
+                          <option value="Intelectual">Intelectual</option>
+                          <option value="Sensorial">Sensorial</option>
+                          <option value="Múltiple">Múltiple</option>
+                          <option value="Psicosocial">Psicosocial</option>
                         </select>
-                        <span class="input-group-text"> Especifique: </span>
-                        <input type="text" class="form-control" id="especifiqueD" name="datos_usr" placeholder="" disabled>
+                        <div class="invalid-feedback">
+                          * Campo requerido.
+                        </div>
                       </div>
-                      <div class="invalid-feedback">
-                        * Campo requerido.
+                      <div class="col-sm-3">
+                        <label for="datos_usr" class="form-label">Discapacidad:</label>
+                        <input type="text" id="curp_exp" onchange="curpTemporal()" hidden>
+                        <!-- <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..."> -->
+                        <select class="form-select" id="discapacidadList" onchange="numExpGenerator(this.value);discapacidadVA(this.value)" required>
+                        
+                        </select>
+                        <div class="invalid-feedback">
+                          * Campo requerido.
+                        </div>
+                      </div>
+                      <div class="col-sm-2">
+                        <label for="exampleDataListDisc" class="form-label">Grado:</label>
+                        <select class="form-select" id="gradoDisc" aria-label="Default select example" required>
+                          <option selected>Selecciona...</option>
+                          <option value="1-Leve">1. Leve</option>
+                          <option value="2-Moderado">2. Moderado</option>
+                          <option value="3-Grave">3. Grave</option>
+                          <option value="4-Severo">4. Severo</option>
+                          <option value="5-Profundo">5. Profundo</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          * Campo requerido.
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <label for="datos_usr" class="form-label">Descripción:</label>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="descDisc" name="datos_usr" placeholder="Describe la discapacidad" required>
+                        <div class="invalid-feedback">
+                          * Campo requerido.
+                        </div>
                       </div>
                     </div>
-                    <div class="col-sm-4">
-                    <label for="temporalidad" class="form-label">Fecha en que adquirió la discapacidad:</label>
-                      <input type="date" class="form-control" id="temporalidad" name="temporalidad" placeholder="" disabled>
+                    <div class="row">
+                      <div class="col-sm-8 mt-2">
+                        <label for="exampleDataListCausa" class="form-label">Causa:</label>
+                        <div class="input-group">
+                          <select class="form-select" id="causaDisc" onchange="causaDiscOp(this.value)" aria-label="Default select example" required>
+                            <option value="" selected>Selecciona...</option>
+                            <optgroup label="Natural">
+                              <option value="1">Nacimiento</option>
+                              <option value="4">Congénita</option>
+                              <option value="5">Genética</option>
+                              <option value="6">Hereditaria</option>
+                            </optgroup>
+                            <optgroup label="Adquirida">
+                              <option value="3">Enfermedad</option>
+                              <option value="2">Accidente</option>
+                              <option value="7">Violencia</option>
+                              <option value="8">Adicción</option>
+                            </optgroup>
+                            <optgroup label="Otra">
+                              <option value="5">Otra</option>
+                              <option value="6">Desconoce</option>
+                            </optgroup>
+                          </select>
+                          <span class="input-group-text"> Especifique: </span>
+                          <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="especifiqueD" name="datos_usr" placeholder="" required>
+                        </div>
+                      </div>
+                      <div class="col-sm-4 mt-2">
+                        <label for="temporalidad" class="form-label">Fecha en que adquirió la discapacidad:</label>
+                        <input type="date" class="form-control" id="temporalidad" name="temporalidad" placeholder="">
+                      </div>
                     </div>
-                    <div class="col-sm-6">
-                      <label for="datos_usr" class="form-label">Fuente de Valoración:</label>
-                      <select class="form-select" id="fuente" aria-label="Default select example" required>
-                      <option selected>Selecciona...</option>
-                        <option value="IMSS">IMSS</option>
-                        <option value="ISSSTE">ISSSTE</option>
-                        <option value="SSZ">SSZ</option>
-                        <option value="CREE">CREE</option>
-                        <option value="SMFA">Servicios Médicos de la Fuerza Armada</option>
-                        <option value="UBR">UBR - Unidad Básica de Rehabilitación</option>
-                      </select>
+                    <div class="row">
+                      <div class="col-sm-4 mt-3" id="visual" hidden>
+                        <label for="basic-url" class="form-label">Utiliza Sistema Braile?</label>
+                        <div class="input-group">
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="braile" id="braileSi" value="1">
+                            <label class="form-check-label" for="braile" required>Sí</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="braile" id="braileNo" value="2" >
+                            <label class="form-check-label" for="braile">No</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="braile" id="braileNA" value="0" >
+                            <label class="form-check-label" for="braile">No Aplica</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4 mt-3" id="auditiva" hidden>
+                        <label for="basic-url" class="form-label">Utiliza Lengua de Señas Mexicana?</label>
+                        <div class="input-group">
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="lsm" id="lsmSi" value="1">
+                            <label class="form-check-label" for="lsm">Sí</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="lsm" id="lsmNo" value="2" >
+                            <label class="form-check-label" for="lsm">No</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="lsm" id="lsmNA" value="0" >
+                            <label class="form-check-label" for="lsm">No Aplica</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4 mt-3" id="auditiva2" hidden>
+                        <label for="basic-url" class="form-label">Sabe lectura Labiofacial?</label>
+                        <div class="input-group">
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="labiofacial" id="labiofacialSi" value="1">
+                            <label class="form-check-label" for="labiofacial">Sí</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="labiofacial" id="labiofacialNo" value="2" >
+                            <label class="form-check-label" for="labiofacial">No</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="labiofacial" id="labiofacialNA" value="0" >
+                            <label class="form-check-label" for="labiofacial">No Aplica</label>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="col-sm-4">
-                      <label for="datos_usr" class="form-label">Fecha Valoración:</label>
-                      <input type="date" class="form-control" id="fechaValoracion" name="datos_usr" placeholder="" required>
-                      <div class="invalid-feedback">
-                        * Campo requerido.
+                    <div class="row">
+                      <div class="col-sm-6 mt-2">
+                        <label for="fuente" class="form-label">Fuente de Valoración:</label>
+                        <select class="form-select" id="fuente" aria-label="Default select example" required>
+                          <option selected>Selecciona...</option>
+                          <option value="IMSS">IMSS</option>
+                          <option value="ISSSTE">ISSSTE</option>
+                          <option value="SSZ">SSZ</option>
+                          <option value="CREE">CREE</option>
+                          <option value="SMFA">Servicios Médicos de la Fuerza Armada</option>
+                          <option value="UBR">UBR - Unidad Básica de Rehabilitación</option>
+                          <option value="Particular">Particular</option>
+                          <option value="INCLUSION">INCLUSIÓN - Psicología</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          * Campo requerido.
+                        </div>
+                      </div>
+                      <div class="col-sm-4 mt-2">
+                        <label for="datos_usr" class="form-label">Fecha Valoración:</label>
+                        <input type="date" class="form-control" id="fechaValoracion" name="datos_usr" placeholder="" required>
+                        <div class="invalid-feedback">
+                          * Campo requerido.
+                        </div>
                       </div>
                     </div>
                     <div class="col-sm-4">
@@ -852,22 +1138,22 @@ include('prcd/qc/qc.php');
                         <div class="input-group">
                           <div class="form-check form-check-inline mt-2">
                             <input class="form-check-input" type="radio" name="rehabilitacion" id="rehabilitacionSi" onclick="rehabOp(this.value)" value="1">
-                            <label class="form-check-label" for="rehabilitacion">Sí</label>
+                            <label class="form-check-label" for="rehabilitacion" required>Sí</label>
                           </div>
                           <div class="form-check form-check-inline mt-2">
-                            <input class="form-check-input" type="radio" name="rehabilitacion" id="rehabilitacionNo" onclick="rehabOp(this.value)" value="2">
+                            <input class="form-check-input" type="radio" name="rehabilitacion" id="rehabilitacionNo" onclick="rehabOp(this.value)" value="2" required>
                             <label class="form-check-label" for="rehabilitacion">No</label>
+                            <div class="invalid-feedback">
+                              * Campo requerido.
+                            </div>
                           </div>
-                          <input type="text" class="form-control" id="lugarRehab" name="rehabilitacion" placeholder="Dónde..." disabled>
+                          <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="lugarRehab" name="rehabilitacion" placeholder="Dónde..." disabled>
                         </div>
                       </div>
                     </div>
                     <div class="col-sm-2">
                       <label for="datos_usr" class="form-label">Fecha de Inicio:</label>
-                      <input type="date" class="form-control" id="fechaIni" name="fechaini" placeholder="" required disabled>
-                      <div class="invalid-feedback">
-                        * Campo requerido.
-                      </div>
+                      <input type="date" class="form-control" id="fechaIni" name="fechaini" placeholder="" disabled>
                     </div>
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label">Duración:</label>
@@ -882,7 +1168,7 @@ include('prcd/qc/qc.php');
                     <br>
                     <div class="col-sm-2">
                       <label for="datos_usr" class="form-label"> Tipo de Sangre:</label>
-                      <select class="form-select" id="tipoSangre" aria-label="Default select example">
+                      <select class="form-select" id="tipoSangre" aria-label="Default select example" required>
                         <option selected>Selecciona...</option>
                         <option value="1">A Rh +</option>
                         <option value="2">A Rh -</option>
@@ -893,35 +1179,55 @@ include('prcd/qc/qc.php');
                         <option value="7">O Rh +</option>
                         <option value="8">O Rh -</option>
                       </select>
+                      <div class="invalid-feedback">
+                        * Campo requerido.
+                      </div>
                     </div>
                     <div class="col-sm-8">
                       <label for="exampleDataListCausa" class="form-label">¿Tiene cirugías?</label>
                       <div class="input-group">
-                        <select class="form-select" id="cirugia" onchange="cirugiasOp(this.value)">
+                        <select class="form-select" id="cirugia" onchange="cirugiasOp(this.value)" required>
                           <option selected>Selecciona...</option>
                           <option value="1">Sí</option>
                           <option value="2">No</option>
                         </select>
+                        <div class="invalid-feedback">
+                          * Campo requerido.
+                        </div>
                         <span class="input-group-text"> Tipo de Cirugía: </span>
-                        <input type="text" class="form-control  w-50" id="tipoCirugia" name="datos_usr" placeholder="" disabled>
-                      </div>
-                      <div class="invalid-feedback">
-                        * Campo requerido.
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control  w-50" id="tipoCirugia" name="datos_usr" placeholder="" disabled>
                       </div>
                     </div>
                     <div class="col-sm-10">
                       <label for="exampleDataListCausa" class="form-label">¿Usa prótesis u órtesis?</label>
                       <div class="input-group">
-                        <select class="form-select" id="protesis" onchange="protesisOp(this.value)">
+                        <select class="form-select" id="protesis" onchange="protesisOp(this.value)" required>
                           <option selected>Selecciona...</option>
                           <option value="1">Sí</option>
                           <option value="2">No</option>
                         </select>
+                        <div class="invalid-feedback">
+                          * Campo requerido.
+                        </div>
                         <span class="input-group-text"> ¿De qué tipo? </span>
-                        <input type="text" class="form-control  w-50" id="tipoProtesis" name="datos_usr" placeholder="" disabled>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control  w-50" id="tipoProtesis" name="datos_usr" placeholder="" disabled>
                       </div>
-                      <div class="invalid-feedback">
-                        * Campo requerido.
+                    </div>
+
+                    <div class="col-sm-10">
+                      <label for="exampleDataListCausa" class="form-label">Requiere asistencia o supervisión?</label>
+                      <div class="input-group">
+                        <select class="form-select" id="asistencia" required>
+                          <option selected>Selecciona...</option>
+                          <option value="1">Todo el tiempo</option>
+                          <option value="2">En tareas específicas</option>
+                          <option value="3">Nunca</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          * Campo requerido.
+                        </div>
+                        <!-- <span class="input-group-text"> ¿De qué tipo? </span>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="tipoProtesis" name="datos_usr" placeholder="" disabled> -->
                       </div>
                     </div>
                     <br>
@@ -947,7 +1253,7 @@ include('prcd/qc/qc.php');
                           <div class="modal-body">
                             <div class="input-group">
                               <span class="input-group-text"> Alergia:</span>
-                              <input type="text" class="form-control  w-50" id="alergiaInput" name="alergiaInput" value="" placeholder="">
+                              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control  w-50" id="alergiaInput" name="alergiaInput" value="" placeholder="">
                             </div>
                           </div>
                           <div class="modal-footer">
@@ -980,7 +1286,7 @@ include('prcd/qc/qc.php');
                               //remover al momento de programar guardar
                               const paragraphs = document.querySelectorAll('[class="valorFull"]');
                               paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
-                              numeroA = numeroA.substr(0, numeroA.length - 2);
+                              numeroA = numeroA.slice(0, numeroA.length - 2);
                               console.log(numeroA);
                               document.getElementById('numeroA').value = numeroA;
                             }
@@ -1101,12 +1407,12 @@ include('prcd/qc/qc.php');
                             //if (val==null || val =="" || val == 0){
                               //console.log('sin valor');
                             //} else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorEFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeB('"+val+"')");
                               document.getElementById("enfermedadInput").value ="";
 
                               //remover al momento de programar guardar          
-                              const paragraphs = document.querySelectorAll('[class="valorFull"]');
+                              const paragraphs = document.querySelectorAll('[class="valorEFull"]');
                               paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
                               numeroB = numeroB.slice(0, numeroB.length - 2);
                               console.log(numeroB);
@@ -1201,12 +1507,12 @@ include('prcd/qc/qc.php');
                             //if (val==null || val =="" || val == 0){
                               //console.log('sin valor');
                             //} else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorMFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeC('"+val+"')");
                               document.getElementById("medicamentoInput").value ="";
 
                               //remover al momento de programar guardar          
-                              const paragraphs = document.querySelectorAll('[class="valorFull"]');
+                              const paragraphs = document.querySelectorAll('[class="valorMFull"]');
                               paragraphs.forEach(p => numeroC = numeroC + p.id +', ');
                               numeroC = numeroC.slice(0, numeroC.length - 2);
                               console.log(numeroC);
@@ -1238,397 +1544,416 @@ include('prcd/qc/qc.php');
                     <br>
                     <div class="d-grid gap-2 mt-3">
                       <button class="btn btn-primary" type="submit" id="guardarMedicosbtn">Guardar</button>
+                      <button class="btn btn-primary" type="button" id="guardarMedicosbtnUpdate" onclick="updateDatosMedicos()" hidden>Guardar</button>
                       </form>
                     </div>
                   </div>
                 </div>
+                <!-- fin datos médicos -->
+                <!-- inicia vivienda -->
                 <div class="tab-pane fade" id="nav-vivienda" role="tabpanel" aria-labelledby="nav-vivienda-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">
                     <!-- Vivienda -->
-                    <div class="col-sm-7">
-                      <form id="Formvivienda">
-                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Vivienda:</label>
-                      <div class="input-group" style="height:max-content">
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="viviendaPro" value="1">
-                          <label class="form-check-label" for="vivienda">Propia</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="viviendaPre" value="2">
-                          <label class="form-check-label" for="vivienda">Prestada</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="viviendaRe" value="3">
-                          <label class="form-check-label" for="vivienda">Rentada</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <div class="input-group mb-3 w-75">
-                            <span class="input-group-text">$</span>
-                            <input type="text" class="form-control" id="montoVivienda" onkeypress="ValidaSoloNumeros()" placeholder="Monto de Renta" aria-label="Amount (to the nearest dollar)" disabled>
-                            <span class="input-group-text">.00</span>
+                    <form id="Formvivienda">
+                    <div class="row">
+                      <div class="col-sm-5">
+                        <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Vivienda:</label>
+                        <div class="input-group mb-3" style="height:max-content">
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="viviendaPro" value="1" required>
+                            <label class="form-check-label" for="viviendaPro">Propia</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="viviendaPre" value="2">
+                            <label class="form-check-label" for="viviendaPre">Prestada</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="viviendaOp(this.value)" name="vivienda" id="viviendaRe" value="3">
+                            <label class="form-check-label" for="viviendaRe">Rentada</label>
                           </div>
                         </div>
                       </div>
+                      <div class="col-sm-6" id="propiedad" hidden>
+                        <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Está a su nombre:</label>
+                        <div class="input-group mb-3" style="height:max-content">
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="viviendaProp" id="viviendaPropSi" value="1" >
+                            <label class="form-check-label" for="viviendaPropSi">Sí</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="viviendaProp" id="viviendaPropNo" value="2" >
+                            <label class="form-check-label" for="viviendaPropNo">No</label>
+                          </div>
+                          <!-- <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="viviendaProp" id="viviendaPropNA" value="0" disabled>
+                            <label class="form-check-label" for="viviendaPropNA">No Aplica</label>
+                          </div> -->
+                        </div>
+                      </div>
                     </div>
-                    <div class="col-sm-5">
-                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> La está págando:</label>
-                      <div class="input-group" style="height:max-content">
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="viviendaDOp(this.value)" name="viviendaP" id="viviendaPSi" value="1">
-                          <label class="form-check-label" for="viviendaP">Sí</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="viviendaDOp(this.value)" name="viviendaP" id="viviendaPNo" value="2">
-                          <label class="form-check-label" for="viviendaP">No</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <div class="input-group mb-3 w-75">
-                            <span class="input-group-text">$</span>
-                            <input type="text" class="form-control" id="costoVivienda" onkeypress="ValidaSoloNumeros()" placeholder="Monto de Pago" aria-label="Amount (to the nearest dollar)" disabled>
-                            <span class="input-group-text">.00</span>
+                    <div class="row">
+                      <div class="col-sm-8">
+                        <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Tipo de vivienda:</label>
+                        <div class="input-group">
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaC" value="1" required>
+                            <label class="form-check-label" for="tipoVivienda">Casa</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaD" value="2">
+                            <label class="form-check-label" for="tipoVivienda">Departamento</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaV" value="3">
+                            <label class="form-check-label" for="tipoVivienda">Vecindad</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaO" value="4">
+                            <label class="form-check-label" for="tipoVivienda">Otra:</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-control" id="viviendaOtro" type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Especifique..." disabled>
                           </div>
                         </div>
                       </div>
                     </div>
                     <!-- Vivienda -->
-                    <!-- características -->
-                    <div class="col-sm-12">
-                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Tipo de vivienda:</label>
-                      <div class="input-group">
-                        <div class="form-check form-check-inline mt-2">
-                          
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaC" value="1" required>
-                          <label class="form-check-label" for="tipoVivienda">Casa</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaD" value="2">
-                          <label class="form-check-label" for="tipoVivienda">Departamento</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaV" value="3">
-                          <label class="form-check-label" for="tipoVivienda">Vecindad</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="tipoViviendaOp(this.value)" name="tipoVivienda" id="tipoViviendaO" value="4">
-                          <label class="form-check-label" for="tipoVivienda">Otra:</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-control" id="viviendaOtro" type="text" placeholder="Especifique..." disabled>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- características -->
                     <!-- habitaciones -->
-                    <div class="col-sm-12">
-                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Número de habitaciones:</label>
-                      <div class="input-group">
-                        <div class="form-check form-check-inline">
-                          <input class="form-control mt-2" type="number" id="numHabitaciones" onkeypress="ValidaSoloNumeros()" placeholder="# Habitaciones">
-                        </div>
-                        <div class="form-check mt-3">
-                          <input class="form-check-input" type="checkbox" onclick="roomsCheck()" id="checkAllRooms">
-                          <label class="form-check-label" for="flexCheckDefault2">
-                            Selecciona todo
-                          </label>
-                        </div>
-                        <div class="form-check form-check-inline mt-1">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="cocina">
-                            <label class="form-check-label" for="flexCheckDefault1">
-                              Cocina
-                            </label>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <label for="basic-url" class="form-label mt-2"><i class="bi bi-house"></i> Número de habitaciones:</label>
+                        <div class="input-group">
+                          <div class="form-check form-check-inline">
+                            <input class="form-control mt-2" type="number" id="numHabitaciones" onkeypress="ValidaSoloNumeros()" placeholder="# Dormitorios">
                           </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="sala">
+                          <div class="form-check mt-3">
+                            <input class="form-check-input" type="checkbox" onclick="roomsCheck();roomsCheck2();" id="checkAllRooms">
                             <label class="form-check-label" for="flexCheckDefault2">
-                              Sala
+                              Selecciona todo
                             </label>
                           </div>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <div class="form-check mt-1">
-                            <input class="form-check-input" type="checkbox" id="bath">
-                            <label class="form-check-label" for="flexCheckDefault3">
-                              Baño
-                            </label>
+                          <div class="form-check form-check-inline mt-1">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="roomsCheck2()" id="cocina">
+                              <label class="form-check-label" for="flexCheckDefault1">
+                                Cocina
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input mt-2" type="checkbox" onchange="roomsCheck2()" id="sala">
+                              <label class="form-check-label" for="flexCheckDefault2">
+                                Sala
+                              </label>
+                            </div>
                           </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" onclick="otrosRoom()" id="otroRoom">
-                            <label class="form-check-label" for="flexCheckDefault4">
-                              Otros:
-                            </label>
+                          <div class="form-check form-check-inline mt-1">
+                            <div class="form-check">
+                              <div class="input-group input-group-sm">
+                                <input class="form-check-input mt-1" onchange="bathSel();roomsCheck2()" type="checkbox" id="bath">
+                                <label class="form-check-label ms-3" for="flexCheckDefault3">
+                                  Baño(s)
+                                </label>
+                                <input type="text" id="bathNum" class="form-control ms-4" style="width: 80px;" aria-label="Sizing example input" placeholder="# Baños" disabled>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input ms-1" type="radio" name="baths" id="interior" value="1" disabled>
+                                  <label class="form-check-label" for="baths">Interior</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="baths" id="exterior" value="2" disabled>
+                                  <label class="form-check-label" for="baths">Exterior</label>
+                                </div>
+                              </div> 
+                            </div>
+                            <div class="form-check">
+                              <div class="input-group input-group-sm mb-3">
+                                <input class="form-check-input" type="checkbox" onclick="otrosRoom()" id="otroRoom">
+                                <label class="form-check-label ms-3" for="otroRoom">
+                                  Otros:
+                                </label>
+                                <input class="form-control ms-3" type="text" id="otroRoomInput" placeholder="Especifique..." disabled>
+                              </div>
+                            </div>
                           </div>
+                          
                         </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-control" type="text" id="otroRoomInput" placeholder="Especifique..." disabled>
-                        </div>
-                        
                       </div>
                     </div>
                     <!-- habitaciones -->
-                    
+                    <div class="row">
                     <!-- Vivienda -->
-                    <div class="col-sm-12">
-                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Techo:</label>
-                      <div class="input-group" style="height:max-content">
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="lamina" value="1" required>
-                          <label class="form-check-label" for="techo">Lamina</label>
+                      <div class="col-sm-12">
+                        <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Techo:</label>
+                        <div class="input-group" style="height:max-content">
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="lamina" value="1" required>
+                            <label class="form-check-label" for="techo">Lamina</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="cemento" value="2">
+                            <label class="form-check-label" for="techo">Cemento</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="otroTecho" value="3">
+                            <label class="form-check-label" for="techo">Otro</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-control" type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" id="otroTechoInput" placeholder="Especifique..." disabled>
+                          </div>
                         </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="cemento" value="2">
-                          <label class="form-check-label" for="techo">Cemento</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="techoOp(this.value)" name="techo" id="otroTecho" value="3">
-                          <label class="form-check-label" for="techo">Otro</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-control" type="text" id="otroTechoInput" placeholder="Especifique..." disabled>
-                        </div>
-                        
                       </div>
                     </div>
                     <!-- Vivienda -->
                     <!-- Pared -->
-                    <div class="col-sm-12">
-                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Pared:</label>
-                      <div class="input-group" style="height:max-content">
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="block" value="1" required>
-                          <label class="form-check-label" for="pared">Block</label>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Pared:</label>
+                        <div class="input-group" style="height:max-content">
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="block" value="1" required>
+                            <label class="form-check-label" for="pared">Block</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="ladrillo" value="2" >
+                            <label class="form-check-label" for="pared">Ladrillo</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="adobe" value="3" >
+                            <label class="form-check-label" for="pared">Adobe</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="otroPared" value="4" >
+                            <label class="form-check-label" for="pared">Otro</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-control" id="otroParedInput" type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Especifique..." disabled>
+                          </div>
+                          
                         </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="ladrillo" value="2">
-                          <label class="form-check-label" for="pared">Ladrillo</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="adobe" value="3">
-                          <label class="form-check-label" for="pared">Adobe</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" name="pared" onclick="paredOp(this.value)" id="otroPared" value="4">
-                          <label class="form-check-label" for="pared">Otro</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-control" id="otroParedInput" type="text" placeholder="Especifique..." disabled>
-                        </div>
-                        
                       </div>
                     </div>
                     <!-- Vivienda -->
-                    <hr>
+                    
                     <!-- servicios básicos -->
-                    <div class="col-sm-12">
-                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Servicios básicos:</label>
-                      <div class="input-group">
-                        <div class="form-check mt-2">
-                          <input class="form-check-input" onclick="servicios()" type="checkbox"  id="checkAllServices">
-                          <label class="form-check-label" for="flexCheckDefault2">
-                            Selecciona todo
-                          </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox"  id="agua">
-                            <label class="form-check-label" for="flexCheckDefault1">
-                              Agua potable
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox"  id="luz">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <label for="basic-url" class="form-label mt-3"><i class="bi bi-house"></i> Servicios básicos:</label>
+                        <div class="input-group">
+                          <div class="form-check mt-2">
+                            <input class="form-check-input" onclick="servicios(); servicesCheck()" type="checkbox"  id="checkAllServices">
                             <label class="form-check-label" for="flexCheckDefault2">
-                              Luz eléctrica
+                              Selecciona todo
                             </label>
                           </div>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox"  id="drenaje">
-                            <label class="form-check-label" for="flexCheckDefault3">
-                              Drenaje
-                            </label>
+                          <div class="form-check form-check-inline">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="servicesCheck()" id="agua">
+                              <label class="form-check-label" for="agua">
+                                Agua potable
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="servicesCheck()" id="luz">
+                              <label class="form-check-label" for="luz">
+                                Luz eléctrica
+                              </label>
+                            </div>
                           </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox"  id="cable">
-                            <label class="form-check-label" for="flexCheckDefault4">
-                              Cable
-                            </label>
+                          <div class="form-check form-check-inline">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="servicesCheck()" id="drenaje">
+                              <label class="form-check-label" for="drenaje">
+                                Drenaje
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="servicesCheck()" id="gas">
+                              <label class="form-check-label" for="gas">
+                                Gas
+                              </label>
+                            </div>
                           </div>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox"  id="internet">
-                            <label class="form-check-label" for="flexCheckDefault3">
-                              Internet
-                            </label>
+                          <div class="form-check form-check-inline">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="servicesCheck()" id="internet">
+                              <label class="form-check-label" for="internet">
+                                Internet
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="servicesCheck()" id="checkCelular">
+                              <label class="form-check-label" for="checkCelular">
+                                Celular
+                              </label>
+                            </div>
                           </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox"  id="checkCelular">
-                            <label class="form-check-label" for="flexCheckDefault4">
-                              Celular
-                            </label>
+                          <div class="form-check form-check-inline">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="servicesCheck()" id="carro">
+                              <label class="form-check-label" for="carro">
+                                Carro
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="servicesCheck()" id="telefono">
+                              <label class="form-check-label" for="telefono">
+                                Teléfono
+                              </label>
+                            </div>
                           </div>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox"  id="carro">
-                            <label class="form-check-label" for="flexCheckDefault3">
-                              Carro
-                            </label>
+                          <div class="form-check form-check-inline">
+                            <div class="form-check mt-2">
+                              <input class="form-check-input" type="checkbox" onclick="otroServicio()" id="otroServicios">
+                              <label class="form-check-label" for="otroServicios">
+                                Otro:
+                              </label>
+                            </div>
                           </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox"  id="gas">
-                            <label class="form-check-label" for="flexCheckDefault4">
-                              Gas
-                            </label>
+                          <div class="form-check form-check-inline">
+                            <input class="form-control" id="otroServiciosInput" type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Especifique..." disabled>
                           </div>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox"  id="telefono">
-                            <label class="form-check-label" for="flexCheckDefault3">
-                              Teléfono
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" onclick="otroServicio()" id="otroServicios">
-                            <label class="form-check-label" for="otroServicios">
-                              Otros:
-                            </label>
-                          </div>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-control" id="otroServiciosInput" type="text" placeholder="Especifique..." disabled>
                         </div>
                       </div>
                     </div>
                     <!-- servicios básicos -->
                     <!-- electrodomésticos -->
-                    <div class="col-sm-12 col-md-12">
-                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Electrodomésticos</label>
-                      <div class="input-group">
-                      <div class="form-check mt-3">
-                          <input class="form-check-input" type="checkbox" onclick="electrodomesticos()" value="" id="checkAllElectro">
-                          <label class="form-check-label" for="flexCheckDefault2">
-                            Selecciona todo
-                          </label>
+                    <div class="row">
+                      <div class="col-sm-12 col-md-12">
+                        <label for="basic-url" class="form-label mt-3"><i class="bi bi-house"></i> Electrodomésticos</label>
+                        <div class="input-group">
+                        <div class="form-check mt-3">
+                            <input class="form-check-input" type="checkbox" onclick="electrodomesticos();electroCheck()" value="" id="checkAllElectro">
+                            <label class="form-check-label" for="checkElectro">
+                              Selecciona todo
+                            </label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="electroCheck()" id="tv">
+                              <label class="form-check-label" for="tv">
+                                TV o Smart-TV
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="electroCheck()" id="lavadora">
+                              <label class="form-check-label" for="lavadora">
+                                Lavadora
+                              </label>
+                            </div>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="electroCheck()" id="dispositivo">
+                              <label class="form-check-label" for="dispositivo">
+                                Dispositivo Inteligente
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="electroCheck()" id="microondas">
+                              <label class="form-check-label" for="microondas">
+                                Microondas
+                              </label>
+                            </div>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="electroCheck()" id="computadora">
+                              <label class="form-check-label" for="computadora">
+                                Computadora
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="electroCheck()" id="licuadora">
+                              <label class="form-check-label" for="licuadora">
+                                Licuadora
+                              </label>
+                            </div>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="electroCheck()" id="refri">
+                              <label class="form-check-label" for="refri">
+                                Refrigerador
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onchange="electroCheck()" id="estufa">
+                              <label class="form-check-label" for="estufa">
+                                Estufa
+                              </label>
+                            </div>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" onclick="otroElectros()" id="otroElectro">
+                              <label class="form-check-label" for="otroElectro">
+                                Otros:
+                              </label>
+                            </div>
+                            <input class="form-control" id="otroElectroInput" type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Especifique..." disabled>
+                          </div>                        
                         </div>
-                        <div class="form-check form-check-inline">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="tv">
-                            <label class="form-check-label" for="flexCheckDefault1">
-                              T.V.
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="lavadora">
-                            <label class="form-check-label" for="flexCheckDefault2">
-                              Lavadora
-                            </label>
-                          </div>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="estereo">
-                            <label class="form-check-label" for="flexCheckDefault3">
-                              Sistema de Sonido
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="microondas">
-                            <label class="form-check-label" for="flexCheckDefault4">
-                              Microondas
-                            </label>
-                          </div>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="computadora">
-                            <label class="form-check-label" for="flexCheckDefault3">
-                              Computadora
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="licuadora">
-                            <label class="form-check-label" for="flexCheckDefault4">
-                              Licuadora
-                            </label>
-                          </div>
-                        </div>
-                        <div class="form-check form-check-inline">
-                        <div class="form-check" hidden>
-                            <input class="form-check-input" type="checkbox" id="dvd">
-                            <label class="form-check-label" for="flexCheckDefault3">
-                              Reproductor Video
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="refri">
-                            <label class="form-check-label" for="flexCheckDefault3">
-                              Refrigerador
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="estufa">
-                            <label class="form-check-label" for="flexCheckDefault4">
-                              Estufa
-                            </label>
-                          </div>
-                        </div>
-                        <div class="form-check form-check-inline">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" onclick="otroElectros()" id="otroElectro">
-                            <label class="form-check-label" for="flexCheckDefault4">
-                              Otros:
-                            </label>
-                          </div>
-                          <input class="form-control" id="otroElectroInput" type="text" placeholder="Especifique..." disabled>
-                        </div>
-                        <div class="form-check form-check-inline">
-                        </div>
-                        
                       </div>
                     </div>
                     <!-- electrodomésticos -->
                     <!-- dependencia económica -->
-                    <div class="col-sm-12">
-                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Personas que dependen económicamente de usted:</label>
-                      <div class="input-group">
-                        <div class="form-check form-check-inline">
-                            <input class="form-control" type="number" id="dependenciaEconomica" onkeypress="ValidaSoloNumeros()" placeholder="Personas que dependen económicamente">
-                        </div>
-                      </div>
-                      <br>
-                      <label for="basic-url" class="form-label"><i class="bi bi-house"></i> ¿Tiene deudas?:</label>
-                      <div class="input-group">
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" id="deudasSi" onclick="deudasOp(this.value)" type="radio" name="deudas" value="1" required>
-                          <label class="form-check-label" for="deudas1">Sí</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                          <input class="form-check-input" type="radio" onclick="deudasOp(this.value)"  name="deudas" id="deudasNo" value="0">
-                          <label class="form-check-label" for="deudas2">No</label>
-                        </div>
-                        <div class="form-check form-check-inline mb-3">
-                          <div class="input-group w-75">
-                            <span class="input-group-text">$</span>
-                            <input type="text" class="form-control" id="deudasInput" onkeypress="ValidaSoloNumeros()" aria-label="Monto" placeholder="Monto Deuda" disabled>
-                            <span class="input-group-text">.00</span>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="mb-3 mt-3">
+                          <label for="basic-url" class="form-label">Es dependiente económico?</label>
+                          <div class="input-group">
+                            <div class="form-check form-check-inline mt-2">
+                              <input class="form-check-input" type="radio" onclick="dependienteOp(this.value)" name="dependienteEco" id="dependienteSi" value="1" required>
+                              <label class="form-check-label" for="dependienteSi">Sí</label>
+                            </div>
+                            <div class="form-check form-check-inline mt-2">
+                              <input class="form-check-input" type="radio" onclick="dependienteOp(this.value)" name="dependienteEco" id="dependienteNo" value="0" >
+                              <label class="form-check-label" for="dependienteNo">No</label>
+                              <div class="invalid-feedback">
+                                * Campo requerido.
+                              </div>
+                            </div>
+                            <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="dependienteEsp" name="dependienteEco" placeholder="Especifique de quién es dependiente económico(a)" disabled>
                           </div>
                         </div>
                       </div>
-                      
+                      <!-- <div class="col-sm-1">
+
+                      </div> -->
+                      <div class="col-sm-4">
+                        <div class="mb-3 mt-3">
+                          <label for="basic-url" class="form-label">Tiene dependientes económicos?</label>
+                          <div class="input-group">
+                            <div class="form-check form-check-inline mt-2">
+                              <input class="form-check-input" type="radio" onclick="dependientesOp(this.value)" name="dependientesEco" id="dependientesSi" value="1" required>
+                              <label class="form-check-label" for="dependienteSi">Sí</label>
+                            </div>
+                            <div class="form-check form-check-inline mt-2">
+                              <input class="form-check-input" type="radio" onclick="dependientesOp(this.value)" name="dependientesEco" id="dependientesNo" value="0" >
+                              <label class="form-check-label" for="dependienteNo">No</label>
+                              <div class="invalid-feedback">
+                                * Campo requerido.
+                              </div>
+                            </div>
+                            <input type="number" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-50" id="dependientes" name="dependendientes" placeholder="# dependientes" disabled>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="col-sm-1">
+
+                      </div> -->
                     </div>
                     <!-- dependencia económica -->
                     <br>
                     <div class="d-grid gap-2 mt-3">
-                      <button class="btn btn-primary" type="submit" onclick="cambiarTab" id="guardarBTNpadron">Guardar</button>
-                      <!-- <button class="btn btn-primary" type="submit">Guardar</button> -->
+                      <button class="btn btn-primary" type="submit" id="guardarBTNpadron">Guardar</button>
+                      <button class="btn btn-primary" type="button" onclick="updateVivienda()" id="guardarBTNVivienda1"  hidden>Guardar</button>
+                      
                       </form>
                     </div>
                   </div>
                 </div>
+
+                <!-- fin vivienda -->
 
                 <div class="tab-pane fade" id="nav-integracion" role="tabpanel" aria-labelledby="nav-integracion-tab" tabindex="0">
                   <div class="row g-3 ms-4 mt-3 row-cols-1" style="width:95%">

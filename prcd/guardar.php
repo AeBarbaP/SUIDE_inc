@@ -108,7 +108,8 @@ $sqlinsert= "INSERT INTO datos_generales (
     seguridad_social,
     seguridad_social_otro,
     numSS,
-    gpo_vulnerable
+    gpo_vulnerable,
+    estatus
     )
 VALUES(
     '$fecha_registro',
@@ -159,7 +160,8 @@ VALUES(
     '$seguridadsocial',
     '$otroSS',
     '$numSS',
-    '$gruposFull'
+    '$gruposFull',
+    1
 )";
 
 $resultado= $conn->query($sqlinsert);

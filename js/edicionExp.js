@@ -10,7 +10,21 @@ function buscarExpediente12(x){
         success: function(response)
         {
             var jsonData = JSON.parse(JSON.stringify(response));
+            var texto;
             var success = jsonData.success;
+            var estatus = jsonData.estatus;
+            if(estatus == 1){
+                texto = '<i class="bi bi-person-up"></i>Creado (Activo)';
+            }
+            else if(estatus == 2){
+                texto = '<i class="bi bi-person-down"></i>Inactivo';
+            }
+            else if(estatus == 3){
+                texto = '<i class="bi bi-person-down"></i>Inactivo (Finado)';
+            }
+            else{
+                texto = "No tienes estatus";
+            }
 
             if(success == 1){
                 document.getElementById('nada').hidden = true;
@@ -32,6 +46,7 @@ function buscarExpediente12(x){
                 document.getElementById('nombreExp1').innerText = jsonData.nombre;
                 document.getElementById('apellidoPExp1').innerText = jsonData.apellido_p;
                 document.getElementById('apellidoMExp1').innerText = jsonData.apellido_m;
+                document.getElementById('estatusExpediente').innerText = texto;
             }
             else if (success == 0){
                 document.getElementById('nada').hidden = true;
