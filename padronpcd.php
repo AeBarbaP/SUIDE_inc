@@ -933,7 +933,7 @@ include('prcd/qc/qc.php');
                             <optgroup label="Natural">
                               <option value="1">Nacimiento</option>
                               <option value="4">Congénita</option>
-                              <option value="5">Genética</option>
+                              <option value="9">Genética</option>
                               <option value="6">Hereditaria</option>
                             </optgroup>
                             <optgroup label="Adquirida">
