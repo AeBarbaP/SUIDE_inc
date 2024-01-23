@@ -283,9 +283,9 @@ if ($causa == 1){
   $accidente = "";
   $violencia = "";
   $adiccion = "";
-  $otracausa = "";
+  $otra = "";
   $desconoce = "";
-  $causaotrad = "";
+  $espedifique = $rowSqlMedicos['causa_otro'];
 }
 else if ($causa == 2){ 
   $nacimiento = "";
@@ -296,9 +296,9 @@ else if ($causa == 2){
   $accidente = $check;
   $violencia = "";
   $adiccion = "";
-  $otracausa = "";
+  $otra = "";
   $desconoce = "";
-  $causaotrad = "";
+  $espedifique = $rowSqlMedicos['causa_otro'];
 }
 else if ($causa == 3){
   $nacimiento = "";
@@ -309,9 +309,9 @@ else if ($causa == 3){
   $accidente = "";
   $violencia = "";
   $adiccion = "";
-  $otracausa = "";
+  $otra = "";
   $desconoce = "";
-  $causaotrad = "";
+  $espedifique = $rowSqlMedicos['causa_otro'];
 }
 else if($causa == 4){
   $nacimiento = "";
@@ -322,9 +322,9 @@ else if($causa == 4){
   $accidente = "";
   $violencia = "";
   $adiccion = "";
-  $otracausa = "";
+  $otra = "";
   $desconoce = "";
-  $causaotrad = "";
+  $espedifique = $rowSqlMedicos['causa_otro'];
 }
 else if ($causa == 5){
   $nacimiento = "";
@@ -335,9 +335,9 @@ else if ($causa == 5){
   $accidente = "";
   $violencia = "";
   $adiccion = "";
-  $otracausa = $check;
+  $otra = $check;
   $desconoce = "";
-  $causaotrad = "";
+  $espedifique = $rowSqlMedicos['causa_otro'];
 }
 else if($causa == 6){
   $nacimiento = "";
@@ -348,9 +348,9 @@ else if($causa == 6){
   $accidente = "";
   $violencia = "";
   $adiccion = "";
-  $otracausa = "";
+  $otra = "";
   $desconoce = $check;
-  $causaotrad = "";
+  $espedifique = $rowSqlMedicos['causa_otro'];
 }
 else if($causa == 7){
   $nacimiento = "";
@@ -361,9 +361,9 @@ else if($causa == 7){
   $accidente = "";
   $violencia = $check;
   $adiccion = "";
-  $otracausa = "";
+  $otra = "";
   $desconoce = "";
-  $causaotrad = "";
+  $espedifique = $rowSqlMedicos['causa_otro'];
 }
 else if($causa == 8){
   $nacimiento = "";
@@ -374,9 +374,9 @@ else if($causa == 8){
   $accidente = "";
   $violencia = "";
   $adiccion = $check;
-  $otracausa = "";
+  $otra = "";
   $desconoce = "";
-  $causaotrad = "";
+  $espedifique = $rowSqlMedicos['causa_otro'];
 }
 
 $idTemporalidad = $rowSqlMedicos['temporalidad'];
@@ -1442,20 +1442,25 @@ $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
 $pdf->Cell(4,5,utf8_decode($adiccion),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->Ln();
+
 $pdf->SetFont('Arial','B',8);
+$pdf->Cell(35,5,utf8_decode(''),0,0,'C');
 $pdf->Cell(9,5,utf8_decode('Otra:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
 $pdf->Cell(4,5,utf8_decode($otra),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(31,5,utf8_decode($otracausa),'B',0,'L');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','B',8);
-$pdf->Cell(9,5,utf8_decode('Desconoce:'),0,0,'L');
+$pdf->Cell(18,5,utf8_decode('Desconoce:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode($desconoce),'B',0,'L');
+$pdf->Cell(4,5,utf8_decode($desconoce),'BR',0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(18,5,utf8_decode('Especifique:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->Cell(50,5,utf8_decode($espedifique),'B',0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -1583,12 +1588,12 @@ $pdf->Cell(165,5,utf8_decode($rowSqlMedicos['medicamentos_cual']),'B',0,'L');
 $pdf->Ln();
 $pdf->Ln();
 
+
 $pdf->SetLineWidth(0.5);
-$pdf->Line(10, 192, 211-10, 192); // 20mm from each edge
+$pdf->Line(10, 197, 211-10, 197); // 20mm from each edge
 $pdf->SetLineWidth(0.2);
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(191,5,utf8_decode('VIVIENDA'),0,0,'L');
-$pdf->Ln();
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
