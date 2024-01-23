@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2024 at 10:26 PM
+-- Generation Time: Jan 23, 2024 at 10:29 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -9988,29 +9988,34 @@ CREATE TABLE `datos_generales` (
   `pensionado_donde` varchar(100) DEFAULT NULL,
   `pension_monto` varchar(20) DEFAULT NULL,
   `pension_temporalidad` varchar(20) DEFAULT NULL,
-  `sindicato` int(11) DEFAULT NULL,
-  `sindicato_cual` varchar(500) DEFAULT NULL,
+  `informante` varchar(200) DEFAULT NULL,
+  `informante_parentesco` varchar(50) DEFAULT NULL,
+  `otro_parentesco` varchar(100) DEFAULT NULL,
   `seguridad_social` varchar(20) NOT NULL,
   `seguridad_social_otro` varchar(100) DEFAULT NULL,
   `numSS` varchar(20) DEFAULT NULL,
   `photo` varchar(150) DEFAULT NULL,
-  `estatus` varchar(30) DEFAULT NULL
+  `estatus` varchar(30) DEFAULT NULL,
+  `leer_escribir` int(11) DEFAULT NULL,
+  `nivel_concluido` int(11) NOT NULL,
+  `gpo_vulnerable` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `datos_generales`
 --
 
-INSERT INTO `datos_generales` (`id`, `numExpediente`, `fecha_registro`, `fecha_actualizacion`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `tipoVialidad`, `estado`, `municipio`, `localidad`, `asentamiento`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `profesion`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `sindicato`, `sindicato_cual`, `seguridad_social`, `seguridad_social_otro`, `numSS`, `photo`, `estatus`) VALUES
-(1, 'C-4920-1', '2024-01-05 13:37:08', NULL, 'Noemi Esperanza', 'Pitones', 'Alamillo', 'Femenino', 42, 'Soltero(a)', '1981-08-19', 'Valparaiso, Zac.', 'García Salinas', '', '108', 'Centro', 'Felipe Ángeles y 20 de Noviembre', 'Cerca de la Escuela', 'CALLE', '32', 32049, 'VALPARAISO', 'ZONA CENTRO', '99250', '4579361805', '', '', 'Secundaria', 'Hogar', 'PIAN810819MZSTLM05', 'PIAN810819', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '1', 'Apoyo de Discapacidad', '2950', '1', 0, 'N/A', 'Ninguno', '', '', '../fotos_expedientes/archivo_PIAN810819MZSTLM05.jpg', NULL),
-(2, 'C-1003-2', '2024-01-10 13:47:16', NULL, 'José', 'Robledo', 'Moreno', 'Masculino', 36, 'Casado(a)', '1987-10-21', 'Fresnillo, Zac.', 'T. Urbina', '', '39', 'Francisco Villa', 'Higuera y la Estación', 'Cerca de la carretera a La Estación', 'CALLE', '32', 32010, 'FRESNILLO', 'FRANCISCO VILLA', '99099', '', '', '4931699413', 'Primaria', '', 'ROMJ871021HZSBRS04', 'ROMJ871021', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', 0, 'N/A', 'SSZ', '', '', '../fotos_expedientes/archivo_ROMJ871021HZSBRS04.jpg', NULL),
-(3, 'C-1727-3', '2024-01-10 15:27:23', NULL, 'jesus', 'leaños', 'villegas', 'Masculino', 42, 'Soltero(a)', '1981-09-24', 'Zacatecas, Zac', 'zacatecas', '', '12', 'El carmen', 'Zacatecsa', 'Zac', 'CALLE', '32', 32017, 'OJO DE AGUA', 'Sin registro', '98608', '9999', 'jesus@hotmail.ocm', '9999', 'Licenciatura', 'SQL', 'LEVJ810924HZSXLS01', 'LEVJ8109248K3', '1', 'ITZ', 'Programador', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', 1, 'SDF', 'Ninguno', '', '9999', NULL, NULL),
-(4, 'C-5625-4', '2024-01-11 13:46:17', NULL, 'Ana Elisa', 'Barba', 'Pinedo', 'Femenino', 41, 'Casado(a)', '1982-12-12', 'Guadalajara Jalisco', 'de la Colina', 'A', '218', 'Loma Bonita', 'Frente a UAZ Siglo XXI', 'Reja blanca', 'CALLE', '32', 32056, 'ZACATECAS', 'Loma Bonita', '98160', '', 'aebarbap@gmail.com', '4921001418', 'Licenciatura', 'Ingeniero', 'BAPA821212MJCRNN01', 'BAPA821212N84', '1', 'UDEMI', 'Programador', '1', 'INCLUSIÓN', '15000', '0', 'N/A', '0', 'N/A', '0', 'N/A', 0, 'N/A', 'IMSS', '', '34108202747', '../fotos_expedientes/archivo_BAPA821212MJCRNN04.png', NULL),
-(5, 'C-5603-5', '2024-01-11 14:46:08', NULL, 'gd9sa', 'gredfa', 'gdsa', 'Masculino', 41, 'Soltero(a)', '1985-11-11', 'fdsa', 'poas', '', '58', 'sdña', 'ds', 'dgfsa', 'BOULEVARD', '32', 32056, 'ZACATECAS', 'MECÁNICOS II', '98022', '66', 'gdages@etsaw.com', '366', 'Primaria', '', 'BAPA821212MJCRNN00', 'BAPA821212', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', 0, 'N/A', 'SSZ', '', '', '../fotos_expedientes/archivo_BAPA821212MJCRNN04.png', NULL),
-(6, 'C-5607-6', '2024-01-11 14:53:24', NULL, 'afs', 'fds', 'gfda', 'Masculino', 41, 'Soltero(a)', '1982-12-10', 'gdsa', 'gfda', '', '65', 'dgsa', 'gdfsa6', 'gdfas', 'DIAGONAL', '32', 32056, 'ÁLVARO ORTÍZ (ALFREDO ORTÍZ)', 'Sin registro', '98160', '5358', 'n@n.n', '69', 'Ninguno', '', 'BAPA821212MJCRNN04', 'BAPA821212GDS', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', 0, 'N/A', 'Ninguno', '', '', NULL, NULL),
-(7, 'C-5623-7', '2024-01-11 14:57:27', NULL, 'gdiso', 'ju0oi', 'dkjsjai', 'Masculino', 42, 'Soltero(a)', '2024-01-12', 'dgfa', 'da', '', '36', 'fdsa', 'sgf', 'gdfsa', 'CALLE', '32', 32056, 'ÁNGEL VÁZQUEZ', 'Sin registro', '566', '66', 'gdages@etsaw.com', '66', 'Ninguno', '', 'LEVJ810924HZSXLS07', 'LEVJ810924', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', 0, 'N/A', 'IMSS', '', '', NULL, NULL),
-(8, 'C-5625-8', '2024-01-11 15:01:55', NULL, 'gfds', 'yhs', 'fds', 'Masculino', 42, 'Soltero(a)', '2023-01-12', 'gfdx', 'fsda', '', '4', 'sag', 'gds', 'gdfsa', 'DIAGONAL', '32', 32056, 'ÁLVARO ORTÍZ (ALFREDO ORTÍZ)', 'Sin registro', '92844', '666', 'gdages@etsaw.com', '666', 'Ninguno', '', 'LEVJ810924HZSXLS04', 'LEVJ810924', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', 0, 'N/A', 'Ninguno', '', '', NULL, NULL),
-(9, 'C-5613-9', '2024-01-17 10:42:11', NULL, 'MARIA DE JESUS', 'RODRIGUEZ', 'GUZMAN', 'Femenino', 89, 'Viudo(a)', '1935-01-08', 'ZACATECAS', 'CALLEJON DEL CHINO', '', '110', 'CENTRO', 'FERNANDO CALDERON Y RAYON', '', 'CALLEJÓN', '32', 32056, 'ZACATECAS', 'ZONA CENTRO', '98000', '', '', '4921161570', 'Primaria', 'HOGAR', 'ROGJ350108MZSDZS02', 'ROGJ350108', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', 0, 'N/A', 'ISSSTE', '', 'ROGJ350108', '../fotos_expedientes/archivo_ROGJ350108MZSDZS02.jpg', NULL);
+INSERT INTO `datos_generales` (`id`, `numExpediente`, `fecha_registro`, `fecha_actualizacion`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `tipoVialidad`, `estado`, `municipio`, `localidad`, `asentamiento`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `profesion`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `informante`, `informante_parentesco`, `otro_parentesco`, `seguridad_social`, `seguridad_social_otro`, `numSS`, `photo`, `estatus`, `leer_escribir`, `nivel_concluido`, `gpo_vulnerable`) VALUES
+(1, 'C-4920-1', '2024-01-05 13:37:08', NULL, 'Noemi Esperanza', 'Pitones', 'Alamillo', 'Femenino', 42, 'Soltero(a)', '1981-08-19', 'Valparaiso, Zac.', 'García Salinas', '', '108', 'Centro', 'Felipe Ángeles y 20 de Noviembre', 'Cerca de la Escuela', 'CALLE', '32', 32049, 'VALPARAISO', 'ZONA CENTRO', '99250', '4579361805', '', '', 'Secundaria', 'Hogar', 'PIAN810819MZSTLM05', 'PIAN810819', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '1', 'Apoyo de Discapacidad', '2950', '1', '0', 'N/A', NULL, 'Ninguno', '', '', '../fotos_expedientes/archivo_PIAN810819MZSTLM05.jpg', NULL, NULL, 0, NULL),
+(2, 'C-1003-2', '2024-01-10 13:47:16', NULL, 'José', 'Robledo', 'Moreno', 'Masculino', 36, 'Casado(a)', '1987-10-21', 'Fresnillo, Zac.', 'T. Urbina', '', '39', 'Francisco Villa', 'Higuera y la Estación', 'Cerca de la carretera a La Estación', 'CALLE', '32', 32010, 'FRESNILLO', 'FRANCISCO VILLA', '99099', '', '', '4931699413', 'Primaria', '', 'ROMJ871021HZSBRS04', 'ROMJ871021', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', '0', 'N/A', NULL, 'SSZ', '', '', '../fotos_expedientes/archivo_ROMJ871021HZSBRS04.jpg', NULL, NULL, 0, NULL),
+(3, 'C-1727-3', '2024-01-10 15:27:23', NULL, 'jesus', 'leaños', 'villegas', 'Masculino', 42, 'Soltero(a)', '1981-09-24', 'Zacatecas, Zac', 'zacatecas', '', '12', 'El carmen', 'Zacatecsa', 'Zac', 'CALLE', '32', 32017, 'OJO DE AGUA', 'Sin registro', '98608', '9999', 'jesus@hotmail.ocm', '9999', 'Licenciatura', 'SQL', 'LEVJ810924HZSXLS01', 'LEVJ8109248K3', '1', 'ITZ', 'Programador', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', '1', 'SDF', NULL, 'Ninguno', '', '9999', NULL, NULL, NULL, 0, NULL),
+(4, 'C-5625-4', '2024-01-11 13:46:17', NULL, 'Ana Elisa', 'Barba', 'Pinedo', 'Femenino', 41, 'Casado(a)', '1982-12-12', 'Guadalajara Jalisco', 'de la Colina', 'A', '218', 'Loma Bonita', 'Frente a UAZ Siglo XXI', 'Reja blanca', 'CALLE', '32', 32056, 'ZACATECAS', 'Loma Bonita', '98160', '', 'aebarbap@gmail.com', '4921001418', 'Licenciatura', 'Ingeniero', 'BAPA821212MJCRNN01', 'BAPA821212N84', '1', 'UDEMI', 'Programador', '1', 'INCLUSIÓN', '15000', '0', 'N/A', '0', 'N/A', '0', 'N/A', '0', 'N/A', NULL, 'IMSS', '', '34108202747', '../fotos_expedientes/archivo_BAPA821212MJCRNN04.png', NULL, NULL, 0, NULL),
+(5, 'C-5603-5', '2024-01-11 14:46:08', NULL, 'gd9sa', 'gredfa', 'gdsa', 'Masculino', 41, 'Soltero(a)', '1985-11-11', 'fdsa', 'poas', '', '58', 'sdña', 'ds', 'dgfsa', 'BOULEVARD', '32', 32056, 'ZACATECAS', 'MECÁNICOS II', '98022', '66', 'gdages@etsaw.com', '366', 'Primaria', '', 'BAPA821212MJCRNN00', 'BAPA821212', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', '0', 'N/A', NULL, 'SSZ', '', '', '../fotos_expedientes/archivo_BAPA821212MJCRNN04.png', NULL, NULL, 0, NULL),
+(6, 'C-5607-6', '2024-01-11 14:53:24', NULL, 'afs', 'fds', 'gfda', 'Masculino', 41, 'Soltero(a)', '1982-12-10', 'gdsa', 'gfda', '', '65', 'dgsa', 'gdfsa6', 'gdfas', 'DIAGONAL', '32', 32056, 'ÁLVARO ORTÍZ (ALFREDO ORTÍZ)', 'Sin registro', '98160', '5358', 'n@n.n', '69', 'Ninguno', '', 'BAPA821212MJCRNN06', 'BAPA821212GDS', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', '0', 'N/A', NULL, 'Ninguno', '', '', NULL, NULL, NULL, 0, NULL),
+(7, 'C-5623-7', '2024-01-11 14:57:27', NULL, 'gdiso', 'ju0oi', 'dkjsjai', 'Masculino', 42, 'Soltero(a)', '2024-01-12', 'dgfa', 'da', '', '36', 'fdsa', 'sgf', 'gdfsa', 'CALLE', '32', 32056, 'ÁNGEL VÁZQUEZ', 'Sin registro', '566', '66', 'gdages@etsaw.com', '66', 'Ninguno', '', 'LEVJ810924HZSXLS07', 'LEVJ810924', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', '0', 'N/A', NULL, 'IMSS', '', '', NULL, NULL, NULL, 0, NULL),
+(8, 'C-5625-8', '2024-01-11 15:01:55', NULL, 'gfds', 'yhs', 'fds', 'Masculino', 42, 'Soltero(a)', '2023-01-12', 'gfdx', 'fsda', '', '4', 'sag', 'gds', 'gdfsa', 'DIAGONAL', '32', 32056, 'ÁLVARO ORTÍZ (ALFREDO ORTÍZ)', 'Sin registro', '92844', '666', 'gdages@etsaw.com', '666', 'Ninguno', '', 'LEVJ810924HZSXLS04', 'LEVJ810924', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', '0', 'N/A', NULL, 'Ninguno', '', '', NULL, NULL, NULL, 0, NULL),
+(9, 'C-5613-9', '2024-01-17 10:42:11', NULL, 'MARIA DE JESUS', 'RODRIGUEZ', 'GUZMAN', 'Femenino', 89, 'Viudo(a)', '1935-01-08', 'ZACATECAS', 'CALLEJON DEL CHINO', '', '110', 'CENTRO', 'FERNANDO CALDERON Y RAYON', '', 'CALLEJÓN', '32', 32056, 'ZACATECAS', 'ZONA CENTRO', '98000', '', '', '4921161570', 'Primaria', 'HOGAR', 'ROGJ350108MZSDZS02', 'ROGJ350108', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', '0', 'N/A', NULL, 'ISSSTE', '', 'ROGJ350108', '../fotos_expedientes/archivo_ROGJ350108MZSDZS02.jpg', NULL, NULL, 0, NULL),
+(11, 'C-5621-11', '2024-01-23 10:39:11', NULL, 'DHFAS', 'JUYGF', 'HGFS', 'Masculino', 3, 'Soltero(a)', '2020-04-21', 'HFDS', 'GDFA|', '6', '6', 'GYURTE1Q1', 'YHRTSW', 'yhrdju', 'CALLE', '32', 32056, 'ZACATECAS', 'VARIAS', '98160', '234', 'n@n.n', '532', 'Técnica', 'GFD', 'GOBM200421MJCNRRA8', 'GOBM200421', '1', 'Pública Regular', 'GFDS', 'Otro', 'TRDS', '1', '1', 'FDEST', '1', 'HFD', '58', '1', 'JHGLOH', 'Otro(a)', 'JHLHH', 'Otro', 'GASTOS MAYORES', '898', NULL, NULL, 1, 1, 'Migrante ');
 
 -- --------------------------------------------------------
 
@@ -10045,23 +10050,28 @@ CREATE TABLE `datos_medicos` (
   `enfermedades` varchar(11) DEFAULT NULL,
   `enfermedades_cual` varchar(500) DEFAULT NULL,
   `medicamentos` varchar(11) DEFAULT NULL,
-  `medicamentos_cual` varchar(500) DEFAULT NULL
+  `medicamentos_cual` varchar(500) DEFAULT NULL,
+  `braile` int(11) DEFAULT NULL,
+  `lsm` int(11) DEFAULT NULL,
+  `labiofacial` int(11) DEFAULT NULL,
+  `asistencia` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `datos_medicos`
 --
 
-INSERT INTO `datos_medicos` (`id`, `curp`, `expediente`, `tipo_discapacidad`, `discapacidad`, `grado_discapacidad`, `descripcionDiscapacidad`, `causa`, `causa_otro`, `temporalidad`, `valoracion`, `fecha_valoracion`, `rehabilitacion`, `rehabilitacion_donde`, `rehabilitacion_inicio`, `rehabilitacion_duracion`, `tipo_sangre`, `cirugias`, `tipo_cirugias`, `protesis`, `protesis_tipo`, `alergias`, `alergias_cual`, `enfermedades`, `enfermedades_cual`, `medicamentos`, `medicamentos_cual`) VALUES
-(1, 'PIAN810819MZSTLM05', 'C-4920-1', 'Física', '20-Escoliosis', '2-Moderado', 'Escoliosis con dolor lumbar crónico', '4', '', '0000-00-00', 'SSZ', '2023-09-29', '0', '0', '0000-00-00', '0', '7', '1', 'Pies', '2', '', '0', 'Sin alergias', '1', 'Escoliosis', '1', 'Antiinflamatorios, Piroxicam'),
-(2, 'ROMJ871021HZSBRS04', 'C-1003-2', 'Física', '03-Motora', '2-Moderado', 'Tuberculosis pulmonar', '3', '', '2023-02-01', 'SSZ', '2023-10-03', '0', '0', '0000-00-00', '0', '1', '1', 'Pulmón, cabeza', '1', 'Silla de ruedas', '0', 'Sin alergias', '1', 'Tuberculosis', '1', 'Isoniazida, Rifampicina, Clorhidrato de Etambutol'),
-(3, 'LEVJ810924HZSXLS04', 'C-1727-3', 'Física', '27-Diparesia', '1-Leve', 'dddd', '1', '', '0000-00-00', 'IMSS', '1989-01-01', '0', '0', '0000-00-00', '0', '3', '2', '', '2', '', '0', 'Sin alergias', '0', 'Enfermedades no reportadas', '0', 'Medicamentos no reportadas'),
-(4, 'BAPA821212MJCRNN04', 'C-5625-4', 'Sensorial', '25-Baja Visión', '1-Leve', 'Astigmatismo', '5', 'Uso de pantallas durante su trabajo', '2023-01-01', 'IMSS', '2023-10-23', '0', '0', '0000-00-00', '0', '1', '2', '', '2', '', '1', 'Ciprofloxacino', '1', 'Gastritis', '0', 'Medicamentos no reportadas'),
-(5, 'BAPA821212MJCRNN04', 'C-5603-5', 'Física', '03-Motora', '2-Moderado', 'FDSA', '1', '', '0000-00-00', 'IMSS', '2023-12-10', '0', '0', '0000-00-00', '0', '1', '2', '', '2', '', '0', 'Sin alergias', '1', 'Hipertensión', '1', 'Losartan'),
-(6, 'BAPA821212MJCRNN04', 'C-5607-6', 'Física', '07-Espondilitis', '2-Moderado', 'ed', '1', '', '0000-00-00', 'IMSS', '0005-05-05', '0', '0', '0000-00-00', '0', '1', '2', '', '2', '', '0', 'Sin alergias', '0', 'Enfermedades no reportadas', '0', 'Medicamentos no reportadas'),
-(7, 'LEVJ810924HZSXLS04', 'C-5623-7', 'Intelectual', '23-Comunicación Lenguaje', '1-Leve', 'gdfs', '1', '', '0000-00-00', 'IMSS', '2024-01-01', '0', '0', '0000-00-00', '0', '8', '2', '', '2', '', '0', 'Sin alergias', '0', 'Enfermedades no reportadas', '0', 'Medicamentos no reportadas'),
-(8, 'LEVJ810924HZSXLS04', 'C-5625-8', 'Sensorial', '25-Baja Visión', '1-Leve', 'miopia', '1', '', '0000-00-00', 'IMSS', '2022-12-10', '0', '0', '0000-00-00', '0', '1', '2', '', '2', '', '0', 'Sin alergias', '0', 'Enfermedades no reportadas', '0', 'Medicamentos no reportadas'),
-(9, 'ROGJ350108MZSDZS02', 'C-5613-9', 'Física', '13-Enfermedad Articular Degenerativa', '4-Severo', 'ARTRITIS REUMATOIDE', '3', '', '2019-01-01', 'UBR', '2024-01-16', '0', '0', '0000-00-00', '0', '7', '1', 'CESÁREA Y VESÍCULA', '1', 'SILLA DE RUEDAS', '0', 'Sin alergias', '1', 'Hipertensión', '1', 'Paracetamol, Telmizartán');
+INSERT INTO `datos_medicos` (`id`, `curp`, `expediente`, `tipo_discapacidad`, `discapacidad`, `grado_discapacidad`, `descripcionDiscapacidad`, `causa`, `causa_otro`, `temporalidad`, `valoracion`, `fecha_valoracion`, `rehabilitacion`, `rehabilitacion_donde`, `rehabilitacion_inicio`, `rehabilitacion_duracion`, `tipo_sangre`, `cirugias`, `tipo_cirugias`, `protesis`, `protesis_tipo`, `alergias`, `alergias_cual`, `enfermedades`, `enfermedades_cual`, `medicamentos`, `medicamentos_cual`, `braile`, `lsm`, `labiofacial`, `asistencia`) VALUES
+(1, 'PIAN810819MZSTLM05', 'C-4920-1', 'Física', '20-Escoliosis', '2-Moderado', 'Escoliosis con dolor lumbar crónico', '4', '', '0000-00-00', 'SSZ', '2023-09-29', '0', '0', '0000-00-00', '0', '7', '1', 'Pies', '2', '', '0', 'Sin alergias', '1', 'Escoliosis', '1', 'Antiinflamatorios, Piroxicam', NULL, NULL, NULL, NULL),
+(2, 'ROMJ871021HZSBRS04', 'C-1003-2', 'Física', '03-Motora', '2-Moderado', 'Tuberculosis pulmonar', '3', '', '2023-02-01', 'SSZ', '2023-10-03', '0', '0', '0000-00-00', '0', '1', '1', 'Pulmón, cabeza', '1', 'Silla de ruedas', '0', 'Sin alergias', '1', 'Tuberculosis', '1', 'Isoniazida, Rifampicina, Clorhidrato de Etambutol', NULL, NULL, NULL, NULL),
+(3, 'LEVJ810924HZSXLS04', 'C-1727-3', 'Física', '27-Diparesia', '1-Leve', 'dddd', '1', '', '0000-00-00', 'IMSS', '1989-01-01', '0', '0', '0000-00-00', '0', '3', '2', '', '2', '', '0', 'Sin alergias', '0', 'Enfermedades no reportadas', '0', 'Medicamentos no reportadas', NULL, NULL, NULL, NULL),
+(4, 'BAPA821212MJCRNN04', 'C-5625-4', 'Sensorial', '25-Baja Visión', '1-Leve', 'Astigmatismo', '5', 'Uso de pantallas durante su trabajo', '2023-01-01', 'IMSS', '2023-10-23', '0', '0', '0000-00-00', '0', '1', '2', '', '2', '', '1', 'Ciprofloxacino', '1', 'Gastritis', '0', 'Medicamentos no reportadas', NULL, NULL, NULL, NULL),
+(5, 'BAPA821212MJCRNN04', 'C-5603-5', 'Física', '03-Motora', '2-Moderado', 'FDSA', '1', '', '0000-00-00', 'IMSS', '2023-12-10', '0', '0', '0000-00-00', '0', '1', '2', '', '2', '', '0', 'Sin alergias', '1', 'Hipertensión', '1', 'Losartan', NULL, NULL, NULL, NULL),
+(6, 'BAPA821212MJCRNN04', 'C-5607-6', 'Física', '07-Espondilitis', '2-Moderado', 'ed', '1', '', '0000-00-00', 'IMSS', '0005-05-05', '0', '0', '0000-00-00', '0', '1', '2', '', '2', '', '0', 'Sin alergias', '0', 'Enfermedades no reportadas', '0', 'Medicamentos no reportadas', NULL, NULL, NULL, NULL),
+(7, 'LEVJ810924HZSXLS04', 'C-5623-7', 'Intelectual', '23-Comunicación Lenguaje', '1-Leve', 'gdfs', '1', '', '0000-00-00', 'IMSS', '2024-01-01', '0', '0', '0000-00-00', '0', '8', '2', '', '2', '', '0', 'Sin alergias', '0', 'Enfermedades no reportadas', '0', 'Medicamentos no reportadas', NULL, NULL, NULL, NULL),
+(8, 'LEVJ810924HZSXLS04', 'C-5625-8', 'Sensorial', '25-Baja Visión', '1-Leve', 'miopia', '1', '', '0000-00-00', 'IMSS', '2022-12-10', '0', '0', '0000-00-00', '0', '1', '2', '', '2', '', '0', 'Sin alergias', '0', 'Enfermedades no reportadas', '0', 'Medicamentos no reportadas', NULL, NULL, NULL, NULL),
+(9, 'ROGJ350108MZSDZS02', 'C-5613-9', 'Física', '13-Enfermedad Articular Degenerativa', '4-Severo', 'ARTRITIS REUMATOIDE', '3', '', '2019-01-01', 'UBR', '2024-01-16', '0', '0', '0000-00-00', '0', '7', '1', 'CESÁREA Y VESÍCULA', '1', 'SILLA DE RUEDAS', '0', 'Sin alergias', '1', 'Hipertensión', '1', 'Paracetamol, Telmizartán', NULL, NULL, NULL, NULL),
+(10, 'GOBM200421MJCNRRA8', 'C-5621-11', 'Sensorial', '21-Auditiva Hipoacusia', '1-Leve', 'HFD', '1', 'HFD', '2020-04-21', 'INCLUSION', '2024-01-22', '0', '0', '0000-00-00', '0', '8', '2', '', '2', '', '0', 'Sin alergias', '1', 'Asma', '1', 'CBD', 0, 2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -10260,7 +10270,8 @@ INSERT INTO `documentos_list` (`id`, `curp`, `numExp`, `tipo_doc`, `ruta_doc`, `
 (6, 'ROGJ350108MZSDZS02', 'C-5613-9', 4, 'docs_expedientes/archivo4_ROGJ350108MZSDZS02.pdf', '2024-01-17 11:10:39', 4),
 (7, 'ROGJ350108MZSDZS02', 'C-5613-9', 5, 'docs_expedientes/archivo5_ROGJ350108MZSDZS02.pdf', '2024-01-17 11:11:08', 5),
 (8, 'ROGJ350108MZSDZS02', 'C-5613-9', 6, 'docs_expedientes/archivo6_ROGJ350108MZSDZS02.pdf', '2024-01-17 11:11:18', 6),
-(9, 'ROGJ350108MZSDZS02', 'C-5613-9', 7, 'docs_expedientes/archivo7_ROGJ350108MZSDZS02.pdf', '2024-01-17 11:11:30', 7);
+(9, 'ROGJ350108MZSDZS02', 'C-5613-9', 7, 'docs_expedientes/archivo7_ROGJ350108MZSDZS02.pdf', '2024-01-17 11:11:30', 7),
+(10, '', '', 1, 'docs_expedientes/archivo1_.pdf', '2024-01-23 14:32:48', 1);
 
 -- --------------------------------------------------------
 
@@ -10819,7 +10830,16 @@ INSERT INTO `log_registro` (`id`, `usr`, `tipo_dato`, `fecha`) VALUES
 (292, 'annaeliza', 3, '2024-01-17 10:56:25'),
 (293, 'annaeliza', 37, '2024-01-17 10:56:37'),
 (294, 'annaeliza', 39, '2024-01-17 11:13:41'),
-(295, 'annaeliza', 32, '2024-01-18 09:23:33');
+(295, 'annaeliza', 32, '2024-01-18 09:23:33'),
+(296, 'annaeliza', 1, '2024-01-23 10:00:50'),
+(297, 'annaeliza', 1, '2024-01-23 10:39:11'),
+(298, 'annaeliza', 6, '2024-01-23 10:42:14'),
+(299, 'annaeliza', 12, '2024-01-23 12:52:01'),
+(300, 'annaeliza', 12, '2024-01-23 12:53:01'),
+(301, 'annaeliza', 12, '2024-01-23 12:54:33'),
+(302, 'annaeliza', 12, '2024-01-23 13:06:14'),
+(303, 'annaeliza', 21, '2024-01-23 13:06:36'),
+(304, 'annaeliza', 39, '2024-01-23 14:33:43');
 
 -- --------------------------------------------------------
 
@@ -11050,7 +11070,16 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (196, 1, '2024-01-17 09:27:54', NULL),
 (197, 0, NULL, '2024-01-17 15:03:34'),
 (198, 1, '2024-01-18 08:59:26', NULL),
-(199, 0, NULL, '2024-01-18 09:06:18');
+(199, 0, NULL, '2024-01-18 09:06:18'),
+(200, 0, NULL, '2024-01-19 08:56:41'),
+(201, 1, '2024-01-19 08:56:47', NULL),
+(202, 0, NULL, '2024-01-19 09:32:50'),
+(203, 1, '2024-01-22 08:32:05', NULL),
+(204, 0, NULL, '2024-01-22 09:13:22'),
+(205, 0, NULL, '2024-01-22 11:59:24'),
+(206, 1, '2024-01-22 11:59:29', NULL),
+(207, 1, '2024-01-23 08:22:13', NULL),
+(208, 0, NULL, '2024-01-23 08:24:36');
 
 -- --------------------------------------------------------
 
@@ -11348,12 +11377,15 @@ CREATE TABLE `vivienda` (
   `vivienda_renta` varchar(20) DEFAULT NULL,
   `vivienda_pagando` int(11) DEFAULT NULL,
   `monto_pagando` varchar(20) DEFAULT NULL,
+  `propietario` int(11) DEFAULT NULL,
   `caracteristicas` int(11) DEFAULT NULL,
   `caracteristicas_otro` varchar(50) DEFAULT NULL,
   `num_habitaciones` varchar(11) DEFAULT NULL,
   `vivienda_cocia` int(11) DEFAULT NULL,
   `vivienda_sala` int(11) DEFAULT NULL,
   `vivienda_banio` int(11) DEFAULT NULL,
+  `num_banio` int(11) DEFAULT NULL,
+  `localizacion` int(11) DEFAULT NULL,
   `vivienda_otros` varchar(100) DEFAULT NULL,
   `techo` varchar(11) DEFAULT NULL,
   `techo_otro` varchar(100) DEFAULT NULL,
@@ -11362,7 +11394,6 @@ CREATE TABLE `vivienda` (
   `serv_basicos_agua` int(11) DEFAULT NULL,
   `serv_basicos_luz` int(11) DEFAULT NULL,
   `serv_basicos_drenaje` int(11) DEFAULT NULL,
-  `serv_basicos_cable` int(11) DEFAULT NULL,
   `serv_basicos_internet` int(11) DEFAULT NULL,
   `serv_basicos_celular` int(11) DEFAULT NULL,
   `serv_basicos_carro` int(11) DEFAULT NULL,
@@ -11371,14 +11402,15 @@ CREATE TABLE `vivienda` (
   `serv_basicos_otro` varchar(100) DEFAULT NULL,
   `electrodomesticos_tv` int(11) DEFAULT NULL,
   `electrodomesticos_lavadora` int(11) DEFAULT NULL,
-  `electrodomesticos_estereo` int(11) DEFAULT NULL,
+  `electrodomesticos_dispositivo` int(11) DEFAULT NULL,
   `electrodomesticos_microondas` int(11) DEFAULT NULL,
   `electrodomesticos_computadora` int(11) DEFAULT NULL,
   `electrodomesticos_licuadora` int(11) DEFAULT NULL,
-  `electrodomesticos_dvd` int(11) DEFAULT NULL,
   `electrodomesticos_estufa` int(11) DEFAULT NULL,
   `electrodomesticos_refri` int(11) DEFAULT NULL,
   `electrodomesticos_otro` varchar(100) DEFAULT NULL,
+  `dependiente` int(11) DEFAULT NULL,
+  `financiador` varchar(250) DEFAULT NULL,
   `personas_dependen` varchar(11) DEFAULT NULL,
   `deudas` varchar(11) DEFAULT NULL,
   `deudas_cuanto` varchar(20) DEFAULT NULL
@@ -11388,16 +11420,20 @@ CREATE TABLE `vivienda` (
 -- Dumping data for table `vivienda`
 --
 
-INSERT INTO `vivienda` (`id`, `curp`, `expediente`, `vivienda`, `vivienda_renta`, `vivienda_pagando`, `monto_pagando`, `caracteristicas`, `caracteristicas_otro`, `num_habitaciones`, `vivienda_cocia`, `vivienda_sala`, `vivienda_banio`, `vivienda_otros`, `techo`, `techo_otro`, `pared`, `pared_otro`, `serv_basicos_agua`, `serv_basicos_luz`, `serv_basicos_drenaje`, `serv_basicos_cable`, `serv_basicos_internet`, `serv_basicos_celular`, `serv_basicos_carro`, `serv_basicos_gas`, `serv_basicos_telefono`, `serv_basicos_otro`, `electrodomesticos_tv`, `electrodomesticos_lavadora`, `electrodomesticos_estereo`, `electrodomesticos_microondas`, `electrodomesticos_computadora`, `electrodomesticos_licuadora`, `electrodomesticos_dvd`, `electrodomesticos_estufa`, `electrodomesticos_refri`, `electrodomesticos_otro`, `personas_dependen`, `deudas`, `deudas_cuanto`) VALUES
-(1, 'PIAN810819MZSTLM05', 'C-4920-1', '1', '0', 0, '0', 1, '0', '2', 1, 1, 1, '0', '3', 'Aterrado', '3', '0', 1, 1, 1, 0, 0, 0, 0, 1, 1, '0', 1, 1, 0, 0, 0, 1, 0, 1, 1, '0', '0', '0', '0'),
-(2, 'ROMJ871021HZSBRS04', 'C-1003-2', '3', '0', 0, '0', 1, '0', '1', 1, 0, 1, '0', '1', '0', '1', '0', 1, 1, 1, 0, 0, 0, 0, 1, 0, '0', 1, 1, 1, 0, 0, 1, 0, 1, 1, '0', '0', '0', '0'),
-(3, 'LEVJ810924HZSXLS04', 'C-1727-3', '1', '0', 0, '0', 3, '0', '1', 1, 0, 0, '0', '1', '0', '1', '0', 1, 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, 1, '0', '1', '0', '0'),
-(4, 'BAPA821212MJCRNN04', 'C-5625-4', '1', '0', 0, '0', 1, '0', '3', 1, 1, 1, '0', '2', '0', '2', '0', 1, 1, 1, 0, 1, 0, 1, 1, 0, '0', 1, 1, 1, 1, 1, 1, 1, 1, 1, '0', '3', '1', '1500'),
-(5, 'BAPA821212MJCRNN04', 'C-5603-5', '1', '0', 0, '0', 1, '0', '2', 1, 1, 1, '0', '2', '0', '2', '0', 1, 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, 1, '0', '0', '0', '0'),
-(6, 'BAPA821212MJCRNN04', 'C-5607-6', '2', '0', 0, '0', 2, '0', '2', 1, 1, 1, '0', '2', '0', '2', '0', 1, 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, 1, '0', '0', '0', '0'),
-(7, 'LEVJ810924HZSXLS04', 'C-5623-7', '2', '0', 0, '0', 2, '0', '2', 0, 0, 0, '0', '2', '0', '1', '0', 1, 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, 1, '0', '0', '0', '0'),
-(8, 'LEVJ810924HZSXLS04', 'C-5625-8', '1', '0', 0, '0', 1, '0', '2', 0, 0, 0, '0', '2', '0', '2', '0', 1, 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, 1, '0', '0', '0', '0'),
-(9, 'ROGJ350108MZSDZS02', 'C-5613-9', '1', '0', 0, '0', 1, '0', '3', 1, 1, 1, '0', '2', '0', '1', '0', 1, 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, 1, '0', '0', '0', '0');
+INSERT INTO `vivienda` (`id`, `curp`, `expediente`, `vivienda`, `vivienda_renta`, `vivienda_pagando`, `monto_pagando`, `propietario`, `caracteristicas`, `caracteristicas_otro`, `num_habitaciones`, `vivienda_cocia`, `vivienda_sala`, `vivienda_banio`, `num_banio`, `localizacion`, `vivienda_otros`, `techo`, `techo_otro`, `pared`, `pared_otro`, `serv_basicos_agua`, `serv_basicos_luz`, `serv_basicos_drenaje`, `serv_basicos_internet`, `serv_basicos_celular`, `serv_basicos_carro`, `serv_basicos_gas`, `serv_basicos_telefono`, `serv_basicos_otro`, `electrodomesticos_tv`, `electrodomesticos_lavadora`, `electrodomesticos_dispositivo`, `electrodomesticos_microondas`, `electrodomesticos_computadora`, `electrodomesticos_licuadora`, `electrodomesticos_estufa`, `electrodomesticos_refri`, `electrodomesticos_otro`, `dependiente`, `financiador`, `personas_dependen`, `deudas`, `deudas_cuanto`) VALUES
+(1, 'PIAN810819MZSTLM05', 'C-4920-1', '1', '0', 0, '0', NULL, 1, '0', '2', 1, 1, 1, NULL, NULL, '0', '3', 'Aterrado', '3', '0', 1, 1, 1, 0, 0, 0, 1, 1, '0', 1, 1, 0, 0, 0, 1, 1, 1, '0', NULL, NULL, '0', '0', '0'),
+(2, 'ROMJ871021HZSBRS04', 'C-1003-2', '3', '0', 0, '0', NULL, 1, '0', '1', 1, 0, 1, NULL, NULL, '0', '1', '0', '1', '0', 1, 1, 1, 0, 0, 0, 1, 0, '0', 1, 1, 1, 0, 0, 1, 1, 1, '0', NULL, NULL, '0', '0', '0'),
+(3, 'LEVJ810924HZSXLS04', 'C-1727-3', '1', '0', 0, '0', NULL, 3, '0', '1', 1, 0, 0, NULL, NULL, '0', '1', '0', '1', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', NULL, NULL, '1', '0', '0'),
+(4, 'BAPA821212MJCRNN04', 'C-5625-4', '1', '0', 0, '0', NULL, 1, '0', '3', 1, 1, 1, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 0, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', NULL, NULL, '3', '1', '1500'),
+(5, 'BAPA821212MJCRNN04', 'C-5603-5', '1', '0', 0, '0', NULL, 1, '0', '2', 1, 1, 1, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', NULL, NULL, '0', '0', '0'),
+(6, 'BAPA821212MJCRNN04', 'C-5607-6', '2', '0', 0, '0', NULL, 2, '0', '2', 1, 1, 1, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', NULL, NULL, '0', '0', '0'),
+(7, 'LEVJ810924HZSXLS04', 'C-5623-7', '2', '0', 0, '0', NULL, 2, '0', '2', 0, 0, 0, NULL, NULL, '0', '2', '0', '1', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', NULL, NULL, '0', '0', '0'),
+(8, 'LEVJ810924HZSXLS04', 'C-5625-8', '1', '0', 0, '0', NULL, 1, '0', '2', 0, 0, 0, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', NULL, NULL, '0', '0', '0'),
+(9, 'ROGJ350108MZSDZS02', 'C-5613-9', '1', '0', 0, '0', NULL, 1, '0', '3', 1, 1, 1, NULL, NULL, '0', '2', '0', '1', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', NULL, NULL, '0', '0', '0'),
+(10, 'hfda', '', '1', NULL, NULL, NULL, 1, 1, '0', '3', 1, 1, 1, 1, 1, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', 1, 'PAPA', '', NULL, NULL),
+(11, 'hfda', '', '1', NULL, NULL, NULL, 1, 1, '0', '3', 1, 1, 1, 1, 1, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', 1, 'PAPA', '', NULL, NULL),
+(12, 'fdzah', '', '1', NULL, NULL, NULL, 1, 3, 'GFD', '3', 1, 1, 1, 3, 1, '3', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 1, 'S', 1, 1, 1, 1, 1, 1, 1, 1, 'S', 1, 'GDSAG', '', NULL, NULL),
+(13, 'GOBM200421MJCNRRA8', '', '1', NULL, NULL, NULL, 0, 1, '0', '3', 1, 1, 1, 3, 1, 'Estudio', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 0, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', 1, 'MAMA', '', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -11621,13 +11657,13 @@ ALTER TABLE `cat_logs`
 -- AUTO_INCREMENT for table `datos_generales`
 --
 ALTER TABLE `datos_generales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `datos_medicos`
 --
 ALTER TABLE `datos_medicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `datos_usuariot`
@@ -11651,7 +11687,7 @@ ALTER TABLE `documentos`
 -- AUTO_INCREMENT for table `documentos_list`
 --
 ALTER TABLE `documentos_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `empleados`
@@ -11699,13 +11735,13 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_registro`
 --
 ALTER TABLE `log_registro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=296;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=305;
 
 --
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
 
 --
 -- AUTO_INCREMENT for table `medicamentos`
@@ -11777,7 +11813,7 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT for table `vivienda`
 --
 ALTER TABLE `vivienda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
