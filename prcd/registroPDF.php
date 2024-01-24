@@ -585,6 +585,20 @@ else {
   $rentada ="";
 }
 
+$propietario = $rowSqlVivienda['propietario'];
+if ($propietario == 1) {
+  $propietarioSi =$check;
+  $propietarioNo ="";
+}
+else if ($propietario == 2){
+  $propietarioSi ="";
+  $propietarioNo =$check;
+}
+else {
+  $propietarioSi ="";
+  $propietarioNo ="";
+}
+
 $viviendaRentaMXN = $rowViviendas['vivienda_renta'];
 if ($viviendaRentaMXN == "" || $viviendaRentaMXN == null || $viviendaRentaMXN == 0){
   $viviendaRentaMXN1 = "";
@@ -618,25 +632,25 @@ if($tipoCasa == 1){
   $otroCasa ="";
 }
 else if($tipoCasa == 2){
-  $propia ="";
-  $departamento =$check;
+  $casa = "";
+  $departamento = $check;
   $vecindad ="";
-  $otroCasa ="";
+  $otroCasa = "";
 }
 else if($tipoCasa == 3){
-  $propia ="";
+  $casa ="";
   $departamento ="";
   $vecindad =$check;
   $otroCasa ="";
 }
 else if($tipoCasa == 4){
-  $propia ="";
+  $casa ="";
   $departamento ="";
   $vecindad ="";
   $otroCasa = $rowViviendas['caracteristicas_otro'];
 }
 else {
-  $propia ="";
+  $casa ="";
   $departamento ="";
   $vecindad ="";
   $otroCasa ="";
@@ -661,9 +675,24 @@ else {
 $banio = $rowViviendas['vivienda_banio'];
 if ($banio == 1){
   $banioCheck = $check;
+  $numBanios = $rowViviendas['num_banio'];
 }
 else {
   $banioCheck ="";
+  $numBanios = "";
+}
+$localizacion = $rowViviendas['localizacion'];
+if ($localizacion == 1){
+  $interior = $check;
+  $exterior = "";
+}
+else if ($localizacion == 2){
+  $interior = "";
+  $exterior = $check;
+}
+else {
+  $interior = "";
+  $exterior = "";
 }
 
 $otroHab = $rowViviendas['vivienda_otros'];
@@ -744,14 +773,6 @@ if ($serviciosDrenaje == 1){
 else {
   $drenaje ="";
 }
-
-/* $serviciosCable = $rowViviendas['serv_basicos_cable'];
-if ($serviciosCable == 1){
-  $cable = $check;
-}
-else {
-  $cable ="";
-} */
 
 $serviciosInternet = $rowViviendas['serv_basicos_internet'];
 if ($serviciosInternet == 1){
@@ -857,13 +878,13 @@ else {
   $estufa = "";
 }
 
-/* $electroVideo = $rowViviendas['electrodomesticos_dvd'];
-if ($electroVideo == 1){
-  $video = $check;
+$electroRefri = $rowViviendas['electrodomesticos_refri'];
+if ($electroRefri == 1){
+  $refri = $check;
 }
 else {
-  $video = "";
-} */
+  $refri = "";
+}
 
 $electroOtro = $rowViviendas['electrodomesticos_otro'];
 if ($electroOtro == 1){
@@ -873,8 +894,25 @@ else if ($electroOtro == 0 || $electroOtro == "" || $electroOtro == null){
   $otroElectro = "";
 }
 
+$dependienteEco = $rowViviendas['dependiente'];
+if ($dependienteEco == 1){
+  $dependienteSi = $check;
+  $dependienteNo = "";
+  $financiador = $rowViviendas['financiador'];
+}
+else if ($dependienteEco == 0){
+  $dependienteSi = "";
+  $dependienteNo = $check;
+  $financiador = "";
+}
+else {
+  $dependienteSi = "";
+  $dependienteNo = "";
+  $financiador = "";
+}
+
 $dependen = $rowViviendas['personas_dependen'];
-if ($dependen >= 1){
+if ($dependen > 1){
   $personasDep = ' '.$dependen.' ';
 }
 else {
@@ -925,8 +963,11 @@ function Footer()
     // Arial italic 8
     $this->SetFont('Arial','I',8);
     // Número de página
-    $this->Cell(0,10,utf8_decode('Página ').$this->PageNo().'/{nb}',0,0,'R');
+
     $this->Ln();
+    $this->Ln();
+    $this->Cell(0,10,utf8_decode('Página ').$this->PageNo().'/{nb}',0,0,'R');
+    $this->Ln(7);
     $this->SetFont('Arial','B',8);
     $this->Cell(0,4,utf8_decode('Circuito Cerro del Gato S/N, Edificio K, Nivel 2'),0,0,'R');
     $this->Ln();
@@ -1383,14 +1424,81 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(21,5,utf8_decode('Discapacidad:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(47,5,utf8_decode($idDiscapacidad),'B',0,'L');
+$pdf->Cell(120,5,utf8_decode($idDiscapacidad),'B',0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(11,5,utf8_decode('Grado:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(22,5,utf8_decode($rowSqlMedicos['grado_discapacidad']),'B',0,'L');
+$pdf->Cell(35,5,utf8_decode($rowSqlMedicos['grado_discapacidad']),'B',0,'L');
 $pdf->Ln();
+$pdf->Ln(1);
+
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(15,5,utf8_decode('Usa Braile:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileSi
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileNo
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(8,5,utf8_decode('N/A:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileNA
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(18,5,utf8_decode('Sabe LSM?:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileSi
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileNo
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(8,5,utf8_decode('N/A:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileNA
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(37,5,utf8_decode('Sabe Lectura Labiofacial?:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileSi
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileNo
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(8,5,utf8_decode('N/A:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileNA
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->Ln();
+$pdf->Ln(1);
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(12,5,utf8_decode('Causa:'),0,0,'L');
@@ -1590,7 +1698,7 @@ $pdf->Ln();
 
 
 $pdf->SetLineWidth(0.5);
-$pdf->Line(10, 197, 211-10, 197); // 20mm from each edge
+$pdf->Line(10, 204, 211-10, 204); // 20mm from each edge
 $pdf->SetLineWidth(0.2);
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(191,5,utf8_decode('VIVIENDA'),0,0,'L');
@@ -1615,30 +1723,20 @@ $pdf->SetFont('ZapfDingbats','', 10);
 $pdf->Cell(4,5,utf8_decode($rentada ),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(29,5,utf8_decode('Monto de la renta: $'),0,0,'L');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',10);
-$pdf->Cell(16,5,utf8_decode($viviendaRentaMXN1),'B',0,'C');
-$pdf->SetFont('Arial','B',8);
-$pdf->Cell(27,5,utf8_decode('La está pagando?:'),0,0,'L');
+$pdf->Cell(27,5,utf8_decode('Está a su nombre?:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode($pagandoSi),'BR',0,'C');
+$pdf->Cell(4,5,utf8_decode($propietarioSi),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode($pagandoNo),'BR',0,'C');
+$pdf->Cell(4,5,utf8_decode($propietarioNo),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','B',8);
-$pdf->Cell(15,5,utf8_decode('Monto: $'),0,0,'C');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',10);
-$pdf->Cell(17,5,utf8_decode($montoPagando1),'B',0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -1670,7 +1768,7 @@ $pdf->Cell(88,5,utf8_decode($otroCasa),'B',0,'C');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(30,5,utf8_decode('No. de habitaciones:'),0,0,'L');
+$pdf->Cell(30,5,utf8_decode('No. de dormitorios:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
 $pdf->Cell(7,5,utf8_decode(' '.$rowViviendas['num_habitaciones'].' '),'B',0,'C');
@@ -1680,25 +1778,43 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(13,5,utf8_decode('Cocina:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);;
-$pdf->Cell(4,5,utf8_decode(' '.$cocinaCheck.' '),'BR',0,'C');
+$pdf->Cell(4,5,utf8_decode($cocinaCheck),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(10,5,utf8_decode('Sala:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);;
-$pdf->Cell(4,5,utf8_decode(' '.$salaCheck.' '),'BR',0,'C');
+$pdf->Cell(4,5,utf8_decode($salaCheck),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(10,5,utf8_decode('Baño:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode(' '.$banioCheck.' '),'BR',0,'C');
+$pdf->Cell(4,5,utf8_decode($banioCheck),'BR',0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(19,5,utf8_decode('Num. Baños:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','',10);
+$pdf->Cell(8,5,utf8_decode($numBanios),'B',0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(12,5,utf8_decode('Interior:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);;
+$pdf->Cell(4,5,utf8_decode($interior),'BR',0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(12,5,utf8_decode('Exterior:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode($exterior),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(10,5,utf8_decode('Otro:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(90,5,utf8_decode(' '.$otroHabCheck.' '),'B',0,'L');
+$pdf->Cell(25,5,utf8_decode($otroHabCheck),'B',0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -1746,7 +1862,7 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(10,5,utf8_decode('Otro:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(22,5,utf8_decode($otroPared),'B',0,'L');
+$pdf->Cell(26,5,utf8_decode($otroPared),'B',0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -1769,12 +1885,6 @@ $pdf->Cell(14,5,utf8_decode('Drenaje:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
 $pdf->Cell(4,5,utf8_decode($drenaje),'BR',0,'C');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','B',8);
-$pdf->Cell(12,5,utf8_decode('Cable:'),0,0,'L');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode('$cable'),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(14,5,utf8_decode('Internet:'),0,0,'L');
@@ -1827,7 +1937,7 @@ $pdf->SetFont('ZapfDingbats','', 10);
 $pdf->Cell(4,5,utf8_decode($lavadora),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(25,5,utf8_decode('Sistema Sonido:'),0,0,'L');
+$pdf->Cell(25,5,utf8_decode('Disp. Inteligente:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
 $pdf->Cell(4,5,utf8_decode($dispositivo),'BR',0,'C');
@@ -1868,10 +1978,10 @@ $pdf->Cell(4,5,utf8_decode($estufa),'BR',0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(30,5,utf8_decode('Reproductor Video:'),0,0,'L');
+$pdf->Cell(20,5,utf8_decode('Refrigerador:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode('$video'),'BR',0,'C');
+$pdf->Cell(4,5,utf8_decode($refri),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(11,5,utf8_decode('Otro:'),0,0,'L');
@@ -1883,32 +1993,29 @@ $pdf->Ln();
 
 
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(73,5,utf8_decode('Personas que dependen de usted económicamente:'),0,0,'L');
+$pdf->Cell(40,5,utf8_decode('Es dependiente económico?'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',10);
-$pdf->Cell(4,5,utf8_decode($personasDep),'B',0,'C');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','B',8);
-$pdf->Cell(22,5,utf8_decode('Tiene deudas?'),0,0,'C');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode($deudasSi),'BR',0,'C');
+$pdf->Cell(4,5,utf8_decode($dependienteSi),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(7,5,utf8_decode('No:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode($deudasNo),'BR',0,'C');
+$pdf->Cell(4,5,utf8_decode($dependienteNo),'BR',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(23,5,utf8_decode('Monto deuda: $'),0,0,'R');
+$pdf->Cell(24,5,utf8_decode('Indique de quién:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(40,5,utf8_decode($montoDeuda1),'B',0,'L');
-$pdf->Ln();
+$pdf->Cell(45,5,utf8_decode($financiador),'B',0,'L');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(50,5,utf8_decode('Núm. dependientes económicos?'),0,0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','',10);
+$pdf->Cell(4,5,utf8_decode($personasDep),'BR',0,'C');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->Ln();
 $pdf->Ln();
 
