@@ -212,6 +212,10 @@ $(document).ready(function() {
         var seguridadsocial = document.getElementById('seguridadsocial').value;
         var otroSS = document.getElementById('otroSS').value;
         var numSS = document.getElementById('numss').value;
+        var grupovulnerableFull = document.getElementById('numeroG').value;
+        var informante = document.getElementById('informante').value;
+        var estatus = document.getElementById('estatus').value;
+
 
         if(generoF.checked){
             var genero = "Femenino";
@@ -280,6 +284,22 @@ $(document).ready(function() {
             document.getElementById('montoP').required = false;
             document.getElementById('periodo').required = false;
         }
+        /* acomodos nuevos de variables para editar y guardar */
+        if(informante == 1){
+           var nombreInformante = "";
+           var relacionInformante = "";
+           var otrarelacionInformante = "";
+        }
+        else{
+            var nombreInformante = document.getElementById('nombreInformante').value;
+            var relacionInformante = document.getElementById('informanteRel').value;
+           var relacionInformante = document.getElementById('otraRel').value;
+           if(relacionInformante == 1){
+            var otraRel = document.getElementById('otraRel').value;
+           }else{
+            var otraRel = "";
+           }
+        }
 
         $.ajax({
             type: "POST",
@@ -311,10 +331,10 @@ $(document).ready(function() {
                 telFijo:telFijo,
                 celular:celular,
                 escolaridad:escolaridad,
-                estudia:estudia,
+                estudia:estudia,/* si está en la lista */
                 estudiaLugar:estudiaLugar,
-                habilidad:habilidad,
-                profesion:profesion,
+                habilidad:habilidad,/* si está en la lista */
+                profesion:profesion,/* si está en la lista */
                 trabaja:trabaja,
                 trabajaLugar:trabajaLugar,
                 ingresoMensual:ingresoMensual,
@@ -328,7 +348,20 @@ $(document).ready(function() {
                 pensionTemporalidad:pensionTemporalidad,
                 seguridadsocial:seguridadsocial,
                 otroSS:otroSS,
-                numSS:numSS
+                numSS:numSS,
+                /* aqui se agregan las variables nuevas de informante y otras para no perderse */
+                /* leer */
+                leer: leer,
+                /* estudia */
+                /* estudia:estudia, */
+                carrera: carrera,/* nueva en la lista */
+                concluido: concluido,
+                /* informante */
+                nombreInformante:nombreInformante,
+                relacionInformante:relacionInformante,
+                otrarelacionInformante:otrarelacionInformante,
+                /* estatus */
+                estatus:estatus
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
