@@ -196,6 +196,8 @@ $(document).ready(function() {
         var telFijo = document.getElementById('telFijo').value;
         var celular = document.getElementById('celular').value;
         var escolaridad = document.getElementById('escolaridad').value;
+        var leerSi = document.getElementById('leerSi');/* nuevo */
+        var leerNo = document.getElementById('leerNo');/* nuevo */
         var estudiaSi = document.getElementById('estudiaSi');
         var estudiaNo = document.getElementById('estudiaNo');
         var habilidad = document.getElementById('habilidad').value;
@@ -285,6 +287,7 @@ $(document).ready(function() {
             document.getElementById('periodo').required = false;
         }
         /* acomodos nuevos de variables para editar y guardar */
+        /* informante */
         if(informante == 1){
            var nombreInformante = "";
            var relacionInformante = "";
@@ -300,6 +303,13 @@ $(document).ready(function() {
             var otraRel = "";
            }
         }
+        /* leer */
+        if(leerSi.checked){
+            leer = 1;
+        }else if(leerNo.checked){
+            leer = 0;
+        }
+
 
         $.ajax({
             type: "POST",
@@ -360,6 +370,8 @@ $(document).ready(function() {
                 nombreInformante:nombreInformante,
                 relacionInformante:relacionInformante,
                 otrarelacionInformante:otrarelacionInformante,
+                /* grupo vulnerable */
+                grupovulnerableFull:grupovulnerableFull,
                 /* estatus */
                 estatus:estatus
             },

@@ -56,7 +56,9 @@ $seguridadsocial = $_POST['seguridadsocial'];
 $otroSS = $_POST['otroSS'];
 $numSS = $_POST['numSS'];
 $gruposFull = $_POST['gruposFull'];
+$estatus = $_POST['estatus'];
 $tipo_dato = 13;
+
 
 $sqlinsert= "UPDATE datos_generales SET 
     numExpediente = '$numExp',
@@ -106,6 +108,7 @@ $sqlinsert= "UPDATE datos_generales SET
     otro_parentesco = '$informanteRelacionOtro1',
     seguridad_social = '$seguridadsocial',
     seguridad_social_otro = '$otroSS',
+    estatus = '$estatus',
     numSS = '$numSS',
     gpo_vulnerable = '$gruposFull'
     WHERE curp = '$curp'
