@@ -379,6 +379,73 @@ else if($causa == 8){
   $espedifique = $rowSqlMedicos['causa_otro'];
 }
 
+$braile = $rowSqlMedicos['braile'];
+if ($braile == 1) {
+  $braileSi = $check;
+  $braileNo = "";
+  $braileNA = "";
+}
+else if ($braile == 2) {
+  $braileSi = "";
+  $braileNo = $check;
+  $braileNA = "";
+}
+else if ($braile == 0) {
+  $braileSi = "";
+  $braileNo = "";
+  $braileNA = $check;
+}
+else {
+  $braileSi = "";
+  $braileNo = "";
+  $braileNA = "";
+}
+
+$lsm = $rowSqlMedicos['lsm'];
+if ($lsm == 1) {
+  $lsmSi = $check;
+  $lsmNo = "";
+  $lsmNA = "";
+}
+else if ($lsm == 2) {
+  $lsmSi = "";
+  $lsmNo = $check;
+  $lsmNA = "";
+}
+else if ($lsm == 0) {
+  $lsmSi = "";
+  $lsmNo = "";
+  $lsmNA = $check;
+}
+else {
+  $lsmSi = "";
+  $lsmNo = "";
+  $lsmNA = "";
+}
+
+$labiofacial = $rowSqlMedicos['labiofacial'];
+if ($labiofacial == 1) {
+  $labiofacialSi = $check;
+  $labiofacialNo = "";
+  $labiofacialNA = "";
+}
+else if ($labiofacial == 2) {
+  $labiofacialSi = "";
+  $labiofacialNo = $check;
+  $labiofacialNA = "";
+}
+else if ($labiofacial == 0) {
+  $labiofacialSi = "";
+  $labiofacialNo = "";
+  $labiofacialNA = $check;
+}
+else {
+  $labiofacialSi = "";
+  $labiofacialNo = "";
+  $labiofacialNA = "";
+}
+
+
 $idTemporalidad = $rowSqlMedicos['temporalidad'];
 if($idTemporalidad == null || $idTemporalidad == "0000-00-00" || $idTemporalidad == ""){
   $tempDisc ="";
@@ -557,6 +624,28 @@ else {
   $vulnerablesNo = "";
   $vulnerablesSi = $check;
   $gruposVulnerables = $vulnerables;
+}
+
+$supervision = $rowSqlMedicos['asistencia'];
+if ($supervision == 1){
+  $asistenciaT = $check;
+  $asistenciaE = "";
+  $asistenciaN = "";
+}
+else if ($supervision == 2){
+  $asistenciaT = "";
+  $asistenciaE = $check;
+  $asistenciaN = "";
+}
+else if ($supervision == 3){
+  $asistenciaT = "";
+  $asistenciaE = "";
+  $asistenciaN = $check;
+}
+else {
+  $asistenciaT = "";
+  $asistenciaE = "";
+  $asistenciaN = "";
 }
 
 $sqlViviendas = "SELECT * FROM vivienda WHERE curp = '$curp'";
@@ -920,22 +1009,13 @@ else {
 
 }
 
-$deudas = $rowViviendas['deudas'];
-if ($deudas == 1){
-  $deudasSi = $check;
-  $deudasNo = "";
-}
-else {
-  $deudasSi = "";
-  $deudasNo = $check;
-}
+$informante = $rowSqlGenerales['informante'];
 
-$montoDeuda = $rowViviendas['deudas_cuanto'];
-if ($montoDeuda == 0 || $montoDeuda == "" || $montoDeuda == null){
-  $montoDeuda1 = "";
+if ($informante == "" || $informante == null || $informante = 0){
+  $autoriza = $rowSqlGenerales['nombre'].' '.$rowSqlGenerales['apellido_p'].' '.$rowSqlGenerales['apellido_m'];
 }
 else {
-  $montoDeuda1 = $montoDeuda;
+  $autoriza = $rowSqlGenerales['informante'];
 }
 
 class PDF extends FPDF
@@ -1441,19 +1521,19 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileSi
+$pdf->Cell(4,5,utf8_decode($braileSi),'BR',0,'C'); //variable para braileSi
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileNo
+$pdf->Cell(4,5,utf8_decode($braileNo),'BR',0,'C'); //variable para braileNo
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(8,5,utf8_decode('N/A:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileNA
+$pdf->Cell(4,5,utf8_decode($braileNA),'BR',0,'C'); //variable para braileNA
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(18,5,utf8_decode('Sabe LSM?:'),0,0,'L');
@@ -1462,19 +1542,19 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileSi
+$pdf->Cell(4,5,utf8_decode($lsmSi),'BR',0,'C'); //variable para lsmSi
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileNo
+$pdf->Cell(4,5,utf8_decode($lsmNo),'BR',0,'C'); //variable para lsmNo
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(8,5,utf8_decode('N/A:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileNA
+$pdf->Cell(4,5,utf8_decode($lsmNA),'BR',0,'C'); //variable para lsmNA
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(37,5,utf8_decode('Sabe Lectura Labiofacial?:'),0,0,'L');
@@ -1483,19 +1563,19 @@ $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('Sí:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileSi
+$pdf->Cell(4,5,utf8_decode($labiofacialSi),'BR',0,'C'); //variable para labiofacialSi
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(6,5,utf8_decode('No:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileNo
+$pdf->Cell(4,5,utf8_decode($labiofacialNo),'BR',0,'C'); //variable para labiofacialNo
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(8,5,utf8_decode('N/A:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('ZapfDingbats','', 10);
-$pdf->Cell(4,5,utf8_decode(''),'BR',0,'C'); //variable para braileNA
+$pdf->Cell(4,5,utf8_decode($labiofacialNA),'BR',0,'C'); //variable para labiofacialNA
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->Ln();
 $pdf->Ln(1);
@@ -1623,6 +1703,7 @@ $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
 $pdf->Cell(30,5,utf8_decode($Duracion2),'B',0,'C');
 $pdf->Ln();
+$pdf->Ln(1);
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(24,5,utf8_decode('Tipo de Sangre:'),0,0,'L');
@@ -1673,19 +1754,42 @@ $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
 $pdf->Cell(93,5,utf8_decode($rowSqlMedicos['protesis_tipo']),'B',0,'L');
 $pdf->Ln();
+$pdf->Ln(1);
 
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(18,5,utf8_decode('Alergias:'),0,0,'L');
+$pdf->Cell(47,5,utf8_decode('Requiere asistencia/supervisión?'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',10);
-$pdf->Cell(172,5,utf8_decode($rowSqlMedicos['alergias_cual']),'B',0,'L');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(23,5,utf8_decode('Todo el tiempo:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode($asistenciaT),'BR',0,'C'); //variable para labiofacialSi
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(28,5,utf8_decode('Tareas específicas:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode($asistenciaE),'BR',0,'C'); //variable para labiofacialNo
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(11,5,utf8_decode('Nunca:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('ZapfDingbats','', 10);
+$pdf->Cell(4,5,utf8_decode($asistenciaN),'BR',0,'C'); //variable para labiofacialNA
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->Ln();
 
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(14,5,utf8_decode('Alergias:'),0,0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+$pdf->SetFont('Arial','',10);
+$pdf->Cell(73,5,utf8_decode($rowSqlMedicos['alergias_cual']),'B',0,'L');
+$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(23,5,utf8_decode('Enfermedades:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(167,5,utf8_decode($rowSqlMedicos['enfermedades_cual']),'B',0,'L');
+$pdf->Cell(78,5,utf8_decode($rowSqlMedicos['enfermedades_cual']),'B',0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -1698,7 +1802,7 @@ $pdf->Ln();
 
 
 $pdf->SetLineWidth(0.5);
-$pdf->Line(10, 204, 211-10, 204); // 20mm from each edge
+$pdf->Line(10, 206, 211-10, 206); // 20mm from each edge
 $pdf->SetLineWidth(0.2);
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(191,5,utf8_decode('VIVIENDA'),0,0,'L');
@@ -2164,14 +2268,14 @@ $pdf->Ln();
 
 
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(95,5,utf8_decode('Firma:'),1,0,'C');
+$pdf->Cell(95,5,utf8_decode('Firma del responsable del llenado:'),1,0,'C');
 $pdf->Cell(96,5,utf8_decode('Firma de Autorización de uso de Datos Personales:'),1,0,'C');
 $pdf->Ln();
 $pdf->Cell(95,20,utf8_decode(''),1,0,'C');
 $pdf->Cell(96,20,utf8_decode(''),1,0,'C');
 $pdf->Ln();
 $pdf->Cell(95,5,utf8_decode($usr),1,0,'C');
-$pdf->Cell(96,5,utf8_decode($rowSqlGenerales['nombre'].' '.$rowSqlGenerales['apellido_p'].' '.$rowSqlGenerales['apellido_m'].' o Persona Autorizada'),1,0,'C');
+$pdf->Cell(96,5,utf8_decode($autoriza),1,0,'C');
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();

@@ -23,7 +23,7 @@ if (isset($_POST['cadenaTexto'])){
         $municipio = $rowDatos['municipio'];
         $discapacidad = $rowDatos2['discapacidad'];
         $tipoDiscapacidad = $rowDatos2['tipo_discapacidad'];
-        $estatus = $rowDatos2['estatus'];
+        $estatus = $rowDatos['estatus'];
 
         echo json_encode(array(
             'success'=>1,

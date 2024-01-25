@@ -7,7 +7,8 @@ $x = 0;
 
 if($numeroID == 1){
 
-$db1 = "SELECT * FROM Expedientes ORDER BY ordenExpediente ASC LIMIT 1, 50000";
+$db1 = "SELECT * FROM Expedientes ORDER BY ordenExpediente ASC LIMIT 1, 25";
+//$db1 = "SELECT * FROM Expedientes ORDER BY RAND() LIMIT 1, 15";
 $resultadoDB1 = $conn2->query($db1);
 
 while($rowDB = $resultadoDB1->fetch_assoc()){
@@ -678,7 +679,6 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
         serv_basicos_agua,
         serv_basicos_luz,
         serv_basicos_drenaje,
-        serv_basicos_cable,
         serv_basicos_internet,
         serv_basicos_celular,
         serv_basicos_carro,
@@ -687,11 +687,9 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
         serv_basicos_otro,
         electrodomesticos_tv,
         electrodomesticos_lavadora,
-        electrodomesticos_estereo,
         electrodomesticos_microondas,
         electrodomesticos_computadora,
         electrodomesticos_licuadora,
-        electrodomesticos_dvd,
         electrodomesticos_estufa,
         electrodomesticos_otro,
         personas_dependen,
@@ -718,7 +716,6 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
         '$agua',
         '$luz',
         '$drenaje',
-        '$cable',
         '$internet',
         '$celularServ',
         '$carro',
@@ -727,11 +724,9 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
         '$serv_basicos_otro',
         '$television',
         '$lavadora',
-        '$estereo',
         '$microondas',
         '$computadora',
         '$licuadora',
-        '$dvd',
         '$estufa',
         '$otros_electrodomesticos',
         '$NumPersonas',

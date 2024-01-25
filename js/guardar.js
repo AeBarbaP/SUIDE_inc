@@ -239,6 +239,7 @@ $(document).ready(function() {
             var leer = 0;
         }
         
+
         if (concluidaSi.checked){
             var concluida = 1;
         }
@@ -265,10 +266,12 @@ $(document).ready(function() {
         if(trabajaSi.checked){
             var trabajaLugar = document.getElementById('lugarTrabajo').value;
             if (trabajaLugar == "Otro"){
-            document.getElementById('lugarTrabajoOtro').required = true;
-            var lugarTrabajoOtro = document.getElementById('lugarTrabajoOtro').value;
+                document.getElementById('lugarTrabajoOtro').required = true;
+                var lugarTrabajoOtro = document.getElementById('lugarTrabajoOtro').value;
+            }else{
+                document.getElementById('lugarTrabajoOtro').required = false;
+                var lugarTrabajoOtro = "N/A";
             }
-            
         }
         else if (trabajaNo.checked){
             var trabajaLugar = "N/A";
@@ -525,10 +528,12 @@ function updateGeneralesForm(){
         if(trabajaSi.checked){
             var trabajaLugar = document.getElementById('lugarTrabajo').value;
             if (trabajaLugar == "Otro"){
-            document.getElementById('lugarTrabajoOtro').required = true;
-            var lugarTrabajoOtro = document.getElementById('lugarTrabajoOtro').value;
+                document.getElementById('lugarTrabajoOtro').required = true;
+                var lugarTrabajoOtro = document.getElementById('lugarTrabajoOtro').value;
+            }else{
+                document.getElementById('lugarTrabajoOtro').required = false;
+                var lugarTrabajoOtro = "N/A";
             }
-            
         }
         else if (trabajaNo.checked){
             var trabajaLugar = "N/A";
@@ -894,6 +899,7 @@ function updateDatosMedicos(){
         var labiofacialNo1 = document.getElementById('labiofacialNo');
         var labiofacialNA1 = document.getElementById('labiofacialNA');
         var asistencia = document.getElementById('asistencia').value;
+        
         
         if (braileSi1.checked){
             var braile = 1;

@@ -203,7 +203,7 @@ include('prcd/qc/qc.php');
     
     <ul class="list-unstyled ps-0 mt-3">
       <li class="ms-2 mb-1">
-        <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark" onclick="descartarCambios(1)"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
+        <span class="d-inline-flex"><a href="dashboard.php" id="linkHome" class="link-dark" onclick="descartarCambios(1)"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
       </li>
       <li class="mb-1 mt-2">
       <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-inboxes ms-3 me-2"></i>
@@ -211,9 +211,9 @@ include('prcd/qc/qc.php');
         </a></span>
         <div class="collapse" id="padron-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" onclick="descartarCambios(2)"><i class="bi bi-inboxes ms-2 me-3"></i> Padrón PCD</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" onclick="descartarCambios(3)"><i class="bi bi-folder-plus ms-2 me-3"></i> Agregar nuevo</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" onclick="descartarCambios(4)"><i class="bi bi-journals ms-2 me-3"></i> Actualizar expediente</a></li>
+            <li><a href="padronpcdfull.php" class="link-dark d-inline-flex text-decoration-none rounded" onclick="descartarCambios(2)"><i class="bi bi-inboxes ms-2 me-3"></i> Padrón PCD</a></li>
+            <li><a href="padronpcd.php" class="link-dark d-inline-flex text-decoration-none rounded" onclick="descartarCambios(3)"><i class="bi bi-folder-plus ms-2 me-3"></i> Agregar nuevo</a></li>
+            <li><a href="padronpcdActualizar.php" class="link-dark d-inline-flex text-decoration-none rounded" onclick="descartarCambios(4)"><i class="bi bi-journals ms-2 me-3"></i> Actualizar expediente</a></li>
             
           </ul>
         </div>
@@ -266,7 +266,7 @@ include('prcd/qc/qc.php');
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="alert alert-secondary text-center" role="alert" style="background-color: #87CD97;">
-        <p class="h1 text-light"><strong><i class="bi bi-person-plus-fill"></i> Registro Nuevo</strong></p>
+        <p class="h1 text-light"><strong><i class="bi bi-person-plus-fill" style="font-style: normal;"> Registro Nuevo</i></strong></p>
         <!-- <p class="h6 mb-1 text-light" style="font-style:oblique">Sistema Único de Identificación y Verificación</p> -->
       </div>
       <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">

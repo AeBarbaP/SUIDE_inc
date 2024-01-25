@@ -289,19 +289,19 @@ $(document).ready(function() {
         /* acomodos nuevos de variables para editar y guardar */
         /* informante */
         if(informante == 1){
-           var nombreInformante = "";
-           var relacionInformante = "";
-           var otrarelacionInformante = "";
+            var nombreInformante = "";
+            var relacionInformante = "";
+            var otrarelacionInformante = "";
         }
         else{
             var nombreInformante = document.getElementById('nombreInformante').value;
             var relacionInformante = document.getElementById('informanteRel').value;
-           var relacionInformante = document.getElementById('otraRel').value;
-           if(relacionInformante == 1){
-            var otraRel = document.getElementById('otraRel').value;
-           }else{
-            var otraRel = "";
-           }
+            var relacionInformante = document.getElementById('otraRel').value;
+            if(relacionInformante == 1){
+                var otraRel = document.getElementById('otraRel').value;
+            }else{
+                var otraRel = "";
+            }
         }
         /* leer */
         if(leerSi.checked){

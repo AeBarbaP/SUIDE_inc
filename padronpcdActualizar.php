@@ -225,8 +225,8 @@ include('prcd/qc/qc.php');
         </a></span>
         <div class="collapse" id="dashboard-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetongen"><i class="bi bi-bookmark-plus ms-2 me-3"></i> Tarjetón de Padrón</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo"><i class="bi bi-tag ms-2 me-3"></i> Tarjeton de Préstamo</a></li>
+            <li><a href="" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetongen"><i class="bi bi-bookmark-plus ms-2 me-3"></i> Tarjetón de Padrón</a></li>
+            <li><a href="" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo"><i class="bi bi-tag ms-2 me-3"></i> Tarjeton de Préstamo</a></li>
             
           </ul>
         </div>
@@ -267,8 +267,8 @@ include('prcd/qc/qc.php');
     </nav>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <div class="alert alert-warning text-center" role="alert">
-        <p class="h1 text-dark"><strong><i class="bi bi-pencil-square"></i> Actualizar Registro</strong></p>
+    <div class="alert text-center" role="alert" style="background-color: #FFC96F;">
+        <p class="h1 text-light"><strong><i class="bi bi-pencil-square" style="font-style: normal;"> Actualizar Registro</i></strong></p>
         <!-- <p class="h6 mb-1 text-light" style="font-style:oblique">Sistema Único de Identificación y Verificación</p> -->
       </div>
       <div class="input-group mb-2 mt-2">
@@ -949,7 +949,7 @@ include('prcd/qc/qc.php');
                         <label for="basic-url" class="form-label">Estatus del expediente:</label>
                         <select class="form-select" id="estatus" required>
                           <option value="" selected>Selecciona...</option>
-                          <option value="1">Creado (Activo)</option>
+                          <!-- <option value="1">Creado (Activo)</option> -->
                           <option value="2">Inactivo</option>
                           <option value="3">Inactivo (Finado)</option>
                         </select>
