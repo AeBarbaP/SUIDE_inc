@@ -285,11 +285,12 @@ include('prcd/qc/qc.php');
             <input type="text" id="municipioChange" hidden>
             <br>
             <img id="profile" src="img/no_profile.png" width="100%">
+            <input type="text" id="flagFoto" value="0" hidden>
             <div class="input-group">
           <!-- file photo-->
             <form id="upload_form" enctype="multipart/form-data" method="post">
                 
-              <input type="file"  name="file_photo" id="file_photo" onchange="foto()" accept="image/png, image/gif, image/jpeg" class="h6 w-100 mt-3" disabled><br>
+              <input type="file"  name="file_photo" id="file_photo" onchange="foto()" accept="image/jpeg" class="h6 w-100 mt-3" disabled><br>
             
               <progress id="progressBar_photo" value="0" max="100" style="width:230px;"></progress>
               <small id="status_photo"></small>
@@ -2427,11 +2428,11 @@ include('prcd/qc/qc.php');
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="input-group mb-1 mt-2 w-100">
+            <!-- <div class="input-group mb-1 mt-2 w-100">
               <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
               <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2(); desbloquearInputsT(this.value)" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
-              <!-- <input type="text" id="curpTarjeton" hidden>  -->
-            </div><!-- input group -->
+              <input type="text" id="curpTarjeton" hidden> 
+            </div> --><!-- input group -->
             <br>
             <div class="container text-center">
               <div class="card mb-3" style="max-width: 100%;">

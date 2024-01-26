@@ -21,7 +21,7 @@ else {
 
 $numExpediente = 'C-'.$numMpio.$discCve.'-'.$idExp;
 
-$sql = "UPDATE datos_generales SET numExpediente = '$numExpediente' WHERE id = '$idExp'";
+$sql = "UPDATE datos_generales SET numExpediente = '$numExpediente', estatus = 4 WHERE id = '$idExp'";
 $resultadoSql = $conn->query($sql);
 /* $rowSql = $resultadoSql->fetch_assoc(); */
 

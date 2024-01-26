@@ -156,7 +156,15 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         $dbEscolaridad = "SELECT * FROM CatEscolaridades WHERE id = '$idescolaridad'";
         $resultadoEscolaridad = $conn2->query($dbEscolaridad);
         if ($rowEscolaridad = $resultadoEscolaridad->fetch_assoc()){
-            $escolaridad = $rowEscolaridad['nombreEscolaridad'];
+            if ($rowEscolaridad['id'] == 9 || $rowEscolaridad['id'] == 10 || $rowEscolaridad['id'] == 11 || $rowEscolaridad['id'] == 12 || $rowEscolaridad['id'] == 13){
+                $escolaridad = "";
+            }
+            else if ($rowEscolaridad['id'] == 1){
+                $escolaridad = "Sin Escolarizar";
+            }
+            else{
+                $escolaridad = $rowEscolaridad['nombreEscolaridad'];
+            }
         }
         else {
             $escolaridad = "";

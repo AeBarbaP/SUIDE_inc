@@ -29,6 +29,7 @@ function foto() {
         var percent = (event.loaded / event.total) * 100;
         _("progressBar"+doc).value = Math.round(percent);
         _("status"+doc).innerHTML = Math.round(percent) + "% subido... espere un momento";
+        document.getElementById('flagFoto').value = 1;
     }
     
     function completeHandler(event) {
@@ -238,7 +239,6 @@ $(document).ready(function() {
         else if (leerNo.checked){
             var leer = 0;
         }
-        
 
         if (concluidaSi.checked){
             var concluida = 1;
@@ -322,7 +322,7 @@ $(document).ready(function() {
             var informanteRelacion = "";
             var informanteRelacionOtro1 = "";
         }
-
+        
         $.ajax({
             type: "POST",
             url: 'prcd/guardar.php',
@@ -381,6 +381,7 @@ $(document).ready(function() {
                 var jsonData = JSON.parse(JSON.stringify(response));
                 var verificador = jsonData.succes;
                 var curpSaved = jsonData.curp;
+                console.log(foto);
                 if (verificador = 1){
                     document.getElementById('btnGuardarGeneral').hidden = true;
                     document.getElementById('btnGuardarGeneralUpdate').hidden = false;
@@ -693,6 +694,15 @@ function cambiarTab(){
 
 $(document).ready(function() {
     $('#medicosForm').submit(function(e) {
+
+    var foto = document.getElementById('flagFoto').value;  
+    if (foto == 0){
+        alert('Debes cargar una foto');
+        e.preventDefault();
+    }
+    else{
+        console.log('Foto cargada, continúa...');
+        
         /* Datos Médicos */
         var curp_exp = document.getElementById('curp_exp').value;
         var numExp = document.getElementById('numeroExpediente').innerText;
@@ -725,6 +735,7 @@ $(document).ready(function() {
         var labiofacialNo1 = document.getElementById('labiofacialNo');
         var labiofacialNA1 = document.getElementById('labiofacialNA');
         var asistencia = document.getElementById('asistencia').value;
+        
         
         if (braileSi1.checked){
             var braile = 1;
@@ -793,7 +804,7 @@ $(document).ready(function() {
         else if (medicamentosFull != ""){
             var medicamentos = 1;
         }
-        
+
         $.ajax({
             type: "POST",
             url: 'prcd/guardarmedicos.php',
@@ -862,9 +873,10 @@ $(document).ready(function() {
             }
         });
         e.preventDefault();
-
+    }
     })
 })
+
 
 function updateDatosMedicos(){
         /* Datos Médicos */

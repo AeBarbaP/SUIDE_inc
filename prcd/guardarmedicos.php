@@ -109,6 +109,9 @@ VALUES(
 
 $resultado= $conn->query($sqlinsert);
 
+$sql = "UPDATE datos_generales SET estatus = 4 WHERE numExpediente = '$numExp'";
+$resultadoSql = $conn->query($sql);
+
 if ($resultado) {
     $sqlInsertUsr = "INSERT INTO log_registro(
         usr,

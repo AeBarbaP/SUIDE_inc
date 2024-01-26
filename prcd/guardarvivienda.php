@@ -131,6 +131,9 @@ VALUES(
     '$dependientes'
 )";
 
+$sql = "UPDATE datos_generales SET estatus = 5 WHERE numExpediente = '$numExp'";
+$resultadoSql = $conn->query($sql);
+
 $resultado= $conn->query($sqlinsert);
 
 if ($resultado) {
