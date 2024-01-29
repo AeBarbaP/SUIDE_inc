@@ -28,7 +28,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     $rfc = $rowDB['rfc']; 
     
     $idCatTipoSeguridad = $rowDB['idCatTipoSeguridad']; 
-    
+
     $dbCatSeguridadSocial = "SELECT * FROM CatTipoSeguridad WHERE id = '$idCatTipoSeguridad'";
     $resultadodbCatSeguridadSocial = $conn2->query($dbCatSeguridadSocial);
 
@@ -146,11 +146,12 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
 
     $dbCatEscolaridad = "SELECT * FROM DetalleEscolaridades WHERE idExpediente = '$id'";
     $resultadodbCatEscolaridad = $conn2->query($dbCatEscolaridad);
+    $rowDBCatEscolaridad = $resultadodbCatEscolaridad->fetch_assoc();
 
     $profesion= "";
     $escolaridad= "";
 
-    if ($rowDBCatEscolaridad = $resultadodbCatEscolaridad->fetch_assoc()){
+    /*     if ($rowDBCatEscolaridad = $resultadodbCatEscolaridad->fetch_assoc()){
         $idescolaridad = $rowDBCatEscolaridad['idCatEscolaridad'];
 
         $dbEscolaridad = "SELECT * FROM CatEscolaridades WHERE id = '$idescolaridad'";
@@ -168,7 +169,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         }
         else {
             $escolaridad = "";
-        }
+        } */
 
         $idProfesion = $rowDBCatEscolaridad['idCatProfesion']; // se relaciona con idExpediente
         
@@ -185,7 +186,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
                 $profesion = "";
             }
         }
-    }
+    //}
 
     $dbTabEstudioSE = "SELECT * FROM EstudioSocioeconomicos WHERE idExpediente = '$id'";
     $resultadoEstudioSE = $conn2->query($dbTabEstudioSE);
@@ -193,13 +194,13 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     if ($rowdbEstudioSE = $resultadoEstudioSE->fetch_assoc()){
     // estudiossocioeconómico
         $estudia = $rowdbEstudioSE['estudia']; // se relaciona con idExpediente
-        $lgarEstudio = $rowdbEstudioSE['lgarEstudio']; // se relaciona con idExpediente
+        $lgarEstudio = ""; // se relaciona con idExpediente
         $trabaja = $rowdbEstudioSE['trabaja']; // se relaciona con idExpediente
-        $lugarTrabajo = $rowdbEstudioSE['lugarTrabajo']; // se relaciona con idExpediente
+        $lugarTrabajo = ""; // se relaciona con idExpediente
         $asociacion = $rowdbEstudioSE['asociacion']; // se relaciona con idExpediente
         $lugarAsociacion = $rowdbEstudioSE['lugarAsociacion']; // se relaciona con idExpediente
-        $sindicato = $rowdbEstudioSE['sindicato']; // se relaciona con idExpediente
-        $lugarSindicato = $rowdbEstudioSE['lugarSindicato']; // se relaciona con idExpediente
+        $sindicato = ""; // se relaciona con idExpediente
+        $lugarSindicato = ""; // se relaciona con idExpediente
         $pensionado = $rowdbEstudioSE['pensionado']; // se relaciona con idExpediente
         $lugarPension = $rowdbEstudioSE['lugarPension']; // se relaciona con idExpediente
         $montoPension = $rowdbEstudioSE['montoPension']; // se relaciona con idExpediente
@@ -226,8 +227,8 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     if ($rowTabIngresos = $resultadoTabIngresos->fetch_assoc()){
         $IngresoMensual = $rowTabIngresos['IngresoMensual']; // se relaciona con idEstudioSocioeconomico
         $personasDependen = $rowTabIngresos['pesonasDependen']; // se relaciona con idEstudioSocioeconomico
-        $deudas = $rowTabIngresos['deudas']; // se relaciona con idEstudioSocioeconomico
-        $montoDeuda = $rowTabIngresos['montoDeuda']; // se relaciona con idEstudioSocioeconomico
+        $deudas = ""; // se relaciona con idEstudioSocioeconomico
+        $montoDeuda = ""; // se relaciona con idEstudioSocioeconomico
     }
     else{
         $IngresoMensual = ""; // se relaciona con idEstudioSocioeconomico
@@ -238,28 +239,56 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     }
 
     // DATOS MÉDICOS de la anterior es datosmedicos
-$db3 = "SELECT * FROM DatosMedicos WHERE idExpediente = '$id'";
-$resultadoDB3 = $conn2->query($db3);
-while($rowDB3 = $resultadoDB3->fetch_assoc()){
+    $db3 = "SELECT * FROM DatosMedicos WHERE idExpediente = '$id'";
+    $resultadoDB3 = $conn2->query($db3);
+    $rowDB3 = $resultadoDB3->fetch_assoc();
 
     //datosMedicos
-        $idDatosMedicos = $rowDB3['id'];
-        $cirugia = $rowDB3['cirugia']; // se relaciona con idExpediente
-        $tipoCirugia = $rowDB3['tipoCirugia']; // se relaciona con idExpediente
-        $idTipoSangre = $rowDB3['idTipoSangre']; // se relaciona con idExpediente
+    $idDatosMedicos = $rowDB3['id'];
+    $cirugia = $rowDB3['cirugia']; // se relaciona con idExpediente
+    $tipoCirugia = $rowDB3['tipoCirugia']; // se relaciona con idExpediente
+    $idTipoSangre = $rowDB3['idTipoSangre']; // se relaciona con idExpediente
 
-}
+    if ($cirugia = "SI"){
+        $cirugia = 1;
+    }
+    else {
+        $cirugia = 0;
+        $tipoCirugia = "";
+    }
+    
+    // discapacidades
+    $db4 = "SELECT * FROM Discapacidades WHERE idExpediente = '$id'";
+    $resultadoDB4 = $conn2->query($db4);
 
-// discapacidades
-$db4 = "SELECT * FROM Discapacidades WHERE idExpediente = '$id'";
-$resultadoDB4 = $conn2->query($db4);
-
-while($rowDB4 = $resultadoDB4->fetch_assoc()){
+    $rowDB4 = $resultadoDB4->fetch_assoc();
 
     $grado = $rowDB4['grado']; // se relaciona con idExpediente
     $temporalidad = $rowDB4['temporalidad']; // se relaciona con idExpediente
-    $valoracion = $rowDB4['valoracion']; // se relaciona con idExpediente
+    $valoracion = $rowDB4['idCatInstitucion']; // se relaciona con idExpediente
     $idCatCausa = $rowDB4['idCatCausa']; // se relaciona con idExpediente
+
+    if ($valoracion == 1){
+        $valoracionInst = "ISSSTE";
+    }
+    else if ($valoracion == 2){
+        $valoracionInst = "IMSS";
+    }
+    else if ($valoracion == 3){
+        $valoracionInst = "SSZ";
+    }
+    else if ($valoracion == 6 || $valoracion == 5 || $valoracion == 7 || $valoracion == 11 || $valoracion == 15){
+        $valoracionInst = "PRIVADA";
+    }
+    else if ($valoracion == 8){
+        $valoracionInst = "CREE";
+    }
+    else if ($valoracion == 9){
+        $valoracionInst = "UBR";
+    }
+    else if ($valoracion == 10 || $valoracion == 12 || $valoracion == 13 || $valoracion == 14){
+        $valoracionInst = "";
+    }
 
     $SQLCausa ="SELECT * FROM CatCausas WHERE id = '$idCatCausa'";
     $resultCausa = $conn2->query($SQLCausa);
@@ -272,6 +301,9 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
     $resultCatDisc = $conn2->query($sqlCatDiscapacidades);
     $rowCatDisc = $resultCatDisc->fetch_assoc();
     $idCatDiscapacidadTipo = $rowCatDisc['idCatDiscapacidadTipo'];
+    $claveDiscapacidad = $rowCatDisc['claveDiscapacidad'];
+    $nombreDiscapacidad = $rowCatDisc['nombreDiscapacidad'];
+    $discapacidad = $claveDiscapacidad.'-'.$nombreDiscapacidad;
 
     $sqlCatDiscapacidades2 ="SELECT * FROM CatDiscapacidadTipos WHERE id = '$idCatDiscapacidadTipo'";
     $resultCatDisc2 = $conn2->query($sqlCatDiscapacidades2);
@@ -283,6 +315,14 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
     $tipoProtesis = $rowDB4['tipoProtesis']; // se relaciona con idExpediente
     $gradoDiscapacidad = $rowDB4['gradoDiscapacidad']; // se relaciona con idExpediente
     
+    if ($protesis == "SI"){
+        $protesis = 1;
+    }
+    else {
+        $protesis = 0;
+        $tipoProtesis = "";
+    }
+
     // enfermedades
     $enfermedadesSQL = "SELECT * FROM Enfermedades WHERE idDatosMedico = '$idDatosMedicos'";
     $resultadoDBEnf = $conn2->query($enfermedadesSQL);
@@ -291,54 +331,52 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
     $concMedicamentos = "";
     $concAlg = "";
     $idCatAlergias = "";
+
     while($rowEnf = $resultadoDBEnf->fetch_assoc()){
 
-    $idCatEnfermedad = $rowEnf['idCatEnfermedad']; // se relaciona con idExpediente
+        $idCatEnfermedad = $rowEnf['idCatEnfermedad']; // se relaciona con idExpediente
 
-    $sqlEnf2 ="SELECT * FROM CatEnfermedades WHERE id = '$idCatEnfermedad'";
-    $resultadoEnf2 = $conn2->query($sqlEnf2);
-    while($rowEnf2 = $resultadoEnf2->fetch_assoc()){
-        $enfermedad = $rowEnf2['nombreEnfermedad'];
-        $concatenarEnf = $concatenarEnf.", ".$enfermedad;
-        $concEnf = substr($concatenarEnf, 2);
+        $sqlEnf2 ="SELECT * FROM CatEnfermedades WHERE id = '$idCatEnfermedad'";
+        $resultadoEnf2 = $conn2->query($sqlEnf2);
+        while($rowEnf2 = $resultadoEnf2->fetch_assoc()){
+            $enfermedad = $rowEnf2['nombreEnfermedad'];
+            $concatenarEnf = $concatenarEnf.", ".$enfermedad;
+            $concEnf = substr($concatenarEnf, 2);
+        }
+
     }
-
-}
     // alergias
     $AlergiasSQL = "SELECT * FROM Alergias WHERE idDatosMedico = '$idDatosMedicos'";
     $resultadoDBAlergias = $conn2->query($AlergiasSQL);
     while($rowAlergias = $resultadoDBAlergias->fetch_assoc()){
 
-    $idCatAlergias = $rowAlergias['idCatAlergia']; // se relaciona con idExpediente
+        $idCatAlergias = $rowAlergias['idCatAlergia']; // se relaciona con idExpediente
 
-    $sqlAlergias2 ="SELECT * FROM CatAlergias WHERE id = '$idCatAlergias'";
-    $resultadoAlergias2 = $conn2->query($sqlAlergias2);
-    while($rowAlergias2 = $resultadoAlergias2->fetch_assoc()){
-        $alergia= $rowAlergias2['nombreAlergia'];
-        $concatenarAlergia = $concatenarAlergia.", ".$alergia;
-        $concAlg = substr($concatenarAlergia, 2);
+        $sqlAlergias2 ="SELECT * FROM CatAlergias WHERE id = '$idCatAlergias'";
+        $resultadoAlergias2 = $conn2->query($sqlAlergias2);
+        while($rowAlergias2 = $resultadoAlergias2->fetch_assoc()){
+            $alergia= $rowAlergias2['nombreAlergia'];
+            $concatenarAlergia = $concatenarAlergia.", ".$alergia;
+            $concAlg = substr($concatenarAlergia, 2);
+        }
     }
-
-}
     // medicamentos
     $MedicamendosSQL = "SELECT * FROM Medicamentos WHERE idDatosMedico = '$idDatosMedicos'";
     $resultadoDBMedicamentos = $conn2->query($MedicamendosSQL);
     $concatenarMedicamentos = "";
+    
     while($rowMedicamentos = $resultadoDBMedicamentos->fetch_assoc()){
+        $idCatMedicamentos = $rowMedicamentos['idCatMedicamento']; // se relaciona con idExpediente
+        $sqlMedicamentos2 ="SELECT * FROM CatMedicamentos WHERE id = '$idCatMedicamentos'";
+        $resultadoMedicamentos2 = $conn2->query($sqlMedicamentos2);
+        while($rowMedicamentos2 = $resultadoMedicamentos2->fetch_assoc()){
+            $medicamentos= $rowMedicamentos2['nombreMedicamento'];
+            $concatenarMedicamentos = $concatenarMedicamentos.", ".$medicamentos;
+            $concMedicamentos = substr($concatenarMedicamentos, 2);
+        }
+    }       
 
-    $idCatMedicamentos = $rowMedicamentos['idCatMedicamento']; // se relaciona con idExpediente
-
-    $sqlMedicamentos2 ="SELECT * FROM CatMedicamentos WHERE id = '$idCatMedicamentos'";
-    $resultadoMedicamentos2 = $conn2->query($sqlMedicamentos2);
-    while($rowMedicamentos2 = $resultadoMedicamentos2->fetch_assoc()){
-        $medicamentos= $rowMedicamentos2['nombreMedicamento'];
-        $concatenarMedicamentos = $concatenarMedicamentos.", ".$medicamentos;
-        $concMedicamentos = substr($concatenarMedicamentos, 2);
-    }
-
-}
-
-// datos pueba
+    // datos pueba
 
     $sqlInsertDMedicos = "INSERT INTO datos_medicos (
         curp,
@@ -367,7 +405,8 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
         '$temporalidad',
         '$valoracion',
         '$causa',
-        '$idCatDiscapacidad',
+        /* '$idCatDiscapacidad', */
+        '$discapacidad',
         '$idCatDiscapacidadTipoNombre',
         '$protesis',
         '$tipoProtesis',
@@ -497,6 +536,7 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
     $idCatVivienda = $rowViviendas['idCatVivienda'];
     $idViviendas = $rowViviendas['id'];
 
+
     $idCatTecho = $rowViviendas['idCatTecho'];
     $sqlTecho = "SELECT * FROM CatTechos WHERE id = '$idCatTecho'";
     $resultTecho = $conn2->query($sqlTecho);
@@ -511,6 +551,7 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
     $sqlViviendas = "SELECT * FROM CatViviendas WHERE id = '$idCatVivienda'";
     $resultViviendas = $conn2->query($sqlViviendas);
     $rowCatViviendas = $resultViviendas->fetch_assoc();
+
 
     // servicios
     $agua = 0;
@@ -559,12 +600,11 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
     // electrodomésticos
     $television = 0;
     $lavadora = 0;
-    $estereo = 0;
+    $dispositivo = 0;
     $microondas = 0;
     $computadora = 0;
     $licuadora = 0;
     $estufa = 0;
-    $dvd = 0;
     $otros_electrodomesticos = 0;
 
     $sqlElectro = "SELECT * FROM Electrodomesticos WHERE idVivienda = '$idViviendas'";
@@ -579,7 +619,7 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
             $lavadora = 1;
         }
         else if($VarElectro == 3){
-            $estereo = 1;
+            $dispositivo = 1;
         }
         else if($VarElectro == 4){
             $microondas = 1;
@@ -592,26 +632,36 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
         }
         else if($VarElectro == 7){
             $estufa = 1;
-        }else if($VarElectro == 8){
-            $dvd = 1;
-        
-        }else if($VarElectro == 9){
+        }
+        else if($VarElectro == 9){
             $otros_electrodomesticos = 1;
         }
 
     }
     // variables de vivienda, usar solo los id's
 
+    if ($idCatVivienda == 1){
+        $vivienda = 1;
+    }
+    else if ($idCatVivienda == 2){
+        $vivienda = 2;
+    }
+    else if ($idCatVivienda == 5){
+        $vivienda = 3;
+    }
+    else {
+        $vivienda = "";
+    }
+
+
     $idVivienda = $rowViviendas['id'];
     $NumHabitaciones = $rowViviendas['numeroHabitaciones'];
-    $vivienda = $rowCatViviendas['nombreVivienda'];
     $NumPersonas = $rowViviendas['numeroPersonas'];
     $pagoVivienda = 0;
     $valorVivienda = $rowViviendas['valorVivienda'];
     
-    if ($idCatVivienda == 1){
-        $vivienda = 1;
-        //renta 
+    /* if ($idCatVivienda == 1){
+                //renta 
         $pagoVivienda = 0;
         //pagando vivienda 
         $vivienda_pagando = 0;
@@ -626,16 +676,16 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
     else if ($idCatVivienda == 5){
         $vivienda = 3;
          //renta 
-         $pagoVivienda = $rowViviendas['pagoVivienda'];
+        $pagoVivienda = $rowViviendas['pagoVivienda'];
          //pagando vivienda 
-         $vivienda_pagando = 0;
+        $vivienda_pagando = 0;
         
     }
     else if ($idCatVivienda == 4){
         $vivienda = 0;
         $vivienda_pagando = 1;
         // lo demás se lo trae de monto
-    }
+    } */
 
     $idTecho = $rowTecho['id'];
     $techo = $rowTecho['nombreTecho'];
@@ -646,7 +696,7 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
     $pared_otro = 0;
 
     // $monto_pagando = $rowViviendas['pagoVivienda'];
-   /*  if($pagoVivienda > 0){
+    /*  if($pagoVivienda > 0){
         $vivienda_pagando = 1;
     }
     else{
@@ -670,9 +720,6 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
         curp,
         expediente,
         vivienda,
-        vivienda_renta,
-        vivienda_pagando,
-        monto_pagando,
         caracteristicas,
         caracteristicas_otro,
         num_habitaciones,
@@ -695,6 +742,7 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
         serv_basicos_otro,
         electrodomesticos_tv,
         electrodomesticos_lavadora,
+        electrodomesticos_dispositivo,
         electrodomesticos_microondas,
         electrodomesticos_computadora,
         electrodomesticos_licuadora,
@@ -706,10 +754,7 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
         ) VALUES(
         '$curp',
         '$folio',
-        '$idVivienda',
-        '$pagoVivienda',
-        '$vivienda_pagando',
-        '$valorVivienda',
+        '$idCatVivienda',
         '$caracteristicas',
         '$caracteristicas_otro',
         '$NumHabitaciones',
@@ -732,6 +777,7 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
         '$serv_basicos_otro',
         '$television',
         '$lavadora',
+        '$dispositivo',
         '$microondas',
         '$computadora',
         '$licuadora',
@@ -803,130 +849,129 @@ while($rowDB4 = $resultadoDB4->fetch_assoc()){
         }
     }
 
-// referencias
+    // referencias
 
-$sqlReferencias = "SELECT * FROM Referencias WHERE idExpediente = '$id'";
-$resultReferencias = $conn2->query($sqlReferencias);
-$errorInt3 = $conn2->error;
-        echo $errorInt3;
+    $sqlReferencias = "SELECT * FROM Referencias WHERE idExpediente = '$id'";
+    $resultReferencias = $conn2->query($sqlReferencias);
+    $errorInt3 = $conn2->error;
+            echo $errorInt3;
 
-while($rowReferencias = $resultReferencias->fetch_assoc()){
+    while($rowReferencias = $resultReferencias->fetch_assoc()){
 
-    $nombreReferencia = $rowReferencias['nombreReferencia']; // se relaciona con idExpediente
-    $direccionReferencia = $rowReferencias['direccionReferencia']; // se relaciona con idExpediente
-    $telefonoReferencia = $rowReferencias['telefonoReferencia']; // se relaciona con idExpediente
-    $celularReferencia = $rowReferencias['celularReferencia']; // se relaciona con idExpediente
-    $correoReferencia = $rowReferencias['correoReferencia']; // se relaciona con idExpediente
-    $idCatProfesion = $rowReferencias['idCatProfesion']; // se relaciona con idExpediente
-    $idCatParentesco = $rowReferencias['idCatParentesco']; // se relaciona con idExpediente
+        $nombreReferencia = $rowReferencias['nombreReferencia']; // se relaciona con idExpediente
+        $direccionReferencia = $rowReferencias['direccionReferencia']; // se relaciona con idExpediente
+        $telefonoReferencia = $rowReferencias['telefonoReferencia']; // se relaciona con idExpediente
+        $celularReferencia = $rowReferencias['celularReferencia']; // se relaciona con idExpediente
+        $correoReferencia = $rowReferencias['correoReferencia']; // se relaciona con idExpediente
+        $idCatProfesion = $rowReferencias['idCatProfesion']; // se relaciona con idExpediente
+        $idCatParentesco = $rowReferencias['idCatParentesco']; // se relaciona con idExpediente
 
-    $insertReferencia = "INSERT INTO referencias(
-        curp,
-        expediente,
-        nombre,
-        parentesco,
-        edad,
-        escolaridad,
-        profesion_oficio,
-        discapacidad,
-        ingreso,
-        celular,
-        email
-    ) VALUES(
-        '$curp',
-        '$folio',
-        '$nombreFamilia',
-        '$parentesco',
-        '$edadFamilia',
-        '$idCatEscolaridad',
-        '$idCatProfesion',
-        '$idCatDiscapacidad',
-        '$ingresoMensual',
-        0,
-        0
-    )";
-    $resultReferencias2 = $conn->query($insertReferencia);
-    if($resultReferencias2){
-        echo "Referencias correcta <br>";
+        $insertReferencia = "INSERT INTO referencias(
+            curp,
+            expediente,
+            nombre,
+            parentesco,
+            edad,
+            escolaridad,
+            profesion_oficio,
+            discapacidad,
+            ingreso,
+            celular,
+            email
+        ) VALUES(
+            '$curp',
+            '$folio',
+            '$nombreFamilia',
+            '$parentesco',
+            '$edadFamilia',
+            '$idCatEscolaridad',
+            '$idCatProfesion',
+            '$idCatDiscapacidad',
+            '$ingresoMensual',
+            0,
+            0
+        )";
+        $resultReferencias2 = $conn->query($insertReferencia);
+        if($resultReferencias2){
+            echo "Referencias correcta <br>";
+        }
+        else{
+            $errorReferencias = $conn->error;
+            echo $errorReferencias;
+        }
+    }
+
+    /* // de solicitudes a servicios
+
+    $sqlSolicitudes  = "SELECT * FROM Solicitudes WHERE idExpediente = '$id'";
+    $resultSolicitudes = $conn2->query($sqlSolicitudes);
+    // $errorIntSolicitud = $conn2->error;
+    //         echo $errorIntSolicitud;
+
+    while($rowSolicitud = $resultSolicitudes->fetch_assoc()){
+
+        $fechaSolicitud = $rowSolicitud['fechaSolicitud']; // se relaciona con idExpediente
+        $folioSolicitud = $rowSolicitud['folioSolicitud']; // se relaciona con idExpediente
+        $descripcionSolicitud = $rowSolicitud['descripcionSolicitud']; // se relaciona con idExpediente
+        $tipoSolicitud = $rowSolicitud['tipoSolicitud']; // se relaciona con idExpediente
+        $idEstatusSolicitud = $rowSolicitud['idEstatusSolicitud']; // se relaciona con idExpediente
+
+        $insertSolicitud = "INSERT INTO servicios(
+            curp,
+            expediente,
+            folio_solicitud,
+            fecha_solicitud,
+            tipo_solicitud,
+            detalle_solicitud
+        ) VALUES(
+            '$curp',
+            '$folio',
+            '$folioSolicitud',
+            '$fechaSolicitud',
+            '$tipoSolicitud',
+            '$descripcionSolicitud'
+        )";
+        $resultSolicitud = $conn->query($insertSolicitud);
+        if($resultSolicitud){
+            echo "Solicitud correcta <br>";
+        }
+        else{
+            $errorSolicitud = $conn->error;
+            echo $errorSolicitud;
+        }
+    } */
+    
+
+    $resultadoSQLVivienda = $conn->query($sqlESInsert);
+    if ($resultadoSQLVivienda){
+        $x++;
+        echo "registros completos Vivienda <br>";
     }
     else{
-        $errorReferencias = $conn->error;
-        echo $errorReferencias;
+        $errorV = $conn2->error;
+        $error1V = $conn->error;
+
+        echo $errorV;
+        echo $error1V;
     }
-}
 
-// de solicitudes a servicios
-
-$sqlSolicitudes  = "SELECT * FROM Solicitudes WHERE idExpediente = '$id'";
-$resultSolicitudes = $conn2->query($sqlSolicitudes);
-// $errorIntSolicitud = $conn2->error;
-//         echo $errorIntSolicitud;
-
-while($rowSolicitud = $resultSolicitudes->fetch_assoc()){
-
-    $fechaSolicitud = $rowSolicitud['fechaSolicitud']; // se relaciona con idExpediente
-    $folioSolicitud = $rowSolicitud['folioSolicitud']; // se relaciona con idExpediente
-    $descripcionSolicitud = $rowSolicitud['descripcionSolicitud']; // se relaciona con idExpediente
-    $tipoSolicitud = $rowSolicitud['tipoSolicitud']; // se relaciona con idExpediente
-    $idEstatusSolicitud = $rowSolicitud['idEstatusSolicitud']; // se relaciona con idExpediente
-
-    $insertSolicitud = "INSERT INTO servicios(
-        curp,
-        expediente,
-        folio_solicitud,
-        fecha_solicitud,
-        tipo_solicitud,
-        detalle_solicitud
-    ) VALUES(
-        '$curp',
-        '$folio',
-        '$folioSolicitud',
-        '$fechaSolicitud',
-        '$tipoSolicitud',
-        '$descripcionSolicitud'
-    )";
-    $resultSolicitud = $conn->query($insertSolicitud);
-    if($resultSolicitud){
-        echo "Solicitud correcta <br>";
+    $resultadoSQL = $conn->query($sqlInsert);
+    if ($resultadoSQL){
+        $x++;
+        echo "registros completos: ". $x .' ID: '.$id.'-- ORDEN: '.$ordenExpediente.' '.$nombre.$apellidoPaterno.$apellidoMaterno.' '.$fechaNacimiento.'<br>';
     }
     else{
-        $errorSolicitud = $conn->error;
-        echo $errorSolicitud;
+        $error = $conn2->error;
+        $error1 = $conn->error;
+
+        echo $error;
+        echo $error1;
     }
-}
-  
-
-$resultadoSQLVivienda = $conn->query($sqlESInsert);
-if ($resultadoSQLVivienda){
-    $x++;
-    echo "registros completos Vivienda <br>";
-}
-else{
-    $errorV = $conn2->error;
-    $error1V = $conn->error;
-
-    echo $errorV;
-    echo $error1V;
-}
-
-$resultadoSQL = $conn->query($sqlInsert);
-if ($resultadoSQL){
-    $x++;
-    echo "registros completos: ". $x .' ID: '.$id.'-- ORDEN: '.$ordenExpediente.' '.$nombre.$apellidoPaterno.$apellidoMaterno.' '.$fechaNacimiento.'<br>';
-}
-else{
-    $error = $conn2->error;
-    $error1 = $conn->error;
-
-    echo $error;
-    echo $error1;
-}
 
 
-}
+}// fin del while
 
-} //FIN WHILE
-} // fin id request
+}// fin id request
 
 
 ?>

@@ -21,45 +21,69 @@ $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
 //documentos
 $sqlDocumentos = "SELECT * FROM documentos_list WHERE documento = 1 AND numExp LIKE '%$expediente%' OR curp LIKE '$curp'";
 $resultadoSqlDocumentos = $conn->query($sqlDocumentos);
-$rowDatosDocumentos = $resultadoSqlDocumentos->fetch_assoc();
-$tipo_documento = $rowDatosDocumentos['tipo_doc'];
-$ruta1 = $rowDatosDocumentos['ruta_doc'];
-
+if ($rowDatosDocumentos = $resultadoSqlDocumentos->fetch_assoc()){
+    $tipo_documento = $rowDatosDocumentos['tipo_doc'];
+    $ruta1 = $rowDatosDocumentos['ruta_doc'];
+}
+else {
+    $ruta1 = "";
+}
 $sqlDocumentos1 = "SELECT * FROM documentos_list WHERE documento = 2 AND numExp LIKE '%$expediente%'";
 $resultadoSqlDocumentos1 = $conn->query($sqlDocumentos1);
-$rowDatosDocumentos1 = $resultadoSqlDocumentos1->fetch_assoc();
-$tipo_documento1 = $rowDatosDocumentos1['tipo_doc'];
-$ruta2 = $rowDatosDocumentos1['ruta_doc'];
+if ($rowDatosDocumentos1 = $resultadoSqlDocumentos1->fetch_assoc()){
+    $tipo_documento1 = $rowDatosDocumentos1['tipo_doc'];
+    $ruta2 = $rowDatosDocumentos1['ruta_doc'];
+}
+else {
+    $ruta2 = "";
+}
 
 $sqlDocumentos2 = "SELECT * FROM documentos_list WHERE documento = 3 AND numExp LIKE '%$expediente%'";
 $resultadoSqlDocumentos2 = $conn->query($sqlDocumentos2);
-$rowDatosDocumentos2 = $resultadoSqlDocumentos2->fetch_assoc();
-$tipo_documento2 = $rowDatosDocumentos2['tipo_doc'];
-$ruta3 = $rowDatosDocumentos2['ruta_doc'];
-
+if ($rowDatosDocumentos2 = $resultadoSqlDocumentos2->fetch_assoc()){
+    $tipo_documento2 = $rowDatosDocumentos2['tipo_doc'];
+    $ruta3 = $rowDatosDocumentos2['ruta_doc'];
+}
+else {
+    $ruta3 = "";
+}
 $sqlDocumentos3 = "SELECT * FROM documentos_list WHERE documento = 4 AND numExp LIKE '%$expediente%'";
 $resultadoSqlDocumentos3 = $conn->query($sqlDocumentos3);
-$rowDatosDocumentos3 = $resultadoSqlDocumentos3->fetch_assoc();
-$tipo_documento3 = $rowDatosDocumentos3['tipo_doc'];
-$ruta4 = $rowDatosDocumentos3['ruta_doc'];
-
+if ($rowDatosDocumentos3 = $resultadoSqlDocumentos3->fetch_assoc()) {
+    $tipo_documento3 = $rowDatosDocumentos3['tipo_doc'];
+    $ruta4 = $rowDatosDocumentos3['ruta_doc'];
+}
+else {
+    $ruta4 = "";
+}
 $sqlDocumentos4 = "SELECT * FROM documentos_list WHERE documento = 5 AND numExp LIKE '%$expediente%'";
 $resultadoSqlDocumentos4 = $conn->query($sqlDocumentos4);
-$rowDatosDocumentos4 = $resultadoSqlDocumentos4->fetch_assoc();
-$tipo_documento4 = $rowDatosDocumentos4['tipo_doc'];
-$ruta5 = $rowDatosDocumentos4['ruta_doc'];
+if ($rowDatosDocumentos4 = $resultadoSqlDocumentos4->fetch_assoc()) {
+    $tipo_documento4 = $rowDatosDocumentos4['tipo_doc'];
+    $ruta5 = $rowDatosDocumentos4['ruta_doc'];
+}
+else {
+    $ruta5 = "";
+}
 
 $sqlDocumentos5 = "SELECT * FROM documentos_list WHERE documento = 6 AND numExp LIKE '%$expediente%'";
 $resultadoSqlDocumentos5 = $conn->query($sqlDocumentos5);
-$rowDatosDocumentos5 = $resultadoSqlDocumentos5->fetch_assoc();
-$tipo_documento5 = $rowDatosDocumentos5['tipo_doc'];
-$ruta6 = $rowDatosDocumentos5['ruta_doc'];
-
+if ($rowDatosDocumentos5 = $resultadoSqlDocumentos5->fetch_assoc()) {
+    $tipo_documento5 = $rowDatosDocumentos5['tipo_doc'];
+    $ruta6 = $rowDatosDocumentos5['ruta_doc'];
+}
+else {
+    $ruta6 = "";
+}
 $sqlDocumentos6 = "SELECT * FROM documentos_list WHERE documento = 7 AND numExp LIKE '%$expediente%'";
 $resultadoSqlDocumentos6 = $conn->query($sqlDocumentos6);
-$rowDatosDocumentos6 = $resultadoSqlDocumentos6->fetch_assoc();
-$tipo_documento6 = $rowDatosDocumentos6['tipo_doc'];
-$ruta7 = $rowDatosDocumentos6['ruta_doc'];
+if ($rowDatosDocumentos6 = $resultadoSqlDocumentos6->fetch_assoc()) {
+    $tipo_documento6 = $rowDatosDocumentos6['tipo_doc'];
+    $ruta7 = $rowDatosDocumentos6['ruta_doc'];
+}
+else {
+    $ruta7 = "";
+}
 
     $numExpediente = $rowDatos['numExpediente'];
     $nombre = $rowDatos['nombre'];
@@ -78,6 +102,7 @@ $ruta7 = $rowDatosDocumentos6['ruta_doc'];
     echo json_encode(array(
         'success'=>1,
         'curp'=>$curp2,
+        'estatus'=>$rowDatos['estatus'],
         'numExpediente'=>$numExpediente,
         'nombre'=>$rowDatos['nombre'],
         'apellido_p'=>$rowDatos['apellido_p'],
@@ -102,8 +127,11 @@ $ruta7 = $rowDatosDocumentos6['ruta_doc'];
         'telefono_part'=>$rowDatos['telefono_part'], 
         'correo'=>$rowDatos['correo'], 
         'telefono_cel'=>$rowDatos['telefono_cel'], 
-        'escolaridad'=>$rowDatos['escolaridad'], 
-        'profesion'=>$rowDatos['profesion'], 
+        'escolaridad'=>$rowDatos['escolaridad'],
+        'leer'=>$rowDatos['leer_escribir'],
+        'concluida'=>$rowDatos['leer_escribir'],
+        'profesion'=>$rowDatos['nivel_concluido'],
+        'grupo'=>$rowDatos['gpo_vulnerable'],
         'rfc'=>$rowDatos['rfc'], 
         'estudia'=>$rowDatos['estudia'], 
         'estudia_donde'=>$rowDatos['estudia_donde'], 
@@ -116,11 +144,12 @@ $ruta7 = $rowDatosDocumentos6['ruta_doc'];
         'pensionado_donde'=>$rowDatos['pensionado_donde'], 
         'pension_monto'=>$rowDatos['pension_monto'], 
         'pension_temporalidad'=>$rowDatos['pension_temporalidad'], 
-        'sindicato'=>$rowDatos['sindicato'], 
-        'sindicato_cual'=>$rowDatos['sindicato_cual'], 
         'seguridad_social'=>$rowDatos['seguridad_social'], 
         'seguridad_social_otro'=>$rowDatos['seguridad_social_otro'], 
         'numSS'=>$rowDatos['numSS'], 
+        'informante'=>$rowDatos['informante'],
+        'informanteParentesco'=>$rowDatos['informante_parentesco'],
+        'informanteParentescoOtro'=>$rowDatos['otro_parentesco'],
         'photo'=>$rowDatos['photo'],//hasta aquí datos generales 
         'discapacidad'=>$rowDatosMedicos['discapacidad'], 
         'grado_discapacidad'=>$rowDatosMedicos['grado_discapacidad'], 
@@ -147,10 +176,6 @@ $ruta7 = $rowDatosDocumentos6['ruta_doc'];
         'medicamentos'=>$rowDatosMedicos['medicamentos'], 
         'medicamentos_cual'=>$rowDatosMedicos['medicamentos_cual'],//medicamentos
         'vivienda'=>$rowDatosVivienda['vivienda'], 
-        'vivienda_renta'=>$rowDatosVivienda['vivienda_renta'], 
-        'vivienda_pagando'=>$rowDatosVivienda['vivienda_pagando'], 
-        'vivienda_renta'=>$rowDatosVivienda['vivienda_renta'], 
-        'monto_pagando'=>$rowDatosVivienda['monto_pagando'], 
         'caracteristicas'=>$rowDatosVivienda['caracteristicas'], 
         'caracteristicas_otro'=>$rowDatosVivienda['caracteristicas_otro'], 
         'num_habitaciones'=>$rowDatosVivienda['num_habitaciones'], 
@@ -165,7 +190,6 @@ $ruta7 = $rowDatosDocumentos6['ruta_doc'];
         'serv_basicos_agua'=>$rowDatosVivienda['serv_basicos_agua'], 
         'serv_basicos_luz'=>$rowDatosVivienda['serv_basicos_luz'], 
         'serv_basicos_drenaje'=>$rowDatosVivienda['serv_basicos_drenaje'], 
-        'serv_basicos_cable'=>$rowDatosVivienda['serv_basicos_cable'], 
         'serv_basicos_internet'=>$rowDatosVivienda['serv_basicos_internet'], 
         'serv_basicos_celular'=>$rowDatosVivienda['serv_basicos_celular'], 
         'serv_basicos_carro'=>$rowDatosVivienda['serv_basicos_carro'], 
@@ -174,17 +198,15 @@ $ruta7 = $rowDatosDocumentos6['ruta_doc'];
         'serv_basicos_otro'=>$rowDatosVivienda['serv_basicos_otro'], 
         'electrodomesticos_tv'=>$rowDatosVivienda['electrodomesticos_tv'], 
         'electrodomesticos_lavadora'=>$rowDatosVivienda['electrodomesticos_lavadora'], 
-        'electrodomesticos_estereo'=>$rowDatosVivienda['electrodomesticos_estereo'], 
+        'electrodomesticos_dispositivo'=>$rowDatosVivienda['electrodomesticos_dispositivo'], 
         'electrodomesticos_microondas'=>$rowDatosVivienda['electrodomesticos_microondas'], 
         'electrodomesticos_computadora'=>$rowDatosVivienda['electrodomesticos_computadora'], 
         'electrodomesticos_licuadora'=>$rowDatosVivienda['electrodomesticos_licuadora'], 
-        'electrodomesticos_dvd'=>$rowDatosVivienda['electrodomesticos_dvd'], 
         'electrodomesticos_estufa'=>$rowDatosVivienda['electrodomesticos_estufa'], 
         'electrodomesticos_refri'=>$rowDatosVivienda['electrodomesticos_refri'], 
         'electrodomesticos_otro'=>$rowDatosVivienda['electrodomesticos_otro'], 
-        'personas_dependen'=>$rowDatosVivienda['personas_dependen'], 
-        'deudas'=>$rowDatosVivienda['deudas'], 
-        'deudas_cuanto'=>$rowDatosVivienda['deudas_cuanto'], //vivienda
+        'personas_dependen'=>$rowDatosVivienda['personas_dependen'],
+        //vivienda
         'HojaRegistro'=>$rowDatosDocumentos['tipo_doc'],
         'valoracion'=>$rowDatosDocumentos1['tipo_doc'],
         'actaNacimiento'=>$tipo_documento2,

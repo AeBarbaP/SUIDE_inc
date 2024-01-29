@@ -17,10 +17,10 @@ function buscarExpediente12(x){
                 texto = '<i class="bi bi-person-up"></i>Creado (Activo)';
             }
             else if(estatus == 2){
-                texto = '<i class="bi bi-person-down"></i>Inactivo';
+                texto = '<i class="bi bi-person-down"></i>Inactivo (Finado)';
             }
             else if(estatus == 3){
-                texto = '<i class="bi bi-person-down"></i>Inactivo (Finado)';
+                texto = '<i class="bi bi-person-down"></i>Inactivo';
             }
             else{
                 texto = "No tienes estatus";
@@ -78,14 +78,12 @@ function queryDatos(){
             var trabaja= jsonData.trabaja;
             var asoc_civ   = jsonData.asoc_civ;
             var pensionado = jsonData.pensionado;
-            var sindicato  = jsonData.sindicato;
             var cirugias   = jsonData.cirugias;
             var protesis   = jsonData.protesis;
             var alergias_cual  = jsonData.alergias_cual;
             var enfermedades_cual  = jsonData.enfermedades_cual;
             var medicamentos_cual  = jsonData.medicamentos_cual;
             var vivienda   = jsonData.vivienda;
-            var vivienda_pagando   = jsonData.vivienda_pagando;
             var caracteristicasV= jsonData.caracteristicas;
             var caracteristicasV_otro   = jsonData.caracteristicas_otro;
             var cocina = jsonData.vivienda_cocia;
@@ -97,7 +95,6 @@ function queryDatos(){
             var serv_basicos_agua  = jsonData.serv_basicos_agua;
             var serv_basicos_luz   = jsonData.serv_basicos_luz;
             var serv_basicos_drenaje   = jsonData.serv_basicos_drenaje;
-            var serv_basicos_cable = jsonData.serv_basicos_cable;
             var serv_basicos_internet  = jsonData.serv_basicos_internet;
             var serv_basicos_celular   = jsonData.serv_basicos_celular;
             var serv_basicos_carro = jsonData.serv_basicos_carro;
@@ -106,11 +103,10 @@ function queryDatos(){
             var serv_basicos_otro  = jsonData.serv_basicos_otro;
             var electrodomesticos_tv   = jsonData.electrodomesticos_tv;
             var electrodomesticos_lavadora = jsonData.electrodomesticos_lavadora;
-            var electrodomesticos_estereo  = jsonData.electrodomesticos_estereo;
+            var electrodomesticos_dispositivo  = jsonData.electrodomesticos_dispositivo;
             var electrodomesticos_microondas   = jsonData.electrodomesticos_microondas;
             var electrodomesticos_computadora  = jsonData.electrodomesticos_computadora;
             var electrodomesticos_licuadora= jsonData.electrodomesticos_licuadora;
-            var electrodomesticos_dvd  = jsonData.electrodomesticos_dvd;
             var electrodomesticos_estufa   = jsonData.electrodomesticos_estufa;
             var electrodomesticos_refri   = jsonData.electrodomesticos_refri;
             var electrodomesticos_otro = jsonData.electrodomesticos_otro;
@@ -123,7 +119,9 @@ function queryDatos(){
             var ineDoc  = jsonData.ineDoc;
             var comprobante  = jsonData.comprobante;
             var tarjetaCirculacion  = jsonData.tarjetaCirculacion;
-
+            var leer = jsonData.leer;
+            var concluida = jsonData.concluida;
+            var grupo = jsonData.grupo;
             var hojaRegistroDoc  = jsonData.HojaRegistroDoc;
             var valoracionDoc  = jsonData.valoracionDoc;
             var actaNacimientoDoc  = jsonData.actaNacimientoDoc;
@@ -262,8 +260,59 @@ function queryDatos(){
                 document.getElementById('escolaridad').value = jsonData.escolaridad; 
                 document.getElementById('profesion').value = jsonData.profesion; 
                 
+                if (leer = 1){
+                    document.getElementById('leerSi').checked = true;
+                    document.getElementById('leerNo').checked = false;
+                }
+                else{
+                    document.getElementById('leerSi').checked = false;
+                    document.getElementById('leerNo').checked = true;
+                }
+
+                if (concluida == 1){
+                    document.getElementById('concluidaSi').checked = true;
+                    document.getElementById('concluidaNo').checked = false;
+                    document.getElementById('concluidaCur').checked = false;
+                    document.getElementById('concluidaNA').checked = false;
+                }
+                else if (concluida == 2){
+                    document.getElementById('concluidaSi').checked = false;
+                    document.getElementById('concluidaNo').checked = true;
+                    document.getElementById('concluidaCur').checked = false;
+                    document.getElementById('concluidaNA').checked = false;
+                }
+                else if (concluida == 3){
+                    document.getElementById('concluidaSi').checked = false;
+                    document.getElementById('concluidaNo').checked = false;
+                    document.getElementById('concluidaCur').checked = true;
+                    document.getElementById('concluidaNA').checked = false;
+                }
+                else if (concluida == 4){
+                    document.getElementById('concluidaSi').checked = false;
+                    document.getElementById('concluidaNo').checked = false;
+                    document.getElementById('concluidaCur').checked = false;
+                    document.getElementById('concluidaNA').checked = true;
+                }
+                else {
+                    document.getElementById('concluidaSi').checked = false;
+                    document.getElementById('concluidaNo').checked = false;
+                    document.getElementById('concluidaCur').checked = false;
+                    document.getElementById('concluidaNA').checked = false;
+                }
+
+                document.getElementById('profesion').value = jsonData.profesion; 
+                document.getElementById('profesion').value = jsonData.profesion; 
+                
                 var rfcCut = jsonData.rfc;
                 //document.getElementById('rfcHomo').value = rfcCut;
+                if (grupo != null || grupo != ""){
+                    var grupoSplit = grupo_cual.replace(/, /g,',');
+                    grupoSplit = grupoSplit.split(',');
+                    for (var i = 0; i < grupoSplit.length; i++) {
+                        console.log(grupoSplit[i]);
+                        addG(grupoSplit[i]);
+                    }
+                }
 
                 if (rfcCut.length > 10) {
                     var rfcCutted = rfcCut.slice(-3);
@@ -315,16 +364,13 @@ function queryDatos(){
                 else if (pensionado == 'NO' || pensionado == 0) {
                     document.getElementById('pensionNo').checked = true;
                 }
-
-                if (sindicato == 'SI' || sindicato == 1){
-                    document.getElementById('sindicatoSi').checked = true;
-                    document.getElementById('nombreSindicato').disabled = false;  
-                    document.getElementById('nombreSindicato').value = jsonData.asoc_cual; 
-                } 
-                else if (sindicato == 'NO' || sindicato == 2 || sindicato == 0 || sindicato == "" || sindicato == null) {
-                    document.getElementById('sindicatoNo').checked = true;
+                var informanteParentesco = jsonData.informanteParentesco;  
+                if (informanteParentesco == '' || informanteParentesco == null){
+                    document.getElementById('informante').value = 2;
+                    document.getElementById('nombreInformante').value = jsonData.informante;
+                    document.getElementById('informanteRel').value = jsonData.informanteParentesco;
                 }
-
+                
                 document.getElementById('seguridadsocial').value = jsonData.seguridad_social; 
                 document.getElementById('otroSS').value = jsonData.seguridad_social_otro; 
                 document.getElementById('numss').value = jsonData.numSS; 
@@ -445,13 +491,6 @@ function queryDatos(){
                     document.getElementById('viviendaPro').checked = false;
                     document.getElementById('viviendaPre').checked = false;
                     document.getElementById('viviendaRe').checked = true;
-                    document.getElementById('montoVivienda').disabled = false; 
-                    document.getElementById('montoVivienda').value = jsonData.vivienda_renta; 
-                }
-                else if (vivienda == 4){
-                    document.getElementById('viviendaPSi').checked = true; 
-                    document.getElementById('costoVivienda').disabled = false; 
-                    document.getElementById('costoVivienda').value = jsonData.monto_pagando; 
                 }
                 else {
                     document.getElementById('viviendaPro').checked = false;
@@ -460,16 +499,6 @@ function queryDatos(){
                     
                 }
                 
-                if (vivienda_pagando == 1){
-                    document.getElementById('viviendaPSi').checked = true; 
-                    document.getElementById('viviendaPNo').checked = false; 
-                    document.getElementById('costoVivienda').disabled = false; 
-                    document.getElementById('costoVivienda').value = jsonData.monto_pagando; 
-                }
-                else {
-                    document.getElementById('viviendaPSi').checked = false; 
-                    document.getElementById('viviendaPNo').checked = true; 
-                }
                 
                 if (caracteristicasV == 1){
                     document.getElementById('tipoViviendaC').checked = true;
@@ -579,9 +608,6 @@ function queryDatos(){
                 if (serv_basicos_drenaje == 1) {
                     document.getElementById('drenaje').checked = true; 
                 }
-                if (serv_basicos_cable == 1){
-                    document.getElementById('cable').checked = true; 
-                }
                 if (serv_basicos_carro == 1){
                     document.getElementById('carro').checked = true; 
                 }
@@ -619,8 +645,8 @@ function queryDatos(){
                 if (electrodomesticos_lavadora == 1){
                     document.getElementById('lavadora').checked = true; 
                 }
-                if (electrodomesticos_estereo == 1) {
-                    document.getElementById('estereo').checked = true; 
+                if (electrodomesticos_dispositivo == 1) {
+                    document.getElementById('dispositivo').checked = true; 
                 }
                 if (electrodomesticos_microondas == 1){
                     document.getElementById('microondas').checked = true; 
@@ -630,9 +656,6 @@ function queryDatos(){
                 }
                 if (electrodomesticos_licuadora == 1){
                     document.getElementById('licuadora').checked = true; 
-                }
-                if (electrodomesticos_dvd == 1){
-                    document.getElementById('dvd').checked = true;
                 }
                 if (electrodomesticos_refri == 1){
                     document.getElementById('refri').checked = true;
@@ -656,15 +679,6 @@ function queryDatos(){
                 }
 
                 document.getElementById('dependenciaEconomica').value = jsonData.personas_dependen;
-
-                if (deudas == 1 || deudas == "SI"){
-                    document.getElementById('deudasSi').checked = true;
-                    document.getElementById('deudasInput').value = jsonData.deudas_cuanto; 
-                }
-                else if (deudas == 2 || deudas == "NO" || deudas == "" || deudas == 0){
-                    document.getElementById('deudasNo').checked = true;
-
-                }
 
                 if(hojaRegistro == 1){
                     document.getElementById('registroSi').checked = true;            
