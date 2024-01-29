@@ -292,7 +292,13 @@ include('prcd/qc/qc.php');
           <div class="container">
             <div class="row">
               <div class="col-5 my-auto text-center align-middle border-end border-light">
-                <i class="bi bi-folder-check h1"></i>
+                <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                <lord-icon
+                    src="https://cdn.lordicon.com/wwmtsdzm.json"
+                    trigger="hover"
+                    colors="primary:#ffffff,secondary:#ffffff"
+                    style="width:80px;height:80px">
+                </lord-icon>
               </div>
               <div class="col-7 mt-3">
                 <h4 class="text-center mt-2 "><strong>Expedientes Nuevos</strong></h4>
@@ -310,7 +316,13 @@ include('prcd/qc/qc.php');
           <div class="container">
             <div class="row">
               <div class="col-5 my-auto text-center align-middle border-end border-white">
-              <i class="bi bi-person-vcard-fill h1" style="color:white"></i>
+                <!-- <script src="https://cdn.lordicon.com/lordicon.js"></script> -->
+                <lord-icon
+                    src="https://cdn.lordicon.com/uecgmesg.json"
+                    trigger="hover"
+                    colors="primary:#ffffff,secondary:#ffffff"
+                    style="width:80px;height:80px">
+                </lord-icon>
               </div>
               <div class="col-7 mt-3">
                 <h4 class="text-center mt-2" style="color:white"><b>Credenciales Diarias</b></h4>
@@ -328,7 +340,13 @@ include('prcd/qc/qc.php');
           <div class="container">
             <div class="row">
               <div class="col-5 my-auto text-center align-middle border-end border-light">
-                <i class="bi bi-person-badge-fill h1"></i>
+                <!-- <script src="https://cdn.lordicon.com/lordicon.js"></script> -->
+                <lord-icon
+                    src="https://cdn.lordicon.com/rahouxil.json"
+                    trigger="hover"
+                    colors="primary:#ffffff,secondary:#ffffff"
+                    style="width:80px;height:80px">
+                </lord-icon>
               </div>
               <div class="col-7 mt-3">
               <h4 class="text-center mt-2"><b>Tarjetones Diarios</b></h4>
@@ -346,7 +364,13 @@ include('prcd/qc/qc.php');
           <div class="container">
             <div class="row">
               <div class="col-5 my-auto text-center align-middle border-end border-light">
-              <i class="bi bi-file-earmark-break-fill h1"></i>
+                <!-- <script src="https://cdn.lordicon.com/lordicon.js"></script> -->
+                <lord-icon
+                    src="https://cdn.lordicon.com/ghhwiltn.json"
+                    trigger="hover"
+                    colors="primary:#ffffff,secondary:#ffffff"
+                    style="width:80px;height:80px">
+                </lord-icon>
               </div>
               <div class="col-7 mt-3">
                 <h4 class="text-center mt-2"><b>Expedientes Actualizados</b></h4>
