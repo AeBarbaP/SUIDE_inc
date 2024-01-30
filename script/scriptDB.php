@@ -249,11 +249,11 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     $tipoCirugia = $rowDB3['tipoCirugia']; // se relaciona con idExpediente
     $idTipoSangre = $rowDB3['idTipoSangre']; // se relaciona con idExpediente
 
-    if ($cirugia = "SI"){
+    if ($cirugia == "SI"){
         $cirugia = 1;
     }
     else {
-        $cirugia = 0;
+        $cirugia = 2;
         $tipoCirugia = "";
     }
     
@@ -301,15 +301,22 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     $resultCatDisc = $conn2->query($sqlCatDiscapacidades);
     $rowCatDisc = $resultCatDisc->fetch_assoc();
     $idCatDiscapacidadTipo = $rowCatDisc['idCatDiscapacidadTipo'];
-    $claveDiscapacidad = $rowCatDisc['claveDiscapacidad'];
+    $claveDiscapacidad = $rowCatDisc['claveDiscapacidad']; // este se necesita para cambiarlo a múltiple
+
     $nombreDiscapacidad = $rowCatDisc['nombreDiscapacidad'];
     $discapacidad = $claveDiscapacidad.'-'.$nombreDiscapacidad;
 
-    $sqlCatDiscapacidades2 ="SELECT * FROM CatDiscapacidadTipos WHERE id = '$idCatDiscapacidadTipo'";
-    $resultCatDisc2 = $conn2->query($sqlCatDiscapacidades2);
-    $rowCatDisc2 = $resultCatDisc2->fetch_assoc();
-    $idCatDiscapacidadTipoNombre = $rowCatDisc2['tipoDiscapacidad'];
+    if($claveDiscapacidad == 26 || $claveDiscapacidad == 33 || $claveDiscapacidad == 40 || $claveDiscapacidad == 41 || $claveDiscapacidad == 42 || $claveDiscapacidad == 49 || $claveDiscapacidad == 50 || $claveDiscapacidad == 51 || $claveDiscapacidad == 52 || $claveDiscapacidad == 53){
+        
+        $sqlCatDiscapacidades2 ="SELECT * FROM CatDiscapacidadTipos WHERE id = '$idCatDiscapacidadTipo'";
+        $resultCatDisc2 = $conn2->query($sqlCatDiscapacidades2);
+        $rowCatDisc2 = $resultCatDisc2->fetch_assoc();
+        $idCatDiscapacidadTipoNombre = $rowCatDisc2['tipoDiscapacidad'];
 
+    }
+    else{
+        $idCatDiscapacidadTipoNombre = "Múltipe";
+    }
     $idCatInstitucion = $rowDB4['idCatInstitucion']; // se relaciona con idExpediente
     $protesis = $rowDB4['protesis']; // se relaciona con idExpediente
     $tipoProtesis = $rowDB4['tipoProtesis']; // se relaciona con idExpediente
@@ -403,7 +410,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         '$idTipoSangre',
         '$grado',
         '$temporalidad',
-        '$valoracion',
+        '$valoracionInst',
         '$causa',
         /* '$idCatDiscapacidad', */
         '$discapacidad',
@@ -630,7 +637,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         else if($VarElectro == 6){
             $licuadora = 1;
         }
-        else if($VarElectro == 7){
+        else if($VarElectro == 8){
             $estufa = 1;
         }
         else if($VarElectro == 9){
