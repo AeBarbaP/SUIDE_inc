@@ -13,17 +13,21 @@ function buscarExpediente12(x){
             var texto;
             var success = jsonData.success;
             var estatus = jsonData.estatus;
-            if(estatus == 1){
-                texto = '<i class="bi bi-person-up"></i>Creado (Activo)';
+            if(estatus == 1 || estatus == "CREADO"){
+                texto = 'Creado (Activo)';
+                document.getElementById('estatus').value = "";
             }
-            else if(estatus == 2){
-                texto = '<i class="bi bi-person-down"></i>Inactivo (Finado)';
+            else if(estatus == 2 || estatus == "FINADO"){
+                texto = 'Inactivo (Finado)';
+                document.getElementById('estatus').value = 2;
             }
             else if(estatus == 3){
-                texto = '<i class="bi bi-person-down"></i>Inactivo';
+                texto = 'Inactivo';
+                document.getElementById('estatus').value = 3;
             }
             else{
                 texto = "No tienes estatus";
+                document.getElementById('estatus').value = "";
             }
 
             if(success == 1){
@@ -236,7 +240,7 @@ function queryDatos(){
                 document.getElementById('edad').value = jsonData.edad; 
                 document.getElementById('fechaNacimiento').value = jsonData.f_nacimiento; 
                 document.getElementById('lugarNacimiento').value = jsonData.lugar_nacimiento; 
-                document.getElementById('edoCivil').value = jsonData.edo_civil; 
+                var edo_civil = jsonData.edo_civil; 
                 document.getElementById('domicilio').value = jsonData.domicilio; 
                 document.getElementById('numExt').value = jsonData.no_ext; 
                 document.getElementById('numInt').value = jsonData.no_int; 
@@ -247,12 +251,38 @@ function queryDatos(){
                 
                 document.getElementById('estadosList').value = jsonData.estado; 
                 
+                if (edo_civil == "Casado(a)" || edo_civil == "CASADO(A)" || edo_civil == "CASADO (A)" ){
+                    document.getElementById('edoCivil').value = "Casado(a)";
+                }
+                else if (edo_civil == "Soltero(a)" || edo_civil == "SOLTERO(A)" || edo_civil == "SOLTERO (A)" ){
+                    document.getElementById('edoCivil').value = "Soltero(a)";
+                }
+                else if (edo_civil == "Divorciado(a)" || edo_civil == "DIVORCIADO(A)" || edo_civil == "DIVORCIADO (A)" ){
+                    document.getElementById('edoCivil').value = "Divorciado(a)";
+                }
+                else if (edo_civil == "Viudo(a)" || edo_civil == "VIUDO(A)" || edo_civil == "VIUDO (A)" ){
+                    document.getElementById('edoCivil').value = "Viudo(a)";
+                }
+                else if (edo_civil == "Unión Libre(a)" || edo_civil == "UNIÓN LIBRE(A)" || edo_civil == "UNIÓN LIBRE (A)" || edo_civil == "UNION LIBRE (A)"){
+                    document.getElementById('edoCivil').value = "Unión_Libre";
+                }
+                else{
+                    document.getElementById('edoCivil').value = "";
+                }
+                
                 //municipiosSelect(jsonData.estado);
 
                 document.getElementById('municipiosList').value = municipio; 
 
                 document.getElementById('localidades').value = jsonData.localidad; 
-                document.getElementById('asentamiento').value = jsonData.asentamiento; 
+
+                var asentamiento = jsonData.asentamiento;
+                if (asentamiento == "" || asentamiento == null || asentamiento == 0){
+                    document.getElementById('asentamiento').value = "";
+                }
+                else{
+                    document.getElementById('asentamiento').value = asentamiento;
+                }
                 document.getElementById('codigoPostal').value = jsonData.cp; 
                 document.getElementById('telFijo').value = jsonData.telefono_part; 
                 document.getElementById('correo').value = jsonData.correo; 
@@ -260,59 +290,76 @@ function queryDatos(){
                 document.getElementById('escolaridad').value = jsonData.escolaridad; 
                 document.getElementById('profesion').value = jsonData.profesion; 
                 
-                if (leer = 1){
+                var profesion = jsonData.profesion;
+                if (profesion == "" || profesion == null || profesion == 0){
+                    document.getElementById('profesion').value = "";
+                }
+                else{
+                    document.getElementById('profesion').value = profesion;
+                }
+
+                if (leer == 1){
                     document.getElementById('leerSi').checked = true;
                     document.getElementById('leerNo').checked = false;
                 }
-                else{
+                else if (leer == "" || leer == null || leer == 0){
                     document.getElementById('leerSi').checked = false;
                     document.getElementById('leerNo').checked = true;
                 }
+                else {
+                    document.getElementById('leerSi').checked = false;
+                    document.getElementById('leerNo').checked = false;
+                }
 
                 if (concluida == 1){
-                    document.getElementById('concluidaSi').checked = true;
-                    document.getElementById('concluidaNo').checked = false;
-                    document.getElementById('concluidaCur').checked = false;
-                    document.getElementById('concluidaNA').checked = false;
+                    document.getElementById('concluidoSi').checked = true;
+                    document.getElementById('concluidoNo').checked = false;
+                    document.getElementById('concluidoCur').checked = false;
+                    document.getElementById('concluidoNA').checked = false;
                 }
                 else if (concluida == 2){
-                    document.getElementById('concluidaSi').checked = false;
-                    document.getElementById('concluidaNo').checked = true;
-                    document.getElementById('concluidaCur').checked = false;
-                    document.getElementById('concluidaNA').checked = false;
+                    document.getElementById('concluidoSi').checked = false;
+                    document.getElementById('concluidoNo').checked = true;
+                    document.getElementById('concluidoCur').checked = false;
+                    document.getElementById('concluidoNA').checked = false;
                 }
                 else if (concluida == 3){
-                    document.getElementById('concluidaSi').checked = false;
-                    document.getElementById('concluidaNo').checked = false;
-                    document.getElementById('concluidaCur').checked = true;
-                    document.getElementById('concluidaNA').checked = false;
+                    document.getElementById('concluidoSi').checked = false;
+                    document.getElementById('concluidoNo').checked = false;
+                    document.getElementById('concluidoCur').checked = true;
+                    document.getElementById('concluidoNA').checked = false;
                 }
                 else if (concluida == 4){
-                    document.getElementById('concluidaSi').checked = false;
-                    document.getElementById('concluidaNo').checked = false;
-                    document.getElementById('concluidaCur').checked = false;
-                    document.getElementById('concluidaNA').checked = true;
+                    document.getElementById('concluidoSi').checked = false;
+                    document.getElementById('concluidoNo').checked = false;
+                    document.getElementById('concluidoCur').checked = false;
+                    document.getElementById('concluidoNA').checked = true;
                 }
                 else {
-                    document.getElementById('concluidaSi').checked = false;
-                    document.getElementById('concluidaNo').checked = false;
-                    document.getElementById('concluidaCur').checked = false;
-                    document.getElementById('concluidaNA').checked = false;
+                    document.getElementById('concluidoSi').checked = false;
+                    document.getElementById('concluidoNo').checked = false;
+                    document.getElementById('concluidoCur').checked = false;
+                    document.getElementById('concluidoNA').checked = false;
                 }
 
                 document.getElementById('profesion').value = jsonData.profesion; 
                 document.getElementById('profesion').value = jsonData.profesion; 
                 
-                var rfcCut = jsonData.rfc;
-                //document.getElementById('rfcHomo').value = rfcCut;
-                if (grupo != null || grupo != ""){
-                    var grupoSplit = grupo_cual.replace(/, /g,',');
+                if (grupo == null || grupo == ""){
+                    grupo = "";
+                    document.getElementById('gruposFull').value = "";
+                }
+                else{
+                    var grupoSplit = grupo.replace(/, /g,',');
                     grupoSplit = grupoSplit.split(',');
                     for (var i = 0; i < grupoSplit.length; i++) {
                         console.log(grupoSplit[i]);
                         addG(grupoSplit[i]);
                     }
                 }
+                
+                var rfcCut = jsonData.rfc;
+                //document.getElementById('rfcHomo').value = rfcCut;
 
                 if (rfcCut.length > 10) {
                     var rfcCutted = rfcCut.slice(-3);
@@ -366,20 +413,48 @@ function queryDatos(){
                 }
                 var informanteParentesco = jsonData.informanteParentesco;  
                 if (informanteParentesco == '' || informanteParentesco == null){
+                    document.getElementById('informante').value = 1;
+                    document.getElementById('nombreInformante').value = "";
+                    document.getElementById('informanteRel').value = "";
+                    document.getElementById('otraRel').value = "";
+                }
+                else {
                     document.getElementById('informante').value = 2;
                     document.getElementById('nombreInformante').value = jsonData.informante;
                     document.getElementById('informanteRel').value = jsonData.informanteParentesco;
+                    document.getElementById('otraRel').value = jsonData.informanteParentescoOtro;
                 }
                 
-                document.getElementById('seguridadsocial').value = jsonData.seguridad_social; 
+                var seguridad_social = jsonData.seguridad_social; 
+                if (seguridad_social == null || seguridad_social == ""){
+                    document.getElementById('seguridadsocial').value = "Ninguno";
+                }
+
                 document.getElementById('otroSS').value = jsonData.seguridad_social_otro; 
                 document.getElementById('numss').value = jsonData.numSS; 
                 //document.getElementById('file_photo').value = jsonData.photo; 
                 
                 //datos médicos
-                document.getElementById('discapacidadList').value = jsonData.discapacidad; 
+                document.getElementById('discapacidadList').value = jsonData.discapacidad;
                 document.getElementById('gradoDisc').value = jsonData.grado_discapacidad; 
-                document.getElementById('tipoDisc').value = jsonData.tipo_discapacidad; 
+                var tipoDisc = jsonData.tipo_discapacidad;
+
+                if (tipoDisc == "FÍSICA" || tipoDisc == "Física"){
+                    document.getElementById('tipoDisc').value = "Física";
+                }
+                else if (tipoDisc == "Intelectual" || tipoDisc == "INTELECTUAL"){
+                    document.getElementById('tipoDisc').value = "Intelectual";
+                }
+                else if (tipoDisc == "Sensorial" || tipoDisc == "SENSORIAL"){
+                    document.getElementById('tipoDisc').value = "Sensorial";
+                }
+                else if (tipoDisc == "Múltiple" || tipoDisc == "MÚLTIPLE"){
+                    document.getElementById('tipoDisc').value = "Múltiple";
+                }
+                else if (tipoDisc == "Psicosocial" || tipoDisc == "PSICOSOCIAL"){
+                    document.getElementById('tipoDisc').value = "Psicosocial";
+                }
+
                 document.getElementById('descDisc').value = jsonData.descripcionDiscapacidad; 
                 var causaDiscapacidadVar = jsonData.causa;
                 if (causaDiscapacidadVar == "CONGÉNITA" || causaDiscapacidadVar == "Congénita" || causaDiscapacidadVar == 1){
@@ -430,6 +505,86 @@ function queryDatos(){
                     document.getElementById('duracion').value = jsonData.rehabilitacion_duracion; 
                 }
 
+                var braile = jsonData.braile;
+                if (braile == 1){
+                    document.getElementById('braileSi').checked = true;
+                    document.getElementById('braileNo').checked = false; 
+                    document.getElementById('braileNA').checked = false;
+                }
+                else if (braile == 2){
+                    document.getElementById('braileNo').checked = true;
+                    document.getElementById('braileSi').checked = false;
+                    document.getElementById('braileNA').checked = false;
+                }
+                else if (braile == 3){
+                    document.getElementById('braileNA').checked = true;
+                    document.getElementById('braileSi').checked = false;
+                    document.getElementById('braileNo').checked = false;
+                }
+                else {
+                    document.getElementById('braileNA').checked = false;
+                    document.getElementById('braileSi').checked = false;
+                    document.getElementById('braileNo').checked = false;
+                }
+                
+                var lsm = jsonData.lsm;
+                if (lsm == 1){
+                    document.getElementById('lsmSi').checked = true;
+                    document.getElementById('lsmNo').checked = false; 
+                    document.getElementById('lsmNA').checked = false;
+                }
+                else if (lsm == 2){
+                    document.getElementById('lsmNo').checked = true;
+                    document.getElementById('lsmSi').checked = false;
+                    document.getElementById('lsmNA').checked = false;
+                }
+                else if (lsm == 0){
+                    document.getElementById('lsmNA').checked = true;
+                    document.getElementById('lsmSi').checked = false;
+                    document.getElementById('lsmNo').checked = false;
+                }
+                else {
+                    document.getElementById('lsmNA').checked = false;
+                    document.getElementById('lsmSi').checked = false;
+                    document.getElementById('lsmNo').checked = false;
+                }
+                
+                var labiofacial = jsonData.labiofacial;
+                if (labiofacial == 1){
+                    document.getElementById('labiofacialSi').checked = true;
+                    document.getElementById('labiofacialNo').checked = false; 
+                    document.getElementById('labiofacialNA').checked = false;
+                }
+                else if (labiofacial == 2){
+                    document.getElementById('labiofacialNo').checked = true;
+                    document.getElementById('labiofacialSi').checked = false;
+                    document.getElementById('labiofacialNA').checked = false;
+                }
+                else if (labiofacial == 0){
+                    document.getElementById('labiofacialNA').checked = true;
+                    document.getElementById('labiofacialSi').checked = false;
+                    document.getElementById('labiofacialNo').checked = false;
+                }
+                else {
+                    document.getElementById('labiofacialNA').checked = false;
+                    document.getElementById('labiofacialSi').checked = false;
+                    document.getElementById('labiofacialNo').checked = false;
+                }
+
+                var asistencia = jsonData.asistencia;
+                if (asistencia == 1){
+                    document.getElementById('asistencia').value = asistencia;
+                }
+                else if (asistencia == 2){
+                    document.getElementById('asistencia').value = asistencia;
+                }
+                else if (asistencia == 3){
+                    document.getElementById('asistencia').value = asistencia;
+                }
+                else {
+                    document.getElementById('asistencia').value = "";
+                }
+
                 document.getElementById('tipoSangre').value = jsonData.tipo_sangre; 
                 
                 if (cirugias == "" || cirugias == null || cirugias == 2 || cirugias == 'NO'){
@@ -441,7 +596,7 @@ function queryDatos(){
                     document.getElementById('tipoCirugia').disabled = false; 
                 }
             
-                if (protesis == "" || protesis == null || protesis == 2 || protesis == 'NO'){
+                if (protesis == "" || protesis == null || protesis == 0 || protesis == 'NO'){
                     document.getElementById('protesis').value = 2; 
                 }
                 else {
@@ -632,7 +787,7 @@ function queryDatos(){
                     document.getElementById('otroServiciosInput').value = jsonData.serv_basicos_otro;
                 }
                 
-                if (serv_basicos_agua == 1 && serv_basicos_luz == 1 && serv_basicos_drenaje == 1 && serv_basicos_cable == 1 && serv_basicos_carro == 1 && serv_basicos_celular == 1 && serv_basicos_internet == 1 && serv_basicos_gas == 1 && serv_basicos_telefono == 1){
+                if (serv_basicos_agua == 1 && serv_basicos_luz == 1 && serv_basicos_drenaje == 1 && serv_basicos_carro == 1 && serv_basicos_celular == 1 && serv_basicos_internet == 1 && serv_basicos_gas == 1 && serv_basicos_telefono == 1){
                     document.getElementById('checkAllServices').checked = true;
                 }
                 else {
@@ -671,14 +826,47 @@ function queryDatos(){
                     document.getElementById('otroElectro').checked = true;
                     document.getElementById('otroElectroInput').value = jsonData.serv_basicos_otro;
                 }
-                if (electrodomesticos_tv == 1 && electrodomesticos_lavadora == 1 && electrodomesticos_estereo == 1 && electrodomesticos_microondas == 1 && electrodomesticos_computadora == 1 && electrodomesticos_licuadora == 1 && electrodomesticos_refri == 1 && electrodomesticos_estufa == 1){
+                if (electrodomesticos_tv == 1 && electrodomesticos_lavadora == 1 && electrodomesticos_dispositivo == 1 && electrodomesticos_microondas == 1 && electrodomesticos_computadora == 1 && electrodomesticos_licuadora == 1 && electrodomesticos_refri == 1 && electrodomesticos_estufa == 1){
                     document.getElementById('checkAllElectro').checked = true;
                 }
                 else {
                     document.getElementById('checkAllElectro').checked = false;
                 }
 
-                document.getElementById('dependenciaEconomica').value = jsonData.personas_dependen;
+                var dependiente = jsonData.dependiente;
+                if(dependiente == 1){
+                    document.getElementById('dependienteSi').checked = true;
+                    document.getElementById('dependienteNo').checked = false;
+                    document.getElementById('dependienteEsp').value = jsonData.financiador;
+                }
+                else if(dependiente == 0){
+                    document.getElementById('dependienteSi').checked = false;
+                    document.getElementById('dependienteNo').checked = true;
+                    document.getElementById('dependienteEsp').value = "";
+                }
+                else {
+                    document.getElementById('dependienteSi').checked = false;
+                    document.getElementById('dependienteNo').checked = false;
+                    document.getElementById('dependienteEsp').value = "";
+                }
+
+                var dependientes = jsonData.personas_dependen;
+                if(dependientes == 1){
+                    document.getElementById('dependientesSi').checked = true;
+                    document.getElementById('dependientesNo').checked = false;
+                    document.getElementById('dependientes').value = jsonData.dependiente;
+                }
+                else if(dependientes == 0){
+                    document.getElementById('dependientesSi').checked = false;
+                    document.getElementById('dependientesNo').checked = true;
+                    document.getElementById('dependientes').value = "";
+                }
+                else {
+                    document.getElementById('dependientesSi').checked = false;
+                    document.getElementById('dependientesNo').checked = false;
+                    document.getElementById('dependientes').value = "";
+                }
+
 
                 if(hojaRegistro == 1){
                     document.getElementById('registroSi').checked = true;            

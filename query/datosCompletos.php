@@ -27,6 +27,7 @@ if ($rowDatosDocumentos = $resultadoSqlDocumentos->fetch_assoc()){
 }
 else {
     $ruta1 = "";
+    $tipo_documento  = "";
 }
 $sqlDocumentos1 = "SELECT * FROM documentos_list WHERE documento = 2 AND numExp LIKE '%$expediente%'";
 $resultadoSqlDocumentos1 = $conn->query($sqlDocumentos1);
@@ -36,6 +37,7 @@ if ($rowDatosDocumentos1 = $resultadoSqlDocumentos1->fetch_assoc()){
 }
 else {
     $ruta2 = "";
+    $tipo_documento1 = "";
 }
 
 $sqlDocumentos2 = "SELECT * FROM documentos_list WHERE documento = 3 AND numExp LIKE '%$expediente%'";
@@ -46,6 +48,7 @@ if ($rowDatosDocumentos2 = $resultadoSqlDocumentos2->fetch_assoc()){
 }
 else {
     $ruta3 = "";
+    $tipo_documento2 = "";
 }
 $sqlDocumentos3 = "SELECT * FROM documentos_list WHERE documento = 4 AND numExp LIKE '%$expediente%'";
 $resultadoSqlDocumentos3 = $conn->query($sqlDocumentos3);
@@ -55,6 +58,7 @@ if ($rowDatosDocumentos3 = $resultadoSqlDocumentos3->fetch_assoc()) {
 }
 else {
     $ruta4 = "";
+    $tipo_documento3 = "";
 }
 $sqlDocumentos4 = "SELECT * FROM documentos_list WHERE documento = 5 AND numExp LIKE '%$expediente%'";
 $resultadoSqlDocumentos4 = $conn->query($sqlDocumentos4);
@@ -64,6 +68,7 @@ if ($rowDatosDocumentos4 = $resultadoSqlDocumentos4->fetch_assoc()) {
 }
 else {
     $ruta5 = "";
+    $tipo_documento4 = "";
 }
 
 $sqlDocumentos5 = "SELECT * FROM documentos_list WHERE documento = 6 AND numExp LIKE '%$expediente%'";
@@ -74,6 +79,7 @@ if ($rowDatosDocumentos5 = $resultadoSqlDocumentos5->fetch_assoc()) {
 }
 else {
     $ruta6 = "";
+    $tipo_documento5 = "";
 }
 $sqlDocumentos6 = "SELECT * FROM documentos_list WHERE documento = 7 AND numExp LIKE '%$expediente%'";
 $resultadoSqlDocumentos6 = $conn->query($sqlDocumentos6);
@@ -83,6 +89,7 @@ if ($rowDatosDocumentos6 = $resultadoSqlDocumentos6->fetch_assoc()) {
 }
 else {
     $ruta7 = "";
+    $tipo_documento6 = "";
 }
 
     $numExpediente = $rowDatos['numExpediente'];
@@ -129,8 +136,8 @@ else {
         'telefono_cel'=>$rowDatos['telefono_cel'], 
         'escolaridad'=>$rowDatos['escolaridad'],
         'leer'=>$rowDatos['leer_escribir'],
-        'concluida'=>$rowDatos['leer_escribir'],
-        'profesion'=>$rowDatos['nivel_concluido'],
+        'concluida'=>$rowDatos['nivel_concluido'],
+        'profesion'=>$rowDatos['profesion'],
         'grupo'=>$rowDatos['gpo_vulnerable'],
         'rfc'=>$rowDatos['rfc'], 
         'estudia'=>$rowDatos['estudia'], 
@@ -174,7 +181,12 @@ else {
         'enfermedades'=>$rowDatosMedicos['enfermedades'], 
         'enfermedades_cual'=>$rowDatosMedicos['enfermedades_cual'], 
         'medicamentos'=>$rowDatosMedicos['medicamentos'], 
-        'medicamentos_cual'=>$rowDatosMedicos['medicamentos_cual'],//medicamentos
+        'medicamentos_cual'=>$rowDatosMedicos['medicamentos_cual'],
+        'braile'=>$rowDatosMedicos['braile'],
+        'lsm'=>$rowDatosMedicos['lsm'],
+        'labiofacial'=>$rowDatosMedicos['labiofacial'],
+        'asistencia'=>$rowDatosMedicos['asistencia'],
+        //medicamentos
         'vivienda'=>$rowDatosVivienda['vivienda'], 
         'caracteristicas'=>$rowDatosVivienda['caracteristicas'], 
         'caracteristicas_otro'=>$rowDatosVivienda['caracteristicas_otro'], 
@@ -205,14 +217,16 @@ else {
         'electrodomesticos_estufa'=>$rowDatosVivienda['electrodomesticos_estufa'], 
         'electrodomesticos_refri'=>$rowDatosVivienda['electrodomesticos_refri'], 
         'electrodomesticos_otro'=>$rowDatosVivienda['electrodomesticos_otro'], 
+        'dependiente'=>$rowDatosVivienda['dependiente'],
+        'financiador'=>$rowDatosVivienda['financiador'],
         'personas_dependen'=>$rowDatosVivienda['personas_dependen'],
         //vivienda
-        'HojaRegistro'=>$rowDatosDocumentos['tipo_doc'],
-        'valoracion'=>$rowDatosDocumentos1['tipo_doc'],
+        'HojaRegistro'=> $tipo_documento,
+        'valoracion'=> $tipo_documento1,
         'actaNacimiento'=>$tipo_documento2,
-        'curpDoc'=>$rowDatosDocumentos3['tipo_doc'],
-        'ineDoc'=>$rowDatosDocumentos4['tipo_doc'],
-        'comprobante'=>$rowDatosDocumentos5['tipo_doc'],
+        'curpDoc'=> $tipo_documento3,
+        'ineDoc'=> $tipo_documento4,
+        'comprobante'=> $tipo_documento5,
         'tarjetaCirculacion'=>$tipo_documento6,
         'HojaRegistroDoc'=>$ruta1,
         'valoracionDoc'=>$ruta2,

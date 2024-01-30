@@ -93,7 +93,7 @@ include('prcd/qc/qc.php');
     <script src="js/usuarioTemp.js"></script>
     <script src="js/editarFamRef.js"></script>
     <script src="js/print.js"></script>
-    <script src="js/guardar.js"></script>
+    <!-- <script src="js/guardar.js"></script> -->
     <script src="js/credencialEmpleados.js"></script>
 
     <audio id="myAudio">
@@ -264,7 +264,7 @@ include('prcd/qc/qc.php');
     </nav>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="alert text-center" role="alert" style="background-color: #FFC96F;">
+      <div class="alert text-center" role="alert" style="background-color: #F7D472;">
         <p class="h1 text-light"><strong><i class="bi bi-pencil-square" style="font-style: normal;"> Actualizar Registro</i></strong></p>
         <!-- <p class="h6 mb-1 text-light" style="font-style:oblique">Sistema Único de Identificación y Verificación</p> -->
       </div>
@@ -295,8 +295,8 @@ include('prcd/qc/qc.php');
           <div class="row">
             <div class="col-10 align-middle p-1">
                 <strong># Expediente:</strong> <span id="numExp1"></span> | 
-                <strong>Nombre:</strong> <span id="nombreExp1"></span>&nbsp<span id="apellidoPExp1"></span>&nbsp<span id="apellidoMExp1"></span>&nbsp<span id="estatusExpediente"></span> | 
-                <strong>Estatus:</strong>
+                <strong>Nombre:</strong> <span id="nombreExp1"></span>&nbsp<span id="apellidoPExp1"></span>&nbsp<span id="apellidoMExp1"></span> | 
+                <strong>Estatus: </strong>&nbsp<span id="estatusExpediente"></span>
               
             </div>
             <div class="col-2 text-end">
@@ -937,16 +937,16 @@ include('prcd/qc/qc.php');
                       </div>
                     </div><!-- /.row -->
                     <div class="row">
-                      <div class="col-6">
-                      <div class="mb-3">
-                        <label for="basic-url" class="form-label">Estatus del expediente:</label>
-                        <select class="form-select" id="estatus" required>
-                          <option value="" selected>Selecciona...</option>
-                          <!-- <option value="1">Creado (Activo)</option> -->
-                          <option value="2">Inactivo</option>
-                          <option value="3">Inactivo (Finado)</option>
-                        </select>
-                      </div>
+                      <div class="col-sm-5">
+                        <div class="mb-3">
+                          <label for="basic-url" class="form-label">Estatus del expediente:</label>
+                          <select class="form-select" id="estatus" required>
+                            <option value="" selected>Selecciona...</option>
+                            <!-- <option value="1">Creado (Activo)</option> -->
+                            <option value="2">Inactivo</option>
+                            <option value="3">Inactivo (Finado)</option>
+                          </select>
+                        </div>
                       </div>
                       <div class="col-6"></div>
                     </div>
