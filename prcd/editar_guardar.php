@@ -7,7 +7,7 @@ date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
 
 $fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
-
+$numExp = $_POST['numExp'];
 $nombre = $_POST['nombre'];
 $apellidoP = $_POST['apellidoP'];
 $apellidoM = $_POST['apellidoM'];
@@ -40,6 +40,7 @@ $estudia = $_POST['estudia'];
 $estudiaLugar = $_POST['estudiaLugar'];
 $habilidad = $_POST['habilidad'];
 $profesion = $_POST['profesion'];
+$trabaja = $_POST['trabaja'];
 $trabajaLugar = $_POST['trabajaLugar'];
 $lugartrabajoOtro = $_POST['lugarTrabajoOtro'];
 $ingresoMensual = $_POST['ingresoMensual'];

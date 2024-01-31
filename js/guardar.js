@@ -54,6 +54,58 @@ function foto() {
     }
 }
 
+function fotoUpload() {
+    var doc = "_photo";
+    var idUsr = document.getElementById('curp_exp').value;
+    var file = _("file"+doc).files[0];
+    var documento = doc;
+    var idUsuario = idUsr;
+    var formdata = new FormData();
+    // variable del name file
+    formdata.append("file", file);
+    // variables post
+    // formdata.append("documento", documento);
+    formdata.append("idUsuario", idUsuario);
+    var ajax = new XMLHttpRequest();
+    ajax.upload.addEventListener("progress", progressHandler, false);
+    ajax.addEventListener("load", completeHandler, false);
+    ajax.addEventListener("error", errorHandler, false);
+    ajax.addEventListener("abort", abortHandler, false);
+    ajax.open("POST", "prcd/upload_photo.php"); 
+    
+    ajax.send(formdata);
+    
+    function progressHandler(event) {
+
+        _("loaded_n_total"+doc).innerHTML = "Cargado " + event.loaded + " bytes de " + event.total;
+        var percent = (event.loaded / event.total) * 100;
+        _("progressBar"+doc).value = Math.round(percent);
+        _("status"+doc).innerHTML = Math.round(percent) + "% subido... espere un momento";
+        document.getElementById('flagFoto').value = 3;
+    }
+    
+    function completeHandler(event) {
+        _("status"+doc).innerHTML = event.target.responseText;
+        _("progressBar"+doc).value = 100; //wil clear progress bar after successful upload
+        _("file"+doc).style.display='none';
+        _("progressBar"+doc).style.display='none';
+        // document.getElementById('registroDoc'+doc).disabled = true;
+        // document.getElementById('registroDoc'+doc).setAttribute('style','color: #59c965');
+        // document.getElementById('profile').setAttribute('src','assets/docs_expedientes/photos/photosarchivo_'+idUsr+'.*');
+        // document.getElementById('btnModal'+doc).disabled = true;
+        // $(".bloqueo"+doc).attr("disabled", true);
+        buscarPhoto(idUsr);
+    }
+    
+    function errorHandler(event) {
+        _("status"+doc).innerHTML = "Fallo en la subida";
+    }
+    
+    function abortHandler(event) {
+        _("status"+doc).innerHTML = "Fallo en la subida";
+    }
+}
+
 
 function foto3() {
     const canvas = document.querySelector("#crop-image");
@@ -485,6 +537,11 @@ function updateGeneralesForm(){
         var informante = document.getElementById('nombreInformante').value;
         var informanteRelacion1 = document.getElementById('informanteRel').value;
         var informanteRelacionOtro = document.getElementById('otraRel').value;
+        var estatus = document.getElementById('estatus').value;
+
+        if (estatus != 2 || estatus != 3) {
+            estatus = 1;
+        }
 
         if(generoF.checked){
             var genero = "Femenino";
@@ -515,6 +572,9 @@ function updateGeneralesForm(){
         else if (concluidaCur.checked){
             var concluida = 3;
         }
+        else {
+            var concluida = 0;
+        }
 
         if(estudiaSi.checked){
             var estudia = 1;
@@ -529,16 +589,25 @@ function updateGeneralesForm(){
         if(trabajaSi.checked){
             var trabajaLugar = document.getElementById('lugarTrabajo').value;
             if (trabajaLugar == "Otro"){
+                var trabaja = 1;
                 document.getElementById('lugarTrabajoOtro').required = true;
                 var lugarTrabajoOtro = document.getElementById('lugarTrabajoOtro').value;
             }else{
                 document.getElementById('lugarTrabajoOtro').required = false;
                 var lugarTrabajoOtro = "N/A";
+                var trabaja = '';
             }
         }
         else if (trabajaNo.checked){
             var trabajaLugar = "N/A";
+            var trabaja = 0;
             lugarTrabajoOtro = "N/A";
+            document.getElementById('lugarTrabajo').required = false;
+        }
+        else {
+            var trabajaLugar = "";
+            var trabaja = "";
+            lugarTrabajoOtro = "";
             document.getElementById('lugarTrabajo').required = false;
         }
 
@@ -624,6 +693,8 @@ function updateGeneralesForm(){
                 estudiaLugar:estudiaLugar,
                 habilidad:habilidad,
                 profesion:profesion,
+                trabaja:trabaja,
+                
                 trabajaLugar:trabajaLugar,
                 lugarTrabajoOtro:lugarTrabajoOtro,
                 ingresoMensual:ingresoMensual,
@@ -639,7 +710,8 @@ function updateGeneralesForm(){
                 seguridadsocial:seguridadsocial,
                 otroSS:otroSS,
                 numSS:numSS,
-                gruposFull:gruposFull
+                gruposFull:gruposFull,
+                estatus:estatus
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
@@ -1568,6 +1640,10 @@ function updateVivienda() {
         else if (tipoViviendaO.checked){
             var tipoVivienda = 3;
             var viviendaOtro = document.getElementById('viviendaOtro').value;
+        }
+        else {
+            var tipoVivienda = "";
+            var viviendaOtro = "";
         }
         if (cocina.checked){
             var cocinav = 1;

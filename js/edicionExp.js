@@ -114,7 +114,6 @@ function queryDatos(){
             var electrodomesticos_estufa   = jsonData.electrodomesticos_estufa;
             var electrodomesticos_refri   = jsonData.electrodomesticos_refri;
             var electrodomesticos_otro = jsonData.electrodomesticos_otro;
-            var deudas = jsonData.deudas;
             var municipio  = jsonData.municipio;
             var hojaRegistro  = jsonData.HojaRegistro;
             var valoracion  = jsonData.valoracion;
@@ -134,6 +133,7 @@ function queryDatos(){
             var comprobanteDoc  = jsonData.comprobanteDoc;
             var tarjetaCirculacionDoc  = jsonData.tarjetaCirculacionDoc;
 
+            if (success == 1) {
             
             /*  municipiosSelect(jsonData.estado); */
             console.log(jsonData.HojaRegistro,jsonData.valoracion,jsonData.actaNacimiento,jsonData.curpDoc,jsonData.ineDoc,jsonData.comprobante,jsonData.tarjetaCirculacion);
@@ -204,7 +204,6 @@ function queryDatos(){
             document.getElementById('editarBeneficiario').hidden = true;
             document.getElementById('cancelarEditar').hidden = false;
             
-            if (success = 1) {
                 document.getElementById('curp').value = jsonData.curp;
                 document.getElementById('curp_exp').value = jsonData.curp;
                 buscarPhoto(jsonData.curp);

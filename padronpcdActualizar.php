@@ -93,7 +93,7 @@ include('prcd/qc/qc.php');
     <script src="js/usuarioTemp.js"></script>
     <script src="js/editarFamRef.js"></script>
     <script src="js/print.js"></script>
-    <!-- <script src="js/guardar.js"></script> -->
+    <script src="js/guardar.js"></script>
     <script src="js/credencialEmpleados.js"></script>
 
     <audio id="myAudio">
@@ -358,8 +358,8 @@ include('prcd/qc/qc.php');
             <div class="input-group">
             <form id="upload_form" enctype="multipart/form-data" method="post">
                 
-                <input type="file"  name="file_photo" id="file_photo" onchange="foto()" accept="image/png, image/gif, image/jpeg" class="h6 w-100 mt-3" disabled><br>
-              
+                <input type="file"  name="file_photo" id="file_photo" onchange="fotoUpload()" accept="image/jpeg" class="h6 w-100 mt-3" disabled><br>
+                <input type="text" id="flagFoto" value="0" hidden>
                 <progress id="progressBar_photo" value="0" max="100" style="width:230px;"></progress>
                 <small id="status_photo"></small>
                 <p id="loaded_n_total_photo"></p>
@@ -940,7 +940,7 @@ include('prcd/qc/qc.php');
                       <div class="col-sm-5">
                         <div class="mb-3">
                           <label for="basic-url" class="form-label">Estatus del expediente:</label>
-                          <select class="form-select" id="estatus" required>
+                          <select class="form-select" id="estatus">
                             <option value="" selected>Selecciona...</option>
                             <!-- <option value="1">Creado (Activo)</option> -->
                             <option value="2">Inactivo</option>
@@ -952,8 +952,8 @@ include('prcd/qc/qc.php');
                     </div>
                   <br>
                     <div class="d-grid gap-2 mt-3">
-                      <button class="btn btn-primary" type="submit" id="btnGuardarGeneral">Guardar</button>
-                      <button class="btn btn-primary" type="button" id="btnGuardarGeneralUpdate" onclick="updateGeneralesForm()" hidden>Guardar</button>
+                      <!-- <button class="btn btn-primary" type="submit" id="btnGuardarGeneral">Guardar</button> -->
+                      <button class="btn btn-primary" type="button" id="btnGuardarGeneralUpdate" onclick="updateGeneralesForm()">Guardar</button>
                       </form>
                     </div>
                     
@@ -1536,8 +1536,8 @@ include('prcd/qc/qc.php');
                     </div>
                     <br>
                     <div class="d-grid gap-2 mt-3">
-                      <button class="btn btn-primary" type="submit" id="guardarMedicosbtn">Guardar</button>
-                      <button class="btn btn-primary" type="button" id="guardarMedicosbtnUpdate" onclick="updateDatosMedicos()" hidden>Guardar</button>
+                      <!-- <button class="btn btn-primary" type="submit" id="guardarMedicosbtn">Guardar</button> -->
+                      <button class="btn btn-primary" type="button" id="guardarMedicosbtnUpdate" onclick="updateDatosMedicos()">Guardar</button>
                       </form>
                     </div>
                   </div>
@@ -1938,8 +1938,8 @@ include('prcd/qc/qc.php');
                     <!-- dependencia económica -->
                     <br>
                     <div class="d-grid gap-2 mt-3">
-                      <button class="btn btn-primary" type="submit" id="guardarBTNpadron">Guardar</button>
-                      <button class="btn btn-primary" type="button" onclick="updateVivienda()" id="guardarBTNVivienda1"  hidden>Guardar</button>
+                      <!-- <button class="btn btn-primary" type="submit" id="guardarBTNpadron">Guardar</button> -->
+                      <button class="btn btn-primary" type="button" onclick="updateVivienda()" id="guardarBTNVivienda1">Guardar</button>
                       
                       </form>
                     </div>
