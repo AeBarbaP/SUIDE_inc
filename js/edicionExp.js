@@ -134,7 +134,7 @@ function queryDatos(){
             var tarjetaCirculacionDoc  = jsonData.tarjetaCirculacionDoc;
 
             if (success == 1) {
-            
+            document.getElementById('buscarExpActualizar').disabled = true;
             /*  municipiosSelect(jsonData.estado); */
             console.log(jsonData.HojaRegistro,jsonData.valoracion,jsonData.actaNacimiento,jsonData.curpDoc,jsonData.ineDoc,jsonData.comprobante,jsonData.tarjetaCirculacion);
             console.log(jsonData.HojaRegistroDoc,jsonData.valoracionDoc,jsonData.actaNacimientoDoc,jsonData.curpDocDoc,jsonData.ineDocDoc,jsonData.comprobanteDoc,jsonData.tarjetaCirculacionDoc);
@@ -217,6 +217,8 @@ function queryDatos(){
                     });
                 cortarRFC2(); 
                 
+                
+
                 var numExpediente2 = jsonData.numExpediente;
                 var expediente = numExpediente2.substr(0,7);
                 var expedienteNum = numExpediente2.substr(7,5);
@@ -226,6 +228,7 @@ function queryDatos(){
                 document.getElementById('nombre').value = jsonData.nombre; 
                 document.getElementById('apellidoP').value = jsonData.apellido_p; 
                 document.getElementById('apellidoM').value = jsonData.apellido_m; 
+                
                 if (genero == 'FEMENINO' || genero == 'Femenino'){
                     document.getElementById('generoF').checked = true;
                 } 
@@ -635,24 +638,30 @@ function queryDatos(){
                     document.getElementById('viviendaPro').checked = true;
                     document.getElementById('viviendaPre').checked = false;
                     document.getElementById('viviendaRe').checked = false;
+                    document.getElementById('propiedad').hidden = false;
+                    document.getElementById('viviendaPropSi').required = true;
                 }
                 else if (vivienda == 2){
                     document.getElementById('viviendaPro').checked = false;
                     document.getElementById('viviendaPre').checked = true;
                     document.getElementById('viviendaRe').checked = false;
+                    document.getElementById('propiedad').hidden = true;
+                    document.getElementById('viviendaPropSi').required = false;
                 }
                 else if (vivienda == 3){
                     document.getElementById('viviendaPro').checked = false;
                     document.getElementById('viviendaPre').checked = false;
                     document.getElementById('viviendaRe').checked = true;
+                    document.getElementById('propiedad').hidden = true;
+                    document.getElementById('viviendaPropSi').required = false;
                 }
                 else {
                     document.getElementById('viviendaPro').checked = false;
                     document.getElementById('viviendaPre').checked = false;
                     document.getElementById('viviendaRe').checked = false;
-                    
+                    document.getElementById('propiedad').hidden = true;
+                    document.getElementById('viviendaPropSi').required = false;
                 }
-                
                 
                 if (caracteristicasV == 1){
                     document.getElementById('tipoViviendaC').checked = true;

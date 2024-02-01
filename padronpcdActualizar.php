@@ -270,7 +270,7 @@ include('prcd/qc/qc.php');
       </div>
       <div class="input-group mb-2 mt-2">
         <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-        <input class="form-control w-50" id="" oninput="buscarExpediente12(this.value)" placeholder="Buscar...">
+        <input class="form-control w-50" id="buscarExpActualizar" oninput="buscarExpediente12(this.value)" placeholder="Buscar...">
         <!-- <div class="col-3 text-start"> -->
         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#leerQr"><i class="bi bi-qr-code-scan"></i> Escanear</button>
         
@@ -1577,10 +1577,6 @@ include('prcd/qc/qc.php');
                             <input class="form-check-input" type="radio" name="viviendaProp" id="viviendaPropNo" value="2" >
                             <label class="form-check-label" for="viviendaPropNo">No</label>
                           </div>
-                          <!-- <div class="form-check form-check-inline mt-2">
-                            <input class="form-check-input" type="radio" name="viviendaProp" id="viviendaPropNA" value="0" disabled>
-                            <label class="form-check-label" for="viviendaPropNA">No Aplica</label>
-                          </div> -->
                         </div>
                       </div>
                     </div>
