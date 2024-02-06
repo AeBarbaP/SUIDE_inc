@@ -1179,6 +1179,26 @@ function eliminarRegistrosDB(){
     });
 }
 
+function asistenciaVal(x){
+    var asistencia = x;
+    if (asistencia == 1){
+        document.getElementById('permanenteSi').disabled = false;
+        document.getElementById('permanenteNo').disabled = false;
+        document.getElementById('permanenteNA').disabled = false;
+    }
+    else if (asistencia == 2){
+        document.getElementById('permanenteSi').disabled = false;
+        document.getElementById('permanenteNo').disabled = false;
+        document.getElementById('permanenteNA').disabled = false;
+    }
+    else if (asistencia == 3){
+        document.getElementById('permanenteSi').disabled = true;
+        document.getElementById('permanenteNo').disabled = true;
+        document.getElementById('permanenteNA').disabled = true;
+        document.getElementById('permanenteNA').checked = true;
+    }
+}
+
 window.addEventListener("keypress", function(event){
     if (event.keyCode == 13){
         event.preventDefault();

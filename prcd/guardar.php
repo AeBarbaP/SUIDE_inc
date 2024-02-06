@@ -36,6 +36,7 @@ $telFijo = $_POST['telFijo'];
 $celular = $_POST['celular'];
 $leer = $_POST['leer'];
 $escolaridad = $_POST['escolaridad'];
+$escolaridad_nombre = $_POST['escolaridad_nombre'];
 $concluida = $_POST['concluida'];
 $estudia = $_POST['estudia'];
 $estudiaLugar = $_POST['estudiaLugar'];
@@ -88,6 +89,7 @@ $sqlinsert= "INSERT INTO datos_generales (
     telefono_cel,
     leer_escribir,
     escolaridad,
+    nombre_escolaridad,
     nivel_concluido,
     estudia,
     estudia_donde,
@@ -140,6 +142,7 @@ VALUES(
     '$celular',
     '$leer',
     '$escolaridad',
+    '$escolaridad_nombre',
     '$concluida',
     '$estudia',
     '$estudiaLugar',

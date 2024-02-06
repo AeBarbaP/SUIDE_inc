@@ -40,6 +40,7 @@ $asistencia = $_POST['asistencia'];
 $braile = $_POST['braile'];
 $lsm = $_POST['lsm'];
 $labiofacial = $_POST['labiofacial'];
+$permanente = $_POST['permanente'];
 $tipo_dato = 18;
 
 $sqlinsert= "UPDATE datos_medicos SET
@@ -72,7 +73,8 @@ $sqlinsert= "UPDATE datos_medicos SET
     asistencia = '$asistencia',
     braile = '$braile',
     lsm = '$lsm',
-    labiofacial = '$labiofacial'
+    labiofacial = '$labiofacial',
+    tiempo_asistencia = '$permanente'
 WHERE curp = '$curp_exp'
 ";
 

@@ -635,10 +635,11 @@ include('prcd/qc/qc.php');
                       <span class="input-group-text">$</span>
                       <select class="form-select" id="ingresoMensual" aria-label="Default select example" required disabled>
                           <option value="" selected>Selecciona...</option>
-                          <option value="1">menos de 9,999</option>
-                          <option value="2">10,000 a 14,999</option>
-                          <option value="3">15,000 a 19,999</option>
-                          <option value="4">mas de 20,000</option>
+                          <option value="1">menos de 4,500</option>
+                          <option value="2">4,501 a 12,500</option>
+                          <option value="3">12,501 a 19,500</option>
+                          <option value="4">19,501 a 24,999</option>
+                          <option value="5">mayor a 25,000</option>
                         </select>
                     </div>
                   </div>
@@ -1118,10 +1119,10 @@ include('prcd/qc/qc.php');
                       </div>
                     </div>
 
-                    <div class="col-sm-10">
+                    <div class="col-sm-6">
                       <label for="exampleDataListCausa" class="form-label">Requiere asistencia o supervisión?</label>
                       <div class="input-group">
-                        <select class="form-select" id="asistencia" required>
+                        <select class="form-select" id="asistencia" onchange="asistenciaVal(this.value)" required>
                           <option selected>Selecciona...</option>
                           <option value="1">Todo el tiempo</option>
                           <option value="2">En tareas específicas</option>
@@ -1132,6 +1133,25 @@ include('prcd/qc/qc.php');
                         </div>
                         <!-- <span class="input-group-text"> ¿De qué tipo? </span>
                         <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="tipoProtesis" name="datos_usr" placeholder="" disabled> -->
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="mb-3">
+                        <!-- <label for="basic-url" class="form-label"> </label> -->
+                        <div class="input-group mt-4">
+                          <div class="form-check form-check-inline mt-3">
+                            <input class="form-check-input" type="radio" name="duracion" id="permanenteSi" value="1" disabled required>
+                            <label class="form-check-label" for="permanenteSi">Permanente</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-3">
+                            <input class="form-check-input" type="radio" name="duracion" id="permanenteNo" value="2" disabled>
+                            <label class="form-check-label" for="permanenteNo">Temporal</label>
+                          </div>
+                          <div class="form-check form-check-inline mt-3">
+                            <input class="form-check-input" type="radio" name="duracion" id="permanenteNA" value="3" disabled>
+                            <label class="form-check-label" for="permanenteNA">No Aplica</label>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <br>
@@ -2062,7 +2082,7 @@ include('prcd/qc/qc.php');
                     </table>
                     <div id="elementH"></div>
                     <div class="d-grid gap-2">
-                      <a id="buttonCheck" class="btn btn-primary btn-lg" type="button" onclick="checkListDocs();nona()" target="_blank" disabled>Imprimir formato Check List</a>
+                      <a id="buttonCheck" class="btn btn-primary btn-lg" type="button" onclick="nona();checkListDocs()" target="_blank" disabled>Imprimir formato Check List</a>
                     </div>
                   </div>
                 </div>
@@ -3188,6 +3208,7 @@ $(document).ready(function () {
                       <option value="Padre">Padre</option>
                       <option value="Madre">Madre</option>
                       <option value="Tutor">Tutor</option>
+                      <option value="Hijo(a)">Hijo(a)</option>
                       <option value="Hermano(a)">Hermano(a)</option>
                       <option value="Esposo(a)">Esposo(a)</option>
                       <option value="Tío(a)">Tío(a)</option>
@@ -3291,6 +3312,7 @@ $(document).ready(function () {
                       <option value="Padre">Padre</option>
                       <option value="Madre">Madre</option>
                       <option value="Tutor">Tutor</option>
+                      <option value="Hijo(a)">Hijo(a)</option>
                       <option value="Hermano(a)">Hermano(a)</option>
                       <option value="Esposo(a)">Esposo(a)</option>
                       <option value="Tío(a)">Tío(a)</option>
@@ -3399,6 +3421,7 @@ $(document).ready(function () {
                       <option value="Padre">Padre</option>
                       <option value="Madre">Madre</option>
                       <option value="Tutor">Tutor</option>
+                      <option value="Hijo(a)">Hijo(a)</option>
                       <option value="Hermano(a)">Hermano(a)</option>
                       <option value="Tío(a)">Tío(a)</option>
                       <option value="Sobrino(a)">Sobrino(a)</option>
@@ -3460,6 +3483,7 @@ $(document).ready(function () {
                       <option value="Padre">Padre</option>
                       <option value="Madre">Madre</option>
                       <option value="Tutor">Tutor</option>
+                      <option value="Hijo(a)">Hijo(a)</option>
                       <option value="Hermano(a)">Hermano(a)</option>
                       <option value="Tío(a)">Tío(a)</option>
                       <option value="Sobrino(a)">Sobrino(a)</option>

@@ -40,6 +40,7 @@ $asistencia = $_POST['asistencia'];
 $braile = $_POST['braile'];
 $lsm = $_POST['lsm'];
 $labiofacial = $_POST['labiofacial'];
+$permanente = $_POST['permanente'];
 $tipo_dato = 6;
 
 $sqlinsert= "INSERT INTO datos_medicos (
@@ -72,7 +73,8 @@ $sqlinsert= "INSERT INTO datos_medicos (
     asistencia,
     braile,
     lsm,
-    labiofacial
+    labiofacial,
+    tiempo_asistencia
     )
 VALUES(
     '$curp_exp',
@@ -104,7 +106,8 @@ VALUES(
     '$asistencia',
     '$braile',
     '$lsm',
-    '$labiofacial'
+    '$labiofacial',
+    '$permanente'
 )";
 
 $resultado= $conn->query($sqlinsert);

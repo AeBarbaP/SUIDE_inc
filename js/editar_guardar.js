@@ -218,6 +218,13 @@ $(document).ready(function() {
         var informante = document.getElementById('informante').value;
         var estatus = document.getElementById('estatus').value;
 
+        var carrera = document.getElementById('carrera').value;
+        if (carrera != null || carrera != ""){
+            var escolaridad_nombre = "";
+        }
+        else {
+            var escolaridad_nombre = carrera;
+        }
 
         if(generoF.checked){
             var genero = "Femenino";
@@ -341,6 +348,7 @@ $(document).ready(function() {
                 telFijo:telFijo,
                 celular:celular,
                 escolaridad:escolaridad,
+                escolaridad_nombre:escolaridad_nombre,
                 estudia:estudia,/* si está en la lista */
                 estudiaLugar:estudiaLugar,
                 habilidad:habilidad,/* si está en la lista */
@@ -431,6 +439,7 @@ $(document).ready(function() {
     $('#medicosForm').submit(function(e) {
         /* Datos Médicos */
         var curp_exp = document.getElementById('curp_exp').value;
+        var numExp = document.getElementById('numeroExpediente').innerText;
         var discapacidad = document.getElementById('discapacidadList').value;
         var gradoDisc = document.getElementById('gradoDisc').value;
         var tipoDisc = document.getElementById('tipoDisc').value;
@@ -450,6 +459,61 @@ $(document).ready(function() {
         var alergias = document.getElementById('alergias').value;
         var enfermedadesFull = document.getElementById('numeroB').value;
         var medicamentosFull = document.getElementById('numeroC').value;
+        var braileSi1 = document.getElementById('braileSi');
+        var braileNo1 = document.getElementById('braileNo');
+        var braileNA1 = document.getElementById('braileNA');
+        var lsmSi1 = document.getElementById('lsmSi');
+        var lsmNo1 = document.getElementById('lsmNo');
+        var lsmNA1 = document.getElementById('lsmNA');
+        var labiofacialSi1 = document.getElementById('labiofacialSi');
+        var labiofacialNo1 = document.getElementById('labiofacialNo');
+        var labiofacialNA1 = document.getElementById('labiofacialNA');
+        var asistencia = document.getElementById('asistencia').value;
+        var permanenteSi = document.getElementById('permanenteSi');
+        var permanenteNo = document.getElementById('permanenteNo');
+        var permanenteNA = document.getElementById('permanenteNA');
+
+        if (permanenteSi.checked){
+            var permanente = 1;
+        }
+        else if (permanenteNo.checked){
+            var permanente = 2;
+        }
+        else if (permanenteNA.checked){
+            var permanente = 3;
+        } else {
+            var permanente = '';
+        }
+        
+        if (braileSi1.checked){
+            var braile = 1;
+        } else if (braileNo1.checked){
+            var braile = 2;
+        } else if (braileNA1.checked){
+            var braile = 0;
+        } else {
+            var braile = '';
+        }
+        
+        if (lsmSi1.checked){
+            var lsm = 1;
+        } else if (lsmNo1.checked){
+            var lsm = 2;
+        } else if (lsmNA1.checked){
+            var lsm = 0;
+        } else {
+            var lsm = '';
+        }
+        
+        if (labiofacialSi1.checked){
+            var labiofacial = 1;
+        } else if (labiofacialNo1.checked){
+            var labiofacial = 2;
+        } else if (labiofacialNA1.checked){
+            var labiofacial = 0;
+        } else {
+            var labiofacial = '';
+        }
         
         if(rehabilitacionSi.checked){
             var rehabilitacion = 1;
@@ -495,6 +559,7 @@ $(document).ready(function() {
             dataType:'json',
             data: {
                 curp_exp:curp_exp,
+                numExp:numExp,
                 discapacidad:discapacidad,
                 gradoDisc:gradoDisc,
                 tipoDisc:tipoDisc,
@@ -518,7 +583,12 @@ $(document).ready(function() {
                 enfermedades:enfermedades,
                 enfermedadesFull:enfermedadesFull,
                 medicamentos:medicamentos,
-                medicamentosFull:medicamentosFull
+                medicamentosFull:medicamentosFull,
+                asistencia:asistencia,
+                permanente:permanente,
+                braile:braile,
+                lsm:lsm,
+                labiofacial:labiofacial
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));

@@ -250,7 +250,6 @@ $(document).ready(function() {
         var celular = document.getElementById('celular').value;
         var leerSi = document.getElementById('leerSi');
         var leerNo = document.getElementById('leerNo');
-        var escolaridad = document.getElementById('escolaridad').value;
         var concluidaSi = document.getElementById('concluidoSi');
         var concluidaNo = document.getElementById('concluidoNo');
         var concluidaNA = document.getElementById('concluidoNA');
@@ -290,6 +289,14 @@ $(document).ready(function() {
         }
         else if (leerNo.checked){
             var leer = 0;
+        }
+        
+        var carrera = document.getElementById('carrera').value;
+        if (carrera != null || carrera != ""){
+            var escolaridad_nombre = "";
+        }
+        else {
+            var escolaridad_nombre = carrera;
         }
 
         if (concluidaSi.checked){
@@ -407,6 +414,7 @@ $(document).ready(function() {
                 celular:celular,
                 leer:leer,
                 escolaridad:escolaridad,
+                escolaridad_nombre:escolaridad_nombre,
                 concluida:concluida,
                 estudia:estudia,
                 estudiaLugar:estudiaLugar,
@@ -560,6 +568,14 @@ function updateGeneralesForm(){
             var leer = 0;
         }
         
+        var carrera = document.getElementById('carrera').value;
+        if (carrera != null || carrera != ""){
+            var escolaridad_nombre = "";
+        }
+        else {
+            var escolaridad_nombre = carrera;
+        }
+
         if (concluidaSi.checked){
             var concluida = 1;
         }
@@ -688,13 +704,13 @@ function updateGeneralesForm(){
                 celular:celular,
                 leer:leer,
                 escolaridad:escolaridad,
+                escolaridad_nombre:escolaridad_nombre,
                 concluida:concluida,
                 estudia:estudia,
                 estudiaLugar:estudiaLugar,
                 habilidad:habilidad,
                 profesion:profesion,
                 trabaja:trabaja,
-                
                 trabajaLugar:trabajaLugar,
                 lugarTrabajoOtro:lugarTrabajoOtro,
                 ingresoMensual:ingresoMensual,
@@ -807,7 +823,21 @@ $(document).ready(function() {
         var labiofacialNo1 = document.getElementById('labiofacialNo');
         var labiofacialNA1 = document.getElementById('labiofacialNA');
         var asistencia = document.getElementById('asistencia').value;
-        
+        var permanenteSi = document.getElementById('permanenteSi');
+        var permanenteNo = document.getElementById('permanenteNo');
+        var permanenteNA = document.getElementById('permanenteNA');
+
+        if (permanenteSi.checked){
+            var permanente = 1;
+        }
+        else if (permanenteNo.checked){
+            var permanente = 2;
+        }
+        else if (permanenteNA.checked){
+            var permanente = 3;
+        } else {
+            var permanente = '';
+        }
         
         if (braileSi1.checked){
             var braile = 1;
@@ -911,7 +941,8 @@ $(document).ready(function() {
                 asistencia:asistencia,
                 braile:braile,
                 lsm:lsm,
-                labiofacial:labiofacial
+                labiofacial:labiofacial,
+                permanente:permanente
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
@@ -983,7 +1014,21 @@ function updateDatosMedicos(){
         var labiofacialNo1 = document.getElementById('labiofacialNo');
         var labiofacialNA1 = document.getElementById('labiofacialNA');
         var asistencia = document.getElementById('asistencia').value;
-        
+        var permanenteSi = document.getElementById('permanenteSi');
+        var permanenteNo = document.getElementById('permanenteNo');
+        var permanenteNA = document.getElementById('permanenteNA');
+
+        if (permanenteSi.checked){
+            var permanente = 1;
+        }
+        else if (permanenteNo.checked){
+            var permanente = 2;
+        }
+        else if (permanenteNA.checked){
+            var permanente = 3;
+        } else {
+            var permanente = '';
+        }
         
         if (braileSi1.checked){
             var braile = 1;
@@ -1087,7 +1132,8 @@ function updateDatosMedicos(){
                 asistencia:asistencia,
                 braile:braile,
                 lsm:lsm,
-                labiofacial:labiofacial
+                labiofacial:labiofacial,
+                permanente:permanente
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
