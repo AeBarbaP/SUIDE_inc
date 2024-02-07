@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2024 at 10:29 PM
+-- Generation Time: Feb 07, 2024 at 10:27 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -9973,10 +9973,11 @@ CREATE TABLE `datos_generales` (
   `correo` varchar(100) DEFAULT NULL,
   `telefono_cel` varchar(20) NOT NULL,
   `escolaridad` varchar(30) NOT NULL,
+  `nombre_escolaridad` varchar(200) DEFAULT NULL,
   `profesion` varchar(50) NOT NULL,
   `curp` varchar(30) NOT NULL,
   `rfc` varchar(30) NOT NULL,
-  `estudia` varchar(11) DEFAULT NULL,
+  `estudia` varchar(25) DEFAULT NULL,
   `estudia_donde` varchar(100) DEFAULT NULL,
   `estudia_habilidad` varchar(200) NOT NULL,
   `trabaja` varchar(100) NOT NULL,
@@ -10005,17 +10006,35 @@ CREATE TABLE `datos_generales` (
 -- Dumping data for table `datos_generales`
 --
 
-INSERT INTO `datos_generales` (`id`, `numExpediente`, `fecha_registro`, `fecha_actualizacion`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `tipoVialidad`, `estado`, `municipio`, `localidad`, `asentamiento`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `profesion`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `informante`, `informante_parentesco`, `otro_parentesco`, `seguridad_social`, `seguridad_social_otro`, `numSS`, `photo`, `estatus`, `leer_escribir`, `nivel_concluido`, `gpo_vulnerable`) VALUES
-(1, 'C-4920-1', '2024-01-05 13:37:08', NULL, 'Noemi Esperanza', 'Pitones', 'Alamillo', 'Femenino', 42, 'Soltero(a)', '1981-08-19', 'Valparaiso, Zac.', 'García Salinas', '', '108', 'Centro', 'Felipe Ángeles y 20 de Noviembre', 'Cerca de la Escuela', 'CALLE', '32', 32049, 'VALPARAISO', 'ZONA CENTRO', '99250', '4579361805', '', '', 'Secundaria', 'Hogar', 'PIAN810819MZSTLM05', 'PIAN810819', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '1', 'Apoyo de Discapacidad', '2950', '1', '0', 'N/A', NULL, 'Ninguno', '', '', '../fotos_expedientes/archivo_PIAN810819MZSTLM05.jpg', NULL, NULL, 0, NULL),
-(2, 'C-1003-2', '2024-01-10 13:47:16', NULL, 'José', 'Robledo', 'Moreno', 'Masculino', 36, 'Casado(a)', '1987-10-21', 'Fresnillo, Zac.', 'T. Urbina', '', '39', 'Francisco Villa', 'Higuera y la Estación', 'Cerca de la carretera a La Estación', 'CALLE', '32', 32010, 'FRESNILLO', 'FRANCISCO VILLA', '99099', '', '', '4931699413', 'Primaria', '', 'ROMJ871021HZSBRS04', 'ROMJ871021', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', '0', 'N/A', NULL, 'SSZ', '', '', '../fotos_expedientes/archivo_ROMJ871021HZSBRS04.jpg', NULL, NULL, 0, NULL),
-(3, 'C-1727-3', '2024-01-10 15:27:23', NULL, 'jesus', 'leaños', 'villegas', 'Masculino', 42, 'Soltero(a)', '1981-09-24', 'Zacatecas, Zac', 'zacatecas', '', '12', 'El carmen', 'Zacatecsa', 'Zac', 'CALLE', '32', 32017, 'OJO DE AGUA', 'Sin registro', '98608', '9999', 'jesus@hotmail.ocm', '9999', 'Licenciatura', 'SQL', 'LEVJ810924HZSXLS01', 'LEVJ8109248K3', '1', 'ITZ', 'Programador', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', '1', 'SDF', NULL, 'Ninguno', '', '9999', NULL, NULL, NULL, 0, NULL),
-(4, 'C-5625-4', '2024-01-11 13:46:17', NULL, 'Ana Elisa', 'Barba', 'Pinedo', 'Femenino', 41, 'Casado(a)', '1982-12-12', 'Guadalajara Jalisco', 'de la Colina', 'A', '218', 'Loma Bonita', 'Frente a UAZ Siglo XXI', 'Reja blanca', 'CALLE', '32', 32056, 'ZACATECAS', 'Loma Bonita', '98160', '', 'aebarbap@gmail.com', '4921001418', 'Licenciatura', 'Ingeniero', 'BAPA821212MJCRNN01', 'BAPA821212N84', '1', 'UDEMI', 'Programador', '1', 'INCLUSIÓN', '15000', '0', 'N/A', '0', 'N/A', '0', 'N/A', '0', 'N/A', NULL, 'IMSS', '', '34108202747', '../fotos_expedientes/archivo_BAPA821212MJCRNN04.png', NULL, NULL, 0, NULL),
-(5, 'C-5603-5', '2024-01-11 14:46:08', NULL, 'gd9sa', 'gredfa', 'gdsa', 'Masculino', 41, 'Soltero(a)', '1985-11-11', 'fdsa', 'poas', '', '58', 'sdña', 'ds', 'dgfsa', 'BOULEVARD', '32', 32056, 'ZACATECAS', 'MECÁNICOS II', '98022', '66', 'gdages@etsaw.com', '366', 'Primaria', '', 'BAPA821212MJCRNN00', 'BAPA821212', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', '0', 'N/A', NULL, 'SSZ', '', '', '../fotos_expedientes/archivo_BAPA821212MJCRNN04.png', NULL, NULL, 0, NULL),
-(6, 'C-5607-6', '2024-01-11 14:53:24', NULL, 'afs', 'fds', 'gfda', 'Masculino', 41, 'Soltero(a)', '1982-12-10', 'gdsa', 'gfda', '', '65', 'dgsa', 'gdfsa6', 'gdfas', 'DIAGONAL', '32', 32056, 'ÁLVARO ORTÍZ (ALFREDO ORTÍZ)', 'Sin registro', '98160', '5358', 'n@n.n', '69', 'Ninguno', '', 'BAPA821212MJCRNN06', 'BAPA821212GDS', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', '0', 'N/A', NULL, 'Ninguno', '', '', NULL, NULL, NULL, 0, NULL),
-(7, 'C-5623-7', '2024-01-11 14:57:27', NULL, 'gdiso', 'ju0oi', 'dkjsjai', 'Masculino', 42, 'Soltero(a)', '2024-01-12', 'dgfa', 'da', '', '36', 'fdsa', 'sgf', 'gdfsa', 'CALLE', '32', 32056, 'ÁNGEL VÁZQUEZ', 'Sin registro', '566', '66', 'gdages@etsaw.com', '66', 'Ninguno', '', 'LEVJ810924HZSXLS07', 'LEVJ810924', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', '0', 'N/A', NULL, 'IMSS', '', '', NULL, NULL, NULL, 0, NULL),
-(8, 'C-5625-8', '2024-01-11 15:01:55', NULL, 'gfds', 'yhs', 'fds', 'Masculino', 42, 'Soltero(a)', '2023-01-12', 'gfdx', 'fsda', '', '4', 'sag', 'gds', 'gdfsa', 'DIAGONAL', '32', 32056, 'ÁLVARO ORTÍZ (ALFREDO ORTÍZ)', 'Sin registro', '92844', '666', 'gdages@etsaw.com', '666', 'Ninguno', '', 'LEVJ810924HZSXLS04', 'LEVJ810924', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', '0', 'N/A', NULL, 'Ninguno', '', '', NULL, NULL, NULL, 0, NULL),
-(9, 'C-5613-9', '2024-01-17 10:42:11', NULL, 'MARIA DE JESUS', 'RODRIGUEZ', 'GUZMAN', 'Femenino', 89, 'Viudo(a)', '1935-01-08', 'ZACATECAS', 'CALLEJON DEL CHINO', '', '110', 'CENTRO', 'FERNANDO CALDERON Y RAYON', '', 'CALLEJÓN', '32', 32056, 'ZACATECAS', 'ZONA CENTRO', '98000', '', '', '4921161570', 'Primaria', 'HOGAR', 'ROGJ350108MZSDZS02', 'ROGJ350108', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', '0', 'N/A', NULL, 'ISSSTE', '', 'ROGJ350108', '../fotos_expedientes/archivo_ROGJ350108MZSDZS02.jpg', NULL, NULL, 0, NULL),
-(11, 'C-5621-11', '2024-01-23 10:39:11', NULL, 'DHFAS', 'JUYGF', 'HGFS', 'Masculino', 3, 'Soltero(a)', '2020-04-21', 'HFDS', 'GDFA|', '6', '6', 'GYURTE1Q1', 'YHRTSW', 'yhrdju', 'CALLE', '32', 32056, 'ZACATECAS', 'VARIAS', '98160', '234', 'n@n.n', '532', 'Técnica', 'GFD', 'GOBM200421MJCNRRA8', 'GOBM200421', '1', 'Pública Regular', 'GFDS', 'Otro', 'TRDS', '1', '1', 'FDEST', '1', 'HFD', '58', '1', 'JHGLOH', 'Otro(a)', 'JHLHH', 'Otro', 'GASTOS MAYORES', '898', NULL, NULL, 1, 1, 'Migrante ');
+INSERT INTO `datos_generales` (`id`, `numExpediente`, `fecha_registro`, `fecha_actualizacion`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `tipoVialidad`, `estado`, `municipio`, `localidad`, `asentamiento`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `nombre_escolaridad`, `profesion`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `informante`, `informante_parentesco`, `otro_parentesco`, `seguridad_social`, `seguridad_social_otro`, `numSS`, `photo`, `estatus`, `leer_escribir`, `nivel_concluido`, `gpo_vulnerable`) VALUES
+(1, 'C-1712-0001', '2000-04-01 00:00:00', NULL, 'LUZ MARIA', 'ROBLES', 'SIFUENTES', 'FEMENINO', NULL, 'SOLTERO (A)', '1971-05-16', '', 'REAL DEL CONDE', 'S/N', '55', 'FRACC. CAMPO REAL', '', NULL, NULL, '32', 32017, 'GUADALUPE', 'CAMPO REAL', '98600', '(492) 150 - 5160', '', ' ', '', NULL, 'HOGAR', 'ROSL710516MZSBFZ07', 'ROSL710516', 'NO', '', '', 'SI', '', '5000.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'ROSL710516MZSBFZ07_C-1712-0001.jpg', 'CREADO', NULL, 0, NULL),
+(2, 'C-5618-0002', '2000-01-04 00:00:00', NULL, 'MANUEL', 'GAYTAN', 'NAVA', 'MASCULINO', NULL, 'SOLTERO (A)', '1975-04-18', 'ZACATECAS', 'RABANOS', 'S/N', '35', 'LAS HUERTAS', '', NULL, NULL, '32', 32056, 'NO REGISTRADA', '0', '98160', '6 84606', '', ' ', '', NULL, 'DIVERSOS', 'GANM750418HZSYVN01', 'GANM750418', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', '', 'CREADO', NULL, 0, NULL),
+(3, 'C-5603-0003', '2006-06-09 00:00:00', NULL, 'JESUS MARIA', 'GUTIERREZ', 'BETANCOURT', 'MASCULINO', NULL, 'SOLTERO (A)', '1957-11-09', 'ZACATECAS', 'FELIX BAÑUELOS', 'S/N', '116', 'BELLAVISTA', '', NULL, NULL, '32', 32056, 'ZACATECAS', 'BELLAVISTA', '98000', '(492) 140 - 3212', '', '', '', NULL, 'DESEMPLEADO', 'GUBJ571109HZSTTS00', 'GUBM571109', 'NO', '', '', 'SI', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'GUBJ571109HZSTTS00_C-5603-0003.jpg', 'CREADO', NULL, 0, NULL),
+(4, 'C-1733-0004', '2000-01-04 00:00:00', NULL, 'SAUL ALEJANDRO', 'GUERRERO', 'MARTINEZ', 'MASCULINO', NULL, 'CASADO (A)', '1998-10-29', 'ZACATECAS', 'REAL DEL MONTE', 'S/N', '45', 'CAMINO REAL', '', NULL, NULL, '32', 32017, 'GUADALUPE', 'CAMINO REAL', '98615', '(492) 124 - 9032', '', '', '', NULL, 'ESTUDIANTE', 'GUMS981029HZSRRL08', 'GUMS981029', 'SI', '', '', 'NO', '', '5000.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'GUMS981029HZSRRL08_C-1733-0004.jpg', 'CREADO', NULL, 0, NULL),
+(5, 'C-5032-0005', '2000-01-06 00:00:00', NULL, 'LUIS MIGUEL', 'GUTIERREZ', 'MARTINEZ', 'MASCULINO', NULL, 'CASADO (A)', '1985-09-29', 'VETAGRANDE', 'MATIAS RAMOS', 'S/N', '46', ' ', '', NULL, NULL, '32', 32050, 'SAN JOSÉ DE LA ERA', '0', '98150', '76 83119', '', '', '', NULL, 'HOGAR', 'GUML850929HZSTRS00', 'GUML850929', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'GUML850929HZSTRS00_C-5032-0005.jpg', 'CREADO', NULL, 0, NULL),
+(6, 'C-5603-0006', '2000-03-31 00:00:00', NULL, 'CARLOS RAUL', 'RIOS', 'RAMIREZ', 'MASCULINO', NULL, 'CASADO (A)', '1989-04-17', 'ZACATECAS', 'DE LA PRIMAVERA', 'S/N', '408', 'CENTRO', '', NULL, NULL, '32', 32056, 'ZACATECAS', 'ZONA CENTRO', '98000', '(492) 161 - 5918', '', '', '', NULL, 'ESTUDIANTE', 'RIRC890417HZSSMR07', 'RIRC890417', 'SI', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'RIRC890417HZSSMR07_C-5603-0006.jpg', 'CREADO', NULL, 0, NULL),
+(7, 'C-5618-0007', '1999-05-04 00:00:00', NULL, 'JOSE LUIS', 'ACOSTA', 'RAMOS', 'MASCULINO', NULL, 'SOLTERO (A)', '1958-10-05', 'ZACATECAS', 'BONIFACIO OVALLE', 'S/N', '106', 'CNOP', '', NULL, NULL, '32', 32056, 'ZACATECAS', 'CNOP', '98060', '(492) 949 - 0198', '', '', '', NULL, 'JUBILADO/PENSIONADO', 'AORL581005HSPCMS01', 'AORL581012', 'NO', '', '', 'NO', '', '13000.00', 'NO', '', 'SI', 'IMSS', '12000.00', NULL, NULL, NULL, NULL, 'IMSS', NULL, '1', 'AORL581005HSPCMS01_C-5618-0007.jpg', 'CREADO', NULL, 0, NULL),
+(8, 'C-5521-0008', '2000-01-07 00:00:00', NULL, 'MARÍA FERNANDA', 'RANGEL', 'MARTÍNEZ', 'FEMENINO', NULL, 'CASADO (A)', '1992-01-10', 'D.F.', 'LINDAVISTA', 'S/N', '2', 'CENTRO', '', NULL, NULL, '32', 32055, 'NO REGISTRADA', '0', '99500', '', '', '', '', NULL, 'ESTUDIANTE', 'RAMF920110MDFNRR08', 'RAMF920110', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', '', 'CREADO', NULL, 0, NULL),
+(9, 'C-1718-0009', '2000-02-03 00:00:00', NULL, 'JUANA', 'LUJAN', 'QUINTERO', 'FEMENINO', NULL, 'SOLTERO (A)', '1918-05-27', 'GUADALUPE', 'SAN ANTONIO', 'S/N', '8', 'CENTRO', '', NULL, NULL, '32', 32017, 'GUADALUPE', '0', '98600', '', '', '', '', NULL, 'NO REGISTRADO', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', '', 'FINADO', NULL, 0, NULL),
+(10, 'C-5633-0010', '2000-07-11 00:00:00', NULL, 'CESAR', 'VILLAGRANA', '', 'MASCULINO', NULL, 'CASADO (A)', '1980-04-26', 'ZACATECAS', 'FELIX LAMAS CORTES', 'S/N', '216', 'ALMA OBRERA', '', NULL, NULL, '32', 32056, 'ZACATECAS', '0', '98090', '92 44371', '', ' ', '', NULL, 'HOGAR', 'VIXC800426HZSLXS04', 'VIXC800426', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'VIXC800426HZSLXS04_C-5633-0010.jpg', 'FINADO', NULL, 0, NULL),
+(11, 'C-5633-0011', '2000-07-11 00:00:00', NULL, 'LUIS ALBERTO', 'VILLAGRANA', ' ', 'MASCULINO', NULL, 'CASADO (A)', '1986-08-20', 'ZACATECAS', 'FELIX LAMAS CORTES', 'S/N', '216', 'ALMA OBRERA', '', NULL, NULL, '32', 32056, 'ZACATECAS', '0', '98090', '9244371', '', '', '', NULL, 'NINGUNA', 'VIXL860820HZSLXs01', 'VIXL860820', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'VIXL860820HZSLXs01_C-5633-0011.jpg', 'FINADO', NULL, 0, NULL),
+(12, 'C-1021-0012', '2000-01-10 00:00:00', NULL, 'AXEL ABRAHAM', 'ZALDIVAR', 'VEGA', 'MASCULINO', NULL, 'CASADO (A)', '1984-11-26', 'DURANGO', 'NIÑO ASTILLERO', 'S/N', '2', 'INDUSTRIAL', '', NULL, NULL, '32', 32010, 'NO REGISTRADA', '0', '99030', '', '', '', '', NULL, 'DESEMPLEADO', 'ZAVA841126HDGLGX05', 'ZAVA841126', 'NO', '', 'DATOS INCOMPLETOS', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', '', 'FINADO', NULL, 0, NULL),
+(13, 'C-1024-0013', '2000-01-25 00:00:00', NULL, 'LIZETH', 'PALACIOS', 'ZUÑIGA', 'FEMENINO', NULL, 'SOLTERO (A)', '1981-08-14', 'RIO GRANDE', 'PLAZA DE ARBOLEDAS', '202', 'EDIF 103', 'MANUEL M. PONCE', '', NULL, NULL, '32', 32010, 'FRESNILLO', 'VARIAS', '99070', '(493) 112 - 8430', '', '', '', NULL, 'HOGAR', 'PAZL810814MZSLXZ01', 'PAZL810814', 'NO', '', '', 'NO', '', '0.01', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'PAZL810814MZSLXZ01_C-1024-0013.jpg', 'CREADO', NULL, 0, NULL),
+(14, 'C-5621-0014', '2000-01-11 00:00:00', NULL, 'SERGIO', 'HERNÁNDEZ', 'RANGEL', 'MASCULINO', NULL, 'SOLTERO (A)', '1960-01-01', 'ZACATECAS', 'CERRADA 20 DE NOVIEMBRE', 'S/N', '18', 'EL ORITO', '', NULL, NULL, '32', 32056, 'ZACATECAS', 'EL ORITO', '98160', '(492) 144 - 8064', '', '', '', NULL, 'OFICIOS VARIOS', 'HERS591019HDFRNR00', 'HERS591019', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'HERS591019HDFRNR00_C-5621-0014.jpg', 'CREADO', NULL, 0, NULL),
+(15, 'C-5640-0015', '2000-01-12 00:00:00', NULL, 'CLAUDIA AMELIA', 'PACHECO', 'AMAYA', 'FEMENINO', NULL, 'CASADO (A)', '1988-03-27', 'ZACATECAS', 'LIRIOS', 'S/N', '27', 'FELIPE ANGELES', '', NULL, '5', '32', 32056, 'ZACATECAS', 'FELIPE ÁNGELES', '98054', '(492) 225 - 1604', '', '', '', NULL, 'EMPLEADO', 'PAAC880327MZSCML07', 'PAAC880327', 'SI', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'PAAC880327MZSCML07_C-5640-0015.jpg', 'CREADO', NULL, 0, NULL),
+(16, 'C-1703-0016', '2000-07-12 00:00:00', NULL, 'TERESA', 'AGUILAR', 'JUÁREZ', 'FEMENINO', NULL, 'CASADO (A)', '1989-02-15', 'ZACATECAS', 'DIBUJANTES', 'S/N', '1', 'TRES CRUCES', '', NULL, NULL, '32', 32017, 'NO REGISTRADA', '0', '98600', '', '', '', '', NULL, 'DESEMPLEADO', 'AUJT890215MZSGRR05', 'AGJT890215', 'NO', '', 'SIN DOCUMENTACION', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', '', 'CREADO', NULL, 0, NULL),
+(17, 'C-5631-0017', '2000-02-15 00:00:00', NULL, 'SILVERIO', 'LÓPEZ', 'VILLAREAL', 'MASCULINO', NULL, 'CASADO (A)', '1989-09-13', 'ZACATECAS', '17 DE OCTUBRE', 'S/N', '06', 'BARRO SIERRA', '', NULL, NULL, '32', 32056, 'NO REGISTRADA', '0', '98000', '2 42363', '', '', '', NULL, 'DESEMPLEADO', 'LOVS899813HZSPLL06', 'LOVS890913', 'NO', '', 'SIN DOCUMENTACION', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', '', 'CREADO', NULL, 0, NULL),
+(18, 'C-1723-0018', '2000-07-12 00:00:00', NULL, 'OMAR ALEJANDRO', 'TRIANA', 'FÉLIX', 'MASCULINO', NULL, 'CASADO (A)', '1992-01-16', 'ZACATECAS', 'ANDADOR ALUMINIO M1', 'S/N', '-1-C', 'CERRILLO', '', NULL, NULL, '32', 32017, 'NO REGISTRADA', '0', '98600', '', 'SIN DOCUMENTACION', '', '', NULL, 'DESEMPLEADO', 'TIFO920116HZSRLM00', 'TRFO920116', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', '', 'CREADO', NULL, 0, NULL),
+(19, 'C-3721-0019', '2000-01-12 00:00:00', NULL, 'VICTOR HUGO', 'SILVA', 'SIFUENTES', 'MASCULINO', NULL, 'CASADO (A)', '1992-06-04', 'PANUCO', 'DEL ESTUDIANTE', 'S/N', '5', '', '', NULL, NULL, '32', 32037, 'SAN ANTONIO DEL CIPRÉS', '0', '98540', '4786861136', '', '', '', NULL, 'CAMPO', 'SISV920604HZSLFC01', 'SISV920604', 'NO', '', '', 'SI', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'SISV920604HZSLFC01_C-3721-0019.jpg', 'CREADO', NULL, 0, NULL),
+(20, 'C-5621-0020', '2000-01-12 00:00:00', NULL, 'JUANA', 'DIAZ', 'OROZCO', 'FEMENINO', NULL, 'DIVORCIADO (A)', '1945-01-01', 'ZACATECAS', 'JOSEFA ORTIZ DE DOMINGUEZ', 'S/N', '109-A', 'CENTRO', '', NULL, NULL, '32', 32056, 'ZACATECAS', 'ZONA CENTRO', '98000', '92 27190', '', '', '', NULL, 'HOGAR', 'DIOJ450105MZSZRN05', 'DIOJ450101', 'NO', '', '', 'NO', '', '3000.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'DIOJ450105MZSZRN05_C-5621-0020.jpg', 'CREADO', NULL, 0, NULL),
+(21, 'C-3231-0021', '2000-01-26 00:00:00', NULL, 'ARCELIA', 'MARTINEZ', 'SANCHEZ', 'FEMENINO', NULL, 'CASADO (A)', '1989-01-01', 'MORELOS', 'AV. HIDALGO', 'S/N', '26', ' ', '', NULL, NULL, '32', 32032, 'HACIENDA NUEVA', '0', '98100', '(155) 018 - 2', '', '', '', NULL, 'ESTUDIANTE', 'MASA880721MZSRNR00', 'MASR890101', 'SI', '', '', 'NO', '', '3000.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'MASA880721MZSRNR00_C-3231-0021.jpg', 'CREADO', NULL, 0, NULL),
+(22, 'C-5615-0022', '2000-01-13 00:00:00', NULL, 'GLORIA', 'MORALES', 'ZOZA', 'FEMENINO', NULL, 'SOLTERO (A)', '1957-04-20', 'GUERRERO', 'ESPARRAGOS', 'S/N', '304', 'LAS HUERTAS', '', NULL, NULL, '32', 32056, 'ZACATECAS', '0', '98087', '(492) 120 - 4512', '', '', '', NULL, 'HOGAR', 'MOZG570420MGRRZL05', 'MOSG570420', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'IMSS', NULL, '06755823330', 'MOZG570420MGRRZL05_C-5615-0022.jpg', 'CREADO', NULL, 0, NULL),
+(23, 'C-2903-0023', '2006-01-18 00:00:00', NULL, 'JOEL', 'BARBOZA', 'MORALES', 'MASCULINO', NULL, 'SOLTERO (A)', '1963-09-15', 'MIGUEL AUZA', 'VICENTE GUERRERO', 'S/N', '30', '', '', NULL, NULL, '32', 32029, 'EMILIO CARRANZA', '0', '98340', '(433) 935 - 3351', '', '', '', NULL, 'OFICIOS VARIOS', 'BAMJ630915HZSRRL01', 'BAMJ630915', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'BAMJ630915HZSRRL01_C-2903-0023.jpg', 'CREADO', NULL, 0, NULL),
+(24, 'C-1021-0024', '2000-01-13 00:00:00', NULL, 'WBALDO', 'ALVARADO', 'LEOS', 'MASCULINO', NULL, 'CASADO (A)', '1980-04-03', 'FRESNILLO', 'SIERRA CANDELAS', 'S/N', '9', 'SECTOR POPULAR', '', NULL, NULL, '32', 32010, 'FRESNILLO', 'VARIAS', '99011', '493 1167711', '', '', '', NULL, 'HOGAR', 'AALW800403HZSLSB00', 'ALLW800403', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'AALW800403HZSLSB00_C-1021-0024.jpg', 'CREADO', NULL, 0, NULL),
+(25, 'C-1721-0025', '1999-10-16 00:00:00', NULL, 'MA. ELENA', 'ALVAREZ', 'ALVAREZ', 'FEMENINO', NULL, 'CASADO (A)', '1965-08-08', 'JALISCO', 'ARROYO PRINCIPAL', 'S/N', '11', 'CENTRO', '', NULL, NULL, '32', 32017, 'GUADALUPE', '0', '98615', '4921313990', '', '', '', NULL, 'HOGAR', 'AAAE650713MJCLLLO4', 'ALAE650808', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'AAAE650713MJCLLLO4_C-1721-0025.jpg', 'CREADO', NULL, 0, NULL),
+(26, 'C-5625-26', '2024-02-06 09:17:19', NULL, 'Ana Elisa', 'Barba', 'Pinedo', 'Femenino', 41, 'Casado(a)', '1982-12-12', 'Guadalajara Jalisco', 'de la Colina', 'A', '218', 'Loma Bonita', 'FRENTE A UAZ SIGLO XXI', 'Reja blanca', 'CALLE', '32', 32056, 'ZACATECAS', 'LOMA BONITA', '98160', '4921001418', 'aebarbap@gmail.com', '4921001418', 'Licenciatura', NULL, 'INGENIERO', 'BAPA821212MJCRNN04', 'BAPA821212N84', '1', 'Pública Regular', 'PROGRAMAR', 'Gobierno Estatal', 'N/A', '3', '0', 'N/A', '0', 'N/A', '0', 'N/A', 'Ana Elisa Barba Pinedo', '', '', 'IMSS', '', '34108208747', '../fotos_expedientes/archivo_BAPA821212MJCRNN04.jpg', '4', 1, 1, 'Jefa de Familia '),
+(35, NULL, '2024-02-07 15:11:18', NULL, 'Noemi Esperanza', 'Pitones', 'Alamillo', 'Femenino', 42, 'Soltero(a)', '1981-11-11', 'BHFD', 'GDFS', 'S', '5', 'HREDA', 'YGFDA', '', 'VIADUCTO', '32', 32049, 'VALPARAISO', 'FRANCISCO VILLA', '99250', '4579361805', 'n@n.n', '4579361805', 'Licenciatura', 'NUTRICION', '', 'PIAN810819MZSTLM05', 'PIAN810819', '0', 'N/A', '', 'N/A', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', 'Noemi Esperanza Pitones Alamillo', '', '', 'Ninguno', '', '', NULL, '1', 1, 0, ''),
+(36, 'C-5632-36', '2024-02-07 15:14:38', NULL, 'HUIGDFSAI', 'GDUSHA', 'VGDAIS', 'Masculino', 89, 'Casado(a)', '1985-11-11', 'BGFDA', 'HFDA', '5', '5', 'GDSA', 'GFDSA', 'bgds|', 'CALLE', '32', 32056, 'ZACATECAS', 'VARIAS', '98160', '6696', 'gdages@etsaw.com', '', 'Licenciatura', 'DSUI', '', 'ROGJ350108MZSDZS02', 'ROGJ350108', '0', 'N/A', '', '0', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', 'HUIGDFSAI GDUSHA VGDAIS', '', '', 'Ninguno', '', '', '../fotos_expedientes/archivo_ROGJ350108MZSDZS02.jpg', '5', 1, 0, 'Migrante');
 
 -- --------------------------------------------------------
 
@@ -10054,24 +10073,42 @@ CREATE TABLE `datos_medicos` (
   `braile` int(11) DEFAULT NULL,
   `lsm` int(11) DEFAULT NULL,
   `labiofacial` int(11) DEFAULT NULL,
-  `asistencia` int(11) DEFAULT NULL
+  `asistencia` int(11) DEFAULT NULL,
+  `tiempo_asistencia` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `datos_medicos`
 --
 
-INSERT INTO `datos_medicos` (`id`, `curp`, `expediente`, `tipo_discapacidad`, `discapacidad`, `grado_discapacidad`, `descripcionDiscapacidad`, `causa`, `causa_otro`, `temporalidad`, `valoracion`, `fecha_valoracion`, `rehabilitacion`, `rehabilitacion_donde`, `rehabilitacion_inicio`, `rehabilitacion_duracion`, `tipo_sangre`, `cirugias`, `tipo_cirugias`, `protesis`, `protesis_tipo`, `alergias`, `alergias_cual`, `enfermedades`, `enfermedades_cual`, `medicamentos`, `medicamentos_cual`, `braile`, `lsm`, `labiofacial`, `asistencia`) VALUES
-(1, 'PIAN810819MZSTLM05', 'C-4920-1', 'Física', '20-Escoliosis', '2-Moderado', 'Escoliosis con dolor lumbar crónico', '4', '', '0000-00-00', 'SSZ', '2023-09-29', '0', '0', '0000-00-00', '0', '7', '1', 'Pies', '2', '', '0', 'Sin alergias', '1', 'Escoliosis', '1', 'Antiinflamatorios, Piroxicam', NULL, NULL, NULL, NULL),
-(2, 'ROMJ871021HZSBRS04', 'C-1003-2', 'Física', '03-Motora', '2-Moderado', 'Tuberculosis pulmonar', '3', '', '2023-02-01', 'SSZ', '2023-10-03', '0', '0', '0000-00-00', '0', '1', '1', 'Pulmón, cabeza', '1', 'Silla de ruedas', '0', 'Sin alergias', '1', 'Tuberculosis', '1', 'Isoniazida, Rifampicina, Clorhidrato de Etambutol', NULL, NULL, NULL, NULL),
-(3, 'LEVJ810924HZSXLS04', 'C-1727-3', 'Física', '27-Diparesia', '1-Leve', 'dddd', '1', '', '0000-00-00', 'IMSS', '1989-01-01', '0', '0', '0000-00-00', '0', '3', '2', '', '2', '', '0', 'Sin alergias', '0', 'Enfermedades no reportadas', '0', 'Medicamentos no reportadas', NULL, NULL, NULL, NULL),
-(4, 'BAPA821212MJCRNN04', 'C-5625-4', 'Sensorial', '25-Baja Visión', '1-Leve', 'Astigmatismo', '5', 'Uso de pantallas durante su trabajo', '2023-01-01', 'IMSS', '2023-10-23', '0', '0', '0000-00-00', '0', '1', '2', '', '2', '', '1', 'Ciprofloxacino', '1', 'Gastritis', '0', 'Medicamentos no reportadas', NULL, NULL, NULL, NULL),
-(5, 'BAPA821212MJCRNN04', 'C-5603-5', 'Física', '03-Motora', '2-Moderado', 'FDSA', '1', '', '0000-00-00', 'IMSS', '2023-12-10', '0', '0', '0000-00-00', '0', '1', '2', '', '2', '', '0', 'Sin alergias', '1', 'Hipertensión', '1', 'Losartan', NULL, NULL, NULL, NULL),
-(6, 'BAPA821212MJCRNN04', 'C-5607-6', 'Física', '07-Espondilitis', '2-Moderado', 'ed', '1', '', '0000-00-00', 'IMSS', '0005-05-05', '0', '0', '0000-00-00', '0', '1', '2', '', '2', '', '0', 'Sin alergias', '0', 'Enfermedades no reportadas', '0', 'Medicamentos no reportadas', NULL, NULL, NULL, NULL),
-(7, 'LEVJ810924HZSXLS04', 'C-5623-7', 'Intelectual', '23-Comunicación Lenguaje', '1-Leve', 'gdfs', '1', '', '0000-00-00', 'IMSS', '2024-01-01', '0', '0', '0000-00-00', '0', '8', '2', '', '2', '', '0', 'Sin alergias', '0', 'Enfermedades no reportadas', '0', 'Medicamentos no reportadas', NULL, NULL, NULL, NULL),
-(8, 'LEVJ810924HZSXLS04', 'C-5625-8', 'Sensorial', '25-Baja Visión', '1-Leve', 'miopia', '1', '', '0000-00-00', 'IMSS', '2022-12-10', '0', '0', '0000-00-00', '0', '1', '2', '', '2', '', '0', 'Sin alergias', '0', 'Enfermedades no reportadas', '0', 'Medicamentos no reportadas', NULL, NULL, NULL, NULL),
-(9, 'ROGJ350108MZSDZS02', 'C-5613-9', 'Física', '13-Enfermedad Articular Degenerativa', '4-Severo', 'ARTRITIS REUMATOIDE', '3', '', '2019-01-01', 'UBR', '2024-01-16', '0', '0', '0000-00-00', '0', '7', '1', 'CESÁREA Y VESÍCULA', '1', 'SILLA DE RUEDAS', '0', 'Sin alergias', '1', 'Hipertensión', '1', 'Paracetamol, Telmizartán', NULL, NULL, NULL, NULL),
-(10, 'GOBM200421MJCNRRA8', 'C-5621-11', 'Sensorial', '21-Auditiva Hipoacusia', '1-Leve', 'HFD', '1', 'HFD', '2020-04-21', 'INCLUSION', '2024-01-22', '0', '0', '0000-00-00', '0', '8', '2', '', '2', '', '0', 'Sin alergias', '1', 'Asma', '1', 'CBD', 0, 2, 2, 2);
+INSERT INTO `datos_medicos` (`id`, `curp`, `expediente`, `tipo_discapacidad`, `discapacidad`, `grado_discapacidad`, `descripcionDiscapacidad`, `causa`, `causa_otro`, `temporalidad`, `valoracion`, `fecha_valoracion`, `rehabilitacion`, `rehabilitacion_donde`, `rehabilitacion_inicio`, `rehabilitacion_duracion`, `tipo_sangre`, `cirugias`, `tipo_cirugias`, `protesis`, `protesis_tipo`, `alergias`, `alergias_cual`, `enfermedades`, `enfermedades_cual`, `medicamentos`, `medicamentos_cual`, `braile`, `lsm`, `labiofacial`, `asistencia`, `tiempo_asistencia`) VALUES
+(1, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'Múltipe', '12-MOTORA POLIOMELITIS', '', 'POLIO', 'NACIMIENTO', NULL, '0000-00-00', 'IMSS', NULL, NULL, NULL, NULL, NULL, '1', '1', 'CESAREA ', '1', 'APARATO ORTOPEDICO Y SILLA DE RUEDAS', NULL, '', NULL, 'DIABETES MELLITUS, HIPOTIROIDISMO', NULL, 'METFORMINA, DICLOFENACO', NULL, NULL, NULL, NULL, NULL),
+(2, 'GANM750418HZSYVN01', 'C-5618-0002', 'Múltipe', '18-MOTORA PARAPLEJIA', '', '', 'ACCIDENTE', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, 'DIABETES MELLITUS, HIPOTIROIDISMO', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(3, 'GUBJ571109HZSTTS00', 'C-5603-0003', 'Múltipe', '3-MOTORA ', '', 'SECUELAS DE ACCIDENTE', 'ACCIDENTE', NULL, '0000-00-00', 'PRIVADA', NULL, NULL, NULL, NULL, NULL, '1', '1', 'CADERA', '0', '', NULL, '', NULL, 'DIABETES MELLITUS', NULL, 'GLIBENCLAMIDA', NULL, NULL, NULL, NULL, NULL),
+(4, 'GUMS981029HZSRRL08', 'C-1733-0004', 'INTELECTUAL', '33-MULTIPLE PC', '', 'CUADRIPARESIA', 'NACIMIENTO', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '1', '1', 'PIERNAS', '0', '', NULL, '', NULL, 'DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(5, 'GUML850929HZSTRS00', 'C-5032-0005', 'Múltipe', '32-INTELECTUAL D. M.', '', '', 'NACIMIENTO', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, 'DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(6, 'RIRC890417HZSSMR07', 'C-5603-0006', 'Múltipe', '3-MOTORA ', '', 'HIPOTROFIA CALLOSA DE CUERPO CALLOSO ', 'NACIMIENTO', NULL, '0000-00-00', 'PRIVADA', NULL, NULL, NULL, NULL, NULL, '4', '1', 'PIE IZQ.', '0', '', NULL, '', NULL, 'DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(7, 'AORL581005HSPCMS01', 'C-5618-0007', 'Múltipe', '18-MOTORA PARAPLEJIA', '', 'SECUELA DE ACCIDENTE EN MINA', 'ACCIDENTE', NULL, '0000-00-00', 'IMSS', NULL, NULL, NULL, NULL, NULL, '1', '1', 'COLUMNA', '1', 'SILLA DE RUEDAS', NULL, '', NULL, 'DIABETES MELLITUS', NULL, 'INSULINA, ENALAPRIL', NULL, NULL, NULL, NULL, NULL),
+(8, 'RAMF920110MDFNRR08', 'C-5521-0008', 'Múltipe', '21-AUDITIVA', '', '', 'NACIMIENTO', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, 'DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(9, '', 'C-1718-0009', 'Múltipe', '18-MOTORA PARAPLEJIA', '', '', 'ENFERMEDAD', NULL, '0000-00-00', 'IMSS', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, 'DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(10, 'VIXC800426HZSLXS04', 'C-5633-0010', 'INTELECTUAL', '33-MULTIPLE PC', '', '', 'NACIMIENTO', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '1', 'SILLA DE RUEDAS PCI', NULL, '', NULL, 'DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(11, 'VIXL860820HZSLXs01', 'C-5633-0011', 'INTELECTUAL', '33-MULTIPLE PC', '', '', 'NACIMIENTO', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '1', 'SILLA DE RUEDAS', NULL, '', NULL, 'DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(12, 'ZAVA841126HDGLGX05', 'C-1021-0012', 'Múltipe', '21-AUDITIVA', '', '', 'NACIMIENTO', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, 'DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(13, 'PAZL810814MZSLXZ01', 'C-1024-0013', 'Múltipe', '24-VISUAL', '', 'GLUCOMA Y CATARATAS', 'NACIMIENTO', NULL, '0000-00-00', 'SSZ', NULL, NULL, NULL, NULL, NULL, '4', '1', 'OJO', '1', 'BASTON BLANCO', NULL, '', NULL, 'DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(14, 'HERS591019HDFRNR00', 'C-5621-0014', 'Múltipe', '21-AUDITIVA', '', '', 'ACCIDENTE', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '5', '2', '', '0', '', NULL, '', NULL, 'DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(15, 'PAAC880327MZSCML07', 'C-5640-0015', 'FÍSICA', '40-MÚLTIPLE ', '', 'HIPOACUCIA PROFUNDA', 'NACIMIENTO', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '5', '2', '', '1', '1 AUXILIAR AUDITIVO', NULL, '', NULL, 'DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(16, 'AUJT890215MZSGRR05', 'C-1703-0016', 'Múltipe', '3-MOTORA ', '', '', 'NACIMIENTO', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, 'DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(17, 'LOVS899813HZSPLL06', 'C-5631-0017', 'Múltipe', '31-INTELECTUAL DOWN', '', '', 'NACIMIENTO', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, 'DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(18, 'TIFO920116HZSRLM00', 'C-1723-0018', 'Múltipe', '23-COMUNICACIÓN LENGUAJE', '', '', 'NACIMIENTO', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, 'DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(19, 'SISV920604HZSLFC01', 'C-3721-0019', 'Múltipe', '21-AUDITIVA', '', 'HIPOACUSIA BILATERAL MAS PROFUNDA EN LADO IZQUIERDO', 'NACIMIENTO', NULL, '0000-00-00', 'PRIVADA', NULL, NULL, NULL, NULL, NULL, '5', '2', '', '0', '', NULL, '', NULL, 'DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(20, 'DIOJ450105MZSZRN05', 'C-5621-0020', 'Múltipe', '21-AUDITIVA', '', '', 'ENFERMEDAD', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '1', '1', 'DE RODILLA', '1', '2 AUXILIARES', NULL, 'DIPIRONA', NULL, 'HIPERTENSIÓN ARTERIAL', NULL, 'LOZARTAN', NULL, NULL, NULL, NULL, NULL),
+(21, 'MASA880721MZSRNR00', 'C-3231-0021', 'Múltipe', '31-INTELECTUAL DOWN', '', '', 'NACIMIENTO', NULL, '0000-00-00', 'SSZ', NULL, NULL, NULL, NULL, NULL, '1', '1', 'CORR. DE ESTRAVISMO', '0', '', NULL, '', NULL, 'HIPERTENSIÓN ARTERIAL', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(22, 'MOZG570420MGRRZL05', 'C-5615-0022', 'Múltipe', '15-MOTORA HEMIPLEJIA', '', '', 'ENFERMEDAD', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '1', 'BASTON', NULL, '', NULL, 'ARTRITIS', NULL, 'ASPIRINA, DICLOFENACO', NULL, NULL, NULL, NULL, NULL),
+(23, 'BAMJ630915HZSRRL01', 'C-2903-0023', 'Múltipe', '3-MOTORA ', '', 'SECUELAS DE EVENTO VASCULAR CEREBRAL', 'NACIMIENTO', NULL, '0000-00-00', 'SSZ', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, 'ARTRITIS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(24, 'AALW800403HZSLSB00', 'C-1021-0024', 'Múltipe', '21-AUDITIVA', '', 'HIPOACUSIA BILATERAL', 'ENFERMEDAD', NULL, '0000-00-00', 'PRIVADA', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, 'ARTRITIS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(25, 'AAAE650713MJCLLLO4', 'C-1721-0025', 'Múltipe', '21-AUDITIVA', '', '', 'ACCIDENTE', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, 'ARTRITIS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(26, 'BAPA821212MJCRNN04', 'C-5625-26', 'Sensorial', '25-Baja Visión', '1-Leve', 'Astigmatismo', '3', 'Uso de pantallas durante su trabajo', '2023-01-01', 'IMSS', '2024-01-31', '0', '0', '0000-00-00', '0', '1', '2', '', '2', '', '1', 'Ciprofloxacino', '0', 'Enfermedades no reportadas', '0', 'Medicamentos no reportadas', 2, 0, 0, 3, NULL),
+(27, 'ROGJ350108MZSDZS02', 'C-5632-36', 'Intelectual', '32-Intelectual DM', '4-Severo', 'HFDS', '4', 'HFD', '2022-10-12', 'INCLUSION', '2024-02-07', '0', '0', '0000-00-00', '0', '1', '2', '', '2', '', '1', 'Penicilina', '0', 'Enfermedades no reportadas', '0', 'Medicamentos no reportadas', 0, 0, 0, 2, '1');
 
 -- --------------------------------------------------------
 
@@ -10118,7 +10155,8 @@ CREATE TABLE `datos_usuariot` (
 --
 
 INSERT INTO `datos_usuariot` (`id`, `nombre`, `apellido_p`, `apellido_m`, `curp`, `edad`, `fecha_nacimiento`, `sexo`, `cve_id_ine`, `telefono`, `correo`, `calle`, `no_ext`, `no_int`, `colonia`, `cp`, `estado`, `municipio`, `localidad`, `tipo_discapacidad`, `discapacidad`, `grado_discapacidad`, `dx_discapacidad`, `causa`, `causa_otro`, `temporalidad`, `institucion_val`, `medico`, `cedula`, `fecha_valoracion`, `tipo_usuario`) VALUES
-(1, 'ANA ELISA', 'BARBA', 'PINEDO', 'BAPA821212MJCRNN04', 41, '1982-12-12', 'Mujer', '1154881', 2147483647, 'barba@hotmail.com', 'de la colina', '218', 'A', 'loma bonita', 98160, '32', '32056', 'ZACATECAS', 'Física', '03-Motora', '1-Leve', 'dslhj', '3', '', '0', 'IMSS', 'fsigosa', '54363', '2024-01-12', NULL);
+(1, 'ANA ELISA', 'BARBA', 'PINEDO', 'BAPA821212MJCRNN04', 41, '1982-12-12', 'Mujer', '1154881', 2147483647, 'barba@hotmail.com', 'de la colina', '218', 'A', 'loma bonita', 98160, '32', '32056', 'ZACATECAS', 'Física', '03-Motora', '1-Leve', 'dslhj', '3', '', '0', 'IMSS', 'fsigosa', '54363', '2024-01-12', NULL),
+(2, 'jfdso', '', '', 'IDSO', 0, '0000-00-00', 'Selected', '', 656, 'dfsoia', 'gfdesa', 'g56', 'gs', 'fdsa', 659, '32', '32056', 'VALPARAISO', 'Selecciona...', 'Selecciona...', 'Selecciona...', '', 'Selected', '', 'Temporalidad...', '', '', '', '0000-00-00', NULL);
 
 -- --------------------------------------------------------
 
@@ -10239,7 +10277,13 @@ INSERT INTO `documentos` (`id`, `curp`, `numExpediente`, `tipoDoc`, `fecha_entre
 (7, 'ROMJ871021HZSBRS04', '', 2, '2024-01-10', 0),
 (8, '', '', 1, '2024-01-12', 0),
 (9, '', '', 2, '2024-01-12', 0),
-(10, 'ROGJ350108MZSDZS02', 'C-5613-9', 1, '2024-01-17', 0);
+(10, 'ROGJ350108MZSDZS02', 'C-5613-9', 1, '2024-01-17', 0),
+(11, 'GOBM200421MJCNRRA8', 'C-1425-15', 1, '2024-01-25', 0),
+(12, 'GOBM200421MJCNRRA8', 'C-1425-15', 1, '2024-01-25', 0),
+(13, 'ROGJ350108MZSDZS02', 'C-1937-46', 1, '2024-01-26', 0),
+(14, '', '', 1, '2024-01-31', 0),
+(15, 'BAPA821212MJCRNN04', 'C-5625-26', 1, '2024-02-06', 0),
+(16, 'ROGJ350108MZSDZS02', 'C-5632-36', 1, '2024-02-07', 0);
 
 -- --------------------------------------------------------
 
@@ -10262,16 +10306,9 @@ CREATE TABLE `documentos_list` (
 --
 
 INSERT INTO `documentos_list` (`id`, `curp`, `numExp`, `tipo_doc`, `ruta_doc`, `fecha`, `documento`) VALUES
-(1, 'ROMJ871021HZSBRS04', '', 1, 'docs_expedientes/archivo1_ROMJ871021HZSBRS04.pdf', '2024-01-10 14:13:10', 1),
-(2, 'ROMJ871021HZSBRS04', '', 2, 'docs_expedientes/archivo2_ROMJ871021HZSBRS04.pdf', '2024-01-10 14:13:17', 2),
-(3, 'ROGJ350108MZSDZS02', 'C-5613-9', 1, 'docs_expedientes/archivo1_ROGJ350108MZSDZS02.pdf', '2024-01-17 11:09:24', 1),
-(4, 'ROGJ350108MZSDZS02', 'C-5613-9', 2, 'docs_expedientes/archivo2_ROGJ350108MZSDZS02.pdf', '2024-01-17 11:09:38', 2),
-(5, 'ROGJ350108MZSDZS02', 'C-5613-9', 3, 'docs_expedientes/archivo3_ROGJ350108MZSDZS02.pdf', '2024-01-17 11:10:13', 3),
-(6, 'ROGJ350108MZSDZS02', 'C-5613-9', 4, 'docs_expedientes/archivo4_ROGJ350108MZSDZS02.pdf', '2024-01-17 11:10:39', 4),
-(7, 'ROGJ350108MZSDZS02', 'C-5613-9', 5, 'docs_expedientes/archivo5_ROGJ350108MZSDZS02.pdf', '2024-01-17 11:11:08', 5),
-(8, 'ROGJ350108MZSDZS02', 'C-5613-9', 6, 'docs_expedientes/archivo6_ROGJ350108MZSDZS02.pdf', '2024-01-17 11:11:18', 6),
-(9, 'ROGJ350108MZSDZS02', 'C-5613-9', 7, 'docs_expedientes/archivo7_ROGJ350108MZSDZS02.pdf', '2024-01-17 11:11:30', 7),
-(10, '', '', 1, 'docs_expedientes/archivo1_.pdf', '2024-01-23 14:32:48', 1);
+(1, '', '', 1, 'docs_expedientes/archivo1_.pdf', '2024-01-31 11:27:56', 1),
+(2, 'BAPA821212MJCRNN04', 'C-5625-26', 1, 'docs_expedientes/archivo1_BAPA821212MJCRNN04.pdf', '2024-02-06 13:41:53', 1),
+(3, 'ROGJ350108MZSDZS02', 'C-5632-36', 1, 'docs_expedientes/archivo1_ROGJ350108MZSDZS02.pdf', '2024-02-07 15:24:50', 1);
 
 -- --------------------------------------------------------
 
@@ -10487,7 +10524,7 @@ CREATE TABLE `integracion` (
   `profesion_oficio` varchar(50) NOT NULL,
   `discapacidad` varchar(50) NOT NULL,
   `ingreso` varchar(20) NOT NULL,
-  `telcel` int(10) DEFAULT NULL,
+  `telcel` varchar(15) DEFAULT NULL,
   `correoe` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -10496,12 +10533,73 @@ CREATE TABLE `integracion` (
 --
 
 INSERT INTO `integracion` (`id`, `curp`, `expediente`, `nombre`, `parentesco`, `edad`, `escolaridad`, `profesion_oficio`, `discapacidad`, `ingreso`, `telcel`, `correoe`) VALUES
-(1, 'PIAN810819MZSTLM05', NULL, 'Antonio Pitones Bonilla', 'Padre', 70, 'Primaria', 'Ninguno', '', '2400', 0, ''),
-(2, 'PIAN810819MZSTLM05', NULL, 'Catalina Alamillo López', 'Madre', 65, 'Primaria', 'Hogar', '', '2400', 0, ''),
-(3, 'ROMJ871021HZSBRS04', NULL, 'José de la Paz Robledo Ramírez', 'Padre', 56, 'Sin_Escolarizar', 'Velador', '', '6000', 2147483647, ''),
-(4, 'ROMJ871021HZSBRS04', NULL, 'Yolanda Moreno Devora', 'Madre', 55, 'Secundaria', 'Hogar', '', '0', 0, ''),
-(5, 'BAPA821212MJCRNN04', NULL, 'Luis Fernando González', 'Esposo(a)', 38, 'Posgrado', 'Emprendedor', '', '18000', 2147483647, 'ferdi10@hotmail.com'),
-(6, 'ROGJ350108MZSDZS02', NULL, 'MARIA DE LOS ANGELES VENEGAS', 'Hermano(a)', 68, 'Licenciatura', 'JUBILADA', '', '10000', 0, '');
+(1, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'MARIO MARTINEZ DOMINGUEZ', 'ESPOSO(A)', 58, '6', '134', '', '5000.00', '0', '0'),
+(2, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'MARIO ALEJANDRO', 'HIJO(A)', 16, '3', '6', '', '0.00', '0', '0'),
+(3, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'JORGE EDUARDO', 'OTRO', 18, '2', '6', '', '0.00', '0', '0'),
+(4, 'GANM750418HZSYVN01', 'C-5618-0002', 'CLAUDIA MEDINA', 'OTRO', 36, '6', '130', '39', '5800.00', '0', '0'),
+(5, 'GANM750418HZSYVN01', 'C-5618-0002', 'EVER DAVID', 'OTRO', 11, '2', '6', '39', '0.00', '0', '0'),
+(6, 'GUBJ571109HZSTTS00', 'C-5603-0003', 'ROSAURA GARCIA', 'OTRO', 51, '2', '3', '', '0.00', '0', '0'),
+(7, 'GUBJ571109HZSTTS00', 'C-5603-0003', 'LILIANA GUTIERREZ', 'OTRO', 24, '3', '3', '', '0.00', '0', '0'),
+(8, 'GUMS981029HZSRRL08', 'C-1733-0004', 'LAURA MARTINEZ', 'OTRO', 30, '6', '134', '39', '2600.00', '0', '0'),
+(9, 'GUMS981029HZSRRL08', 'C-1733-0004', 'SAUL GUERRERO', 'OTRO', 30, '4', '132', '39', '2800.00', '0', '0'),
+(10, 'GUMS981029HZSRRL08', 'C-1733-0004', 'ANA KAREN', 'HERMANO(A)', 10, '2', '6', '39', '0.00', '0', '0'),
+(11, 'GUMS981029HZSRRL08', 'C-1733-0004', 'EDGAR ULISES', 'HERMANO(A)', 5, '8', '6', '39', '0.00', '0', '0'),
+(12, 'GUMS981029HZSRRL08', 'C-1733-0004', 'MARIA FERNANDA GUERRERO', 'HERMANO(A)', 1, '1', '131', '39', '0.00', '0', '0'),
+(13, 'GUML850929HZSTRS00', 'C-5032-0005', 'BALTAZAR GUTIERREZ', 'OTRO', 62, '2', '9', '39', '1000.00', '0', '0'),
+(14, 'GUML850929HZSTRS00', 'C-5032-0005', 'IRENE MARTINEZ', 'OTRO', 59, '2', '3', '39', '0.00', '0', '0'),
+(15, 'GUML850929HZSTRS00', 'C-5032-0005', 'AARON', 'HERMANO(A)', 31, '6', '130', '39', '1500.00', '0', '0'),
+(16, 'RIRC890417HZSSMR07', 'C-5603-0006', 'JOSE RAUL RIOS', 'OTRO', 55, '6', '7', '', '10000.00', '0', '0'),
+(17, 'RIRC890417HZSSMR07', 'C-5603-0006', 'MARGARITA RAMIREZ', 'OTRO', 51, '6', '3', '', '0.00', '0', '0'),
+(18, 'RIRC890417HZSSMR07', 'C-5603-0006', 'MARIELA', 'HERMANO(A)', 18, '6', '6', '', '0.00', '0', '0'),
+(19, 'RIRC890417HZSSMR07', 'C-5603-0006', 'REGINA', 'HERMANO(A)', 15, '4', '6', '', '0.00', '0', '0'),
+(20, 'AORL581005HSPCMS01', 'C-5618-0007', 'JUANA MARIA LOPEZ PALACIOS', 'ESPOSO(A)', 62, '2', '3', '', '0.00', '0', '0'),
+(21, 'RAMF920110MDFNRR08', 'C-5521-0008', 'JULIO CESAR RANGEL', 'OTRO', 33, '11', '132', '39', '800.00', '0', '0'),
+(22, 'RAMF920110MDFNRR08', 'C-5521-0008', 'MA. SOLEDAD MTZ.', 'OTRO', 30, '2', '3', '39', '0.00', '0', '0'),
+(23, 'RAMF920110MDFNRR08', 'C-5521-0008', 'MARCO ANTONIO', 'HERMANO(A)', 4, '8', '6', '39', '0.00', '0', '0'),
+(24, 'RAMF920110MDFNRR08', 'C-5521-0008', 'CESAR', 'HERMANO(A)', 3, '1', '131', '39', '0.00', '0', '0'),
+(25, 'VIXC800426HZSLXS04', 'C-5633-0010', 'RUFINA VILLAGRANA', 'OTRO', 63, '2', '3', '15', '0.00', '0', '0'),
+(26, 'VIXL860820HZSLXs01', 'C-5633-0011', 'CESAR', 'HERMANO(A)', 34, '1', '131', '26', '0.00', '0', '0'),
+(27, 'VIXL860820HZSLXs01', 'C-5633-0011', 'RUFINA VILLAGRANA', 'MADRE', 63, '2', '3', '15', '0.00', '0', '0'),
+(28, 'PAZL810814MZSLXZ01', 'C-1024-0013', 'LUIS MANUEL ALVARADO', 'ESPOSO(A)', 36, '6', '64', '', '4000.00', '0', '0'),
+(29, 'PAAC880327MZSCML07', 'C-5640-0015', 'AMELIA AMAYA', 'OTRO', 53, '3', '132', '', '500.00', '0', '0'),
+(30, 'PAAC880327MZSCML07', 'C-5640-0015', 'JUAN PABLO PACHECO', 'HERMANO(A)', 26, '6', '130', '', '1600.00', '0', '0'),
+(31, 'PAAC880327MZSCML07', 'C-5640-0015', 'CARLOS RAMIRO', 'HERMANO(A)', 22, '6', '6', '', '0.00', '0', '0'),
+(32, 'LOVS899813HZSPLL06', 'C-5631-0017', 'ELVIRA VILLAREAL', 'OTRO', 40, '11', '131', '39', '0.00', '0', '0'),
+(33, 'LOVS899813HZSPLL06', 'C-5631-0017', 'SILVERIO LOPEZ', 'OTRO', 42, '11', '130', '39', '0.00', '0', '0'),
+(34, 'LOVS899813HZSPLL06', 'C-5631-0017', 'RAQUEL', 'HERMANO(A)', 12, '3', '6', '39', '0.00', '0', '0'),
+(35, 'LOVS899813HZSPLL06', 'C-5631-0017', 'ELVIRA', 'HERMANO(A)', 6, '2', '6', '39', '0.00', '0', '0'),
+(36, 'SISV920604HZSLFC01', 'C-3721-0019', 'OFELIA SIFUENTES', 'OTRO', 32, '11', '3', '39', '0.00', '0', '0'),
+(37, 'SISV920604HZSLFC01', 'C-3721-0019', 'VICTOR MANUEL SILVA', 'OTRO', 33, '11', '9', '39', '700.00', '0', '0'),
+(38, 'SISV920604HZSLFC01', 'C-3721-0019', 'VICTOR MANUEL', 'OTRO', 39, '3', '9', '39', '0.00', '0', '0'),
+(39, 'SISV920604HZSLFC01', 'C-3721-0019', 'OFELIA', 'OTRO', 37, '2', '3', '39', '0.00', '0', '0'),
+(40, 'SISV920604HZSLFC01', 'C-3721-0019', 'JOSE ALFREDO', 'HERMANO(A)', 15, '3', '6', '39', '0.00', '0', '0'),
+(41, 'SISV920604HZSLFC01', 'C-3721-0019', 'GONZALO', 'HERMANO(A)', 13, '3', '6', '39', '0.00', '0', '0'),
+(42, 'SISV920604HZSLFC01', 'C-3721-0019', 'PERLA ESMERALDA', 'HERMANO(A)', 5, '8', '6', '39', '0.00', '0', '0'),
+(43, 'DIOJ450105MZSZRN05', 'C-5621-0020', 'JOSE LUIS DIAZ', 'HERMANO(A)', 62, '6', '133', '39', '1800.00', '0', '0'),
+(44, 'MASA880721MZSRNR00', 'C-3231-0021', 'MARIANA ACUÑA', 'OTRO', 4, '8', '6', '39', '0.00', '0', '0'),
+(45, 'MASA880721MZSRNR00', 'C-3231-0021', 'JOSELYN ACUÑA', 'OTRO', 1, '1', '131', '39', '0.00', '0', '0'),
+(46, 'MASA880721MZSRNR00', 'C-3231-0021', 'CELIA SANCHEZ DELGADO', 'OTRO', 47, '2', '134', '39', '1400.00', '0', '0'),
+(47, 'MASA880721MZSRNR00', 'C-3231-0021', 'ROSALIO MARTINEZ MIRELES', 'OTRO', 52, '2', '134', '39', '1600.00', '0', '0'),
+(48, 'MASA880721MZSRNR00', 'C-3231-0021', 'ALONDRA', 'HERMANO(A)', 23, '11', '134', '39', '1800.00', '0', '0'),
+(49, 'MASA880721MZSRNR00', 'C-3231-0021', 'ANA VICTORIA', 'HERMANO(A)', 21, '6', '6', '39', '0.00', '0', '0'),
+(50, 'MASA880721MZSRNR00', 'C-3231-0021', 'ESTRELLA INGUANZO', 'OTRO', 1, '1', '131', '39', '0.00', '0', '0'),
+(51, 'MOZG570420MGRRZL05', 'C-5615-0022', 'CLARA ITZEL', 'OTRO', 21, '3', '134', '', '0.00', '0', '0'),
+(52, 'MOZG570420MGRRZL05', 'C-5615-0022', 'MARIO ALFREDO', 'OTRO', 17, '3', '131', '', '0.00', '0', '0'),
+(53, 'MOZG570420MGRRZL05', 'C-5615-0022', 'JOSE ALFREDO HERNANDEZ', 'OTRO', 57, '3', '36', '', '2500.00', '0', '0'),
+(54, 'MOZG570420MGRRZL05', 'C-5615-0022', 'CRISTAIN MATEO', 'OTRO', 3, '1', '131', '', '0.00', '0', '0'),
+(55, 'MOZG570420MGRRZL05', 'C-5615-0022', 'LUIS GAEL', 'OTRO', 1, '1', '131', '', '0.00', '0', '0'),
+(56, 'BAMJ630915HZSRRL01', 'C-2903-0023', 'TEODORA DE LA CRUZ', 'OTRO', 43, '6', '130', '39', '10.00', '0', '0'),
+(57, 'BAMJ630915HZSRRL01', 'C-2903-0023', 'SAN JUANA BERENICE', 'OTRO', 14, '3', '6', '39', '0.00', '0', '0'),
+(58, 'BAMJ630915HZSRRL01', 'C-2903-0023', 'MAGALI GUADALUPE', 'OTRO', 11, '2', '6', '39', '0.00', '0', '0'),
+(59, 'BAMJ630915HZSRRL01', 'C-2903-0023', 'MARIA FLORENTINA', 'HERMANO(A)', 8, '2', '6', '39', '0.00', '0', '0'),
+(60, 'BAMJ630915HZSRRL01', 'C-2903-0023', 'TEODORA DE LA CRUZ', 'OTRO', 43, '6', '130', '39', '10000.00', '0', '0'),
+(61, 'AALW800403HZSLSB00', 'C-1021-0024', 'ANTONIO ALVARADO', 'OTRO', 49, '11', '36', '39', '2000.00', '0', '0'),
+(62, 'AALW800403HZSLSB00', 'C-1021-0024', 'FELIPA LEOS', 'OTRO', 49, '2', '3', '39', '0.00', '0', '0'),
+(63, 'AALW800403HZSLSB00', 'C-1021-0024', 'MA. GUADALUPE', 'HERMANO(A)', 22, '11', '134', '39', '0.00', '0', '0'),
+(64, 'AAAE650713MJCLLLO4', 'C-1721-0025', 'FRANCISCO JAVIER INGUANZO', 'ESPOSO(A)', 56, '2', '36', '', '8000.00', '0', '0'),
+(65, 'AAAE650713MJCLLLO4', 'C-1721-0025', 'ALMA LETICIA INGUANZO', 'OTRO', 26, '6', '134', '', '0.00', '0', '0'),
+(66, 'BAPA821212MJCRNN04', NULL, 'LUIS FERNANDO GONZÁLEZ', 'Esposo(a)', 38, 'Posgrado', 'INGENIERO', '', '25000', '4925833614', 'ferdi10@hotmail.com'),
+(67, 'ROGJ350108MZSDZS02', NULL, 'DFKSUIA', 'Esposo(a)', 35, 'Licenciatura', 'Empleada', '', '15000', '4952548787', 'a@a.a');
 
 -- --------------------------------------------------------
 
@@ -10839,7 +10937,95 @@ INSERT INTO `log_registro` (`id`, `usr`, `tipo_dato`, `fecha`) VALUES
 (301, 'annaeliza', 12, '2024-01-23 12:54:33'),
 (302, 'annaeliza', 12, '2024-01-23 13:06:14'),
 (303, 'annaeliza', 21, '2024-01-23 13:06:36'),
-(304, 'annaeliza', 39, '2024-01-23 14:33:43');
+(304, 'annaeliza', 39, '2024-01-23 14:33:43'),
+(305, 'annaeliza', 10, '2024-01-25 08:26:58'),
+(306, 'annaeliza', 1, '2024-01-25 13:38:47'),
+(307, 'annaeliza', 1, '2024-01-25 13:53:16'),
+(308, 'annaeliza', 1, '2024-01-25 13:59:58'),
+(309, 'annaeliza', 6, '2024-01-25 14:22:19'),
+(310, 'annaeliza', 12, '2024-01-25 14:22:52'),
+(311, 'annaeliza', 39, '2024-01-25 14:24:54'),
+(312, 'annaeliza', 1, '2024-01-25 14:29:28'),
+(313, 'annaeliza', 6, '2024-01-25 14:31:11'),
+(314, 'annaeliza', 37, '2024-01-25 14:31:19'),
+(315, 'annaeliza', 37, '2024-01-25 14:31:57'),
+(316, 'annaeliza', 12, '2024-01-25 14:33:35'),
+(317, 'annaeliza', 39, '2024-01-25 14:42:28'),
+(318, 'annaeliza', 1, '2024-01-26 10:11:11'),
+(319, 'annaeliza', 1, '2024-01-26 10:17:48'),
+(320, 'annaeliza', 1, '2024-01-26 11:09:56'),
+(321, 'annaeliza', 1, '2024-01-26 12:18:50'),
+(322, '', 1, '2024-01-26 13:21:31'),
+(323, '', 1, '2024-01-26 13:22:15'),
+(324, '', 1, '2024-01-26 13:23:09'),
+(325, '', 1, '2024-01-26 13:34:24'),
+(326, 'annaeliza', 1, '2024-01-26 13:37:59'),
+(327, 'annaeliza', 1, '2024-01-26 13:42:04'),
+(328, 'annaeliza', 1, '2024-01-26 13:55:43'),
+(329, 'annaeliza', 1, '2024-01-26 13:58:50'),
+(330, 'annaeliza', 6, '2024-01-26 13:59:33'),
+(331, 'annaeliza', 1, '2024-01-26 14:06:13'),
+(332, 'annaeliza', 1, '2024-01-26 14:09:36'),
+(333, 'annaeliza', 6, '2024-01-26 14:10:15'),
+(334, 'annaeliza', 1, '2024-01-26 14:16:38'),
+(335, 'annaeliza', 1, '2024-01-26 14:24:06'),
+(336, 'annaeliza', 1, '2024-01-26 14:30:18'),
+(337, 'annaeliza', 1, '2024-01-26 14:36:51'),
+(338, 'annaeliza', 1, '2024-01-26 14:41:16'),
+(339, 'annaeliza', 1, '2024-01-26 14:48:11'),
+(340, 'annaeliza', 1, '2024-01-26 14:52:28'),
+(341, 'annaeliza', 6, '2024-01-26 14:53:12'),
+(342, 'annaeliza', 12, '2024-01-26 14:54:00'),
+(343, 'annaeliza', 5, '2024-01-26 14:54:32'),
+(344, 'annaeliza', 7, '2024-01-26 14:54:46'),
+(345, 'annaeliza', 37, '2024-01-26 14:54:50'),
+(346, 'annaeliza', 39, '2024-01-26 14:57:36'),
+(347, 'annaeliza', 18, '2024-01-30 13:02:32'),
+(348, 'annaeliza', 18, '2024-01-31 08:30:59'),
+(349, 'annaeliza', 18, '2024-01-31 08:31:16'),
+(350, 'annaeliza', 18, '2024-01-31 09:21:21'),
+(351, 'annaeliza', 21, '2024-01-31 09:53:39'),
+(352, 'annaeliza', 21, '2024-01-31 09:53:58'),
+(353, 'annaeliza', 21, '2024-01-31 09:56:16'),
+(354, 'annaeliza', 13, '2024-01-31 09:57:11'),
+(355, 'annaeliza', 5, '2024-01-31 11:18:04'),
+(356, 'annaeliza', 5, '2024-01-31 11:18:04'),
+(357, 'annaeliza', 32, '2024-01-31 11:20:56'),
+(358, 'annaeliza', 2, '2024-01-31 11:25:22'),
+(359, 'annaeliza', 28, '2024-01-31 11:25:39'),
+(360, 'annaeliza', 37, '2024-01-31 11:25:50'),
+(361, 'annaeliza', 3, '2024-01-31 11:26:35'),
+(362, 'annaeliza', 3, '2024-01-31 11:30:28'),
+(363, 'annaeliza', 32, '2024-01-31 11:31:16'),
+(364, 'annaeliza', 13, '2024-01-31 13:36:05'),
+(365, 'annaeliza', 13, '2024-01-31 13:38:57'),
+(366, 'annaeliza', 18, '2024-01-31 13:41:50'),
+(367, 'annaeliza', 1, '2024-02-06 09:17:19'),
+(368, 'annaeliza', 12, '2024-02-06 09:18:12'),
+(369, 'annaeliza', 6, '2024-02-06 09:19:26'),
+(370, 'annaeliza', 5, '2024-02-06 09:20:25'),
+(371, 'annaeliza', 7, '2024-02-06 09:20:47'),
+(372, 'annaeliza', 37, '2024-02-06 09:20:51'),
+(373, 'annaeliza', 33, '2024-02-06 09:26:54'),
+(374, 'annaeliza', 39, '2024-02-06 13:44:06'),
+(375, 'annaeliza', 1, '2024-02-07 10:08:23'),
+(376, 'annaeliza', 1, '2024-02-07 14:39:53'),
+(377, 'annaeliza', 1, '2024-02-07 14:43:40'),
+(378, 'annaeliza', 1, '2024-02-07 14:47:29'),
+(379, 'annaeliza', 1, '2024-02-07 14:49:12'),
+(380, 'annaeliza', 1, '2024-02-07 14:54:12'),
+(381, 'annaeliza', 1, '2024-02-07 14:54:57'),
+(382, 'annaeliza', 1, '2024-02-07 15:00:06'),
+(383, 'annaeliza', 1, '2024-02-07 15:11:18'),
+(384, 'annaeliza', 1, '2024-02-07 15:14:23'),
+(385, 'annaeliza', 13, '2024-02-07 15:14:38'),
+(386, 'annaeliza', 6, '2024-02-07 15:15:55'),
+(387, 'annaeliza', 18, '2024-02-07 15:17:16'),
+(388, 'annaeliza', 12, '2024-02-07 15:17:56'),
+(389, 'annaeliza', 5, '2024-02-07 15:19:02'),
+(390, 'annaeliza', 7, '2024-02-07 15:19:46'),
+(391, 'annaeliza', 37, '2024-02-07 15:19:50'),
+(392, 'annaeliza', 39, '2024-02-07 15:27:18');
 
 -- --------------------------------------------------------
 
@@ -11079,7 +11265,35 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (205, 0, NULL, '2024-01-22 11:59:24'),
 (206, 1, '2024-01-22 11:59:29', NULL),
 (207, 1, '2024-01-23 08:22:13', NULL),
-(208, 0, NULL, '2024-01-23 08:24:36');
+(208, 0, NULL, '2024-01-23 08:24:36'),
+(209, 0, NULL, '2024-01-24 08:46:57'),
+(210, 1, '2024-01-24 08:49:53', NULL),
+(211, 1, '2024-01-25 08:26:30', NULL),
+(212, 0, NULL, '2024-01-25 14:31:43'),
+(213, 1, '2024-01-26 09:02:02', NULL),
+(214, 0, NULL, '2024-01-26 09:02:16'),
+(215, 0, NULL, '2024-01-26 13:36:21'),
+(216, 1, '2024-01-26 13:36:26', NULL),
+(217, 1, '2024-01-29 08:32:54', NULL),
+(218, 1, '2024-01-30 10:10:51', NULL),
+(219, 0, NULL, '2024-01-30 10:40:40'),
+(220, 1, '2024-01-30 14:49:22', NULL),
+(221, 1, '2024-01-31 08:29:48', NULL),
+(222, 0, NULL, '2024-01-31 08:31:03'),
+(223, 1, '2024-01-31 08:49:23', NULL),
+(224, 0, NULL, '2024-01-31 09:19:58'),
+(225, 0, NULL, '2024-01-31 09:19:58'),
+(226, 1, NULL, '2024-01-31 09:38:30'),
+(227, 1, '2024-01-31 09:47:12', NULL),
+(228, 1, '2024-01-31 10:50:17', NULL),
+(229, 0, NULL, '2024-01-31 11:30:51'),
+(230, 1, NULL, '2024-01-31 11:31:54'),
+(231, 1, '2024-02-01 12:41:54', NULL),
+(232, 0, NULL, '2024-02-01 14:37:07'),
+(233, 1, '2024-02-06 08:21:09', NULL),
+(234, 0, NULL, '2024-02-06 09:00:55'),
+(235, 1, '2024-02-07 09:17:58', NULL),
+(236, 0, NULL, '2024-02-07 09:59:33');
 
 -- --------------------------------------------------------
 
@@ -11192,10 +11406,35 @@ CREATE TABLE `referencias` (
 --
 
 INSERT INTO `referencias` (`id`, `curp`, `expediente`, `nombre`, `parentesco`, `direccion`, `edad`, `escolaridad`, `profesion_oficio`, `discapacidad`, `ingreso`, `celular`, `email`) VALUES
-(1, 'PIAN810819MZSTLM05', NULL, 'David Rodríguez Alamillo', 'Primo(a)', '20 de Noviembre', NULL, NULL, 'Empleado', NULL, NULL, '4931674393', NULL),
-(2, 'ROMJ871021HZSBRS04', NULL, 'José de la Paz Robledo Ramírez', 'Padre', 'T. Urbina #39, Col. Francisco Villa, Fresnillo, Zac', NULL, NULL, 'Velador', NULL, NULL, '4931508871', NULL),
-(3, 'BAPA821212MJCRNN04', NULL, 'Arantza C. Barba Pinedo', 'Hermano(a)', 'Conocido', NULL, NULL, 'Profesora', NULL, NULL, '4925835083', NULL),
-(4, 'ROGJ350108MZSDZS02', NULL, 'LUCÍA VENEGAS RODRÍGUEZ', 'Hermano(a)', 'ZACATECAS', NULL, NULL, 'JUBILADA', NULL, NULL, '4921030523', NULL);
+(1, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'JORGE EDUARDO', 'OTRO', '', '18', '2', '3', '', '0.00', '0', '0'),
+(2, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'JORGE EDUARDO', 'OTRO', '', '18', '2', '134', '', '0.00', '0', '0'),
+(3, 'GUBJ571109HZSTTS00', 'C-5603-0003', 'LILIANA GUTIERREZ', 'OTRO', '', '24', '3', '3', '', '0.00', '0', '0'),
+(4, 'GUMS981029HZSRRL08', 'C-1733-0004', 'MARIA FERNANDA GUERRERO', 'HERMANO(A)', '', '1', '1', '134', '39', '0.00', '0', '0'),
+(5, 'RIRC890417HZSSMR07', 'C-5603-0006', 'REGINA', 'HERMANO(A)', '', '15', '4', '130', '', '0.00', '0', '0'),
+(6, 'AORL581005HSPCMS01', 'C-5618-0007', 'JUANA MARIA LOPEZ PALACIOS', 'ESPOSO(A)', '', '62', '2', '7', '', '0.00', '0', '0'),
+(7, 'PAZL810814MZSLXZ01', 'C-1024-0013', 'LUIS MANUEL ALVARADO', 'ESPOSO(A)', '', '36', '6', '134', '', '4000.00', '0', '0'),
+(8, 'DIOJ450105MZSZRN05', 'C-5621-0020', 'JOSE LUIS DIAZ', 'HERMANO(A)', '', '62', '6', '132', '39', '1800.00', '0', '0'),
+(9, 'AAAE650713MJCLLLO4', 'C-1721-0025', 'ALMA LETICIA INGUANZO', 'OTRO', '', '26', '6', '134', '', '0.00', '0', '0'),
+(10, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'JORGE EDUARDO', 'OTRO', '', '18', '2', '3', '', '0.00', '0', '0'),
+(11, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'JORGE EDUARDO', 'OTRO', '', '18', '2', '134', '', '0.00', '0', '0'),
+(12, 'GUBJ571109HZSTTS00', 'C-5603-0003', 'LILIANA GUTIERREZ', 'OTRO', '', '24', '3', '3', '', '0.00', '0', '0'),
+(13, 'GUMS981029HZSRRL08', 'C-1733-0004', 'MARIA FERNANDA GUERRERO', 'HERMANO(A)', '', '1', '1', '134', '39', '0.00', '0', '0'),
+(14, 'RIRC890417HZSSMR07', 'C-5603-0006', 'REGINA', 'HERMANO(A)', '', '15', '4', '130', '', '0.00', '0', '0'),
+(15, 'AORL581005HSPCMS01', 'C-5618-0007', 'JUANA MARIA LOPEZ PALACIOS', 'ESPOSO(A)', '', '62', '2', '7', '', '0.00', '0', '0'),
+(16, 'PAZL810814MZSLXZ01', 'C-1024-0013', 'LUIS MANUEL ALVARADO', 'ESPOSO(A)', '', '36', '6', '134', '', '4000.00', '0', '0'),
+(17, 'DIOJ450105MZSZRN05', 'C-5621-0020', 'JOSE LUIS DIAZ', 'HERMANO(A)', '', '62', '6', '132', '39', '1800.00', '0', '0'),
+(18, 'AAAE650713MJCLLLO4', 'C-1721-0025', 'ALMA LETICIA INGUANZO', 'OTRO', '', '26', '6', '134', '', '0.00', '0', '0'),
+(19, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'JORGE EDUARDO', 'OTRO', '', '18', '2', '3', '', '0.00', '0', '0'),
+(20, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'JORGE EDUARDO', 'OTRO', '', '18', '2', '134', '', '0.00', '0', '0'),
+(21, 'GUBJ571109HZSTTS00', 'C-5603-0003', 'LILIANA GUTIERREZ', 'OTRO', '', '24', '3', '3', '', '0.00', '0', '0'),
+(22, 'GUMS981029HZSRRL08', 'C-1733-0004', 'MARIA FERNANDA GUERRERO', 'HERMANO(A)', '', '1', '1', '134', '39', '0.00', '0', '0'),
+(23, 'RIRC890417HZSSMR07', 'C-5603-0006', 'REGINA', 'HERMANO(A)', '', '15', '4', '130', '', '0.00', '0', '0'),
+(24, 'AORL581005HSPCMS01', 'C-5618-0007', 'JUANA MARIA LOPEZ PALACIOS', 'ESPOSO(A)', '', '62', '2', '7', '', '0.00', '0', '0'),
+(25, 'PAZL810814MZSLXZ01', 'C-1024-0013', 'LUIS MANUEL ALVARADO', 'ESPOSO(A)', '', '36', '6', '134', '', '4000.00', '0', '0'),
+(26, 'DIOJ450105MZSZRN05', 'C-5621-0020', 'JOSE LUIS DIAZ', 'HERMANO(A)', '', '62', '6', '132', '39', '1800.00', '0', '0'),
+(27, 'AAAE650713MJCLLLO4', 'C-1721-0025', 'ALMA LETICIA INGUANZO', 'OTRO', '', '26', '6', '134', '', '0.00', '0', '0'),
+(28, 'BAPA821212MJCRNN04', NULL, 'Arantza C. Barba Pinedo', 'Vecino(a)', 'CONOCIDO', NULL, NULL, 'MAESTRA', NULL, NULL, '4925835083', NULL),
+(29, 'ROGJ350108MZSDZS02', NULL, 'JTGOSW', 'Vecino(a)', 'HGFS', NULL, NULL, 'BFD', NULL, NULL, '4921598686', NULL);
 
 -- --------------------------------------------------------
 
@@ -11221,14 +11460,6 @@ CREATE TABLE `servicios` (
   `estatus_s` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `servicios`
---
-
-INSERT INTO `servicios` (`id`, `curp`, `expediente`, `folio_solicitud`, `usuario_entrega`, `fecha_solicitud`, `tipo_solicitud`, `detalle_solicitud`, `cantidad`, `monto_unitario`, `monto_solicitud`, `autorizacion`, `fecha_entrega`, `monto_entregado`, `estatus_s`) VALUES
-(1, 'ROGJ350108MZSDZS02', NULL, 'INC-2024-1', NULL, '2024-01-17', '1', '1', 1, 737, 737, NULL, '2024-01-17', 737, 1),
-(2, 'ROGJ350108MZSDZS02', NULL, 'INC-2024-2', NULL, '2024-01-17', '2', '1', 1, 15000, 15000, NULL, '0000-00-00', NULL, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -11251,16 +11482,12 @@ CREATE TABLE `solicitud` (
 --
 
 INSERT INTO `solicitud` (`id`, `folio_solicitud`, `curp`, `tipo`, `total_solicitud`, `fecha_solicitud`, `entrega`, `estatus`) VALUES
-(1, 'C-4920-1', 'PIAN810819MZSTLM05', 4, '76', '2024-01-05 13:42:37', '2024-01-05 13:42:37', 1),
-(2, 'C-4920-1', 'PIAN810819MZSTLM05', 5, '120', '2024-01-05 13:44:11', '2024-01-05 13:44:11', 1),
-(3, 'C-1003-2', 'ROMJ871021HZSBRS04', 4, '76', '2024-01-10 13:56:42', '2024-01-10 13:56:42', 1),
-(4, '', 'ROMJ871021HZSBRS04', 5, '120', '2024-01-10 14:56:55', '2024-01-10 14:56:55', 1),
-(5, '', 'ROMJ871021HZSBRS04', 5, '120', '2024-01-10 14:57:17', '2024-01-10 14:57:17', 1),
-(6, '', 'ROMJ871021HZSBRS04', 5, '120', '2024-01-10 15:00:21', '2024-01-10 15:00:21', 1),
-(7, '', 'ROMJ871021HZSBRS04', 5, '120', '2024-01-10 15:17:44', '2024-01-10 15:17:44', 1),
-(10, 'INC-2024-1', 'ROGJ350108MZSDZS02', 1, '737', '2024-01-17 00:00:00', '2024-01-17 10:55:54', 1),
-(11, 'INC-2024-2', 'ROGJ350108MZSDZS02', 2, '15000', '2024-01-17 00:00:00', '0000-00-00 00:00:00', 0),
-(12, 'C-5613-9', 'ROGJ350108MZSDZS02', 4, '76', '2024-01-17 10:56:37', '2024-01-17 10:56:37', 1);
+(1, 'INC-2024-32', '', 1, '832', '2024-01-31 00:00:00', '2024-01-31 11:25:39', 1),
+(2, '', '', 4, '76', '2024-01-31 11:25:50', '2024-01-31 11:25:50', 1),
+(3, 'INC-2024-33', '', 2, '15000', '2024-01-31 00:00:00', '0000-00-00 00:00:00', 0),
+(4, 'INC-2024-34', 'GUBJ571109HZSTTS00', 2, '15500', '2024-01-31 00:00:00', '0000-00-00 00:00:00', 0),
+(5, 'C-5625-26', 'BAPA821212MJCRNN04', 4, '76', '2024-02-06 09:20:51', '2024-02-06 09:20:51', 1),
+(6, 'C-5632-36', 'ROGJ350108MZSDZS02', 4, '76', '2024-02-07 15:19:50', '2024-02-07 15:19:50', 1);
 
 -- --------------------------------------------------------
 
@@ -11421,19 +11648,33 @@ CREATE TABLE `vivienda` (
 --
 
 INSERT INTO `vivienda` (`id`, `curp`, `expediente`, `vivienda`, `vivienda_renta`, `vivienda_pagando`, `monto_pagando`, `propietario`, `caracteristicas`, `caracteristicas_otro`, `num_habitaciones`, `vivienda_cocia`, `vivienda_sala`, `vivienda_banio`, `num_banio`, `localizacion`, `vivienda_otros`, `techo`, `techo_otro`, `pared`, `pared_otro`, `serv_basicos_agua`, `serv_basicos_luz`, `serv_basicos_drenaje`, `serv_basicos_internet`, `serv_basicos_celular`, `serv_basicos_carro`, `serv_basicos_gas`, `serv_basicos_telefono`, `serv_basicos_otro`, `electrodomesticos_tv`, `electrodomesticos_lavadora`, `electrodomesticos_dispositivo`, `electrodomesticos_microondas`, `electrodomesticos_computadora`, `electrodomesticos_licuadora`, `electrodomesticos_estufa`, `electrodomesticos_refri`, `electrodomesticos_otro`, `dependiente`, `financiador`, `personas_dependen`, `deudas`, `deudas_cuanto`) VALUES
-(1, 'PIAN810819MZSTLM05', 'C-4920-1', '1', '0', 0, '0', NULL, 1, '0', '2', 1, 1, 1, NULL, NULL, '0', '3', 'Aterrado', '3', '0', 1, 1, 1, 0, 0, 0, 1, 1, '0', 1, 1, 0, 0, 0, 1, 1, 1, '0', NULL, NULL, '0', '0', '0'),
-(2, 'ROMJ871021HZSBRS04', 'C-1003-2', '3', '0', 0, '0', NULL, 1, '0', '1', 1, 0, 1, NULL, NULL, '0', '1', '0', '1', '0', 1, 1, 1, 0, 0, 0, 1, 0, '0', 1, 1, 1, 0, 0, 1, 1, 1, '0', NULL, NULL, '0', '0', '0'),
-(3, 'LEVJ810924HZSXLS04', 'C-1727-3', '1', '0', 0, '0', NULL, 3, '0', '1', 1, 0, 0, NULL, NULL, '0', '1', '0', '1', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', NULL, NULL, '1', '0', '0'),
-(4, 'BAPA821212MJCRNN04', 'C-5625-4', '1', '0', 0, '0', NULL, 1, '0', '3', 1, 1, 1, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 0, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', NULL, NULL, '3', '1', '1500'),
-(5, 'BAPA821212MJCRNN04', 'C-5603-5', '1', '0', 0, '0', NULL, 1, '0', '2', 1, 1, 1, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', NULL, NULL, '0', '0', '0'),
-(6, 'BAPA821212MJCRNN04', 'C-5607-6', '2', '0', 0, '0', NULL, 2, '0', '2', 1, 1, 1, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', NULL, NULL, '0', '0', '0'),
-(7, 'LEVJ810924HZSXLS04', 'C-5623-7', '2', '0', 0, '0', NULL, 2, '0', '2', 0, 0, 0, NULL, NULL, '0', '2', '0', '1', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', NULL, NULL, '0', '0', '0'),
-(8, 'LEVJ810924HZSXLS04', 'C-5625-8', '1', '0', 0, '0', NULL, 1, '0', '2', 0, 0, 0, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', NULL, NULL, '0', '0', '0'),
-(9, 'ROGJ350108MZSDZS02', 'C-5613-9', '1', '0', 0, '0', NULL, 1, '0', '3', 1, 1, 1, NULL, NULL, '0', '2', '0', '1', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', NULL, NULL, '0', '0', '0'),
-(10, 'hfda', '', '1', NULL, NULL, NULL, 1, 1, '0', '3', 1, 1, 1, 1, 1, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', 1, 'PAPA', '', NULL, NULL),
-(11, 'hfda', '', '1', NULL, NULL, NULL, 1, 1, '0', '3', 1, 1, 1, 1, 1, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', 1, 'PAPA', '', NULL, NULL),
-(12, 'fdzah', '', '1', NULL, NULL, NULL, 1, 3, 'GFD', '3', 1, 1, 1, 3, 1, '3', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 1, 'S', 1, 1, 1, 1, 1, 1, 1, 1, 'S', 1, 'GDSAG', '', NULL, NULL),
-(13, 'GOBM200421MJCNRRA8', '', '1', NULL, NULL, NULL, 0, 1, '0', '3', 1, 1, 1, 3, 1, 'Estudio', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 0, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', 1, 'MAMA', '', NULL, NULL);
+(1, 'ROSL710516MZSBFZ07', 'C-1712-0001', '1', NULL, NULL, NULL, NULL, 0, '0', '5', 0, 0, 0, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 0, 1, '0', 1, 1, 1, 1, 1, 1, 1, NULL, '0', NULL, NULL, '4', '', ''),
+(2, 'GANM750418HZSYVN01', 'C-5618-0002', '1', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '3', '', ''),
+(3, 'GUBJ571109HZSTTS00', 'C-5603-0003', '2', NULL, NULL, NULL, NULL, 0, '0', '6', 0, 0, 0, NULL, NULL, '0', '2', '0', '4', '0', 1, 1, 1, 0, 0, 1, 0, 1, '0', 1, 1, 0, 0, 0, 1, 1, NULL, '0', NULL, NULL, '3', '', ''),
+(4, 'GUMS981029HZSRRL08', 'C-1733-0004', '1', NULL, NULL, NULL, NULL, 0, '0', '7', 0, 0, 0, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 0, 0, 1, 0, 1, '0', 1, 1, 1, 1, 0, 1, 1, NULL, '0', NULL, NULL, '5', '', ''),
+(5, 'GUML850929HZSTRS00', 'C-5032-0005', '1', NULL, NULL, NULL, NULL, 0, '0', '5', 0, 0, 0, NULL, NULL, '0', '2', '0', '4', '0', 1, 1, 1, 0, 0, 1, 0, 1, '0', 1, 0, 0, 1, 0, 0, 1, NULL, '0', NULL, NULL, '4', '', ''),
+(6, 'RIRC890417HZSSMR07', 'C-5603-0006', '1', NULL, NULL, NULL, NULL, 0, '0', '5', 0, 0, 0, NULL, NULL, '0', '2', '0', '1', '0', 1, 1, 1, 1, 1, 1, 0, 1, '0', 1, 1, 0, 1, 1, 1, 1, NULL, '0', NULL, NULL, '5', '', ''),
+(7, 'AORL581005HSPCMS01', 'C-5618-0007', '1', NULL, NULL, NULL, NULL, 0, '0', '5', 0, 0, 0, NULL, NULL, '0', '2', '0', '1', '0', 1, 1, 1, 1, 1, 1, 0, 1, '0', 1, 1, 1, 1, 1, 1, 1, NULL, '0', NULL, NULL, '2', '', ''),
+(8, 'RAMF920110MDFNRR08', 'C-5521-0008', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(9, '', 'C-1718-0009', '', NULL, NULL, NULL, NULL, 0, '0', '', 0, 0, 0, NULL, NULL, '0', '', '0', '', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '', '', ''),
+(10, 'VIXC800426HZSLXS04', 'C-5633-0010', '1', NULL, NULL, NULL, NULL, 0, '0', '3', 0, 0, 0, NULL, NULL, '0', '2', '0', '1', '0', 1, 1, 1, 0, 0, 0, 0, 1, '0', 1, 1, 0, 0, 0, 1, 1, NULL, '0', NULL, NULL, '3', '', ''),
+(11, 'VIXL860820HZSLXs01', 'C-5633-0011', '1', NULL, NULL, NULL, NULL, 0, '0', '3', 0, 0, 0, NULL, NULL, '0', '2', '0', '1', '0', 1, 1, 1, 0, 0, 0, 0, 1, '0', 1, 1, 0, 0, 0, 1, 1, NULL, '0', NULL, NULL, '3', '', ''),
+(12, 'ZAVA841126HDGLGX05', 'C-1021-0012', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(13, 'PAZL810814MZSLXZ01', 'C-1024-0013', '5', NULL, NULL, NULL, NULL, 0, '0', '4', 0, 0, 0, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 0, 1, 0, 0, 0, '0', 1, 0, 0, 0, 0, 1, 1, NULL, '0', NULL, NULL, '2', '', ''),
+(14, 'HERS591019HDFRNR00', 'C-5621-0014', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(15, 'PAAC880327MZSCML07', 'C-5640-0015', '1', NULL, NULL, NULL, NULL, 0, '0', '8', 0, 0, 0, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 0, 1, '0', 1, 1, 1, 1, 1, 1, 1, NULL, '0', NULL, NULL, '4', '', ''),
+(16, 'AUJT890215MZSGRR05', 'C-1703-0016', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(17, 'LOVS899813HZSPLL06', 'C-5631-0017', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(18, 'TIFO920116HZSRLM00', 'C-1723-0018', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(19, 'SISV920604HZSLFC01', 'C-3721-0019', '1', NULL, NULL, NULL, NULL, 0, '0', '5', 0, 0, 0, NULL, NULL, '0', '1', '0', '1', '0', 1, 1, 1, 0, 0, 1, 0, 1, '0', 1, 1, 1, 1, 1, 1, 1, NULL, '0', NULL, NULL, '6', '', ''),
+(20, 'DIOJ450105MZSZRN05', 'C-5621-0020', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 1, 1, 1, 0, 0, 0, 0, 1, '0', 1, 1, 1, 1, 0, 1, 1, NULL, '0', NULL, NULL, '2', '', ''),
+(21, 'MASA880721MZSRNR00', 'C-3231-0021', '1', NULL, NULL, NULL, NULL, 0, '0', '2', 0, 0, 0, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 0, 0, 0, 0, 0, '0', 1, 1, 0, 0, 0, 1, 1, NULL, '0', NULL, NULL, '6', '', ''),
+(22, 'MOZG570420MGRRZL05', 'C-5615-0022', '1', NULL, NULL, NULL, NULL, 0, '0', '4', 0, 0, 0, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 0, 1, 0, 0, 0, '0', 1, 1, 0, 0, 0, 1, 1, NULL, '0', NULL, NULL, '5', '', ''),
+(23, 'BAMJ630915HZSRRL01', 'C-2903-0023', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(24, 'AALW800403HZSLSB00', 'C-1021-0024', '1', NULL, NULL, NULL, NULL, 0, '0', '7', 0, 0, 0, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 0, 1, 1, 0, 0, '0', 1, 0, 1, 0, 0, 1, 1, NULL, '0', NULL, NULL, '4', '', ''),
+(25, 'AAAE650713MJCLLLO4', 'C-1721-0025', '1', NULL, NULL, NULL, NULL, 0, '0', '6', 0, 0, 0, NULL, NULL, '0', '2', '0', '1', '0', 1, 1, 1, 1, 1, 0, 0, 0, '0', 1, 1, 0, 0, 0, 1, 1, NULL, '0', NULL, NULL, '3', '', ''),
+(26, 'BAPA821212MJCRNN04', '', '1', NULL, NULL, NULL, 0, 1, '0', '3', 1, 1, 1, 3, 1, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', 0, '', '3', NULL, NULL),
+(27, 'ROGJ350108MZSDZS02', 'C-5632-36', '1', NULL, NULL, NULL, 0, 1, '0', '3', 1, 1, 1, 3, 1, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', 1, 'ESPOSA', '', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -11657,19 +11898,19 @@ ALTER TABLE `cat_logs`
 -- AUTO_INCREMENT for table `datos_generales`
 --
 ALTER TABLE `datos_generales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `datos_medicos`
 --
 ALTER TABLE `datos_medicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `datos_usuariot`
 --
 ALTER TABLE `datos_usuariot`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `discapacidades`
@@ -11681,13 +11922,13 @@ ALTER TABLE `discapacidades`
 -- AUTO_INCREMENT for table `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `documentos_list`
 --
 ALTER TABLE `documentos_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `empleados`
@@ -11723,7 +11964,7 @@ ALTER TABLE `grupos_vulnerables`
 -- AUTO_INCREMENT for table `integracion`
 --
 ALTER TABLE `integracion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `log_entregas`
@@ -11735,13 +11976,13 @@ ALTER TABLE `log_entregas`
 -- AUTO_INCREMENT for table `log_registro`
 --
 ALTER TABLE `log_registro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=305;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=393;
 
 --
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=237;
 
 --
 -- AUTO_INCREMENT for table `medicamentos`
@@ -11771,19 +12012,19 @@ ALTER TABLE `prestamo`
 -- AUTO_INCREMENT for table `referencias`
 --
 ALTER TABLE `referencias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `servicios`
 --
 ALTER TABLE `servicios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tarjetones`
@@ -11813,7 +12054,7 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT for table `vivienda`
 --
 ALTER TABLE `vivienda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

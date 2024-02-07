@@ -516,7 +516,7 @@ include('prcd/qc/qc.php');
                     <label for="datos_usr" class="form-label">Celular:</label>
                     <input type="text" class="form-control" id="celular" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Celular">
                   </div>
-                  <div class="col-sm-2"> <!-- antes era estudia si/no -->
+                  <div class="col-sm-2">
                     <div class="mb-3">
                       <label for="basic-url" class="form-label">Sabe leer y escribir?</label>
                       <div class="input-group">

@@ -250,6 +250,7 @@ $(document).ready(function() {
         var celular = document.getElementById('celular').value;
         var leerSi = document.getElementById('leerSi');
         var leerNo = document.getElementById('leerNo');
+        var escolaridad = document.getElementById('escolaridad').value;
         var concluidaSi = document.getElementById('concluidoSi');
         var concluidaNo = document.getElementById('concluidoNo');
         var concluidaNA = document.getElementById('concluidoNA');
@@ -268,7 +269,7 @@ $(document).ready(function() {
         var seguridadsocial = document.getElementById('seguridadsocial').value;
         var otroSS = document.getElementById('otroSS').value;
         var numSS = document.getElementById('numss').value;
-        var gruposFull = document.getElementById('gruposFull').innerText;
+        var gruposFull = document.getElementById('numeroG').value;
         var informanteCheck = document.getElementById('informante').value;
         var informante = document.getElementById('nombreInformante').value;
         var informanteRelacion1 = document.getElementById('informanteRel').value;
@@ -291,12 +292,12 @@ $(document).ready(function() {
             var leer = 0;
         }
         
-        var carrera = document.getElementById('carrera').value;
-        if (carrera != null || carrera != ""){
-            var escolaridad_nombre = "";
+        var carrera1 = document.getElementById('carrera').value;
+        if (carrera1 == null || carrera1 == ""){
+            var escolaridadNombre = "";
         }
         else {
-            var escolaridad_nombre = carrera;
+            var escolaridadNombre = carrera1;
         }
 
         if (concluidaSi.checked){
@@ -381,7 +382,7 @@ $(document).ready(function() {
             var informanteRelacion = "";
             var informanteRelacionOtro1 = "";
         }
-        
+        //e.preventDefault();
         $.ajax({
             type: "POST",
             url: 'prcd/guardar.php',
@@ -414,7 +415,7 @@ $(document).ready(function() {
                 celular:celular,
                 leer:leer,
                 escolaridad:escolaridad,
-                escolaridad_nombre:escolaridad_nombre,
+                escolaridadNombre:escolaridadNombre,
                 concluida:concluida,
                 estudia:estudia,
                 estudiaLugar:estudiaLugar,
@@ -540,16 +541,16 @@ function updateGeneralesForm(){
         var seguridadsocial = document.getElementById('seguridadsocial').value;
         var otroSS = document.getElementById('otroSS').value;
         var numSS = document.getElementById('numss').value;
-        var gruposFull = document.getElementById('gruposFull').innerText;
+        var gruposFull = document.getElementById('numeroG').value;
         var informanteCheck = document.getElementById('informante').value;
         var informante = document.getElementById('nombreInformante').value;
         var informanteRelacion1 = document.getElementById('informanteRel').value;
         var informanteRelacionOtro = document.getElementById('otraRel').value;
-        var estatus = document.getElementById('estatus').value;
+        var estatus = 3;
 
-        if (estatus != 2 || estatus != 3) {
+        /* if (estatus != 2 || estatus != 3) {
             estatus = 1;
-        }
+        } */
 
         if(generoF.checked){
             var genero = "Femenino";
@@ -570,10 +571,10 @@ function updateGeneralesForm(){
         
         var carrera = document.getElementById('carrera').value;
         if (carrera != null || carrera != ""){
-            var escolaridad_nombre = "";
+            var escolaridad_nombre = carrera;
         }
         else {
-            var escolaridad_nombre = carrera;
+            var escolaridad_nombre = "";
         }
 
         if (concluidaSi.checked){

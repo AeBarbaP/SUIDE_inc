@@ -620,6 +620,9 @@ else if ($ingresoMensualVal == 4){
 else if ($ingresoMensualVal == 5){
   $ingresoMensual = 'Mayor de $25,000';
 }
+else {
+  $ingresoMensual = "";
+}
 
 $vulnerables = $rowSqlGenerales['gpo_vulnerable'];
 if ($vulnerables == "" || $vulnerables == null){
