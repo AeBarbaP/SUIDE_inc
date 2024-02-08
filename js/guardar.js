@@ -1204,6 +1204,21 @@ function queryTabAlergias(x){
         }
     });
 }
+
+function queryAlergiasBadges(x){
+    var alergiasBadges = x;
+    $.ajax({
+        type: "POST",
+        url: 'query/queryAlergiasBadges.php',
+        dataType:'html',
+        data: {
+            alergiasBadges:alergiasBadges
+        },
+        success: function(data){
+            $('#alergiasFull').fadeIn(1000).append(data);
+        }
+    });
+}
 function buscarEnfermedad(){
     var enfermedad = document.getElementById('enfermedadesSearch').value;
     $.ajax({

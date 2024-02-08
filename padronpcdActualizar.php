@@ -587,7 +587,7 @@ include('prcd/qc/qc.php');
                     <label for="datos_usr" class="form-label">Celular:</label>
                     <input type="text" class="form-control" id="celular" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Celular">
                   </div>
-                  <div class="col-sm-2"> <!-- antes era estudia si/no -->
+                  <div class="col-sm-2"> 
                     <div class="mb-3">
                       <label for="basic-url" class="form-label">Sabe leer y escribir?</label>
                       <div class="input-group">
@@ -646,11 +646,11 @@ include('prcd/qc/qc.php');
                       <option value="Posgrado">Posgrado</option>
                     </select>
                   </div>
-                  <div class="col-sm-4"> <!-- antes era estudia_donde -->
+                  <div class="col-sm-4"> 
                     <label for="datos_usr" class="form-label">Nombre de la carrera:</label>
                     <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="carrera" name="carrera" placeholder="Nombre de la carrera" disabled>
                   </div>
-                  <div class="col-sm-5"> <!-- antes era estudia si/no -->
+                  <div class="col-sm-5"> 
                     <div class="mb-3">
                       <!-- <label for="basic-url" class="form-label"> </label> -->
                       <div class="input-group mt-4">
@@ -1252,7 +1252,7 @@ include('prcd/qc/qc.php');
                         <option value="2">Medicamentos</option>
                         <option value="3">Ambiental</option>
                       </select>
-                      <select class="form-select" id="tipoAlergia" multiple aria-label="multiple select example" onclick="addA(this.value);" disabled>
+                      <select class="form-select" id="tipoAlergia" multiple aria-label="multiple select example" onclick="queryAlergiasBadges(this.value);" disabled>
                       </select>
                     </div>
                     <!-- Modal para agregar alergia -->
@@ -1334,7 +1334,6 @@ include('prcd/qc/qc.php');
                             else{
                               console.log("Nada");
                               document.getElementById(val).remove();
-
                             }
                             //remover al momento de programar guardar
                               const paragraphs = document.querySelectorAll('[class="valorFull"]');

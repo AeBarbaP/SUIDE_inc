@@ -9,8 +9,9 @@
 
     while ($row_sql_catalogo = $resultado_Query->fetch_assoc()){
         $nombre = $row_sql_catalogo['nombre'];
+        $id = $row_sql_catalogo['id'];
         echo '
-        <option value="'.htmlspecialchars($nombre).'">'.$nombre.'</option>
+        <option value="'.$id.'">'.$nombre.'</option>
         ';
     }
     echo '

@@ -289,9 +289,18 @@ function queryDatos(){
                 document.getElementById('telFijo').value = jsonData.telefono_part; 
                 document.getElementById('correo').value = jsonData.correo; 
                 document.getElementById('celular').value = jsonData.telefono_cel; 
-                document.getElementById('escolaridad').value = jsonData.escolaridad; 
                 document.getElementById('profesion').value = jsonData.profesion; 
                 
+                document.getElementById('escolaridad').value = jsonData.escolaridad;
+                var escolaridadNombre = jsonData.carrera;
+                if (escolaridadNombre == "" || escolaridadNombre == null || escolaridadNombre == 0){
+                    document.getElementById('carrera').value = "";
+                }
+                else{
+                    document.getElementById('carrera').value = escolaridadNombre;
+                    document.getElementById('carrera').disabled = false;
+                }
+
                 var profesion = jsonData.profesion;
                 if (profesion == "" || profesion == null || profesion == 0){
                     document.getElementById('profesion').value = "";
@@ -347,19 +356,6 @@ function queryDatos(){
                 document.getElementById('profesion').value = jsonData.profesion; 
                 document.getElementById('profesion').value = jsonData.profesion; 
                 
-                if (grupo == null || grupo == ""){
-                    grupo = "";
-                    document.getElementById('gruposFull').value = "";
-                }
-                else{
-                    var grupoSplit = grupo.replace(/, /g,',');
-                    grupoSplit = grupoSplit.split(',');
-                    for (var i = 0; i < grupoSplit.length; i++) {
-                        console.log(grupoSplit[i]);
-                        addG(grupoSplit[i]);
-                    }
-                }
-                
                 var rfcCut = jsonData.rfc;
                 //document.getElementById('rfcHomo').value = rfcCut;
 
@@ -371,25 +367,55 @@ function queryDatos(){
                     document.getElementById('rfcHomo').value = "";
                 }
                 
-                if (estudia == 'SI' || estudia == 2){
+                if (estudia == 1 || estudia == 'SI'){
                     document.getElementById('estudiaSi').checked = true;
                     document.getElementById('lugarEstudia').disabled = false; 
                     document.getElementById('lugarEstudia').value = jsonData.estudia_donde; 
                 } 
-                else if (estudia == 'NO' || estudia == 3 || estudia == 0) {
+                else if (estudia == 0 || estudia == 'NO') {
                     document.getElementById('estudiaNo').checked = true;
                 }
+                /* else{
+                    document.getElementById('estudiaSi').checked = false;
+                    document.getElementById('estudiaNo').checked = false;
+                    document.getElementById('lugarEstudia').disabled = true;
+                } */
 
                 document.getElementById('habilidad').value = jsonData.estudia_habilidad; 
 
-                if (trabaja == 'SI' || trabaja == 1){
-                    document.getElementById('trabajaSi').checked = true;
-                    document.getElementById('lugarTrabajo').disabled = false; 
-                    document.getElementById('ingresoMensual').disabled = false; 
-                    document.getElementById('lugarTrabajo').value = jsonData.trabaja_donde; 
+                if (trabaja == "" || trabaja == null){
+                    document.getElementById('trabajaSi').checked = false;
+                    document.getElementById('trabajaNo').checked = false;
+                    document.getElementById('lugarTrabajo').disabled = true; 
+                    document.getElementById('ingresoMensual').disabled = true; 
+                    document.getElementById('lugarTrabajo').value = ""; 
+                    document.getElementById('lugarTrabajoOtro').value = ""; 
                 } 
-                else if (trabaja == 'NO' || trabaja == 0) {
+                else if (trabaja == 0){
+                    document.getElementById('trabajaSi').checked = false; 
                     document.getElementById('trabajaNo').checked = true;
+                    document.getElementById('lugarTrabajo').disabled = true;
+                    document.getElementById('ingresoMensual').disabled = true;
+                    document.getElementById('lugarTrabajo').value = "";
+                    document.getElementById('lugarTrabajoOtro').value = "";
+                }
+                else if (trabaja == "OTRO" || trabaja == "Otro"){
+                    document.getElementById('trabajaSi').checked = true;
+                    document.getElementById('trabajaNo').checked = false;
+                    document.getElementById('lugarTrabajo').value = jsonData.trabaja;
+                    document.getElementById('lugarTrabajo').disabled = false; 
+                    document.getElementById('ingresoMensual').value = jsonData.ingreso_mensual; 
+                    document.getElementById('ingresoMensual').disabled = false; 
+                    document.getElementById('lugarTrabajoOtro').value = jsonData.trabaja_donde; 
+                }
+                else {
+                    document.getElementById('trabajaSi').checked = true;
+                    document.getElementById('trabajaNo').checked = false;
+                    document.getElementById('lugarTrabajo').value = jsonData.trabaja;
+                    document.getElementById('lugarTrabajo').disabled = false; 
+                    document.getElementById('ingresoMensual').value = jsonData.ingreso_mensual; 
+                    document.getElementById('ingresoMensual').disabled = false; 
+                    document.getElementById('lugarTrabajoOtro').value ="";
                 }
 
                 if (asoc_civ == 'SI' || asoc_civ == '1'){
@@ -605,33 +631,6 @@ function queryDatos(){
                     document.getElementById('protesis').value = 1; 
                     document.getElementById('tipoProtesis').value = jsonData.protesis_tipo; 
                     document.getElementById('tipoProtesis').disabled = false; 
-                }
-                
-                if (alergias_cual != null || alergias_cual != ""){
-                    var alergiasSplit = alergias_cual.replace(/, /g,',');
-                    alergiasSplit = alergiasSplit.split(',');
-                    for (var i = 0; i < alergiasSplit.length; i++) {
-                        console.log(alergiasSplit[i]);
-                        addA2(alergiasSplit[i]);
-                    }
-                }
-                
-                if (enfermedades_cual != null || enfermedades_cual != ""){
-                    var enfermedadesSplit = enfermedades_cual.replace(/, /g,',');
-                    enfermedadesSplit = enfermedadesSplit.split(',');
-                    for (var i = 0; i < enfermedadesSplit.length; i++) {
-                        console.log(enfermedadesSplit[i]);
-                        addB2(enfermedadesSplit[i]);
-                    }
-                }
-                
-                if (medicamentos_cual != null || medicamentos_cual != ""){
-                    var medicamentosSplit = medicamentos_cual.replace(/, /g,',');
-                    medicamentosSplit = medicamentosSplit.split(',');
-                    for (var i = 0; i < medicamentosSplit.length; i++) {
-                        console.log(medicamentosSplit[i]);
-                        addC2(medicamentosSplit[i]);
-                    }
                 }
                 
                 if (vivienda == 1){
@@ -950,6 +949,45 @@ function queryDatos(){
                 showMeRef();
                 mostrarTablaServicios();
                 //mostrarTabla();
+                if (grupo == null || grupo == ""){
+                    grupo = "";
+                    document.getElementById('gruposFull').value = "";
+                }
+                else{
+                    var grupoSplit = grupo.replace(/, /g,',');
+                    grupoSplit = grupoSplit.split(',');
+                    for (var i = 0; i < grupoSplit.length; i++) {
+                        console.log(grupoSplit[i]);
+                        addG(grupoSplit[i]);
+                    }
+                }
+
+                if (alergias_cual != null || alergias_cual != ""){
+                    var alergiasSplit = alergias_cual.replace(/, /g,',');
+                    alergiasSplit = alergiasSplit.split(',');
+                    for (var i = 0; i < alergiasSplit.length; i++) {
+                        console.log(alergiasSplit[i]);
+                        addA2(alergiasSplit[i]);
+                    }
+                }
+                
+                if (enfermedades_cual != null || enfermedades_cual != ""){
+                    var enfermedadesSplit = enfermedades_cual.replace(/, /g,',');
+                    enfermedadesSplit = enfermedadesSplit.split(',');
+                    for (var i = 0; i < enfermedadesSplit.length; i++) {
+                        console.log(enfermedadesSplit[i]);
+                        addB2(enfermedadesSplit[i]);
+                    }
+                }
+                
+                if (medicamentos_cual != null || medicamentos_cual != ""){
+                    var medicamentosSplit = medicamentos_cual.replace(/, /g,',');
+                    medicamentosSplit = medicamentosSplit.split(',');
+                    for (var i = 0; i < medicamentosSplit.length; i++) {
+                        console.log(medicamentosSplit[i]);
+                        addC2(medicamentosSplit[i]);
+                    }
+                }
                 
             } else if (success == 0){
                 console.log(jsonData.error);
