@@ -1219,6 +1219,44 @@ function queryAlergiasBadges(x){
         }
     });
 }
+function queryEnfermedadesBadges(x){
+    var enfermedadesBadges = x;
+    $.ajax({
+        type: "POST",
+        url: 'query/queryEnfermedadesBadges.php',
+        dataType:'html',
+        data: {
+            enfermedadesBadges:enfermedadesBadges
+        },
+        success: function(data){
+            $('#enfermedadesFull').fadeIn(1000).append(data);
+        }
+    });
+}
+
+function removeA(val) {
+    console.log(val);
+    document.getElementById(val).remove();
+}
+
+function openModalE(val) {
+    var x = val;
+    var y = document.getElementById('hiddenEnf').value;
+    if (y > x){
+        y++;
+        document.getElementById('hiddenEnf').value = y;
+    }
+    else {
+        x++;
+        document.getElementById('hiddenEnf').value = x;
+    }
+
+    $('#enfermedadModal').modal('show');
+    document.getElementById('hiddenEnf').value = val;
+    document.getElementById('hiddenEnf').setAttribute('id','E'+val);
+    
+}
+
 function buscarEnfermedad(){
     var enfermedad = document.getElementById('enfermedadesSearch').value;
     $.ajax({

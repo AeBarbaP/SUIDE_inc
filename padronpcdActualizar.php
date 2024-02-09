@@ -1323,7 +1323,7 @@ include('prcd/qc/qc.php');
                               document.getElementById('numeroA').value = numeroA;
                            // }
                           }
-                          function removeA(val) {
+                          /* function removeA(val) {
                             var numero = ""; //remover al momento de programar guardar
                             console.log(val);
                             var nameInput = document.getElementById(val).getAttribute("name");
@@ -1341,7 +1341,7 @@ include('prcd/qc/qc.php');
                               numeroA = numeroA.slice(0, numeroA.length - 2);
                               console.log(numeroA);
                               document.getElementById('numeroA').value = numeroA;
-                            }
+                            } */
                         </script>
                         <style>
                           div.editable {
@@ -1360,7 +1360,7 @@ include('prcd/qc/qc.php');
                         <input type="text" class="form-control" id="enfermedadesSearch" onfocus="buscarEnfermedad()" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
-                      <select class="form-select" id="enfermedades" onclick="addB(this.value)" onselect="enfermedadesOp(this.value)" multiple aria-label="multiple select example">
+                      <select class="form-select" id="enfermedades" onclick="addB(this.value)" onselect="enfermedadesOp(this.value);queryEnfermedadesBadges(this.value)" multiple aria-label="multiple select example">
                       </select>
                       <div class="form-text" style="color:red" id="noesta"></div>
                     </div>
@@ -1380,13 +1380,14 @@ include('prcd/qc/qc.php');
                               </div>
                               <div class="modal-body">
                                 <div class="input-group">
+                                  <input type="text" id="hiddenEnf">
                                   <span class="input-group-text"> Enfermedad:</span>
                                   <input type="text" class="form-control  w-50" id="enfermedadInput" name="enfermedadInput" value="" placeholder="">
                                 </div>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="button" class="btn btn-primary" onclick="addInputE()" data-bs-dismiss="modal">Agregar</button>
+                                <button type="button" class="btn btn-primary" onclick="queryEnfermedadesBadges(this.value)" data-bs-dismiss="modal">Agregar</button>
                               </div>
                             </div>
                           </div>
