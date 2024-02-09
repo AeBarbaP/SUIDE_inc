@@ -1242,19 +1242,29 @@ function removeA(val) {
 function openModalE(val) {
     var x = val;
     var y = document.getElementById('hiddenEnf').value;
-    if (y > x){
-        y++;
-        document.getElementById('hiddenEnf').value = y;
-    }
-    else {
-        x++;
+    $('#enfermedadModal').modal('show');
+    console.log(y);
+    if(y == 0){
+        x+1;
         document.getElementById('hiddenEnf').value = x;
     }
+    else if (y > x){
+        y+1;
+        document.getElementById('hiddenEnf').value = y;
+    }
 
-    $('#enfermedadModal').modal('show');
-    document.getElementById('hiddenEnf').value = val;
-    document.getElementById('hiddenEnf').setAttribute('id','E'+val);
     
+    document.getElementById('hiddenEnf').value = val;
+    // document.getElementById('hiddenEnf').setAttribute('id','E'+val);
+    
+}
+
+function badgesEnf(){
+    var id = document.getElementById('hiddenEnf').value;
+    var nombre = document.getElementById('enfermedadInput').value;
+    var code = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+id+'"><span id="'+id+'" class="valorFull">'+nombre+'</span> <a class="text-light" onclick="removeA(\'E'+id+'\')"><i class="bi bi-x-circle"></i></a></button>';
+
+    document.getElementById('enfermedadesFull').append(code);
 }
 
 function buscarEnfermedad(){

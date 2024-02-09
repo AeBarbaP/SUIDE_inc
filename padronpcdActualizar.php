@@ -1380,14 +1380,15 @@ include('prcd/qc/qc.php');
                               </div>
                               <div class="modal-body">
                                 <div class="input-group">
-                                  <input type="text" id="hiddenEnf">
+                                  <input type="text" id="hiddenEnf" value="0">
                                   <span class="input-group-text"> Enfermedad:</span>
                                   <input type="text" class="form-control  w-50" id="enfermedadInput" name="enfermedadInput" value="" placeholder="">
                                 </div>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="button" class="btn btn-primary" onclick="queryEnfermedadesBadges(this.value)" data-bs-dismiss="modal">Agregar</button>
+                                <!-- <button type="button" class="btn btn-primary" onclick="queryEnfermedadesBadges(this.value)" data-bs-dismiss="modal">Agregar</button> -->
+                                <button type="button" class="btn btn-primary" onclick="badgesEnf()" data-bs-dismiss="modal">Agregar</button>
                               </div>
                             </div>
                           </div>
