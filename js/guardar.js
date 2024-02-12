@@ -1263,8 +1263,8 @@ function badgesEnf(){
     var id = document.getElementById('hiddenEnf').value;
     var nombre = document.getElementById('enfermedadInput').value;
     var code = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+id+'"><span id="'+id+'" class="valorFull">'+nombre+'</span> <a class="text-light" onclick="removeA(\'E'+id+'\')"><i class="bi bi-x-circle"></i></a></button>';
-
-    document.getElementById('enfermedadesFull').append(code);
+    $('#enfermedadesFull').fadeIn(1000).append(code);
+    //document.getElementById('enfermedadesFull').innerHTML(code);
 }
 
 function buscarEnfermedad(){
