@@ -1219,25 +1219,53 @@ function queryAlergiasBadges(x){
         }
     });
 }
-function queryEnfermedadesBadges(x){
-    var enfermedadesBadges = x;
-    $.ajax({
-        type: "POST",
-        url: 'query/queryEnfermedadesBadges.php',
-        dataType:'html',
-        data: {
-            enfermedadesBadges:enfermedadesBadges
-        },
-        success: function(data){
-            $('#enfermedadesFull').fadeIn(1000).append(data);
-        }
-    });
-}
 
 function removeA(val) {
     console.log(val);
     document.getElementById(val).remove();
 }
+
+function queryEnfermedadesBadges(x,texto){
+    var x = x;
+    var texto = document.getElementById('TextoBadge'+x).innerText;
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+x+'"><span id="ES'+x+'" class="valorFull">'+texto+' </span> <a class="text-light" onclick="removeB(\'E'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    $('#enfermedadesFull').fadeIn(1000).append(data);
+    document.querySelector('#enfermedades option[value="'+x+'"]').remove();
+}
+
+function queryEnfermedadesBadgesModal(){
+    var idNext = document.getElementById('hiddenEnf').value;
+    var x = parseInt(idNext)+1;
+    var texto = document.getElementById('enfermedadInput').value;
+    document.getElementById('hiddenEnf').value = "";
+    document.getElementById('hiddenEnf').value = x;
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+x+'"><span id="ES'+x+'" class="valorFull">'+texto+' </span> <a class="text-light" onclick="removeB(\'E'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    $('#enfermedadesFull').fadeIn(1000).append(data);
+}
+
+function removeB(val) {
+    //var numeroB = ""; //remover al momento de programar guardar
+    console.log('id: '+val);
+    var nombreVal = val.slice(1,val.length);
+    console.log('nombre: '+nombreVal);
+    var idInput = document.getElementById(val).getAttribute("id");
+    var nameInput = document.getElementById('ES'+nombreVal).innerText;
+    if (idInput){
+        document.getElementById(val).remove();
+        $('#enfermedades').append('<option value="'+idInput+'" onclick="queryEnfermedadesBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
+    }
+    else{
+        console.log("Nada");
+        document.getElementById(val).remove();
+    }
+    //remover al momento de programar guardar
+    /* const paragraphs = document.querySelectorAll('[class="valorEFull"]');
+    paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
+    numeroB = numeroB.slice(0, numeroB.length - 2);
+    console.log(numeroB);
+    document.getElementById('numeroB').value = numeroB; */
+}
+
 
 function openModalE(val) {
     var x = val;
@@ -1253,18 +1281,8 @@ function openModalE(val) {
         document.getElementById('hiddenEnf').value = y;
     }
 
-    
-    document.getElementById('hiddenEnf').value = val;
     // document.getElementById('hiddenEnf').setAttribute('id','E'+val);
     
-}
-
-function badgesEnf(){
-    var id = document.getElementById('hiddenEnf').value;
-    var nombre = document.getElementById('enfermedadInput').value;
-    var code = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+id+'"><span id="'+id+'" class="valorFull">'+nombre+'</span> <a class="text-light" onclick="removeA(\'E'+id+'\')"><i class="bi bi-x-circle"></i></a></button>';
-    $('#enfermedadesFull').fadeIn(1000).append(code);
-    //document.getElementById('enfermedadesFull').innerHTML(code);
 }
 
 function buscarEnfermedad(){

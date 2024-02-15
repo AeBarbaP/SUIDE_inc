@@ -13,7 +13,7 @@
     while ($row_sql_catalogo = $resultado_Query->fetch_assoc()){
         $x++;
         echo '
-        <option value="'.$row_sql_catalogo['id'].'">'.$row_sql_catalogo['nombre'].'</option>
+        <option value="'.$row_sql_catalogo['id'].'" onclick="queryEnfermedadesBadges(this.value)"><span id="TextoBadge'.$row_sql_catalogo['id'].'">'.$row_sql_catalogo['nombre'].'</span></option>
         ';
     }
     if ($fila == 0){

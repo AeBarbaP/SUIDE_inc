@@ -1360,7 +1360,7 @@ include('prcd/qc/qc.php');
                         <input type="text" class="form-control" id="enfermedadesSearch" onfocus="buscarEnfermedad()" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
-                      <select class="form-select" id="enfermedades" onselect="enfermedadesOp(this.value);queryEnfermedadesBadges(this.value)"  multiple aria-label="multiple select example">
+                      <select class="form-select" id="enfermedades" onselect="enfermedadesOp(this.value)"  multiple aria-label="multiple select example">
                       </select>
                       <div class="form-text" style="color:red" id="noesta"></div>
                     </div>
@@ -1380,82 +1380,20 @@ include('prcd/qc/qc.php');
                               </div>
                               <div class="modal-body">
                                 <div class="input-group">
-                                  <input type="text" id="hiddenEnf" value="0">
+                                  <input type="text" id="hiddenEnf">
                                   <span class="input-group-text"> Enfermedad:</span>
                                   <input type="text" class="form-control  w-50" id="enfermedadInput" name="enfermedadInput" value="" placeholder="">
                                 </div>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <!-- <button type="button" class="btn btn-primary" onclick="queryEnfermedadesBadges(this.value)" data-bs-dismiss="modal">Agregar</button> -->
-                                <button type="button" class="btn btn-primary" onclick="badgesEnf()" data-bs-dismiss="modal">Agregar</button>
+                                <button type="button" class="btn btn-primary" onclick="queryEnfermedadesBadgesModal()" data-bs-dismiss="modal">Agregar</button>
                               </div>
                             </div>
                           </div>
                         </div>
                         <!-- Termina modal para agregar enfermedad -->
-                        <script>
-                          function addB(val) {
-                            var p2;
-                            var numeroB = ""; //remover al momento de programar guardar
-                            var textarea = document.getElementById("enfermedadesFull");
-                            if (val==null || val =="" || val == 0){
-                              console.log('sin valor');
-                            } else {
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorEFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-                              document.getElementById(val).setAttribute('onclick',"removeB('"+val+"')");
-                              document.getElementById(val).setAttribute('name',"'"+val+"'");
-                              document.querySelector('#enfermedades option[value='+val+']').remove();
-                            }
-                            //remover al momento de programar guardar
-                            const paragraphs = document.querySelectorAll('[class="valorEFull"]');
-                            paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
-                            numeroB = numeroB.slice(0, numeroB.length - 2);
-                            console.log(numeroB);
-                            document.getElementById('numeroB').value = numeroB;
-                          }
-                          function addInputE() {
-                            var numeroB = "";//remover al momento de programar guardar
-                            var val = document.getElementById("enfermedadInput").value;
-                            var textarea = document.getElementById("enfermedadesFull");
-                            //if (val==null || val =="" || val == 0){
-                              //console.log('sin valor');
-                            //} else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorEFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-                              document.getElementById(val).setAttribute('onclick',"removeB('"+val+"')");
-                              document.getElementById("enfermedadInput").value ="";
-
-                              //remover al momento de programar guardar          
-                              const paragraphs = document.querySelectorAll('[class="valorEFull"]');
-                              paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
-                              numeroB = numeroB.slice(0, numeroB.length - 2);
-                              console.log(numeroB);
-                              document.getElementById('numeroB').value = numeroB;
-                           // }
-                          }
-                          function removeB(val) {
-                            var numeroB = ""; //remover al momento de programar guardar
-                            console.log(val);
-                            var nameInput = document.getElementById(val).getAttribute("name");
-                            if (nameInput){
-                              document.getElementById(val).remove();
-                              $('#enfermedades').append("<option value='"+val+"'>"+val+"</option>");
-                            }
-                            else{
-                              console.log("Nada");
-                              document.getElementById(val).remove();
-  
-                            }
-                            //remover al momento de programar guardar
-                              const paragraphs = document.querySelectorAll('[class="valorEFull"]');
-                              paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
-                              numeroB = numeroB.slice(0, numeroB.length - 2);
-                              console.log(numeroB);
-                              document.getElementById('numeroB').value = numeroB;
-                          }
-                        </script>
                       </div>
-                      
                     </div>
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Medicamentos:</label>
