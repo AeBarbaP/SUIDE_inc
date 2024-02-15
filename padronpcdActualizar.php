@@ -845,7 +845,7 @@ include('prcd/qc/qc.php');
                               textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorGFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeG('"+val+"')");
                               document.getElementById(val).setAttribute('name',"'"+val+"'");
-                              document.querySelector('#grupos option[value='+val+']').remove();
+                              document.querySelector('#grupos option[value="'+val+'"]').remove();
                             }
                             //remover al momento de programar guardar
                             const paragraphs = document.querySelectorAll('[class="valorGFull"]');
@@ -862,7 +862,7 @@ include('prcd/qc/qc.php');
                               //console.log('sin valor');
                             //} else{
                               textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorGFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-                              document.getElementById(val).setAttribute('onclick',"removeG('"+val+"')");
+                              document.getElementById(val).setAttribute('onclick',"removeG("+val+")");
                               document.getElementById("grupoInput").value ="";
 
                               //remover al momento de programar guardar          
