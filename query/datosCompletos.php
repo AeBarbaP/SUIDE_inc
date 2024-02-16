@@ -13,6 +13,25 @@ $rowDatos = $resultadoSql->fetch_assoc();
 $sqlMedicos = "SELECT * FROM datos_medicos WHERE expediente LIKE '%$expediente%' OR curp LIKE '$curp'";
 $resultadoSqlMedicos = $conn->query($sqlMedicos);
 $rowDatosMedicos = $resultadoSqlMedicos->fetch_assoc();
+
+$enfermedades = $rowDatosMedicos['enfermedades_cual'];
+// Cadena original
+$var = $enfermedades;
+// Dividir la cadena en cada coma (",")
+$elementos = explode(", ", $var);
+// Arreglo para almacenar los resultados
+$resultadoEnf = [];
+// Iterar sobre cada elemento y dividirlo en ID y nombre del producto
+foreach ($elementos as $elemento) {
+    // Dividir el elemento en el guion ("-")
+    list($id, $enfermedad) = explode("-", $elemento);
+    // Agregar el ID y el nombre del producto al arreglo resultadoEnf
+    $resultadoEnf[] = [
+        'id' => $id,
+        'enfermedad' => $enfermedad
+    ];
+}
+
 //vivienda
 $sqlVivienda = "SELECT * FROM vivienda WHERE curp LIKE '$curp'";
 $resultadoSqlVivienda = $conn->query($sqlVivienda);
@@ -181,7 +200,7 @@ else {
         'alergias'=>$rowDatosMedicos['alergias'], 
         'alergias_cual'=>$rowDatosMedicos['alergias_cual'], 
         'enfermedades'=>$rowDatosMedicos['enfermedades'], 
-        'enfermedades_cual'=>$rowDatosMedicos['enfermedades_cual'], 
+        'enfermedades_cual'=>$rowDatosMedicos['enfermedades_cual'], //esta variable va a cambiar, la vamos a romper
         'medicamentos'=>$rowDatosMedicos['medicamentos'], 
         'medicamentos_cual'=>$rowDatosMedicos['medicamentos_cual'],
         'braile'=>$rowDatosMedicos['braile'],
@@ -236,6 +255,6 @@ else {
         'curpDocDoc'=>$ruta4,
         'ineDocDoc'=>$ruta5,
         'comprobanteDoc'=>$ruta6,
-        'tarjetaCirculacionDoc'=>$ruta7
-        
+        'tarjetaCirculacionDoc'=>$ruta7,
+        'arregloEnfermedades'=>$resultadoEnf
     ));

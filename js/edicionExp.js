@@ -964,19 +964,23 @@ function queryDatos(){
 
                 if (alergias_cual != null || alergias_cual != ""){
                     var alergiasSplit = alergias_cual.replace(/, /g,',');
-                    alergiasSplit = alergiasSplit.split(',');
+                    var alergiasSlices = alergiasSplit.slice(5,alergiasSplit.length);
+                    alergiasSlices = alergiasSlices.split(',');
                     for (var i = 0; i < alergiasSplit.length; i++) {
                         console.log(alergiasSplit[i]);
-                        addA2(alergiasSplit[i]);
+                        queryAlergiasBadges(alergiasSplit[i]);
                     }
                 }
+                
+                var arrayEnfermedades = jsonData.arregloEnfermedades;
+                console.log(arrayEnfermedades);
                 
                 if (enfermedades_cual != null || enfermedades_cual != ""){
                     var enfermedadesSplit = enfermedades_cual.replace(/, /g,',');
                     enfermedadesSplit = enfermedadesSplit.split(',');
                     for (var i = 0; i < enfermedadesSplit.length; i++) {
                         console.log(enfermedadesSplit[i]);
-                        addB2(enfermedadesSplit[i]);
+                        queryEnfermedadesBadges(enfermedadesSplit[i]);
                     }
                 }
                 
@@ -996,48 +1000,6 @@ function queryDatos(){
     });
 }
 
-function addA2(val) {
-    var p2;
-    var numeroA = ""; //remover al momento de programar guardar
-    var textarea = document.getElementById("alergiasFull");
-    if (val==null || val =="" || val == 0){
-        console.log('sin valor');
-    } else{
-        textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-        document.getElementById(val).setAttribute('onclick',"removeA2('"+val+"')");
-        document.getElementById(val).setAttribute('name',"'"+val+"'");
-      //document.querySelector('#tipoAlergia option[value='+val+']').remove();
-        
-      //remover al momento de programar guardar
-        const paragraphs = document.querySelectorAll('[class="valorFull"]');
-        paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
-        numeroA = numeroA.substr(0, numeroA.length - 2);
-        console.log(numeroA);
-        document.getElementById('numeroA').value = numeroA;
-    }
-}
-
-function removeA2(val) {
-    var numeroA = ""; //remover al momento de programar guardar
-    console.log(val);
-    var nameInput = document.getElementById(val).getAttribute("name");
-    if (nameInput){
-        document.getElementById(val).remove();
-      //$('#tipoAlergia').append("<option value='"+val+"'>"+val+"</option>");
-    }
-    else{
-        console.log("Nada");
-        document.getElementById(val).remove();
-
-    }
-    //remover al momento de programar guardar
-    const paragraphs = document.querySelectorAll('[class="valorFull"]');
-    paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
-    numeroA = numeroA.slice(0, numeroA.length - 2);
-    console.log(numeroA);
-    document.getElementById('numeroA').value = numeroA;
-}
-
 function addB2(val) {
     var p2;
     var numeroB = ""; //remover al momento de programar guardar
@@ -1048,7 +1010,7 @@ function addB2(val) {
         textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorEFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
         document.getElementById(val).setAttribute('onclick',"removeB2('"+val+"')");
         document.getElementById(val).setAttribute('name',"'"+val+"'");
-        //document.querySelector('#enfermedades option[value='+val+']').remove();
+        document.querySelector('#enfermedades option[value="'+val+'"]').remove();
     }
     //remover al momento de programar guardar
     const paragraphs = document.querySelectorAll('[class="valorEFull"]');
@@ -1064,7 +1026,7 @@ function removeB2(val) {
     var nameInput = document.getElementById(val).getAttribute("name");
     if (nameInput){
         document.getElementById(val).remove();
-        //$('#enfermedades').append("<option value='"+val+"'>"+val+"</option>");
+        $('#enfermedades').append("<option value='"+val+"'>"+val+"</option>");
     }
     else{
         console.log("Nada");
@@ -1087,8 +1049,8 @@ function addC2(val) {
         console.log('sin valor');
     } else{
         textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorMFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-        document.getElementById(val).setAttribute('onclick',"removeC2('"+val+"')");
-        //document.querySelector('#medicamentos option[value='+val+']').remove();
+        document.getElementById(val).setAttribute('onclick',"removeC('"+val+"')");
+        document.querySelector('#medicamentos option[value='+val+']').remove();
     }
     //remover al momento de programar guardar
     const paragraphs = document.querySelectorAll('[class="valorMFull"]');

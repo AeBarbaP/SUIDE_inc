@@ -774,7 +774,7 @@ include('prcd/qc/qc.php');
                               textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorGFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeG('"+val+"')");
                               document.getElementById(val).setAttribute('name',"'"+val+"'");
-                              document.querySelector('#grupos option[value='+val+']').remove();
+                              document.querySelector('#grupos option[value="'+val+'"]').remove();
                             }
                             //remover al momento de programar guardar
                             const paragraphs = document.querySelectorAll('[class="valorGFull"]');
@@ -1205,7 +1205,7 @@ include('prcd/qc/qc.php');
                               textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeA('"+val+"')");
                               document.getElementById(val).setAttribute('name',"'"+val+"'");
-                              document.querySelector('#tipoAlergia option[value='+val+']').remove();
+                              document.querySelector('#tipoAlergia option[value="'+val+'"]').remove();
                               
                               //remover al momento de programar guardar
                               const paragraphs = document.querySelectorAll('[class="valorFull"]');
@@ -1315,7 +1315,7 @@ include('prcd/qc/qc.php');
                               textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorEFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeB('"+val+"')");
                               document.getElementById(val).setAttribute('name',"'"+val+"'");
-                              document.querySelector('#enfermedades option[value='+val+']').remove();
+                              document.querySelector('#enfermedades option[value="'+val+'"]').remove();
                             }
                             //remover al momento de programar guardar
                             const paragraphs = document.querySelectorAll('[class="valorEFull"]');
@@ -1415,7 +1415,7 @@ include('prcd/qc/qc.php');
                             } else{
                               textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorMFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
                               document.getElementById(val).setAttribute('onclick',"removeC('"+val+"')");
-                              document.querySelector('#medicamentos option[value='+val+']').remove();
+                              document.querySelector('#medicamentos option[value="'+val+'"]').remove();
                             }
                             //remover al momento de programar guardar
                             const paragraphs = document.querySelectorAll('[class="valorMFull"]');

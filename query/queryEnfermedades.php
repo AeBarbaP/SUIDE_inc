@@ -12,8 +12,23 @@
 
     while ($row_sql_catalogo = $resultado_Query->fetch_assoc()){
         $x++;
+        $id = $row_sql_catalogo['id'];
+        $nombre = $row_sql_catalogo['nombre'];
+        if (strlen($id) == 1){
+            $id = '000'.$id.'-';
+        }
+        else if (strlen($id) == 2){
+            $id = '00'.$id.'-';
+        }
+        else if (strlen($id) == 3){
+            $id = '0'.$id.'-';
+        }
+        else {
+            $id = $id.'-';
+        }
+
         echo '
-        <option value="'.$row_sql_catalogo['id'].'" onclick="queryEnfermedadesBadges(this.value)"><span id="TextoBadge'.$row_sql_catalogo['id'].'">'.$row_sql_catalogo['nombre'].'</span></option>
+        <option value="'.$id.'" onclick="queryEnfermedadesBadges(this.value)"><span id="TextoBadge'.$id.'">'.$nombre.'</span></option>
         ';
     }
     if ($fila == 0){
