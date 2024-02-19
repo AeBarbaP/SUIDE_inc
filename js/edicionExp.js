@@ -971,9 +971,30 @@ function queryDatos(){
                         queryAlergiasBadges(alergiasSplit[i]);
                     }
                 }
+
+
                 
                 var arrayEnfermedades = jsonData.arregloEnfermedades;
                 console.log(arrayEnfermedades);
+
+                for (var i = 0; i < arrayEnfermedades.length; i++) {
+                    var contador = arrayEnfermedades[i];
+                    var idEnfermedad = contador.id;
+                    for (var j = 0; j < idEnfermedad.length; j++){
+                        if (idEnfermedad[j] ==0){
+                            var idTrimed = idEnfermedad.slice(0,1);
+                            idEnfermedad = idTrimed;
+                        }
+                        else{
+                            break;
+                        }
+                    }
+                    console.log("Variable Array "+idEnfermedad);
+                    var nombreEnfermedad = contador.enfermedad;
+                    // Puedes hacer lo que necesites con cada usuario aquí
+                    // Por ejemplo, puedes agregar etiquetas HTML a algún elemento en tu página
+                    $('#enfermedadesFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+idEnfermedad+'"><span id="'+idEnfermedad+'" class="valorFull">'+nombreEnfermedad+'</span> <a class="text-light" onclick="removeB(\'E'+idEnfermedad+'\')"><i class="bi bi-x-circle"></i></a></button>');
+                }
                 
                 if (enfermedades_cual != null || enfermedades_cual != ""){
                     var enfermedadesSplit = enfermedades_cual.replace(/, /g,',');

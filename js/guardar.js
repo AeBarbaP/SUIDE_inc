@@ -1295,6 +1295,8 @@ function buscarEnfermedad(){
             enfermedad:enfermedad
         },
         success: function(data){
+            const paragraphs = document.querySelectorAll('[class="valorEFull"]');
+            paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
             $('#enfermedades').fadeIn(1000).html(data);
         }
     });
