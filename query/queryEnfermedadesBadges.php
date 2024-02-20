@@ -10,7 +10,7 @@
     $nombre = $row_sql_catalogo['nombre'];
     $id = $row_sql_catalogo['id'];
     echo '
-        <button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'.$id.'"><span id="'.$id.'" class="valorFull">'.$nombre.'</span> <a class="text-light" onclick="removeB(\'E'.$id.'\')"><i class="bi bi-x-circle"></i></a></button>
+        <button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'.$id.'"><span id="ES'.$id.'" class="valorFull">'.$nombre.'</span> <a class="text-light" onclick="removeB(\'E'.$id.'\')"><i class="bi bi-x-circle"></i></a></button>
     ';
 
 ?>

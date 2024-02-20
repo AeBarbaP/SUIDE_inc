@@ -981,7 +981,7 @@ function queryDatos(){
                     var contador = arrayEnfermedades[i];
                     var idEnfermedad = contador.id;
                     for (var j = 0; j < idEnfermedad.length; j++){
-                        if (idEnfermedad[j] ==0){
+                        if (idEnfermedad[j] == 0){
                             var idTrimed = idEnfermedad.slice(0,1);
                             idEnfermedad = idTrimed;
                         }

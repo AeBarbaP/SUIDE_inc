@@ -1357,7 +1357,7 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Enfermedades:</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" id="enfermedadesSearch" onfocus="buscarEnfermedad()" aria-label="Buscar...">
+                        <input type="text" class="form-control" id="enfermedadesSearch" onfocus="buscarEnfermedadUpdate()" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
                       <select class="form-select" id="enfermedades" onselect="enfermedadesOp(this.value)"  multiple aria-label="multiple select example">

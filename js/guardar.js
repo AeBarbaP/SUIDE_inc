@@ -1295,9 +1295,47 @@ function buscarEnfermedad(){
             enfermedad:enfermedad
         },
         success: function(data){
-            const paragraphs = document.querySelectorAll('[class="valorEFull"]');
-            paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
             $('#enfermedades').fadeIn(1000).html(data);
+        }
+    });
+}
+
+function buscarEnfermedadUpdate(){
+    var enfermedad = document.getElementById('enfermedadesSearch').value;
+    let numeroB;
+
+    const paragraphs = document.querySelectorAll('[class="valorFull"]');
+    //numeroB = numeroB.slice(0, numeroB.length - 2);
+    $.ajax({
+        type: "POST",
+        url: 'query/queryEnfermedades.php',
+        dataType:'html',
+        data: {
+            enfermedad:enfermedad
+        },
+        success: function(data){
+            $('#enfermedades').fadeIn(1000).html(data);
+                //paragraphs.forEach();
+                paragraphs.forEach(function(p){
+                var numeroB = p.id;
+            //for (var i = 0; i < paragraphs.length; i++) {
+                var select = document.getElementById('enfermedades');
+                var opciones = select.options;
+                //var numeroBid = numeroB[i].id;
+                var slicedNumeroB2 = numeroB.split('E');
+                var slicedNumeroB = "S"+slicedNumeroB2;
+                console.log(slicedNumeroB);
+                if (opciones.id = slicedNumeroB) {
+                    var opcionesSelect = opciones.id;
+                    //opcionesSelect.remove();
+                    $("#"+slicedNumeroB).remove();
+                    console.log("Se ha eliminado");
+
+                }
+                else{
+                    console.log("No se ha eliminado");
+                }
+            });
         }
     });
 }

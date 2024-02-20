@@ -14,7 +14,7 @@
         $x++;
         $id = $row_sql_catalogo['id'];
         $nombre = $row_sql_catalogo['nombre'];
-        if (strlen($id) == 1){
+        /* if (strlen($id) == 1){
             $id = '000'.$id.'-';
         }
         else if (strlen($id) == 2){
@@ -25,10 +25,10 @@
         }
         else {
             $id = $id.'-';
-        }
+        } */
 
         echo '
-        <option value="'.$id.'" onclick="queryEnfermedadesBadges(this.value)"><span id="TextoBadge'.$id.'">'.$nombre.'</span></option>
+        <option value="'.$id.'" id="S'.$id.'" onclick="queryEnfermedadesBadges(this.value)"><span id="TextoBadge'.$id.'">'.$nombre.'</span></option>
         ';
     }
     if ($fila == 0){
