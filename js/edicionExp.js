@@ -962,7 +962,8 @@ function queryDatos(){
                     }
                 }
 
-                if (alergias_cual != null || alergias_cual != ""){
+
+                /* if (alergias_cual != null || alergias_cual != ""){
                     var alergiasSplit = alergias_cual.replace(/, /g,',');
                     var alergiasSlices = alergiasSplit.slice(5,alergiasSplit.length);
                     alergiasSlices = alergiasSlices.split(',');
@@ -970,9 +971,7 @@ function queryDatos(){
                         console.log(alergiasSplit[i]);
                         queryAlergiasBadges(alergiasSplit[i]);
                     }
-                }
-
-
+                } */
                 
                 var arrayEnfermedades = jsonData.arregloEnfermedades;
                 console.log(arrayEnfermedades);
@@ -995,15 +994,37 @@ function queryDatos(){
                     // Por ejemplo, puedes agregar etiquetas HTML a algún elemento en tu página
                     $('#enfermedadesFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+idEnfermedad+'"><span id="'+idEnfermedad+'" class="valorFull">'+nombreEnfermedad+'</span> <a class="text-light" onclick="removeB(\'E'+idEnfermedad+'\')"><i class="bi bi-x-circle"></i></a></button>');
                 }
+
+                var arrayAlergias = jsonData.arregloAlergias;
+                console.log(arrayAlergias);
+
+                for (var i = 0; i < arrayAlergias.length; i++) {
+                    var contador = arrayAlergias[i];
+                    var idAlergia = contador.id;
+                    for (var j = 0; j < idAlergia.length; j++){
+                        if (idAlergia[j] == 0){
+                            var idTrimed = idAlergia.slice(0,1);
+                            idAlergia = idTrimed;
+                        }
+                        else{
+                            break;
+                        }
+                    }
+                    console.log("Variable Array "+idAlergia);
+                    var nombreAlergia = contador.alergia;
+                    // Puedes hacer lo que necesites con cada usuario aquí
+                    // Por ejemplo, puedes agregar etiquetas HTML a algún elemento en tu página
+                    $('#alergiasFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="A'+idAlergia+'"><span id="'+idAlergia+'" class="valorAFull">'+nombreAlergia+'</span> <a class="text-light" onclick="removeA(\'A'+idAlergia+'\')"><i class="bi bi-x-circle"></i></a></button>');
+                }
                 
-                if (enfermedades_cual != null || enfermedades_cual != ""){
+                /* if (enfermedades_cual != null || enfermedades_cual != ""){
                     var enfermedadesSplit = enfermedades_cual.replace(/, /g,',');
                     enfermedadesSplit = enfermedadesSplit.split(',');
                     for (var i = 0; i < enfermedadesSplit.length; i++) {
                         console.log(enfermedadesSplit[i]);
                         queryEnfermedadesBadges(enfermedadesSplit[i]);
                     }
-                }
+                } */
                 
                 if (medicamentos_cual != null || medicamentos_cual != ""){
                     var medicamentosSplit = medicamentos_cual.replace(/, /g,',');

@@ -1205,19 +1205,22 @@ function queryTabAlergias(x){
     });
 }
 
-function queryAlergiasBadges(x){
-    var alergiasBadges = x;
-    $.ajax({
-        type: "POST",
-        url: 'query/queryAlergiasBadges.php',
-        dataType:'html',
-        data: {
-            alergiasBadges:alergiasBadges
-        },
-        success: function(data){
-            $('#alergiasFull').fadeIn(1000).append(data);
-        }
-    });
+function queryAlergiasBadges(x,texto){
+    var x = x;
+    var texto = document.getElementById('TextoBadge'+x).innerText;
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="A'+x+'"><span id="AS'+x+'" class="valorAFull">'+texto+' </span> <a class="text-light" onclick="removeA(\'A'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    $('#alergiasFull').fadeIn(1000).append(data);
+    document.querySelector('#alergias option[value="'+x+'"]').remove();
+}
+
+function queryAlergiasBadgesModal(){
+    var idNext = document.getElementById('hiddenAlergias').value;
+    var x = parseInt(idNext)+1;
+    var texto = document.getElementById('alergiaInput').value;
+    document.getElementById('hiddenAlergias').value = "";
+    document.getElementById('hiddenAlergias').value = x;
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="A'+x+'"><span id="AS'+x+'" class="valorAFull">'+texto+' </span> <a class="text-light" onclick="removeA(\'A'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    $('#alergiasFull').fadeIn(1000).append(data);
 }
 
 function removeA(val) {
@@ -1239,11 +1242,75 @@ function queryEnfermedadesBadgesModal(){
     var texto = document.getElementById('enfermedadInput').value;
     document.getElementById('hiddenEnf').value = "";
     document.getElementById('hiddenEnf').value = x;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+x+'"><span id="ES'+x+'" class="valorFull">'+texto+' </span> <a class="text-light" onclick="removeB(\'E'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+x+'"><span id="ES'+x+'" class="valorEFull">'+texto+' </span> <a class="text-light" onclick="removeB(\'E'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#enfermedadesFull').fadeIn(1000).append(data);
 }
 
+function queryMedicamentosBadges(x,texto){
+    var x = x;
+    var texto = document.getElementById('TextoBadge'+x).innerText;
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="M'+x+'"><span id="MS'+x+'" class="valorMFull">'+texto+' </span> <a class="text-light" onclick="removeC(\'M'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    $('#medicamentosFull').fadeIn(1000).append(data);
+    document.querySelector('#medicamentos option[value="'+x+'"]').remove();
+}
+
+function queryMedicamentosBadgesModal(){
+    var idNext = document.getElementById('hiddenMed').value;
+    var x = parseInt(idNext)+1;
+    var texto = document.getElementById('medicamentoInput').value;
+    document.getElementById('hiddenMed').value = "";
+    document.getElementById('hiddenMed').value = x;
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="M'+x+'"><span id="MS'+x+'" class="valorMFull">'+texto+' </span> <a class="text-light" onclick="removeC(\'M'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    $('#medicamentosFull').fadeIn(1000).append(data);
+}
+
+function removeA(val) {
+    //var numeroB = ""; //remover al momento de programar guardar
+    console.log('id: '+val);
+    var nombreVal = val.slice(1,val.length);
+    console.log('nombre: '+nombreVal);
+    var idInput = document.getElementById(val).getAttribute("id");
+    var nameInput = document.getElementById('AS'+nombreVal).innerText;
+    if (idInput){
+        document.getElementById(val).remove();
+        $('#alergias').append('<option value="'+idInput+'" onclick="queryAlergiasBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
+    }
+    else{
+        console.log("Nada");
+        document.getElementById(val).remove();
+    }
+    //remover al momento de programar guardar
+    /* const paragraphs = document.querySelectorAll('[class="valorEFull"]');
+    paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
+    numeroB = numeroB.slice(0, numeroB.length - 2);
+    console.log(numeroB);
+    document.getElementById('numeroB').value = numeroB; */
+}
+
 function removeB(val) {
+    //var numeroB = ""; //remover al momento de programar guardar
+    console.log('id: '+val);
+    var nombreVal = val.slice(1,val.length);
+    console.log('nombre: '+nombreVal);
+    var idInput = document.getElementById(val).getAttribute("id");
+    var nameInput = document.getElementById('ES'+nombreVal).innerText;
+    if (idInput){
+        document.getElementById(val).remove();
+        $('#enfermedades').append('<option value="'+idInput+'" onclick="queryEnfermedadesBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
+    }
+    else{
+        console.log("Nada");
+        document.getElementById(val).remove();
+    }
+    //remover al momento de programar guardar
+    /* const paragraphs = document.querySelectorAll('[class="valorEFull"]');
+    paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
+    numeroB = numeroB.slice(0, numeroB.length - 2);
+    console.log(numeroB);
+    document.getElementById('numeroB').value = numeroB; */
+}
+
+function removeC(val) {
     //var numeroB = ""; //remover al momento de programar guardar
     console.log('id: '+val);
     var nombreVal = val.slice(1,val.length);
@@ -1279,6 +1346,42 @@ function openModalE(val) {
     else if (y > x){
         y+1;
         document.getElementById('hiddenEnf').value = y;
+    }
+
+    // document.getElementById('hiddenEnf').setAttribute('id','E'+val);
+    
+}
+
+function openModalA(val) {
+    var x = val;
+    var y = document.getElementById('hiddenAlergia').value;
+    $('#alergiaModal').modal('show');
+    console.log(y);
+    if(y == 0){
+        x+1;
+        document.getElementById('hiddenAlergia').value = x;
+    }
+    else if (y > x){
+        y+1;
+        document.getElementById('hiddenAlergia').value = y;
+    }
+
+    // document.getElementById('hiddenEnf').setAttribute('id','E'+val);
+    
+}
+
+function openModalM(val) {
+    var x = val;
+    var y = document.getElementById('hiddenMedicamento').value;
+    $('#medicamentoModal').modal('show');
+    console.log(y);
+    if(y == 0){
+        x+1;
+        document.getElementById('hiddenMedicamento').value = x;
+    }
+    else if (y > x){
+        y+1;
+        document.getElementById('hiddenMedicamento').value = y;
     }
 
     // document.getElementById('hiddenEnf').setAttribute('id','E'+val);

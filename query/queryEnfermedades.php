@@ -39,7 +39,7 @@
         ';
     }
     echo '
-        <input type="hidden" id="numX"  value="'.$x.'">
+        <input type="text" id="numX" value="'.$x.'" hidden>
         <option value="0" onclick="openModalE('.$x.')">Otra</option>
     ';
     

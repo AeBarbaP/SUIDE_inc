@@ -24,11 +24,65 @@ $resultadoEnf = [];
 // Iterar sobre cada elemento y dividirlo en ID y nombre del producto
 foreach ($elementos as $elemento) {
     // Dividir el elemento en el guion ("-")
-    list($id, $enfermedad) = explode("-", $elemento);
+    list($idE, $enfermedad) = explode("-", $elemento);
     // Agregar el ID y el nombre del producto al arreglo resultadoEnf
     $resultadoEnf[] = [
-        'id' => $id,
+        'id' => $idE,
         'enfermedad' => $enfermedad
+    ];
+}
+
+$alergias = $rowDatosMedicos['alergias_cual'];
+// Cadena original
+$varA = $alergias;
+// Dividir la cadena en cada coma (",")
+$elementosA = explode(", ", $varA);
+// Arreglo para almacenar los resultados
+$resultadoAlergias = [];
+// Iterar sobre cada elemento y dividirlo en ID y nombre del producto
+foreach ($elementosA as $elementoA) {
+    // Dividir el elementoA en el guion ("-")
+    list($idA, $alergia) = explode("-", $elementoA);
+    // Agregar el ID y el nombre del producto al arreglo resultadoEnf
+    $resultadoAlergias[] = [
+        'id' => $idA,
+        'alergia' => $alergia
+    ];
+}
+
+$medicamentos = $rowDatosMedicos['medicamentos_cual'];
+// Cadena original
+$varM = $medicamentos;
+// Dividir la cadena en cada coma (",")
+$elementosM = explode(", ", $varM);
+// Arreglo para almacenar los resultados
+$resultadoMedicamentos = [];
+// Iterar sobre cada elemento y dividirlo en ID y nombre del producto
+foreach ($elementosM as $elementoM) {
+    // Dividir el elementoA en el guion ("-")
+    list($idM, $medicamento) = explode("-", $elementoM);
+    // Agregar el ID y el nombre del producto al arreglo resultadoEnf
+    $resultadoMedicamentos[] = [
+        'id' => $idM,
+        'medicamento' => $medicamento
+    ];
+}
+
+$grupos = $rowDatos['gpo_vulnerable'];
+// Cadena original
+$varG = $grupos;
+// Dividir la cadena en cada coma (",")
+$elementosG = explode(", ", $varG);
+// Arreglo para almacenar los resultados
+$resultadoGrupos = [];
+// Iterar sobre cada elemento y dividirlo en ID y nombre del producto
+foreach ($elementosG as $elementoG) {
+    // Dividir el elementoA en el guion ("-")
+    list($idG, $grupo) = explode("-", $elementoG);
+    // Agregar el ID y el nombre del producto al arreglo resultadoEnf
+    $resultadoGrupos[] = [
+        'id' => $idG,
+        'grupo' => $grupo
     ];
 }
 
@@ -256,5 +310,8 @@ else {
         'ineDocDoc'=>$ruta5,
         'comprobanteDoc'=>$ruta6,
         'tarjetaCirculacionDoc'=>$ruta7,
-        'arregloEnfermedades'=>$resultadoEnf
+        'arregloEnfermedades'=>$resultadoEnf,
+        'arregloAlergias'=>$resultadoAlergias,
+        'arregloMedicamentos'=>$resultadoMedicamentos,
+        'arregloGrupos'=>$resultadoGrupos
     ));
