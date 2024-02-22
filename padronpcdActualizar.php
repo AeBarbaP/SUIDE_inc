@@ -836,16 +836,18 @@ include('prcd/qc/qc.php');
                         <!-- Termina modal para agregar grupo vulnerable -->
                         <script>
                           function addG(val) {
+                            var nombreGV = document.getElementById('textoGpoV'+val).innerText;
+                            console.log(nombreGV);
                             var p2;
                             var numeroG = ""; //remover al momento de programar guardar
                             var textarea = document.getElementById("gruposFull");
                             if (val==null || val =="" || val == 0){
                               console.log('sin valor');
                             } else {
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorGFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-                              document.getElementById(val).setAttribute('onclick',"removeG('"+val+"')");
-                              document.getElementById(val).setAttribute('name',"'"+val+"'");
-                              //document.querySelector('#grupos option[value="'+val+'"]').remove();
+                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="gpoV'+val+'"><span id="'+val+'" class="valorGFull">'+nombreGV+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+                              document.getElementById('gpoV'+val).setAttribute("onclick","removeG('"+val+"','"+nombreGV+"')");
+                              document.getElementById('gpoV'+val).setAttribute('name',"'"+val+"'");
+                              document.querySelector('#grupos option[value="'+val+'"]').remove();
                             }
                             //remover al momento de programar guardar
                             const paragraphs = document.querySelectorAll('[class="valorGFull"]');
@@ -854,9 +856,9 @@ include('prcd/qc/qc.php');
                             console.log(numeroG);
                             document.getElementById('numeroG').value = numeroG;
                           }
-                          function addInputG() {
+                          function addInputG(val) {
+                            
                             var numeroG = "";//remover al momento de programar guardar
-                            var val = document.getElementById("grupoInput").value;
                             var textarea = document.getElementById("gruposFull");
                             //if (val==null || val =="" || val == 0){
                               //console.log('sin valor');
@@ -873,13 +875,13 @@ include('prcd/qc/qc.php');
                               document.getElementById('numeroG').value = numeroG;
                            // }
                           }
-                          function removeG(val) {
+                          function removeG(val,nombre) {
                             var numeroG = ""; //remover al momento de programar guardar
                             console.log(val);
-                            var nameInput = document.getElementById(val).getAttribute("name");
+                            var nameInput = document.getElementById('gpoV'+val).getAttribute("name");
                             if (nameInput){
-                              document.getElementById(val).remove();
-                              $('#grupos').append("<option value='"+val+"'>"+val+"</option>");
+                              document.getElementById('gpoV'+val).remove();
+                              $('#grupos').append("<option value='"+val+"' id='gpoV"+val+"'>"+nombre+"</option>");
                             }
                             else{
                               console.log("Nada");
