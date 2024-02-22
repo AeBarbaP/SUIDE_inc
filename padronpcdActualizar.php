@@ -802,7 +802,7 @@ include('prcd/qc/qc.php');
                         <input type="text" class="form-control" id="grupoSearch" onfocus="buscarGrupo()" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
-                      <select class="form-select" id="grupos" onclick="addG(this.value)" onselect="grupoOp(this.value)" multiple aria-label="multiple select example">
+                      <select class="form-select" id="grupos" onselect="grupoOp(this.value)" multiple aria-label="multiple select example">
                       </select>
                       <div class="form-text" style="color:red" id="noesta"></div>
                     </div>
@@ -822,20 +822,21 @@ include('prcd/qc/qc.php');
                               </div>
                               <div class="modal-body">
                                 <div class="input-group">
+                                  <input type="text" id="hiddenGpo" hidden>
                                   <span class="input-group-text"> Grupo Vulnerable:</span>
                                   <input type="text" class="form-control  w-50" id="grupoInput" name="grupoInput" value="" placeholder="">
                                 </div>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="button" class="btn btn-primary" onclick="addInputG()" data-bs-dismiss="modal">Agregar</button>
+                                <button type="button" class="btn btn-primary" onclick="queryGruposBadgesModal()" data-bs-dismiss="modal">Agregar</button>
                               </div>
                             </div>
                           </div>
                         </div>
                         <!-- Termina modal para agregar grupo vulnerable -->
                         <script>
-                          function addG(val) {
+                          /* function addG(val) {
                             var nombreGV = document.getElementById('textoGpoV'+val).innerText;
                             console.log(nombreGV);
                             var p2;
@@ -874,27 +875,8 @@ include('prcd/qc/qc.php');
                               console.log(numeroG);
                               document.getElementById('numeroG').value = numeroG;
                            // }
-                          }
-                          function removeG(val,nombre) {
-                            var numeroG = ""; //remover al momento de programar guardar
-                            console.log(val);
-                            var nameInput = document.getElementById('gpoV'+val).getAttribute("name");
-                            if (nameInput){
-                              document.getElementById('gpoV'+val).remove();
-                              $('#grupos').append("<option value='"+val+"' id='gpoV"+val+"'>"+nombre+"</option>");
-                            }
-                            else{
-                              console.log("Nada");
-                              document.getElementById(val).remove();
-  
-                            }
-                            //remover al momento de programar guardar
-                              const paragraphs = document.querySelectorAll('[class="valorGFull"]');
-                              paragraphs.forEach(p => numeroG = numeroG + p.id +', ');
-                              numeroG = numeroG.slice(0, numeroG.length - 2);
-                              console.log(numeroG);
-                              document.getElementById('numeroG').value = numeroG;
-                          }
+                          } */
+                          
                         </script>
                       </div>
                       
@@ -1404,7 +1386,7 @@ include('prcd/qc/qc.php');
                         <input type="text" class="form-control" id="buscarMed" onfocus="buscarMedicamento()" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
-                      <select class="form-select" id="medicamentos" onclick="addC(this.value)" onchange="medicamentosOp(this.value)" multiple aria-label="multiple select example">
+                      <select class="form-select" id="medicamentos" onchange="medicamentosOp(this.value)" multiple aria-label="multiple select example">
                       </select>
                       <div class="form-text" style="color:red" id="nohay"></div>
                     </div>

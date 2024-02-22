@@ -8,10 +8,14 @@
     $resultado_Query = $conn->query($Query);
     $filas = $resultado_Query->num_rows;
 
+    $x = 0;
     
     while ($row_sql_catalogo = $resultado_Query->fetch_assoc()){
+        $x++;
+        $id = $row_sql_catalogo['id'];
+        $nombre = $row_sql_catalogo['nombre'];
         echo '
-        <option value="'.$row_sql_catalogo['id'].'" id="GV'.$row_sql_catalogo['id'].'"><span id="textoGpoV'.$row_sql_catalogo['id'].'">'.$row_sql_catalogo['nombre'].'</span></option>
+        <option value="'.$id.'" id="GV'.$id.'" onclick="queryGruposBadges(this.value)"><span id="textoGpoV'.$id.'">'.$nombre.'</span></option>
         ';
     }
     if ($fila == 0){
@@ -22,7 +26,8 @@
         ';
     }
     echo '
-        <option value="0" data-bs-toggle="modal" data-bs-target="#grupoModal">Otra</option>
+        <input type="text" id="numXG" value="'.$x.'" hidden>
+        <option value="0" onclick="openModalG('.$x.')">Otra</option>
     ';
     
     ?>

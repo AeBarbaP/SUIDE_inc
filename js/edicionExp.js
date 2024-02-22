@@ -949,7 +949,7 @@ function queryDatos(){
                 showMeRef();
                 mostrarTablaServicios();
                 //mostrarTabla();
-                if (grupo == null || grupo == ""){
+               /*  if (grupo == null || grupo == ""){
                     grupo = "";
                     document.getElementById('gruposFull').value = "";
                 }
@@ -960,7 +960,7 @@ function queryDatos(){
                         console.log(grupoSplit[i]);
                         addG(grupoSplit[i]);
                     }
-                }
+                } */
 
 
                 /* if (alergias_cual != null || alergias_cual != ""){
@@ -990,8 +990,7 @@ function queryDatos(){
                     }
                     console.log("Variable Array "+idEnfermedad);
                     var nombreEnfermedad = contador.enfermedad;
-                    // Puedes hacer lo que necesites con cada usuario aquí
-                    // Por ejemplo, puedes agregar etiquetas HTML a algún elemento en tu página
+
                     $('#enfermedadesFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+idEnfermedad+'"><span id="'+idEnfermedad+'" class="valorFull">'+nombreEnfermedad+'</span> <a class="text-light" onclick="removeB(\'E'+idEnfermedad+'\')"><i class="bi bi-x-circle"></i></a></button>');
                 }
 
@@ -1012,9 +1011,48 @@ function queryDatos(){
                     }
                     console.log("Variable Array "+idAlergia);
                     var nombreAlergia = contador.alergia;
-                    // Puedes hacer lo que necesites con cada usuario aquí
-                    // Por ejemplo, puedes agregar etiquetas HTML a algún elemento en tu página
+
                     $('#alergiasFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="A'+idAlergia+'"><span id="'+idAlergia+'" class="valorAFull">'+nombreAlergia+'</span> <a class="text-light" onclick="removeA(\'A'+idAlergia+'\')"><i class="bi bi-x-circle"></i></a></button>');
+                }
+
+                var arrayMedicamentos = jsonData.arregloMedicamentos;
+                console.log(arrayMedicamentos);
+
+                for (var i = 0; i < arrayMedicamentos.length; i++) {
+                    var contador = arrayMedicamentos[i];
+                    var idMedicamento = contador.id;
+                    for (var j = 0; j < idMedicamento.length; j++){
+                        if (idMedicamento[j] == 0){
+                            var idTrimed = idMedicamento.slice(0,1);
+                            idMedicamento = idTrimed;
+                        }
+                        else{
+                            break;
+                        }
+                    }
+                    console.log("Variable Array "+idMedicamento);
+                    var nombreMedicamento = contador.medicamento;
+                    $('#medicamentosFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="M'+idMedicamento+'"><span id="MS'+idMedicamento+'" class="valorMFull">'+nombreMedicamento+'</span> <a class="text-light" onclick="removeC(\'M'+idMedicamento+'\')"><i class="bi bi-x-circle"></i></a></button>');
+                }
+
+                var arrayGrupos = jsonData.arregloGrupos;
+                console.log(arrayGrupos);
+
+                for (var i = 0; i < arrayGrupos.length; i++) {
+                    var contador = arrayGrupos[i];
+                    var idGrupo = contador.id;
+                    for (var j = 0; j < idGrupo.length; j++){
+                        if (idGrupo[j] == 0){
+                            var idTrimed = idGrupo.slice(0,1);
+                            idGrupo = idTrimed;
+                        }
+                        else{
+                            break;
+                        }
+                    }
+                    console.log("Variable Array "+idGrupo);
+                    var nombreGrupo = contador.grupo;
+                    $('#gruposFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="GV'+idGrupo+'"><span id="GS'+idGrupo+'" class="valorGFull">'+nombreGrupo+'</span> <a class="text-light" onclick="removeG(\'G'+idGrupo+'\')"><i class="bi bi-x-circle"></i></a></button>');
                 }
                 
                 /* if (enfermedades_cual != null || enfermedades_cual != ""){
@@ -1026,14 +1064,14 @@ function queryDatos(){
                     }
                 } */
                 
-                if (medicamentos_cual != null || medicamentos_cual != ""){
+                /* if (medicamentos_cual != null || medicamentos_cual != ""){
                     var medicamentosSplit = medicamentos_cual.replace(/, /g,',');
                     medicamentosSplit = medicamentosSplit.split(',');
                     for (var i = 0; i < medicamentosSplit.length; i++) {
                         console.log(medicamentosSplit[i]);
                         addC2(medicamentosSplit[i]);
                     }
-                }
+                } */
                 
             } else if (success == 0){
                 console.log(jsonData.error);
@@ -1042,7 +1080,7 @@ function queryDatos(){
     });
 }
 
-function addB2(val) {
+/* function addB2(val) {
     var p2;
     var numeroB = ""; //remover al momento de programar guardar
     var textarea = document.getElementById("enfermedadesFull");
@@ -1119,8 +1157,8 @@ function removeC2(val) {
     paragraphs.forEach(p => numeroC = numeroC + p.id +', ');
     numeroC = numeroC.slice(0, numeroC.length - 2);
     console.log(numeroC);
-    /* document.getElementById('numeroC').value = numeroC; */
-}
+    document.getElementById('numeroC').value = numeroC;
+} */
 
 function estudioSocioeconomicoA() {
     
