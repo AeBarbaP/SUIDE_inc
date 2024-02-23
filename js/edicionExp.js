@@ -991,7 +991,7 @@ function queryDatos(){
                     console.log("Variable Array "+idEnfermedad);
                     var nombreEnfermedad = contador.enfermedad;
 
-                    $('#enfermedadesFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+idEnfermedad+'"><span id="'+idEnfermedad+'" class="valorFull">'+nombreEnfermedad+'</span> <a class="text-light" onclick="removeB(\'E'+idEnfermedad+'\')"><i class="bi bi-x-circle"></i></a></button>');
+                    $('#enfermedadesFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+idEnfermedad+'"><span id="ES'+idEnfermedad+'" class="valorFull">'+nombreEnfermedad+'</span> <a class="text-light" onclick="removeB(\'E'+idEnfermedad+'\')"><i class="bi bi-x-circle"></i></a></button>');
                 }
 
                 var arrayAlergias = jsonData.arregloAlergias;
@@ -1012,7 +1012,7 @@ function queryDatos(){
                     console.log("Variable Array "+idAlergia);
                     var nombreAlergia = contador.alergia;
 
-                    $('#alergiasFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="A'+idAlergia+'"><span id="'+idAlergia+'" class="valorAFull">'+nombreAlergia+'</span> <a class="text-light" onclick="removeA(\'A'+idAlergia+'\')"><i class="bi bi-x-circle"></i></a></button>');
+                    $('#alergiasFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="A'+idAlergia+'"><span id="AS'+idAlergia+'" class="valorAFull">'+nombreAlergia+'</span> <a class="text-light" onclick="removeA(\'A'+idAlergia+'\')"><i class="bi bi-x-circle"></i></a></button>');
                 }
 
                 var arrayMedicamentos = jsonData.arregloMedicamentos;
@@ -1052,7 +1052,8 @@ function queryDatos(){
                     }
                     console.log("Variable Array "+idGrupo);
                     var nombreGrupo = contador.grupo;
-                    $('#gruposFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="GV'+idGrupo+'"><span id="GS'+idGrupo+'" class="valorGFull">'+nombreGrupo+'</span> <a class="text-light" onclick="removeG(\'G'+idGrupo+'\')"><i class="bi bi-x-circle"></i></a></button>');
+                    $('#gruposFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="GV'+idGrupo+'"><span id="textoGpoV'+idGrupo+'" class="valorGFull">'+nombreGrupo+' </span> <a class="text-light" onclick="removeG(\'GV'+idGrupo+'\')"><i class="bi bi-x-circle"></i></a></button>');
+
                 }
                 
                 /* if (enfermedades_cual != null || enfermedades_cual != ""){

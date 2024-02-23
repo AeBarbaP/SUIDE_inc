@@ -1231,7 +1231,7 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Alergias:</label>
                       <select class="form-select" id="alergias" onchange="alergiasOp(this.value);queryTabAlergias(this.value)" aria-label="Default select example">
-                        <option value="0">Ninguna</option>
+                        <option value="0"><span id="w">Ninguna</span></option>
                         <option value="1">Alimentaria</option>
                         <option value="2">Medicamentos</option>
                         <option value="3">Ambiental</option>
@@ -1249,8 +1249,8 @@ include('prcd/qc/qc.php');
                           </div>
                           <div class="modal-body">
                             <div class="input-group">
+                              <input type="text" id="hiddenAlergia" >
                               <span class="input-group-text"> Alergia:</span>
-                              <input type="text" id="hiddenAlergia" hidden>
                               <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control  w-50" id="alergiaInput" name="alergiaInput" value="" placeholder="">
                             </div>
                           </div>
@@ -1268,66 +1268,6 @@ include('prcd/qc/qc.php');
                         <div contenteditable="false" class="editable form-control mt-2 alergiasFull" id="alergiasFull">
                           <input type="text" id="numeroA" hidden>
                         </div>
-                        <!-- <script>
-                          function addA(val) {
-                            var p2;
-                            var numeroA = ""; //remover al momento de programar guardar
-                            var textarea = document.getElementById("alergiasFull");
-                            if (val==null || val =="" || val == 0){
-                              console.log('sin valor');
-                            } else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorAFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-                              document.getElementById(val).setAttribute('onclick',"removeA('"+val+"')");
-                              document.getElementById(val).setAttribute('name',"'"+val+"'");
-                              document.querySelector('#tipoAlergia option[value="'+val+'"]').remove();
-                              
-                              //remover al momento de programar guardar
-                              const paragraphs = document.querySelectorAll('[class="valorAFull"]');
-                              paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
-                              numeroA = numeroA.slice(0, numeroA.length - 2);
-                              console.log(numeroA);
-                              document.getElementById('numeroA').value = numeroA;
-                            }
-                          }
-                          function addInput() {
-                            var numeroA = "";//remover al momento de programar guardar
-                            var val = document.getElementById("alergiaInput").value;
-                            var textarea = document.getElementById("alergiasFull");
-                            //if (val==null || val =="" || val == 0){
-                              //console.log('sin valor');
-                            //} else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorAFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-                              document.getElementById(val).setAttribute('onclick',"removeA('"+val+"')");
-                              document.getElementById("alergiaInput").value ="";
-
-                              //remover al momento de programar guardar          
-                              const paragraphs = document.querySelectorAll('[class="valorAFull"]');
-                              paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
-                              numeroA = numeroA.slice(0, numeroA.length - 2);
-                              console.log(numeroA);
-                              document.getElementById('numeroA').value = numeroA;
-                           // }
-                          }
-                          function removeA(val) {
-                            var numero = ""; //remover al momento de programar guardar
-                            console.log(val);
-                            var nameInput = document.getElementById(val).getAttribute("name");
-                            if (nameInput){
-                              document.getElementById(val).remove();
-                              $('#tipoAlergia').append("<option value='"+val+"'>"+val+"</option>");
-                            }
-                            else{
-                              console.log("Nada");
-                              document.getElementById(val).remove();
-                            }
-                            //remover al momento de programar guardar
-                              const paragraphs = document.querySelectorAll('[class="valorFull"]');
-                              paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
-                              numeroA = numeroA.slice(0, numeroA.length - 2);
-                              console.log(numeroA);
-                              document.getElementById('numeroA').value = numeroA;
-                            }
-                        </script> -->
                         <style>
                           div.editable {
                             width: 300px;

@@ -1205,20 +1205,21 @@ function queryTabAlergias(x){
     });
 }
 
-function queryAlergiasBadges(x,texto){
-    var x = x;
-    var texto = document.getElementById('TextoBadge'+x).innerText;
+function queryAlergiasBadges(x1){
+    var x = x1;
+    console.log('id de alergia',x);
+    var texto = document.getElementById('TextoBadgeA'+x).innerText;
     var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="A'+x+'"><span id="AS'+x+'" class="valorAFull">'+texto+' </span> <a class="text-light" onclick="removeA(\'A'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#alergiasFull').fadeIn(1000).append(data);
     document.querySelector('#alergias option[value="'+x+'"]').remove();
 }
 
 function queryAlergiasBadgesModal(){
-    var idNext = document.getElementById('hiddenAlergias').value;
+    var idNext = document.getElementById('hiddenAlergia').value;
     var x = parseInt(idNext)+1;
     var texto = document.getElementById('alergiaInput').value;
-    document.getElementById('hiddenAlergias').value = "";
-    document.getElementById('hiddenAlergias').value = x;
+    document.getElementById('hiddenAlergia').value = "";
+    document.getElementById('hiddenAlergia').value = x;
     var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="A'+x+'"><span id="AS'+x+'" class="valorAFull">'+texto+' </span> <a class="text-light" onclick="removeA(\'A'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#alergiasFull').fadeIn(1000).append(data);
 }
@@ -1263,7 +1264,7 @@ function queryMedicamentosBadgesModal(){
 function queryGruposBadges(x,texto){
     var x = x;
     var texto = document.getElementById('textoGpoV'+x).innerText;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="G'+x+'"><span id="GS'+x+'" class="valorGFull">'+texto+' </span> <a class="text-light" onclick="removeG(\'G'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="GV'+x+'"><span id="textoGpoV'+x+'" class="valorGFull">'+texto+' </span> <a class="text-light" onclick="removeG(\'GV'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#gruposFull').fadeIn(1000).append(data);
     document.querySelector('#grupos option[value="'+x+'"]').remove();
 }
@@ -1274,16 +1275,16 @@ function queryGruposBadgesModal(){
     var texto = document.getElementById('grupoInput').value;
     document.getElementById('hiddenGpo').value = "";
     document.getElementById('hiddenGpo').value = x;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="G'+x+'"><span id="GS'+x+'" class="valorGFull">'+texto+' </span> <a class="text-light" onclick="removeG(\'G'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="GV'+x+'"><span id="textoGpoV'+x+'" class="valorGFull">'+texto+' </span> <a class="text-light" onclick="removeG(\'GV'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#gruposFull').fadeIn(1000).append(data);
 }
 
-function removeA(val) {
+function removeA(val1) {
     //var numeroB = ""; //remover al momento de programar guardar
-    console.log('id: '+val);
-    var nombreVal = val.slice(1,val.length);
+    console.log('id: '+val1);
+    var nombreVal = val1.slice(1,val1.length);
     console.log('nombre: '+nombreVal);
-    var idInput = document.getElementById(val).getAttribute("id");
+    var idInput = document.getElementById(val1).getAttribute("id");
     var nameInput = document.getElementById('AS'+nombreVal).innerText;
     if (idInput){
         document.getElementById(val).remove();
@@ -1291,7 +1292,7 @@ function removeA(val) {
     }
     else{
         console.log("Nada");
-        document.getElementById(val).remove();
+        document.getElementById(val1).remove();
     }
     //remover al momento de programar guardar
     /* const paragraphs = document.querySelectorAll('[class="valorEFull"]');
@@ -1301,20 +1302,20 @@ function removeA(val) {
     document.getElementById('numeroB').value = numeroB; */
 }
 
-function removeB(val) {
+function removeB(val2) {
     //var numeroB = ""; //remover al momento de programar guardar
-    console.log('id: '+val);
-    var nombreVal = val.slice(1,val.length);
+    console.log('id: '+val2);
+    var nombreVal = val2.slice(1,val2.length);
     console.log('nombre: '+nombreVal);
-    var idInput = document.getElementById(val).getAttribute("id");
+    var idInput = document.getElementById(val2).getAttribute("id");
     var nameInput = document.getElementById('ES'+nombreVal).innerText;
     if (idInput){
-        document.getElementById(val).remove();
+        document.getElementById(val2).remove();
         $('#enfermedades').append('<option value="'+idInput+'" onclick="queryEnfermedadesBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
     }
     else{
         console.log("Nada");
-        document.getElementById(val).remove();
+        document.getElementById(val2).remove();
     }
     //remover al momento de programar guardar
     /* const paragraphs = document.querySelectorAll('[class="valorEFull"]');
@@ -1324,20 +1325,20 @@ function removeB(val) {
     document.getElementById('numeroB').value = numeroB; */
 }
 
-function removeC(val) {
+function removeC(val3) {
     //var numeroB = ""; //remover al momento de programar guardar
-    console.log('id: '+val);
-    var nombreVal = val.slice(1,val.length);
+    console.log('id: '+val3);
+    var nombreVal = val3.slice(1,val3.length);
     console.log('nombre: '+nombreVal);
-    var idInput = document.getElementById(val).getAttribute("id");
+    var idInput = document.getElementById(val3).getAttribute("id");
     var nameInput = document.getElementById('MS'+nombreVal).innerText;
     if (idInput){
-        document.getElementById(val).remove();
+        document.getElementById(val3).remove();
         $('#medicamentos').append('<option value="'+idInput+'" onclick="queryMedicamentosBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
     }
     else{
         console.log("Nada");
-        document.getElementById(val).remove();
+        document.getElementById(val3).remove();
     }
     //remover al momento de programar guardar
     /* const paragraphs = document.querySelectorAll('[class="valorEFull"]');
@@ -1347,18 +1348,19 @@ function removeC(val) {
     document.getElementById('numeroB').value = numeroB; */
 }
 
-function removeG(val) {
-    var nombreVal = val.slice(1,val.length);
-    console.log(val);
-    var idInput = document.getElementById(val).getAttribute("id");
-    var nameInput = document.getElementById('GS'+nombreVal).innerText;
+function removeG(val4) {
+    var nombreVal1 = val4.slice(1,val4.length);
+    console.log('este es Val4:',val4);
+    var nombreVal = nombreVal1.slice(1,nombreVal1.length);
+    var idInput = document.getElementById(val4).getAttribute("id");
+    var nameInput = document.getElementById('textoGpoV'+nombreVal).innerText;
     if (nameInput){
-        document.getElementById(val).remove();
+        document.getElementById(val4).remove();
         $('#grupos').append('<option value="'+idInput+'" onclick="queryGruposBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
     }
     else{
         console.log("Nada");
-        document.getElementById(val).remove();
+        document.getElementById(val4).remove();
 
     }
     //remover al momento de programar guardar
