@@ -1207,11 +1207,14 @@ function queryTabAlergias(x){
 
 function queryAlergiasBadges(x1){
     var x = x1;
-    console.log('id de alergia',x);
-    var texto = document.getElementById('TextoBadgeA'+x).innerText;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="A'+x+'"><span id="AS'+x+'" class="valorAFull">'+texto+' </span> <a class="text-light" onclick="removeA(\'A'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var idVal = "A"+x;
+    var select = document.getElementById('tipoAlergia');
+    var opcionSeleccionada = select.options[select.selectedIndex];
+    var textoOpcionSeleccionada = opcionSeleccionada.textContent;
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary valorAFull" id="A'+x+'" tag="TextoBadgeA'+x+'">'+textoOpcionSeleccionada+' <a class="text-light" onclick="removeA(\'A'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#alergiasFull').fadeIn(1000).append(data);
-    document.querySelector('#alergias option[value="'+x+'"]').remove();
+    document.querySelector('#tipoAlergia option[value="'+x+'"]').remove();
+    paragraphsAlergias(idVal);
 }
 
 function queryAlergiasBadgesModal(){
@@ -1220,10 +1223,20 @@ function queryAlergiasBadgesModal(){
     var texto = document.getElementById('alergiaInput').value;
     document.getElementById('hiddenAlergia').value = "";
     document.getElementById('hiddenAlergia').value = x;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="A'+x+'"><span id="AS'+x+'" class="valorAFull">'+texto+' </span> <a class="text-light" onclick="removeA(\'A'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary valorAFull" id="A'+x+'" tag="TextoBadgeA'+x+'">'+texto+' <a class="text-light" onclick="removeA(\'A'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#alergiasFull').fadeIn(1000).append(data);
 }
 
+function paragraphsAlergias(x){
+    var p;
+    var id = x;
+    var numeroA = "";
+    const paragraphs = document.querySelectorAll('[class="valorAFull"]');
+    paragraphs.forEach(p => numeroA = numeroA+'-'+p.id+', ');
+    //numeroA = numeroA.slice(0, numeroA.length - 2);
+    console.log(numeroA);
+    document.getElementById('numeroA').value = numeroA;
+}
 
 function queryEnfermedadesBadges(x,texto){
     var x = x;
@@ -1279,27 +1292,24 @@ function queryGruposBadgesModal(){
     $('#gruposFull').fadeIn(1000).append(data);
 }
 
+
+
 function removeA(val1) {
     //var numeroB = ""; //remover al momento de programar guardar
     console.log('id: '+val1);
     var nombreVal = val1.slice(1,val1.length);
     console.log('nombre: '+nombreVal);
     var idInput = document.getElementById(val1).getAttribute("id");
-    var nameInput = document.getElementById('AS'+nombreVal).innerText;
+    var nameInput = document.getElementById(idInput).innerText;
+    console.log('name: '+nameInput);
     if (idInput){
-        document.getElementById(val).remove();
-        $('#alergias').append('<option value="'+idInput+'" onclick="queryAlergiasBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
+        document.getElementById(val1).remove();
+        $('#tipoAlergia').append('<option value="'+idInput+'" onclick="queryAlergiasBadges(this.value)" tag="TextoBadgeA'+idInput+'">'+nameInput+'</option>');
     }
     else{
         console.log("Nada");
         document.getElementById(val1).remove();
     }
-    //remover al momento de programar guardar
-    /* const paragraphs = document.querySelectorAll('[class="valorEFull"]');
-    paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
-    numeroB = numeroB.slice(0, numeroB.length - 2);
-    console.log(numeroB);
-    document.getElementById('numeroB').value = numeroB; */
 }
 
 function removeB(val2) {

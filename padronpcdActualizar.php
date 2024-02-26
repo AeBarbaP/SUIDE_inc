@@ -1266,7 +1266,7 @@ include('prcd/qc/qc.php');
                       <div class="input-group mt-4">
                         <span class="input-group-text mt-2" height="auto">Alergias <br>seleccionadas:</span>
                         <div contenteditable="false" class="editable form-control mt-2 alergiasFull" id="alergiasFull">
-                          <input type="text" id="numeroA" hidden>
+                          <input type="text" id="numeroA">
                         </div>
                         <style>
                           div.editable {
