@@ -810,7 +810,7 @@ include('prcd/qc/qc.php');
                       <div class="input-group mt-4" style="height:max-content">
                         <span class="input-group-text mt-2">Grupos Vulnerables <br>seleccionados:</span>
                         <div contenteditable="false" class="editable form-control mt-2" id="gruposFull">
-                          <input type="text" id="numeroG" hidden>
+                          <input type="text" id="numeroG">
                         </div>
                         <!-- Modal para agregar grupo vulnerable -->
                         <div class="modal fade" id="grupoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -1293,7 +1293,7 @@ include('prcd/qc/qc.php');
                       <div class="input-group mt-4" style="height:max-content">
                         <span class="input-group-text mt-2">Enfermedades <br>seleccionadas:</span>
                         <div contenteditable="false" class="editable form-control mt-2" id="enfermedadesFull">
-                          <input type="text" id="numeroB" hidden>
+                          <input type="text" id="numeroB">
                         </div>
                         <!-- Modal para agregar enfermedad -->
                         <div class="modal fade" id="enfermedadModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -1334,7 +1334,7 @@ include('prcd/qc/qc.php');
                       <div class="input-group mt-4" style="height:max-content">
                         <span class="input-group-text mt-2">Medicamentos <br>seleccionados:</span>
                         <div contenteditable="false" class="editable form-control mt-2" id="medicamentosFull">
-                          <input type="text" id="numeroC" hidden>
+                          <input type="text" id="numeroC">
                         </div>
                         <!-- Modal para agregar medicamento -->
                         <div class="modal fade" id="medicamentoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

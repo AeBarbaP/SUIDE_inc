@@ -1214,7 +1214,7 @@ function queryAlergiasBadges(x1){
     var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary valorAFull" id="A'+x+'"><label id="labelTexto">'+textoOpcionSeleccionada+'</label> <a class="text-light" onclick="removeA(\'A'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#alergiasFull').fadeIn(1000).append(data);
     document.querySelector('#tipoAlergia option[value="'+x+'"]').remove();
-    paragraphsAlergias(idVal,""+textoOpcionSeleccionada+"");
+    paragraphsAlergias(idVal);
 }
 
 function queryAlergiasBadgesModal(){
@@ -1239,12 +1239,13 @@ function paragraphsAlergias(x){
     document.getElementById('numeroA').value = numeroA;
 }
 
-function queryEnfermedadesBadges(x,texto){
-    var x = x;
+function queryEnfermedadesBadges(x1,texto){
+    var x = x1;
     var texto = document.getElementById('TextoBadge'+x).innerText;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+x+'"><span id="ES'+x+'" class="valorFull">'+texto+' </span> <a class="text-light" onclick="removeB(\'E'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+x+'"><label id="labelTextoE" class="valorMFull">'+texto+'</label><a class="text-light" onclick="removeB(\'E'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#enfermedadesFull').fadeIn(1000).append(data);
     document.querySelector('#enfermedades option[value="'+x+'"]').remove();
+    paragraphsEnfermedades(x);
 }
 
 function queryEnfermedadesBadgesModal(){
@@ -1253,16 +1254,29 @@ function queryEnfermedadesBadgesModal(){
     var texto = document.getElementById('enfermedadInput').value;
     document.getElementById('hiddenEnf').value = "";
     document.getElementById('hiddenEnf').value = x;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+x+'"><span id="ES'+x+'" class="valorEFull">'+texto+' </span> <a class="text-light" onclick="removeB(\'E'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+x+'"><label id="labelTextoE" class="valorMFull">'+texto+'</label><a class="text-light" onclick="removeB(\'E'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#enfermedadesFull').fadeIn(1000).append(data);
 }
 
-function queryMedicamentosBadges(x,texto){
-    var x = x;
+function paragraphsEnfermedades(x){
+    var p;
+    var id = x;
+    var numeroE = "";
+/*     const paragraphs = document.querySelectorAll('[class="valorAFull"]');*/
+   const paragraphs = document.querySelectorAll('[id="labelTextoE"]');
+   paragraphs.forEach(p => numeroE = numeroE + p.innerText+', ');
+    numeroE = numeroE.slice(0, numeroE.length - 2);
+    console.log(numeroE);
+    document.getElementById('numeroB').value = numeroE;
+}
+
+function queryMedicamentosBadges(x1,texto){
+    var x = x1;
     var texto = document.getElementById('TextoBadge'+x).innerText;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="M'+x+'"><span id="MS'+x+'" class="valorMFull">'+texto+' </span> <a class="text-light" onclick="removeC(\'M'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="M'+x+'"><label id="labelTextoM" class="valorMFull">'+texto+' </label><a class="text-light" onclick="removeC(\'M'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#medicamentosFull').fadeIn(1000).append(data);
     document.querySelector('#medicamentos option[value="'+x+'"]').remove();
+    paragraphsMedicamentos(x);
 }
 
 function queryMedicamentosBadgesModal(){
@@ -1271,16 +1285,29 @@ function queryMedicamentosBadgesModal(){
     var texto = document.getElementById('medicamentoInput').value;
     document.getElementById('hiddenMed').value = "";
     document.getElementById('hiddenMed').value = x;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="M'+x+'"><span id="MS'+x+'" class="valorMFull">'+texto+' </span> <a class="text-light" onclick="removeC(\'M'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="M'+x+'"><label id="labelTextoM" class="valorMFull">'+texto+' </label> <a class="text-light" onclick="removeC(\'M'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#medicamentosFull').fadeIn(1000).append(data);
+}
+
+function paragraphsMedicamentos(x){
+    var p;
+    var id = x;
+    var numeroM = "";
+/*     const paragraphs = document.querySelectorAll('[class="valorAFull"]');*/
+   const paragraphs = document.querySelectorAll('[id="labelTextoM"]');
+   paragraphs.forEach(p => numeroM = numeroM + p.innerText+', ');
+    numeroM = numeroM.slice(0, numeroM.length - 2);
+    console.log(numeroM);
+    document.getElementById('numeroC').value = numeroM;
 }
 
 function queryGruposBadges(x,texto){
     var x = x;
     var texto = document.getElementById('textoGpoV'+x).innerText;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="GV'+x+'"><span id="textoGpoV'+x+'" class="valorGFull">'+texto+' </span> <a class="text-light" onclick="removeG(\'GV'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="GV'+x+'"><label id="labelTextoG" class="valorMFull">'+texto+' </label><a class="text-light" onclick="removeG(\'GV'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#gruposFull').fadeIn(1000).append(data);
     document.querySelector('#grupos option[value="'+x+'"]').remove();
+    paragraphsGrupos(x)
 }
 
 function queryGruposBadgesModal(){
@@ -1293,7 +1320,17 @@ function queryGruposBadgesModal(){
     $('#gruposFull').fadeIn(1000).append(data);
 }
 
-
+function paragraphsGrupos(x){
+    var p;
+    var id = x;
+    var numeroG = "";
+/*     const paragraphs = document.querySelectorAll('[class="valorAFull"]');*/
+   const paragraphs = document.querySelectorAll('[id="labelTextoG"]');
+   paragraphs.forEach(p => numeroG = numeroG + p.innerText+', ');
+    numeroG = numeroG.slice(0, numeroG.length - 2);
+    console.log(numeroG);
+    document.getElementById('numeroG').value = numeroG;
+}
 
 function removeA(val1) {
     //var numeroB = ""; //remover al momento de programar guardar
@@ -1306,6 +1343,7 @@ function removeA(val1) {
     if (idInput){
         document.getElementById(val1).remove();
         $('#tipoAlergia').append('<option value="'+idInput+'" onclick="queryAlergiasBadges(this.value)" tag="TextoBadgeA'+idInput+'">'+nameInput+'</option>');
+        paragraphsAlergias
     }
     else{
         console.log("Nada");
