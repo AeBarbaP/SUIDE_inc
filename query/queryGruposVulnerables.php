@@ -15,7 +15,7 @@
         $id = $row_sql_catalogo['id'];
         $nombre = $row_sql_catalogo['nombre'];
         echo '
-        <option value="'.$id.'" id="GV'.$id.'" onclick="queryGruposBadges(this.value)"><span id="textoGpoV'.$id.'">'.$nombre.'</span></option>
+        <option value="'.$id.'" id="G'.$id.'" onclick="queryGruposBadges(this.value)"><span id="textoGpoV'.$id.'">'.$nombre.'</span></option>
         ';
     }
     if ($fila == 0){

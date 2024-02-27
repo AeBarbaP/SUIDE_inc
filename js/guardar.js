@@ -1239,10 +1239,12 @@ function paragraphsAlergias(x){
     document.getElementById('numeroA').value = numeroA;
 }
 
-function queryEnfermedadesBadges(x1,texto){
+function queryEnfermedadesBadges(x1){
     var x = x1;
-    var texto = document.getElementById('TextoBadge'+x).innerText;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+x+'"><label id="labelTextoE" class="valorMFull">'+texto+'</label><a class="text-light" onclick="removeB(\'E'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var select = document.getElementById('enfermedades');
+    var opcionSeleccionada = select.options[select.selectedIndex];
+    var textoOpcionSeleccionada = opcionSeleccionada.textContent;
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary valorEFull" id="E'+x+'"><label class="labelTextoE" id="'+x+'">'+textoOpcionSeleccionada+' </label> <a class="text-light" onclick="removeB(\'E'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#enfermedadesFull').fadeIn(1000).append(data);
     document.querySelector('#enfermedades option[value="'+x+'"]').remove();
     paragraphsEnfermedades(x);
@@ -1254,7 +1256,7 @@ function queryEnfermedadesBadgesModal(){
     var texto = document.getElementById('enfermedadInput').value;
     document.getElementById('hiddenEnf').value = "";
     document.getElementById('hiddenEnf').value = x;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+x+'"><label id="labelTextoE" class="valorMFull">'+texto+'</label><a class="text-light" onclick="removeB(\'E'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+x+'"><label id="labelTextoE" class="valorEFull">'+texto+'</label><a class="text-light" onclick="removeB(\'E'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#enfermedadesFull').fadeIn(1000).append(data);
 }
 
@@ -1263,17 +1265,19 @@ function paragraphsEnfermedades(x){
     var id = x;
     var numeroE = "";
 /*     const paragraphs = document.querySelectorAll('[class="valorAFull"]');*/
-   const paragraphs = document.querySelectorAll('[id="labelTextoE"]');
-   paragraphs.forEach(p => numeroE = numeroE + p.innerText+', ');
+    const paragraphs = document.querySelectorAll('[class="labelTextoE"]');
+    paragraphs.forEach(p => numeroE = numeroE+p.id+'-'+ p.innerText+', ');
     numeroE = numeroE.slice(0, numeroE.length - 2);
     console.log(numeroE);
     document.getElementById('numeroB').value = numeroE;
 }
 
-function queryMedicamentosBadges(x1,texto){
+function queryMedicamentosBadges(x1){
     var x = x1;
-    var texto = document.getElementById('TextoBadge'+x).innerText;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="M'+x+'"><label id="labelTextoM" class="valorMFull">'+texto+' </label><a class="text-light" onclick="removeC(\'M'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var select = document.getElementById('medicamentos');
+    var opcionSeleccionada = select.options[select.selectedIndex];
+    var textoOpcionSeleccionada = opcionSeleccionada.textContent;
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary valorMFull" id="M'+x+'"><label class="labelTextoM" id="'+x+'">'+textoOpcionSeleccionada+' </label><a class="text-light" onclick="removeC(\'M'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#medicamentosFull').fadeIn(1000).append(data);
     document.querySelector('#medicamentos option[value="'+x+'"]').remove();
     paragraphsMedicamentos(x);
@@ -1294,17 +1298,19 @@ function paragraphsMedicamentos(x){
     var id = x;
     var numeroM = "";
 /*     const paragraphs = document.querySelectorAll('[class="valorAFull"]');*/
-   const paragraphs = document.querySelectorAll('[id="labelTextoM"]');
-   paragraphs.forEach(p => numeroM = numeroM + p.innerText+', ');
+    const paragraphs = document.querySelectorAll('[class="labelTextoM"]');
+    paragraphs.forEach(p => numeroM = numeroM+p.id+'-'+ p.innerText+', ');
     numeroM = numeroM.slice(0, numeroM.length - 2);
     console.log(numeroM);
     document.getElementById('numeroC').value = numeroM;
 }
 
-function queryGruposBadges(x,texto){
-    var x = x;
-    var texto = document.getElementById('textoGpoV'+x).innerText;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="GV'+x+'"><label id="labelTextoG" class="valorMFull">'+texto+' </label><a class="text-light" onclick="removeG(\'GV'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+function queryGruposBadges(x1){
+    var x = x1;
+    var select = document.getElementById('grupos');
+    var opcionSeleccionada = select.options[select.selectedIndex];
+    var textoOpcionSeleccionada = opcionSeleccionada.textContent;
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary valorGFull" id="G'+x+'"><label class="labelTextoG" id="'+x+'">'+textoOpcionSeleccionada+' </label><a class="text-light" onclick="removeG(\'G'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#gruposFull').fadeIn(1000).append(data);
     document.querySelector('#grupos option[value="'+x+'"]').remove();
     paragraphsGrupos(x)
@@ -1316,17 +1322,18 @@ function queryGruposBadgesModal(){
     var texto = document.getElementById('grupoInput').value;
     document.getElementById('hiddenGpo').value = "";
     document.getElementById('hiddenGpo').value = x;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="GV'+x+'"><span id="textoGpoV'+x+'" class="valorGFull">'+texto+' </span> <a class="text-light" onclick="removeG(\'GV'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary valorGFull" id="G'+x+'"><label class="labelTextoG" id="'+x+'">'+texto+' </label> <a class="text-light" onclick="removeG(\'G'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#gruposFull').fadeIn(1000).append(data);
 }
 
 function paragraphsGrupos(x){
     var p;
-    var id = x;
+    var idSlice = x;
+    var id = idSlice.slice(2,idSlice.length);
     var numeroG = "";
 /*     const paragraphs = document.querySelectorAll('[class="valorAFull"]');*/
-    const paragraphs = document.querySelectorAll('[id="labelTextoG"]');
-    paragraphs.forEach(p => numeroG = numeroG + p.innerText+', ');
+    const paragraphs = document.querySelectorAll('[class="labelTextoG"]');
+    paragraphs.forEach(p => numeroG = numeroG+p.id+'-' + p.innerText+', ');
     numeroG = numeroG.slice(0, numeroG.length - 2);
     console.log(numeroG);
     document.getElementById('numeroG').value = numeroG;
@@ -1335,14 +1342,13 @@ function paragraphsGrupos(x){
 function removeA(val1) {
     //var numeroB = ""; //remover al momento de programar guardar
     console.log('id: '+val1);
-    var nombreVal = val1.slice(1,val1.length);
-    console.log('nombre: '+nombreVal);
+    var idVal = val1.slice(1,val1.length);
     var idInput = document.getElementById(val1).getAttribute("id");
     var nameInput = document.getElementById(idInput).innerText;
     console.log('name: '+nameInput);
     if (idInput){
         document.getElementById(val1).remove();
-        $('#tipoAlergia').append('<option value="'+idInput+'" onclick="queryAlergiasBadges(this.value)" tag="TextoBadgeA'+idInput+'">'+nameInput+'</option>');
+        $('#tipoAlergia').append('<option value="'+idVal+'" id="'+idInput+'" onclick="queryAlergiasBadges(this.value)" tag="TextoBadgeA'+idInput+'">'+nameInput+'</option>');
         paragraphsAlergias(idInput);
     }
     else{
@@ -1354,13 +1360,13 @@ function removeA(val1) {
 function removeB(val2) {
     //var numeroB = ""; //remover al momento de programar guardar
     console.log('id: '+val2);
-    var nombreVal = val2.slice(1,val2.length);
-    console.log('nombre: '+nombreVal);
+    var idVal = val2.slice(1,val2.length);
     var idInput = document.getElementById(val2).getAttribute("id");
     var nameInput = document.getElementById(idInput).innerText;
     if (idInput){
         document.getElementById(val2).remove();
-        $('#enfermedades').append('<option value="'+idInput+'" onclick="queryEnfermedadesBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
+        $('#enfermedades').append('<option value="'+idVal+'" id="'+idInput+'" onclick="queryEnfermedadesBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
+        paragraphsEnfermedades(idInput);
     }
     else{
         console.log("Nada");
@@ -1376,14 +1382,13 @@ function removeB(val2) {
 
 function removeC(val3) {
     //var numeroB = ""; //remover al momento de programar guardar
-    console.log('id: '+val3);
-    var nombreVal = val3.slice(1,val3.length);
-    console.log('nombre: '+nombreVal);
+    var idVal = val3.slice(1,val3.length);
     var idInput = document.getElementById(val3).getAttribute("id");
     var nameInput = document.getElementById(idInput).innerText;
     if (idInput){
         document.getElementById(val3).remove();
-        $('#medicamentos').append('<option value="'+idInput+'" onclick="queryMedicamentosBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
+        $('#medicamentos').append('<option value="'+idVal+'" id="'+idInput+'" onclick="queryMedicamentosBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
+        paragraphsMedicamentos(idInput);
     }
     else{
         console.log("Nada");
@@ -1398,14 +1403,15 @@ function removeC(val3) {
 }
 
 function removeG(val4) {
-    var nombreVal1 = val4.slice(1,val4.length);
     console.log('este es Val4:',val4);
-    var nombreVal = nombreVal1.slice(1,nombreVal1.length);
+    var idVal = val4.slice(1,val4.length);
+    console.log('id: '+idVal);
     var idInput = document.getElementById(val4).getAttribute("id");
     var nameInput = document.getElementById(idInput).innerText;
     if (nameInput){
         document.getElementById(val4).remove();
-        $('#grupos').append('<option value="'+idInput+'" id="'+idInput+'" onclick="queryGruposBadges(this.value)"><span id="textoGpoV'+idInput+'">'+nameInput+'</span></option>');
+        $('#grupos').append('<option value="'+idVal+'" id="'+idInput+'" onclick="queryGruposBadges(this.value)"><span id="textoGpoV'+idInput+'">'+nameInput+'</span></option>');
+        paragraphsGrupos(idInput);
     }
     else{
         console.log("Nada");
