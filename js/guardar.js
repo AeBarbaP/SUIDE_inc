@@ -1211,10 +1211,10 @@ function queryAlergiasBadges(x1){
     var select = document.getElementById('tipoAlergia');
     var opcionSeleccionada = select.options[select.selectedIndex];
     var textoOpcionSeleccionada = opcionSeleccionada.textContent;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary valorAFull" id="A'+x+'"><label id="labelTexto">'+textoOpcionSeleccionada+'</label> <a class="text-light" onclick="removeA(\'A'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary valorAFull" id="A'+x+'"><label class="labelTexto" id="'+x+'">'+textoOpcionSeleccionada+'</label> <a class="text-light" onclick="removeA(\'A'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#alergiasFull').fadeIn(1000).append(data);
     document.querySelector('#tipoAlergia option[value="'+x+'"]').remove();
-    paragraphsAlergias(idVal);
+    paragraphsAlergias(x);
 }
 
 function queryAlergiasBadgesModal(){
@@ -1229,11 +1229,11 @@ function queryAlergiasBadgesModal(){
 
 function paragraphsAlergias(x){
     var p;
-    var id = x;
+    var valId = x;
     var numeroA = "";
-/*     const paragraphs = document.querySelectorAll('[class="valorAFull"]');*/
-   const paragraphs = document.querySelectorAll('[id="labelTexto"]');
-   paragraphs.forEach(p => numeroA = numeroA + p.innerText+', ');
+    /*     const paragraphs = document.querySelectorAll('[class="valorAFull"]');*/
+    const paragraphs = document.querySelectorAll('[class="labelTexto"]');
+    paragraphs.forEach(p => numeroA = numeroA +p.id+'-'+ p.innerText+', ');
     numeroA = numeroA.slice(0, numeroA.length - 2);
     console.log(numeroA);
     document.getElementById('numeroA').value = numeroA;
@@ -1325,8 +1325,8 @@ function paragraphsGrupos(x){
     var id = x;
     var numeroG = "";
 /*     const paragraphs = document.querySelectorAll('[class="valorAFull"]');*/
-   const paragraphs = document.querySelectorAll('[id="labelTextoG"]');
-   paragraphs.forEach(p => numeroG = numeroG + p.innerText+', ');
+    const paragraphs = document.querySelectorAll('[id="labelTextoG"]');
+    paragraphs.forEach(p => numeroG = numeroG + p.innerText+', ');
     numeroG = numeroG.slice(0, numeroG.length - 2);
     console.log(numeroG);
     document.getElementById('numeroG').value = numeroG;
@@ -1343,7 +1343,7 @@ function removeA(val1) {
     if (idInput){
         document.getElementById(val1).remove();
         $('#tipoAlergia').append('<option value="'+idInput+'" onclick="queryAlergiasBadges(this.value)" tag="TextoBadgeA'+idInput+'">'+nameInput+'</option>');
-        paragraphsAlergias
+        paragraphsAlergias(idInput);
     }
     else{
         console.log("Nada");
@@ -1357,7 +1357,7 @@ function removeB(val2) {
     var nombreVal = val2.slice(1,val2.length);
     console.log('nombre: '+nombreVal);
     var idInput = document.getElementById(val2).getAttribute("id");
-    var nameInput = document.getElementById('ES'+nombreVal).innerText;
+    var nameInput = document.getElementById(idInput).innerText;
     if (idInput){
         document.getElementById(val2).remove();
         $('#enfermedades').append('<option value="'+idInput+'" onclick="queryEnfermedadesBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
@@ -1380,7 +1380,7 @@ function removeC(val3) {
     var nombreVal = val3.slice(1,val3.length);
     console.log('nombre: '+nombreVal);
     var idInput = document.getElementById(val3).getAttribute("id");
-    var nameInput = document.getElementById('MS'+nombreVal).innerText;
+    var nameInput = document.getElementById(idInput).innerText;
     if (idInput){
         document.getElementById(val3).remove();
         $('#medicamentos').append('<option value="'+idInput+'" onclick="queryMedicamentosBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
@@ -1402,10 +1402,10 @@ function removeG(val4) {
     console.log('este es Val4:',val4);
     var nombreVal = nombreVal1.slice(1,nombreVal1.length);
     var idInput = document.getElementById(val4).getAttribute("id");
-    var nameInput = document.getElementById('textoGpoV'+nombreVal).innerText;
+    var nameInput = document.getElementById(idInput).innerText;
     if (nameInput){
         document.getElementById(val4).remove();
-        $('#grupos').append('<option value="'+idInput+'" onclick="queryGruposBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
+        $('#grupos').append('<option value="'+idInput+'" id="'+idInput+'" onclick="queryGruposBadges(this.value)"><span id="textoGpoV'+idInput+'">'+nameInput+'</span></option>');
     }
     else{
         console.log("Nada");
