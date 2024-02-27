@@ -1211,10 +1211,10 @@ function queryAlergiasBadges(x1){
     var select = document.getElementById('tipoAlergia');
     var opcionSeleccionada = select.options[select.selectedIndex];
     var textoOpcionSeleccionada = opcionSeleccionada.textContent;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary valorAFull" id="A'+x+'" tag="TextoBadgeA'+x+'">'+textoOpcionSeleccionada+' <a class="text-light" onclick="removeA(\'A'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary valorAFull" id="A'+x+'"><label id="labelTexto">'+textoOpcionSeleccionada+'</label> <a class="text-light" onclick="removeA(\'A'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#alergiasFull').fadeIn(1000).append(data);
     document.querySelector('#tipoAlergia option[value="'+x+'"]').remove();
-    paragraphsAlergias(idVal);
+    paragraphsAlergias(idVal,""+textoOpcionSeleccionada+"");
 }
 
 function queryAlergiasBadgesModal(){
@@ -1223,7 +1223,7 @@ function queryAlergiasBadgesModal(){
     var texto = document.getElementById('alergiaInput').value;
     document.getElementById('hiddenAlergia').value = "";
     document.getElementById('hiddenAlergia').value = x;
-    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary valorAFull" id="A'+x+'" tag="TextoBadgeA'+x+'">'+texto+' <a class="text-light" onclick="removeA(\'A'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
+    var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary valorAFull" id="A'+x+'">'+texto+' <a class="text-light" onclick="removeA(\'A'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#alergiasFull').fadeIn(1000).append(data);
 }
 
@@ -1231,9 +1231,10 @@ function paragraphsAlergias(x){
     var p;
     var id = x;
     var numeroA = "";
-    const paragraphs = document.querySelectorAll('[class="valorAFull"]');
-    paragraphs.forEach(p => numeroA = numeroA+'-'+p.id+', ');
-    //numeroA = numeroA.slice(0, numeroA.length - 2);
+/*     const paragraphs = document.querySelectorAll('[class="valorAFull"]');*/
+   const paragraphs = document.querySelectorAll('[id="labelTexto"]');
+   paragraphs.forEach(p => numeroA = numeroA + p.innerText+', ');
+    numeroA = numeroA.slice(0, numeroA.length - 2);
     console.log(numeroA);
     document.getElementById('numeroA').value = numeroA;
 }

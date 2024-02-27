@@ -15,7 +15,7 @@
         
         echo '
         
-        <option value="'.$id.'" id="A'.$id.'" onclick="queryAlergiasBadges(this.value)" tag="TextoBadgeA'.$id.'">'.$nombre.'</option>
+        <option value="'.$id.'" id="A'.$id.'" onclick="queryAlergiasBadges('.$id.')" tag="TextoBadgeA'.$id.'">'.$nombre.'</option>
         ';
     }
     
