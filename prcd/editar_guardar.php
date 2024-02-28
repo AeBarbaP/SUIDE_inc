@@ -64,7 +64,7 @@ $tipo_dato = 13;
 
 $sqlinsert= "UPDATE datos_generales SET 
     numExpediente = '$numExp',
-    fecha_registro = '$fecha_registro',
+    fecha_actualizacion = '$fecha_registro',
     nombre = '$nombre',
     apellido_p = '$apellidoP',
     apellido_m = '$apellidoM',
