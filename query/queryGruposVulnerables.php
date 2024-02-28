@@ -18,10 +18,11 @@
         <option value="'.$id.'" id="G'.$id.'" onclick="queryGruposBadges(this.value)"><span id="textoGpoV'.$id.'">'.$nombre.'</span></option>
         ';
     }
-    if ($fila == 0){
+    if ($filas == 0){
         echo'
         <script>
         document.getElementById("noesta").innerHTML = ""
+        console
         </script>
         ';
     }

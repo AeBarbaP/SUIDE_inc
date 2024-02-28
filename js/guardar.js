@@ -1402,7 +1402,8 @@ function removeC(val3) {
     document.getElementById('numeroB').value = numeroB; */
 }
 
-function removeG(val4) {
+function removeG(val5) {
+    var val4 = val5;
     console.log('este es Val4:',val4);
     var idVal = val4.slice(1,val4.length);
     console.log('id: '+idVal);

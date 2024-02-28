@@ -31,7 +31,7 @@
         <option value="'.$id.'" id="S'.$id.'" onclick="queryEnfermedadesBadges(this.value)"><span id="TextoBadge'.$id.'">'.$nombre.'</span></option>
         ';
     }
-    if ($fila == 0){
+    if ($filas == 0){
         echo'
         <script>
         document.getElementById("noesta").innerHTML = ""

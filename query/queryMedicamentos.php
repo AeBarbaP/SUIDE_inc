@@ -19,7 +19,7 @@
         <option value="'.$id.'" id="M'.$id.'" onclick="queryMedicamentosBadges(this.value)"><span id="TextoBadge'.$id.'">'.$nombre.'</span></option>
         ';
     }
-    if ($fila == 0){
+    if ($filas == 0){
         echo'
             <script>
                 document.getElementById("nohay").innerHTML = ""

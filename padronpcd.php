@@ -73,7 +73,7 @@ include('prcd/qc/qc.php');
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="js/guardar.js"></script>
     <script src="js/validate.js"></script>
@@ -731,7 +731,7 @@ include('prcd/qc/qc.php');
                         <input type="text" class="form-control" id="grupoSearch" onfocus="buscarGrupo()" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
-                      <select class="form-select" id="grupos" onclick="addG(this.value)" onselect="grupoOp(this.value)" multiple aria-label="multiple select example">
+                      <select class="form-select" id="grupos" onselect="grupoOp(this.value)" multiple aria-label="multiple select example">
                       </select>
                       <div class="form-text" style="color:red" id="noesta"></div>
                     </div>
@@ -763,66 +763,7 @@ include('prcd/qc/qc.php');
                           </div>
                         </div>
                         <!-- Termina modal para agregar grupo vulnerable -->
-                        <script>
-                          function addG(val) {
-                            var p2;
-                            var numeroG = ""; //remover al momento de programar guardar
-                            var textarea = document.getElementById("gruposFull");
-                            if (val==null || val =="" || val == 0){
-                              console.log('sin valor');
-                            } else {
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorGFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-                              document.getElementById(val).setAttribute('onclick',"removeG('"+val+"')");
-                              document.getElementById(val).setAttribute('name',"'"+val+"'");
-                              document.querySelector('#grupos option[value="'+val+'"]').remove();
-                            }
-                            //remover al momento de programar guardar
-                            const paragraphs = document.querySelectorAll('[class="valorGFull"]');
-                            paragraphs.forEach(p => numeroG = numeroG + p.id +', ');
-                            numeroG = numeroG.slice(0, numeroG.length - 2);
-                            console.log(numeroG);
-                            document.getElementById('numeroG').value = numeroG;
-                          }
-                          function addInputG() {
-                            var numeroG = "";//remover al momento de programar guardar
-                            var val = document.getElementById("grupoInput").value;
-                            var textarea = document.getElementById("gruposFull");
-                            //if (val==null || val =="" || val == 0){
-                              //console.log('sin valor');
-                            //} else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorGFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-                              document.getElementById(val).setAttribute('onclick',"removeG('"+val+"')");
-                              document.getElementById("grupoInput").value ="";
-
-                              //remover al momento de programar guardar          
-                              const paragraphs = document.querySelectorAll('[class="valorGFull"]');
-                              paragraphs.forEach(p => numeroG = numeroG + p.id +', ');
-                              numeroG = numeroG.slice(0, numeroG.length - 2);
-                              console.log(numeroG);
-                              document.getElementById('numeroG').value = numeroG;
-                           // }
-                          }
-                          function removeG(val) {
-                            var numeroG = ""; //remover al momento de programar guardar
-                            console.log(val);
-                            var nameInput = document.getElementById(val).getAttribute("name");
-                            if (nameInput){
-                              document.getElementById(val).remove();
-                              $('#grupos').append("<option value='"+val+"'>"+val+"</option>");
-                            }
-                            else{
-                              console.log("Nada");
-                              document.getElementById(val).remove();
-  
-                            }
-                            //remover al momento de programar guardar
-                              const paragraphs = document.querySelectorAll('[class="valorGFull"]');
-                              paragraphs.forEach(p => numeroG = numeroG + p.id +', ');
-                              numeroG = numeroG.slice(0, numeroG.length - 2);
-                              console.log(numeroG);
-                              document.getElementById('numeroG').value = numeroG;
-                          }
-                        </script>
+                        
                       </div>
                       
                     </div>
@@ -1163,7 +1104,7 @@ include('prcd/qc/qc.php');
                         <option value="2">Medicamentos</option>
                         <option value="3">Ambiental</option>
                       </select>
-                      <select class="form-select" id="tipoAlergia" multiple aria-label="multiple select example" onclick="addA(this.value);" disabled>
+                      <select class="form-select" id="tipoAlergia" multiple aria-label="multiple select example" disabled>
                       </select>
                     </div>
                     <!-- Modal para agregar alergia -->
@@ -1182,7 +1123,7 @@ include('prcd/qc/qc.php');
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" onclick="addInput()" data-bs-dismiss="modal">Agregar</button>
+                            <button type="button" class="btn btn-primary" onclick="queryAlergiasBadgesModal()" data-bs-dismiss="modal">Agregar</button>
                           </div>
                         </div>
                       </div>
@@ -1194,67 +1135,7 @@ include('prcd/qc/qc.php');
                         <div contenteditable="false" class="editable form-control mt-2 alergiasFull" id="alergiasFull">
                           <input type="text" id="numeroA" hidden>
                         </div>
-                        <script>
-                          function addA(val) {
-                            var p2;
-                            var numeroA = ""; //remover al momento de programar guardar
-                            var textarea = document.getElementById("alergiasFull");
-                            if (val==null || val =="" || val == 0){
-                              console.log('sin valor');
-                            } else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-                              document.getElementById(val).setAttribute('onclick',"removeA('"+val+"')");
-                              document.getElementById(val).setAttribute('name',"'"+val+"'");
-                              document.querySelector('#tipoAlergia option[value="'+val+'"]').remove();
-                              
-                              //remover al momento de programar guardar
-                              const paragraphs = document.querySelectorAll('[class="valorFull"]');
-                              paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
-                              numeroA = numeroA.slice(0, numeroA.length - 2);
-                              console.log(numeroA);
-                              document.getElementById('numeroA').value = numeroA;
-                            }
-                          }
-                          function addInput() {
-                            var numeroA = "";//remover al momento de programar guardar
-                            var val = document.getElementById("alergiaInput").value;
-                            var textarea = document.getElementById("alergiasFull");
-                            //if (val==null || val =="" || val == 0){
-                              //console.log('sin valor');
-                            //} else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-                              document.getElementById(val).setAttribute('onclick',"removeA('"+val+"')");
-                              document.getElementById("alergiaInput").value ="";
-
-                              //remover al momento de programar guardar          
-                              const paragraphs = document.querySelectorAll('[class="valorFull"]');
-                              paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
-                              numeroA = numeroA.slice(0, numeroA.length - 2);
-                              console.log(numeroA);
-                              document.getElementById('numeroA').value = numeroA;
-                           // }
-                          }
-                          function removeA(val) {
-                            var numero = ""; //remover al momento de programar guardar
-                            console.log(val);
-                            var nameInput = document.getElementById(val).getAttribute("name");
-                            if (nameInput){
-                              document.getElementById(val).remove();
-                              $('#tipoAlergia').append("<option value='"+val+"'>"+val+"</option>");
-                            }
-                            else{
-                              console.log("Nada");
-                              document.getElementById(val).remove();
-
-                            }
-                            //remover al momento de programar guardar
-                              const paragraphs = document.querySelectorAll('[class="valorFull"]');
-                              paragraphs.forEach(p => numeroA = numeroA + p.id +', ');
-                              numeroA = numeroA.slice(0, numeroA.length - 2);
-                              console.log(numeroA);
-                              document.getElementById('numeroA').value = numeroA;
-                            }
-                        </script>
+                        
                         <style>
                           div.editable {
                             width: 300px;
@@ -1272,7 +1153,7 @@ include('prcd/qc/qc.php');
                         <input type="text" class="form-control" id="enfermedadesSearch" onfocus="buscarEnfermedad()" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
-                      <select class="form-select" id="enfermedades" onclick="addB(this.value)" onselect="enfermedadesOp(this.value)" multiple aria-label="multiple select example">
+                      <select class="form-select" id="enfermedades" onselect="enfermedadesOp(this.value)" multiple aria-label="multiple select example">
                       </select>
                       <div class="form-text" style="color:red" id="noesta"></div>
                     </div>
@@ -1298,72 +1179,13 @@ include('prcd/qc/qc.php');
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="button" class="btn btn-primary" onclick="addInputE()" data-bs-dismiss="modal">Agregar</button>
+                                <button type="button" class="btn btn-primary" onclick="queryEnfermedadesBadgesModal()" data-bs-dismiss="modal">Agregar</button>
                               </div>
                             </div>
                           </div>
                         </div>
                         <!-- Termina modal para agregar enfermedad -->
-                        <script>
-                          function addB(val) {
-                            var p2;
-                            var numeroB = ""; //remover al momento de programar guardar
-                            var textarea = document.getElementById("enfermedadesFull");
-                            if (val==null || val =="" || val == 0){
-                              console.log('sin valor');
-                            } else {
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorEFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-                              document.getElementById(val).setAttribute('onclick',"removeB('"+val+"')");
-                              document.getElementById(val).setAttribute('name',"'"+val+"'");
-                              document.querySelector('#enfermedades option[value="'+val+'"]').remove();
-                            }
-                            //remover al momento de programar guardar
-                            const paragraphs = document.querySelectorAll('[class="valorEFull"]');
-                            paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
-                            numeroB = numeroB.slice(0, numeroB.length - 2);
-                            console.log(numeroB);
-                            document.getElementById('numeroB').value = numeroB;
-                          }
-                          function addInputE() {
-                            var numeroB = "";//remover al momento de programar guardar
-                            var val = document.getElementById("enfermedadInput").value;
-                            var textarea = document.getElementById("enfermedadesFull");
-                            //if (val==null || val =="" || val == 0){
-                              //console.log('sin valor');
-                            //} else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorEFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-                              document.getElementById(val).setAttribute('onclick',"removeB('"+val+"')");
-                              document.getElementById("enfermedadInput").value ="";
-
-                              //remover al momento de programar guardar          
-                              const paragraphs = document.querySelectorAll('[class="valorEFull"]');
-                              paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
-                              numeroB = numeroB.slice(0, numeroB.length - 2);
-                              console.log(numeroB);
-                              document.getElementById('numeroB').value = numeroB;
-                           // }
-                          }
-                          function removeB(val) {
-                            var numeroB = ""; //remover al momento de programar guardar
-                            console.log(val);
-                            var nameInput = document.getElementById(val).getAttribute("name");
-                            if (nameInput){
-                              document.getElementById(val).remove();
-                              $('#enfermedades').append("<option value='"+val+"'>"+val+"</option>");
-                            }
-                            else{
-                              console.log("Nada");
-                              document.getElementById(val).remove();
-  
-                            }
-                            //remover al momento de programar guardar
-                              const paragraphs = document.querySelectorAll('[class="valorEFull"]');
-                              paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
-                              numeroB = numeroB.slice(0, numeroB.length - 2);
-                              console.log(numeroB);
-                              document.getElementById('numeroB').value = numeroB;
-                          }
-                        </script>
+                        
                       </div>
                       
                     </div>
@@ -1373,7 +1195,7 @@ include('prcd/qc/qc.php');
                         <input type="text" class="form-control" id="buscarMed" onfocus="buscarMedicamento()" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
-                      <select class="form-select" id="medicamentos" onclick="addC(this.value)" onchange="medicamentosOp(this.value)" multiple aria-label="multiple select example">
+                      <select class="form-select" id="medicamentos" onchange="medicamentosOp(this.value)" multiple aria-label="multiple select example">
                       </select>
                       <div class="form-text" style="color:red" id="nohay"></div>
                     </div>
@@ -1399,70 +1221,13 @@ include('prcd/qc/qc.php');
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="button" class="btn btn-primary" onclick="addInputM()" data-bs-dismiss="modal">Agregar</button>
+                                <button type="button" class="btn btn-primary" onclick="queryMedicamentosBadgesModal()" data-bs-dismiss="modal">Agregar</button>
                               </div>
                             </div>
                           </div>
                         </div>
                         <!-- Termina modal para agregar medicamento -->
-                        <script>
-                          function addC(val) {
-                            var p2;
-                            var numeroC = ""; //remover al momento de programar guardar
-                            var textarea = document.getElementById("medicamentosFull");
-                            if (val==null || val =="" || val == 0){
-                              console.log('sin valor');
-                            } else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorMFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-                              document.getElementById(val).setAttribute('onclick',"removeC('"+val+"')");
-                              document.querySelector('#medicamentos option[value="'+val+'"]').remove();
-                            }
-                            //remover al momento de programar guardar
-                            const paragraphs = document.querySelectorAll('[class="valorMFull"]');
-                            paragraphs.forEach(p2 => numeroC = numeroC + p2.id +', ');
-                            numeroC = numeroC.slice(0, numeroC.length - 2);
-                            console.log(numeroC);
-                            document.getElementById('numeroC').value = numeroC;
-                          }
-                          function addInputM() {
-                            var numeroC = "";//remover al momento de programar guardar
-                            var val = document.getElementById("medicamentoInput").value;
-                            var textarea = document.getElementById("medicamentosFull");
-                            //if (val==null || val =="" || val == 0){
-                              //console.log('sin valor');
-                            //} else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorMFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-                              document.getElementById(val).setAttribute('onclick',"removeC('"+val+"')");
-                              document.getElementById("medicamentoInput").value ="";
-
-                              //remover al momento de programar guardar          
-                              const paragraphs = document.querySelectorAll('[class="valorMFull"]');
-                              paragraphs.forEach(p => numeroC = numeroC + p.id +', ');
-                              numeroC = numeroC.slice(0, numeroC.length - 2);
-                              console.log(numeroC);
-                              document.getElementById('numeroC').value = numeroC;
-                           // }
-                          }
-                          function removeC(val) {
-                            var numeroC = ""; //remover al momento de programar guardar
-                            console.log(val);
-                            var nameInput = document.getElementById(val).getAttribute("name");
-                            if (nameInput){
-                              document.getElementById(val).remove();
-                              $('#medicamentos').append("<option value='"+val+"'>"+val+"</option>");
-                            }
-                            else{
-                              console.log("Nada");
-                              document.getElementById(val).remove();
-                            }
-                            //remover al momento de programar guardar
-                              const paragraphs = document.querySelectorAll('[class="valorMFull"]');
-                              paragraphs.forEach(p => numeroC = numeroC + p.id +', ');
-                              numeroC = numeroC.slice(0, numeroC.length - 2);
-                              console.log(numeroC);
-                              /* document.getElementById('numeroC').value = numeroC; */
-                          }
-                        </script>
+                        
                       </div>
                     </div>
                     <br>

@@ -645,6 +645,24 @@ function alergiasOp(x){
         document.getElementById('alergiasFull').disabled = true;
     }
 }
+function alergiasOp1(x){
+    var alergia = x;
+    console.log(x);
+
+    if(alergia == 1){
+        document.getElementById('tipoAlergia1').disabled = false;
+        document.getElementById('alergiasFull').disabled = false;
+    } else if(alergia == 2){
+        document.getElementById('tipoAlergia1').disabled = false;
+        document.getElementById('alergiasFull').disabled = false;
+    } else if(alergia == 3){
+        document.getElementById('tipoAlergia1').disabled = false;
+        document.getElementById('alergiasFull').disabled = false;
+    } else if (alergia == 0){
+        document.getElementById('tipoAlergia1').disabled = true;
+        document.getElementById('alergiasFull').disabled = true;
+    }
+}
 function enfermedadesOp(x){
     var enfermedad = x;
 
