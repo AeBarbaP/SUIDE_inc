@@ -751,6 +751,7 @@ include('prcd/qc/qc.php');
                               </div>
                               <div class="modal-body">
                                 <div class="input-group">
+                                  <input type="text" id="hiddenGrupo" hidden>
                                   <span class="input-group-text"> Grupo Vulnerable:</span>
                                   <input type="text" class="form-control  w-50" id="grupoInput" name="grupoInput" value="" placeholder="">
                                 </div>
@@ -1117,6 +1118,7 @@ include('prcd/qc/qc.php');
                           </div>
                           <div class="modal-body">
                             <div class="input-group">
+                              <input type="text" id="hiddenAlergia" hidden>
                               <span class="input-group-text"> Alergia:</span>
                               <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control  w-50" id="alergiaInput" name="alergiaInput" value="" placeholder="">
                             </div>
@@ -1173,6 +1175,7 @@ include('prcd/qc/qc.php');
                               </div>
                               <div class="modal-body">
                                 <div class="input-group">
+                                  <input type="text" id="hiddenEnf" hidden>
                                   <span class="input-group-text"> Enfermedad:</span>
                                   <input type="text" class="form-control  w-50" id="enfermedadInput" name="enfermedadInput" value="" placeholder="">
                                 </div>
@@ -1215,6 +1218,7 @@ include('prcd/qc/qc.php');
                               </div>
                               <div class="modal-body">
                                 <div class="input-group">
+                                  <input type="text" id="hiddenMed">
                                   <span class="input-group-text"> Medicamento:</span>
                                   <input type="text" class="form-control  w-50" id="medicamentoInput" name="medicamentoInput" value="" placeholder="">
                                 </div>

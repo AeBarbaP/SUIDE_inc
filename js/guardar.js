@@ -1445,6 +1445,24 @@ function openModalE(val) {
     
 }
 
+function openModalG(val) {
+    var x = val;
+    var y = document.getElementById('hiddenGrupo').value;
+    $('#grupoModal').modal('show');
+    console.log(y);
+    if(y == 0){
+        x+1;
+        document.getElementById('hiddenGrupo').value = x;
+    }
+    else if (y > x){
+        y+1;
+        document.getElementById('hiddenGrupo').value = y;
+    }
+
+    // document.getElementById('hiddenGrupo').setAttribute('id','E'+val);
+    
+}
+
 function openModalA(val) {
     var x = val;
     var y = document.getElementById('hiddenAlergia').value;
@@ -1465,16 +1483,16 @@ function openModalA(val) {
 
 function openModalM(val) {
     var x = val;
-    var y = document.getElementById('hiddenMedicamento').value;
+    var y = document.getElementById('hiddenMed').value;
     $('#medicamentoModal').modal('show');
     console.log(y);
     if(y == 0){
         x+1;
-        document.getElementById('hiddenMedicamento').value = x;
+        document.getElementById('hiddenMed').value = x;
     }
     else if (y > x){
         y+1;
-        document.getElementById('hiddenMedicamento').value = y;
+        document.getElementById('hiddenMed').value = y;
     }
 
     // document.getElementById('hiddenEnf').setAttribute('id','E'+val);
@@ -3090,6 +3108,7 @@ function checkListDocs() {
 
 function nona(){
     var curp = document.getElementById('curp_exp').value;
+    var numExp = document.getElementById('numeroExpediente').innerText;
     var registroNo1 = document.getElementById('registroNo');
     var registroNA1 = document.getElementById('registroNA');
     var valoracionNo1 = document.getElementById('valoracionNo');
@@ -3224,6 +3243,7 @@ function nona(){
         url: 'prcd/guardarDocumentoNoNA.php',
         dataType:'json',
         data: {
+            numExp:numExp,
             curp:curp,
             registroNo:registroNo,
             registroNA:registroNA,
@@ -3251,7 +3271,9 @@ function nona(){
             var jsonData = JSON.parse(JSON.stringify(data));
             var success = jsonData.success;
             console.log(success);
-            
+            var x = jsonData.x;
+            var y = jsonData.y;
+            console.log('Valor X ',x, 'Valor Y ',y);
 
             if (success = 10) {
                 console.log('si llega');

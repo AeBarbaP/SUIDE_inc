@@ -16,6 +16,7 @@
     $fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
 
     $curp = $_POST['curp'];
+    $numExp = $_POST['numExp'];
     $registroNo = $_POST['registroNo'];
     $registroNA = $_POST['registroNA'];
     $valoracionNo = $_POST['valoracionNo'];
@@ -37,15 +38,16 @@
     $ineDoc = $_POST['ineDoc'];
     $comprobanteDoc = $_POST['comprobanteDoc'];
     $circulacionDoc = $_POST['circulacionDoc'];
+    $x = '';
+    $y = '';
 
     if ($registroNo == "" && $registroNA == ""){
-            /* echo json_encode(array(
-                'success'=>0
-            )); */
+            $y++;
     }
     else if ($registroNo == 8){
-        $sqlInsert= "INSERT INTO documentos_list (
-            id_ext,
+        $sqlInsert1= "INSERT INTO documentos_list (
+            curp,
+            numExp,
             tipo_doc,
             ruta_doc,
             fecha,
@@ -53,19 +55,24 @@
             ) 
         VALUES(
             '$curp',
+            '$numExp',
             '$registroNo',
             '',
             '$fecha_entrega',
             '$registroDoc'
             )";
-        $resultado= $conn->query($sqlInsert);
-        /* echo json_encode(array(
-            'success'=>1
-        )); */
+        $resultado1= $conn->query($sqlInsert1);
+        if ($resultado1){
+            $x++;
+        }
+        else {
+            $y++;
+        }
     }
     else if ($registroNA == 15){
-        $sqlInsert= "INSERT INTO documentos_list (
-            id_ext,
+        $sqlInsert2= "INSERT INTO documentos_list (
+            curp,
+            numExp,
             tipo_doc,
             ruta_doc,
             fecha,
@@ -73,24 +80,27 @@
             ) 
         VALUES(
             '$curp',
-            '$registroNA',
+            '$numExp',
+            '$registroNo',
             '',
             '$fecha_entrega',
             '$registroDoc'
             )";
-        $resultado= $conn->query($sqlInsert);
-        /* echo json_encode(array(
-            'success'=>1
-        )); */
+        $resultado2= $conn->query($sqlInsert2);
+        if ($resultado2){
+            $x++;
+        }
+        else {
+            $y++;
+        }
     }
     if ($valoracionNo == "" && $valoracionNA == ""){
-            /* echo json_encode(array(
-                'success'=>0
-            )); */
+        $y++;
     }
     else if ($valoracionNo == 9){
-        $sqlInsert= "INSERT INTO documentos_list (
-            id_ext,
+        $sqlInsert3= "INSERT INTO documentos_list (
+            curp,
+            numExp,
             tipo_doc,
             ruta_doc,
             fecha,
@@ -98,19 +108,24 @@
             ) 
         VALUES(
             '$curp',
-            '$valoracionNo',
+            '$numExp',
+            '$registroNo',
             '',
             '$fecha_entrega',
-            '$valoracionDoc'
+            '$registroDoc'
             )";
-        $resultado= $conn->query($sqlInsert);
-        /* echo json_encode(array(
-            'success'=>2
-        )); */
+        $resultado3= $conn->query($sqlInsert3);
+        if ($resultado3){
+            $x++;
+        }
+        else {
+            $y++;
+        }
     }
     else if ($valoracionNA == 16){
-        $sqlInsert= "INSERT INTO documentos_list (
-            id_ext,
+        $sqlInsert4= "INSERT INTO documentos_list (
+            curp,
+            numExp,
             tipo_doc,
             ruta_doc,
             fecha,
@@ -118,24 +133,27 @@
             ) 
         VALUES(
             '$curp',
-            '$valoracionNA',
+            '$numExp',
+            '$registroNo',
             '',
             '$fecha_entrega',
-            '$valoracionDoc'
+            '$registroDoc'
             )";
-        $resultado= $conn->query($sqlInsert);
-        /* echo json_encode(array(
-            'success'=>2
-        )); */
+        $resultado4= $conn->query($sqlInsert4);
+        if ($resultado4){
+            $x++;
+        }
+        else {
+            $y++;
+        }
     }
     if ($actaNo == "" && $actaNA == ""){
-            /* echo json_encode(array(
-                'success'=>0
-            )); */
+        $y++;
     }
     else if ($actaNo == 10){
-        $sqlInsert= "INSERT INTO documentos_list (
-            id_ext,
+        $sqlInsert5= "INSERT INTO documentos_list (
+            curp,
+            numExp,
             tipo_doc,
             ruta_doc,
             fecha,
@@ -143,19 +161,24 @@
             ) 
         VALUES(
             '$curp',
-            '$actaNo',
+            '$numExp',
+            '$registroNo',
             '',
             '$fecha_entrega',
-            '$actaDoc'
+            '$registroDoc'
             )";
-        $resultado= $conn->query($sqlInsert);
-        /* echo json_encode(array(
-            'success'=>3
-        )); */
+        $resultado5= $conn->query($sqlInsert5);
+        if ($resultado5){
+            $x++;
+        }
+        else {
+            $y++;
+        }
     }
     else if ($actaNA == 17){
-        $sqlInsert= "INSERT INTO documentos_list (
-            id_ext,
+        $sqlInsert6= "INSERT INTO documentos_list (
+            curp,
+            numExp,
             tipo_doc,
             ruta_doc,
             fecha,
@@ -163,24 +186,27 @@
             ) 
         VALUES(
             '$curp',
-            '$actaNA',
+            '$numExp',
+            '$registroNo',
             '',
             '$fecha_entrega',
-            '$actaDoc'
+            '$registroDoc'
             )";
-        $resultado= $conn->query($sqlInsert);
-        /* echo json_encode(array(
-            'success'=>3
-        )); */
+        $resultado6= $conn->query($sqlInsert6);
+        if ($resultado6){
+            $x++;
+        }
+        else {
+            $y++;
+        }
     }
     if ($curpNo == "" && $curpNA == ""){
-            /* echo json_encode(array(
-                'success'=>0
-            )); */
+        $y++;
     }
     else if ($curpNo == 11){
-        $sqlInsert= "INSERT INTO documentos_list (
-            id_ext,
+        $sqlInsert7= "INSERT INTO documentos_list (
+            curp,
+            numExp,
             tipo_doc,
             ruta_doc,
             fecha,
@@ -188,19 +214,24 @@
             ) 
         VALUES(
             '$curp',
-            '$curpNo',
+            '$numExp',
+            '$registroNo',
             '',
             '$fecha_entrega',
-            '$curpDoc'
-            )";
-        $resultado= $conn->query($sqlInsert);
-        /* echo json_encode(array(
-            'success'=>4
-        )); */
+            '$registroDoc'
+        )";
+        $resultado7= $conn->query($sqlInsert7);
+        if ($resultado7){
+            $x++;
+        }
+        else {
+            $y++;
+        }
     }
     else if ($curpNA == 18){
-        $sqlInsert= "INSERT INTO documentos_list (
-            id_ext,
+        $sqlInsert8= "INSERT INTO documentos_list (
+            curp,
+            numExp,
             tipo_doc,
             ruta_doc,
             fecha,
@@ -208,24 +239,27 @@
             ) 
         VALUES(
             '$curp',
-            '$curpNA',
+            '$numExp',
+            '$registroNo',
             '',
             '$fecha_entrega',
             '$registroDoc'
-            )";
-        $resultado= $conn->query($sqlInsert);
-        /* echo json_encode(array(
-            'success'=>4
-        )); */
+        )";
+        $resultado8= $conn->query($sqlInsert8);
+        if ($resultado8){
+            $x++;
+        }
+        else {
+            $y++;
+        }
     }
     if ($ineNo == "" && $ineNA == ""){
-        /* echo json_encode(array(
-            'success'=>0
-        )); */
+        $y++;
     }
     else if ($ineNo == 12){
-        $sqlInsert= "INSERT INTO documentos_list (
-            id_ext,
+        $sqlInsert9= "INSERT INTO documentos_list (
+            curp,
+            numExp,
             tipo_doc,
             ruta_doc,
             fecha,
@@ -233,44 +267,52 @@
             ) 
         VALUES(
             '$curp',
-            '$ineNo',
-            '',
-            '$fecha_entrega',
-            '$ineDoc'
-            )";
-        $resultado= $conn->query($sqlInsert);
-        /* echo json_encode(array(
-            'success'=>5
-        )); */
-    }
-    else if ($ineNA == 19){
-        $sqlInsert= "INSERT INTO documentos_list (
-            id_ext,
-            tipo_doc,
-            ruta_doc,
-            fecha,
-            documento
-            ) 
-        VALUES(
-            '$curp',
-            '$ineNA',
+            '$numExp',
+            '$registroNo',
             '',
             '$fecha_entrega',
             '$registroDoc'
             )";
-        $resultado= $conn->query($sqlInsert);
-        /* echo json_encode(array(
-            'success'=>5
-        )); */
+        $resultado9= $conn->query($sqlInsert9);
+        if ($resultado9){
+            $x++;
+        }
+        else {
+            $y++;
+        }
+    }
+    else if ($ineNA == 19){
+        $sqlInsert0= "INSERT INTO documentos_list (
+            curp,
+            numExp,
+            tipo_doc,
+            ruta_doc,
+            fecha,
+            documento
+            ) 
+        VALUES(
+            '$curp',
+            '$numExp',
+            '$registroNo',
+            '',
+            '$fecha_entrega',
+            '$registroDoc'
+            )";
+        $resultado0= $conn->query($sqlInsert0);
+        if ($resultado0){
+            $x++;
+        }
+        else {
+            $y++;
+        }
     }
     if ($comprobanteNo == "" && $comprobanteNA == ""){
-        /* echo json_encode(array(
-            'success'=>0
-        )); */
+        $y++;
     }
     else if ($comprobanteNo == 13){
-        $sqlInsert= "INSERT INTO documentos_list (
-            id_ext,
+        $sqlInsert10= "INSERT INTO documentos_list (
+            curp,
+            numExp,
             tipo_doc,
             ruta_doc,
             fecha,
@@ -278,19 +320,24 @@
             ) 
         VALUES(
             '$curp',
-            '$comprobanteNo',
+            '$numExp',
+            '$registroNo',
             '',
             '$fecha_entrega',
-            '$comprobanteDoc'
+            '$registroDoc'
             )";
-        $resultado= $conn->query($sqlInsert);
-        /* echo json_encode(array(
-            'success'=>6
-        )); */
+        $resultado10= $conn->query($sqlInsert10);
+        if ($resultado10){
+            $x++;
+        }
+        else {
+            $y++;
+        }
     }
     else if ($comprobanteNA == 20){
-        $sqlInsert= "INSERT INTO documentos_list (
-            id_ext,
+        $sqlInsert11= "INSERT INTO documentos_list (
+            curp,
+            numExp,
             tipo_doc,
             ruta_doc,
             fecha,
@@ -298,24 +345,27 @@
             ) 
         VALUES(
             '$curp',
-            '$comprobanteNA',
+            '$numExp',
+            '$registroNo',
             '',
             '$fecha_entrega',
-            '$comprobanteDoc'
+            '$registroDoc'
             )";
-        $resultado= $conn->query($sqlInsert);
-        /* echo json_encode(array(
-            'success'=>6
-        )); */
+        $resultado11= $conn->query($sqlInsert11);
+        if ($resultado11){
+            $x++;
+        }
+        else {
+            $y++;
+        }
     }
     if ($circulacionNo == "" && $circulacionNA == ""){
-            /* echo json_encode(array(
-                'success'=>0
-            )); */
+        $y++;
     }
     else if ($circulacionNo == 14){
-        $sqlInsert= "INSERT INTO documentos_list (
-            id_ext,
+        $sqlInsert12= "INSERT INTO documentos_list (
+            curp,
+            numExp,
             tipo_doc,
             ruta_doc,
             fecha,
@@ -323,19 +373,24 @@
             ) 
         VALUES(
             '$curp',
+            '$numExp',
             '$circulacionNo',
             '',
             '$fecha_entrega',
             '$circulacionDoc'
             )";
-        $resultado= $conn->query($sqlInsert);
-        /* echo json_encode(array(
-            'success'=>7
-        )); */
+        $resultado12= $conn->query($sqlInsert12);
+        if ($resultado12){
+            $x++;
+        }
+        else {
+            $y++;
+        }
     }
     else if ($circulacionNA == 21){
-        $sqlInsert= "INSERT INTO documentos_list (
-            id_ext,
+        $sqlInsert13= "INSERT INTO documentos_list (
+            curp,
+            numExp,
             tipo_doc,
             ruta_doc,
             fecha,
@@ -343,21 +398,27 @@
             ) 
         VALUES(
             '$curp',
+            '$numExp',
             '$circulacionNA',
             '',
             '$fecha_entrega',
             '$circulacionDoc'
             )";
-        $resultado= $conn->query($sqlInsert);
-        /* echo json_encode(array(
-            'success'=>7
-        )); */
+        $resultado13= $conn->query($sqlInsert13);
+        if ($resultado13){
+            $x++;
+        }
+        else {
+            $y++;
+        }
     }
 
 
-    if($resultado){
+    if($x != 0){
         echo json_encode(array(
-            'success'=>10
+            'success'=>10,
+            'x'=>$x,
+            'y'=>$y
         ));
     }
     else{
