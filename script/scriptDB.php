@@ -7,6 +7,13 @@ setlocale(LC_TIME, 'es_MX.UTF-8');
 
 $hoyX = strtotime("%Y-%m-%d");
 
+function edad($fechaNacimiento){
+    $nacimiento = new DateTime($fechaNacimiento);
+    $ahora = new DateTime(date("Y-m-d"));
+    $diferencia = $ahora->diff($nacimiento);
+    return $diferencia->format("%y");
+}
+
 $numeroID = $_REQUEST['id'];
 $x = 0;
 
@@ -32,14 +39,8 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     $curp = $rowDB['curp']; 
     $rfc = $rowDB['rfc']; 
     
-    function edad1($fechaNacimiento){
-        $nacimiento = new DateTime($fechaNacimiento);
-        $ahora = new DateTime(date("Y-m-d"));
-        $diferencia = $ahora->diff($nacimiento);
-        return $diferencia->format("%y");
-    }
+    $annos = edad($fechaNacimiento);
     
-    echo $diferencia;
     
     $idCatTipoSeguridad = $rowDB['idCatTipoSeguridad']; 
 
