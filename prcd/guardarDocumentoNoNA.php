@@ -109,10 +109,10 @@
         VALUES(
             '$curp',
             '$numExp',
-            '$registroNo',
+            '$valoracionNo',
             '',
             '$fecha_entrega',
-            '$registroDoc'
+            '$valoracionDoc'
             )";
         $resultado3= $conn->query($sqlInsert3);
         if ($resultado3){
@@ -134,10 +134,10 @@
         VALUES(
             '$curp',
             '$numExp',
-            '$registroNo',
+            '$valoracionNA',
             '',
             '$fecha_entrega',
-            '$registroDoc'
+            '$valoracionDoc'
             )";
         $resultado4= $conn->query($sqlInsert4);
         if ($resultado4){
@@ -162,10 +162,10 @@
         VALUES(
             '$curp',
             '$numExp',
-            '$registroNo',
+            '$actaNo',
             '',
             '$fecha_entrega',
-            '$registroDoc'
+            '$actaDoc'
             )";
         $resultado5= $conn->query($sqlInsert5);
         if ($resultado5){
@@ -187,10 +187,10 @@
         VALUES(
             '$curp',
             '$numExp',
-            '$registroNo',
+            '$actaNA',
             '',
             '$fecha_entrega',
-            '$registroDoc'
+            '$actaDoc'
             )";
         $resultado6= $conn->query($sqlInsert6);
         if ($resultado6){
@@ -215,10 +215,10 @@
         VALUES(
             '$curp',
             '$numExp',
-            '$registroNo',
+            '$curpNo',
             '',
             '$fecha_entrega',
-            '$registroDoc'
+            '$curpDoc'
         )";
         $resultado7= $conn->query($sqlInsert7);
         if ($resultado7){
@@ -240,10 +240,10 @@
         VALUES(
             '$curp',
             '$numExp',
-            '$registroNo',
+            '$curpNA',
             '',
             '$fecha_entrega',
-            '$registroDoc'
+            '$curpDoc'
         )";
         $resultado8= $conn->query($sqlInsert8);
         if ($resultado8){
@@ -268,10 +268,10 @@
         VALUES(
             '$curp',
             '$numExp',
-            '$registroNo',
+            '$ineNo',
             '',
             '$fecha_entrega',
-            '$registroDoc'
+            '$ineDoc'
             )";
         $resultado9= $conn->query($sqlInsert9);
         if ($resultado9){
@@ -293,10 +293,10 @@
         VALUES(
             '$curp',
             '$numExp',
-            '$registroNo',
+            '$ineNA',
             '',
             '$fecha_entrega',
-            '$registroDoc'
+            '$ineDoc'
             )";
         $resultado0= $conn->query($sqlInsert0);
         if ($resultado0){
@@ -321,10 +321,10 @@
         VALUES(
             '$curp',
             '$numExp',
-            '$registroNo',
+            '$comprobanteNo',
             '',
             '$fecha_entrega',
-            '$registroDoc'
+            '$comprobanteDoc'
             )";
         $resultado10= $conn->query($sqlInsert10);
         if ($resultado10){
@@ -346,10 +346,10 @@
         VALUES(
             '$curp',
             '$numExp',
-            '$registroNo',
+            '$comprobanteNA',
             '',
             '$fecha_entrega',
-            '$registroDoc'
+            '$comprobanteDoc'
             )";
         $resultado11= $conn->query($sqlInsert11);
         if ($resultado11){

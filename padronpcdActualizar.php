@@ -3009,8 +3009,8 @@ include('prcd/qc/qc.php');
           </div>
           <div class="modal-body">
             <div class="input-group mb-1 mt-2 w-100">
-              <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-              <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2(); desbloquearInputsT(this.value)" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+              <!-- <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+              <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2(); desbloquearInputsT(this.value)" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar..."> -->
               <!-- <input type="text" id="curpTarjeton" hidden>  -->
             </div><!-- input group -->
             <br>
@@ -3030,25 +3030,25 @@ include('prcd/qc/qc.php');
                       <input type="text" id="tipoTarjeton" value="1" hidden>
                       <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Marca</span>
-                        <input type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaPerm" disabled>
+                        <input type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaPerm">
                       </div>
                       <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Modelo</span>
-                        <input type="text" class="form-control" placeholder="Modelo" id="modeloPerm" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="modelo" aria-describedby="basic-addon1" disabled>
+                        <input type="text" class="form-control" placeholder="Modelo" id="modeloPerm" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="modelo" aria-describedby="basic-addon1">
                         <span class="input-group-text">Año</span>
-                        <input type="text" onkeypress="ValidaSoloNumeros()" class="form-control" placeholder="Año" aria-label="anio" id="annioPerm" disabled>
+                        <input type="text" onkeypress="ValidaSoloNumeros()" class="form-control" placeholder="Año" aria-label="anio" id="annioPerm">
                       </div>
                       <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">No. de Placas</span>
-                        <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-describedby="basic-addon1" id="placasPerm" disabled>
+                        <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-describedby="basic-addon1" id="placasPerm">
                         <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" oninput="habilitaBTNadd()" placeholder="# de Serie del vehículo" aria-label="numeroserie" aria-describedby="basic-addon1" id="seriePerm" disabled>
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" oninput="habilitaBTNadd()" placeholder="# de Serie del vehículo" aria-label="numeroserie" aria-describedby="basic-addon1" id="seriePerm">
                       </div>
                       <div class="input-group mb-1">
                         <span class="input-group-text" id="basic-addon1">Folio Tarjetón</span>
-                        <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()"  placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPerm" disabled>
+                        <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()"  placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPerm" >
                         <span class="input-group-text" id="basic-addon1">Vigencia</span>
-                        <select class="form-select" id="vigenciaPerm" aria-label="Default select example" disabled>
+                        <select class="form-select" id="vigenciaPerm" aria-label="Default select example" >
                           <option selected>Selecciona...</option>
                           <option value="730">2 años</option>
                           <option value="2190">6 años</option>
@@ -3975,7 +3975,6 @@ $(document).ready(function () {
       },
       cache: false,
         success: function(data) {
-          $("#tarjeton2").html(data);
           document.getElementById('tarjeton').hidden = false;
           document.getElementById('searchDBInclusion2').hidden = true;
           document.getElementById('modeloPerm').disabled = false;
@@ -3988,6 +3987,7 @@ $(document).ready(function () {
           document.getElementById('checkAutoS').checked = false;
           document.getElementById('AutoSeguroInput').value = "";
           document.getElementById('agregarVehiculoBtn').disabled = false;
+          $("#tarjeton2").html(data);
       }               
     });
   }

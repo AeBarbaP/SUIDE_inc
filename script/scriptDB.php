@@ -2,6 +2,11 @@
 include('../prcd/qc/qc.php');
 include('../prcd/qc/qc2.php');
 
+date_default_timezone_set('America/Mexico_City');
+setlocale(LC_TIME, 'es_MX.UTF-8');
+
+$hoyX = strtotime("%Y-%m-%d");
+
 $numeroID = $_REQUEST['id'];
 $x = 0;
 
@@ -26,6 +31,15 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     $lugarNacimiento = $rowDB['lugarNacimiento']; 
     $curp = $rowDB['curp']; 
     $rfc = $rowDB['rfc']; 
+    
+    function edad1($fechaNacimiento){
+        $nacimiento = new DateTime($fechaNacimiento);
+        $ahora = new DateTime(date("Y-m-d"));
+        $diferencia = $ahora->diff($nacimiento);
+        return $diferencia->format("%y");
+    }
+    
+    echo $diferencia;
     
     $idCatTipoSeguridad = $rowDB['idCatTipoSeguridad']; 
 
@@ -98,7 +112,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     $correo = $rowDB2['correo']; // se relaciona con idExpediente
     // $referencia = $rowDB2['referencia']; // se relaciona con idExpediente
     $habilidad = $rowDB2['habilidad']; // se relaciona con idExpediente
-    $entreVialidades = ""; // se relaciona con idExpediente
+    $entreVialidades = $rowDB2['entreVialidades']; // se relaciona con idExpediente
     $estado = 32;
     $idCatMunicipio = $rowDB2['idCatMunicipio']; // se relaciona con idExpediente
 
@@ -452,6 +466,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         edo_civil,
         f_nacimiento,
         lugar_nacimiento,
+        edad,
         domicilio,
         no_int,
         no_ext,
@@ -495,6 +510,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         '$estadocivil',
         '$fechaNacimiento',
         '$lugarNacimiento',
+        '$annos',
         '$direccion',
         '$numeroInterior',
         '$numeroCasa',

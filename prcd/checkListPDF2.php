@@ -29,6 +29,7 @@ $curp =$_REQUEST['curp'];
 $sqlCurp = "SELECT * FROM documentos_list WHERE curp = '$curp'";
 $resultadoCurp = $conn->query($sqlCurp);
 
+
 $sqlGenerales = "SELECT * FROM datos_generales WHERE curp = '$curp'";
 $resultadoGenerales = $conn->query($sqlGenerales);
 $rowSqlGenerales = $resultadoGenerales->fetch_assoc();
@@ -38,119 +39,120 @@ $fecha_registro= $rowSqlGenerales['fecha_registro'];
 $fecha_actualizacion = $rowSqlGenerales['fecha_actualizacion'];
 
 while($rowSQL=$resultadoCurp->fetch_assoc()){
+    $tipo_doc = $rowSQL['tipo_doc'];
     
-    if($rowSQL['tipo_doc']==1){
+    if($tipo_doc==1){
         $hoja_registro = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $hoja_registro = "";
     }
 
-    if($rowSQL['tipo_doc']==2){
+    if($tipo_doc==2){
         $doc_medico = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $doc_medico = "";
     }
 
-    if($rowSQL['tipo_doc']==3){
+    if($tipo_doc==3){
         $acta_nac = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $acta_nac = "";
     }
 
-    if($rowSQL['tipo_doc']==4){
+    if($tipo_doc==4){
         $curp_doc = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $curp_doc = "";
     }
 
-    if($rowSQL['tipo_doc']==5){
+    if($tipo_doc==5){
         $ine = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $ine = "";
     }
 
-    if($rowSQL['tipo_doc']==6){
+    if($tipo_doc==6){
         $comp_dom = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $comp_dom = "";
     }
 
-    if($rowSQL['tipo_doc']==7){
+    if($tipo_doc==7){
         $tarjeta_circ = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $tarjeta_circ = "";
     }
 
     //tipo_doc del 8 al 14 son NO y del 15 al 21 son N/A
 
-    if($rowSQL['tipo_doc']==8){
+    if($tipo_doc==8){
         $hoja_registrono = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $hoja_registrono = "";
     }
-    if($rowSQL['tipo_doc']==15){
+    if($tipo_doc==15){
         $hoja_registrona = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $hoja_registrona = "";
     }
-    if($rowSQL['tipo_doc']==9){
+    if($tipo_doc==9){
         $doc_medicono = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $doc_medicono = "";
     }
-    if($rowSQL['tipo_doc']==16){
+    if($tipo_doc==16){
         $doc_medicona = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $doc_medicona = "";
     }
-    if($rowSQL['tipo_doc']==10){
+    if($tipo_doc==10){
         $acta_nacno = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $acta_nacno = "";
     }
-    if($rowSQL['tipo_doc']==17){
+    if($tipo_doc==17){
         $acta_nacna = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $acta_nacna = "";
     }
-    if($rowSQL['tipo_doc']==11){
-        $curp_docno = "X";
-    }else if($rowSQL['tipo_doc']==null){
-        $curp_docno = "";
+    if($tipo_doc==11){
+        $curpno = "X";
+    }else if($tipo_doc==null){
+        $curpno = "";
     }
-    if($rowSQL['tipo_doc']==18){
-        $curp_docna = "X";
-    }else if($rowSQL['tipo_doc']==null){
-        $curp_docna = "";
+    if($tipo_doc==18){
+        $curpna = "X";
+    }else if($tipo_doc==null){
+        $curpna = "";
     }
-    if($rowSQL['tipo_doc']==12){
+    if($tipo_doc==12){
         $ineno = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $ineno = "";
     }
-    if($rowSQL['tipo_doc']==19){
+    if($tipo_doc==19){
         $inena = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $inena = "";
     }
-    if($rowSQL['tipo_doc']==13){
+    if($tipo_doc==13){
         $comp_domno = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $comp_domno = "";
     }
-    if($rowSQL['tipo_doc']==20){
+    if($tipo_doc==20){
         $comp_domna = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $comp_domna = "";
     }
-    if($rowSQL['tipo_doc']==14){
+    if($tipo_doc==14){
         $tarjeta_circno = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $tarjeta_circno = "";
     }
-    if($rowSQL['tipo_doc']==21){
+    if($tipo_doc==21){
         $tarjeta_circna = "X";
-    }else if($rowSQL['tipo_doc']==null){
+    }else if($tipo_doc==null){
         $tarjeta_circna = "";
     }
 }
