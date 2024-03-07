@@ -166,42 +166,21 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     $profesion= "";
     $escolaridad= "";
 
-    /*     if ($rowDBCatEscolaridad = $resultadodbCatEscolaridad->fetch_assoc()){
-        $idescolaridad = $rowDBCatEscolaridad['idCatEscolaridad'];
-
-        $dbEscolaridad = "SELECT * FROM CatEscolaridades WHERE id = '$idescolaridad'";
-        $resultadoEscolaridad = $conn2->query($dbEscolaridad);
-        if ($rowEscolaridad = $resultadoEscolaridad->fetch_assoc()){
-            if ($rowEscolaridad['id'] == 9 || $rowEscolaridad['id'] == 10 || $rowEscolaridad['id'] == 11 || $rowEscolaridad['id'] == 12 || $rowEscolaridad['id'] == 13){
-                $escolaridad = "";
-            }
-            else if ($rowEscolaridad['id'] == 1){
-                $escolaridad = "Sin Escolarizar";
-            }
-            else{
-                $escolaridad = $rowEscolaridad['nombreEscolaridad'];
-            }
+    $idProfesion = $rowDBCatEscolaridad['idCatProfesion']; // se relaciona con idExpediente
+    
+    if ($idProfesion == null || $idProfesion == 0){
+        $profesion = "";
+    }
+    else {
+        $dbProfesion = "SELECT * FROM CatProfesiones WHERE id = '$idProfesion'";
+        $resultadoProfesion = $conn2->query($dbProfesion);
+        if ($rowProfesion = $resultadoProfesion->fetch_assoc()){
+            $profesion = $rowProfesion['nombreProfesion'];
         }
         else {
-            $escolaridad = "";
-        } */
-
-        $idProfesion = $rowDBCatEscolaridad['idCatProfesion']; // se relaciona con idExpediente
-        
-        if ($idProfesion == null || $idProfesion == 0){
             $profesion = "";
         }
-        else {
-            $dbProfesion = "SELECT * FROM CatProfesiones WHERE id = '$idProfesion'";
-            $resultadoProfesion = $conn2->query($dbProfesion);
-            if ($rowProfesion = $resultadoProfesion->fetch_assoc()){
-                $profesion = $rowProfesion['nombreProfesion'];
-            }
-            else {
-                $profesion = "";
-            }
-        }
-    //}
+    }
 
     $dbTabEstudioSE = "SELECT * FROM EstudioSocioeconomicos WHERE idExpediente = '$id'";
     $resultadoEstudioSE = $conn2->query($dbTabEstudioSE);
@@ -322,16 +301,18 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     $discapacidad = $claveDiscapacidad.'-'.$nombreDiscapacidad;
 
     if($claveDiscapacidad == 26 || $claveDiscapacidad == 33 || $claveDiscapacidad == 40 || $claveDiscapacidad == 41 || $claveDiscapacidad == 42 || $claveDiscapacidad == 49 || $claveDiscapacidad == 50 || $claveDiscapacidad == 51 || $claveDiscapacidad == 52 || $claveDiscapacidad == 53){
-        
-        $sqlCatDiscapacidades2 ="SELECT * FROM CatDiscapacidadTipos WHERE id = '$idCatDiscapacidadTipo'";
-        $resultCatDisc2 = $conn2->query($sqlCatDiscapacidades2);
-        $rowCatDisc2 = $resultCatDisc2->fetch_assoc();
-        $idCatDiscapacidadTipoNombre = $rowCatDisc2['tipoDiscapacidad'];
-
-    }
-    else{
         $idCatDiscapacidadTipoNombre = "Múltipe";
     }
+    else if ($claveDiscapacidad < 21 || $claveDiscapacidad == 27 || $claveDiscapacidad == 28 || $claveDiscapacidad == 29 || $claveDiscapacidad == 30 || $claveDiscapacidad == 38 || $claveDiscapacidad == 39 || $claveDiscapacidad == 43 || $claveDiscapacidad == 44){
+        $idCatDiscapacidadTipoNombre = "Física";
+    }
+    else if ($claveDiscapacidad == 31 || $claveDiscapacidad == 32 || $claveDiscapacidad == 34 || $claveDiscapacidad == 35 || $claveDiscapacidad == 36 || $claveDiscapacidad == 37 || $claveDiscapacidad == 45 || $claveDiscapacidad == 46 || $claveDiscapacidad == 47){}
+    /* $sqlCatDiscapacidades2 ="SELECT * FROM CatDiscapacidadTipos WHERE id = '$idCatDiscapacidadTipo'";
+    $resultCatDisc2 = $conn2->query($sqlCatDiscapacidades2);
+    $rowCatDisc2 = $resultCatDisc2->fetch_assoc();
+    $idCatDiscapacidadTipoNombre = $rowCatDisc2['tipoDiscapacidad']; */
+    
+    
     $idCatInstitucion = $rowDB4['idCatInstitucion']; // se relaciona con idExpediente
     $protesis = $rowDB4['protesis']; // se relaciona con idExpediente
     $tipoProtesis = $rowDB4['tipoProtesis']; // se relaciona con idExpediente
@@ -361,7 +342,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         $sqlEnf2 ="SELECT * FROM CatEnfermedades WHERE id = '$idCatEnfermedad'";
         $resultadoEnf2 = $conn2->query($sqlEnf2);
         while($rowEnf2 = $resultadoEnf2->fetch_assoc()){
-            $enfermedad = $rowEnf2['nombreEnfermedad'];
+            $enfermedad = $rowEnf['idCatEnfermedad'].'-'.$rowEnf2['nombreEnfermedad'];
             $concatenarEnf = $concatenarEnf.", ".$enfermedad;
             $concEnf = substr($concatenarEnf, 2);
         }
@@ -377,7 +358,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         $sqlAlergias2 ="SELECT * FROM CatAlergias WHERE id = '$idCatAlergias'";
         $resultadoAlergias2 = $conn2->query($sqlAlergias2);
         while($rowAlergias2 = $resultadoAlergias2->fetch_assoc()){
-            $alergia= $rowAlergias2['nombreAlergia'];
+            $alergia= $rowAlergias['idCatAlergias'].'-'.$rowAlergias2['nombreAlergia'];
             $concatenarAlergia = $concatenarAlergia.", ".$alergia;
             $concAlg = substr($concatenarAlergia, 2);
         }
@@ -392,7 +373,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         $sqlMedicamentos2 ="SELECT * FROM CatMedicamentos WHERE id = '$idCatMedicamentos'";
         $resultadoMedicamentos2 = $conn2->query($sqlMedicamentos2);
         while($rowMedicamentos2 = $resultadoMedicamentos2->fetch_assoc()){
-            $medicamentos= $rowMedicamentos2['nombreMedicamento'];
+            $medicamentos= $rowMedicamentos['idCatMedicamento'].'-'.$rowMedicamentos2['nombreMedicamento'];
             $concatenarMedicamentos = $concatenarMedicamentos.", ".$medicamentos;
             $concMedicamentos = substr($concatenarMedicamentos, 2);
         }
