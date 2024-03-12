@@ -26,9 +26,14 @@ if ($resultado_QueryEmpleado->num_rows > 0){
         <div class="col-md-4">
             <div class="container">
                 <div class="group">
-                    <img src="img/no_profile.png" alt="" width="100%" class="crop-image" id="crop-image">
-                    <input type="file" name="input-file" id="input-file" accept=".png,.jpg,.jpeg" >
-                    <!-- <label for="input-file" class="label-file">Haz click aquí para subir una imagen</label> -->
+                    <form id="upload_form1" enctype="multipart/form-data" method="post">
+                        <img src="img/no_profile.png" alt="" width="100%" class="crop-image" id="crop-image">
+                        <input type="file" name="input-file" id="file_photo" accept=".jpg,.jpeg" onchange="fotoEmp()">
+                        <progress id="progressBar_photo" value="0" max="100" style="width:230px;"></progress>
+                        <small id="status_photo"></small>
+                        <p id="loaded_n_total_photo"></p>
+                        <!-- <label for="input-file" class="label-file">Haz click aquí para subir una imagen</label> -->
+                    </form>
                 </div>
             </div>
             <!-- <button class="btn-primary" type="button" id="inputfile">guardar foto</button> -->
@@ -54,7 +59,7 @@ if ($resultado_QueryEmpleado->num_rows > 0){
                 <input class="form-control" type="text" value="'.$area.'" type="text" name="area" disabled>
                 <div class="d-grid gap-2 mt-5">
                     <button class="btn btn-primary" type="button" id="updateEmpleado" onclick="actualizarEmpleado()"><i class="bi bi-info-lg"></i> Actualizar Info</button>
-                    <button class="btn btn-primary" type="button" id="updateEmpleado" onclick="actualizarEmpleado()"><i class="bi bi-info-lg"></i> Actualizar Info</button>
+                    <button class="btn btn-primary" type="button" id="updateEmpleado1" onclick="actualizarEmpleado()"><i class="bi bi-info-lg"></i> Actualizar Info</button>
                 </div>
             </div>
         </div>

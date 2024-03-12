@@ -835,49 +835,7 @@ include('prcd/qc/qc.php');
                           </div>
                         </div>
                         <!-- Termina modal para agregar grupo vulnerable -->
-                        <script>
-                          /* function addG(val) {
-                            var nombreGV = document.getElementById('textoGpoV'+val).innerText;
-                            console.log(nombreGV);
-                            var p2;
-                            var numeroG = ""; //remover al momento de programar guardar
-                            var textarea = document.getElementById("gruposFull");
-                            if (val==null || val =="" || val == 0){
-                              console.log('sin valor');
-                            } else {
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="gpoV'+val+'"><span id="'+val+'" class="valorGFull">'+nombreGV+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-                              document.getElementById('gpoV'+val).setAttribute("onclick","removeG('"+val+"','"+nombreGV+"')");
-                              document.getElementById('gpoV'+val).setAttribute('name',"'"+val+"'");
-                              document.querySelector('#grupos option[value="'+val+'"]').remove();
-                            }
-                            //remover al momento de programar guardar
-                            const paragraphs = document.querySelectorAll('[class="valorGFull"]');
-                            paragraphs.forEach(p => numeroG = numeroG + p.id +', ');
-                            numeroG = numeroG.slice(0, numeroG.length - 2);
-                            console.log(numeroG);
-                            document.getElementById('numeroG').value = numeroG;
-                          }
-                          function addInputG(val) {
-                            
-                            var numeroG = "";//remover al momento de programar guardar
-                            var textarea = document.getElementById("gruposFull");
-                            //if (val==null || val =="" || val == 0){
-                              //console.log('sin valor');
-                            //} else{
-                              textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorGFull">'+val+'</span> <a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-                              document.getElementById(val).setAttribute('onclick',"removeG("+val+")");
-                              document.getElementById("grupoInput").value ="";
 
-                              //remover al momento de programar guardar          
-                              const paragraphs = document.querySelectorAll('[class="valorGFull"]');
-                              paragraphs.forEach(p => numeroG = numeroG + p.id +', ');
-                              numeroG = numeroG.slice(0, numeroG.length - 2);
-                              console.log(numeroG);
-                              document.getElementById('numeroG').value = numeroG;
-                           // }
-                          } */
-                          
-                        </script>
                       </div>
                       
                     </div>
