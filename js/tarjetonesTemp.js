@@ -436,10 +436,10 @@ function datosTarjetonT(){
     });
 }
 
-function reemplazaTarjeton(){
+function reemplazaTarjetonT(){
     var folioC = document.getElementById('folioTPermC').value;
     var vigenciaC = document.getElementById('vigenciaPermC').value;
-    var curp = document.getElementById('ordenExpediente').value;
+    var curp = document.getElementById('curpTemp').value;
     
     $.ajax({
         type: "POST",
@@ -448,7 +448,7 @@ function reemplazaTarjeton(){
         data: {
             folioC:folioC,
             vigenciaC:vigenciaC,
-            noExpediente:noExpediente
+            curp:curp
         },
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));

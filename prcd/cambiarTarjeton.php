@@ -28,6 +28,7 @@
         $resultadoUsr = $conn->query($sqlInsertUsr);
         echo json_encode(array(
             'success' => 1,
+            'folio' => $folio
             )
         );
     } else {

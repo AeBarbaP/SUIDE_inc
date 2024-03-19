@@ -2116,7 +2116,7 @@ include('prcd/qc/qc.php');
           <div class="modal-body">
             <div class="input-group mb-1 mt-2 w-100">
               <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-              <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2(); desbloquearInputsT(this.value)" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+              <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2();" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
               <!-- <input type="text" id="curpTarjeton" hidden>  -->
             </div><!-- input group -->
             <br>
@@ -3615,7 +3615,8 @@ $(document).ready(function () {
       cache: false,
         success: function(data) {
           $("#tarjeton").html(data);
-          document.getElementById('tarjeton').hidden = false;
+          document.getElementById('folioTPerm').disabled = true;
+          
       }               
     });
   }

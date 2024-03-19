@@ -384,6 +384,8 @@ function reemplazaTarjeton(){
             
             if (success == 1) {
                 mostrarTablaVehiculos();
+                
+                document.getElementById('folioTPermC').value = jsonData.folio;
                 alert('Tarjetón actualizado!');
 
             } else if (success == 0){
@@ -397,7 +399,7 @@ function reemplazaTarjeton(){
 function desbloquearInputsT(x){
     var z = x.length;
 
-    if (z >= 1){
+    if (z > 0){
         document.getElementById('marcaPerm').disabled = false;
         document.getElementById('modeloPerm').disabled = false;
         document.getElementById('placasPerm').disabled = false;
@@ -418,6 +420,15 @@ function desbloquearInputsT(x){
     }
 }
 
+function bloquearInputsT(){
+    document.getElementById('marcaPerm').disabled = false;
+    document.getElementById('modeloPerm').disabled = false;
+    document.getElementById('placasPerm').disabled = false;
+    document.getElementById('annioPerm').disabled = false;
+    document.getElementById('seriePerm').disabled = false;
+    document.getElementById('folioTPerm').disabled = true; 
+    document.getElementById('vigenciaPerm').disabled = true;
+}
 function LOSVehiculo(id,folio){
     var idV = id;
     var folioDV = folio;

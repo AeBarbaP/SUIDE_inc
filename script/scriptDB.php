@@ -69,7 +69,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         $seguridadSocial = $rowdbCatSeguridadSocial['nombreSeguridad'];
     }
     else{
-        $seguridadSocial= "";
+        $seguridadSocial= "Ninguno";
     }
     
     $numeroSeguro = $rowDB['numeroSeguro'];  //numSS
@@ -81,6 +81,12 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     
     if ($rowdbCatEstatus = $resultadodbCatEstatus-> fetch_assoc()){
         $estatusExp = $rowdbCatEstatus['estatusExpediente'];
+        if ($idEstatusExpediente1 == "CREADO"){
+            $estatusExp = 1;
+        }
+        else if ($idEstatusExpediente1 == "FINADO"){
+            $estatusExp = 3;
+        }
     } else {
         $estatusExp = '';
     }
@@ -114,6 +120,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     // $referencia = $rowDB2['referencia']; // se relaciona con idExpediente
     $habilidad = $rowDB2['habilidad']; // se relaciona con idExpediente
     $entreVialidades = $rowDB2['entreVialidades']; // se relaciona con idExpediente
+    $tipoVialidad = $rowDB2['idCatTipoVialidad']; // se relaciona con idExpediente
     $estado = 32;
     $idCatMunicipio = $rowDB2['idCatMunicipio']; // se relaciona con idExpediente
 
@@ -272,7 +279,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         $valoracionInst = "SSZ";
     }
     else if ($valoracion == 6 || $valoracion == 5 || $valoracion == 7 || $valoracion == 11 || $valoracion == 15){
-        $valoracionInst = "PRIVADA";
+        $valoracionInst = "Particular";
     }
     else if ($valoracion == 8){
         $valoracionInst = "CREE";
@@ -303,10 +310,15 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     if($claveDiscapacidad == 26 || $claveDiscapacidad == 33 || $claveDiscapacidad == 40 || $claveDiscapacidad == 41 || $claveDiscapacidad == 42 || $claveDiscapacidad == 49 || $claveDiscapacidad == 50 || $claveDiscapacidad == 51 || $claveDiscapacidad == 52 || $claveDiscapacidad == 53){
         $idCatDiscapacidadTipoNombre = "Múltipe";
     }
-    else if ($claveDiscapacidad < 21 || $claveDiscapacidad == 27 || $claveDiscapacidad == 28 || $claveDiscapacidad == 29 || $claveDiscapacidad == 30 || $claveDiscapacidad == 38 || $claveDiscapacidad == 39 || $claveDiscapacidad == 43 || $claveDiscapacidad == 44){
+    else if ($claveDiscapacidad == 21 || $claveDiscapacidad == 27 || $claveDiscapacidad == 28 || $claveDiscapacidad == 29 || $claveDiscapacidad == 30 || $claveDiscapacidad == 38 || $claveDiscapacidad == 39 || $claveDiscapacidad == 43 || $claveDiscapacidad == 44){
         $idCatDiscapacidadTipoNombre = "Física";
     }
-    else if ($claveDiscapacidad == 31 || $claveDiscapacidad == 32 || $claveDiscapacidad == 34 || $claveDiscapacidad == 35 || $claveDiscapacidad == 36 || $claveDiscapacidad == 37 || $claveDiscapacidad == 45 || $claveDiscapacidad == 46 || $claveDiscapacidad == 47){}
+    else if ($claveDiscapacidad == 34 || $claveDiscapacidad == 23 || $claveDiscapacidad == 45 || $claveDiscapacidad == 32 || $claveDiscapacidad == 35 || $claveDiscapacidad == 36 || $claveDiscapacidad == 31){
+        $idCatDiscapacidadTipoNombre = "Intelectual";
+    }
+    else if ($claveDiscapacidad == 37 || $claveDiscapacidad == 48 || $claveDiscapacidad == 47 || $claveDiscapacidad == 46){
+        $idCatDiscapacidadTipoNombre = "Psicosocial";
+    }
     /* $sqlCatDiscapacidades2 ="SELECT * FROM CatDiscapacidadTipos WHERE id = '$idCatDiscapacidadTipo'";
     $resultCatDisc2 = $conn2->query($sqlCatDiscapacidades2);
     $rowCatDisc2 = $resultCatDisc2->fetch_assoc();
@@ -454,6 +466,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         no_ext,
         colonia,
         entre_vialidades,
+        tipoVialidad,
         estado,
         municipio,
         localidad,
@@ -497,7 +510,8 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         '$numeroInterior',
         '$numeroCasa',
         '$colonia',
-        '$entreVialidades',
+        '$entreVialidades', 
+        '$tipoVialidad', 
         '$estado',
         '$claveMunicipio',
         '$localidad',

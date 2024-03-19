@@ -25,17 +25,22 @@ else{
       $rowTarjeton = $resultadoTarjeton->fetch_assoc();
       $tarjeton = $rowTarjeton['folio_tarjeton'];
       $vigencia = $rowTarjeton['vigencia'];
+      
       echo '
       <script>
-        folioTarjetonPositivo();
+      
+      folioTarjetonPositivo();
       </script>
       ';
     }
     else{
       $tarjeton = "No hay tarjetón registrado";
       $vigencia = "";
+      
       echo '
-        <script>
+      <script>
+      desbloquearInputsT('.$filasTarjeton.');
+      
           folioTarjetonNegativo();
         </script>
       ';
