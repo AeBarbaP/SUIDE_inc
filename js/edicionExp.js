@@ -42,8 +42,10 @@ function buscarExpediente12(x){
                 
                 var municipioQuery = jsonData.estado;
                 var discapacidadQuery = jsonData.tipoDiscapacidad;
-                municipiosSelect(municipioQuery);
+
+                console.log("Discapacidad:",discapacidadQuery);
                 discapacidadTab(discapacidadQuery);
+                municipiosSelect(municipioQuery);
 
                 document.getElementById('discapacidadConsulta').value = jsonData.discapacidad;
                 document.getElementById('tipoDiscapacidadConsulta').value = jsonData.tipoDiscapacidad;
@@ -463,10 +465,9 @@ function queryDatos(){
                 //document.getElementById('file_photo').value = jsonData.photo; 
                 
                 //datos médicos
-                document.getElementById('discapacidadList').value = jsonData.discapacidad;
                 document.getElementById('gradoDisc').value = jsonData.grado_discapacidad; 
                 var tipoDisc = jsonData.tipo_discapacidad;
-
+                
                 if (tipoDisc == "FÍSICA" || tipoDisc == "Física"){
                     document.getElementById('tipoDisc').value = "Física";
                 }
@@ -482,6 +483,8 @@ function queryDatos(){
                 else if (tipoDisc == "Psicosocial" || tipoDisc == "PSICOSOCIAL"){
                     document.getElementById('tipoDisc').value = "Psicosocial";
                 }
+
+                document.getElementById('discapacidadList').value = jsonData.discapacidad;
 
                 document.getElementById('descDisc').value = jsonData.descripcionDiscapacidad; 
                 var causaDiscapacidadVar = jsonData.causa;
@@ -975,87 +978,124 @@ function queryDatos(){
                 
                 var arrayEnfermedades = jsonData.arregloEnfermedades;
                 console.log(arrayEnfermedades);
-
-                for (var i = 0; i < arrayEnfermedades.length; i++) {
-                    var contador = arrayEnfermedades[i];
-                    var idEnfermedad = contador.id;
-                    for (var j = 0; j < idEnfermedad.length; j++){
-                        if (idEnfermedad[j] == 0){
-                            var idTrimed = idEnfermedad.slice(0,1);
-                            idEnfermedad = idTrimed;
-                        }
-                        else{
-                            break;
-                        }
-                    }
-                    console.log("Variable Array "+idEnfermedad);
-                    var nombreEnfermedad = contador.enfermedad;
-
-                    $('#enfermedadesFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+idEnfermedad+'"><span id="ES'+idEnfermedad+'" class="valorFull">'+nombreEnfermedad+'</span> <a class="text-light" onclick="removeB(\'E'+idEnfermedad+'\')"><i class="bi bi-x-circle"></i></a></button>');
+                if (arrayEnfermedades == null || arrayEnfermedades == ""){
+                    console.log('no enfermedades');
                 }
+                else {
+                    for (var i = 0; i < arrayEnfermedades.length; i++) {
+                        var contador = arrayEnfermedades[i];
+                        var idEnfermedad = contador.id;
+                        var nameEnfermedades = contador.enfermedad;
+                        //var concatEnfermedaes, enfermedadesConcat;
+                        for (var j = 0; j < idEnfermedad.length; j++){
+                            if (idEnfermedad[j] == 0){
+                                var idTrimed = idEnfermedad.slice(0,1);
+                                idEnfermedad = idTrimed;
+                            }
+                            else{
+                                break;
+                            }
+                        }
+                        var enfermedadesConcat = idEnfermedad+'-'+nameEnfermedades;
+                        var concatEnfermedaes = concatEnfermedaes +', '+enfermedadesConcat;
 
+                        console.log("Variable Array "+idEnfermedad);
+                        console.log('Enfermedades: '+concatEnfermedaes);
+                        var nombreEnfermedad = contador.enfermedad;
+                        $('#enfermedadesFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+idEnfermedad+'"><span id="ES'+idEnfermedad+'" class="valorFull">'+nombreEnfermedad+'</span> <a class="text-light" onclick="removeB(\'E'+idEnfermedad+'\')"><i class="bi bi-x-circle"></i></a></button>');
+                        document.getElementById('numeroB').value = nombreEnfermedad;
+                    }
+                }
                 var arrayAlergias = jsonData.arregloAlergias;
                 console.log(arrayAlergias);
-
-                for (var i = 0; i < arrayAlergias.length; i++) {
-                    var contador = arrayAlergias[i];
-                    var idAlergia = contador.id;
-                    for (var j = 0; j < idAlergia.length; j++){
-                        if (idAlergia[j] == 0){
-                            var idTrimed = idAlergia.slice(0,1);
-                            idAlergia = idTrimed;
+                if (arrayAlergias == null || arrayAlergias == ""){
+                    console.log('no alergias');
+                }
+                else{
+                    for (var i = 0; i < arrayAlergias.length; i++) {
+                        var contador = arrayAlergias[i];
+                        var idAlergia = contador.id;
+                        var nameAlergia = contador.alergia;
+                        var concatAlergia;
+                        var alergiaConcat;
+                        for (var j = 0; j < idAlergia.length; j++){
+                            if (idAlergia[j] == 0){
+                                var idTrimed = idAlergia.slice(0,1);
+                                idAlergia = idTrimed;
+                            }
+                            else{
+                                break;
+                            }
+                            alergiaConcat = idAlergia+'-'+nameAlergia;
+                            concatAlergia = concatAlergia +', '+alergiaConcat;
                         }
-                        else{
-                            break;
-                        }
+                        console.log("Variable Array "+idAlergia);
+                        var nombreAlergia = contador.alergia;
+                        $('#alergiasFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="A'+idAlergia+'"><span id="AS'+idAlergia+'" class="valorAFull">'+nombreAlergia+'</span> <a class="text-light" onclick="removeA(\'A'+idAlergia+'\')"><i class="bi bi-x-circle"></i></a></button>');
+                        document.getElementById('numeroA').value = nombreAlergia;
                     }
-                    console.log("Variable Array "+idAlergia);
-                    var nombreAlergia = contador.alergia;
-
-                    $('#alergiasFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="A'+idAlergia+'"><span id="AS'+idAlergia+'" class="valorAFull">'+nombreAlergia+'</span> <a class="text-light" onclick="removeA(\'A'+idAlergia+'\')"><i class="bi bi-x-circle"></i></a></button>');
                 }
 
                 var arrayMedicamentos = jsonData.arregloMedicamentos;
                 console.log(arrayMedicamentos);
-
-                for (var i = 0; i < arrayMedicamentos.length; i++) {
-                    var contador = arrayMedicamentos[i];
-                    var idMedicamento = contador.id;
-                    for (var j = 0; j < idMedicamento.length; j++){
-                        if (idMedicamento[j] == 0){
-                            var idTrimed = idMedicamento.slice(0,1);
-                            idMedicamento = idTrimed;
+                if (arrayMedicamentos == null || arrayMedicamentos == "") {
+                    console.log('no medicamentos');
+                }
+                else {
+                    for (var i = 0; i < arrayMedicamentos.length; i++) {
+                        var contador = arrayMedicamentos[i];
+                        var idMedicamento = contador.id;
+                        var nameMedicamento = contador.medicamento;
+                        var concatMedicamento;
+                        var medicamentoConcat;
+                        for (var j = 0; j < idMedicamento.length; j++){
+                            if (idMedicamento[j] == 0){
+                                var idTrimed = idMedicamento.slice(0,1);
+                                idMedicamento = idTrimed;
+                            }
+                            else{
+                                break;
+                            }
+                            medicamentoConcat =idMedicamento+'-'+nameMedicamento;
+                            concatMedicamento = concatMedicamento +', '+ medicamentoConcat;
                         }
-                        else{
-                            break;
-                        }
+                        console.log("Variable Array "+idMedicamento);
+                        var nombreMedicamento = contador.medicamento;
+                        $('#medicamentosFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="M'+idMedicamento+'"><span id="MS'+idMedicamento+'" class="valorMFull">'+nombreMedicamento+'</span> <a class="text-light" onclick="removeC(\'M'+idMedicamento+'\')"><i class="bi bi-x-circle"></i></a></button>');
+                        document.getElementById('numeroC').value = nombreMedicamento;
                     }
-                    console.log("Variable Array "+idMedicamento);
-                    var nombreMedicamento = contador.medicamento;
-                    $('#medicamentosFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="M'+idMedicamento+'"><span id="MS'+idMedicamento+'" class="valorMFull">'+nombreMedicamento+'</span> <a class="text-light" onclick="removeC(\'M'+idMedicamento+'\')"><i class="bi bi-x-circle"></i></a></button>');
                 }
 
                 var arrayGrupos = jsonData.arregloGrupos;
                 console.log(arrayGrupos);
-
-                for (var i = 0; i < arrayGrupos.length; i++) {
-                    var contador = arrayGrupos[i];
-                    var idGrupo = contador.id;
-                    for (var j = 0; j < idGrupo.length; j++){
-                        if (idGrupo[j] == 0){
-                            var idTrimed = idGrupo.slice(0,1);
-                            idGrupo = idTrimed;
-                        }
-                        else{
-                            break;
-                        }
-                    }
-                    console.log("Variable Array "+idGrupo);
-                    var nombreGrupo = contador.grupo;
-                    $('#gruposFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="GV'+idGrupo+'"><span id="textoGpoV'+idGrupo+'" class="valorGFull">'+nombreGrupo+' </span> <a class="text-light" onclick="removeG(\'GV'+idGrupo+'\')"><i class="bi bi-x-circle"></i></a></button>');
-
+                if (arrayGrupos == null || arrayGrupos == ""){
+                    console.log('no grupos');
                 }
-                
+                else {
+                    for (var i = 0; i < arrayGrupos.length; i++) {
+                        var contador = arrayGrupos[i];
+                        var idGrupo = contador.id;
+                        var nombreGrupo1 = contador.grupo;
+                        var concatGrupo;
+                        var nombreConcat;
+                        for (var j = 0; j < idGrupo.length; j++){
+                            if (idGrupo[j] == 0){
+                                var idTrimed = idGrupo.slice(0,1);
+                                idGrupo = idTrimed;
+                            }
+                            else{
+                                break;
+                            }
+                            nombreConcat = idGrupo+"-"+nombreGrupo1;
+                            concatGrupo = concatGrupo+", "+nombreConcat;
+                        }
+                        console.log(concatGrupo);
+                        console.log("Variable Array "+idGrupo);
+                        var nombreGrupo = contador.grupo;
+                        $('#gruposFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="GV'+idGrupo+'"><span id="textoGpoV'+idGrupo+'" class="valorGFull">'+nombreGrupo+' </span> <a class="text-light" onclick="removeG(\'GV'+idGrupo+'\')"><i class="bi bi-x-circle"></i></a></button>');
+                        document.getElementById('numeroG').value = nombreGrupo;
+                    }
+                }
                 /* if (enfermedades_cual != null || enfermedades_cual != ""){
                     var enfermedadesSplit = enfermedades_cual.replace(/, /g,',');
                     enfermedadesSplit = enfermedadesSplit.split(',');

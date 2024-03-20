@@ -80,7 +80,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     $resultadodbCatEstatus = $conn2->query($dbCatEstatus);
     
     if ($rowdbCatEstatus = $resultadodbCatEstatus-> fetch_assoc()){
-        $estatusExp = $rowdbCatEstatus['estatusExpediente'];
+        $idEstatusExpediente1 = $rowdbCatEstatus['estatusExpediente'];
         if ($idEstatusExpediente1 == "CREADO"){
             $estatusExp = 1;
         }
@@ -120,7 +120,14 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     // $referencia = $rowDB2['referencia']; // se relaciona con idExpediente
     $habilidad = $rowDB2['habilidad']; // se relaciona con idExpediente
     $entreVialidades = $rowDB2['entreVialidades']; // se relaciona con idExpediente
-    $tipoVialidad = $rowDB2['idCatTipoVialidad']; // se relaciona con idExpediente
+    $idTipoVialidad = $rowDB2['idCatTipoVialidad']; // se relaciona con idExpediente
+    
+    $dbCatTipoVialidad = "SELECT * FROM catTipoVialidades WHERE id = '$idTipoVialidad'";
+    $resultadoTipoVialidad = $conn2->query($dbCatTipoVialidad);
+    $rowTipoVialidad = $resultadoTipoVialidad->fetch_assoc();
+
+    $tipoVialidad = $rowTipoVialidad['nombreVialidad'];
+
     $estado = 32;
     $idCatMunicipio = $rowDB2['idCatMunicipio']; // se relaciona con idExpediente
 
@@ -304,20 +311,133 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     $idCatDiscapacidadTipo = $rowCatDisc['idCatDiscapacidadTipo'];
     $claveDiscapacidad = $rowCatDisc['claveDiscapacidad']; // este se necesita para cambiarlo a múltiple
 
-    $nombreDiscapacidad = $rowCatDisc['nombreDiscapacidad'];
+    $nombreDiscapacidad1 = $rowCatDisc['nombreDiscapacidad'];
+
+    if ($nombreDiscapacidad1 == "MOTORA"){
+        $nombreDiscapacidad = "Motora";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA GUILLAIN B."){
+        $nombreDiscapacidad = "Síndrome de Guillain Barré";
+    }
+    else if ($nombreDiscapacidad1 == "MUDEZ"){
+        $nombreDiscapacidad = "Mudez";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA TALLA BAJA"){
+        $nombreDiscapacidad = "Talla Baja";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA PSICOMOTOR"){
+        $nombreDiscapacidad = "Psicomotora";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA ESCLEROSIS"){
+        $nombreDiscapacidad = "Esclerosis Múltiple";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA ESPONDILITIS"){
+        $nombreDiscapacidad = "Espondilitis";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA MIELOMENINGOCELE"){
+        $nombreDiscapacidad = "Mielomeningocele";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA UNIPARESIA"){
+        $nombreDiscapacidad = "Uniparesia / Monoparesia";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA CUADRIPARESIA"){
+        $nombreDiscapacidad = "Cuadriparesia";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA AMPUTACION"){
+        $nombreDiscapacidad = "Amputación";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA POLIOMIELITIS"){
+        $nombreDiscapacidad = "Poliomielitis";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA ENF. ART. DEG."){
+        $nombreDiscapacidad = "Enfermedad Articular Degenerativa";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA CUADRIPLEJIA"){
+        $nombreDiscapacidad = "Cuadriplejia";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA HEMIPLEJIA"){
+        $nombreDiscapacidad = "Hemiplejia";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA PARAPARESIA"){
+        $nombreDiscapacidad = "Paraparesia";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA DISTROFIA"){
+        $nombreDiscapacidad = "Distrofia";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA PARAPLEJIA"){
+        $nombreDiscapacidad = "Paraplejia";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA HEMIMELIA"){
+        $nombreDiscapacidad = "Hemimelia";
+    }
+    else if ($nombreDiscapacidad1 == "MOTORA ESCOLIOSIS"){
+        $nombreDiscapacidad = "Escoliosis";
+    }
+    else if ($nombreDiscapacidad1 == "AUDITIVA"){
+        $nombreDiscapacidad = "Auditiva Hipoacusia";
+    }
+    else if ($nombreDiscapacidad1 == "COMUNICACIÓN LENGUAJE"){
+        $nombreDiscapacidad = "Comunicación Lenguaje";
+    }
+    else if ($nombreDiscapacidad1 == "VISUAL"){
+        $nombreDiscapacidad = "Visual";
+    }
+    else if ($nombreDiscapacidad1 == "BAJA VISION"){
+        $nombreDiscapacidad = "Baja Visión";
+    }
+    else if ($nombreDiscapacidad1 == "SORDO CIEGO"){
+        $nombreDiscapacidad = "Sordo Ciego";
+    }
+    else if ($nombreDiscapacidad1 == "INTELECTUAL DOWN"){
+        $nombreDiscapacidad = "Síndrome de Down";
+    }
+    else if ($nombreDiscapacidad1 == "INTELECTUAL NEUROLOGICO"){
+        $nombreDiscapacidad = "Intelectual DM";
+    }
+    else if ($nombreDiscapacidad1 == "MULTIPLE PC"){
+        $nombreDiscapacidad = "Parálisis Cerebral";
+    }
+    else if ($nombreDiscapacidad1 == "INTELECTUAL APRENDIZAJE"){
+        $nombreDiscapacidad = "Aprendizaje";
+    }
+    else if ($nombreDiscapacidad1 == "INTELECTUAL MICROCEFALIA"){
+        $nombreDiscapacidad = "Microcefalia";
+    }
+    else if ($nombreDiscapacidad1 == "INTELECTUAL NEUROLOGICO"){
+        $nombreDiscapacidad = "Neurológica";
+    }
+    else if ($nombreDiscapacidad1 == "AUTISMO"){
+        $nombreDiscapacidad = "Espectro Autista";
+    }
+    else if ($nombreDiscapacidad1 == "MÚLTIPLE"){
+        $nombreDiscapacidad = "Múltiple";
+    }
+    else if ($nombreDiscapacidad1 == "MULTIPLE MOTORA AUDITIVA"){
+        $nombreDiscapacidad = "Motora Auditiva";
+    }
+    else if ($nombreDiscapacidad1 == "MULTIPLE SINDROMES"){
+        $nombreDiscapacidad = "Múltiple Síndromes";
+    }
+    else if ($nombreDiscapacidad1 == "PROBLEMAS EN LA COMUNICACIÓN"){
+        $nombreDiscapacidad = "Problemas en la Comunicación";
+    }
+
     $discapacidad = $claveDiscapacidad.'-'.$nombreDiscapacidad;
 
-    if($claveDiscapacidad == 26 || $claveDiscapacidad == 33 || $claveDiscapacidad == 40 || $claveDiscapacidad == 41 || $claveDiscapacidad == 42 || $claveDiscapacidad == 49 || $claveDiscapacidad == 50 || $claveDiscapacidad == 51 || $claveDiscapacidad == 52 || $claveDiscapacidad == 53){
+    if($claveDiscapacidad == 33 || $claveDiscapacidad == 40 || $claveDiscapacidad == 41 || $claveDiscapacidad == 42 || $claveDiscapacidad == 49 || $claveDiscapacidad == 50 || $claveDiscapacidad == 51 || $claveDiscapacidad == 52 || $claveDiscapacidad == 53){
         $idCatDiscapacidadTipoNombre = "Múltipe";
     }
-    else if ($claveDiscapacidad == 21 || $claveDiscapacidad == 27 || $claveDiscapacidad == 28 || $claveDiscapacidad == 29 || $claveDiscapacidad == 30 || $claveDiscapacidad == 38 || $claveDiscapacidad == 39 || $claveDiscapacidad == 43 || $claveDiscapacidad == 44){
+    else if ($claveDiscapacidad == 20 || $claveDiscapacidad == 27 || $claveDiscapacidad == 28 || $claveDiscapacidad == 29 || $claveDiscapacidad == 30 || $claveDiscapacidad == 38 || $claveDiscapacidad == 39 || $claveDiscapacidad == 43|| $claveDiscapacidad == 2 || $claveDiscapacidad == 3 || $claveDiscapacidad == 4 || $claveDiscapacidad == 5 || $claveDiscapacidad == 6 || $claveDiscapacidad == 7 || $claveDiscapacidad == 8 || $claveDiscapacidad == 9 || $claveDiscapacidad == 10 || $claveDiscapacidad == 11 || $claveDiscapacidad == 12 || $claveDiscapacidad == 13 || $claveDiscapacidad == 14 || $claveDiscapacidad == 15 || $claveDiscapacidad == 16 || $claveDiscapacidad == 17 || $claveDiscapacidad == 18 || $claveDiscapacidad == 19){
         $idCatDiscapacidadTipoNombre = "Física";
     }
-    else if ($claveDiscapacidad == 34 || $claveDiscapacidad == 23 || $claveDiscapacidad == 45 || $claveDiscapacidad == 32 || $claveDiscapacidad == 35 || $claveDiscapacidad == 36 || $claveDiscapacidad == 31){
+    else if ($claveDiscapacidad == 34 || $claveDiscapacidad == 23 || $claveDiscapacidad == 45 || $claveDiscapacidad == 32 || $claveDiscapacidad == 35 || $claveDiscapacidad == 36 || $claveDiscapacidad == 31 || $claveDiscapacidad == 44){
         $idCatDiscapacidadTipoNombre = "Intelectual";
     }
     else if ($claveDiscapacidad == 37 || $claveDiscapacidad == 48 || $claveDiscapacidad == 47 || $claveDiscapacidad == 46){
         $idCatDiscapacidadTipoNombre = "Psicosocial";
+    }
+    else if ($claveDiscapacidad == 26 || $claveDiscapacidad == 21 || $claveDiscapacidad == 22 || $claveDiscapacidad == 24 || $claveDiscapacidad == 25 || $claveDiscapacidad == 1){
+        $idCatDiscapacidadTipoNombre = "Sensorial";
     }
     /* $sqlCatDiscapacidades2 ="SELECT * FROM CatDiscapacidadTipos WHERE id = '$idCatDiscapacidadTipo'";
     $resultCatDisc2 = $conn2->query($sqlCatDiscapacidades2);

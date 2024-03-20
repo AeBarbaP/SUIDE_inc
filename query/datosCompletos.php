@@ -14,6 +14,8 @@ $sqlMedicos = "SELECT * FROM datos_medicos WHERE expediente LIKE '%$expediente%'
 $resultadoSqlMedicos = $conn->query($sqlMedicos);
 $rowDatosMedicos = $resultadoSqlMedicos->fetch_assoc();
 
+$tipoDiscapacidad = $rowDatosMedicos['tipo_discapacidad'];
+
 $enfermedades = $rowDatosMedicos['enfermedades_cual'];
 if ($enfermedades == null || $enfermedades == ""){
     $resultadoEnf[] = "";
@@ -254,7 +256,7 @@ else {
         'photo'=>$rowDatos['photo'],//hasta aquí datos generales 
         'discapacidad'=>$rowDatosMedicos['discapacidad'], 
         'grado_discapacidad'=>$rowDatosMedicos['grado_discapacidad'], 
-        'tipo_discapacidad'=>$rowDatosMedicos['tipo_discapacidad'], 
+        'tipo_discapacidad'=>$tipoDiscapacidad, 
         'descripcionDiscapacidad'=>$rowDatosMedicos['descripcionDiscapacidad'], 
         'causa'=>$rowDatosMedicos['causa'], 
         'causa_otro'=>$rowDatosMedicos['causa_otro'], 
