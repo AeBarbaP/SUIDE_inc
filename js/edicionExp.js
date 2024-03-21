@@ -947,7 +947,7 @@ function queryDatos(){
                 else if (tarjetaCirculacion == 21){
                     document.getElementById('circulacionNA').checked = true; 
                 }
-
+               
                 showMeFam();
                 showMeRef();
                 mostrarTablaServicios();
@@ -976,17 +976,18 @@ function queryDatos(){
                     }
                 } */
                 
+                
                 var arrayEnfermedades = jsonData.arregloEnfermedades;
                 console.log(arrayEnfermedades);
                 if (arrayEnfermedades == null || arrayEnfermedades == ""){
                     console.log('no enfermedades');
                 }
                 else {
+                    var concatEnfermedaes = '';
                     for (var i = 0; i < arrayEnfermedades.length; i++) {
                         var contador = arrayEnfermedades[i];
                         var idEnfermedad = contador.id;
-                        var nameEnfermedades = contador.enfermedad;
-                        //var concatEnfermedaes, enfermedadesConcat;
+                        //var nameEnfermedades = contador.enfermedad;
                         for (var j = 0; j < idEnfermedad.length; j++){
                             if (idEnfermedad[j] == 0){
                                 var idTrimed = idEnfermedad.slice(0,1);
@@ -996,14 +997,18 @@ function queryDatos(){
                                 break;
                             }
                         }
-                        var enfermedadesConcat = idEnfermedad+'-'+nameEnfermedades;
-                        var concatEnfermedaes = concatEnfermedaes +', '+enfermedadesConcat;
+                        
+                        //var enfermedadesConcat = idEnfermedad+'-'+nameEnfermedades;
+                        //concatEnfermedaes = concatEnfermedaes+', '+enfermedadesConcat;
 
                         console.log("Variable Array "+idEnfermedad);
                         console.log('Enfermedades: '+concatEnfermedaes);
                         var nombreEnfermedad = contador.enfermedad;
-                        $('#enfermedadesFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="E'+idEnfermedad+'"><span id="ES'+idEnfermedad+'" class="valorFull">'+nombreEnfermedad+'</span> <a class="text-light" onclick="removeB(\'E'+idEnfermedad+'\')"><i class="bi bi-x-circle"></i></a></button>');
-                        document.getElementById('numeroB').value = nombreEnfermedad;
+                        $('#enfermedadesFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary valorFull" id="E'+idEnfermedad+'"><label class="labelTextoE" id="'+idEnfermedad+'">'+nombreEnfermedad+'</label> <a class="text-light" onclick="removeB2(\'E'+idEnfermedad+'\')"><i class="bi bi-x-circle"></i></a></button>');
+                        paragraphsEnfermedadesUpdate(idEnfermedad,nombreEnfermedad);
+                        //document.getElementById('numeroB').value = concatEnfermedaes;
+                        // document.querySelector('#enfermedades option[value="'+idEnfermedad+'"]').remove();
+
                     }
                 }
                 var arrayAlergias = jsonData.arregloAlergias;
@@ -1031,7 +1036,7 @@ function queryDatos(){
                         }
                         console.log("Variable Array "+idAlergia);
                         var nombreAlergia = contador.alergia;
-                        $('#alergiasFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="A'+idAlergia+'"><span id="AS'+idAlergia+'" class="valorAFull">'+nombreAlergia+'</span> <a class="text-light" onclick="removeA(\'A'+idAlergia+'\')"><i class="bi bi-x-circle"></i></a></button>');
+                        $('#alergiasFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary valorAFull" id="A'+idAlergia+'"><label class="labelTexto" id="'+idAlergia+'">'+nombreAlergia+'</label> <a class="text-light" onclick="removeA(\'A'+idAlergia+'\')"><i class="bi bi-x-circle"></i></a></button>');
                         document.getElementById('numeroA').value = nombreAlergia;
                     }
                 }
@@ -1045,9 +1050,7 @@ function queryDatos(){
                     for (var i = 0; i < arrayMedicamentos.length; i++) {
                         var contador = arrayMedicamentos[i];
                         var idMedicamento = contador.id;
-                        var nameMedicamento = contador.medicamento;
-                        var concatMedicamento;
-                        var medicamentoConcat;
+                        
                         for (var j = 0; j < idMedicamento.length; j++){
                             if (idMedicamento[j] == 0){
                                 var idTrimed = idMedicamento.slice(0,1);
@@ -1056,13 +1059,12 @@ function queryDatos(){
                             else{
                                 break;
                             }
-                            medicamentoConcat =idMedicamento+'-'+nameMedicamento;
-                            concatMedicamento = concatMedicamento +', '+ medicamentoConcat;
+                            
                         }
                         console.log("Variable Array "+idMedicamento);
                         var nombreMedicamento = contador.medicamento;
-                        $('#medicamentosFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="M'+idMedicamento+'"><span id="MS'+idMedicamento+'" class="valorMFull">'+nombreMedicamento+'</span> <a class="text-light" onclick="removeC(\'M'+idMedicamento+'\')"><i class="bi bi-x-circle"></i></a></button>');
-                        document.getElementById('numeroC').value = nombreMedicamento;
+                        $('#medicamentosFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary valorMFull" id="M'+idMedicamento+'"><label class="labelTextoM" id="'+idMedicamento+'">'+nombreMedicamento+'</label> <a class="text-light" onclick="removeC(\'M'+idMedicamento+'\')"><i class="bi bi-x-circle"></i></a></button>');
+                        paragraphsMedicamentos(idMedicamento);
                     }
                 }
 
@@ -1075,9 +1077,6 @@ function queryDatos(){
                     for (var i = 0; i < arrayGrupos.length; i++) {
                         var contador = arrayGrupos[i];
                         var idGrupo = contador.id;
-                        var nombreGrupo1 = contador.grupo;
-                        var concatGrupo;
-                        var nombreConcat;
                         for (var j = 0; j < idGrupo.length; j++){
                             if (idGrupo[j] == 0){
                                 var idTrimed = idGrupo.slice(0,1);
@@ -1086,14 +1085,13 @@ function queryDatos(){
                             else{
                                 break;
                             }
-                            nombreConcat = idGrupo+"-"+nombreGrupo1;
-                            concatGrupo = concatGrupo+", "+nombreConcat;
+                            
                         }
-                        console.log(concatGrupo);
                         console.log("Variable Array "+idGrupo);
                         var nombreGrupo = contador.grupo;
-                        $('#gruposFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="GV'+idGrupo+'"><span id="textoGpoV'+idGrupo+'" class="valorGFull">'+nombreGrupo+' </span> <a class="text-light" onclick="removeG(\'GV'+idGrupo+'\')"><i class="bi bi-x-circle"></i></a></button>');
-                        document.getElementById('numeroG').value = nombreGrupo;
+                        $('#gruposFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary valorGFull" id="G'+idGrupo+'"><label id="'+idGrupo+'" class="labelTextoG">'+nombreGrupo+' </label> <a class="text-light" onclick="removeG(\'G'+idGrupo+'\')"><i class="bi bi-x-circle"></i></a></button>');
+                        paragraphsGrupos(idGrupo);
+                        document.querySelector('#grupos option[value="'+idGrupo+'"]').remove();
                     }
                 }
                 /* if (enfermedades_cual != null || enfermedades_cual != ""){

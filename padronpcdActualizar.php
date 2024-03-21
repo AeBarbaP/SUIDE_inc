@@ -173,7 +173,7 @@ include('prcd/qc/qc.php');
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body onload="estadosSelect(); catTipoVialidades();">
+  <body onload="estadosSelect(); catTipoVialidades(); buscarGrupo();">
     
   <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
@@ -799,7 +799,7 @@ include('prcd/qc/qc.php');
                   <div class="col-sm-5">
                       <label for="datos_usr" class="form-label"> Pertenece a otro Grupo Vulnerable?:</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" id="grupoSearch" onfocus="buscarGrupo()" aria-label="Buscar...">
+                        <input type="text" class="form-control" id="grupoSearch" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
                       <select class="form-select" id="grupos" onselect="grupoOp(this.value)" multiple aria-label="multiple select example">
