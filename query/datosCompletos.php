@@ -60,6 +60,7 @@ else {
             'alergia' => $alergia
         ];
     }
+    
 }
 
 $medicamentos = $rowDatosMedicos['medicamentos_cual'];

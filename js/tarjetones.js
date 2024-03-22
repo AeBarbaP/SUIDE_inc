@@ -74,6 +74,7 @@ function habilitaBTNadd(){
 
 function mostrarTablaVehiculos(){
     var curpTarjeton = document.getElementById('curpTarjeton').value;
+    //var numExpediente = document.getElementById('ordenExpediente').value;
 
     $.ajax({
         type: "POST",
@@ -131,8 +132,8 @@ function limpiarInputsVehiculo(){
     document.getElementById('annioPerm').value = "";
     document.getElementById('placasPerm').value = "";
     document.getElementById('seriePerm').value = "";
-/*     document.getElementById('folioTPerm').value = "";
-    document.getElementById('vigenciaPerm').value = ""; */
+    document.getElementById('folioTPerm').value = "";
+    document.getElementById('vigenciaPerm').value = "";
     document.getElementById('checkAutoS').checked = false;
     document.getElementById('AutoSeguroInput').value = "";
 }
@@ -398,8 +399,8 @@ function reemplazaTarjeton(){
 
 function desbloquearInputsT(x){
     var z = x.length;
-
-    if (z > 0){
+    console.log('Si entra a desbloquear input', z);
+    if (z != 0 || z != null) {
         document.getElementById('marcaPerm').disabled = false;
         document.getElementById('modeloPerm').disabled = false;
         document.getElementById('placasPerm').disabled = false;
@@ -407,6 +408,7 @@ function desbloquearInputsT(x){
         document.getElementById('seriePerm').disabled = false;
         document.getElementById('folioTPerm').disabled = false; 
         document.getElementById('vigenciaPerm').disabled = false;
+        console.log ("z si");
     }
     else{
         document.getElementById('marcaPerm').disabled = true;
@@ -417,6 +419,7 @@ function desbloquearInputsT(x){
         document.getElementById('folioTPerm').disabled = true; 
         document.getElementById('vigenciaPerm').disabled = true; 
         document.getElementById('vehiculosTabla').innerHTML = "";
+        console.log ("z no");
     }
 }
 

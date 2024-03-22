@@ -1425,8 +1425,8 @@ $(document).ready(function () {
       success: function(data) {
         $("#tarjeton").html(data);
         document.getElementById('tarjeton').hidden = false;
-        document.getElementById('folioTPerm').disabled = false;
-        document.getElementById('vigenciaPerm').disabled = false;
+        /* document.getElementById('folioTPerm').disabled = true;
+        document.getElementById('vigenciaPerm').disabled = true; */
         mostrarTablaVehiculos();
         var curp = document.getElementById('curpTarjeton').value;
         var folioExpediente = document.getElementById('numExpediente1').value;

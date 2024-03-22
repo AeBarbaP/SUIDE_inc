@@ -951,6 +951,7 @@ function queryDatos(){
                 showMeFam();
                 showMeRef();
                 mostrarTablaServicios();
+                
                 //mostrarTabla();
                /*  if (grupo == null || grupo == ""){
                     grupo = "";
@@ -1006,8 +1007,7 @@ function queryDatos(){
                         var nombreEnfermedad = contador.enfermedad;
                         $('#enfermedadesFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary valorFull" id="E'+idEnfermedad+'"><label class="labelTextoE" id="'+idEnfermedad+'">'+nombreEnfermedad+'</label> <a class="text-light" onclick="removeB2(\'E'+idEnfermedad+'\')"><i class="bi bi-x-circle"></i></a></button>');
                         paragraphsEnfermedadesUpdate(idEnfermedad,nombreEnfermedad);
-                        //document.getElementById('numeroB').value = concatEnfermedaes;
-                        // document.querySelector('#enfermedades option[value="'+idEnfermedad+'"]').remove();
+                        document.querySelector('#enfermedades option[value="'+idEnfermedad+'"]').remove();
 
                     }
                 }
@@ -1037,7 +1037,7 @@ function queryDatos(){
                         console.log("Variable Array "+idAlergia);
                         var nombreAlergia = contador.alergia;
                         $('#alergiasFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary valorAFull" id="A'+idAlergia+'"><label class="labelTexto" id="'+idAlergia+'">'+nombreAlergia+'</label> <a class="text-light" onclick="removeA(\'A'+idAlergia+'\')"><i class="bi bi-x-circle"></i></a></button>');
-                        document.getElementById('numeroA').value = nombreAlergia;
+                        paragraphsAlergias(idAlergia);
                     }
                 }
 
@@ -1065,6 +1065,7 @@ function queryDatos(){
                         var nombreMedicamento = contador.medicamento;
                         $('#medicamentosFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary valorMFull" id="M'+idMedicamento+'"><label class="labelTextoM" id="'+idMedicamento+'">'+nombreMedicamento+'</label> <a class="text-light" onclick="removeC(\'M'+idMedicamento+'\')"><i class="bi bi-x-circle"></i></a></button>');
                         paragraphsMedicamentos(idMedicamento);
+                        document.querySelector('#medicamentos option[value="'+idMedicamento+'"]').remove();
                     }
                 }
 

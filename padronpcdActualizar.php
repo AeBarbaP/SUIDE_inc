@@ -173,7 +173,7 @@ include('prcd/qc/qc.php');
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body onload="estadosSelect(); catTipoVialidades(); buscarGrupo();">
+  <body onload="estadosSelect(); catTipoVialidades(); buscarGrupo(); buscarEnfermedadUpdate();buscarMedicamento();">
     
   <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
@@ -810,7 +810,7 @@ include('prcd/qc/qc.php');
                       <div class="input-group mt-4" style="height:max-content">
                         <span class="input-group-text mt-2">Grupos Vulnerables <br>seleccionados:</span>
                         <div contenteditable="false" class="editable form-control mt-2" id="gruposFull">
-                          <input type="text" id="numeroG">
+                          <input type="text" id="numeroG" hidden>
                         </div>
                         <!-- Modal para agregar grupo vulnerable -->
                         <div class="modal fade" id="grupoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -1207,7 +1207,7 @@ include('prcd/qc/qc.php');
                           </div>
                           <div class="modal-body">
                             <div class="input-group">
-                              <input type="text" id="hiddenAlergia" >
+                              <input type="text" id="hiddenAlergia" hidden>
                               <span class="input-group-text"> Alergia:</span>
                               <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control  w-50" id="alergiaInput" name="alergiaInput" value="" placeholder="">
                             </div>
@@ -1224,7 +1224,7 @@ include('prcd/qc/qc.php');
                       <div class="input-group mt-4">
                         <span class="input-group-text mt-2" height="auto">Alergias <br>seleccionadas:</span>
                         <div contenteditable="false" class="editable form-control mt-2 alergiasFull" id="alergiasFull">
-                          <input type="text" id="numeroA">
+                          <input type="text" id="numeroA" hidden>
                         </div>
                         <style>
                           div.editable {
@@ -1240,7 +1240,7 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Enfermedades:</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" id="enfermedadesSearch" onfocus="buscarEnfermedadUpdate()" aria-label="Buscar...">
+                        <input type="text" class="form-control" id="enfermedadesSearch" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
                       <select class="form-select" id="enfermedades" onselect="enfermedadesOp(this.value)"  multiple aria-label="multiple select example">
@@ -1251,7 +1251,7 @@ include('prcd/qc/qc.php');
                       <div class="input-group mt-4" style="height:max-content">
                         <span class="input-group-text mt-2">Enfermedades <br>seleccionadas:</span>
                         <div contenteditable="false" class="editable form-control mt-2" id="enfermedadesFull">
-                          <input type="text" id="numeroB">
+                          <input type="text" id="numeroB" hidden>
                         </div>
                         <!-- Modal para agregar enfermedad -->
                         <div class="modal fade" id="enfermedadModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -1263,7 +1263,7 @@ include('prcd/qc/qc.php');
                               </div>
                               <div class="modal-body">
                                 <div class="input-group">
-                                  <input type="text" id="hiddenEnf">
+                                  <input type="text" id="hiddenEnf" hidden>
                                   <span class="input-group-text"> Enfermedad:</span>
                                   <input type="text" class="form-control  w-50" id="enfermedadInput" name="enfermedadInput" value="" placeholder="">
                                 </div>
@@ -1281,7 +1281,7 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Medicamentos:</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" id="buscarMed" onfocus="buscarMedicamento()" aria-label="Buscar...">
+                        <input type="text" class="form-control" id="buscarMed" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
                       <select class="form-select" id="medicamentos" onchange="medicamentosOp(this.value)" multiple aria-label="multiple select example">
@@ -1292,7 +1292,7 @@ include('prcd/qc/qc.php');
                       <div class="input-group mt-4" style="height:max-content">
                         <span class="input-group-text mt-2">Medicamentos <br>seleccionados:</span>
                         <div contenteditable="false" class="editable form-control mt-2" id="medicamentosFull">
-                          <input type="text" id="numeroC">
+                          <input type="text" id="numeroC" hidden>
                         </div>
                         <!-- Modal para agregar medicamento -->
                         <div class="modal fade" id="medicamentoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -2867,7 +2867,7 @@ include('prcd/qc/qc.php');
             <div class="input-group mb-1 mt-2 w-100">
               <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
               <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2(); desbloquearInputsT(this.value)" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
-              <!-- <input type="text" id="curpTarjeton" hidden>  -->
+              <input type="text" id="curpTarjeton" hidden> 
             </div><!-- input group -->
             <br>
             <div class="container text-center">
@@ -3000,13 +3000,13 @@ include('prcd/qc/qc.php');
                         <span class="input-group-text" id="basic-addon1">No. de Placas</span>
                         <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-describedby="basic-addon1" id="placasPerm">
                         <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" oninput="habilitaBTNadd()" placeholder="# de Serie del vehículo" aria-label="numeroserie" aria-describedby="basic-addon1" id="seriePerm">
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" placeholder="# de Serie del vehículo" aria-label="numeroserie" aria-describedby="basic-addon1" id="seriePerm">
                       </div>
                       <div class="input-group mb-1">
                         <span class="input-group-text" id="basic-addon1">Folio Tarjetón</span>
                         <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()"  placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPerm" >
                         <span class="input-group-text" id="basic-addon1">Vigencia</span>
-                        <select class="form-select" id="vigenciaPerm" aria-label="Default select example" >
+                        <select class="form-select" id="vigenciaPerm" aria-label="Default select example" onchange="habilitaBTNadd()">
                           <option selected>Selecciona...</option>
                           <option value="730">2 años</option>
                           <option value="2190">6 años</option>
@@ -3874,21 +3874,27 @@ $(document).ready(function () {
       }               
     });
   }
-// para generar tarjetón
+// para generar tarjetón que funciona en dashboard.php
   function buscarExpediente2(){
     var expediente = document.getElementById('searchDBInclusion2').value;
+    
     $.ajax({
       type:"POST",
-      url:"prcd/query_searchPadronBDTarjeton.php",
+      url:"query/query_searchPadronBDTarjeton.php",
       data:{
         expediente:expediente
       },
-      // dataType: "html",
+      dataType: "HTML",
       //contentType:false,
       //processData:false,
       cache: false,
-        success: function(data) {
-          $("#tarjeton").html(data);
+      success: function(data) {
+        $("#tarjeton").html(data);
+        mostrarTablaVehiculos();
+        var curp = document.getElementById('curpTarjeton').value;
+        var folioExpediente = document.getElementById('numExpediente1').value;
+        codigoQR(curp);
+        document.getElementById('etiquetaNum').innerHTML = folioExpediente+"<p style='margin-top:-3px'><small style='font-size: 8.5px'>http://inclusion.zacatecas.gob.mx/suidev/</small></p>";;
 
       }               
     });

@@ -1294,8 +1294,8 @@ function queryMedicamentosBadges(x1){
     var textoOpcionSeleccionada = opcionSeleccionada.textContent;
     var data = '<button class="badge btn btn-sm rounded-pill text-bg-secondary valorMFull" id="M'+x+'"><label class="labelTextoM" id="'+x+'">'+textoOpcionSeleccionada+' </label><a class="text-light" onclick="removeC(\'M'+x+'\')"><i class="bi bi-x-circle"></i></a></button>';
     $('#medicamentosFull').fadeIn(1000).append(data);
-    document.querySelector('#medicamentos option[value="'+x+'"]').remove();
     paragraphsMedicamentos(x);
+    document.querySelector('#medicamentos option[value="'+x+'"]').remove();
 }
 
 function queryMedicamentosBadgesModal(){

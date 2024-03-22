@@ -42,6 +42,7 @@ else{
       desbloquearInputsT('.$filasTarjeton.');
       
           folioTarjetonNegativo();
+          limpiarInputsVehiculo();
         </script>
       ';
     }
