@@ -262,7 +262,7 @@ else {
         'causa'=>$rowDatosMedicos['causa'], 
         'causa_otro'=>$rowDatosMedicos['causa_otro'], 
         'temporalidad'=>$rowDatosMedicos['temporalidad'], 
-        'valoracion'=>$rowDatosMedicos['valoracion'], 
+        'valoracionMed'=>$rowDatosMedicos['valoracion'], 
         'fecha_valoracion'=>$rowDatosMedicos['fecha_valoracion'], 
         'rehabilitacion'=>$rowDatosMedicos['rehabilitacion'], 
         'rehabilitacion_donde'=>$rowDatosMedicos['rehabilitacion_donde'], 

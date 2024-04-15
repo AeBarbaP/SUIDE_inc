@@ -72,6 +72,10 @@ include('prcd/qc/qc.php');
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 
+    <script src="js/tarjetones.js"></script>
+    <script src="js/tarjetonesTemp.js"></script>
+    <script src="js/usuarioTemp.js"></script>
+
     <style>
       body {
         font-family: 'Quicksand', sans-serif;
@@ -243,79 +247,13 @@ include('prcd/qc/qc.php');
                     <th scope="col">Tipo Discapacidad</th>
                     <th scope="col">Municipio</th>
                     <th scope="col">Estatus</th>
-                    <th scope="col">Credencial</th>
-                    <th scope="col">Tarjetón</th>
                     <th scope="col">Actualizar</th>
                 </tr>
               </thead>
-              <tbody id="myTable">
-                <?php
-                  include('prcd/query.php');
-                  $x = 0;
-                  while ($row_sqlQueryCredencial = $resultadoQueryCredencial->fetch_assoc()) {
-                    $x++;
-                    echo '
-                    <input id="imprime2" value="'.$row_sqlQueryCredencial['id'].'" hidden>
-                    <tr class="text-center bg-white">
-                      <td>' . $x . '</td>
-                      <td>' . $row_sqlQueryCredencial['id_ext'] . '</td>
-                      <td>' . $row_sqlQueryCredencial['fecha_c'] . '</td>
-                      <td>' . $row_sqlQueryCredencial['vigencia_cred'] . '</td>';
-                      $idusers= $row_sqlQueryCredencial['id_users'];
-                      $sqlUser= "SELECT * FROM users WHERE id ='$idusers'";
-                      $resultadoQueryUser = $conn->query($sqlUser);
-                      $row_sqlQueryUser = $resultadoQueryUser->fetch_assoc();
-                      echo '
-                      <td>' . $row_sqlQueryUser['nombre'] . '</td>';
-
-                      if($row_sqlQueryCredencial['entregado_c'] == 1){
-                        echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#CredencialQR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-check text-success"></i></a></td>';
-                      } elseif($row_sqlQueryCredencial['entregado_c'] == 0){
-                        echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-x text-danger"></a></i></td>';
-                      }
-
-                      if($row_sqlQueryCredencial['entregado_t'] == 1){
-                        echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#TarjetonQR'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-check text-success"></i></a></td>';
-                      } elseif($row_sqlQueryCredencial['entregado_t'] == 0){
-                        echo '
-                        <td><a href="data-bs-toggle="modal" data-bs-target="#'.$row_sqlQueryCredencial['id'].'""><i class="h4 bi bi-x text-danger"></i></a></td>';
-                      }
-                      echo '
-                    <tr>
-                    <!-- Modal para imprimir credencial-->
-                    <div class="modal fade" id="CredencialQR'.$row_sqlQueryCredencial['id'].'" tabindex="-1" aria-labelledby="QRLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-qr-code"></i> Información QR</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body" style="text-align: center; background-image: url(img/CredencialInclusionFront.jpg); background-repeat: no-repeat;background-attachment: fixed; background-size: cover;" id="div_print'.$row_sqlQueryCredencial['id'].'">
-                          
-                            <br>
-                            <center><h5 style="font-size: 1.5rem"><strong>Número de Expediente:</strong> ' . $row_sqlQueryCredencial['id_ext'] . ' </h5>
-                            <h5 style="font-size: 1.5rem"><strong>Fecha de expedición:</strong> ' . $row_sqlQueryCredencial['fecha_c'] . '</h5>
-                            <h5 style="font-size: 1.5rem"><strong>Expira:</strong> ' . $row_sqlQueryCredencial['vigencia_cred'] . ' </h5>
-                            <h5 style="font-size: 1.5rem"><strong>Atenidod por:</strong> ' . $row_sqlQueryCredencial['id_users'] . '</h5>
-                            <h5 style="font-size: 1.5rem"><strong></strong></h5></center>
-                            <p class="text-center"><img src="prcd/QR/codes/'. $row_sqlQueryCredencial['qr_cred'].'"></p>
-                          </div>
-                          <div class="modal-footer">';?>
-                          <!-- <a type="button" class="btn btn-primary" href="javascript:imprimirSeleccion('div_print<?php echo $row_sqlQuery['id']?>')"><i class="bi bi-printer-fill"></i> Imprimir</a> -->
-                          <?php echo '
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    ';
-                    
-                  }
-            echo'</table>';
-            ?>
+              <tbody id="myTablePCD">
+              
+              </tbody>
+            </table>
           </div>
         <!-- Inicia Modal para generar credencial -->
         <div class="modal fade" id="credgen" tabindex="-1" aria-labelledby="generacredencial" aria-hidden="true">

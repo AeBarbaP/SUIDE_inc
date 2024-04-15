@@ -282,10 +282,10 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     else if ($valoracion == 2){
         $valoracionInst = "IMSS";
     }
-    else if ($valoracion == 3){
+    else if ($valoracion == 3|| $valoracion == 12 || $valoracion == 14){
         $valoracionInst = "SSZ";
     }
-    else if ($valoracion == 6 || $valoracion == 5 || $valoracion == 7 || $valoracion == 11 || $valoracion == 15){
+    else if ($valoracion == 6 || $valoracion == 5 || $valoracion == 7 || $valoracion == 10 || $valoracion == 11 || $valoracion == 15){
         $valoracionInst = "Particular";
     }
     else if ($valoracion == 8){
@@ -294,7 +294,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     else if ($valoracion == 9){
         $valoracionInst = "UBR";
     }
-    else if ($valoracion == 10 || $valoracion == 12 || $valoracion == 13 || $valoracion == 14){
+    else if ($valoracion == 13){
         $valoracionInst = "";
     }
 
@@ -309,7 +309,13 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     $resultCatDisc = $conn2->query($sqlCatDiscapacidades);
     $rowCatDisc = $resultCatDisc->fetch_assoc();
     $idCatDiscapacidadTipo = $rowCatDisc['idCatDiscapacidadTipo'];
-    $claveDiscapacidad = $rowCatDisc['claveDiscapacidad']; // este se necesita para cambiarlo a múltiple
+    $claveDiscapacidad1 = $rowCatDisc['claveDiscapacidad']; // este se necesita para cambiarlo a múltiple
+    if (strlen($claveDiscapacidad1) == 1){
+        $claveDiscapacidad = "0".$claveDiscapacidad1;
+    }
+    else {
+        $claveDiscapacidad = $claveDiscapacidad1;
+    }
 
     $nombreDiscapacidad1 = $rowCatDisc['nombreDiscapacidad'];
 
@@ -405,6 +411,9 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     }
     else if ($nombreDiscapacidad1 == "INTELECTUAL NEUROLOGICO"){
         $nombreDiscapacidad = "Neurológica";
+    }
+    else if ($nombreDiscapacidad1 == "INTELECTUAL D. M."){
+        $nombreDiscapacidad = "Intelectual DM";
     }
     else if ($nombreDiscapacidad1 == "AUTISMO"){
         $nombreDiscapacidad = "Espectro Autista";

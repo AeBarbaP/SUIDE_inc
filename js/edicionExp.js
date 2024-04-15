@@ -509,10 +509,11 @@ function queryDatos(){
                 else if (causaDiscapacidadVar == "OTRA" || causaDiscapacidadVar == "Otra" || causaDiscapacidadVar == 7){
                     var causaDiscapacidad = 7;
                 }
+                var fuenteVal = jsonData.valoracionMed;
                 document.getElementById('causaDisc').value = causaDiscapacidad;
                 document.getElementById('especifiqueD').value = jsonData.causa_otro; 
                 document.getElementById('temporalidad').value = jsonData.temporalidad; 
-                document.getElementById('fuente').value = jsonData.valoracion; 
+                document.getElementById('fuente').value = fuenteVal; 
                 
                 var fechaValVar = jsonData.fecha_valoracion;
                 if (fechaValVar != "" || fechaValVar != null){
