@@ -261,9 +261,21 @@ else if ($discapacidad == 'Psicosocial'){
   $regPsicosocial = $check;
 }
 
+$nacimiento = '';
+$congenita = "";
+$genetica = "";
+$hereditaria = "";
+$enfermedad = "";
+$accidente = "";
+$violencia = "";
+$adiccion = "";
+$otra = "";
+$desconoce = "";
+$espedifique = "";
+
 $idDiscapacidad = $rowSqlMedicos['discapacidad'];
 $causa = $rowSqlMedicos['causa'];
-
+//aquí poner if para las causas en texto
 if ($causa == 1){
   $nacimiento = $check;
   $congenita = "";
