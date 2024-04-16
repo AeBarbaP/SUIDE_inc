@@ -19,7 +19,7 @@ $x = 0;
 
 if($numeroID == 1){
 
-$db1 = "SELECT * FROM Expedientes ORDER BY ordenExpediente ASC LIMIT 1, 25";
+$db1 = "SELECT * FROM Expedientes ORDER BY ordenExpediente ASC LIMIT 1, 50";
 //$db1 = "SELECT * FROM Expedientes ORDER BY RAND() LIMIT 1, 15";
 $resultadoDB1 = $conn2->query($db1);
 
@@ -548,7 +548,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         '$grado',
         '$temporalidad',
         '$valoracionInst',
-        '$causa',
+        '$idCatCausa',
         /* '$idCatDiscapacidad', */
         '$discapacidad',
         '$idCatDiscapacidadTipoNombre',
