@@ -3870,7 +3870,6 @@ $(document).ready(function () {
       cache: false,
         success: function(data) {
           $("#credencial").html(data);
-
       }               
     });
   }
@@ -3920,8 +3919,6 @@ $(document).ready(function () {
       document.getElementById("inputentrega").hidden = false;
     }
   }
-
-  
 
   function buscarExpediente3(){
     var curp = document.getElementById('curp_exp').value;

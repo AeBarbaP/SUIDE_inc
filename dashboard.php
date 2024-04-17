@@ -435,8 +435,8 @@ include('prcd/qc/qc.php');
               
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd()"><i class="bi bi-save2"></i> Generar Credencial</button>
-                <button type="button" class="btn btn-primary" id="imprimirc" data-bs-target="#credencialpreview" data-bs-toggle="modal" disabled><i class="bi bi-printer"></i> Imprimir</button>
+                <button type="submit" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd(); insertLogCredencial()"><i class="bi bi-save2"></i> Generar Credencial</button>
+                <!-- <button type="button" class="btn btn-primary" id="imprimirc" data-bs-target="#credencialpreview" data-bs-toggle="modal" disabled><i class="bi bi-printer"></i> Imprimir</button> -->
               </div><!-- modal footer -->
             </div><!-- modal content -->
           </div><!-- modal dialog -->

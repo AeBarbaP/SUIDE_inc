@@ -3527,3 +3527,29 @@ function buscarPhotoEmp(curp){
         }
     });
 }
+
+function insertLogCredencial(){
+    var curp = document.getElementById('curpCredencial').value;
+    var numExp = document.getElementById('folioCredencial').value;
+    var selectvigencia = document.getElementById('selectvigencia').value;
+    $.ajax({
+        type: "POST",
+        url: 'prcd/logEntregaCredenciales.php',
+        dataType:'json',
+        data: {
+            curp:curp,
+            numExp:numExp,
+            selectvigencia:selectvigencia
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            if (success == 1) {
+                console.log("Log credencial guardado");
+
+            } else if (success == 0){
+                console.log("Log no guardado");
+            }
+        }
+    });
+}

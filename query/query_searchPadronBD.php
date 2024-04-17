@@ -223,9 +223,9 @@ header("content-type: image/jpeg");
             <input value="'.$nombreExp.'" type="text" name="nombre" hidden>
             <input value="'.$apellidoPaterno.'" type="text" name="apellidoPaterno" hidden>
             <input value="'.$apellidoMaterno.'" type="text" name="apellidoMaterno" hidden>
-            <input value="'.$folio.'" type="text" name="folio" hidden>
+            <input value="'.$folio.'" type="text" name="folio" id="folioCredencial" hidden>
             <input value="'.$discapacidad2.'" type="text" name="discapacidad" hidden>
-            <input value="'.$curp.'" type="text" name="curp" hidden>
+            <input value="'.$curp.'" type="text" name="curp" id="curpCredencial" hidden>
             <input value="'.$direccion.'" type="text" name="direccion" hidden>
             <input value="'.$numeroCasa.'" type="text" name="numeroCasa" hidden>
             <input value="'.$numeroInterior.'" type="text" name="numeroInterior" hidden>
