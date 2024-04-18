@@ -435,7 +435,7 @@ include('prcd/qc/qc.php');
               
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd(); insertLogCredencial()"><i class="bi bi-save2"></i> Generar Credencial</button>
+                <button type="submit" class="btn btn-primary" id="habilitaimprimirc" onclick="swaldatoscrd();"><i class="bi bi-save2"></i> Generar Credencial</button>
                 <!-- <button type="button" class="btn btn-primary" id="imprimirc" data-bs-target="#credencialpreview" data-bs-toggle="modal" disabled><i class="bi bi-printer"></i> Imprimir</button> -->
               </div><!-- modal footer -->
             </div><!-- modal content -->
@@ -1189,6 +1189,7 @@ $(document).ready(function () {
         document.getElementById('credencial').hidden = true;
         var form = document.getElementById("form-id");
         form.submit();
+        insertLogCredencial();
         Swal.fire('Listo!', '', 'success')
 
       } else if (result.isDenied) {

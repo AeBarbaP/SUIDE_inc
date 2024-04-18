@@ -36,7 +36,8 @@ $sqlinsert= "INSERT INTO tarjetones (
     vehiculo_anyo,
     no_placa,
     no_serie,
-    autoseguro_reg
+    autoseguro_reg,
+    user
     )
 VALUES(
     '$curpTarjeton',
@@ -50,7 +51,8 @@ VALUES(
     '$annio',
     '$numPlaca',
     '$serie',
-    '$autoSeguro'
+    '$autoSeguro',
+    '$user'
 )";
 
 $resultado= $conn->query($sqlinsert);

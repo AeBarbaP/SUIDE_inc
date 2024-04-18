@@ -86,6 +86,7 @@ include('prcd/qc/qc.php');
     <script src="js/tarjetonesTemp.js"></script>
     <script src="js/usuarioTemp.js"></script>
     <script src="js/print.js"></script>
+    <script src="js/query.js"></script>
 
     <style>
       body {
