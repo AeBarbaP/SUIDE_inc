@@ -151,7 +151,8 @@ include('prcd/qc/qc.php');
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body>
+  
+  <body onload="tablaPCDFull()">
     
 <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
@@ -242,7 +243,7 @@ include('prcd/qc/qc.php');
     </div>
     </nav>
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" >
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
         <p class="h3">Padrón de Personas con Discapacidad</p>
       </div>
