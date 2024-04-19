@@ -416,7 +416,7 @@
 
     if($x != 0){
         echo json_encode(array(
-            'success'=>10,
+            'success'=>1,
             'x'=>$x,
             'y'=>$y
         ));

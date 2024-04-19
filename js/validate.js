@@ -279,7 +279,7 @@ function descartarCambios(x){
         var asociacion2No = 0;
     }
 
-    var sindicatoSi = document.getElementById('sindicatoSi');
+    /* var sindicatoSi = document.getElementById('sindicatoSi');
     var sindicatoNo = document.getElementById('sindicatoNo');
     if(sindicatoSi.checked){
         var sindicatoSi2 = 1;
@@ -292,7 +292,7 @@ function descartarCambios(x){
     else {
         var sindicatoSi2 = 0;
         var sindicatoNo2 = 0;
-    }
+    } */
 
     var pensionSi = document.getElementById('pensionSi');
     var pensionNo = document.getElementById('pensionNo');

@@ -254,7 +254,8 @@ else {
         'informante'=>$rowDatos['informante'],
         'informanteParentesco'=>$rowDatos['informante_parentesco'],
         'informanteParentescoOtro'=>$rowDatos['otro_parentesco'],
-        'photo'=>$rowDatos['photo'],//hasta aquí datos generales 
+        'photo'=>$rowDatos['photo'],//hasta aquí datos generales
+        //datos medicos 
         'discapacidad'=>$rowDatosMedicos['discapacidad'], 
         'grado_discapacidad'=>$rowDatosMedicos['grado_discapacidad'], 
         'tipo_discapacidad'=>$tipoDiscapacidad, 
