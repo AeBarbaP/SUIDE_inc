@@ -52,7 +52,7 @@ VALUES(
     '$numPlaca',
     '$serie',
     '$autoSeguro',
-    '$user'
+    '$usr'
 )";
 
 $resultado= $conn->query($sqlinsert);

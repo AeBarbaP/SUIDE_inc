@@ -3860,7 +3860,7 @@ $(document).ready(function () {
     var expediente = document.getElementById('searchDBInclusion').value;
     $.ajax({
       type:"POST",
-      url:"prcd/query_searchPadronBD.php",
+      url:"query/query_searchPadronBD.php",
       data:{
         expediente:expediente
       },

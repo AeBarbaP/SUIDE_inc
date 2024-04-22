@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2024 at 10:25 PM
+-- Generation Time: Apr 22, 2024 at 11:27 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -10116,31 +10116,7 @@ CREATE TABLE `datos_generales` (
 --
 
 INSERT INTO `datos_generales` (`id`, `numExpediente`, `fecha_registro`, `fecha_actualizacion`, `nombre`, `apellido_p`, `apellido_m`, `genero`, `edad`, `edo_civil`, `f_nacimiento`, `lugar_nacimiento`, `domicilio`, `no_int`, `no_ext`, `colonia`, `entre_vialidades`, `descr_referencias`, `tipoVialidad`, `estado`, `municipio`, `localidad`, `asentamiento`, `cp`, `telefono_part`, `correo`, `telefono_cel`, `escolaridad`, `nombre_escolaridad`, `profesion`, `curp`, `rfc`, `estudia`, `estudia_donde`, `estudia_habilidad`, `trabaja`, `trabaja_donde`, `trabaja_ingresos`, `asoc_civ`, `asoc_cual`, `pensionado`, `pensionado_donde`, `pension_monto`, `pension_temporalidad`, `informante`, `informante_parentesco`, `otro_parentesco`, `seguridad_social`, `seguridad_social_otro`, `numSS`, `photo`, `estatus`, `leer_escribir`, `nivel_concluido`, `gpo_vulnerable`) VALUES
-(1, 'C-1712-0001', '2000-04-01 00:00:00', NULL, 'LUZ MARIA', 'ROBLES', 'SIFUENTES', 'FEMENINO', 52, 'SOLTERO (A)', '1971-05-16', '', 'REAL DEL CONDE', 'S/N', '55', 'FRACC. CAMPO REAL', 'S/N', NULL, 'NINGUNO', '32', 32017, 'GUADALUPE', 'CAMPO REAL', '98600', '(492) 150 - 5160', '', ' ', '', NULL, 'HOGAR', 'ROSL710516MZSBFZ07', 'ROSL710516', 'NO', '', '', 'SI', '', '5000.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'ROSL710516MZSBFZ07_C-1712-0001.jpg', '1', NULL, 0, '3-Migrante'),
-(2, 'C-5618-0002', '2000-01-04 00:00:00', NULL, 'MANUEL', 'GAYTAN', 'NAVA', 'MASCULINO', 48, 'SOLTERO (A)', '1975-04-18', 'ZACATECAS', 'RABANOS', 'S/N', '35', 'LAS HUERTAS', 'S/N', NULL, 'NINGUNO', '32', 32056, 'NO REGISTRADA', '0', '98160', '6 84606', '', ' ', '', NULL, 'DIVERSOS', 'GANM750418HZSYVN01', 'GANM750418', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', '', '1', NULL, 0, NULL),
-(3, 'C-5603-0003', '2006-06-09 00:00:00', NULL, 'JESUS MARIA', 'GUTIERREZ', 'BETANCOURT', 'MASCULINO', 66, 'SOLTERO (A)', '1957-11-09', 'ZACATECAS', 'FELIX BAÑUELOS', 'S/N', '116', 'BELLAVISTA', 'S/N', NULL, 'CALLE', '32', 32056, 'ZACATECAS', 'BELLAVISTA', '98000', '(492) 140 - 3212', '', '', '', NULL, 'DESEMPLEADO', 'GUBJ571109HZSTTS00', 'GUBM571109', 'NO', '', '', 'SI', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'GUBJ571109HZSTTS00_C-5603-0003.jpg', '1', NULL, 0, NULL),
-(4, 'C-1733-0004', '2000-01-04 00:00:00', NULL, 'SAUL ALEJANDRO', 'GUERRERO', 'MARTINEZ', 'MASCULINO', 25, 'CASADO (A)', '1998-10-29', 'ZACATECAS', 'REAL DEL MONTE', 'S/N', '45', 'CAMINO REAL', 'S/N', NULL, 'NINGUNO', '32', 32017, 'GUADALUPE', 'CAMINO REAL', '98615', '(492) 124 - 9032', '', '', '', NULL, 'ESTUDIANTE', 'GUMS981029HZSRRL08', 'GUMS981029', 'SI', '', '', 'NO', '', '5000.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'GUMS981029HZSRRL08_C-1733-0004.jpg', '1', NULL, 0, NULL),
-(5, 'C-5032-0005', '2000-01-06 00:00:00', NULL, 'LUIS MIGUEL', 'GUTIERREZ', 'MARTINEZ', 'MASCULINO', 38, 'CASADO (A)', '1985-09-29', 'VETAGRANDE', 'MATIAS RAMOS', 'S/N', '46', ' ', 'S/N', NULL, 'NINGUNO', '32', 32050, 'SAN JOSÉ DE LA ERA', '0', '98150', '76 83119', '', '', '', NULL, 'HOGAR', 'GUML850929HZSTRS00', 'GUML850929', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'GUML850929HZSTRS00_C-5032-0005.jpg', '1', NULL, 0, NULL),
-(6, 'C-5603-0006', '2000-03-31 00:00:00', NULL, 'CARLOS RAUL', 'RIOS', 'RAMIREZ', 'MASCULINO', 34, 'CASADO (A)', '1989-04-17', 'ZACATECAS', 'DE LA PRIMAVERA', 'S/N', '408', 'CENTRO', 'S/N', NULL, 'NINGUNO', '32', 32056, 'ZACATECAS', 'ZONA CENTRO', '98000', '(492) 161 - 5918', '', '', '', NULL, 'ESTUDIANTE', 'RIRC890417HZSSMR07', 'RIRC890417', 'SI', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'RIRC890417HZSSMR07_C-5603-0006.jpg', '1', NULL, 0, NULL),
-(7, 'C-5618-0007', '1999-05-04 00:00:00', NULL, 'JOSE LUIS', 'ACOSTA', 'RAMOS', 'MASCULINO', 65, 'SOLTERO (A)', '1958-10-05', 'ZACATECAS', 'BONIFACIO OVALLE', 'S/N', '106', 'CNOP', 'LERDO DE TEJADA Y LUIS MOYA', NULL, 'CALLE', '32', 32056, 'ZACATECAS', 'CNOP', '98060', '(492) 949 - 0198', '', '', '', NULL, 'JUBILADO/PENSIONADO', 'AORL581005HSPCMS01', 'AORL581012', 'NO', '', '', 'NO', '', '13000.00', 'NO', '', 'SI', 'IMSS', '12000.00', NULL, NULL, NULL, NULL, 'IMSS', NULL, '1', 'AORL581005HSPCMS01_C-5618-0007.jpg', '1', NULL, 0, NULL),
-(8, 'C-5521-0008', '2000-01-07 00:00:00', NULL, 'MARÍA FERNANDA', 'RANGEL', 'MARTÍNEZ', 'FEMENINO', 32, 'CASADO (A)', '1992-01-10', 'D.F.', 'LINDAVISTA', 'S/N', '2', 'CENTRO', 'S/N', NULL, 'NINGUNO', '32', 32055, 'NO REGISTRADA', '0', '99500', '', '', '', '', NULL, 'ESTUDIANTE', 'RAMF920110MDFNRR08', 'RAMF920110', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', '', '1', NULL, 0, NULL),
-(9, 'C-1718-0009', '2000-02-03 00:00:00', NULL, 'JUANA', 'LUJAN', 'QUINTERO', 'FEMENINO', 105, 'SOLTERO (A)', '1918-05-27', 'GUADALUPE', 'SAN ANTONIO', 'S/N', '8', 'CENTRO', 'S/N', NULL, 'NINGUNO', '32', 32017, 'GUADALUPE', '0', '98600', '', '', '', '', NULL, 'NO REGISTRADO', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', '', '3', NULL, 0, NULL),
-(10, 'C-5633-0010', '2000-07-11 00:00:00', NULL, 'CESAR', 'VILLAGRANA', '', 'MASCULINO', 43, 'CASADO (A)', '1980-04-26', 'ZACATECAS', 'FELIX LAMAS CORTES', 'S/N', '216', 'ALMA OBRERA', 'S/N', NULL, 'NINGUNO', '32', 32056, 'ZACATECAS', '0', '98090', '92 44371', '', ' ', '', NULL, 'HOGAR', 'VIXC800426HZSLXS04', 'VIXC800426', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'VIXC800426HZSLXS04_C-5633-0010.jpg', '3', NULL, 0, NULL),
-(11, 'C-5633-0011', '2000-07-11 00:00:00', NULL, 'LUIS ALBERTO', 'VILLAGRANA', ' ', 'MASCULINO', 37, 'CASADO (A)', '1986-08-20', 'ZACATECAS', 'FELIX LAMAS CORTES', 'S/N', '216', 'ALMA OBRERA', 'S/N', NULL, 'NINGUNO', '32', 32056, 'ZACATECAS', '0', '98090', '9244371', '', '', '', NULL, 'NINGUNA', 'VIXL860820HZSLXs01', 'VIXL860820', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'VIXL860820HZSLXs01_C-5633-0011.jpg', '3', NULL, 0, NULL),
-(12, 'C-1021-0012', '2000-01-10 00:00:00', NULL, 'AXEL ABRAHAM', 'ZALDIVAR', 'VEGA', 'MASCULINO', 39, 'CASADO (A)', '1984-11-26', 'DURANGO', 'NIÑO ASTILLERO', 'S/N', '2', 'INDUSTRIAL', 'S/N', NULL, 'NINGUNO', '32', 32010, 'NO REGISTRADA', '0', '99030', '', '', '', '', NULL, 'DESEMPLEADO', 'ZAVA841126HDGLGX05', 'ZAVA841126', 'NO', '', 'DATOS INCOMPLETOS', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', '', '3', NULL, 0, NULL),
-(13, 'C-1024-0013', '2000-01-25 00:00:00', NULL, 'LIZETH', 'PALACIOS', 'ZUÑIGA', 'FEMENINO', 42, 'SOLTERO (A)', '1981-08-14', 'RIO GRANDE', 'PLAZA DE ARBOLEDAS', '202', 'EDIF 103', 'MANUEL M. PONCE', 'OLIVO Y MANUEL M PONCE', NULL, 'CALLE', '32', 32010, 'FRESNILLO', 'VARIAS', '99070', '(493) 112 - 8430', '', '', '', NULL, 'HOGAR', 'PAZL810814MZSLXZ01', 'PAZL810814', 'NO', '', '', 'NO', '', '0.01', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'PAZL810814MZSLXZ01_C-1024-0013.jpg', '1', NULL, 0, NULL),
-(14, 'C-5621-0014', '2000-01-11 00:00:00', NULL, 'SERGIO', 'HERNÁNDEZ', 'RANGEL', 'MASCULINO', 64, 'SOLTERO (A)', '1960-01-01', 'ZACATECAS', 'CERRADA 20 DE NOVIEMBRE', 'S/N', '18', 'EL ORITO', 'S/N', NULL, 'CERRADA', '32', 32056, 'ZACATECAS', 'EL ORITO', '98160', '(492) 144 - 8064', '', '', '', NULL, 'OFICIOS VARIOS', 'HERS591019HDFRNR00', 'HERS591019', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'HERS591019HDFRNR00_C-5621-0014.jpg', '1', NULL, 0, NULL),
-(15, 'C-5640-0015', '2000-01-12 00:00:00', NULL, 'CLAUDIA AMELIA', 'PACHECO', 'AMAYA', 'FEMENINO', 35, 'CASADO (A)', '1988-03-27', 'ZACATECAS', 'LIRIOS', 'S/N', '27', 'FELIPE ANGELES', 'S/N', NULL, 'CALLE', '32', 32056, 'ZACATECAS', 'FELIPE ÁNGELES', '98054', '(492) 225 - 1604', '', '', '', NULL, 'EMPLEADO', 'PAAC880327MZSCML07', 'PAAC880327', 'SI', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'PAAC880327MZSCML07_C-5640-0015.jpg', '1', NULL, 0, NULL),
-(16, 'C-1703-0016', '2000-07-12 00:00:00', NULL, 'TERESA', 'AGUILAR', 'JUÁREZ', 'FEMENINO', 35, 'CASADO (A)', '1989-02-15', 'ZACATECAS', 'DIBUJANTES', 'S/N', '1', 'TRES CRUCES', 'S/N', NULL, 'NINGUNO', '32', 32017, 'NO REGISTRADA', '0', '98600', '', '', '', '', NULL, 'DESEMPLEADO', 'AUJT890215MZSGRR05', 'AGJT890215', 'NO', '', 'SIN DOCUMENTACION', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', '', '1', NULL, 0, NULL),
-(17, 'C-5631-0017', '2000-02-15 00:00:00', NULL, 'SILVERIO', 'LÓPEZ', 'VILLAREAL', 'MASCULINO', 34, 'CASADO (A)', '1989-09-13', 'ZACATECAS', '17 DE OCTUBRE', 'S/N', '06', 'BARRO SIERRA', 'S/N', NULL, 'NINGUNO', '32', 32056, 'NO REGISTRADA', '0', '98000', '2 42363', '', '', '', NULL, 'DESEMPLEADO', 'LOVS899813HZSPLL06', 'LOVS890913', 'NO', '', 'SIN DOCUMENTACION', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', '', '1', NULL, 0, NULL),
-(18, 'C-1723-0018', '2000-07-12 00:00:00', NULL, 'OMAR ALEJANDRO', 'TRIANA', 'FÉLIX', 'MASCULINO', 32, 'CASADO (A)', '1992-01-16', 'ZACATECAS', 'ANDADOR ALUMINIO M1', 'S/N', '-1-C', 'CERRILLO', 'S/N', NULL, 'ANDADOR', '32', 32017, 'NO REGISTRADA', '0', '98600', '', 'SIN DOCUMENTACION', '', '', NULL, 'DESEMPLEADO', 'TIFO920116HZSRLM00', 'TRFO920116', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', '', '1', NULL, 0, NULL),
-(19, 'C-3721-0019', '2000-01-12 00:00:00', NULL, 'VICTOR HUGO', 'SILVA', 'SIFUENTES', 'MASCULINO', 31, 'CASADO (A)', '1992-06-04', 'PANUCO', 'DEL ESTUDIANTE', 'S/N', '5', '', 'S/N', NULL, 'CALLE', '32', 32037, 'SAN ANTONIO DEL CIPRÉS', '0', '98540', '4786861136', '', '', '', NULL, 'CAMPO', 'SISV920604HZSLFC01', 'SISV920604', 'NO', '', '', 'SI', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'SISV920604HZSLFC01_C-3721-0019.jpg', '1', NULL, 0, NULL),
-(20, 'C-5621-0020', '2000-01-12 00:00:00', NULL, 'JUANA', 'DIAZ', 'OROZCO', 'FEMENINO', 79, 'DIVORCIADO (A)', '1945-01-01', 'ZACATECAS', 'JOSEFA ORTIZ DE DOMINGUEZ', 'S/N', '109-A', 'CENTRO', 'S/N', NULL, 'NINGUNO', '32', 32056, 'ZACATECAS', 'ZONA CENTRO', '98000', '92 27190', '', '', '', NULL, 'HOGAR', 'DIOJ450105MZSZRN05', 'DIOJ450101', 'NO', '', '', 'NO', '', '3000.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'DIOJ450105MZSZRN05_C-5621-0020.jpg', '1', NULL, 0, NULL),
-(21, 'C-3231-0021', '2000-01-26 00:00:00', NULL, 'ARCELIA', 'MARTINEZ', 'SANCHEZ', 'FEMENINO', 35, 'CASADO (A)', '1989-01-01', 'MORELOS', 'AV. HIDALGO', 'S/N', '26', ' ', 'S/N', NULL, 'NINGUNO', '32', 32032, 'HACIENDA NUEVA', '0', '98100', '(155) 018 - 2', '', '', '', NULL, 'ESTUDIANTE', 'MASA880721MZSRNR00', 'MASR890101', 'SI', '', '', 'NO', '', '3000.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'MASA880721MZSRNR00_C-3231-0021.jpg', '1', NULL, 0, NULL),
-(22, 'C-5615-0022', '2000-01-13 00:00:00', NULL, 'GLORIA', 'MORALES', 'ZOZA', 'FEMENINO', 66, 'SOLTERO (A)', '1957-04-20', 'GUERRERO', 'ESPARRAGOS', 'S/N', '304', 'LAS HUERTAS', 'APIO Y PEREGIL', NULL, 'CALLE', '32', 32056, 'ZACATECAS', '0', '98087', '(492) 120 - 4512', '', '', '', NULL, 'HOGAR', 'MOZG570420MGRRZL05', 'MOSG570420', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'IMSS', NULL, '06755823330', 'MOZG570420MGRRZL05_C-5615-0022.jpg', '1', NULL, 0, NULL),
-(23, 'C-2903-0023', '2006-01-18 00:00:00', NULL, 'JOEL', 'BARBOZA', 'MORALES', 'MASCULINO', 60, 'SOLTERO (A)', '1963-09-15', 'MIGUEL AUZA', 'VICENTE GUERRERO', 'S/N', '30', '', 'S/N', NULL, 'CALLE', '32', 32029, 'EMILIO CARRANZA', '0', '98340', '(433) 935 - 3351', '', '', '', NULL, 'OFICIOS VARIOS', 'BAMJ630915HZSRRL01', 'BAMJ630915', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'BAMJ630915HZSRRL01_C-2903-0023.jpg', '1', NULL, 0, NULL),
-(24, 'C-1021-0024', '2000-01-13 00:00:00', NULL, 'WBALDO', 'ALVARADO', 'LEOS', 'MASCULINO', 43, 'CASADO (A)', '1980-04-03', 'FRESNILLO', 'SIERRA CANDELAS', 'S/N', '9', 'SECTOR POPULAR', 'S/N', NULL, 'CALLE', '32', 32010, 'FRESNILLO', 'VARIAS', '99011', '493 1167711', '', '', '', NULL, 'HOGAR', 'AALW800403HZSLSB00', 'ALLW800403', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'AALW800403HZSLSB00_C-1021-0024.jpg', '1', NULL, 0, NULL),
-(25, 'C-1721-0025', '1999-10-16 00:00:00', NULL, 'MA. ELENA', 'ALVAREZ', 'ALVAREZ', 'FEMENINO', 58, 'CASADO (A)', '1965-08-08', 'JALISCO', 'ARROYO PRINCIPAL', 'S/N', '11', 'CENTRO', 'S/N', NULL, 'NINGUNO', '32', 32017, 'GUADALUPE', '0', '98615', '4921313990', '', '', '', NULL, 'HOGAR', 'AAAE650713MJCLLLO4', 'ALAE650808', 'NO', '', '', 'NO', '', '0.00', 'NO', '', 'NO', 'SIN DATO', '0.00', NULL, NULL, NULL, NULL, 'NINGUNO', NULL, '', 'AAAE650713MJCLLLO4_C-1721-0025.jpg', '1', NULL, 0, NULL);
+(1, 'C-1210-1', '2024-04-22 14:57:31', NULL, 'GRDE', 'GFD', 'GFDSG', 'Femenino', 42, 'Casado(a)', '2022-02-20', 'GD', 'BGFCDSH', 'G5q', '5', 'BVG', 'G', 'b', 'CALLE', '32', 32012, 'COLONIA EL REFUGIO', 'Sin registro', '45', '98160', 'ana.barba@gs.b', '98160', 'Ninguno', '', 'GDF', 'PIAN810819MZSTLM05', 'PIAN810819111', '0', 'N/A', 'GD', 'N/A', 'N/A', '', '0', 'N/A', '0', 'N/A', '0', 'N/A', 'GRDE GFD GFDSG', '', '', 'Ninguno', '', '', '../fotos_expedientes/archivo_PIAN810819MZSTLM05.jpg', '5', 1, 2, '');
 
 -- --------------------------------------------------------
 
@@ -10188,31 +10164,57 @@ CREATE TABLE `datos_medicos` (
 --
 
 INSERT INTO `datos_medicos` (`id`, `curp`, `expediente`, `tipo_discapacidad`, `discapacidad`, `grado_discapacidad`, `descripcionDiscapacidad`, `causa`, `causa_otro`, `temporalidad`, `valoracion`, `fecha_valoracion`, `rehabilitacion`, `rehabilitacion_donde`, `rehabilitacion_inicio`, `rehabilitacion_duracion`, `tipo_sangre`, `cirugias`, `tipo_cirugias`, `protesis`, `protesis_tipo`, `alergias`, `alergias_cual`, `enfermedades`, `enfermedades_cual`, `medicamentos`, `medicamentos_cual`, `braile`, `lsm`, `labiofacial`, `asistencia`, `tiempo_asistencia`) VALUES
-(1, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'Física', '12-Poliomielitis', '', 'POLIO', 'NACIMIENTO', NULL, '0000-00-00', 'IMSS', NULL, NULL, NULL, NULL, NULL, '1', '1', 'CESAREA ', '1', 'APARATO ORTOPEDICO Y SILLA DE RUEDAS', NULL, '', NULL, '6-Diabetes Mellitus, 14-Hipotiroidismo', NULL, '6-Metformina, 78-Diclofenaco', NULL, NULL, NULL, NULL, NULL),
-(2, 'GANM750418HZSYVN01', 'C-5618-0002', 'Física', '18-Paraplejia', '', '', 'ACCIDENTE', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS, 14-HIPOTIROIDISMO', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(3, 'GUBJ571109HZSTTS00', 'C-5603-0003', 'Física', '3-Motora', '', 'SECUELAS DE ACCIDENTE', 'ACCIDENTE', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '1', '1', 'CADERA', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '4-GLIBENCLAMIDA', NULL, NULL, NULL, NULL, NULL),
-(4, 'GUMS981029HZSRRL08', 'C-1733-0004', 'Múltipe', '33-Parálisis Cerebral', '', 'CUADRIPARESIA', 'NACIMIENTO', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '1', '1', 'PIERNAS', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(5, 'GUML850929HZSTRS00', 'C-5032-0005', 'Intelectual', '32-Parálisis Cerebral', '', '', 'NACIMIENTO', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(6, 'RIRC890417HZSSMR07', 'C-5603-0006', 'Física', '3-Motora', '', 'HIPOTROFIA CALLOSA DE CUERPO CALLOSO ', 'NACIMIENTO', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '4', '1', 'PIE IZQ.', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(7, 'AORL581005HSPCMS01', 'C-5618-0007', 'Física', '18-Paraplejia', '', 'SECUELA DE ACCIDENTE EN MINA', 'ACCIDENTE', NULL, '0000-00-00', 'IMSS', NULL, NULL, NULL, NULL, NULL, '1', '1', 'COLUMNA', '1', 'SILLA DE RUEDAS', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '1-INSULINA, 11-ENALAPRIL', NULL, NULL, NULL, NULL, NULL),
-(8, 'RAMF920110MDFNRR08', 'C-5521-0008', 'Sensorial', '21-Auditiva Hipoacusia', '', '', 'NACIMIENTO', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(9, '', 'C-1718-0009', 'Física', '18-Paraplejia', '', '', 'ENFERMEDAD', NULL, '0000-00-00', 'IMSS', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(10, 'VIXC800426HZSLXS04', 'C-5633-0010', 'Múltipe', '33-Parálisis Cerebral', '', '', 'NACIMIENTO', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '1', 'SILLA DE RUEDAS PCI', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(11, 'VIXL860820HZSLXs01', 'C-5633-0011', 'Múltipe', '33-Parálisis Cerebral', '', '', 'NACIMIENTO', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '1', 'SILLA DE RUEDAS', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(12, 'ZAVA841126HDGLGX05', 'C-1021-0012', 'Sensorial', '21-Auditiva Hipoacusia', '', '', 'NACIMIENTO', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(13, 'PAZL810814MZSLXZ01', 'C-1024-0013', 'Sensorial', '24-Visual', '', 'GLUCOMA Y CATARATAS', 'NACIMIENTO', NULL, '0000-00-00', 'SSZ', NULL, NULL, NULL, NULL, NULL, '4', '1', 'OJO', '1', 'BASTON BLANCO', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(14, 'HERS591019HDFRNR00', 'C-5621-0014', 'Sensorial', '21-Auditiva Hipoacusia', '', '', 'ACCIDENTE', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '5', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(15, 'PAAC880327MZSCML07', 'C-5640-0015', 'Múltipe', '40-Auditiva Hipoacusia', '', 'HIPOACUCIA PROFUNDA', 'NACIMIENTO', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '5', '2', '', '1', '1 AUXILIAR AUDITIVO', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(16, 'AUJT890215MZSGRR05', 'C-1703-0016', 'Física', '3-Motora', '', '', 'NACIMIENTO', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(17, 'LOVS899813HZSPLL06', 'C-5631-0017', 'Intelectual', '31-Síndrome de Down', '', '', 'NACIMIENTO', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(18, 'TIFO920116HZSRLM00', 'C-1723-0018', 'Intelectual', '23-Comunicación Lenguaje', '', '', 'NACIMIENTO', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(19, 'SISV920604HZSLFC01', 'C-3721-0019', 'Sensorial', '21-Auditiva Hipoacusia', '', 'HIPOACUSIA BILATERAL MAS PROFUNDA EN LADO IZQUIERDO', 'NACIMIENTO', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '5', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(20, 'DIOJ450105MZSZRN05', 'C-5621-0020', 'Sensorial', '21-Auditiva Hipoacusia', '', '', 'ENFERMEDAD', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '1', '1', 'DE RODILLA', '1', '2 AUXILIARES', NULL, '-DIPIRONA', NULL, '2-HIPERTENSIÓN ARTERIAL', NULL, '20-LOZARTAN', NULL, NULL, NULL, NULL, NULL),
-(21, 'MASA880721MZSRNR00', 'C-3231-0021', 'Intelectual', '31-Síndrome de Down', '', '', 'NACIMIENTO', NULL, '0000-00-00', 'SSZ', NULL, NULL, NULL, NULL, NULL, '1', '1', 'CORR. DE ESTRAVISMO', '0', '', NULL, '', NULL, '2-HIPERTENSIÓN ARTERIAL', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(22, 'MOZG570420MGRRZL05', 'C-5615-0022', 'Física', '15-Hemiplejia', '', '', 'ENFERMEDAD', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '1', 'BASTON', NULL, '', NULL, '11-ARTRITIS', NULL, '70-ASPIRINA, 78-DICLOFENACO', NULL, NULL, NULL, NULL, NULL),
-(23, 'BAMJ630915HZSRRL01', 'C-2903-0023', 'Física', '3-Motora', '', 'SECUELAS DE EVENTO VASCULAR CEREBRAL', 'NACIMIENTO', NULL, '0000-00-00', 'SSZ', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '11-ARTRITIS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(24, 'AALW800403HZSLSB00', 'C-1021-0024', 'Sensorial', '21-Auditiva Hipoacusia', '', 'HIPOACUSIA BILATERAL', 'ENFERMEDAD', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '11-ARTRITIS', NULL, '', NULL, NULL, NULL, NULL, NULL),
-(25, 'AAAE650713MJCLLLO4', 'C-1721-0025', 'Sensorial', '21-Auditiva Hipoacusia', '', '', 'ACCIDENTE', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '11-ARTRITIS', NULL, '', NULL, NULL, NULL, NULL, NULL);
+(1, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'Física', '12-Poliomielitis', '', 'POLIO', '1', NULL, '0000-00-00', 'IMSS', NULL, NULL, NULL, NULL, NULL, '1', '1', 'CESAREA ', '1', 'APARATO ORTOPEDICO Y SILLA DE RUEDAS', NULL, '', NULL, '1-DIABETES MELLITUS, 14-HIPOTIROIDISMO', NULL, '6-METFORMINA, 78-DICLOFENACO', NULL, NULL, NULL, NULL, NULL),
+(2, 'GANM750418HZSYVN01', 'C-5618-0002', 'Física', '18-Paraplejia', '', '', '2', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS, 14-HIPOTIROIDISMO', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(3, 'GUBJ571109HZSTTS00', 'C-5603-0003', 'Física', '03-Motora', '', 'SECUELAS DE ACCIDENTE', '2', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '1', '1', 'CADERA', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '4-GLIBENCLAMIDA', NULL, NULL, NULL, NULL, NULL),
+(4, 'GUMS981029HZSRRL08', 'C-1733-0004', 'Múltipe', '33-Parálisis Cerebral', '', 'CUADRIPARESIA', '1', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '1', '1', 'PIERNAS', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(5, 'GUML850929HZSTRS00', 'C-5032-0005', 'Intelectual', '32-Intelectual DM', '', '', '1', NULL, '0000-00-00', 'SSZ', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(6, 'RIRC890417HZSSMR07', 'C-5603-0006', 'Física', '03-Motora', '', 'HIPOTROFIA CALLOSA DE CUERPO CALLOSO ', '1', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '4', '1', 'PIE IZQ.', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(7, 'AORL581005HSPCMS01', 'C-5618-0007', 'Física', '18-Paraplejia', '', 'SECUELA DE ACCIDENTE EN MINA', '2', NULL, '0000-00-00', 'IMSS', NULL, NULL, NULL, NULL, NULL, '1', '1', 'COLUMNA', '1', 'SILLA DE RUEDAS', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '1-INSULINA, 11-ENALAPRIL', NULL, NULL, NULL, NULL, NULL),
+(8, 'RAMF920110MDFNRR08', 'C-5521-0008', 'Sensorial', '21-Auditiva Hipoacusia', '', '', '1', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(9, '', 'C-1718-0009', 'Física', '18-Paraplejia', '', '', '3', NULL, '0000-00-00', 'IMSS', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(10, 'VIXC800426HZSLXS04', 'C-5633-0010', 'Múltipe', '33-Parálisis Cerebral', '', '', '1', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '1', 'SILLA DE RUEDAS PCI', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(11, 'VIXL860820HZSLXs01', 'C-5633-0011', 'Múltipe', '33-Parálisis Cerebral', '', '', '1', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '1', 'SILLA DE RUEDAS', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(12, 'ZAVA841126HDGLGX05', 'C-1021-0012', 'Sensorial', '21-Auditiva Hipoacusia', '', '', '1', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(13, 'PAZL810814MZSLXZ01', 'C-1024-0013', 'Sensorial', '24-Visual', '', 'GLUCOMA Y CATARATAS', '1', NULL, '0000-00-00', 'SSZ', NULL, NULL, NULL, NULL, NULL, '4', '1', 'OJO', '1', 'BASTON BLANCO', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(14, 'HERS591019HDFRNR00', 'C-5621-0014', 'Sensorial', '21-Auditiva Hipoacusia', '', '', '2', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '5', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(15, 'PAAC880327MZSCML07', 'C-5640-0015', 'Múltipe', '40-Auditiva Hipoacusia', '', 'HIPOACUCIA PROFUNDA', '1', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '5', '2', '', '1', '1 AUXILIAR AUDITIVO', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(16, 'AUJT890215MZSGRR05', 'C-1703-0016', 'Física', '03-Motora', '', '', '1', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(17, 'LOVS899813HZSPLL06', 'C-5631-0017', 'Intelectual', '31-Síndrome de Down', '', '', '1', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(18, 'TIFO920116HZSRLM00', 'C-1723-0018', 'Intelectual', '23-Comunicación Lenguaje', '', '', '1', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(19, 'SISV920604HZSLFC01', 'C-3721-0019', 'Sensorial', '21-Auditiva Hipoacusia', '', 'HIPOACUSIA BILATERAL MAS PROFUNDA EN LADO IZQUIERDO', '1', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '5', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(20, 'DIOJ450105MZSZRN05', 'C-5621-0020', 'Sensorial', '21-Auditiva Hipoacusia', '', '', '3', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '1', '1', 'DE RODILLA', '1', '2 AUXILIARES', NULL, '-DIPIRONA', NULL, '2-HIPERTENSIÓN ARTERIAL', NULL, '20-LOZARTAN', NULL, NULL, NULL, NULL, NULL),
+(21, 'MASA880721MZSRNR00', 'C-3231-0021', 'Intelectual', '31-Síndrome de Down', '', '', '1', NULL, '0000-00-00', 'SSZ', NULL, NULL, NULL, NULL, NULL, '1', '1', 'CORR. DE ESTRAVISMO', '0', '', NULL, '', NULL, '2-HIPERTENSIÓN ARTERIAL', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(22, 'MOZG570420MGRRZL05', 'C-5615-0022', 'Física', '15-Hemiplejia', '', '', '3', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '1', 'BASTON', NULL, '', NULL, '11-ARTRITIS', NULL, '70-ASPIRINA, 78-DICLOFENACO', NULL, NULL, NULL, NULL, NULL),
+(23, 'BAMJ630915HZSRRL01', 'C-2903-0023', 'Física', '03-Motora', '', 'SECUELAS DE EVENTO VASCULAR CEREBRAL', '1', NULL, '0000-00-00', 'SSZ', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '11-ARTRITIS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(24, 'AALW800403HZSLSB00', 'C-1021-0024', 'Sensorial', '21-Auditiva Hipoacusia', '', 'HIPOACUSIA BILATERAL', '3', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '11-ARTRITIS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(25, 'AAAE650713MJCLLLO4', 'C-1721-0025', 'Sensorial', '21-Auditiva Hipoacusia', '', '', '2', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '11-ARTRITIS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(26, 'VIER520407MZSLSF03', 'C-5617-0026', 'Física', '17-Distrofia', '', '', '1', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '11-ARTRITIS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(27, 'MASS741226HZSLNL05', 'C-5616-0027', 'Física', '16-Paraparesia', '', 'PARAPARESIA ', '2', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '1', '1', 'COLUMNA', '0', '', NULL, '', NULL, '2-HIPERTENSIÓN ARTERIAL', NULL, '10-METROPOLOL, 11-ENALAPRIL', NULL, NULL, NULL, NULL, NULL),
+(28, 'AEBA510618HZSRLN00', 'C-5618-0028', 'Física', '18-Paraplejia', '', 'SECUELAS DE TRAUMA MEDULAR', '2', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '2-HIPERTENSIÓN ARTERIAL', NULL, '20-LOZARTAN', NULL, NULL, NULL, NULL, NULL),
+(29, 'SORS490724HZSLMR05', 'C-1717-0029', 'Física', '17-Distrofia', '', '', '1', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '2-HIPERTENSIÓN ARTERIAL', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(30, ' ', 'C-4221-0030', 'Sensorial', '21-Auditiva Hipoacusia', '', '', '3', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '2-HIPERTENSIÓN ARTERIAL', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(31, '', 'C-1721-0031', 'Sensorial', '21-Auditiva Hipoacusia', '', '', '1', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '2-HIPERTENSIÓN ARTERIAL', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(32, 'AAMF820608MGTLRL09', 'C-2021-0032', 'Sensorial', '21-Auditiva Hipoacusia', '', '', '1', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '2-HIPERTENSIÓN ARTERIAL', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(33, 'VAMC590803HZSRRR02', 'C-4417-0033', 'Física', '17-Distrofia', '', '', '1', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '1', 'SILLA DE RUEDAS', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '4-GLIBENCLAMIDA', NULL, NULL, NULL, NULL, NULL),
+(34, 'LOGL750802HZSPNS14', 'C-1724-0034', 'Sensorial', '24-Visual', '', '', '1', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '5', '1', 'TOBILLO IZQ.', '1', 'BASTON BLANCO', NULL, '-AMPICILINA', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(35, ' ', 'C-2032-0035', 'Intelectual', '32-Intelectual DM', '', '', '1', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(36, 'PUMR780831MZSNRM09', 'C-0731-0036', 'Intelectual', '31-Síndrome de Down', '', '', '1', NULL, '0000-00-00', 'SSZ', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(37, 'CARL711226HZSRMS05', 'C-1725-0037', 'Sensorial', '25-Baja Visión', '', 'BAJA VISION ', '2', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '1', '1', 'CORNEA', '1', 'BASTON BLANCO', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(38, ' ', 'C-1721-0038', 'Sensorial', '21-Auditiva Hipoacusia', '', '', '1', NULL, '0000-00-00', 'SSZ', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(39, ' ', 'C-2421-0039', 'Sensorial', '21-Auditiva Hipoacusia', '', '', '1', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(40, ' ', 'C-1945-0040', 'Múltipe', '41-Motora Auditiva', '', '', '3', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '1-DIABETES MELLITUS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(41, 'EIHF540824HZSSRL07', 'C-5611-0041', 'Física', '11-Amputación', '', 'AMPUTACION DE MIEMBROS INFERIORES Y BRAZO IZQUIERDO', '2', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '4', '1', 'TRANSPLANTE DE RIÑON,INGERTO DE OIDO, AMPUTACION DE MIEMBROS INFERIORES Y BRAZO IZQUIERDO', '0', '', NULL, '-PENICILINA', NULL, '2-HIPERTENSIÓN ARTERIAL', NULL, '11-ENALAPRIL', NULL, NULL, NULL, NULL, NULL),
+(42, 'HOMONIMO', 'C-1017-0042', 'Física', '17-Distrofia', '', '', '1', NULL, '0000-00-00', 'IMSS', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '2-HIPERTENSIÓN ARTERIAL', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(43, ' ', 'C-1721-0043', 'Sensorial', '21-Auditiva Hipoacusia', '', '', '1', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '3', '2', '', '0', '', NULL, '', NULL, '2-HIPERTENSIÓN ARTERIAL', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(44, 'MURJ900331HZSRMS09', 'C-2032-0044', 'Intelectual', '32-Intelectual DM', '', '', '1', NULL, '0000-00-00', '', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '2-HIPERTENSIÓN ARTERIAL', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(45, 'MEMT860222MASNNR03', 'C-1721-0045', 'Sensorial', '21-Auditiva Hipoacusia', '', 'HIPOACUSIA BILATERAL PROFUNDA', '1', NULL, '0000-00-00', 'CREE', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '2-HIPERTENSIÓN ARTERIAL', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(46, 'BADJ770731HZSXMS07', 'C-4921-0046', 'Sensorial', '21-Auditiva Hipoacusia', '', '', '1', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '2-HIPERTENSIÓN ARTERIAL', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(47, 'SACL670723HZSCNB05', 'C-1703-0047', 'Física', '03-Motora', '', 'TRAUMATISMO CRANEOCEFALICO CEVERO', '2', NULL, '0000-00-00', 'SSZ', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '1', 'BASTON', NULL, '-PENICILINA', NULL, '6-CRISIS CONVULSIVAS', NULL, '29-FENITOINA', NULL, NULL, NULL, NULL, NULL),
+(48, 'GOCA830829HZSNLL01', 'C-2031-0048', 'Intelectual', '31-Síndrome de Down', '', '', '4', NULL, '0000-00-00', 'SSZ', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '6-CRISIS CONVULSIVAS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(49, 'SAXD811031HSLCXV06', 'C-1033-0049', 'Múltipe', '33-Parálisis Cerebral', '', '', '1', NULL, '0000-00-00', 'IMSS', NULL, NULL, NULL, NULL, NULL, '1', '2', '', '0', '', NULL, '', NULL, '6-CRISIS CONVULSIVAS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(50, 'VARR041216HZSLYBA6', 'C-5605-0050', 'Física', '05-Psicomotora', '', '', '1', NULL, '0000-00-00', 'Particular', NULL, NULL, NULL, NULL, NULL, '1', '1', 'ESOFAGITIS', '0', '', NULL, '', NULL, '6-CRISIS CONVULSIVAS', NULL, '', NULL, NULL, NULL, NULL, NULL),
+(51, 'PIAN810819MZSTLM05', 'C-1210-1', 'Física', '10-Cuadriparesia', '2-Moderado', 'G', '8', 'FS', '2024-06-06', 'IMSS', '2024-01-21', '0', '0', '0000-00-00', '0', '1', 'Selecciona.', '', '2', '', '0', 'Sin alergias', '0', 'Enfermedades no reportadas', '0', 'Medicamentos no reportadas', 0, 0, 0, 3, '3');
 
 -- --------------------------------------------------------
 
@@ -10391,7 +10393,8 @@ INSERT INTO `documentos` (`id`, `curp`, `numExpediente`, `tipoDoc`, `fecha_entre
 (17, 'SOMT680516MZSTTD03', 'C-1013-38', 1, '2024-03-01', 0),
 (18, 'ROSL710516MZSBFZ07', 'C-1712-0001', 1, '2024-03-22', 0),
 (19, 'ROSL710516MZSBFZ07', 'C-1712-0001', 1, '2024-03-22', 0),
-(20, 'ROSL710516MZSBFZ07', 'C-1712-0001', 1, '2024-03-22', 0);
+(20, 'ROSL710516MZSBFZ07', 'C-1712-0001', 1, '2024-03-22', 0),
+(21, 'PIAN810819MZSTLM05', 'C-1210-1', 1, '2024-04-22', 0);
 
 -- --------------------------------------------------------
 
@@ -10408,25 +10411,6 @@ CREATE TABLE `documentos_list` (
   `fecha` datetime NOT NULL,
   `documento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `documentos_list`
---
-
-INSERT INTO `documentos_list` (`id`, `curp`, `numExp`, `tipo_doc`, `ruta_doc`, `fecha`, `documento`) VALUES
-(2, 'BAPA821212MJCRNN04', 'C-5625-26', 1, 'docs_expedientes/archivo1_BAPA821212MJCRNN04.pdf', '2024-02-06 13:41:53', 1),
-(3, 'ROGJ350108MZSDZS02', 'C-5632-36', 1, 'docs_expedientes/archivo1_ROGJ350108MZSDZS02.pdf', '2024-02-07 15:24:50', 1),
-(4, 'SOMT680516MZSTTD03', 'C-1013-38', 1, 'docs_expedientes/archivo1_SOMT680516MZSTTD03.pdf', '2024-03-01 12:58:14', 1),
-(5, 'SOMT680516MZSTTD03', 'C-1013-38', 2, 'docs_expedientes/archivo2_SOMT680516MZSTTD03.pdf', '2024-03-01 12:59:00', 2),
-(6, 'SOMT680516MZSTTD03', 'C-1013-38', 4, 'docs_expedientes/archivo4_SOMT680516MZSTTD03.pdf', '2024-03-01 12:59:13', 4),
-(7, 'SOMT680516MZSTTD03', 'C-1013-38', 6, 'docs_expedientes/archivo6_SOMT680516MZSTTD03.pdf', '2024-03-01 12:59:41', 6),
-(15, '', '', 8, '', '2024-03-04 12:40:06', 1),
-(16, '', '', 16, '', '2024-03-04 12:40:06', 2),
-(17, '', '', 10, '', '2024-03-04 12:40:06', 3),
-(18, '', '', 11, '', '2024-03-04 12:40:06', 4),
-(19, '', '', 19, '', '2024-03-04 12:40:06', 5),
-(20, '', '', 13, '', '2024-03-04 12:40:06', 6),
-(21, '', '', 21, '', '2024-03-04 12:40:06', 7);
 
 -- --------------------------------------------------------
 
@@ -10455,33 +10439,57 @@ CREATE TABLE `empleados` (
 --
 
 CREATE TABLE `enfermedades` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id` int(11) UNSIGNED NOT NULL COMMENT 'Identificador único de cada registro. Establecen la manera más rápida posible de encontrar un registro',
+  `nombreEnfermedad` varchar(120) NOT NULL COMMENT 'Nombre de la Enfermedad'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Catálogo de Enfermedades:\nEstructura en la cual se guarda la información referente a las Enfermedades';
 
 --
 -- Dumping data for table `enfermedades`
 --
 
-INSERT INTO `enfermedades` (`id`, `nombre`) VALUES
-(1, 'Amiloidosis Cardiaca'),
-(2, 'Insuficiencia Renal'),
-(3, 'Colitis Ulcerosa'),
-(4, 'Gastritis'),
-(5, 'Síndrome de Chron'),
-(6, 'Diabetes'),
-(7, 'Hipertensión'),
-(8, 'Artritis Reumatoide'),
-(9, 'Úlcera gástrica'),
-(10, 'Duodenitis'),
-(11, 'Obesidad'),
-(12, 'Diabetes Mellitus'),
-(13, 'Asma'),
-(14, 'EPOC'),
-(15, 'Arritmia'),
-(16, 'Insuficiencia Cardiaca'),
-(17, 'Angina de pecho'),
-(18, 'Miocardipatía');
+INSERT INTO `enfermedades` (`id`, `nombreEnfermedad`) VALUES
+(1, 'DIABETES MELLITUS'),
+(2, 'HIPERTENSIÓN ARTERIAL'),
+(3, 'EPILEPSIA'),
+(4, 'ASMA'),
+(5, 'ENFERMEDADES DEL CORAZÓN'),
+(6, 'CRISIS CONVULSIVAS'),
+(7, 'ALZHAIMER'),
+(8, 'CANCER'),
+(9, 'ESQUIZOFRENIA'),
+(10, 'PARKINSON'),
+(11, 'ARTRITIS'),
+(12, 'MIGRAÑA'),
+(13, 'HIDROCEFALIA'),
+(14, 'HIPOTIROIDISMO'),
+(15, 'BRONQUITIS CRONICA'),
+(16, 'ARRITMIA CARDIACA'),
+(17, 'LUPUS'),
+(18, 'GLAUCOMA'),
+(19, 'ENFISEMA PULMONAR'),
+(20, 'ESCOLIOSIS'),
+(21, 'AGENESIA DE RIÑON'),
+(22, 'DEPRESION'),
+(23, 'BUERGER TROMBOANGEITIS OBLITERANTE'),
+(24, 'GLAUCOMA CONGENITO'),
+(25, 'OSTEOPOROSIS'),
+(26, 'INSUFICIENCIA RENAL'),
+(27, 'COLESTEROL'),
+(28, 'DISPLACIA PULMONAR'),
+(29, 'ANEMIA'),
+(30, 'VERTIGO'),
+(31, 'TIROIDES'),
+(32, 'AMILOIDOSIS CARDIACA'),
+(33, 'GASTRITIS'),
+(34, 'SÍNDROME DE CHRON'),
+(35, 'DUODENITIS'),
+(36, 'ÚLCERA GÁSTRICA'),
+(37, 'INSUFICIENCIA CARDIACA'),
+(38, 'EPOC'),
+(39, 'MIOCARDITIS'),
+(40, 'COLITIS'),
+(41, 'ARRITMIA'),
+(42, 'OBESIDAD');
 
 -- --------------------------------------------------------
 
@@ -10667,7 +10675,128 @@ INSERT INTO `integracion` (`id`, `curp`, `expediente`, `nombre`, `parentesco`, `
 (62, 'AALW800403HZSLSB00', 'C-1021-0024', 'FELIPA LEOS', 'OTRO', 49, '2', '3', '39', '0.00', '0', '0'),
 (63, 'AALW800403HZSLSB00', 'C-1021-0024', 'MA. GUADALUPE', 'HERMANO(A)', 22, '11', '134', '39', '0.00', '0', '0'),
 (64, 'AAAE650713MJCLLLO4', 'C-1721-0025', 'FRANCISCO JAVIER INGUANZO', 'ESPOSO(A)', 56, '2', '36', '', '8000.00', '0', '0'),
-(65, 'AAAE650713MJCLLLO4', 'C-1721-0025', 'ALMA LETICIA INGUANZO', 'OTRO', 26, '6', '134', '', '0.00', '0', '0');
+(65, 'AAAE650713MJCLLLO4', 'C-1721-0025', 'ALMA LETICIA INGUANZO', 'OTRO', 26, '6', '134', '', '0.00', '0', '0'),
+(66, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'MARIO MARTINEZ DOMINGUEZ', 'ESPOSO(A)', 58, '6', '134', '', '5000.00', '0', '0'),
+(67, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'MARIO ALEJANDRO', 'HIJO(A)', 16, '3', '6', '', '0.00', '0', '0'),
+(68, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'JORGE EDUARDO', 'OTRO', 18, '2', '6', '', '0.00', '0', '0'),
+(69, 'GANM750418HZSYVN01', 'C-5618-0002', 'CLAUDIA MEDINA', 'OTRO', 36, '6', '130', '39', '5800.00', '0', '0'),
+(70, 'GANM750418HZSYVN01', 'C-5618-0002', 'EVER DAVID', 'OTRO', 11, '2', '6', '39', '0.00', '0', '0'),
+(71, 'GUBJ571109HZSTTS00', 'C-5603-0003', 'ROSAURA GARCIA', 'OTRO', 51, '2', '3', '', '0.00', '0', '0'),
+(72, 'GUBJ571109HZSTTS00', 'C-5603-0003', 'LILIANA GUTIERREZ', 'OTRO', 24, '3', '3', '', '0.00', '0', '0'),
+(73, 'GUMS981029HZSRRL08', 'C-1733-0004', 'LAURA MARTINEZ', 'OTRO', 30, '6', '134', '39', '2600.00', '0', '0'),
+(74, 'GUMS981029HZSRRL08', 'C-1733-0004', 'SAUL GUERRERO', 'OTRO', 30, '4', '132', '39', '2800.00', '0', '0'),
+(75, 'GUMS981029HZSRRL08', 'C-1733-0004', 'ANA KAREN', 'HERMANO(A)', 10, '2', '6', '39', '0.00', '0', '0'),
+(76, 'GUMS981029HZSRRL08', 'C-1733-0004', 'EDGAR ULISES', 'HERMANO(A)', 5, '8', '6', '39', '0.00', '0', '0'),
+(77, 'GUMS981029HZSRRL08', 'C-1733-0004', 'MARIA FERNANDA GUERRERO', 'HERMANO(A)', 1, '1', '131', '39', '0.00', '0', '0'),
+(78, 'GUML850929HZSTRS00', 'C-5032-0005', 'BALTAZAR GUTIERREZ', 'OTRO', 62, '2', '9', '39', '1000.00', '0', '0'),
+(79, 'GUML850929HZSTRS00', 'C-5032-0005', 'IRENE MARTINEZ', 'OTRO', 59, '2', '3', '39', '0.00', '0', '0'),
+(80, 'GUML850929HZSTRS00', 'C-5032-0005', 'AARON', 'HERMANO(A)', 31, '6', '130', '39', '1500.00', '0', '0'),
+(81, 'RIRC890417HZSSMR07', 'C-5603-0006', 'JOSE RAUL RIOS', 'OTRO', 55, '6', '7', '', '10000.00', '0', '0'),
+(82, 'RIRC890417HZSSMR07', 'C-5603-0006', 'MARGARITA RAMIREZ', 'OTRO', 51, '6', '3', '', '0.00', '0', '0'),
+(83, 'RIRC890417HZSSMR07', 'C-5603-0006', 'MARIELA', 'HERMANO(A)', 18, '6', '6', '', '0.00', '0', '0'),
+(84, 'RIRC890417HZSSMR07', 'C-5603-0006', 'REGINA', 'HERMANO(A)', 15, '4', '6', '', '0.00', '0', '0'),
+(85, 'AORL581005HSPCMS01', 'C-5618-0007', 'JUANA MARIA LOPEZ PALACIOS', 'ESPOSO(A)', 62, '2', '3', '', '0.00', '0', '0'),
+(86, 'RAMF920110MDFNRR08', 'C-5521-0008', 'JULIO CESAR RANGEL', 'OTRO', 33, '11', '132', '39', '800.00', '0', '0'),
+(87, 'RAMF920110MDFNRR08', 'C-5521-0008', 'MA. SOLEDAD MTZ.', 'OTRO', 30, '2', '3', '39', '0.00', '0', '0'),
+(88, 'RAMF920110MDFNRR08', 'C-5521-0008', 'MARCO ANTONIO', 'HERMANO(A)', 4, '8', '6', '39', '0.00', '0', '0'),
+(89, 'RAMF920110MDFNRR08', 'C-5521-0008', 'CESAR', 'HERMANO(A)', 3, '1', '131', '39', '0.00', '0', '0'),
+(90, 'VIXC800426HZSLXS04', 'C-5633-0010', 'RUFINA VILLAGRANA', 'OTRO', 63, '2', '3', '15', '0.00', '0', '0'),
+(91, 'VIXL860820HZSLXs01', 'C-5633-0011', 'CESAR', 'HERMANO(A)', 34, '1', '131', '26', '0.00', '0', '0'),
+(92, 'VIXL860820HZSLXs01', 'C-5633-0011', 'RUFINA VILLAGRANA', 'MADRE', 63, '2', '3', '15', '0.00', '0', '0'),
+(93, 'PAZL810814MZSLXZ01', 'C-1024-0013', 'LUIS MANUEL ALVARADO', 'ESPOSO(A)', 36, '6', '64', '', '4000.00', '0', '0'),
+(94, 'PAAC880327MZSCML07', 'C-5640-0015', 'AMELIA AMAYA', 'OTRO', 53, '3', '132', '', '500.00', '0', '0'),
+(95, 'PAAC880327MZSCML07', 'C-5640-0015', 'JUAN PABLO PACHECO', 'HERMANO(A)', 26, '6', '130', '', '1600.00', '0', '0'),
+(96, 'PAAC880327MZSCML07', 'C-5640-0015', 'CARLOS RAMIRO', 'HERMANO(A)', 22, '6', '6', '', '0.00', '0', '0'),
+(97, 'LOVS899813HZSPLL06', 'C-5631-0017', 'ELVIRA VILLAREAL', 'OTRO', 40, '11', '131', '39', '0.00', '0', '0'),
+(98, 'LOVS899813HZSPLL06', 'C-5631-0017', 'SILVERIO LOPEZ', 'OTRO', 42, '11', '130', '39', '0.00', '0', '0'),
+(99, 'LOVS899813HZSPLL06', 'C-5631-0017', 'RAQUEL', 'HERMANO(A)', 12, '3', '6', '39', '0.00', '0', '0'),
+(100, 'LOVS899813HZSPLL06', 'C-5631-0017', 'ELVIRA', 'HERMANO(A)', 6, '2', '6', '39', '0.00', '0', '0'),
+(101, 'SISV920604HZSLFC01', 'C-3721-0019', 'OFELIA SIFUENTES', 'OTRO', 32, '11', '3', '39', '0.00', '0', '0'),
+(102, 'SISV920604HZSLFC01', 'C-3721-0019', 'VICTOR MANUEL SILVA', 'OTRO', 33, '11', '9', '39', '700.00', '0', '0'),
+(103, 'SISV920604HZSLFC01', 'C-3721-0019', 'VICTOR MANUEL', 'OTRO', 39, '3', '9', '39', '0.00', '0', '0'),
+(104, 'SISV920604HZSLFC01', 'C-3721-0019', 'OFELIA', 'OTRO', 37, '2', '3', '39', '0.00', '0', '0'),
+(105, 'SISV920604HZSLFC01', 'C-3721-0019', 'JOSE ALFREDO', 'HERMANO(A)', 15, '3', '6', '39', '0.00', '0', '0'),
+(106, 'SISV920604HZSLFC01', 'C-3721-0019', 'GONZALO', 'HERMANO(A)', 13, '3', '6', '39', '0.00', '0', '0'),
+(107, 'SISV920604HZSLFC01', 'C-3721-0019', 'PERLA ESMERALDA', 'HERMANO(A)', 5, '8', '6', '39', '0.00', '0', '0'),
+(108, 'DIOJ450105MZSZRN05', 'C-5621-0020', 'JOSE LUIS DIAZ', 'HERMANO(A)', 62, '6', '133', '39', '1800.00', '0', '0'),
+(109, 'MASA880721MZSRNR00', 'C-3231-0021', 'MARIANA ACUÑA', 'OTRO', 4, '8', '6', '39', '0.00', '0', '0'),
+(110, 'MASA880721MZSRNR00', 'C-3231-0021', 'JOSELYN ACUÑA', 'OTRO', 1, '1', '131', '39', '0.00', '0', '0'),
+(111, 'MASA880721MZSRNR00', 'C-3231-0021', 'CELIA SANCHEZ DELGADO', 'OTRO', 47, '2', '134', '39', '1400.00', '0', '0'),
+(112, 'MASA880721MZSRNR00', 'C-3231-0021', 'ROSALIO MARTINEZ MIRELES', 'OTRO', 52, '2', '134', '39', '1600.00', '0', '0'),
+(113, 'MASA880721MZSRNR00', 'C-3231-0021', 'ALONDRA', 'HERMANO(A)', 23, '11', '134', '39', '1800.00', '0', '0'),
+(114, 'MASA880721MZSRNR00', 'C-3231-0021', 'ANA VICTORIA', 'HERMANO(A)', 21, '6', '6', '39', '0.00', '0', '0'),
+(115, 'MASA880721MZSRNR00', 'C-3231-0021', 'ESTRELLA INGUANZO', 'OTRO', 1, '1', '131', '39', '0.00', '0', '0'),
+(116, 'MOZG570420MGRRZL05', 'C-5615-0022', 'CLARA ITZEL', 'OTRO', 21, '3', '134', '', '0.00', '0', '0'),
+(117, 'MOZG570420MGRRZL05', 'C-5615-0022', 'MARIO ALFREDO', 'OTRO', 17, '3', '131', '', '0.00', '0', '0'),
+(118, 'MOZG570420MGRRZL05', 'C-5615-0022', 'JOSE ALFREDO HERNANDEZ', 'OTRO', 57, '3', '36', '', '2500.00', '0', '0'),
+(119, 'MOZG570420MGRRZL05', 'C-5615-0022', 'CRISTAIN MATEO', 'OTRO', 3, '1', '131', '', '0.00', '0', '0'),
+(120, 'MOZG570420MGRRZL05', 'C-5615-0022', 'LUIS GAEL', 'OTRO', 1, '1', '131', '', '0.00', '0', '0'),
+(121, 'BAMJ630915HZSRRL01', 'C-2903-0023', 'TEODORA DE LA CRUZ', 'OTRO', 43, '6', '130', '39', '10.00', '0', '0'),
+(122, 'BAMJ630915HZSRRL01', 'C-2903-0023', 'SAN JUANA BERENICE', 'OTRO', 14, '3', '6', '39', '0.00', '0', '0'),
+(123, 'BAMJ630915HZSRRL01', 'C-2903-0023', 'MAGALI GUADALUPE', 'OTRO', 11, '2', '6', '39', '0.00', '0', '0'),
+(124, 'BAMJ630915HZSRRL01', 'C-2903-0023', 'MARIA FLORENTINA', 'HERMANO(A)', 8, '2', '6', '39', '0.00', '0', '0'),
+(125, 'BAMJ630915HZSRRL01', 'C-2903-0023', 'TEODORA DE LA CRUZ', 'OTRO', 43, '6', '130', '39', '10000.00', '0', '0'),
+(126, 'AALW800403HZSLSB00', 'C-1021-0024', 'ANTONIO ALVARADO', 'OTRO', 49, '11', '36', '39', '2000.00', '0', '0'),
+(127, 'AALW800403HZSLSB00', 'C-1021-0024', 'FELIPA LEOS', 'OTRO', 49, '2', '3', '39', '0.00', '0', '0'),
+(128, 'AALW800403HZSLSB00', 'C-1021-0024', 'MA. GUADALUPE', 'HERMANO(A)', 22, '11', '134', '39', '0.00', '0', '0'),
+(129, 'AAAE650713MJCLLLO4', 'C-1721-0025', 'FRANCISCO JAVIER INGUANZO', 'ESPOSO(A)', 56, '2', '36', '', '8000.00', '0', '0'),
+(130, 'AAAE650713MJCLLLO4', 'C-1721-0025', 'ALMA LETICIA INGUANZO', 'OTRO', 26, '6', '134', '', '0.00', '0', '0'),
+(131, 'VIER520407MZSLSF03', 'C-5617-0026', 'CESAR', 'OTRO', 26, '9', '131', '', '0.00', '0', '0'),
+(132, 'VIER520407MZSLSF03', 'C-5617-0026', 'LUIS ALBERTO', 'OTRO', 15, '9', '131', '', '0.00', '0', '0'),
+(133, 'MASS741226HZSLNL05', 'C-5616-0027', 'SALVADOR MALDONADO ESPINOZA ', 'PADRE', 72, '3', '133', '', '3800.00', '0', '0'),
+(134, 'MASS741226HZSLNL05', 'C-5616-0027', 'MARIA DEL SOCORRO SANTILLAN CAMPOS ', 'MADRE', 67, '2', '3', '', '0.00', '0', '0'),
+(135, 'AEBA510618HZSRLN00', 'C-5618-0028', 'ANTONIA', 'OTRO', 65, '2', '3', '', '0.00', '0', '0'),
+(136, 'AEBA510618HZSRLN00', 'C-5618-0028', 'VERONICA', 'OTRO', 41, '6', '3', '', '0.00', '0', '0'),
+(137, 'AEBA510618HZSRLN00', 'C-5618-0028', 'EFRAIN RIVAS ', 'OTRO', 43, '6', '134', '', '0.00', '0', '0'),
+(138, 'AEBA510618HZSRLN00', 'C-5618-0028', 'CESAR ', 'OTRO', 12, '2', '6', '', '0.00', '0', '0'),
+(139, 'AEBA510618HZSRLN00', 'C-5618-0028', 'ALEJANDRO', 'OTRO', 8, '2', '6', '', '0.00', '0', '0'),
+(140, 'AEBA510618HZSRLN00', 'C-5618-0028', 'MAURICIO ', 'OTRO', 5, '8', '6', '', '0.00', '0', '0'),
+(141, 'SORS490724HZSLMR05', 'C-1717-0029', 'MIREYA', 'OTRO', 24, '11', '131', '39', '0.00', '0', '0'),
+(142, 'SORS490724HZSLMR05', 'C-1717-0029', 'MARIBEL', 'OTRO', 30, '11', '131', '39', '0.00', '0', '0'),
+(143, 'SORS490724HZSLMR05', 'C-1717-0029', 'SERGIO', 'OTRO', 19, '11', '131', '39', '0.00', '0', '0'),
+(144, 'SORS490724HZSLMR05', 'C-1717-0029', 'MA. GUADALUPE', 'OTRO', 55, '11', '131', '39', '0.00', '0', '0'),
+(145, '', 'C-1721-0031', 'ALICIA MENDOZA', 'OTRO', 46, '2', '3', '39', '0.00', '0', '0'),
+(146, '', 'C-1721-0031', 'JUAN ALEJANDRO', 'OTRO', 13, '3', '6', '39', '0.00', '0', '0'),
+(147, '', 'C-1721-0031', 'JUAN DIEGO', 'OTRO', 3, '1', '131', '39', '0.00', '0', '0'),
+(148, 'VAMC590803HZSRRR02', 'C-4417-0033', 'MARTHA LETICIA', 'OTRO', 45, '3', '3', '', '0.00', '0', '0'),
+(149, 'VAMC590803HZSRRR02', 'C-4417-0033', 'ESTEFANI JANETH', 'OTRO', 20, '6', '6', '', '0.00', '0', '0'),
+(150, 'VAMC590803HZSRRR02', 'C-4417-0033', 'JOSEPH ANTONIO', 'OTRO', 10, '2', '6', '', '0.00', '0', '0'),
+(151, ' ', 'C-2032-0035', 'MARTIN ROBLES', 'OTRO', 38, '11', '132', '39', '0.00', '0', '0'),
+(152, ' ', 'C-2032-0035', 'ROCIO', 'HERMANO(A)', 5, '1', '131', '39', '0.00', '0', '0'),
+(153, ' ', 'C-2032-0035', 'MA.ISABEL', 'OTRO', 21, '11', '3', '39', '0.00', '0', '0'),
+(154, ' ', 'C-2032-0035', 'ROCIO VIDALES', 'HERMANO(A)', 1, '11', '3', '39', '0.00', '0', '0'),
+(155, 'PUMR780831MZSNRM09', 'C-0731-0036', 'MARGARITO PUENTE', 'OTRO', 54, '11', '9', '39', '0.00', '0', '0'),
+(156, 'PUMR780831MZSNRM09', 'C-0731-0036', 'HIPOLITA MORENO', 'OTRO', 49, '11', '3', '39', '0.00', '0', '0'),
+(157, 'CARL711226HZSRMS05', 'C-1725-0037', 'MA. DE LOURDES', 'ESPOSO(A)', 50, '2', '3', '', '0.00', '0', '0'),
+(158, 'CARL711226HZSRMS05', 'C-1725-0037', 'BLANCA ESTELA', 'HIJO(A)', 23, '3', '134', '', '0.00', '0', '0'),
+(159, 'CARL711226HZSRMS05', 'C-1725-0037', 'JOSE ENRIQUE CARRILLO', 'HIJO(A)', 26, '3', '134', '', '0.00', '0', '0'),
+(160, ' ', 'C-1721-0038', 'MARGARITO HERNANDEZ', 'OTRO', 31, '2', '134', '39', '2000.00', '0', '0'),
+(161, ' ', 'C-1721-0038', 'MARGARITA HERNANDEZ', 'OTRO', 30, '2', '134', '39', '2000.00', '0', '0'),
+(162, ' ', 'C-1721-0038', 'RICARDO', 'OTRO', 30, '2', '134', '39', '2000.00', '0', '0'),
+(163, ' ', 'C-2421-0039', 'MARINA RODRIGUEZ', 'OTRO', 22, '11', '7', '39', '3000.00', '0', '0'),
+(164, ' ', 'C-2421-0039', 'SELENA ORNELAS', 'OTRO', 3, '1', '131', '39', '0.00', '0', '0'),
+(165, ' ', 'C-1945-0040', 'AMPARO', 'OTRO', 70, '11', '3', '39', '0.00', '0', '0'),
+(166, 'EIHF540824HZSSRL07', 'C-5611-0041', 'MA. DE LOURDES', 'OTRO', 36, '3', '132', '39', '3000.00', '0', '0'),
+(167, 'EIHF540824HZSSRL07', 'C-5611-0041', 'MARISOL', 'OTRO', 21, '6', '3', '', '0.00', '0', '0'),
+(168, 'MURJ900331HZSRMS09', 'C-2032-0044', 'JUDITT MUILLO RAMIREZ', 'HERMANO(A)', 30, '6', '134', '', '4000.00', '0', '0'),
+(169, 'MURJ900331HZSRMS09', 'C-2032-0044', 'ISMAEL MUILLO RAMIREZ', 'HERMANO(A)', 28, '6', '6', '', '0.00', '0', '0'),
+(170, 'MURJ900331HZSRMS09', 'C-2032-0044', 'NICOLAS EVAN MURILLO RAMIREZ', 'OTRO', 5, '8', '6', '', '0.00', '0', '0'),
+(171, 'MURJ900331HZSRMS09', 'C-2032-0044', 'IKER SEBASTIAN MURILLO RAMIREZ', 'OTRO', 3, '1', '3', '', '0.00', '0', '0'),
+(172, 'MEMT860222MASNNR03', 'C-1721-0045', 'MARIO ALBERTO TRUJILLO', 'ESPOSO(A)', 31, '2', '134', '', '3200.00', '0', '0'),
+(173, 'MEMT860222MASNNR03', 'C-1721-0045', 'JOSE ALBERTO TRUJILLO', 'HIJO(A)', 7, '2', '6', '', '0.00', '0', '0'),
+(174, 'MEMT860222MASNNR03', 'C-1721-0045', 'NATALIA SARAY TRUJILLO', 'HIJO(A)', 1, '1', '131', '', '0.00', '0', '0'),
+(175, 'SACL670723HZSCNB05', 'C-1703-0047', 'EDUARDO SAUCEDO', 'HERMANO(A)', 36, '4', '134', '39', '2000.00', '0', '0'),
+(176, 'SACL670723HZSCNB05', 'C-1703-0047', 'ROSARIO', 'OTRO', 35, '3', '3', '39', '0.00', '0', '0'),
+(177, 'SACL670723HZSCNB05', 'C-1703-0047', 'OMAR', 'OTRO', 9, '2', '6', '39', '0.00', '0', '0'),
+(178, 'SACL670723HZSCNB05', 'C-1703-0047', 'ALDAIR', 'OTRO', 7, '2', '6', '39', '0.00', '0', '0'),
+(179, 'SACL670723HZSCNB05', 'C-1703-0047', 'ALAN', 'OTRO', 2, '1', '131', '39', '0.00', '0', '0'),
+(180, 'GOCA830829HZSNLL01', 'C-2031-0048', 'MA. CONCEPCION', 'OTRO', 64, '2', '7', '39', '2346.00', '0', '0'),
+(181, 'SAXD811031HSLCXV06', 'C-1033-0049', 'J. GUADALUPERODRIGUEZ', 'OTRO', 44, '6', '134', '39', '4500.00', '0', '0'),
+(182, 'SAXD811031HSLCXV06', 'C-1033-0049', 'CARLOS RODRIGUEZ', 'OTRO', 45, '6', '130', '39', '9000.00', '0', '0'),
+(183, 'VARR041216HZSLYBA6', 'C-5605-0050', 'ROBERTO VALENZUELA', 'OTRO', 31, '3', '134', '39', '2000.00', '0', '0'),
+(184, 'VARR041216HZSLYBA6', 'C-5605-0050', 'MARIA GRISELDA REYES', 'OTRO', 27, '3', '3', '39', '0.00', '0', '0'),
+(185, 'VARR041216HZSLYBA6', 'C-5605-0050', 'ROBERTO VALENZUELA', 'OTRO', 31, '3', '134', '39', '2800.00', '0', '0'),
+(186, 'VARR041216HZSLYBA6', 'C-5605-0050', 'MARIA GRISELDA REYES', 'OTRO', 27, '3', '3', '39', '0.00', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -10678,11 +10807,19 @@ INSERT INTO `integracion` (`id`, `curp`, `expediente`, `nombre`, `parentesco`, `
 CREATE TABLE `log_entregas` (
   `id` int(11) NOT NULL,
   `fecha_entrega` date NOT NULL,
-  `tipo_doc` int(10) NOT NULL,
-  `id_users` int(10) NOT NULL,
-  `id_documentos` varchar(10) NOT NULL,
-  `tipo_entrega` int(2) NOT NULL
+  `curp` varchar(20) NOT NULL,
+  `numExpediente` varchar(15) NOT NULL,
+  `id_user` int(10) NOT NULL,
+  `vigencia` int(5) NOT NULL,
+  `flagEntrega` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `log_entregas`
+--
+
+INSERT INTO `log_entregas` (`id`, `fecha_entrega`, `curp`, `numExpediente`, `id_user`, `vigencia`, `flagEntrega`) VALUES
+(1, '2024-04-17', 'LORJ950825HZSPDN07', 'C-1703-11547', 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -11110,7 +11247,17 @@ INSERT INTO `log_registro` (`id`, `usr`, `tipo_dato`, `fecha`) VALUES
 (406, 'annaeliza', 39, '2024-03-04 12:59:18'),
 (407, 'annaeliza', 37, '2024-03-22 13:35:58'),
 (408, 'annaeliza', 37, '2024-03-22 13:36:20'),
-(409, 'annaeliza', 37, '2024-03-22 13:40:40');
+(409, 'annaeliza', 37, '2024-03-22 13:40:40'),
+(410, 'annaeliza', 32, '2024-04-12 10:45:27'),
+(411, 'annaeliza', 1, '2024-04-22 14:57:31'),
+(412, 'annaeliza', 6, '2024-04-22 14:58:22'),
+(413, 'annaeliza', 12, '2024-04-22 14:58:56'),
+(414, 'annaeliza', 37, '2024-04-22 14:59:03'),
+(415, 'annaeliza', 11, '2024-04-22 15:48:23'),
+(416, 'annaeliza', 22, '2024-04-22 15:49:00'),
+(417, 'annaeliza', 11, '2024-04-22 15:49:08'),
+(418, 'annaeliza', 11, '2024-04-22 15:51:20'),
+(419, 'annaeliza', 26, '2024-04-22 15:51:31');
 
 -- --------------------------------------------------------
 
@@ -11423,7 +11570,28 @@ INSERT INTO `log_usrlogin` (`id`, `id_usr`, `fecha_iniciosesion`, `fecha_cierres
 (278, 0, NULL, '2024-03-21 09:01:47'),
 (279, 1, '2024-03-22 09:08:47', NULL),
 (280, 0, NULL, '2024-03-22 09:36:08'),
-(281, 0, NULL, '2024-03-22 13:53:21');
+(281, 0, NULL, '2024-03-22 13:53:21'),
+(282, 1, '2024-04-12 10:36:54', NULL),
+(283, 1, '2024-04-15 14:40:12', NULL),
+(284, 0, NULL, '2024-04-15 15:38:34'),
+(285, 0, NULL, '2024-04-16 11:11:59'),
+(286, 1, '2024-04-16 11:12:03', NULL),
+(287, 0, NULL, '2024-04-16 11:12:18'),
+(288, 0, NULL, '2024-04-17 09:36:36'),
+(289, 1, '2024-04-17 09:36:40', NULL),
+(290, 1, '2024-04-17 11:47:13', NULL),
+(291, 0, NULL, '2024-04-17 11:49:58'),
+(292, 0, NULL, '2024-04-17 15:43:29'),
+(293, 0, NULL, '2024-04-17 16:22:01'),
+(294, 1, '2024-04-18 10:22:13', NULL),
+(295, 0, NULL, '2024-04-18 16:26:17'),
+(296, 1, '2024-04-19 10:49:22', NULL),
+(297, 1, '2024-04-19 15:07:34', NULL),
+(298, 0, NULL, '2024-04-19 15:08:38'),
+(299, 1, NULL, '2024-04-19 15:46:02'),
+(300, 1, '2024-04-22 11:23:35', NULL),
+(301, 0, NULL, '2024-04-22 11:24:19'),
+(302, 0, NULL, '2024-04-22 11:46:43');
 
 -- --------------------------------------------------------
 
@@ -11441,106 +11609,106 @@ CREATE TABLE `medicamentos` (
 --
 
 INSERT INTO `medicamentos` (`id`, `nombre`) VALUES
-(1, 'Insulina'),
-(2, 'Carbamazepina'),
-(3, 'Captopril'),
-(4, 'Glibenclamida'),
-(5, 'Depakene'),
-(6, 'Metformina'),
-(7, 'Valproato de Magnesio'),
-(8, 'Omeprazol'),
-(9, 'Propanolol'),
-(10, 'Metropolol'),
-(11, 'Enalapril'),
-(12, 'Salbutamol'),
-(13, 'Sedalmerk'),
-(15, 'Alopurinol'),
-(16, 'Diazepam'),
-(19, 'Rivotril'),
-(20, 'Lozartan'),
-(21, 'Atemperator-S'),
-(22, 'Glucosamina'),
-(24, 'Tenoretic'),
-(25, 'Ergotamina'),
-(26, 'Corticoides'),
-(27, 'Micardis'),
-(28, 'Levotiroxina'),
-(29, 'Fenitoina'),
-(30, 'Atorbaztatina'),
-(31, 'Selopres Zoc'),
-(32, 'Zestril'),
-(33, 'Copaxone'),
-(34, 'Haloperidol'),
-(35, 'Amiodarona'),
-(36, 'Paroxetina'),
-(37, 'Caberbolina'),
-(38, 'Prednisolona'),
-(39, 'Clonazepam'),
-(40, 'Lamotrigina'),
-(41, 'Audifluor'),
-(42, 'Dicloxaciclina'),
-(43, 'Trileptal'),
-(44, 'Timolol'),
-(46, 'Levomepromazina'),
-(47, 'Biperideno'),
-(48, 'Plavix'),
-(49, 'Sulindaco'),
-(51, 'Ketorolaco'),
-(55, 'Furosemida'),
-(56, 'Temperator'),
-(57, 'Dosolamida'),
-(58, 'Digoxina'),
-(59, 'Metoclopramida'),
-(61, 'Verapamilo'),
-(62, 'Celebrex'),
-(63, 'Pravastatina'),
-(64, 'Pramipexol'),
-(65, 'Dobutamina'),
-(66, 'Ciclosporina'),
-(67, 'Micofenolato de Mofetil'),
-(68, 'Pravastatina'),
-(69, 'Valsartan'),
-(70, 'Aspirina'),
-(71, 'Dextropropifeno'),
-(72, 'Trimetroprim con Sulfas'),
-(73, 'Metronidazol'),
-(74, 'Difenidol'),
-(75, 'Morfina'),
-(76, 'Tegretol'),
-(77, 'Lirica'),
-(78, 'Diclofenaco'),
-(79, 'Epamin'),
-(80, 'Topiramato'),
-(81, 'Cisaprida'),
-(82, 'Acetallasan'),
-(83, 'Nifedipino'),
-(84, 'Glargina'),
-(86, 'Levetiracetam'),
-(87, 'Paracetamol'),
-(88, 'Ácido Valpórico'),
-(89, 'Levotiroxina'),
-(90, 'Loratadina'),
-(91, 'Telmisartan'),
-(92, 'Clopidogrel'),
-(93, 'Alopurinol'),
-(94, 'Amlodipino'),
-(95, 'Hepa-Merz L-Ornitina L-Aspartato'),
-(96, 'Espironolactona'),
-(97, 'Lactosa Pharmatose'),
-(98, 'I-Aspartato'),
-(99, 'Ursofal'),
-(100, 'Risperidona'),
-(101, 'Enalapril'),
-(102, 'Neomicina'),
-(103, 'Sitagliptina'),
-(104, 'Ciprofloxacino'),
-(105, 'Capecitabina'),
-(106, 'Anastrozol'),
-(107, 'Dexametasona'),
-(108, 'Tobramicina'),
-(109, 'Esomeprazol'),
-(110, 'Lidocaina'),
-(111, 'Hidrocortisona'),
+(1, 'INSULINA'),
+(2, 'CARBAMAZEPINA'),
+(3, 'CAPTOPRIL'),
+(4, 'GLIBENCLAMIDA'),
+(5, 'DEPAKENE'),
+(6, 'METFORMINA'),
+(7, 'VALPROATO DE MAGNESIO'),
+(8, 'OMEPRAZOL'),
+(9, 'PROPANOLOL'),
+(10, 'METROPOLOL'),
+(11, 'ENALAPRIL'),
+(12, 'SALBUTAMOL'),
+(13, 'SEDALMERK'),
+(15, 'ALOPURINOL'),
+(16, 'DIAZEPAM'),
+(19, 'RIVOTRIL'),
+(20, 'LOZARTAN'),
+(21, 'ATEMPERATOR-S'),
+(22, 'GLUCOSAMINA'),
+(24, 'TENORETIC'),
+(25, 'ERGOTAMINA'),
+(26, 'CORTICOIDES'),
+(27, 'MICARDIS'),
+(28, 'LEVOTIROXINA'),
+(29, 'FENITOINA'),
+(30, 'ATORBAZTATINA'),
+(31, 'SELOPRES ZOC'),
+(32, 'ZESTRIL'),
+(33, 'COPAXONE'),
+(34, 'HALOPERIDOL'),
+(35, 'AMIODARONA'),
+(36, 'PAROXETINA'),
+(37, 'CABERBOLINA'),
+(38, 'PREDNISOLONA'),
+(39, 'CLONAZEPAM'),
+(40, 'LAMOTRIGINA'),
+(41, 'AUDIFLUOR'),
+(42, 'DICLOXACICLINA'),
+(43, 'TRILEPTAL'),
+(44, 'TIMOLOL'),
+(46, 'LEVOMEPROMAZINA'),
+(47, 'BIPERIDENO'),
+(48, 'PLAVIX'),
+(49, 'SULINDACO'),
+(51, 'KETOROLACO'),
+(55, 'FUROSEMIDA'),
+(56, 'TEMPERATOR'),
+(57, 'DOSOLAMIDA'),
+(58, 'DIGOXINA'),
+(59, 'METOCLOPRAMIDA'),
+(61, 'VERAPAMILO'),
+(62, 'CELEBREX'),
+(63, 'PRAVASTATINA'),
+(64, 'PRAMIPEXOL'),
+(65, 'DOBUTAMINA'),
+(66, 'CICLOSPORINA'),
+(67, 'MICOFENOLATO DE MOFETIL'),
+(68, 'PRAVASTATINA'),
+(69, 'VALSARTAN'),
+(70, 'ASPIRINA'),
+(71, 'DEXTROPROPIFENO'),
+(72, 'TRIMETROPRIM CON SULFAS'),
+(73, 'METRONIDAZOL'),
+(74, 'DIFENIDOL'),
+(75, 'MORFINA'),
+(76, 'TEGRETOL'),
+(77, 'LIRICA'),
+(78, 'DICLOFENACO'),
+(79, 'EPAMIN'),
+(80, 'TOPIRAMATO'),
+(81, 'CISAPRIDA'),
+(82, 'ACETALLASAN'),
+(83, 'NIFEDIPINA'),
+(84, 'GLARGINA'),
+(86, 'LEVETIRACETAM'),
+(87, 'PARACETAMOL'),
+(88, 'ÁCIDO VALPÓRICO'),
+(89, 'LEVOTIROXINA'),
+(90, 'LORATADINA'),
+(91, 'TELMISARTAN'),
+(92, 'CLOPIDOGREL'),
+(93, 'ALOPURINOL'),
+(94, 'AMLODIPINO'),
+(95, 'HEPA-MERZ L-ORNITINA L-ASPARTATO'),
+(96, 'ESPIRONOLACTONA'),
+(97, 'LACTOSA PHARMATOSE'),
+(98, 'I-ASPARTATO'),
+(99, 'URSOFAL'),
+(100, 'RISPERIDONA'),
+(101, 'ENALAPRIL'),
+(102, 'NEOMICINA'),
+(103, 'SITAGLIPTINA'),
+(104, 'CIPROFLOXACINO'),
+(105, 'CAPECITABINA'),
+(106, 'ANASTROZOL'),
+(107, 'DEXAMETASONA'),
+(108, 'TOBRAMICINA'),
+(109, 'ESOMEPRAZOL'),
+(110, 'LIDOCAINA'),
+(111, 'HIDROCORTISONA'),
 (112, 'SUBACETATO'),
 (113, 'OXIDO DE ZINC'),
 (114, 'FENAZOPIRIDINA'),
@@ -11647,7 +11815,24 @@ INSERT INTO `referencias` (`id`, `curp`, `expediente`, `nombre`, `parentesco`, `
 (6, 'AORL581005HSPCMS01', 'C-5618-0007', 'JUANA MARIA LOPEZ PALACIOS', 'ESPOSO(A)', '', '62', '2', '7', '', '0.00', '0', '0'),
 (7, 'PAZL810814MZSLXZ01', 'C-1024-0013', 'LUIS MANUEL ALVARADO', 'ESPOSO(A)', '', '36', '6', '134', '', '4000.00', '0', '0'),
 (8, 'DIOJ450105MZSZRN05', 'C-5621-0020', 'JOSE LUIS DIAZ', 'HERMANO(A)', '', '62', '6', '132', '39', '1800.00', '0', '0'),
-(9, 'AAAE650713MJCLLLO4', 'C-1721-0025', 'ALMA LETICIA INGUANZO', 'OTRO', '', '26', '6', '134', '', '0.00', '0', '0');
+(9, 'AAAE650713MJCLLLO4', 'C-1721-0025', 'ALMA LETICIA INGUANZO', 'OTRO', '', '26', '6', '134', '', '0.00', '0', '0'),
+(10, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'JORGE EDUARDO', 'OTRO', '', '18', '2', '3', '', '0.00', '0', '0'),
+(11, 'ROSL710516MZSBFZ07', 'C-1712-0001', 'JORGE EDUARDO', 'OTRO', '', '18', '2', '134', '', '0.00', '0', '0'),
+(12, 'GUBJ571109HZSTTS00', 'C-5603-0003', 'LILIANA GUTIERREZ', 'OTRO', '', '24', '3', '3', '', '0.00', '0', '0'),
+(13, 'GUMS981029HZSRRL08', 'C-1733-0004', 'MARIA FERNANDA GUERRERO', 'HERMANO(A)', '', '1', '1', '134', '39', '0.00', '0', '0'),
+(14, 'RIRC890417HZSSMR07', 'C-5603-0006', 'REGINA', 'HERMANO(A)', '', '15', '4', '130', '', '0.00', '0', '0'),
+(15, 'AORL581005HSPCMS01', 'C-5618-0007', 'JUANA MARIA LOPEZ PALACIOS', 'ESPOSO(A)', '', '62', '2', '7', '', '0.00', '0', '0'),
+(16, 'PAZL810814MZSLXZ01', 'C-1024-0013', 'LUIS MANUEL ALVARADO', 'ESPOSO(A)', '', '36', '6', '134', '', '4000.00', '0', '0'),
+(17, 'DIOJ450105MZSZRN05', 'C-5621-0020', 'JOSE LUIS DIAZ', 'HERMANO(A)', '', '62', '6', '132', '39', '1800.00', '0', '0'),
+(18, 'AAAE650713MJCLLLO4', 'C-1721-0025', 'ALMA LETICIA INGUANZO', 'OTRO', '', '26', '6', '134', '', '0.00', '0', '0'),
+(19, 'MASS741226HZSLNL05', 'C-5616-0027', 'MARIA DEL SOCORRO SANTILLAN CAMPOS ', 'MADRE', '', '67', '2', '132', '', '0.00', '0', '0'),
+(20, '', 'C-1721-0031', 'JUAN DIEGO', 'OTRO', '', '3', '1', '134', '39', '0.00', '0', '0'),
+(21, 'VAMC590803HZSRRR02', 'C-4417-0033', 'JOSEPH ANTONIO', 'OTRO', '', '10', '2', '3', '', '0.00', '0', '0'),
+(22, 'LOGL750802HZSPNS14', 'C-1724-0034', 'JOSEPH ANTONIO', 'OTRO', '', '10', '2', '130', '21', '0.00', '0', '0'),
+(23, 'CARL711226HZSRMS05', 'C-1725-0037', 'JOSE ENRIQUE CARRILLO', 'HIJO(A)', '', '26', '3', '3', '', '0.00', '0', '0'),
+(24, 'MEMT860222MASNNR03', 'C-1721-0045', 'NATALIA SARAY TRUJILLO', 'HIJO(A)', '', '1', '1', '3', '', '0.00', '0', '0'),
+(25, 'MEMT860222MASNNR03', 'C-1721-0045', 'NATALIA SARAY TRUJILLO', 'HIJO(A)', '', '1', '1', '130', '', '0.00', '0', '0'),
+(26, 'SACL670723HZSCNB05', 'C-1703-0047', 'ALAN', 'OTRO', '', '2', '1', '3', '39', '0.00', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -11704,7 +11889,8 @@ INSERT INTO `solicitud` (`id`, `folio_solicitud`, `curp`, `tipo`, `total_solicit
 (7, 'C-1013-38', 'SOMT680516MZSTTD03', 4, '76', '2024-03-01 12:40:08', '2024-03-01 12:40:08', 1),
 (8, 'C-1712-0001', 'ROSL710516MZSBFZ07', 4, '76', '2024-03-22 13:35:58', '2024-03-22 13:35:58', 1),
 (9, 'C-1712-0001', 'ROSL710516MZSBFZ07', 4, '76', '2024-03-22 13:36:20', '2024-03-22 13:36:20', 1),
-(10, 'C-1712-0001', 'ROSL710516MZSBFZ07', 4, '76', '2024-03-22 13:40:40', '2024-03-22 13:40:40', 1);
+(10, 'C-1712-0001', 'ROSL710516MZSBFZ07', 4, '76', '2024-03-22 13:40:40', '2024-03-22 13:40:40', 1),
+(11, 'C-1210-1', 'PIAN810819MZSTLM05', 4, '76', '2024-04-22 14:59:03', '2024-04-22 14:59:03', 1);
 
 -- --------------------------------------------------------
 
@@ -11725,15 +11911,18 @@ CREATE TABLE `tarjetones` (
   `vehiculo_anyo` int(11) NOT NULL,
   `no_placa` varchar(10) NOT NULL,
   `no_serie` varchar(20) NOT NULL,
-  `autoseguro_reg` varchar(20) NOT NULL
+  `autoseguro_reg` varchar(20) NOT NULL,
+  `user` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tarjetones`
 --
 
-INSERT INTO `tarjetones` (`id`, `curp`, `numExpediente`, `tipo_tarjeton`, `folio_tarjeton`, `fecha_entrega`, `vigencia`, `vehiculo_marca`, `vehiculo_modelo`, `vehiculo_anyo`, `no_placa`, `no_serie`, `autoseguro_reg`) VALUES
-(1, 'LORJ950825HZSPDN07', '11547', 1, 85, '2024-01-12 10:26:50', 730, 'DODGE', 'AVEO', 2020, 'ZF556S', 'D6A8G6DF8A98G6DS', '');
+INSERT INTO `tarjetones` (`id`, `curp`, `numExpediente`, `tipo_tarjeton`, `folio_tarjeton`, `fecha_entrega`, `vigencia`, `vehiculo_marca`, `vehiculo_modelo`, `vehiculo_anyo`, `no_placa`, `no_serie`, `autoseguro_reg`, `user`) VALUES
+(1, 'LORJ950825HZSPDN07', '11547', 1, 85, '2024-01-12 10:26:50', 730, 'DODGE', 'AVEO', 2020, 'ZF556S', 'D6A8G6DF8A98G6DS', '', ''),
+(2, ' CURP no registrada', '4484', 1, 1526, '2024-04-22 15:48:23', 730, '55', '55', 55, '55', '55', '', ''),
+(3, 'COGS890118HZSRTL19', '11544', 1, 4364, '2024-04-22 15:49:08', 730, 'DGFA', 'SA', 44, '44', '44', '', '');
 
 -- --------------------------------------------------------
 
@@ -11889,7 +12078,33 @@ INSERT INTO `vivienda` (`id`, `curp`, `expediente`, `vivienda`, `vivienda_renta`
 (22, 'MOZG570420MGRRZL05', 'C-5615-0022', '1', NULL, NULL, NULL, NULL, 0, '0', '4', 0, 0, 0, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 0, 1, 0, 0, 0, '0', 1, 1, 0, 0, 0, 1, 1, NULL, '0', NULL, NULL, '5', '', ''),
 (23, 'BAMJ630915HZSRRL01', 'C-2903-0023', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
 (24, 'AALW800403HZSLSB00', 'C-1021-0024', '1', NULL, NULL, NULL, NULL, 0, '0', '7', 0, 0, 0, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 0, 1, 1, 0, 0, '0', 1, 0, 1, 0, 0, 1, 1, NULL, '0', NULL, NULL, '4', '', ''),
-(25, 'AAAE650713MJCLLLO4', 'C-1721-0025', '1', NULL, NULL, NULL, NULL, 0, '0', '6', 0, 0, 0, NULL, NULL, '0', '2', '0', '1', '0', 1, 1, 1, 1, 1, 0, 0, 0, '0', 1, 1, 0, 0, 0, 1, 1, NULL, '0', NULL, NULL, '3', '', '');
+(25, 'AAAE650713MJCLLLO4', 'C-1721-0025', '1', NULL, NULL, NULL, NULL, 0, '0', '6', 0, 0, 0, NULL, NULL, '0', '2', '0', '1', '0', 1, 1, 1, 1, 1, 0, 0, 0, '0', 1, 1, 0, 0, 0, 1, 1, NULL, '0', NULL, NULL, '3', '', ''),
+(26, 'VIER520407MZSLSF03', 'C-5617-0026', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(27, 'MASS741226HZSLNL05', 'C-5616-0027', '1', NULL, NULL, NULL, NULL, 0, '0', '6', 0, 0, 0, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 1, 1, 1, 0, 0, '0', 1, 1, 1, 0, 1, 1, 1, NULL, '0', NULL, NULL, '3', '', ''),
+(28, 'AEBA510618HZSRLN00', 'C-5618-0028', '1', NULL, NULL, NULL, NULL, 0, '0', '6', 0, 0, 0, NULL, NULL, '0', '2', '0', '1', '0', 1, 1, 1, 0, 0, 1, 0, 1, '0', 1, 1, 1, 1, 0, 1, 1, NULL, '0', NULL, NULL, '2', '', ''),
+(29, 'SORS490724HZSLMR05', 'C-1717-0029', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(30, ' ', 'C-4221-0030', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(31, '', 'C-1721-0031', '5', NULL, NULL, NULL, NULL, 0, '0', '4', 0, 0, 0, NULL, NULL, '0', '2', '0', '1', '0', 1, 1, 1, 0, 1, 0, 0, 0, '0', 1, 1, 0, 0, 0, 1, 1, NULL, '0', NULL, NULL, '5', '', ''),
+(32, 'AAMF820608MGTLRL09', 'C-2021-0032', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(33, 'VAMC590803HZSRRR02', 'C-4417-0033', '1', NULL, NULL, NULL, NULL, 0, '0', '4', 0, 0, 0, NULL, NULL, '0', '2', '0', '1', '0', 1, 1, 1, 1, 1, 1, 0, 1, '0', 1, 1, 1, 1, 1, 1, 1, NULL, '0', NULL, NULL, '3', '', ''),
+(34, 'LOGL750802HZSPNS14', 'C-1724-0034', '1', NULL, NULL, NULL, NULL, 0, '0', '5', 0, 0, 0, NULL, NULL, '0', '2', '0', '1', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '1', '', ''),
+(35, ' ', 'C-2032-0035', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(36, 'PUMR780831MZSNRM09', 'C-0731-0036', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(37, 'CARL711226HZSRMS05', 'C-1725-0037', '1', NULL, NULL, NULL, NULL, 0, '0', '4', 0, 0, 0, NULL, NULL, '0', '2', '0', '1', '0', 1, 1, 1, 1, 1, 0, 0, 0, '0', 1, 1, 1, 1, 1, 1, 1, NULL, '0', NULL, NULL, '4', '', ''),
+(38, ' ', 'C-1721-0038', '5', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '1', '', ''),
+(39, ' ', 'C-2421-0039', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(40, ' ', 'C-1945-0040', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(41, 'EIHF540824HZSSRL07', 'C-5611-0041', '1', NULL, NULL, NULL, NULL, 0, '0', '5', 0, 0, 0, NULL, NULL, '0', '2', '0', '1', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '2', '', ''),
+(42, 'HOMONIMO', 'C-1017-0042', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(43, ' ', 'C-1721-0043', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '0', '', ''),
+(44, 'MURJ900331HZSRMS09', 'C-2032-0044', '1', NULL, NULL, NULL, NULL, 0, '0', '5', 0, 0, 0, NULL, NULL, '0', '1', '0', '2', '0', 1, 1, 1, 1, 1, 0, 0, 0, '0', 1, 1, 0, 0, 0, 1, 1, NULL, '0', NULL, NULL, '5', '', ''),
+(45, 'MEMT860222MASNNR03', 'C-1721-0045', '1', NULL, NULL, NULL, NULL, 0, '0', '3', 0, 0, 0, NULL, NULL, '0', '4', '0', '3', '0', 1, 1, 1, 1, 1, 0, 0, 0, '0', 1, 1, 0, 1, 1, 1, 1, NULL, '0', NULL, NULL, '4', '', ''),
+(46, 'BADJ770731HZSXMS07', 'C-4921-0046', '2', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '3', '', ''),
+(47, 'SACL670723HZSCNB05', 'C-1703-0047', '2', NULL, NULL, NULL, NULL, 0, '0', '4', 0, 0, 0, NULL, NULL, '0', '2', '0', '1', '0', 1, 1, 1, 0, 0, 0, 0, 1, '0', 1, 1, 1, 1, 1, 1, 1, NULL, '0', NULL, NULL, '6', '', ''),
+(48, 'GOCA830829HZSNLL01', 'C-2031-0048', '5', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '2', '', ''),
+(49, 'SAXD811031HSLCXV06', 'C-1033-0049', '5', NULL, NULL, NULL, NULL, 0, '0', '0', 0, 0, 0, NULL, NULL, '0', '3', '0', '3', '0', 0, 0, 0, 0, 0, 0, 0, 0, '0', 0, 0, 0, 0, 0, 0, 0, NULL, '0', NULL, NULL, '3', '', ''),
+(50, 'VARR041216HZSLYBA6', 'C-5605-0050', '5', NULL, NULL, NULL, NULL, 0, '0', '4', 0, 0, 0, NULL, NULL, '0', '2', '0', '2', '0', 1, 1, 1, 0, 0, 0, 0, 1, '0', 1, 0, 0, 0, 0, 0, 1, NULL, '0', NULL, NULL, '3', '', ''),
+(51, 'PIAN810819MZSTLM05', 'C-1210-1', '1', NULL, NULL, NULL, 1, 1, '0', '5', 1, 1, 1, 2, 1, '0', '2', '0', '2', '0', 1, 1, 1, 1, 0, 1, 1, 1, '0', 1, 1, 1, 1, 1, 1, 1, 1, '0', 0, '', '1', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -12113,13 +12328,13 @@ ALTER TABLE `cat_logs`
 -- AUTO_INCREMENT for table `datos_generales`
 --
 ALTER TABLE `datos_generales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `datos_medicos`
 --
 ALTER TABLE `datos_medicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `datos_usuariot`
@@ -12137,13 +12352,13 @@ ALTER TABLE `discapacidades`
 -- AUTO_INCREMENT for table `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `documentos_list`
 --
 ALTER TABLE `documentos_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `empleados`
@@ -12155,7 +12370,7 @@ ALTER TABLE `empleados`
 -- AUTO_INCREMENT for table `enfermedades`
 --
 ALTER TABLE `enfermedades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Identificador único de cada registro. Establecen la manera más rápida posible de encontrar un registro', AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `extraordinarios`
@@ -12179,25 +12394,25 @@ ALTER TABLE `grupos_vulnerables`
 -- AUTO_INCREMENT for table `integracion`
 --
 ALTER TABLE `integracion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
 
 --
 -- AUTO_INCREMENT for table `log_entregas`
 --
 ALTER TABLE `log_entregas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `log_registro`
 --
 ALTER TABLE `log_registro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=410;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=420;
 
 --
 -- AUTO_INCREMENT for table `log_usrlogin`
 --
 ALTER TABLE `log_usrlogin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=282;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=303;
 
 --
 -- AUTO_INCREMENT for table `medicamentos`
@@ -12227,7 +12442,7 @@ ALTER TABLE `prestamo`
 -- AUTO_INCREMENT for table `referencias`
 --
 ALTER TABLE `referencias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `servicios`
@@ -12239,13 +12454,13 @@ ALTER TABLE `servicios`
 -- AUTO_INCREMENT for table `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tarjetones`
 --
 ALTER TABLE `tarjetones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tiposangre`
@@ -12269,7 +12484,7 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT for table `vivienda`
 --
 ALTER TABLE `vivienda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

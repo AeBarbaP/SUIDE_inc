@@ -32,6 +32,7 @@ $noInt = $rowSqlGenerales['no_int'];
 
 if ($noInt == "" || $noInt == null){
     $concatNumIntNumCasa = $noExt;
+	echo $concatNumIntNumCasa;
 }
 else{
     $concatNumIntNumCasa = $noExt.'-'.$noInt;
