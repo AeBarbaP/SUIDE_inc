@@ -3553,3 +3553,20 @@ function insertLogCredencial(){
         }
     });
 }
+function logEntregaTarjeton(){
+    $.ajax({
+        type: "POST",
+        url: 'prcd/logEntregaTarjetones.php',
+        dataType:'json',
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            if (success == 1) {
+                console.log("Log tarjeton guardado");
+
+            } else if (success == 0){
+                console.log("Log no guardado");
+            }
+        }
+    });
+}

@@ -36,9 +36,19 @@ else if ($filas > 0){
         '$selectvigencia',
         '$entrega'
         )";
+
     $resultadoUsr = $conn->query($sqlInsertUsr);
     
     if ($resultadoUsr){
+        $sqlInsertUsr1 = "INSERT INTO log_registro(
+            usr,
+            tipo_dato,
+            fecha)
+            VALUES(
+            '$usr',
+            37,
+            '$fecha_registro')";
+        $resultadoUsr1 = $conn->query($sqlInsertUsr1);
         echo json_encode(array(
             'success'=>1
         ));

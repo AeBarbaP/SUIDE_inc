@@ -152,8 +152,8 @@ function limpiaModalTarjeton(){
     document.getElementById('curpTarjeton').value = "";
     document.getElementById('numExpediente').value = "";
     document.getElementById('agregarVehiculoBtn').disabled = true;
-    document.getElementById('tarjeton').hidden = true;
-    document.getElementById('vehiculosTabla').hidden = true;
+    document.getElementById('tarjeton').innerHTML = "";
+    document.getElementById('vehiculosTabla').innerHTML = "";
 }
 
 function habilitarBtn(){
