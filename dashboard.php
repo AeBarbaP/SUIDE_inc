@@ -748,7 +748,7 @@ $(document).ready(function () {
             <label class="btn btn-outline-primary" for="usuarioSD">Usuario</label>
             <input type="radio" class="btn-check" onchange="cambiarAtrib()" name="options-outlined" id="oficial" autocomplete="off">
             <label class="btn btn-outline-primary" for="oficial">Institución</label>
-            <input type="text" class="form-control" oninput="buscarTarjetonTemp(this.value)" placeholder="Buscar CURP, RFC o # de Tarjetón..." aria-label="Buscar">
+            <input type="text" class="form-control" oninput="buscarTarjetonTemp(this.value)" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Buscar CURP, RFC o # de Tarjetón..." aria-label="Buscar">
           </div>
           <div class="alert alert-warning" role="alert" id="nadaDoor">
             Ingresa la CURP o RFC para encontrar al beneficiario.
@@ -802,31 +802,31 @@ $(document).ready(function () {
                           <div class="col-md-12">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="basic-addon1">Nombre (s)</span>
-                              <input type="text" class="form-control" oninput="habilitaBTNsiguiente()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp">
+                              <input type="text" class="form-control bloqDes" oninput="habilitaBTNsiguiente()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp" onkeyup="javascript:this.value=this.value.toUpperCase()">
                             </div>  
                           </div>
                           <div class="col-md-12" id="apellidosDiv">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="lastname1">Apellido Paterno</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apPaterno">
+                              <input type="text" class="form-control bloqDes" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apPaterno" onkeyup="javascript:this.value=this.value.toUpperCase()">
                               <span class="input-group-text" id="lastname2">Apellido Materno</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apMaterno">
+                              <input type="text" class="form-control bloqDes" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apMaterno" onkeyup="javascript:this.value=this.value.toUpperCase()">
                             </div>  
                           </div>
                           <div class="col-md-12">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="spanRFC">CURP</span>
-                              <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="" onchange="validarInput2(this);curp2date2(this)" aria-label="" aria-describedby="basic-addon1" id="curpTemp">
+                              <input type="text" class="form-control w-25 bloqDes" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="" onchange="validarInput2(this);curp2date2(this)" aria-label="" aria-describedby="basic-addon1" id="curpTemp" onkeyup="javascript:this.value=this.value.toUpperCase()">
                               <span class="input-group-text" id="cveid">Clave INE / Folio ID:</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp">
+                              <input type="text" class="form-control bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp" onkeyup="javascript:this.value=this.value.toUpperCase()">
                             </div>  
                           </div>
                           <div class="col-md-12" id="divEdad">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="spanEdad">Edad</span>
-                              <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="edadTemp" disabled>
+                              <input type="text" class="form-control bloqDes" onkeypress="ValidaSoloNumeros()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="edadTemp" disabled>
                               <span class="input-group-text" id="fechaNacT">Fecha de Nacimiento:</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaNacimientoTemp" disabled>
+                              <input type="text" class="form-control bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaNacimientoTemp" disabled>
                               <span class="input-group-text" id="sexoTag">Sexo:</span>
                               <select class="form-select" id="sexoSel"  placeholder="Selecciona..." aria-label="Default select example">
                                 <option value=Selected>Selecciona</option>
@@ -839,28 +839,28 @@ $(document).ready(function () {
                           <div class="col-md-12">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="basic-addon1">Correo-e:</span>
-                              <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toLowerCase()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="correoTemp">
+                              <input type="text" class="form-control w-25 bloqDes" onkeyup="javascript:this.value=this.value.toLowerCase()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="correoTemp">
                               <span class="input-group-text" id="basic-addon1">Teléfono:</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="telcelTemp" onkeypress="ValidaSoloNumeros()">
+                              <input type="text" class="form-control bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="telcelTemp" onkeypress="ValidaSoloNumeros()">
                             </div>  
                           </div>
                           <h5 class="mb-3"><i class="bi bi-house-door"></i> Domicilio</h5>
                           <div class="col-md-12">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="basic-addon1">Calle:</span>
-                              <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="calleTemp">
+                              <input type="text" class="form-control w-25 bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="calleTemp">
                               <span class="input-group-text" id="basic-addon1">No. Ext.:</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" maxlength="11" aria-describedby="basic-addon1" id="extTemp" >
+                              <input type="text" class="form-control bloqDes" placeholder="" aria-label="" maxlength="11" aria-describedby="basic-addon1" id="extTemp" >
                               <span class="input-group-text" id="basic-addon1">No. Int.:</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="intTemp">
+                              <input type="text" class="form-control bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="intTemp" >
                             </div>  
                           </div>
                           <div class="col-md-12">
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="basic-addon1">Colonia:</span>
-                              <input type="text" class="form-control w-25" placeholder="" aria-label="" aria-describedby="basic-addon1" id="coloniaTemp">
+                              <input type="text" class="form-control w-25 bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="coloniaTemp">
                               <span class="input-group-text" id="basic-addon1">C.P.:</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="CPTemp" onkeypress="ValidaSoloNumeros()">
+                              <input type="text" class="form-control bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="CPTemp" onkeypress="ValidaSoloNumeros()">
                             </div>  
                           </div>
                           <div class="col-md-12">
@@ -870,22 +870,30 @@ $(document).ready(function () {
                 
                               </select>
                               <span class="input-group-text" id="basic-addon1">Municipio:</span>
-                              <select class="form-select" id="municipiosList" placeholder="Selecciona..." onchange="localidadesSelect(this.value)" required>
+                              <select class="form-select bloqDes" id="municipiosList" placeholder="Selecciona..." onchange="localidadesSelect(this.value)" required>
 
                               </select>
                               <span class="input-group-text" id="basic-addon1">Localidad:</span>
-                              <input class="form-control" list="localidadesList" id="localidades" placeholder="Buscar..." onchange="asentamientosSelect(this.value)" required>
+                              <input class="form-control bloqDes" list="localidadesList" id="localidades" placeholder="Buscar..." onchange="asentamientosSelect(this.value)" required>
                               <datalist id="localidadesList">
 
                               </datalist>
-                              <input class="form-control" list="asentamientosList" id="asentamiento" placeholder="Buscar..." hidden>
+                              <input class="form-control bloqDes" list="asentamientosList" id="asentamiento" placeholder="Buscar..." hidden>
                               <datalist id="asentamientosList" hidden>
                                 
                               </datalist>
                             </div>  
                           </div>
-                          <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
-                            <button class="btn btn-primary me-md-2" id="agregarUsuarioTempBtn" onclick="cambiarTabTT()" type="button" disabled> Siguente<i class="bi bi-skip-forward ms-2"></i></button>
+                          <div class="row">
+                            <div class="col-4 text-start">
+                              <button class="btn btn-sm btn-light" id="editarUsuarioTempBtn" onclick="updateUsuarioTemp()" type="button" > Editar Información <i class="bi bi-pencil-square"></i></button>
+                            </div>
+                            <div class="col-4">
+                              &nbsp;
+                            </div>
+                            <div class="col-4 text-end">
+                              <button class="btn btn-primary" id="agregarUsuarioTempBtn" onclick="cambiarTabTT()" type="button" disabled> Siguente<i class="bi bi-skip-forward "></i></button>
+                            </div>
                           </div>
                         </div>
                       </div>

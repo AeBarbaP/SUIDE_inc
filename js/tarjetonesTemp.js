@@ -220,6 +220,7 @@ function buscarTarjetonTemp(x){
                     document.getElementById('nadaDoor').hidden = true;
                     document.getElementById('positivoT').hidden = false;
                     document.getElementById('negativoT').hidden = true;
+                    document.getElementById('editarUsuarioTempBtn').hidden = false;
                     document.getElementById('numTarjeton1').innerText = jsonData.folioTarjeton;
                     document.getElementById('datosCompletosT').value = jsonData.folioTarjeton;
                     document.getElementById('datosCompletosCURPT').value = jsonData.curp;
@@ -230,7 +231,8 @@ function buscarTarjetonTemp(x){
                     var discapacidadQuery = jsonData.tipoDiscapacidad;
                     municipiosSelect(municipioQuery);
                     discapacidadTab(discapacidadQuery);
-
+                    updateUsuarioTempBloquear();
+                    
                     document.getElementById('discapacidadConsultaT').value = jsonData.discapacidad;
                     document.getElementById('tipoDiscapacidadConsultaT').value = jsonData.tipoDiscapacidad;
                     document.getElementById('nombreTarjeto1').innerText = jsonData.nombre;
@@ -243,6 +245,8 @@ function buscarTarjetonTemp(x){
                     document.getElementById('nadaDoor').hidden = true;
                     document.getElementById('positivoT').hidden = true;
                     document.getElementById('negativoT').hidden = false;
+                    document.getElementById('editarUsuarioTempBtn').hidden = true;
+                    updateUsuarioTemp();
                     console.log('nada');
                 }
             }
@@ -464,4 +468,19 @@ function reemplazaTarjetonT(){
         }
 
     });
+}
+
+function updateUsuarioTemp(){
+    const checkboxes = document.querySelectorAll('.bloqDes');
+    checkboxes.forEach(el => el.disabled = false);
+    /* checkboxes.disabled = true; */
+    
+
+}
+function updateUsuarioTempBloquear(){
+    const checkboxes = document.querySelectorAll('.bloqDes');
+    checkboxes.forEach(el => el.disabled = true);
+    /* checkboxes.disabled = true; */
+    
+
 }

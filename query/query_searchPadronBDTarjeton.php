@@ -55,23 +55,23 @@ else{
 
     if($resultado_QueryExpediente){
     
-    $nombreExp = $row_sql_expediente['nombre'];
-    $idExp = $row_sql_expediente['id'];
-    $apellidoPaterno = $row_sql_expediente['apellidoPaterno'];
-    $apellidoMaterno = $row_sql_expediente['apellidoMaterno'];
-    $folio = $row_sql_expediente['folio'];
-    $curp = $row_sql_expediente['curp'];
-    
-    //Discapacidad
-    $QueryDiscapacidad = "SELECT * FROM discapacidades WHERE idExpediente = '$idExp'";
-    $resultado_QueryDiscapacidad = $conn2->query($QueryDiscapacidad);
-    $row_QueryDiscapacidad = $resultado_QueryDiscapacidad->fetch_assoc();
-    $discapacidad = $row_QueryDiscapacidad['idCatDiscapacidad'];
+      $nombreExp = $row_sql_expediente['nombre'];
+      $idExp = $row_sql_expediente['id'];
+      $apellidoPaterno = $row_sql_expediente['apellidoPaterno'];
+      $apellidoMaterno = $row_sql_expediente['apellidoMaterno'];
+      $folio = $row_sql_expediente['folio'];
+      $curp = $row_sql_expediente['curp'];
+      
+      //Discapacidad
+      $QueryDiscapacidad = "SELECT * FROM discapacidades WHERE idExpediente = '$idExp'";
+      $resultado_QueryDiscapacidad = $conn2->query($QueryDiscapacidad);
+      $row_QueryDiscapacidad = $resultado_QueryDiscapacidad->fetch_assoc();
+      $discapacidad = $row_QueryDiscapacidad['idCatDiscapacidad'];
 
-    $QueryDiscapacidad2 = "SELECT * FROM catdiscapacidades WHERE id = '$discapacidad'";
-    $resultado_QueryDiscapacidad2 = $conn2->query($QueryDiscapacidad2);
-    $row_QueryDiscapacidad2 = $resultado_QueryDiscapacidad2->fetch_assoc();
-    $discapacidad2 = $row_QueryDiscapacidad2['nombreDiscapacidad'];
+      $QueryDiscapacidad2 = "SELECT * FROM catdiscapacidades WHERE id = '$discapacidad'";
+      $resultado_QueryDiscapacidad2 = $conn2->query($QueryDiscapacidad2);
+      $row_QueryDiscapacidad2 = $resultado_QueryDiscapacidad2->fetch_assoc();
+      $discapacidad2 = $row_QueryDiscapacidad2['nombreDiscapacidad'];
 
       if ($curp != null || $curp != 0){
         $curpShow = $curp;
@@ -105,7 +105,7 @@ else{
       echo'
       <script>
         alert("No se encontró el registro");
-      </>';
+      </script>';
     }
 }
 ?>
