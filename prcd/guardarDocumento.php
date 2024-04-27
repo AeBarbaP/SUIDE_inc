@@ -8,12 +8,12 @@ error_reporting(E_ALL);
 date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
 
-$fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
+$fecha_registro = strtotime("%Y-%m-%d,%H:%M:%S");
 
 include('qc/qc.php');
 include('QR/phpqrcode/qrlib.php'); 
 
-$fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
+$fecha_entrega = strtotime("%Y-%m-%d,%H:%M:%S");
 
 $curp = $_POST['curp'];
 $tipoDoc = $_POST['tipoDoc'];
