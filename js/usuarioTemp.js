@@ -74,7 +74,8 @@ function usuarioTempAdd(){
                 document.getElementById('editarTarjeton').hidden = true;
                 document.getElementById('imprimirtt').disabled = false;
                 document.getElementById('cancelarEditar').hidden = false;
-                document.getElementById('finalizarEditar').hidden = true;              
+                document.getElementById('finalizarEditar').hidden = true; 
+                alert("Datos del vehículo agregados");             
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
@@ -116,6 +117,7 @@ function medicosTempAdd(){
             var jsonData = JSON.parse(JSON.stringify(data));
             var verificador = jsonData.success;
             if (verificador == 1) {
+                alert("Datos médicos agregados");
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }

@@ -4,7 +4,7 @@
     include('../prcd/qc/qc.php');
 
     $enfermedad = $_POST['enfermedad'];
-    $Query = "SELECT * FROM enfermedades WHERE nombre LIKE '%$enfermedad%'" ;
+    $Query = "SELECT * FROM enfermedades WHERE nombreEnfermedad LIKE '%$enfermedad%'" ;
     $resultado_Query = $conn->query($Query);
     $filas = $resultado_Query->num_rows;
 
@@ -13,7 +13,7 @@
     while ($row_sql_catalogo = $resultado_Query->fetch_assoc()){
         $x++;
         $id = $row_sql_catalogo['id'];
-        $nombre = $row_sql_catalogo['nombre'];
+        $nombre = $row_sql_catalogo['nombreEnfermedad'];
         /* if (strlen($id) == 1){
             $id = '000'.$id.'-';
         }
