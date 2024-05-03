@@ -2,7 +2,7 @@
 
     include('../prcd/qc/qc.php');
 
-    $curp = $_POST['curpTarjeton'];
+    $curp = $_POST['curpPaseada'];
     
     $Query = "SELECT * FROM tarjetones WHERE curp = '$curp'";
     $resultado_Query = $conn->query($Query);

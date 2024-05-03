@@ -52,8 +52,9 @@ else{
     $QueryExpediente = "SELECT * FROM expedientes WHERE ordenExpediente = '$expediente'";
     $resultado_QueryExpediente = $conn2->query($QueryExpediente);
     $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
+    $filasExpediente = $resultado_QueryExpediente->num_rows;
 
-    if($resultado_QueryExpediente){
+    if($filasExpediente >= 1) {
     
       $nombreExp = $row_sql_expediente['nombre'];
       $idExp = $row_sql_expediente['id'];
@@ -73,7 +74,7 @@ else{
       $row_QueryDiscapacidad2 = $resultado_QueryDiscapacidad2->fetch_assoc();
       $discapacidad2 = $row_QueryDiscapacidad2['nombreDiscapacidad'];
 
-      if ($curp != null || $curp != 0){
+      if (!is_null($curp) || $curp != 0){
         $curpShow = $curp;
       }
       else {
@@ -98,14 +99,17 @@ else{
           <input type="text" id="curpTarjeton" value="'.$curpShow.'" hidden> 
           <input type="text" id="ordenExpediente" value="'.$expediente.'" hidden> 
         </div>
-
+        
       ';
     }
     else{
       echo'
+      <div>
+        <input type="text" id="curpTarjeton" value="0" hidden>
+      </div>
       <script>
         alert("No se encontró el registro");
-      </script>';
+      </scrip>';
     }
 }
 ?>

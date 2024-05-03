@@ -7,6 +7,16 @@ setlocale(LC_TIME, 'es_MX.UTF-8');
 
 $hoyX = strtotime("%Y-%m-%d");
 
+$limpiar = "DELETE FROM datos_generales";
+$resultado = $conn2->query($limpiar);
+
+if ($resultado){
+    echo "datos generales eliminados";
+}
+else {
+    echo "error al limpiar datos generales";
+}
+
 function edad($fechaNacimiento){
     $nacimiento = new DateTime($fechaNacimiento);
     $ahora = new DateTime(date("Y-m-d"));
