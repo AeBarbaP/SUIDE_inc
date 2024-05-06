@@ -24,6 +24,30 @@ function edad($fechaNacimiento){
     return $diferencia->format("%y");
 }
 
+
+$sqlDelete1 = "DELETE FROM datos_generales";
+$resultado_sqlDelete1 = $conn->query($sqlDelete1);
+$sqlDelete2 = "DELETE FROM datos_medicos";
+$resultado_sqlDelete2 = $conn->query($sqlDelete2);
+$sqlDelete3 = "DELETE FROM integracion";
+$resultado_sqlDelete3 = $conn->query($sqlDelete3);
+$sqlDelete4 = "DELETE FROM referencias";
+$resultado_sqlDelete4 = $conn->query($sqlDelete4);
+$sqlDelete5 = "DELETE FROM vivienda";
+$resultado_sqlDelete5 = $conn->query($sqlDelete5);
+
+$sqlDelete1 = "ALTER TABLE datos_generales AUTO_INCREMENT=1";
+$resultado_sqlDelete1 = $conn->query($sqlDelete1);
+$sqlDelete2 = "ALTER TABLE datos_medicos AUTO_INCREMENT=1";
+$resultado_sqlDelete2 = $conn->query($sqlDelete2);
+$sqlDelete3 = "ALTER TABLE integracion AUTO_INCREMENT=1";
+$resultado_sqlDelete3 = $conn->query($sqlDelete3);
+$sqlDelete4 = "ALTER TABLE referencias AUTO_INCREMENT=1";
+$resultado_sqlDelete4 = $conn->query($sqlDelete4);
+$sqlDelete5 = "ALTER TABLE vivienda AUTO_INCREMENT=1";
+$resultado_sqlDelete5 = $conn->query($sqlDelete5);
+
+
 $numeroID = $_REQUEST['id'];
 $x = 0;
 
