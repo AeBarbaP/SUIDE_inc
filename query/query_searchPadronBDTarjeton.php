@@ -1,5 +1,4 @@
 <?php
-include('../prcd/qc/qc2.php');
 include('../prcd/qc/qc.php');
 
 if ($_POST['expediente'] == 0 || $_POST['expediente'] == null ||$_POST['expediente'] == ""){
@@ -13,11 +12,33 @@ if ($_POST['expediente'] == 0 || $_POST['expediente'] == null ||$_POST['expedien
 }
 else{
 
-    $expediente = $_POST['curp'];
+    $expediente = $_POST['expediente'];
     
     //header("content-type: image/jpeg");
 
-    $queryTarjeton ="SELECT * FROM tarjetones WHERE curp = '$expediente'";
+    // Detalles del expediente
+    $QueryExpediente = "SELECT * FROM datos_generales WHERE numExpediente LIKE '%$expediente'";
+    $resultado_QueryExpediente = $conn->query($QueryExpediente);
+    $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
+    $filasExpediente = $resultado_QueryExpediente->num_rows;
+
+    if($filasExpediente >= 1) {
+    
+      $nombreExp = $row_sql_expediente['nombre'];
+      $idExp = $row_sql_expediente['id'];
+      $apellidoPaterno = $row_sql_expediente['apellido_p'];
+      $apellidoMaterno = $row_sql_expediente['apellido_m'];
+      $folio = $row_sql_expediente['numExpediente'];
+      $curp = $row_sql_expediente['curp'];
+      
+      //Discapacidad
+      $QueryDiscapacidad = "SELECT * FROM datos_medicos WHERE curp = '$curp'";
+      $resultado_QueryDiscapacidad = $conn->query($QueryDiscapacidad);
+      $row_QueryDiscapacidad = $resultado_QueryDiscapacidad->fetch_assoc();
+      $discapacidad = $row_QueryDiscapacidad['discapacidad'];
+
+
+      $queryTarjeton ="SELECT * FROM tarjetones WHERE curp = '$curp'";
     $resultadoTarjeton = $conn -> query($queryTarjeton);
     $filasTarjeton = $resultadoTarjeton->num_rows;
 
@@ -47,33 +68,6 @@ else{
       ';
     }
 
-
-    // Detalles del expediente
-    $QueryExpediente = "SELECT * FROM expedientes WHERE ordenExpediente = '$expediente'";
-    $resultado_QueryExpediente = $conn2->query($QueryExpediente);
-    $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
-    $filasExpediente = $resultado_QueryExpediente->num_rows;
-
-    if($filasExpediente >= 1) {
-    
-      $nombreExp = $row_sql_expediente['nombre'];
-      $idExp = $row_sql_expediente['id'];
-      $apellidoPaterno = $row_sql_expediente['apellidoPaterno'];
-      $apellidoMaterno = $row_sql_expediente['apellidoMaterno'];
-      $folio = $row_sql_expediente['folio'];
-      $curp = $row_sql_expediente['curp'];
-      
-      //Discapacidad
-      $QueryDiscapacidad = "SELECT * FROM discapacidades WHERE idExpediente = '$idExp'";
-      $resultado_QueryDiscapacidad = $conn2->query($QueryDiscapacidad);
-      $row_QueryDiscapacidad = $resultado_QueryDiscapacidad->fetch_assoc();
-      $discapacidad = $row_QueryDiscapacidad['idCatDiscapacidad'];
-
-      $QueryDiscapacidad2 = "SELECT * FROM catdiscapacidades WHERE id = '$discapacidad'";
-      $resultado_QueryDiscapacidad2 = $conn2->query($QueryDiscapacidad2);
-      $row_QueryDiscapacidad2 = $resultado_QueryDiscapacidad2->fetch_assoc();
-      $discapacidad2 = $row_QueryDiscapacidad2['nombreDiscapacidad'];
-
       if (!is_null($curp) || $curp != 0){
         $curpShow = $curp;
       }
@@ -85,7 +79,7 @@ else{
 
         <div>
           <h5 class="card-title mt-3">'.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
-          <label class="card-text">Tipo Discapacidad: </label><label>'.$discapacidad2.'</label>
+          <label class="card-text">Tipo Discapacidad: </label><label>'.$discapacidad.'</label>
           <br>
           <label class="card-text">Número de Expediente:</label><label id="numExpediente">'.$folio.'</label>
           <br>

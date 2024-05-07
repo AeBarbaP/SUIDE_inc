@@ -130,18 +130,18 @@ include('prcd/qc/qc.php');
         fill: currentColor;
       }
 
-      .nav-scroller {
+      /* .nav-scroller {
         position: relative;
         z-index: 2;
         height: 2.75rem;
         overflow-y: hidden;
-      }
+      } */
       .table-wrapper {
         max-height: 100px;
         overflow: auto;
         display:inline-block;
       }
-      .nav-scroller .nav {
+      /* .nav-scroller .nav {
         display: flex;
         flex-wrap: nowrap;
         padding-bottom: 1rem;
@@ -150,15 +150,15 @@ include('prcd/qc/qc.php');
         text-align: center;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
-      }
+      } */
       .nav-link {
         text-decoration: none;
         color: black;
       }
 
       .tab-pane{
-        height:700px;
-        overflow-y: scroll;
+        height:100vh;
+        overflow-y: hidden;
         width:100%;
       }
       #cardPrestamo.card-body  {
@@ -264,7 +264,7 @@ include('prcd/qc/qc.php');
     </div>
     </nav>
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 overflow-auto mt">
     <div class="alert alert-secondary text-center" role="alert" style="background-color: #87CD97;">
         <p class="h1 text-light"><strong><i class="bi bi-person-plus-fill" style="font-style: normal;"> Registro Nuevo</i></strong></p>
         <!-- <p class="h6 mb-1 text-light" style="font-style:oblique">Sistema Único de Identificación y Verificación</p> -->
@@ -275,7 +275,7 @@ include('prcd/qc/qc.php');
       <h3 class="text-muted mt-4">Nuevo Registro</h3> -->
       <br>
 <!--       <h4 class="text-muted mt-4">Últimos documentos generados</h4> -->
-      <div class="container-fluid">
+      <!-- <div class="container-fluid"> -->
         <div class="row">
           <div class="col-sm-2 justify-content-center align-items-center text-center">
             <p class="h5">No. Expediente</p>
