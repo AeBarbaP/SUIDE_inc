@@ -1,22 +1,5 @@
 <?php
-session_start();
-include('prcd/qc/qc.php');
-
-// variables de sesión
-
-    $usuario = $_SESSION['usr'];
-    $id = $_SESSION['id'];
-    $perfil = $_SESSION['perfil'];
-    $nombre = $_SESSION['nombre'];
-
-    $sqlStatus = "SELECT * FROM users WHERE id ='$id'";
-    $resultadoStatus = $conn->query($sqlStatus);
-    $rowStatus = $resultadoStatus->fetch_assoc();
-
-    $sqlPerfil="SELECT * FROM perfiles_usr WHERE id='$perfil'";
-    $resultadoPerfil = $conn->query($sqlPerfil);
-    $rowPerfil=$resultadoPerfil->fetch_assoc();
-
+  include('session.php');
 ?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -27,10 +10,48 @@ include('prcd/qc/qc.php');
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
-    <title>Dashboard Template · Bootstrap v5.3</title>
+    <title>SUIDEV · Inclusión</title>
+    
+    <link rel="icon" type="image/png" href="img/inclusion.ico"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="sidebars.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+    
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="js/guardar.js"></script>
+    <script src="js/validate.js"></script>
+    <script src="js/files.js"></script>
+    <script src="js/estados.js"></script>
+    <script src="js/municipios.js"></script>
+    <script src="js/localidades.js"></script>
+    <script src="js/asentamientos.js"></script>
+    <script src="js/validaciones.js"></script>
+    <script src="js/discapacidades.js"></script>
+    <script src="js/numeroExpediente.js"></script>
+    <script src="js/checkList.js"></script>
+    <script src="js/tarjetones.js"></script>
+    <script src="js/tarjetonesTemp.js"></script>
+    <script src="js/usuarioTemp.js"></script>
+    <script src="js/editarFamRef.js"></script>
+    <script src="js/print.js"></script>
+    <script src="js/credencialEmpleados.js"></script>
     
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
@@ -122,7 +143,7 @@ include('prcd/qc/qc.php');
     <!-- Custom styles for this template -->
     <link href="dashboard2.css" rel="stylesheet">
   </head>
-  <body>
+  <body onload="estadosSelect()">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -903,3 +924,7 @@ include('prcd/qc/qc.php');
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script><script src="dashboard2.js"></script>
 </body>
 </html>
+
+<?php
+  include('modals.php');
+?>
