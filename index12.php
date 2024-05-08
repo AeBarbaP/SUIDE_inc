@@ -29,7 +29,7 @@
     <link href="sidebars.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
-    
+    <!-- aquí está el error de scroll -->
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
@@ -52,6 +52,7 @@
     <script src="js/editarFamRef.js"></script>
     <script src="js/print.js"></script>
     <script src="js/credencialEmpleados.js"></script>
+    <!-- aquí está el error de scroll -->
     
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
@@ -143,7 +144,7 @@
     <!-- Custom styles for this template -->
     <link href="dashboard2.css" rel="stylesheet">
   </head>
-  <body onload="estadosSelect()">
+  <body>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -246,8 +247,8 @@
   </symbol>
 </svg>
 
-<header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Company name</a>
+<header class="navbar sticky-top flex-md-nowrap p-0 shadow" style="background-color: #917799;" data-bs-theme="dark">
+<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" onclick="descartarCambios(1)" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
 
   <ul class="navbar-nav flex-row d-md-none">
     <li class="nav-item text-nowrap">
@@ -269,7 +270,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+    <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary" style="height:100vh">
       <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="sidebarMenuLabel">Company name</h5>
@@ -278,6 +279,69 @@
 
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
           <ul class="nav flex-column">
+            <li>
+                <p class="sidebar-heading d-flex justify-content-center text-center align-items-center px-3 mt-4 mb-1 text-muted" style="font-size: 1rem;">
+                <span class="" style="font-family: 'Montserrat', sans-serif;"><strong class="small">Bienvenid@<br><i class="fas fa-user"></i> 
+                  <?php
+                    echo ($nombre);
+                  ?></strong>
+                </span>
+              </p>
+              <hr>  
+            </li>
+            <li class="mb-1 mt-2">
+              <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-inboxes ms-3 me-2"></i>
+                  Padrón PCD
+                </a></span>
+                <div class="collapse" id="padron-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="padronpcdfull.php" class="link-dark d-inline-flex text-decoration-none rounded" onclick="descartarCambios(2)"><i class="bi bi-inboxes ms-2 me-3"></i> Padrón PCD</a></li>
+                    <li><a href="padronpcd.php" class="link-dark d-inline-flex text-decoration-none rounded" onclick="descartarCambios(3)"><i class="bi bi-folder-plus ms-2 me-3"></i> Agregar nuevo</a></li>
+                    <li><a href="padronpcdActualizar.php" class="link-dark d-inline-flex text-decoration-none rounded" onclick="descartarCambios(4)"><i class="bi bi-journals ms-2 me-3"></i> Actualizar expediente</a></li>
+                    
+                  </ul>
+                </div>
+          </li>
+          <li class="mb-1 mt-2">
+      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-person-badge ms-3 me-2"></i>
+          Tarjetones
+        </a></span>
+        <div class="collapse" id="dashboard-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetongen"><i class="bi bi-bookmark-plus ms-2 me-3"></i> Tarjetón de Padrón</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo"><i class="bi bi-tag ms-2 me-3"></i> Tarjeton de Préstamo</a></li>
+            
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1 ms-2">
+      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#credencial-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-person-vcard ms-2 me-2"></i>
+          Credenciales
+        </a></span>
+        <div class="collapse" id="credencial-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#credgen"><i class="bi bi-plus-circle me-3"></i> Nueva</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="border-top my-3"></li>
+        <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-gear-fill ms-2 me-2"></i>
+          Ajustes
+        </a></span>
+      </li>
+      <li class="mb-1"> 
+        <div class="collapse" id="account-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#editarUser"><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
+            <li><a href="cuentasusuario.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-people ms-2 me-3"></i>Gestión de usuarios</a></li>
+          </ul>
+          <li class="border-top my-3"></li>
+          <li class="ms-2 mb-1">
+          <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark" onclick="descartarCambios(5)"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
+          Cerrar Sesión
+          </a></span>
+      </li>
+          <!--  -->
             <li class="nav-item">
               <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
                 <svg class="bi"><use xlink:href="#house-fill"/></svg>
@@ -314,7 +378,11 @@
                 Integrations
               </a>
             </li>
-          </ul>
+            
+        </ul>
+
+
+          
 
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
             <span>Saved reports</span>
