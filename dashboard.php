@@ -1274,7 +1274,7 @@ $(document).ready(function () {
         document.getElementById("habilitaimprimirt").disabled=true;
         document.getElementById("imprimirt").disabled=false;
         // enviar datos
-        var expediente = document.getElementById('searchDBInclusion').value;
+        var expediente = document.getElementById('searchDBInclusion2').value;
         var marca = document.geteElementById("marcaForm").value;
         var modelo = document.geteElementById("modeloForm").value;
         var annio = document.geteElementById("annioForm").value;

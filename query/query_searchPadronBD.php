@@ -1,5 +1,4 @@
 <?php
-include('../prcd/qc/qc2.php');
 include('../prcd/qc/qc.php');
 
 if ($_POST['expediente'] == 0){
@@ -12,42 +11,49 @@ $expediente = $_POST['expediente'];
 header("content-type: image/jpeg");
 
     // Detalles del expediente
-    $QueryExpediente = "SELECT * FROM Expedientes WHERE ordenExpediente = '$expediente'";
-    $resultado_QueryExpediente = $conn2->query($QueryExpediente);
+    $QueryExpediente = "SELECT * FROM datos_generales WHERE numExpediente LIKE '%$expediente'";
+    $resultado_QueryExpediente = $conn->query($QueryExpediente);
     $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
     
     // este es el id de tabla expedientes que nos llevaremos a datos médicos
-    $idExpediente = $row_sql_expediente['id'];
-
+    
     if ($resultado_QueryExpediente){
-
-       // Dirección
-      $QueryDireccion = "SELECT * FROM DetalleExpedientes WHERE idExpediente = '$idExpediente'";
-      $resultado_QueryDireccion = $conn2->query($QueryDireccion);
-      $row_QueryDireccion = $resultado_QueryDireccion->fetch_assoc();
-
+      
+      // Dirección
+      //$QueryDireccion = "SELECT * FROM DetalleExpedientes WHERE idExpediente = '$idExpediente'";
+      //$resultado_QueryDireccion = $conn2->query($QueryDireccion);
+      //$row_QueryDireccion = $resultado_QueryDireccion->fetch_assoc();
+      $curp = $row_sql_expediente['curp'];
+      
       //Datos Médicos
-      $QueryDatosMedicos = "SELECT * FROM DatosMedicos WHERE idExpediente = '$idExpediente'";
-      $resultado_QueryDatosMedicos = $conn2->query($QueryDatosMedicos);
+      $QueryDatosMedicos = "SELECT * FROM datos_medicos WHERE curp = '$curp'";
+      $resultado_QueryDatosMedicos = $conn->query($QueryDatosMedicos);
       $row_QueryDatosMedicos = $resultado_QueryDatosMedicos->fetch_assoc();
-      $tipoSangre = $row_QueryDatosMedicos['idTipoSangre'];
-      // este nos los vamos a llevar a alegias
-      $idDatosMedicos = $row_QueryDatosMedicos['id'];
+      $filas = $resultado_QueryDatosMedicos->num_rows;
 
-      $QueryDatosMedicos2 = "SELECT * FROM TipoSangres WHERE id = '$tipoSangre'";
-      $resultado_QueryDatosMedicos2 = $conn2->query($QueryDatosMedicos2);
+      $tipoSangre = $row_QueryDatosMedicos['tipo_sangre'];
+      // este nos los vamos a llevar a alegias
+      //$idDatosMedicos = $row_QueryDatosMedicos['id'];
+
+      $QueryDatosMedicos2 = "SELECT * FROM tiposangre WHERE id = '$tipoSangre'";
+      $resultado_QueryDatosMedicos2 = $conn->query($QueryDatosMedicos2);
       $row_QueryDatosMedicos2 = $resultado_QueryDatosMedicos2->fetch_assoc();
-      $tipoSangre2 = $row_QueryDatosMedicos2['nombreSangre'];
+      $tipoSangre2 = $row_QueryDatosMedicos2['tipoSangre'];
 
       $nombreExp = $row_sql_expediente['nombre'];
-      $idExp = $row_sql_expediente['id'];
-      $apellidoPaterno = $row_sql_expediente['apellidoPaterno'];
-      $apellidoMaterno = $row_sql_expediente['apellidoMaterno'];
+      $numExp = $row_sql_expediente['numExpediente'];
+      $apellidoPaterno = $row_sql_expediente['apellido_p'];
+      $apellidoMaterno = $row_sql_expediente['apellido_m'];
       $curp = $row_sql_expediente['curp'];
-      $tipoVialidad = $row_QueryDireccion['idCatTipoVialidad'];
+      $tipoVialidad = $row_sql_expediente['tipoVialidad'];
       
-      $queryVialidad = "SELECT * FROM cattipovialidades WHERE id = '$tipoVialidad'";
-      $resultado_QueryVialidades = $conn2->query($queryVialidad);
+      $discapacidad2 = $QueryDatosMedicos['discapacidad'];
+      //$discapacidad2 = explode("-",$discapacidadE);
+      //Discapacidad
+    
+      
+      /* $queryVialidad = "SELECT * FROM cattipovialidades WHERE id = '$tipoVialidad'";
+      $resultado_QueryVialidades = $conn->query($queryVialidad);
       $row_QueryVialidad = $resultado_QueryVialidades->fetch_assoc();
 
       if ($row_QueryVialidad['id'] == 22 || $row_QueryVialidad['id'] == 5){
@@ -55,25 +61,25 @@ header("content-type: image/jpeg");
       }
       else {
         $vialidad = $row_QueryVialidad['nombreVialidad'].' ';
-      }
+      } */
 
-      $direccion = $vialidad.$row_QueryDireccion['direccion'];
-      $numeroCasa = $row_QueryDireccion['numeroCasa'];
+      $direccion = $tipoVialidad.' '.$row_sql_expediente['domicilio'];
+      $numeroCasa = $row_sql_expediente['no_ext'];
 
-      if ($row_QueryDireccion['numeroInterior'] == "S/N" || $row_QueryDireccion['numeroInterior'] == "" || $row_QueryDireccion['numeroInterior'] == null){
+      if ($row_sql_expediente['no_int'] == "S/N" || $row_sql_expediente['no_int'] == "" || $row_sql_expediente['no_int'] == null){
         $numeroInterior = "";
       }
       else{
         $numeroInterior = "-".$row_QueryDireccion['numeroInterior'];
       }
 
-      $colonia = $row_QueryDireccion['colonia'];
-      $municipio = $row_QueryDireccion['idCatMunicipio'];
-      $localidad = $row_QueryDireccion['idCatLocalidad'];
-      $telefono = $row_QueryDireccion['numeroTelefono'];
-      $celular = $row_QueryDireccion['celular'];
-      $cp = $row_QueryDireccion['cp'];
-      $folio = $row_sql_expediente['folio'];
+      $colonia = $row_sql_expediente['colonia'];
+      $municipio = $row_sql_expediente['municipio'];
+      $localidad = $row_sql_expediente['localidad'];
+      $telefono = $row_sql_expediente['telefono_part'];
+      $celular = $row_sql_expediente['telefono_cel'];
+      $cp = $row_sql_expediente['cp'];
+      $folio = $row_sql_expediente['numExpediente'];
 
       if ($telefono == null || $telefono == ""){
         if ($celular == null || $celular == ""){
@@ -88,104 +94,63 @@ header("content-type: image/jpeg");
       }
       
 
-      $QueryMunicipio = "SELECT * FROM CatMunicipios WHERE id = '$municipio'";
-      $resultado_QueryMunicipio = $conn2->query($QueryMunicipio);
+      $QueryMunicipio = "SELECT * FROM catmunicipios WHERE claveMunicipio = '$municipio'";
+      $resultado_QueryMunicipio = $conn->query($QueryMunicipio);
       $row_QueryMunicipio = $resultado_QueryMunicipio->fetch_assoc();
       $municipio2 = $row_QueryMunicipio['nombreMunicipio'];
-      $estado = $row_QueryMunicipio['idCatEstado'];
+      $estado = $row_sql_expediente['estado'];
 
-      $QueryEstado = "SELECT * FROM CatEstados WHERE id = '$estado'";
-      $resultado_QueryEstado = $conn2->query($QueryEstado);
+      $QueryEstado = "SELECT * FROM catestados WHERE id = '$estado'";
+      $resultado_QueryEstado = $conn->query($QueryEstado);
       $row_QueryEstado = $resultado_QueryEstado->fetch_assoc();
       $estado2 = $row_QueryEstado['nombreEstado'];
 
-      $QueryLocalidad = "SELECT * FROM CatLocalidades WHERE id = '$localidad'";
-      $resultado_QueryLocalidad = $conn2->query($QueryLocalidad);
-      $row_QueryLocalidad = $resultado_QueryLocalidad->fetch_assoc();
-      $localidad2 = $row_QueryLocalidad['nombreLocalidad'];
+      /* $QueryLocalidad = "SELECT * FROM catlocalidades WHERE claveLocalidad = '$localidad'";      $resultado_QueryLocalidad = $conn->query($QueryLocalidad);
+      $row_QueryLocalidad = $resultado_QueryLocalidad->fetch_assoc(); */
+      $localidad2 = $row_sql_expediente['localidad'];
 
-        
-        
-    $QueryDatosAlergias = "SELECT * FROM Alergias WHERE idDatosMedico = '$idDatosMedicos' AND estatusAlergia = 'ACTIVA'";
-    $resultado_QueryDatosAlergias = $conn2->query($QueryDatosAlergias);
-//    $row_QueryDatosAlergias = $resultado_QueryDatosAlergias->fetch_assoc();
-    $filas = $resultado_QueryDatosAlergias->num_rows;
-
-//    if (isset($row_QueryDatosAlergias['idCatAlergia'])){
-    if ($filas > 0){
-      $alergiasTemp = "";
-      while($row_QueryDatosAlergias = $resultado_QueryDatosAlergias->fetch_assoc()){
-
-
-        $IdCatAlergias = $row_QueryDatosAlergias['idCatAlergia'];
-        
-        $QueryDatosAlergias2 = "SELECT * FROM CatAlergias WHERE id = '$IdCatAlergias'";
-        $resultado_QueryDatosAlergias2 = $conn2->query($QueryDatosAlergias2);
-
-        $row_QueryDatosAlergias2 = $resultado_QueryDatosAlergias2->fetch_assoc();
-            $temp = $row_QueryDatosAlergias2['nombreAlergia'];
-            $alergiasTemp = $alergiasTemp.", ".$temp;
-            $alergias3 = substr($alergiasTemp,2);
-        
-        }
-        $cadena = strlen($alergias3);
-
-//            $row_QueryDatosAlergias2 = $resultado_QueryDatosAlergias2->fetch_assoc();
-//            if(isset($row_QueryDatosAlergias2['nombreAlergia'])){
-//                $alergias3 = $row_QueryDatosAlergias2['nombreAlergia'];
-//            }
-//            else {
-//              $alergias3 = "Sin Alergias.";
-//            }
-    }
-    else{
-      $alergias3 = "Sin Alergias.";
-      $cadena = 13;
-    }
-        
-        
-        
-//        aqui borrar
-
-
-//      if($IdCatAlergias = 0){
-//          $alergias3 = "Sin alergias";
-//      }
-//        else{
-//            $QueryDatosAlergias = "SELECT * FROM CatAlergias WHERE clave = '$IdCatAlergias'";
-//            $resultado_QueryDatosAlergias = $conn2->query($QueryDatosAlergias);
-//            $row_QueryDatosAlergias = $resultado_QueryDatosAlergias->fetch_assoc();
-////            $filasCatAlergias = $resultado_QueryDatosAlergias->num_rows;
-//
-//            if (isset($row_QueryDatosAlergias['nombreAlergia'])){
-//
-//                $alergias3 = $row_QueryDatosAlergias['nombreAlergia'];
-//            }
-//            else {
-//              $alergias3 = "Sin Alergias.";
-//            }
-//        }
-     
-//        aqui borrar
+      $alergias = $row_QueryDatosMedicos['alergias_cual'];
+      if ($alergias == null || $alergias == '') {
+          $alergias3[] = "";
+          $cadena = 13;
+      }
+      else {
+          // Cadena original
+          $varA = $alergias;
+          // Dividir la cadena en cada coma (",")
+          $elementosA = explode(", ", $varA);
+          // Arreglo para almacenar los resultados
+          $alergias3 = [];
+          // Iterar sobre cada elemento y dividirlo en ID y nombre del producto
+          foreach ($elementosA as $elementoA) {
+              // Dividir el elementoA en el guion ("-")
+              list($idA, $alergia) = explode("-", $elementoA);
+              // Agregar el ID y el nombre del producto al arreglo resultadoEnf
+              $alergias3[] = [
+                  //'id' => $idA,
+                  'alergia' => $alergia
+              ];
+          }
+      }
+      $fotoBD = $row_sql_expediente['photo'];
       
-      //Discapacidad
-      $QueryDiscapacidad = "SELECT * FROM Discapacidades WHERE idExpediente = '$idExp'";
-      $resultado_QueryDiscapacidad = $conn2->query($QueryDiscapacidad);
-      $row_QueryDiscapacidad = $resultado_QueryDiscapacidad->fetch_assoc();
-      $discapacidad = $row_QueryDiscapacidad['idCatDiscapacidad'];
-
-      $QueryDiscapacidad2 = "SELECT * FROM CatDiscapacidades WHERE id = '$discapacidad'";
-      $resultado_QueryDiscapacidad2 = $conn2->query($QueryDiscapacidad2);
-      $row_QueryDiscapacidad2 = $resultado_QueryDiscapacidad2->fetch_assoc();
-      $discapacidad2 = $row_QueryDiscapacidad2['nombreDiscapacidad'];
-
-      $QueryImagen = "SELECT * FROM EmpleadoCredenciales WHERE idExpediente = '$idExp'";
-      $resultado_QueryImagen = $conn2->query($QueryImagen);
-      $row_QueryImagen = $resultado_QueryImagen->fetch_assoc();
+      if(isset($fotoBD)){
+        echo '
+          <div class="col-md-4">
+            <img id="img1" src="img/no_profile.png" width="100%" style="width:15rem">
+              <div class="input-group">
+                <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+              </div>
+        ';
+      }
+      else {
+        echo '
+          <div class="col-md-4">
+            <img width="100%" src="'.$fotoBD.'" style="width:15rem">
+        ';
       
-      if($resultado_QueryImagen){
-        $filaA = $resultado_QueryImagen -> num_rows;
-        if ($filaA == 1){
+
+      /*   if ($filaA == 1){
           $foto = base64_encode($row_QueryImagen['fotografia']);
           echo '
           <div class="col-md-4">';
@@ -211,7 +176,7 @@ header("content-type: image/jpeg");
               <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
             </div>
             ';
-        }
+        } */
         
         echo'
         
@@ -239,7 +204,7 @@ header("content-type: image/jpeg");
             <input value="'.$cadena.'" type="text" name="cadena" hidden>
             <input value="'.$tipoSangre2.'" type="text" name="tipoSangre" hidden>
             <h5 class="card-title mt-3" >'.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
-            <p class="card-text" >Número de Expediente: '.$folio.'</p>
+            <p class="card-text" >Número de Expediente: '.$numExp.'</p>
             <p class="card-text" >Tipo Discapacidad: '.$discapacidad2.'</p>
             <p class="card-text">CURP: '.$curp.'</p>
             <p class="card-text">Domicilio: '.$direccion.' '.$numeroCasa.' '.$numeroInterior.'<br>Colonia: '.$colonia.'<br>Localidad: '.$localidad2.'<br>Municipio: '.$municipio2.'<br>Estado: '.$estado2.'<br>C.P.: '.$cp.'</span>
@@ -265,17 +230,16 @@ header("content-type: image/jpeg");
         
         ';
       }
-      else{
-        echo'
-        <script>
-          alert("No se encontró el registro");
-        </script>';
-      }
-  }
-  else {
+      
+    }
+    else {
+    echo'
+    <script>
+      alert("No se encontró el registro");
+    </script>';
     $tipoSangre = "";
     $tipoSangre2 = "";
     
   }
-
 }
+
