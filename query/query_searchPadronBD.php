@@ -13,12 +13,12 @@ header("content-type: image/jpeg");
     // Detalles del expediente
     $QueryExpediente = "SELECT * FROM datos_generales WHERE numExpediente LIKE '%$expediente'";
     $resultado_QueryExpediente = $conn->query($QueryExpediente);
-    $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
     
     // este es el id de tabla expedientes que nos llevaremos a datos médicos
     
     if ($resultado_QueryExpediente){
       
+      $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
       // Dirección
       //$QueryDireccion = "SELECT * FROM DetalleExpedientes WHERE idExpediente = '$idExpediente'";
       //$resultado_QueryDireccion = $conn2->query($QueryDireccion);
@@ -47,7 +47,7 @@ header("content-type: image/jpeg");
       $curp = $row_sql_expediente['curp'];
       $tipoVialidad = $row_sql_expediente['tipoVialidad'];
       
-      $discapacidad2 = $QueryDatosMedicos['discapacidad'];
+      $discapacidad2 = $row_QueryDatosMedicos['discapacidad'];
       //$discapacidad2 = explode("-",$discapacidadE);
       //Discapacidad
     
@@ -70,7 +70,7 @@ header("content-type: image/jpeg");
         $numeroInterior = "";
       }
       else{
-        $numeroInterior = "-".$row_QueryDireccion['numeroInterior'];
+        $numeroInterior = "-".$row_sql_expediente['numeroInterior'];
       }
 
       $colonia = $row_sql_expediente['colonia'];
@@ -131,22 +131,75 @@ header("content-type: image/jpeg");
                   'alergia' => $alergia
               ];
           }
+        foreach ($alergias3 as $alergia) {
+          $alergiasConArray = implode(', ', $alergia);
       }
+    }
+      
+
       $fotoBD = $row_sql_expediente['photo'];
       
       if(isset($fotoBD)){
         echo '
           <div class="col-md-4">
-            <img id="img1" src="img/no_profile.png" width="100%" style="width:15rem">
-              <div class="input-group">
-                <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+            <img width="100%" src="fotos_expedientes/'.$fotoBD.'" style="width:15rem">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body text-start">
+              <input value="'.$fotoBD.'" type="text" name="foto" >
+              <input value="'.$nombreExp.'" type="text" name="nombre">
+              <input value="'.$apellidoPaterno.'" type="text" name="apellidoPaterno" hidden>
+              <input value="'.$apellidoMaterno.'" type="text" name="apellidoMaterno" hidden>
+              <input value="'.$folio.'" type="text" name="folio" id="folioCredencial" hidden>
+              <input value="'.$discapacidad2.'" type="text" name="discapacidad" hidden>
+              <input value="'.$curp.'" type="text" name="curp" id="curpCredencial" hidden>
+              <input value="'.$direccion.'" type="text" name="direccion" hidden>
+              <input value="'.$numeroCasa.'" type="text" name="numeroCasa" hidden>
+              <input value="'.$numeroInterior.'" type="text" name="numeroInterior" hidden>
+              <input value="'.$colonia.'" type="text" name="colonia" hidden>
+              <input value="'.$localidad2.'" type="text" name="localidad2" hidden>
+              <input value="'.$municipio2.'" type="text" name="municipio" hidden>
+              <input value="'.$estado2.'" type="text" name="estado" hidden>
+              <input value="'.$telefonoCel.'" type="text" name="telefonoCel" hidden>
+              <input value="'.$cp.'" type="text" name="cp" hidden>
+              <input value="'.$alergia.'" type="text" name="alergias" hidden>
+              <input value="'.$cadena.'" type="text" name="cadena" hidden>
+              <input value="'.$tipoSangre2.'" type="text" name="tipoSangre" hidden>
+              <h5 class="card-title mt-3" >'.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
+              <p class="card-text" >Número de Expediente: '.$numExp.'</p>
+              <p class="card-text" >Tipo Discapacidad: '.$discapacidad2.'</p>
+              <p class="card-text">CURP: '.$curp.'</p>
+              <p class="card-text">Domicilio: '.$direccion.' '.$numeroCasa.' '.$numeroInterior.'<br>Colonia: '.$colonia.'<br>Localidad: '.$localidad2.'<br>Municipio: '.$municipio2.'<br>Estado: '.$estado2.'<br>C.P.: '.$cp.'</span>
+              <p class="card-text" >Teléfono: '.$telefonoCel.'</p>
+              <p class="card-text" >Tipo de Sangre: '.$tipoSangre2.'</p>
+              <p class="card-text" >Alergias: '.$alergia.'</p>
+              <select class="form-select mb-3 w-100" id="selectentrega" onchange="OcultarInput()" aria-label="Default select example" required>
+                <option value="">Selecciona a quien se entrega la credencial</option>
+                <option value="1">Usuario</option>
+                <option value="2">Otro</option>
+              </select>
+              <select class="form-select mb-3 w-100" id="selectvigencia" name="vigenciacrd" aria-label="Default select example" required>
+                <option value="">Selecciona la vigencia</option>
+                <option value="1">1 año</option>
+                <option value="2">2 años</option>
+              </select>
+              <div class="form-floating" id="inputentrega" hidden>
+                <input type="text" class="form-control" id="recibe" placeholder="">
+                <label for="floatingInput">Nombre de quien recibe la credencial</label>
               </div>
+            </div>
+          </div>
+          
         ';
       }
       else {
         echo '
-          <div class="col-md-4">
-            <img width="100%" src="'.$fotoBD.'" style="width:15rem">
+        <div class="col-md-4">
+          <img id="img1" src="img/no_profile.png" width="100%" style="width:15rem">
+          <div class="input-group">
+            <input id="inputFile1" type="file" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+          </div>
+
         ';
       
 
@@ -178,57 +231,6 @@ header("content-type: image/jpeg");
             ';
         } */
         
-        echo'
-        
-          
-        </div>
-        <div class="col-md-8">
-          <div class="card-body text-start">
-            <input value="'.$foto.'" type="text" name="foto" hidden>
-            <input value="'.$nombreExp.'" type="text" name="nombre" hidden>
-            <input value="'.$apellidoPaterno.'" type="text" name="apellidoPaterno" hidden>
-            <input value="'.$apellidoMaterno.'" type="text" name="apellidoMaterno" hidden>
-            <input value="'.$folio.'" type="text" name="folio" id="folioCredencial" hidden>
-            <input value="'.$discapacidad2.'" type="text" name="discapacidad" hidden>
-            <input value="'.$curp.'" type="text" name="curp" id="curpCredencial" hidden>
-            <input value="'.$direccion.'" type="text" name="direccion" hidden>
-            <input value="'.$numeroCasa.'" type="text" name="numeroCasa" hidden>
-            <input value="'.$numeroInterior.'" type="text" name="numeroInterior" hidden>
-            <input value="'.$colonia.'" type="text" name="colonia" hidden>
-            <input value="'.$localidad2.'" type="text" name="localidad2" hidden>
-            <input value="'.$municipio2.'" type="text" name="municipio" hidden>
-            <input value="'.$estado2.'" type="text" name="estado" hidden>
-            <input value="'.$telefonoCel.'" type="text" name="telefonoCel" hidden>
-            <input value="'.$cp.'" type="text" name="cp" hidden>
-            <input value="'.$alergias3.'" type="text" name="alergias" hidden>
-            <input value="'.$cadena.'" type="text" name="cadena" hidden>
-            <input value="'.$tipoSangre2.'" type="text" name="tipoSangre" hidden>
-            <h5 class="card-title mt-3" >'.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
-            <p class="card-text" >Número de Expediente: '.$numExp.'</p>
-            <p class="card-text" >Tipo Discapacidad: '.$discapacidad2.'</p>
-            <p class="card-text">CURP: '.$curp.'</p>
-            <p class="card-text">Domicilio: '.$direccion.' '.$numeroCasa.' '.$numeroInterior.'<br>Colonia: '.$colonia.'<br>Localidad: '.$localidad2.'<br>Municipio: '.$municipio2.'<br>Estado: '.$estado2.'<br>C.P.: '.$cp.'</span>
-            <p class="card-text" >Teléfono: '.$telefonoCel.'</p>
-            <p class="card-text" >Tipo de Sangre: '.$tipoSangre2.'</p>
-            <p class="card-text" >Alergias: '.$alergias3.'</p>
-            <select class="form-select mb-3 w-100" id="selectentrega" onchange="OcultarInput()" aria-label="Default select example" required>
-              <option value="">Selecciona a quien se entrega la credencial</option>
-              <option value="1">Usuario</option>
-              <option value="2">Otro</option>
-            </select>
-            <select class="form-select mb-3 w-100" id="selectvigencia" name="vigenciacrd" aria-label="Default select example" required>
-              <option value="">Selecciona la vigencia</option>
-              <option value="1">1 año</option>
-              <option value="2">2 años</option>
-            </select>
-            <div class="form-floating" id="inputentrega" hidden>
-              <input type="text" class="form-control" id="recibe" placeholder="">
-              <label for="floatingInput">Nombre de quien recibe la credencial</label>
-            </div>
-          </div>
-        </div>
-        
-        ';
       }
       
     }

@@ -419,7 +419,7 @@ include('prcd/qc/qc.php');
               <div class="modal-body" style="height: 620px;">
                 <div class="input-group mb-1 mt-2 w-50">
                   <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                  <input class="form-control" id="searchDBInclusion" oninput="buscarExpediente()" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+                  <input class="form-control" id="searchDBcredencial" oninput="buscarExpediente(this.value)" onkeypress="ValidaSoloNumeros()"  placeholder="Buscar...">
                 </div><!-- input group -->
                 <br>
                 <div class="container text-center">
@@ -1194,7 +1194,7 @@ $(document).ready(function () {
       if (result.isConfirmed) {
         document.getElementById("habilitaimprimirc").disabled=false;
         document.getElementById("imprimirc").disabled=true;
-        document.getElementById('searchDBInclusion').value = "";
+        document.getElementById('searchDBcredencial').value = "";
         document.getElementById('credencial').hidden = true;
         var form = document.getElementById("form-id");
         form.submit();
@@ -1399,8 +1399,8 @@ $(document).ready(function () {
   }
 // para generar credencial
 
-  function buscarExpediente(){
-    var expediente = document.getElementById('searchDBInclusion').value;
+  function buscarExpediente(expVal){
+    var expediente = expVal;
     $.ajax({
       type:"POST",
       url:"query/query_searchPadronBD.php",
