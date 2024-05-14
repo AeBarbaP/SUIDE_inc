@@ -1193,7 +1193,6 @@ $(document).ready(function () {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         document.getElementById("habilitaimprimirc").disabled=false;
-        document.getElementById("imprimirc").disabled=true;
         document.getElementById('searchDBcredencial').value = "";
         document.getElementById('credencial').hidden = true;
         var form = document.getElementById("form-id");
@@ -1414,7 +1413,6 @@ $(document).ready(function () {
         success: function(data) {
           document.getElementById('credencial').hidden = false;
           $("#credencial").html(data);
-
       }               
     });
   }

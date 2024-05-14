@@ -13,10 +13,11 @@ header("content-type: image/jpeg");
     // Detalles del expediente
     $QueryExpediente = "SELECT * FROM datos_generales WHERE numExpediente LIKE '%$expediente'";
     $resultado_QueryExpediente = $conn->query($QueryExpediente);
+    $filasExpediente = $resultado_QueryExpediente->num_rows;
     
     // este es el id de tabla expedientes que nos llevaremos a datos médicos
     
-    if ($resultado_QueryExpediente){
+    if ($filasExpediente>1){
       
       $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
       // Dirección
@@ -47,7 +48,8 @@ header("content-type: image/jpeg");
       $curp = $row_sql_expediente['curp'];
       $tipoVialidad = $row_sql_expediente['tipoVialidad'];
       
-      $discapacidad2 = $row_QueryDatosMedicos['discapacidad'];
+      $discapacidad1 = $row_QueryDatosMedicos['discapacidad'];
+      $discapacidad2 = preg_replace('/[0-9\-]/', '', $discapacidad1); 
       //$discapacidad2 = explode("-",$discapacidadE);
       //Discapacidad
     
@@ -70,7 +72,7 @@ header("content-type: image/jpeg");
         $numeroInterior = "";
       }
       else{
-        $numeroInterior = "-".$row_sql_expediente['numeroInterior'];
+        $numeroInterior = "-".$row_sql_expediente['no_int'];
       }
 
       $colonia = $row_sql_expediente['colonia'];
@@ -111,31 +113,13 @@ header("content-type: image/jpeg");
 
       $alergias = $row_QueryDatosMedicos['alergias_cual'];
       if ($alergias == null || $alergias == '') {
-          $alergias3[] = "";
-          $cadena = 13;
-      }
+        $alergias2 = "Sin alergias";
+        $cadena = 13;
+      }      
       else {
-          // Cadena original
-          $varA = $alergias;
-          // Dividir la cadena en cada coma (",")
-          $elementosA = explode(", ", $varA);
-          // Arreglo para almacenar los resultados
-          $alergias3 = [];
-          // Iterar sobre cada elemento y dividirlo en ID y nombre del producto
-          foreach ($elementosA as $elementoA) {
-              // Dividir el elementoA en el guion ("-")
-              list($idA, $alergia) = explode("-", $elementoA);
-              // Agregar el ID y el nombre del producto al arreglo resultadoEnf
-              $alergias3[] = [
-                  //'id' => $idA,
-                  'alergia' => $alergia
-              ];
-          }
-        foreach ($alergias3 as $alergia) {
-          $alergiasConArray = implode(', ', $alergia);
+        $alergias2 = preg_replace('/[0-9\-]/', '', $alergias);
+        $cadena = strlen($alergias2);
       }
-    }
-      
 
       $fotoBD = $row_sql_expediente['photo'];
       
@@ -146,8 +130,8 @@ header("content-type: image/jpeg");
           </div>
           <div class="col-md-8">
             <div class="card-body text-start">
-              <input value="'.$fotoBD.'" type="text" name="foto" >
-              <input value="'.$nombreExp.'" type="text" name="nombre">
+              <input value="'.$fotoBD.'" type="text" name="foto" hidden>
+              <input value="'.$nombreExp.'" type="text" name="nombre" hidden>
               <input value="'.$apellidoPaterno.'" type="text" name="apellidoPaterno" hidden>
               <input value="'.$apellidoMaterno.'" type="text" name="apellidoMaterno" hidden>
               <input value="'.$folio.'" type="text" name="folio" id="folioCredencial" hidden>
@@ -162,7 +146,7 @@ header("content-type: image/jpeg");
               <input value="'.$estado2.'" type="text" name="estado" hidden>
               <input value="'.$telefonoCel.'" type="text" name="telefonoCel" hidden>
               <input value="'.$cp.'" type="text" name="cp" hidden>
-              <input value="'.$alergia.'" type="text" name="alergias" hidden>
+              <input value="'.$alergias2.'" type="text" id="alergiasHidden" name="alergias" hidden>
               <input value="'.$cadena.'" type="text" name="cadena" hidden>
               <input value="'.$tipoSangre2.'" type="text" name="tipoSangre" hidden>
               <h5 class="card-title mt-3" >'.$nombreExp.' '.$apellidoPaterno.' '.$apellidoMaterno.'</h5>
@@ -172,7 +156,7 @@ header("content-type: image/jpeg");
               <p class="card-text">Domicilio: '.$direccion.' '.$numeroCasa.' '.$numeroInterior.'<br>Colonia: '.$colonia.'<br>Localidad: '.$localidad2.'<br>Municipio: '.$municipio2.'<br>Estado: '.$estado2.'<br>C.P.: '.$cp.'</span>
               <p class="card-text" >Teléfono: '.$telefonoCel.'</p>
               <p class="card-text" >Tipo de Sangre: '.$tipoSangre2.'</p>
-              <p class="card-text" >Alergias: '.$alergia.'</p>
+              <p class="card-text" >Alergias: '.$alergias2.'</p>
               <select class="form-select mb-3 w-100" id="selectentrega" onchange="OcultarInput()" aria-label="Default select example" required>
                 <option value="">Selecciona a quien se entrega la credencial</option>
                 <option value="1">Usuario</option>
