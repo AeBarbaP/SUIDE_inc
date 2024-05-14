@@ -2,7 +2,7 @@
 include('../prcd/qc/qc.php');
 
 
-$var = "SELECT * FROM datos_generales ORDER BY id DESC LIMIT 25";
+$var = "SELECT * FROM datos_generales ORDER BY id ASC LIMIT 10";
 $resultadoVariable = $conn->query($var);
 
 
@@ -29,19 +29,24 @@ while ($rowVariable = $resultadoVariable->fetch_assoc()){
     $municipio = "SELECT * FROM catmunicipios WHERE claveMunicipio = '$cveMunicipio'";
     $resultadoMunicipio = $conn->query($municipio);
     $rowSqlMunicipio = $resultadoMunicipio->fetch_assoc();
+    $fotografia1 = $rowVariable['photo'];
 
+    if($rowVariable['photo'] == null || $rowVariable['photo'] == '') {
+        $fotografia = "img/no_profile.png";
+    }
+    else {
+        $fotografia = "fotos_expedientes/".$rowVariable['photo'];
+    }
     echo '
         <tr>
-            <td><img scr="fotos_expedientes/'.$rowVariable['photo'].'"></td>
+            <td class="text-center"><img src="'.$fotografia.'" style="width: 5rem; height: auto; zindex: 100"></td>
             <td>'.$rowVariable['numExpediente'].'</td>
             <td>'.$rowVariable['nombre'].' '.$rowVariable['apellido_p'].' '.$rowVariable['apellido_m'].'</td>
             <td>'.$rowSqlMedicos['tipo_discapacidad'].'</td>
             <td>'.$rowSqlMunicipio['nombreMunicipio'].'</td>
             <td>'.$estatus.'</td>
-            <td><a href="#" data-bs-toggle="modal" data-bs-target="#editarVehiculo" onclick=""><i class="bi bi-pencil-square"></i></a> <a href="#" class="link-danger" onclick=""><i class="bi bi-trash"></i></a>
+            <td class="text-center"><a href="padronpcdActualizar.php?id='.$rowVariable['numExpediente'].'"><i class="bi bi-pencil-square"></i></a>
             </td>
-            
-            
         </tr>
     ';
 }

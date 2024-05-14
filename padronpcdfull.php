@@ -33,6 +33,7 @@ include('prcd/qc/qc.php');
     $id = $_SESSION['id'];
     $perfil = $_SESSION['perfil'];
     $nombre = $_SESSION['nombre'];
+
     
     $sqlStatus = "SELECT * FROM users WHERE id ='$id'";
     $resultadoStatus = $conn->query($sqlStatus);
@@ -87,6 +88,7 @@ include('prcd/qc/qc.php');
     <script src="js/usuarioTemp.js"></script>
     <script src="js/print.js"></script>
     <script src="js/query.js"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
     <style>
       body {
@@ -247,7 +249,12 @@ include('prcd/qc/qc.php');
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
         <p class="h3">Padrón de Personas con Discapacidad</p>
       </div>
-      <!-- <p class="h6 mb-5  text-muted">Sistema Único de Identificación y Verificación</p> -->
+      <div class="input-group mb-2 mt-2">
+        <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+        <input class="form-control w-50" id="buscarExpActualizar" oninput="buscarExpediente12(this.value)" placeholder="Buscar...">
+        <!-- <div class="col-3 text-start"> -->
+        <button class="btn btn-primary" type="button"><i class="bi bi-qr-code-scan"></i> Buscar</button>
+      </div><!-- input group -->
       <hr>
       <!-- <h4 class="text-muted mt-4">Últimos documentos generados</h4> -->
       <div class="table-responsive">

@@ -33,6 +33,14 @@ include('prcd/qc/qc.php');
     $id = $_SESSION['id'];
     $perfil = $_SESSION['perfil'];
     $nombre = $_SESSION['nombre'];
+
+    if (isset($_REQUEST['id'])){
+      echo '
+        <script>
+          document.getElementById("buscarExpActualizar").value = '.$_REQUEST["id"].';
+        </script>
+      ';
+    }
     
     $sqlStatus = "SELECT * FROM users WHERE id ='$id'";
     $resultadoStatus = $conn->query($sqlStatus);
