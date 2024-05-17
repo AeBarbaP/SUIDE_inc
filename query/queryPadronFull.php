@@ -45,7 +45,7 @@ while ($rowVariable = $resultadoVariable->fetch_assoc()){
             <td>'.$rowSqlMedicos['tipo_discapacidad'].'</td>
             <td>'.$rowSqlMunicipio['nombreMunicipio'].'</td>
             <td>'.$estatus.'</td>
-            <td class="text-center"><a href="padronpcdActualizar.php?id='.$rowVariable['numExpediente'].'"><i class="bi bi-pencil-square"></i></a>
+            <td class="text-center"><a href="padronpcdActualizar.php?curp='.$rowVariable['curp'].'"><i class="bi bi-pencil-square"></i></a>
             </td>
         </tr>
     ';

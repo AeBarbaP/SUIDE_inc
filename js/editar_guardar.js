@@ -145,9 +145,7 @@ function buscarPhoto(curp){
         url: 'query/buscarPhoto.php',
         dataType:'json',
         data: {
-            
             curp:curp
-            
         },
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));
@@ -155,7 +153,12 @@ function buscarPhoto(curp){
             var ruta = jsonData.ruta;
             
             if (success == 1) {
-                document.getElementById("profile").setAttribute('src','assets/'+ruta);
+                if (ruta != '' || ruta != null){
+                    document.getElementById("profile").setAttribute('src','fotos_expedientes/'+ruta);
+                }
+                else{
+                    console.log('foto vacía');
+                }
             } else if (success == 0){
                 console.log("Sin foto");
             }

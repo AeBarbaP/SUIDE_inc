@@ -157,7 +157,7 @@ include('prcd/qc/qc.php');
       }
 
       .tab-pane{
-        height:100vh;
+        height:200vh; /*ANNY AQUÍ ESTÁ EL ERROR PARA EL SCROLL*/
         overflow-y: hidden;
         width:100%;
       }

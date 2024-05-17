@@ -4,8 +4,8 @@ $curp = $_POST['curp'];
 $sql = "SELECT * FROM datos_generales WHERE curp = '$curp'";
 $resultadoSql = $conn->query($sql);
 $filas = $resultadoSql->num_rows;
+$rowSQL = $resultadoSql->fetch_assoc();
 if ($filas == 1){
-    $rowSQL = $resultadoSql->fetch_assoc();
     $photo = $rowSQL['photo'];
     echo json_encode(array(
         'success'=>1,

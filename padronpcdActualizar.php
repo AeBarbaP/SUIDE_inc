@@ -34,23 +34,18 @@ include('prcd/qc/qc.php');
     $perfil = $_SESSION['perfil'];
     $nombre = $_SESSION['nombre'];
 
-    if (isset($_REQUEST['id'])){
-      echo '
-        <script>
-          document.getElementById("buscarExpActualizar").value = '.$_REQUEST["id"].';
-        </script>
-      ';
-    }
+
+
     
-    $sqlStatus = "SELECT * FROM users WHERE id ='$id'";
-    $resultadoStatus = $conn->query($sqlStatus);
-    $rowStatus = $resultadoStatus->fetch_assoc();
-
-    $sqlPerfil="SELECT * FROM perfiles_usr WHERE id='$perfil'";
-    $resultadoPerfil = $conn->query($sqlPerfil);
-    $rowPerfil=$resultadoPerfil->fetch_assoc();
-
-?>
+      $sqlStatus = "SELECT * FROM users WHERE id ='$id'";
+      $resultadoStatus = $conn->query($sqlStatus);
+      $rowStatus = $resultadoStatus->fetch_assoc();
+      
+      $sqlPerfil="SELECT * FROM perfiles_usr WHERE id='$perfil'";
+      $resultadoPerfil = $conn->query($sqlPerfil);
+      $rowPerfil=$resultadoPerfil->fetch_assoc();
+      
+      ?>
 
 <!doctype html>
 <html lang="es">
@@ -278,21 +273,25 @@ include('prcd/qc/qc.php');
       </div>
       <div class="input-group mb-2 mt-2">
         <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-        <input class="form-control w-50" id="buscarExpActualizar" oninput="buscarExpediente12(this.value)" placeholder="Buscar...">
+        <?php
+        if (isset($_REQUEST['curp'])){
+          echo '
+          <input class="form-control w-50" id="buscarExpActualizar" oninput="buscarExpediente12(this.value)" placeholder="Buscar..." value="'.$_REQUEST['curp'].'">
+          <script>
+            buscarExpediente12("'.$_REQUEST['curp'].'");
+          </script>
+            ';
+        }
+        else{
+          echo '
+          <input class="form-control w-50" id="buscarExpActualizar" oninput="buscarExpediente12(this.value)" placeholder="Buscar...">
+            ';
+        }
+        ?>
+
         <!-- <div class="col-3 text-start"> -->
         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#leerQr"><i class="bi bi-qr-code-scan"></i> Escanear</button>
         
-        <!-- <button class="btn btn-danger" id="botonCerrar2"><i class="bi bi-qr-code"></i> Cerrar Cámara</button> -->
-        <!-- </div> -->
-        <!-- <div class="col-2 mt-1 text-end">
-          <span id="pruebaInner" ></span> -->
-          <!-- <p> -->
-        
-          <!--<select name="cameraCanje" class="form-select">
-          <option value="1"><i class="bi bi-camera-video-fill"></i> Frontal Cam</option>
-          <option value="2"><i class="bi bi-camera-video"></i> Back Cam</option>
-        </select> </p> -->
-        <!-- </div>  -->  
       </div><!-- input group -->
       <p class="w-100">
         <div class="alert alert-warning" role="alert" id="nada">
@@ -4060,3 +4059,5 @@ $(document).ready(function () {
       </div>
     </div>
     ';
+    ?>
+    
