@@ -8,11 +8,11 @@ html {
 }
 
 main {
-  height: 100vh;
+  height: 200vh;
   height: -webkit-fill-available;
   max-height: 100vh;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: auto; /*aquí se movió el sidebar */
 }
 
 #linkHome{

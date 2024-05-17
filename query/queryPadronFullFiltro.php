@@ -1,10 +1,13 @@
 <?php
 include('../prcd/qc/qc.php');
 
+$id = $_POST['id'];
 
-$var = "SELECT * FROM datos_generales ORDER BY id DESC LIMIT 10";
+$var = "SELECT * FROM datos_generales WHERE numExpediente = '$id%' OR nombre = '$id%' ORDER BY id DESC LIMIT 10";
 $resultadoVariable = $conn->query($var);
 
+$sqlfILTRO = "SELECT CONCAT (datos_generales.apellido_p,' ', datos_generales.apellido_m ,' ', datos_generales.nombre) AS nombre_completo
+FROM datos_generales";
 
 $x = 0;
 

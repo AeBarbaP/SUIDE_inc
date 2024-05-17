@@ -167,7 +167,7 @@ include('prcd/qc/qc.php');
         width:100%;
       }
       .tab-pane{
-        height:700px;
+        height:200vh;
         overflow-y: scroll;
         width:100%;
       }
