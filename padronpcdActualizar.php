@@ -104,6 +104,10 @@ include('prcd/qc/qc.php');
     </audio>
 
     <style>
+
+      body {
+        overflow: hidden;
+      }
       * {
         font-family: 'Quicksand', sans-serif;
       }
@@ -152,7 +156,7 @@ include('prcd/qc/qc.php');
         flex-wrap: nowrap;
         padding-bottom: 1rem;
         margin-top: -1px;
-        overflow-x: auto;
+        overflow-x: hidden;
         text-align: center;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
@@ -167,8 +171,8 @@ include('prcd/qc/qc.php');
         width:100%;
       }
       .tab-pane{
-        height:200vh;
-        overflow-y: scroll;
+        /* height:230vh; */
+        /* overflow-y: scroll; */
         width:100%;
       }
 
@@ -400,7 +404,7 @@ include('prcd/qc/qc.php');
             
             <!-- inicia nuevo nav generales  -->
 
-            <div class="tab-pane fade show active" id="nav-generales" role="tabpanel" aria-labelledby="nav-generales-tab" tabindex="0" onload="descartarCambios(1)">
+            <div class="tab-pane fade show active" id="nav-generales" role="tabpanel" aria-labelledby="nav-generales-tab" tabindex="0" onload="alvScroll(); descartarCambios(1)">
                 <div class="row ms-4 g-3 mt-3" style="width:95%">
                   <div class="col-sm-4">
                     <label for="datos_usr" class="form-label">Nombre:</label>

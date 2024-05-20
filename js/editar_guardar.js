@@ -1906,3 +1906,7 @@ function buscarPhotoEmp(curp){
         }
     });
 }
+function alvScroll(){
+    var bt1 = document.getElementById('tab-pane');
+    bt1.style.height = '300vh';
+}
