@@ -142,66 +142,155 @@ function queryDatos(){
             console.log(jsonData.HojaRegistroDoc,jsonData.valoracionDoc,jsonData.actaNacimientoDoc,jsonData.curpDocDoc,jsonData.ineDocDoc,jsonData.comprobanteDoc,jsonData.tarjetaCirculacionDoc);
             if(hojaRegistro == 1) {
                 document.getElementById('verDoc1').href = 'assets/'+hojaRegistroDoc;
-                document.getElementById('registroDoc1').disabled = false;
+                document.getElementById('registroDoc1').hidden = true;
+                document.getElementById('registroSi').checked = true;
                 document.getElementById('verDoc1').disabled = false;
             }
-            else{
-                document.getElementById('registroDoc1').disabled = true;
+            else if (hojaRegistro == 8){
+                document.getElementById('registroDoc1').disabled = false;
                 document.getElementById('verDoc1').disabled = true;
+                document.getElementById('registroSi').checked = false;
+                document.getElementById('registroNo').checked = true;
+                document.getElementById('registroNa').checked = false;
+            }
+            else if (hojaRegistro == 15){
+                document.getElementById('registroDoc1').disabled = false;
+                document.getElementById('verDoc1').disabled = true;
+                document.getElementById('registroSi').checked = false;
+                document.getElementById('registroNo').checked = false;
+                document.getElementById('registroNa').checked = true;
             }
             if(valoracion == 2) {
-                document.getElementById('verDoc2').href = 'assets/'+valoracionDoc;
                 document.getElementById('registroDoc2').disabled = false;
+                document.getElementById('verDoc2').href = 'assets/'+valoracionDoc;
                 document.getElementById('verDoc2').disabled = false;
+                document.getElementById('valoracionSi').checked = true;
+                document.getElementById('valoracionNo').checked = false;
+                document.getElementById('valoracionNa').checked = false;
             }
-            else{
+            else if (valoracion == 9) {
                 document.getElementById('registroDoc2').disabled = true;
                 document.getElementById('verDoc2').disabled = true;
+                document.getElementById('valoracionSi').checked = false;
+                document.getElementById('valoracionNo').checked = true;
+                document.getElementById('valoracionNa').checked = false;
+            }
+            else if (valoracion == 16) {
+                document.getElementById('registroDoc2').disabled = true;
+                document.getElementById('verDoc2').disabled = true;
+                document.getElementById('valoracionSi').checked = false;
+                document.getElementById('valoracionNo').checked = false;
+                document.getElementById('valoracionNa').checked = true;
             }
             if(actaNacimiento == 3) {
                 document.getElementById('verDoc3').href = 'assets/'+actaNacimientoDoc;
                 document.getElementById('registroDoc3').disabled = false;
                 document.getElementById('verDoc3').disabled = false;
+                document.getElementById('actaSi').checked = true;
+                document.getElementById('actaNo').checked = false;
+                document.getElementById('actaNa').checked = false;
             }
-            else{
+            else if (actaNacimiento== 10){
                 document.getElementById('registroDoc3').disabled = true;
                 document.getElementById('verDoc3').disabled = true;
+                document.getElementById('actaSi').checked = false;
+                document.getElementById('actaNo').checked = true;
+                document.getElementById('actaNa').checked = false;
+            }
+            else if (actaNacimiento== 17){
+                document.getElementById('registroDoc3').disabled = true;
+                document.getElementById('verDoc3').disabled = true;
+                document.getElementById('actaSi').checked = false;
+                document.getElementById('actaNo').checked = false;
+                document.getElementById('actaNa').checked = true;
             }
             if(curpDoc == 4) {
                 document.getElementById('verDoc4').href = 'assets/'+curpDocDoc;
                 document.getElementById('registroDoc4').disabled = false;
                 document.getElementById('verDoc4').disabled = false;
+                document.getElementById('curpSi').checked = true;
+                document.getElementById('curpNo').checked = false;
+                document.getElementById('curpNa').checked = false;
             }
-            else{
+            else if (curpDoc == 11) {
                 document.getElementById('registroDoc4').disabled = true;
                 document.getElementById('verDoc4').disabled = true;
+                document.getElementById('curpSi').checked = false;
+                document.getElementById('curpNo').checked = true;
+                document.getElementById('curpNa').checked = false;
+            }
+            else if (curpDoc == 18) {
+                document.getElementById('registroDoc4').disabled = true;
+                document.getElementById('verDoc4').disabled = true;
+                document.getElementById('curpSi').checked = false;
+                document.getElementById('curpNo').checked = false;
+                document.getElementById('curpNa').checked = true;
             }
             if(ineDoc == 5) {
                 document.getElementById('verDoc5').href = 'assets/'+ineDocDoc;
                 document.getElementById('registroDoc5').disabled = false;
                 document.getElementById('verDoc5').disabled = false;
+                document.getElementById('ineSi').checked = true;
+                document.getElementById('ineNo').checked = false;
+                document.getElementById('ineNa').checked = false;
             }
-            else{
+            else if (ineDoc == 12){
                 document.getElementById('registroDoc5').disabled = true;
                 document.getElementById('verDoc5').disabled = true;
+                document.getElementById('ineSi').checked = false;
+                document.getElementById('ineNo').checked = true;
+                document.getElementById('ineNa').checked = false;
+            }
+            else if (ineDoc == 19){
+                document.getElementById('registroDoc5').disabled = true;
+                document.getElementById('verDoc5').disabled = true;
+                document.getElementById('ineSi').checked = false;
+                document.getElementById('ineNo').checked = false;
+                document.getElementById('ineNa').checked = true;
             }
             if(comprobante == 6) {
                 document.getElementById('verDoc6').href = 'assets/'+comprobanteDoc;
                 document.getElementById('registroDoc6').disabled = false;
                 document.getElementById('verDoc6').disabled = false;
+                document.getElementById('comprobanteSi').checked = true;
+                document.getElementById('comprobanteNo').checked = false;
+                document.getElementById('comprobanteNa').checked = false;
             }
-            else{
+            else if (comprobante == 13){
                 document.getElementById('registroDoc6').disabled = true;
                 document.getElementById('verDoc6').disabled = true;
+                document.getElementById('comprobanteSi').checked = false;
+                document.getElementById('comprobanteNo').checked = true;
+                document.getElementById('comprobanteNa').checked = false;
+            }
+            else if (comprobante == 20){
+                document.getElementById('registroDoc6').disabled = true;
+                document.getElementById('verDoc6').disabled = true;
+                document.getElementById('comprobanteSi').checked = false;
+                document.getElementById('comprobanteNo').checked = false;
+                document.getElementById('comprobanteNa').checked = true;
             }
             if(tarjetaCirculacion == 7) {
                 document.getElementById('verDoc7').href = 'assets/'+tarjetaCirculacionDoc;
                 document.getElementById('registroDoc7').disabled = false;
                 document.getElementById('verDoc7').disabled = false;
+                document.getElementById('circulacionSi').checked = true;
+                document.getElementById('circulacionNo').checked = false;
+                document.getElementById('circulacionNa').checked = false;
             }
-            else{
+            else if (tarjetaCirculacion == 14){
                 document.getElementById('registroDoc7').disabled = true;
                 document.getElementById('verDoc7').disabled = true;
+                document.getElementById('circulacionSi').checked = false;
+                document.getElementById('circulacionNo').checked = true;
+                document.getElementById('circulacionNa').checked = false;
+            }
+            else if (tarjetaCirculacion == 21){
+                document.getElementById('registroDoc7').disabled = true;
+                document.getElementById('verDoc7').disabled = true;
+                document.getElementById('circulacionSi').checked = false;
+                document.getElementById('circulacionNo').checked = false;
+                document.getElementById('circulacionNa').checked = true;
             }
             document.getElementById('editarBeneficiario').hidden = true;
             document.getElementById('cancelarEditar').hidden = false;

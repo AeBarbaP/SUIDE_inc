@@ -1943,7 +1943,7 @@ include('prcd/qc/qc.php');
                           <td><input class="form-check-input bloqueo1" type="checkbox" id="registroSi" value="" onclick="valoracionCheck(1)" aria-label="..."></td>
                           <td><input class="form-check-input bloqueo1" type="checkbox" id="registroNo" value="" onclick="valoracionCheck(2)" aria-label="..."></td>
                           <td><input class="form-check-input bloqueo1" type="checkbox" id="registroNA" value="" onclick="valoracionCheck(3)" aria-label="..."></td>
-                          <td><button class="btn bloqueo1" type="button" style="color: #917799;" id="registroDoc1" data-bs-toggle="modal" data-bs-target="#docUpload1" disabled><i class="bi bi-cloud-arrow-up h2"></i></button></td>
+                          <td><button class="btn bloqueo1" type="button" style="color: #917799;" id="registroDoc1" data-bs-toggle="modal" data-bs-target="#docUpload1" disabled><i class="bi bi-cloud-arrow-up h2"></i></button><button class="btn bloqueo1" type="button" style="color: #917799;" id="registroDoc1trash" data-bs-toggle="modal" data-bs-target="#docUpload1" disabled><i class="bi bi-trash h2" hidden></i></button></td>
                           <td><a href="" target="_blank" class="btn bloqueo1" type="button" style="color: #917799;" id="verDoc1" disabled><i class="bi bi-eye-fill h2"></i></a></td>
                           
                         </tr>
