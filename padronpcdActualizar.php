@@ -63,13 +63,19 @@ include('prcd/qc/qc.php');
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
+    
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <!-- <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script> -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
     <link href="sidebars.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -345,7 +351,7 @@ include('prcd/qc/qc.php');
             </div>
             <div class="modal-body">
             <video id="preview2" class="w-100" hidden></video>
-              <img src="img/Logo_Gobierno_Inclusion_VColorPNG2.png" width="81%" alt="" style="padding-top: 45px;padding-bottom: 45px;padding-left: 10px;padding-right: 10px;border: 1px solid #ced4da; ;border-radius: 3px;" id="imagenLogo"></img>
+              <!-- <img src="img/Logo_Gobierno_Inclusion_VColorPNG2.png" width="81%" alt="" style="padding-top: 45px;padding-bottom: 45px;padding-left: 10px;padding-right: 10px;border: 1px solid #ced4da; ;border-radius: 3px;" id="imagenLogo">-->
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -1943,7 +1949,7 @@ include('prcd/qc/qc.php');
                           <td><input class="form-check-input bloqueo1" type="checkbox" id="registroSi" value="" onclick="valoracionCheck(1)" aria-label="..."></td>
                           <td><input class="form-check-input bloqueo1" type="checkbox" id="registroNo" value="" onclick="valoracionCheck(2)" aria-label="..."></td>
                           <td><input class="form-check-input bloqueo1" type="checkbox" id="registroNA" value="" onclick="valoracionCheck(3)" aria-label="..."></td>
-                          <td><button class="btn bloqueo1" type="button" style="color: #917799;" id="registroDoc1" data-bs-toggle="modal" data-bs-target="#docUpload1" disabled><i class="bi bi-cloud-arrow-up h2"></i></button><button class="btn bloqueo1" type="button" style="color: #917799;" id="registroDoc1trash" data-bs-toggle="modal" data-bs-target="#docUpload1" disabled><i class="bi bi-trash h2" hidden></i></button></td>
+                          <td><button class="btn bloqueo1" type="button" style="color: #917799;" id="registroDoc1" data-bs-toggle="modal" data-bs-target="#docUpload1" disabled><i class="bi bi-cloud-arrow-up h2"></i></button><button class="btn bloqueo1" type="button" style="color: #917799;" id="registroDoc1trash" data-bs-toggle="modal" data-bs-target="#docUpload1" hidden><i class="bi bi-trash h2"></i></button></td>
                           <td><a href="" target="_blank" class="btn bloqueo1" type="button" style="color: #917799;" id="verDoc1" disabled><i class="bi bi-eye-fill h2"></i></a></td>
                           
                         </tr>
@@ -2399,7 +2405,7 @@ include('prcd/qc/qc.php');
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" id="btnModal1" onclick="uploadFile(1)">Subir Archivo</button>
+            <button type="button" class="btn btn-primary" id="btnModal1" onclick="uploadFile(1,1)">Subir Archivo</button>
           </div>
         </div>
       </div>
@@ -3681,10 +3687,6 @@ $(document).ready(function () {
   </div>
 </div>
 
-
-
-      <!-- <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script> -->
   </body>
 </html>
 
