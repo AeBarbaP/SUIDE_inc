@@ -89,6 +89,7 @@ include('prcd/qc/qc.php');
     <script src="js/editar_guardar.js"></script>
     <script src="js/validate.js"></script>
     <script src="js/files_update.js"></script>
+    <script src="js/files.js"></script>
     <script src="js/estados.js"></script>
     <script src="js/municipios.js"></script>
     <script src="js/localidades.js"></script>
@@ -1949,7 +1950,7 @@ include('prcd/qc/qc.php');
                           <td><input class="form-check-input bloqueo1" type="checkbox" id="registroSi" value="" onclick="valoracionCheck(1)" aria-label="..."></td>
                           <td><input class="form-check-input bloqueo1" type="checkbox" id="registroNo" value="" onclick="valoracionCheck(2)" aria-label="..."></td>
                           <td><input class="form-check-input bloqueo1" type="checkbox" id="registroNA" value="" onclick="valoracionCheck(3)" aria-label="..."></td>
-                          <td><button class="btn bloqueo1" type="button" style="color: #917799;" id="registroDoc1" data-bs-toggle="modal" data-bs-target="#docUpload1" disabled><i class="bi bi-cloud-arrow-up h2"></i></button><button class="btn bloqueo1" type="button" style="color: #917799;" id="registroDoc1trash" data-bs-toggle="modal" data-bs-target="#docUpload1" hidden><i class="bi bi-trash h2"></i></button></td>
+                          <td><button class="btn bloqueo1" type="button" style="color: #917799;" id="registroDoc1" data-bs-toggle="modal" data-bs-target="#docUpload1" disabled><i class="bi bi-cloud-arrow-up h2"></i></button><button class="btn bloqueo1" type="button" style="color: #917799;" id="registroDoc1trash" data-bs-toggle="modal" data-bs-target="#docRemove1" hidden><i class="bi bi-trash h2"></i></button></td>
                           <td><a href="" target="_blank" class="btn bloqueo1" type="button" style="color: #917799;" id="verDoc1" disabled><i class="bi bi-eye-fill h2"></i></a></td>
                           
                         </tr>
@@ -2012,7 +2013,7 @@ include('prcd/qc/qc.php');
                     </table>
                     <div id="elementH"></div>
                     <div class="d-grid gap-2">
-                      <a id="buttonCheck" class="btn btn-primary btn-lg" type="button" onclick="checkListDocs();nona()" target="_blank" disabled>Imprimir formato Check List</a>
+                      <a id="buttonCheck" class="btn btn-primary btn-lg" type="button" target="_blank" disabled>Imprimir formato Check List</a>
                     </div>
                   </div>
                 </div>

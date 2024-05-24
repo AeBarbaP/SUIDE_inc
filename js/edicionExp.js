@@ -142,12 +142,12 @@ function queryDatos(){
             console.log(jsonData.HojaRegistroDoc,jsonData.valoracionDoc,jsonData.actaNacimientoDoc,jsonData.curpDocDoc,jsonData.ineDocDoc,jsonData.comprobanteDoc,jsonData.tarjetaCirculacionDoc);
 
             if (hojaRegistro == null && valoracion == null && actaNacimiento == null && curpDoc == null && ineDoc == null && tarjetaCirculacion == null){
-                document.getElementById('btnModal1').setAttribute('onclick','uploadFileActualizar(1,1)');
-                document.getElementById('buttonCheck').setAttribute('onclick','checkListDocs(); nona()');
+                document.getElementById('btnModal1').setAttribute('onclick','uploadFile(1,1)');
+                document.getElementById('buttonCheck').setAttribute('onclick','nona(); checkListDocs()');
             }
             else {
-                document.getElementById('btnModal1').setAttribute('onclick',uploadFile(1,1));
-                document.getElementById('buttonCheck').setAttribute('onclick','checkListDocs(); nonaUpdate()');
+                document.getElementById('btnModal1').setAttribute('onclick','uploadFileActualizar(1,1)');
+                document.getElementById('buttonCheck').setAttribute('onclick','nonaUpdate(); checkListDocs()');
                 if(hojaRegistro == 1) {
                     document.getElementById('verDoc1').href = 'assets/'+hojaRegistroDoc;
                     document.getElementById('registroDoc1').hidden = true;
