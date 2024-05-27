@@ -60,17 +60,16 @@ include('prcd/qc/qc.php');
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="sidebars.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
-    
-    <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -95,7 +94,14 @@ include('prcd/qc/qc.php');
 
     <style>
       * {
-        font-family: 'Quicksand', sans-serif;
+        font-family: 'Montserrat', sans-serif;
+      }
+      body {
+        overflow: auto;
+        height: auto;
+      }
+      main{
+        height: auto;
       }
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -157,7 +163,7 @@ include('prcd/qc/qc.php');
       }
 
       .tab-pane{
-        height:200vh; /*ANNY AQUÍ ESTÁ EL ERROR PARA EL SCROLL*/
+        height:auto; /*ANNY AQUÍ ESTÁ EL ERROR PARA EL SCROLL*/
         overflow-y: hidden;
         width:100%;
       }
@@ -203,10 +209,10 @@ include('prcd/qc/qc.php');
     
     <ul class="list-unstyled ps-0 mt-3">
       <li class="ms-2 mb-1">
-        <span class="d-inline-flex"><a href="dashboard.php" id="linkHome" class="link-dark" onclick="descartarCambios(1)"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
+        <span class="d-inline-flex"><a href="dashboard.php" id="linkHome" class="link-dark text-decoration-none" onclick="descartarCambios(1)"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
       </li>
       <li class="mb-1 mt-2">
-      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-inboxes ms-3 me-2"></i>
+      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-inboxes ms-3 me-2"></i>
           Padrón PCD
         </a></span>
         <div class="collapse" id="padron-collapse">
@@ -219,19 +225,19 @@ include('prcd/qc/qc.php');
         </div>
       </li>
       <li class="mb-1 mt-2">
-      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-person-badge ms-3 me-2"></i>
+      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false"><a href="" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-person-badge ms-3 me-2"></i>
           Tarjetones
         </a></span>
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetongen"><i class="bi bi-bookmark-plus ms-2 me-3"></i> Tarjetón de Padrón</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo"><i class="bi bi-tag ms-2 me-3"></i> Tarjeton de Préstamo</a></li>
+            <li><a class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetongen"><i class="bi bi-bookmark-plus ms-2 me-3"></i> Tarjetón de Padrón</a></li>
+            <li><a class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo"><i class="bi bi-tag ms-2 me-3"></i> Tarjeton de Préstamo</a></li>
             
           </ul>
         </div>
       </li>
       <li class="mb-1 ms-2">
-      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#credencial-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-person-vcard ms-2 me-2"></i>
+      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#credencial-collapse" aria-expanded="false"><a href="" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-person-vcard ms-2 me-2"></i>
           Credenciales
         </a></span>
         <div class="collapse" id="credencial-collapse">
@@ -241,19 +247,20 @@ include('prcd/qc/qc.php');
         </div>
       </li>
       <li class="border-top my-3"></li>
-        <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-gear-fill ms-2 me-2"></i>
+      <li class="ms-2 mb-1">
+        <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"><a href="" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-gear-fill ms-2 me-2"></i>
           Ajustes
         </a></span>
       </li>
       <li class="mb-1"> 
         <div class="collapse" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#editarUser"><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
+            <li><a href="" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#editarUser"><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
             <li><a href="cuentasusuario.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-people ms-2 me-3"></i>Gestión de usuarios</a></li>
           </ul>
           <li class="border-top my-3"></li>
           <li class="ms-2 mb-1">
-          <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark" onclick="descartarCambios(5)"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
+          <span class="d-inline-flex"><a href="" id="linkHome" class="link-dark text-decoration-none" onclick="descartarCambios(5)"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
           Cerrar Sesión
           </a></span>
       </li>
@@ -267,12 +274,7 @@ include('prcd/qc/qc.php');
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 overflow-auto mt">
     <div class="alert alert-secondary text-center" role="alert" style="background-color: #87CD97;">
         <p class="h1 text-light"><strong><i class="bi bi-person-plus-fill" style="font-style: normal;"> Registro Nuevo</i></strong></p>
-        <!-- <p class="h6 mb-1 text-light" style="font-style:oblique">Sistema Único de Identificación y Verificación</p> -->
       </div>
-      <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
-        <p class="h5"><strong>Padrón Estatal de Personas con Discapacidad</strong></p>
-      </div>
-      <h3 class="text-muted mt-4">Nuevo Registro</h3> -->
       <br>
 <!--       <h4 class="text-muted mt-4">Últimos documentos generados</h4> -->
       <!-- <div class="container-fluid"> -->

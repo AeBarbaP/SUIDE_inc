@@ -62,9 +62,10 @@ include('prcd/qc/qc.php');
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -72,6 +73,8 @@ include('prcd/qc/qc.php');
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="sidebars.js"></script>
     <script src="js/guardar.js"></script>
     <script src="js/padronFull.js"></script>
     <script src="js/validate.js"></script>
@@ -92,9 +95,19 @@ include('prcd/qc/qc.php');
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
     <style>
+      * {
+        font-family: 'Montserrat', sans-serif;
+      }
       body {
-        font-family: 'Quicksand', sans-serif;
-        height: 100vh;
+        overflow: auto;
+        height: auto;
+      }
+      main{
+        height: auto;
+      }
+      table {
+        /* ANNY ESTA LÍNEA ES PARA RECORDARTE QUE AQUÍ NOS QUEDAMOSSSSSSSSS  */
+        overflow-y:scroll;
       }
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -133,7 +146,7 @@ include('prcd/qc/qc.php');
         position: relative;
         z-index: 2;
         height: 2.75rem;
-        overflow-y: hidden;
+        overflow-y: auto;
       }
 
       #cardPrestamo.card-body  {
@@ -159,13 +172,13 @@ include('prcd/qc/qc.php');
   <body onload="tablaPCDFull()">
     
 <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="" style="font-family: 'Montserrat', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="navbar-nav">
     <div class="nav-item text-nowrap text-light">
-      <a class="nav-link px-3 text-white" style="font-family: 'Quicksand', sans-serif;" href="prcd/sort.php">Cerrar Sesión</a>
+      <a class="nav-link px-3 text-white" style="font-family: 'Montserrat', sans-serif;" href="prcd/sort.php">Cerrar Sesión</a>
     </div>
   </div>
 </nav>
@@ -183,12 +196,12 @@ include('prcd/qc/qc.php');
       <hr>      
       <div class="flex-shrink-0 p-2 bg-white" style="width: 100%;">
     
-    <ul class="list-unstyled ps-0 mt-3">
+    <ul class="list-unstyled ps-0 mt-3" style="font-family: 'Montserrat', sans-serif;">
       <li class="ms-2 mb-1">
-        <span class="d-inline-flex"><a href="dashboard.php" id="linkHome" class="link-dark"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
+        <span class="d-inline-flex"><a href="dashboard.php" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
       </li>
       <li class="mb-1 mt-2">
-      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-inboxes ms-3 me-2"></i>
+      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="" id="padronpcds" class="link-dark text-decoration-none"><i class="bi bi-inboxes ms-3 me-2"></i>
           Padrón PCD
         </a></span>
         <div class="collapse" id="padron-collapse">
@@ -201,42 +214,41 @@ include('prcd/qc/qc.php');
         </div>
       </li>
       <li class="mb-1 mt-2">
-      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-person-badge ms-3 me-2"></i>
+      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false"><a href="" id="tarjetoness" class="link-dark text-decoration-none"><i class="bi bi-person-badge ms-3 me-2"></i>
           Tarjetones
         </a></span>
         <div class="collapse" id="dashboard-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetongen"><i class="bi bi-bookmark-plus ms-2 me-3"></i> Tarjetón de Padrón</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo"><i class="bi bi-tag ms-2 me-3"></i> Tarjeton de Préstamo</a></li>
-            
+            <li><a href="" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetongen"><i class="bi bi-bookmark-plus ms-2 me-3"></i> Tarjetón de Padrón</a></li>
+            <li><a href="" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo"><i class="bi bi-tag ms-2 me-3"></i> Tarjeton de Préstamo</a></li>
           </ul>
         </div>
       </li>
       <li class="mb-1 mt-2 ms-2">
-      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#credencial-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-person-vcard ms-2 me-2"></i>
+      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#credencial-collapse" aria-expanded="false"><a href="#" id="credencialess" class="link-dark text-decoration-none"><i class="bi bi-person-vcard ms-2 me-2"></i>
           Credenciales
         </a></span>
         <div class="collapse" id="credencial-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#credgen"><i class="bi bi-plus-circle me-3"></i> Nueva</a></li>
+            <li><a href="" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#credgen"><i class="bi bi-plus-circle me-3"></i> Nueva</a></li>
           </ul>
         </div>
       </li>
       <li class="border-top my-3"></li>
       <li class="ms-2 mb-1">
-        <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-gear-fill ms-2 me-2"></i>
+        <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"><a href="" id="ajustess" class="link-dark text-decoration-none"><i class="bi bi-gear-fill ms-2 me-2 text-decoration-none"></i>
           Ajustes
         </a></span>
       </li>
       <li class="mb-1"> 
         <div class="collapse" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#editarUser"><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
+            <li><a href="" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#editarUser"><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
             <li><a href="cuentasusuario.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-people ms-2 me-3"></i>Gestión de usuarios</a></li>
           </ul>
           <li class="border-top my-3"></li>
       <li class="ms-2 mb-1">
-      <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
+      <span class="d-inline-flex"><a href="" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
           Cerrar Sesión
           </a></span>
       </li>
@@ -247,7 +259,7 @@ include('prcd/qc/qc.php');
     </div>
     </nav>
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" >
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="height: 200vh;">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center ">
         <p class="h3">Padrón de Personas con Discapacidad</p>
       </div>
@@ -260,44 +272,40 @@ include('prcd/qc/qc.php');
       <hr>
       <!-- <h4 class="text-muted mt-4">Últimos documentos generados</h4> -->
       <div class="table-responsive mb-2 ">
-            <table class="table table-hover table-bordered align-middle">
-              <thead style="background-color:#B8B8B8;" class="text-light align-middle">
-                <tr class="text-center">
-                    <th scope="col">Fotografía</th>
-                    <th scope="col"># Expediente</th>
-                    <th scope="col">Nombre Completo</th>
-                    <th scope="col">Tipo Discapacidad</th>
-                    <th scope="col">Municipio</th>
-                    <th scope="col">Estatus</th>
-                    <th scope="col">Actualizar</th>
-                </tr>
-              </thead>
-              <tbody id="myTablePCD">
-              
-              </tbody>
-            </table>
-            <br>
-          </div>
+        <table class="table table-hover table-bordered align-middle">
+          <thead style="background-color:#B8B8B8;" class="text-light align-middle">
+            <tr class="text-center">
+                <th scope="col">Fotografía</th>
+                <th scope="col"># Expediente</th>
+                <th scope="col">Nombre Completo</th>
+                <th scope="col">Tipo Discapacidad</th>
+                <th scope="col">Municipio</th>
+                <th scope="col">Estatus</th>
+                <th scope="col">Actualizar</th>
+            </tr>
+          </thead>
+          <tbody id="myTablePCD">
+          
+          </tbody>
+        </table>
+        <br>
+      </div>
 
-          <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-end">
-    <li class="page-item disabled">
-      <a class="page-link">Anterior</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Siguiente</a>
-    </li>
-  </ul>
-</nav>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          <li class="page-item disabled">
+            <a class="page-link">Anterior</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Siguiente</a>
+          </li>
+        </ul>
+      </nav>
 
-               
     </main>
-    
-    <script src="sidebars.js"></script>
-    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
   </div>
 </div>
 
