@@ -101,6 +101,7 @@ include('prcd/qc/qc.php');
       body {
         font-family: 'Quicksand', sans-serif;
       }
+      
       #qrTarjetonTemp img{
         display: none;
         margin: auto;
@@ -199,10 +200,10 @@ include('prcd/qc/qc.php');
     
     <ul class="list-unstyled ps-0 mt-3">
       <li class="ms-2 mb-1">
-        <span class="d-inline-flex"><a href="dashboard.php" id="linkHome" class="link-dark"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
+        <span class="d-inline-flex"><a href="dashboard.php" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
       </li>
       <li class="mb-1 mt-2">
-      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-inboxes ms-3 me-2"></i>
+      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-inboxes ms-3 me-2"></i>
           Padrón PCD
         </a></span>
         <div class="collapse" id="padron-collapse">
