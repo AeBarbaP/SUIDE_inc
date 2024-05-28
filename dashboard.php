@@ -98,9 +98,13 @@ include('prcd/qc/qc.php');
     <script src="crop/js/index.js"></script> -->
 
     <style>
-      body {
-        font-family: 'Quicksand', sans-serif;
+
+* {
+        font-family: 'Montserrat', sans-serif;
       }
+      /* body {
+        overflow: auto;
+      } */
       
       #qrTarjetonTemp img{
         display: none;
@@ -203,7 +207,7 @@ include('prcd/qc/qc.php');
         <span class="d-inline-flex"><a href="dashboard.php" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
       </li>
       <li class="mb-1 mt-2">
-      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-inboxes ms-3 me-2"></i>
+      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="" id="padronpcds" class="link-dark text-decoration-none"><i class="bi bi-inboxes ms-3 me-2"></i>
           Padrón PCD
         </a></span>
         <div class="collapse" id="padron-collapse">
@@ -216,42 +220,42 @@ include('prcd/qc/qc.php');
         </div>
       </li>
       <li class="mb-1 mt-2">
-      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-person-badge ms-3 me-2"></i>
+      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false"><a href="" id="tarjetoness" class="link-dark text-decoration-none"><i class="bi bi-person-badge ms-3 me-2"></i>
           Tarjetones
         </a></span>
         <div class="collapse" id="dashboard-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetongen"><i class="bi bi-bookmark-plus ms-2 me-3"></i> Tarjetón de Padrón</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo"><i class="bi bi-tag ms-2 me-3"></i> Tarjeton de Préstamo</a></li>
+            <li><a href="" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetongen"><i class="bi bi-bookmark-plus ms-2 me-3"></i> Tarjetón de Padrón</a></li>
+            <li><a href="" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo"><i class="bi bi-tag ms-2 me-3"></i> Tarjeton de Préstamo</a></li>
             
           </ul>
         </div>
       </li>
       <li class="mb-1 mt-2 ms-2">
-      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#credencial-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-person-vcard ms-2 me-2"></i>
+      <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#credencial-collapse" aria-expanded="false"><a href="" id="credencialess" class="link-dark text-decoration-none"><i class="bi bi-person-vcard ms-2 me-2"></i>
           Credenciales
         </a></span>
         <div class="collapse" id="credencial-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#credgen"><i class="bi bi-plus-circle me-3"></i> Nueva</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#credencialEmpleados"><i class="bi bi-person-vcard me-3"></i> Empleados</a></li>
+            <li><a href="" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#credgen"><i class="bi bi-plus-circle me-3"></i> Nueva</a></li>
+            <li><a href="" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#credencialEmpleados"><i class="bi bi-person-vcard me-3"></i> Empleados</a></li>
           </ul>
         </div>
       </li>
       <li class="border-top my-3"></li>
       <li class="ms-2 mb-1">
-        <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-gear-fill ms-2 me-2"></i>
+        <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"><a href="" id="ajustess" class="link-dark text-decoration-none"><i class="bi bi-gear-fill ms-2 me-2"></i>
           Ajustes
         </a></span>
       </li>
       <li class="mb-1"> 
         <div class="collapse" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#editarUser"><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
+            <li><a href="" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#editarUser"><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
           </ul>
           <li class="border-top my-3"></li>
       <li class="ms-2 mb-1">
-      <span class="d-inline-flex"><a href="#" id="linkHome" class="link-dark"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
+      <span class="d-inline-flex"><a href="#" id="sesions" class="link-dark text-decoration-none"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
           Cerrar Sesión
           </a></span>
       </li>

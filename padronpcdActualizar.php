@@ -72,7 +72,9 @@ include('prcd/qc/qc.php');
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="sidebars.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -104,6 +106,9 @@ include('prcd/qc/qc.php');
     
     <style>
       
+      * {
+        font-family: 'Montserrat', sans-serif;
+      }
       body {
         overflow: auto;
         height: auto;
@@ -113,9 +118,6 @@ include('prcd/qc/qc.php');
         overflow-x: hidden;
         width: 100vw; */
         height: auto;
-      }
-      * {
-        font-family: 'Quicksand', sans-serif;
       }
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -3264,8 +3266,7 @@ $(document).ready(function () {
 <!-- Termina Modal para generar tarjeton -->
       
     </main>
-    <script src="sidebars.js"></script>
-    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    
   </div>
 </div>
 
