@@ -8,7 +8,7 @@ setlocale(LC_TIME, 'es_MX.UTF-8');
 $hoyX = strtotime("%Y-%m-%d");
 
 $limpiar = "DELETE FROM datos_generales";
-$resultado = $conn2->query($limpiar);
+$resultado = $conn->query($limpiar);
 
 if ($resultado){
     echo "datos generales eliminados";
@@ -82,7 +82,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     $resultadodbCatSeguridadSocial = $conn2->query($dbCatSeguridadSocial);
 
     // fotos
-    $fotos = "SELECT * FROM empleadocredenciales WHERE idExpediente = '$id'";
+    $fotos = "SELECT * FROM EmpleadoCredenciales WHERE idExpediente = '$id'";
     $resultadoFotos = $conn2-> query($fotos);
     $filas = $resultadoFotos->num_rows;
 
@@ -463,6 +463,10 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     }
     else if ($nombreDiscapacidad1 == "PROBLEMAS EN LA COMUNICACIÓN"){
         $nombreDiscapacidad = "Problemas en la Comunicación";
+    }
+
+    else{
+        $nombreDiscapacidad = "";
     }
 
     $discapacidad = $claveDiscapacidad.'-'.$nombreDiscapacidad;
@@ -972,12 +976,23 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         )
         ";
 
+$resultadoSQLVivienda = $conn->query($sqlESInsert);
+if ($resultadoSQLVivienda){
+    $x++;
+    echo "registros completos Vivienda <br>";
+}
+else{
+    $errorV = $conn2->error;
+    $error1V = $conn->error;
+
+    echo $errorV;
+    echo $error1V;
+}
+
     // integración familiar
 
     $sqlIntegracion = "SELECT * FROM Familiares WHERE idExpediente = '$id'";
     $resultInt = $conn2->query($sqlIntegracion);
-    $errorInt2 = $conn2->error;
-            echo $errorInt2;
 
     while($rowInt = $resultInt->fetch_assoc()){
 
@@ -1028,6 +1043,9 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         else{
             $errorInt = $conn->error;
             echo $errorInt;
+
+            $errorInt2 = $conn2->error;
+            echo $errorInt2;
         }
     }
 
