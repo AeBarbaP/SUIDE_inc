@@ -77,8 +77,8 @@ include('prcd/qc/qc.php');
     <script src="sidebars.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="script.js"></script>
+<!--     <script src= "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+ -->    <script src="script.js"></script>
     <script src="js/edicionExp.js"></script>
     <script src="js/editar_guardar.js"></script>
     <script src="js/validate.js"></script>
@@ -178,6 +178,7 @@ include('prcd/qc/qc.php');
         overflow-y: scroll;
         width:100%;
       }
+      
       .tab-pane{
         height:230vh; /*ANNY AQUÍ ESTÁ EL ERROR PARA EL SCROLL*/
         overflow-y: auto;
@@ -192,7 +193,7 @@ include('prcd/qc/qc.php');
     
 
   </head>
-  <body onload="estadosSelect(); catTipoVialidades(); buscarGrupo(); buscarEnfermedadUpdate();buscarMedicamento();">
+  <body onload="estadosSelect(); catTipoVialidades(); buscarGrupo(); buscarEnfermedadUpdate();buscarMedicamento(); ">
     
   <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
@@ -348,6 +349,7 @@ include('prcd/qc/qc.php');
             <input type="text" id="numeroTemporal" hidden>
             <input type="text" id="numeroTemporal2" hidden>
             <input type="text" id="municipioChange" hidden>
+           <label for="" id="prueba"></label>
             <br>
             <img id="profile" src="img/no_profile.png" width="100%" style="width:14rem">
             <div class="input-group">

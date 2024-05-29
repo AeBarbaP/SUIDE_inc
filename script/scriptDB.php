@@ -53,7 +53,7 @@ $x = 0;
 
 if($numeroID == 1){
 
-$db1 = "SELECT * FROM Expedientes ORDER BY ordenExpediente ASC LIMIT 1, 50";
+$db1 = "SELECT * FROM Expedientes ORDER BY ordenExpediente ASC LIMIT 1, 150";
 //$db1 = "SELECT * FROM Expedientes ORDER BY RAND() LIMIT 1, 15";
 $resultadoDB1 = $conn2->query($db1);
 
@@ -352,6 +352,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     }
 
     $nombreDiscapacidad1 = $rowCatDisc['nombreDiscapacidad'];
+    echo $nombreDiscapacidad1. "NÚMERO DE DISCAPACIDAD";
 
     if ($nombreDiscapacidad1 == "MOTORA"){
         $nombreDiscapacidad = "Motora";
@@ -413,9 +414,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     else if ($nombreDiscapacidad1 == "MOTORA ESCOLIOSIS"){
         $nombreDiscapacidad = "Escoliosis";
     }
-    else if ($nombreDiscapacidad1 == "AUDITIVA"){
-        $nombreDiscapacidad = "Auditiva Hipoacusia";
-    }
+    
     else if ($nombreDiscapacidad1 == "COMUNICACIÓN LENGUAJE"){
         $nombreDiscapacidad = "Comunicación Lenguaje";
     }
@@ -464,15 +463,18 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     else if ($nombreDiscapacidad1 == "PROBLEMAS EN LA COMUNICACIÓN"){
         $nombreDiscapacidad = "Problemas en la Comunicación";
     }
-
-    else{
-        $nombreDiscapacidad = "";
+    else if ($nombreDiscapacidad1 == "AUDITIVA"){
+        $nombreDiscapacidad = "Auditiva Hipoacusia";
     }
+
+    /* else{
+        $nombreDiscapacidad = "";
+    } */
 
     $discapacidad = $claveDiscapacidad.'-'.$nombreDiscapacidad;
 
     if($claveDiscapacidad == 33 || $claveDiscapacidad == 40 || $claveDiscapacidad == 41 || $claveDiscapacidad == 42 || $claveDiscapacidad == 49 || $claveDiscapacidad == 50 || $claveDiscapacidad == 51 || $claveDiscapacidad == 52 || $claveDiscapacidad == 53){
-        $idCatDiscapacidadTipoNombre = "Múltipe";
+        $idCatDiscapacidadTipoNombre = "Múltiple";
     }
     else if ($claveDiscapacidad == 20 || $claveDiscapacidad == 27 || $claveDiscapacidad == 28 || $claveDiscapacidad == 29 || $claveDiscapacidad == 30 || $claveDiscapacidad == 38 || $claveDiscapacidad == 39 || $claveDiscapacidad == 43|| $claveDiscapacidad == 2 || $claveDiscapacidad == 3 || $claveDiscapacidad == 4 || $claveDiscapacidad == 5 || $claveDiscapacidad == 6 || $claveDiscapacidad == 7 || $claveDiscapacidad == 8 || $claveDiscapacidad == 9 || $claveDiscapacidad == 10 || $claveDiscapacidad == 11 || $claveDiscapacidad == 12 || $claveDiscapacidad == 13 || $claveDiscapacidad == 14 || $claveDiscapacidad == 15 || $claveDiscapacidad == 16 || $claveDiscapacidad == 17 || $claveDiscapacidad == 18 || $claveDiscapacidad == 19){
         $idCatDiscapacidadTipoNombre = "Física";

@@ -18,6 +18,17 @@ $discCve = $cveDiscapacidad;
 }
 else {
 } */
+if(strlen($idExp) == 1){
+    $idExp = '000'.$idExp;
+}
+
+else if(strlen($idExp) == 2){
+    $idExp = '00'.$idExp;
+}
+
+else if(strlen($idExp) == 3){
+    $idExp = '0'.$idExp;
+}
 
 $numExpediente = 'C-'.$numMpio.$discCve.'-'.$idExp;
 
