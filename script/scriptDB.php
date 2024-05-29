@@ -144,6 +144,8 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
 
     // detalle expedientes
     $direccion = $rowDB2['direccion']; // se relaciona con idExpediente
+    echo $direccion;
+
     $numeroCasa = $rowDB2['numeroCasa']; // se relaciona con idExpediente
     $numeroInterior = $rowDB2['numeroInterior']; // se relaciona con idExpediente
     $colonia = $rowDB2['colonia']; // se relaciona con idExpediente
@@ -353,7 +355,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
 
     $nombreDiscapacidad1 = $rowCatDisc['nombreDiscapacidad'];
     echo $nombreDiscapacidad1. "NÚMERO DE DISCAPACIDAD";
-
+    $nombreDiscapacidad = "";
     if ($nombreDiscapacidad1 == "MOTORA"){
         $nombreDiscapacidad = "Motora";
     }
@@ -562,62 +564,6 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
 
     // datos pueba
 
-    $sqlInsertDMedicos = "INSERT INTO datos_medicos (
-        curp,
-        expediente,
-        tipo_sangre,
-        grado_discapacidad,
-        temporalidad,
-        valoracion,
-        causa,
-        discapacidad,
-        tipo_discapacidad,
-        protesis,
-        protesis_tipo,
-        descripcionDiscapacidad,
-        medicamentos_cual,
-        cirugias,
-        tipo_cirugias,
-        enfermedades_cual,
-        alergias_cual
-        
-    ) VALUES(
-        '$curp',
-        '$folio',
-        '$idTipoSangre',
-        '$grado',
-        '$temporalidad',
-        '$valoracionInst',
-        '$idCatCausa',
-        /* '$idCatDiscapacidad', */
-        '$discapacidad',
-        '$idCatDiscapacidadTipoNombre',
-        '$protesis',
-        '$tipoProtesis',
-        '$gradoDiscapacidad',
-        '$concMedicamentos', 
-        '$cirugia', 
-        '$tipoCirugia', 
-        '$concEnf',
-        '$concAlg'
-    
-    
-    )
-    ";
-    $resultadoDatosMedicos = $conn->query($sqlInsertDMedicos);
-    if($resultadoDatosMedicos){
-        echo "Datos medicos correcto update";
-    }
-    else{
-        $error21 = $conn2->error;
-        $error22 = $conn->error;
-
-        echo $error21;
-        echo $error22;
-
-    }
-
-
     $sqlInsert = "INSERT INTO datos_generales (
         numExpediente,
         fecha_registro,
@@ -709,6 +655,74 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         '$estatusExp'
     )
     ";
+
+$resultadoSQL = $conn->query($sqlInsert);
+if ($resultadoSQL){
+    $x++;
+    echo "<br>registros completos: ". $x .' ID: '.$id.'-- ORDEN: '.$ordenExpediente.' '.$nombre.$apellidoPaterno.$apellidoMaterno.' '.$fechaNacimiento.'<br>';
+}
+else{
+    $error = $conn2->error;
+    $error1 = $conn->error;
+
+    echo '<br> error 1 '. $error.'<br>';
+    echo 'error 2 '. $error1.'<br>';
+}
+
+    $sqlInsertDMedicos = "INSERT INTO datos_medicos (
+        curp,
+        expediente,
+        tipo_sangre,
+        grado_discapacidad,
+        temporalidad,
+        valoracion,
+        causa,
+        discapacidad,
+        tipo_discapacidad,
+        protesis,
+        protesis_tipo,
+        descripcionDiscapacidad,
+        medicamentos_cual,
+        cirugias,
+        tipo_cirugias,
+        enfermedades_cual,
+        alergias_cual
+        
+    ) VALUES(
+        '$curp',
+        '$folio',
+        '$idTipoSangre',
+        '$grado',
+        '$temporalidad',
+        '$valoracionInst',
+        '$idCatCausa',
+        /* '$idCatDiscapacidad', */
+        '$discapacidad',
+        '$idCatDiscapacidadTipoNombre',
+        '$protesis',
+        '$tipoProtesis',
+        '$gradoDiscapacidad',
+        '$concMedicamentos', 
+        '$cirugia', 
+        '$tipoCirugia', 
+        '$concEnf',
+        '$concAlg'
+    
+    
+    )
+    ";
+    $resultadoDatosMedicos = $conn->query($sqlInsertDMedicos);
+    if($resultadoDatosMedicos){
+        echo "Datos medicos correcto update";
+    }
+    else{
+        $error21 = $conn2->error;
+        $error22 = $conn->error;
+
+        echo $error21;
+        echo $error22;
+
+    }
 
     // vivienda
     $sqlEstudioSoc = "SELECT * FROM EstudioSocioeconomicos WHERE idExpediente = '$id'";
@@ -1144,31 +1158,34 @@ else{
     } */
     
 
-    $resultadoSQLVivienda = $conn->query($sqlESInsert);
-    if ($resultadoSQLVivienda){
-        $x++;
-        echo "registros completos Vivienda <br>";
-    }
-    else{
-        $errorV = $conn2->error;
-        $error1V = $conn->error;
+    // $resultadoSQLVivienda = $conn->query($sqlESInsert);
+    // if ($resultadoSQLVivienda){
+    //     $x++;
+    //     echo "registros completos Vivienda <br>";
+    // }
+    // else{
+    //     $errorV = $conn2->error;
+    //     $error1V = $conn->error;
 
-        echo $errorV;
-        echo $error1V;
-    }
+    //     echo $errorV;
+    //     echo $error1V;
 
-    $resultadoSQL = $conn->query($sqlInsert);
-    if ($resultadoSQL){
-        $x++;
-        echo "registros completos: ". $x .' ID: '.$id.'-- ORDEN: '.$ordenExpediente.' '.$nombre.$apellidoPaterno.$apellidoMaterno.' '.$fechaNacimiento.'<br>';
-    }
-    else{
-        $error = $conn2->error;
-        $error1 = $conn->error;
+    //     echo 'error vivienda 1 '. $$errorV.'<br>';
+    //     echo 'error vivienda 2 '. $error1V.'<br>';
+    // }
 
-        echo $error;
-        echo $error1;
-    }
+    // $resultadoSQL = $conn->query($sqlInsert);
+    // if ($resultadoSQL){
+    //     $x++;
+    //     echo "registros completos: ". $x .' ID: '.$id.'-- ORDEN: '.$ordenExpediente.' '.$nombre.$apellidoPaterno.$apellidoMaterno.' '.$fechaNacimiento.'<br>';
+    // }
+    // else{
+    //     $error = $conn2->error;
+    //     $error1 = $conn->error;
+
+    //     echo '<br> error 1 '. $error.'<br>';
+    //     echo 'error 2 '. $error1.'<br>';
+    // }
 
 
 }// fin del while
