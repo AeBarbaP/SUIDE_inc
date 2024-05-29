@@ -75,7 +75,7 @@ include('prcd/qc/qc.php');
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="sidebars.js"></script>
+    <!-- <script src="sidebars.js"></script> -->
     <script src="js/guardar.js"></script>
     <script src="js/padronFull.js"></script>
     <script src="js/validate.js"></script>
@@ -147,7 +147,7 @@ include('prcd/qc/qc.php');
         position: relative;
         z-index: 2;
         height: 2.75rem;
-        overflow-y: auto;
+        overflow-y: hidden;
       }
 
       #cardPrestamo.card-body  {
@@ -175,26 +175,25 @@ include('prcd/qc/qc.php');
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  
   <body onload="tablaPCDFull()">
     
-  <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-nav">
-      <div class="nav-item text-nowrap text-light">
-        <a class="nav-link px-3 text-white" style="font-family: 'Quicksand', sans-serif;" href="prcd/sort.php">Cerrar Sesión</a>
-      </div>
+  <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-3 text-white" style="background-color: #917799;">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light text-center" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap text-light">
+      <a class="nav-link px-3 text-white" style="font-family: 'Quicksand', sans-serif;" href="prcd/sort.php">Cerrar Sesión</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
 <div class="container-fluid">
-  <div class="row">
+<div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse mt-3">
       <p class="sidebar-heading d-flex justify-content-center text-center align-items-center px-3 mt-4 mb-1 text-muted" style="font-size: 1rem;">
-        <span class="" style="font-family: 'Montserrat', sans-serif;"><strong>Bienvenid@<br><i class="fas fa-user"></i> 
+        <span class="" style="font-family: 'Montserrat', sans-serif;"><strong>Bienvenid@<br><i class="fas fa-user me-2"></i> 
           <?php
             echo ($nombre);
           ?></strong>
@@ -202,6 +201,7 @@ include('prcd/qc/qc.php');
       </p>
       <hr>      
       <div class="flex-shrink-0 p-2 bg-white" style="width: 100%;">
+
         <ul class="list-unstyled ps-0 mt-3">
           <li class="ms-2 mb-1">
             <span class="d-inline-flex"><a href="dashboard.php" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
@@ -313,6 +313,9 @@ include('prcd/qc/qc.php');
       </nav>
 
     </main>
+
+    <script src="sidebars.js"></script>
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
   </div>
 </div>
 

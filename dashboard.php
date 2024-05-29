@@ -91,11 +91,6 @@ include('prcd/qc/qc.php');
     <script src="js/credencialEmpleados.js"></script>
     <script src="js/graficas.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- <link rel="stylesheet" href="crop/css/cropper.css">
-    <link rel="stylesheet" href="crop/css/index.css"> -->
-    <!-- <script src="crop/js/jquery.js"></script> -->
-    <!-- <script src="crop/js/cropper.js"></script>
-    <script src="crop/js/index.js"></script> -->
 
     <style>
 
@@ -168,6 +163,10 @@ include('prcd/qc/qc.php');
         text-align: center;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
+      }
+      .nav-link {
+        text-decoration: none;
+        color: black;
       }
     </style>
 
