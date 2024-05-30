@@ -11,7 +11,7 @@ $limpiar = "DELETE FROM datos_generales";
 $resultado = $conn->query($limpiar);
 
 if ($resultado){
-    echo "datos generales eliminados";
+    echo "datos generales eliminados <br><hr>";
 }
 else {
     echo "error al limpiar datos generales";
@@ -353,9 +353,11 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         $claveDiscapacidad = $claveDiscapacidad1;
     }
 
-    $nombreDiscapacidad1 = $rowCatDisc['nombreDiscapacidad'];
-    echo $nombreDiscapacidad1. "NÚMERO DE DISCAPACIDAD";
-    $nombreDiscapacidad = "";
+    $nombreDiscapacidad1 = strtoupper($rowCatDisc['nombreDiscapacidad']);
+    echo "<br>nombre de la discapacidad " .$nombreDiscapacidad1;
+
+    // $nombreDiscapacidad = "Sin datos de la discapacidad";
+
     if ($nombreDiscapacidad1 == "MOTORA"){
         $nombreDiscapacidad = "Motora";
     }
@@ -453,7 +455,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     else if ($nombreDiscapacidad1 == "AUTISMO"){
         $nombreDiscapacidad = "Espectro Autista";
     }
-    else if ($nombreDiscapacidad1 == "MÚLTIPLE"){
+    else if ($nombreDiscapacidad1 == "MÚLTIPLE "){
         $nombreDiscapacidad = "Múltiple";
     }
     else if ($nombreDiscapacidad1 == "MULTIPLE MOTORA AUDITIVA"){
@@ -469,11 +471,13 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         $nombreDiscapacidad = "Auditiva Hipoacusia";
     }
 
-    /* else{
-        $nombreDiscapacidad = "";
-    } */
+    // else{
+    //     $nombreDiscapacidad = "0000000009";
+    // } 
 
     $discapacidad = $claveDiscapacidad.'-'.$nombreDiscapacidad;
+
+    echo "<br>La clave de discapacidad es: ".$discapacidad;
 
     if($claveDiscapacidad == 33 || $claveDiscapacidad == 40 || $claveDiscapacidad == 41 || $claveDiscapacidad == 42 || $claveDiscapacidad == 49 || $claveDiscapacidad == 50 || $claveDiscapacidad == 51 || $claveDiscapacidad == 52 || $claveDiscapacidad == 53){
         $idCatDiscapacidadTipoNombre = "Múltiple";
@@ -1109,7 +1113,7 @@ else{
         )";
         $resultReferencias2 = $conn->query($insertReferencia);
         if($resultReferencias2){
-            echo "Referencias correcta <br>";
+            echo "Referencias correcta <br><br>";
         }
         else{
             $errorReferencias = $conn->error;
