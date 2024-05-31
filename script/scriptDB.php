@@ -158,7 +158,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     $entreVialidades = $rowDB2['entreVialidades']; // se relaciona con idExpediente
     $idTipoVialidad = $rowDB2['idCatTipoVialidad']; // se relaciona con idExpediente
     
-    $dbCatTipoVialidad = "SELECT * FROM catTipoVialidades WHERE id = '$idTipoVialidad'";
+    $dbCatTipoVialidad = "SELECT * FROM CatTipoVialidades WHERE id = '$idTipoVialidad'";
     $resultadoTipoVialidad = $conn2->query($dbCatTipoVialidad);
     $rowTipoVialidad = $resultadoTipoVialidad->fetch_assoc();
 
@@ -437,7 +437,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     else if ($nombreDiscapacidad1 == "INTELECTUAL NEUROLOGICO"){
         $nombreDiscapacidad = "Intelectual DM";
     }
-    else if ($nombreDiscapacidad1 == "MULTIPLE PC"){
+    else if ($nombreDiscapacidad1 == "MULTIPLE PC" || $nombreDiscapacidad1 == "MÚLTIPLE PC"){
         $nombreDiscapacidad = "Parálisis Cerebral";
     }
     else if ($nombreDiscapacidad1 == "INTELECTUAL APRENDIZAJE"){
@@ -455,13 +455,13 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
     else if ($nombreDiscapacidad1 == "AUTISMO"){
         $nombreDiscapacidad = "Espectro Autista";
     }
-    else if ($nombreDiscapacidad1 == "MÚLTIPLE "){
+    else if ($nombreDiscapacidad1 == "MÚLTIPLE " || $nombreDiscapacidad1 == "MULTIPLE " || $nombreDiscapacidad1 == "MÚLTIPLE" || $nombreDiscapacidad1 == "MULTIPLE"){
         $nombreDiscapacidad = "Múltiple";
     }
-    else if ($nombreDiscapacidad1 == "MULTIPLE MOTORA AUDITIVA"){
+    else if ($nombreDiscapacidad1 == "MULTIPLE MOTORA AUDITIVA" || $nombreDiscapacidad1 == "MÚLTIPLE MOTORA AUDITIVA"){
         $nombreDiscapacidad = "Motora Auditiva";
     }
-    else if ($nombreDiscapacidad1 == "MULTIPLE SINDROMES"){
+    else if ($nombreDiscapacidad1 == "MULTIPLE SINDROMES" || $nombreDiscapacidad1 == "MÚLTIPLE SINDROMES"){
         $nombreDiscapacidad = "Múltiple Síndromes";
     }
     else if ($nombreDiscapacidad1 == "PROBLEMAS EN LA COMUNICACIÓN"){

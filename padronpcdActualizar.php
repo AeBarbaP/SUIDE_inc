@@ -349,7 +349,7 @@ include('prcd/qc/qc.php');
             <input type="text" id="numeroTemporal" hidden>
             <input type="text" id="numeroTemporal2" hidden>
             <input type="text" id="municipioChange" hidden>
-           <label for="" id="prueba"></label>
+            <label for="" id="prueba"></label>
             <br>
             <img id="profile" src="img/no_profile.png" width="100%" style="width:14rem">
             <div class="input-group">
