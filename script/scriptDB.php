@@ -53,7 +53,7 @@ $x = 0;
 
 if($numeroID == 1){
 
-$db1 = "SELECT * FROM Expedientes ORDER BY ordenExpediente ASC LIMIT 500";
+$db1 = "SELECT * FROM Expedientes ORDER BY ordenExpediente ASC";
 //$db1 = "SELECT * FROM Expedientes ORDER BY RAND() LIMIT 1, 15";
 $resultadoDB1 = $conn2->query($db1);
 
@@ -677,55 +677,194 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         $resultadoordenExpediente2 = $conn2->query($ordenExpediente2);
         $filasExp = $resultadoordenExpediente2->num_rows;
         echo $ordenExpediente2 - $ordenExpediente;
-        if ($filasExp == 0){
+        /* if ($filasExp == 0){
             $folio278 = $ordenExpediente + 1;
             $sindatos = "";
             $sqlInsert = "INSERT INTO datos_generales (
-                numExpediente,
-                fecha_registro,
-                photo,
-                nombre,
-                apellido_p,
-                apellido_m,
-                genero,
-                edo_civil,
-                f_nacimiento,
-                lugar_nacimiento,
-                edad,
-                domicilio,
-                no_int,
-                no_ext,
-                colonia,
-                entre_vialidades,
-                tipoVialidad,
-                estado,
-                municipio,
-                localidad,
-                asentamiento,
-                cp,
-                telefono_part,
-                correo,
-                telefono_cel,
-                escolaridad,
-                profesion,
+                    numExpediente,
+                    fecha_registro,
+                    photo,
+                    nombre,
+                    apellido_p,
+                    apellido_m,
+                    genero,
+                    edo_civil,
+                    f_nacimiento,
+                    lugar_nacimiento,
+                    edad,
+                    domicilio,
+                    no_int,
+                    no_ext,
+                    colonia,
+                    entre_vialidades,
+                    tipoVialidad,
+                    estado,
+                    municipio,
+                    localidad,
+                    asentamiento,
+                    cp,
+                    telefono_part,
+                    correo,
+                    telefono_cel,
+                    escolaridad,
+                    profesion,
+                    curp,
+                    rfc,
+                    estudia,
+                    estudia_donde,
+                    estudia_habilidad,
+                    trabaja,
+                    trabaja_donde,
+                    trabaja_ingresos,
+                    asoc_civ,
+                    asoc_cual,
+                    pensionado,
+                    pensionado_donde,
+                    pension_monto,
+                    seguridad_social,
+                    numSS,
+                    estatus
+                )
+                VALUES (
+                    '$folio278',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos', 
+                    '$sindatos', 
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos'
+                )
+                ";
+    
+            $resultadoSQL = $conn->query($sqlInsert);
+            if ($resultadoSQL){
+                echo "datos generales insertados <br>";
+            }
+            else {
+                echo "error al insertar datos generales";
+            }
+
+            $sqlInsertDMedicos = "INSERT INTO datos_medicos (
+                    curp,
+                    expediente,
+                    tipo_sangre,
+                    grado_discapacidad,
+                    temporalidad,
+                    valoracion,
+                    causa,
+                    discapacidad,
+                    tipo_discapacidad,
+                    protesis,
+                    protesis_tipo,
+                    descripcionDiscapacidad,
+                    medicamentos_cual,
+                    cirugias,
+                    tipo_cirugias,
+                    enfermedades_cual,
+                    alergias_cual
+                    
+                ) VALUES(
+                    '$sindatos',
+                    '$folio278',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos',
+                    '$sindatos', 
+                    '$sindatos', 
+                    '$sindatos', 
+                    '$sindatos',
+                    '$sindatos'
+                )
+                ";
+            $resultadoDatosMedicos = $conn->query($sqlInsertDMedicos);
+            if ($resultadoDatosMedicos){
+                echo "datos medicos insertados <br>";
+            }
+            else {
+                echo "error al insertar datos medicos";
+            }
+
+            $sqlESInsert = "INSERT INTO vivienda(
                 curp,
-                rfc,
-                estudia,
-                estudia_donde,
-                estudia_habilidad,
-                trabaja,
-                trabaja_donde,
-                trabaja_ingresos,
-                asoc_civ,
-                asoc_cual,
-                pensionado,
-                pensionado_donde,
-                pension_monto,
-                seguridad_social,
-                numSS,
-                estatus
-            )
-            VALUES (
+                expediente,
+                vivienda,
+                caracteristicas,
+                caracteristicas_otro,
+                num_habitaciones,
+                vivienda_cocia,
+                vivienda_sala,
+                vivienda_banio,
+                vivienda_otros,
+                techo,
+                techo_otro,
+                pared,
+                pared_otro,
+                serv_basicos_agua,
+                serv_basicos_luz,
+                serv_basicos_drenaje,
+                serv_basicos_internet,
+                serv_basicos_celular,
+                serv_basicos_carro,
+                serv_basicos_gas,
+                serv_basicos_telefono,
+                serv_basicos_otro,
+                electrodomesticos_tv,
+                electrodomesticos_lavadora,
+                electrodomesticos_dispositivo,
+                electrodomesticos_microondas,
+                electrodomesticos_computadora,
+                electrodomesticos_licuadora,
+                electrodomesticos_estufa,
+                electrodomesticos_otro,
+                personas_dependen,
+                deudas,
+                deudas_cuanto
+                ) 
+                VALUES (
+                '$sindatos',
                 '$folio278',
                 '$sindatos',
                 '$sindatos',
@@ -733,16 +872,6 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
                 '$sindatos',
                 '$sindatos',
                 '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos', 
-                '$sindatos', 
                 '$sindatos',
                 '$sindatos',
                 '$sindatos',
@@ -769,137 +898,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
                 '$sindatos',
                 '$sindatos',
                 '$sindatos'
-            )
-            ";
-    
-        $resultadoSQL = $conn->query($sqlInsert);
-        if ($resultadoSQL){
-            echo "datos generales insertados <br>";
-        }
-        else {
-            echo "error al insertar datos generales";
-        }
-
-        $sqlInsertDMedicos = "INSERT INTO datos_medicos (
-            curp,
-            expediente,
-            tipo_sangre,
-            grado_discapacidad,
-            temporalidad,
-            valoracion,
-            causa,
-            discapacidad,
-            tipo_discapacidad,
-            protesis,
-            protesis_tipo,
-            descripcionDiscapacidad,
-            medicamentos_cual,
-            cirugias,
-            tipo_cirugias,
-            enfermedades_cual,
-            alergias_cual
-            
-        ) VALUES(
-            '$sindatos',
-            '$folio278',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            /* '$sindatos', */
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos', 
-            '$sindatos', 
-            '$sindatos', 
-            '$sindatos',
-            '$sindatos'
-        )
-        ";
-        $resultadoDatosMedicos = $conn->query($sqlInsertDMedicos);
-        if ($resultadoDatosMedicos){
-            echo "datos medicos insertados <br>";
-        }
-        else {
-            echo "error al insertar datos medicos";
-        }
-
-        $sqlESInsert = "INSERT INTO vivienda(
-            curp,
-            expediente,
-            vivienda,
-            caracteristicas,
-            caracteristicas_otro,
-            num_habitaciones,
-            vivienda_cocia,
-            vivienda_sala,
-            vivienda_banio,
-            vivienda_otros,
-            techo,
-            techo_otro,
-            pared,
-            pared_otro,
-            serv_basicos_agua,
-            serv_basicos_luz,
-            serv_basicos_drenaje,
-            serv_basicos_internet,
-            serv_basicos_celular,
-            serv_basicos_carro,
-            serv_basicos_gas,
-            serv_basicos_telefono,
-            serv_basicos_otro,
-            electrodomesticos_tv,
-            electrodomesticos_lavadora,
-            electrodomesticos_dispositivo,
-            electrodomesticos_microondas,
-            electrodomesticos_computadora,
-            electrodomesticos_licuadora,
-            electrodomesticos_estufa,
-            electrodomesticos_otro,
-            personas_dependen,
-            deudas,
-            deudas_cuanto
-            ) VALUES(
-            '$sindatos',
-            '$folio278',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos',
-            '$sindatos'
-            
-            )
+                )
             ";
 
             $resultadoSQLVivienda = $conn->query($sqlESInsert);
@@ -909,7 +908,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
             else {
                 echo "error al insertar datos vivienda";
             }
-        }
+        } */
     }
     else{
         $error = $conn2->error;
@@ -1116,33 +1115,6 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         $NumPersonas = $rowViviendas['numeroPersonas'];
         $pagoVivienda = 0;
         $valorVivienda = $rowViviendas['valorVivienda'];
-        
-        /* if ($idCatVivienda == 1){
-                    //renta 
-            $pagoVivienda = 0;
-            //pagando vivienda 
-            $vivienda_pagando = 0;
-        }
-        else if ($idCatVivienda == 2){
-            $vivienda = 2;
-            //renta 
-            $pagoVivienda = 0;
-            //pagando vivienda 
-            $vivienda_pagando = 0;
-        }
-        else if ($idCatVivienda == 5){
-            $vivienda = 3;
-            //renta 
-            $pagoVivienda = $rowViviendas['pagoVivienda'];
-            //pagando vivienda 
-            $vivienda_pagando = 0;
-            
-        }
-        else if ($idCatVivienda == 4){
-            $vivienda = 0;
-            $vivienda_pagando = 1;
-            // lo demás se lo trae de monto
-        } */
 
         $idTecho = $rowTecho['id'];
         $techo = $rowTecho['nombreTecho'];
@@ -1151,14 +1123,6 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         $idPared = $rowPared['id'];
         $pared = $rowPared['nombrePared'];
         $pared_otro = 0;
-
-        // $monto_pagando = $rowViviendas['pagoVivienda'];
-        /*  if($pagoVivienda > 0){
-            $vivienda_pagando = 1;
-        }
-        else{
-            $vivienda_pagando = 0;
-        } */
 
         $caracteristicas = 0;
         $caracteristicas_otro = 0;
@@ -1443,130 +1407,70 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         //     echo '<br> error 1 '. $error.'<br>';
         //     echo 'error 2 '. $error1.'<br>';
         // }
-        $missing278 = "
-        SELECT t1.id + 1 AS start, MIN(t2.id) - 1 AS end
-        FROM datos_generales t1
-        LEFT JOIN datos_generales t2 ON t1.id + 1 = t2.id
-        WHERE t2.id IS NULL
-        GROUP BY t1.id
-        HAVING start < (SELECT MAX(id) FROM datos_generales);
-        ";
-        $result = $conn->query($missing278);
-        $row = $result->fetch_assoc();
-        $missing_id = $row['missing_id'];
-        $arrayMissingId[] = $missing_id;
+        
+        
 
-        $sindatos = "";
-            $sqlInsertDG1 = "INSERT INTO datos_generales (
-                id,
-                numExpediente,
-                fecha_registro,
-                photo,
-                nombre,
-                apellido_p,
-                apellido_m,
-                genero,
-                edo_civil,
-                f_nacimiento,
-                lugar_nacimiento,
-                edad,
-                domicilio,
-                no_int,
-                no_ext,
-                colonia,
-                entre_vialidades,
-                tipoVialidad,
-                estado,
-                municipio,
-                localidad,
-                asentamiento,
-                cp,
-                telefono_part,
-                correo,
-                telefono_cel,
-                escolaridad,
-                profesion,
-                curp,
-                rfc,
-                estudia,
-                estudia_donde,
-                estudia_habilidad,
-                trabaja,
-                trabaja_donde,
-                trabaja_ingresos,
-                asoc_civ,
-                asoc_cual,
-                pensionado,
-                pensionado_donde,
-                pension_monto,
-                seguridad_social,
-                numSS,
-                estatus
-            )
-            VALUES (
-                '$missing_id',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos', 
-                '$sindatos', 
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos',
-                '$sindatos'
-            )
-            ";
+        /* $row = $result->fetch_assoc();
+
+        $missing_id = $row['start'];
+        $arrayMissingId[] = $missing_id;
+        $missing_id = $missing_id + 1; */
+        
+        
     
-        $resultadoSQL = $conn->query($sqlInsert);
-        if ($resultadoSQL){
-            echo "datos generales nulos insertados <br>";
-        }
-        else {
-            echo "error al insertar datos generales nulos";
-        }
+        
 
         }// fin del while
 
     } // fin del if 0000
 
-    foreach ($arrayMissingId as $missingIds){
+    /* foreach ($arrayMissingId as $missingIds){
         
-    }
+    } */
 
 }// fin id request
+
+
+        $missing278 = "SELECT * FROM datos_generales ORDER BY id ASC";
+     
+        $resultMissing = $conn->query($missing278);
+        while($rowsMMM = $resultMissing->fetch_assoc()){
+
+            $idChange = $rowsMMM['id'];
+            $idChange2 = $idChange + 1;
+
+            $missing278_ = "SELECT * FROM datos_generales WHERE id = '$idChange2'";
+            $resultMissing2 = $conn->query($missing278_);
+
+            $fila278 = $resultMissing2->num_rows;
+            echo "<br> ID FILA  ".$idChange2."<br>";
+            if ($fila278 == 1){
+                echo "Si hay filas";
+            }
+            else {
+                $sindatos = "0";
+
+                $sqlInsertDG1 = "INSERT INTO datos_generales (
+                        id,
+                        numExpediente
+                    )
+                    VALUES (
+                        '$idChange2',
+                        '$idChange2'
+                    )
+                ";
+                $resultadoSQLNulo = $conn->query($sqlInsertDG1);
+                if ($resultadoSQLNulo){
+                    echo "<br>datos generales, id insertado '.$idChange2.' nulos insertados <br>";
+                }
+                else {
+                    echo "error al insertar datos generales nulos <br>";
+
+                    $error = $conn->error;
+                    echo $error;
+                }    
+            }
+        }
 
 
 ?>
