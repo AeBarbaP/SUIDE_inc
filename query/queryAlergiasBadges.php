@@ -4,7 +4,7 @@
     include('../prcd/qc/qc.php');
 
     $idAlergia = $_POST['alergiasBadges'];
-    $Query = "SELECT * FROM alergias WHERE id = '$idAlergia'";
+    $Query = "SELECT * FROM alergias WHERE id = '$idAlergia' ORDER BY nombre ASC";
     $resultado_Query = $conn->query($Query);
     $row_sql_catalogo = $resultado_Query->fetch_assoc();
     $nombre = $row_sql_catalogo['nombre'];

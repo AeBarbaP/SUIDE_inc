@@ -53,7 +53,8 @@ $x = 0;
 
 if($numeroID == 1){
 
-$db1 = "SELECT * FROM Expedientes ORDER BY ordenExpediente ASC";
+//$db1 = "SELECT * FROM Expedientes WHERE ordenExpediente = 500";
+$db1 = "SELECT * FROM Expedientes ORDER BY ordenExpediente ASC LIMIT 500";
 //$db1 = "SELECT * FROM Expedientes ORDER BY RAND() LIMIT 1, 15";
 $resultadoDB1 = $conn2->query($db1);
 
@@ -676,7 +677,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         //$db1 = "SELECT * FROM Expedientes ORDER BY RAND() LIMIT 1, 15";
         $resultadoordenExpediente2 = $conn2->query($ordenExpediente2);
         $filasExp = $resultadoordenExpediente2->num_rows;
-        echo $ordenExpediente2 - $ordenExpediente;
+        //echo $ordenExpediente2 - $ordenExpediente;
         /* if ($filasExp == 0){
             $folio278 = $ordenExpediente + 1;
             $sindatos = "";
@@ -1432,7 +1433,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
 
 
         $missing278 = "SELECT * FROM datos_generales ORDER BY id ASC";
-     
+    
         $resultMissing = $conn->query($missing278);
         while($rowsMMM = $resultMissing->fetch_assoc()){
 
@@ -1470,6 +1471,28 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
                     echo $error;
                 }    
             }
+        } //FIN DEL WHILE PARA INSERTAR 278
+
+        $eliminarUltimo = "DELETE FROM datos_generales ORDER BY id DESC LIMIT 1";
+        $resultadoEliminar = $conn->query($eliminarUltimo);
+        if ($resultadoEliminar){
+            echo "<br>datos generales, id eliminado <br>";
+            $lastId = "SELECT MAX(id) AS last FROM datos_generales";
+            $resultLastId = $conn->query($lastId);
+            $rowLastId = $resultLastId->fetch_assoc();
+            $lastId = $rowLastId['last']+1;
+
+            $decrementa = "ALTER TABLE datos_generales ALTER id SET DEFAULT '$lastId'";
+            $resultadoDecrementa = $conn->query($decrementa);
+            if ($resultadoDecrementa){
+                echo "<br>datos generales, id alterado <br>";
+            }
+            else {
+                echo "error al alterar datos generales <br>";
+            }
+        }
+        else {
+            echo "error al eliminar datos generales <br>";
         }
 
 

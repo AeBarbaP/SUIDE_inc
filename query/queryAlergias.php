@@ -4,13 +4,13 @@
     include('../prcd/qc/qc.php');
 
     $alergias = $_POST['alergias'];
-    $Query = "SELECT * FROM alergias WHERE tipo = '$alergias'";
+    $Query = "SELECT * FROM alergias WHERE tipo = '$alergias' ORDER BY nombre ASC";
     $resultado_Query = $conn->query($Query);
 
     
     while ($row_sql_catalogo = $resultado_Query->fetch_assoc()){
         
-        $nombre = $row_sql_catalogo['nombre'];
+        $nombre = strtoupper($row_sql_catalogo['nombre']);
         $id = $row_sql_catalogo['id'];
         
         echo '

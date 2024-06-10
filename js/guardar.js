@@ -887,7 +887,7 @@ $(document).ready(function() {
             document.getElementById('lugarRehab').required = false;
         }
         if (alergias == 0){
-            var alergiasFull = "Sin alergias";
+            var alergiasFull = "";
         }
         else if (alergias > 0){
             alergias = 1
@@ -895,14 +895,14 @@ $(document).ready(function() {
         }
         if (enfermedadesFull == ""){
             var enfermedades = 0;
-            enfermedadesFull = "Enfermedades no reportadas";
+            enfermedadesFull = "";
         }
         else if (enfermedadesFull != ""){
             var enfermedades = 1;
         }
         if (medicamentosFull == ""){
             var medicamentos = 0;
-            medicamentosFull = "Medicamentos no reportadas";
+            medicamentosFull = "";
         }
         else if (medicamentosFull != ""){
             var medicamentos = 1;
@@ -3570,3 +3570,30 @@ function logEntregaTarjeton(){
         }
     });
 }
+
+/* $(document).ready(function () {
+    $("#buscarMed").on("keyup", function () {
+        var value = $(this).val();
+        $("#medicamentos").filter(function () {
+            $(this).toggle($(this).text().indexOf(value) > -1)
+        });
+    });
+}); */
+
+$(document).ready(function() {
+
+    //Hide all li-Elements
+    var $lis = $(".result option").hide();
+  
+    //When select-Element is change, do something
+    $("buscarMed").change(function() {
+  
+      //Add all selected Options to the array
+      var selectors = $("buscarMed").map(function(value) {
+        return ':contains("' + this.value + '")'
+      }).get();
+      var $selected = $lis.stop().filter(selectors.join()).slideDown();
+      $lis.not($selected).slideUp();
+    });
+  
+  });

@@ -129,7 +129,7 @@ function queryDatos(){
             var grupo = jsonData.grupo;
             var hojaRegistroDoc  = jsonData.HojaRegistroDoc;
             var valoracionDoc  = jsonData.valoracionDoc;
-            var actaNacimientoDoc  = jsonData.actaNacimientoDoc;
+            var actaNAcimientoDoc  = jsonData.actaNacimientoDoc;
             var curpDocDoc  = jsonData.curpDocDoc;
             var ineDocDoc  = jsonData.ineDocDoc;
             var comprobanteDoc  = jsonData.comprobanteDoc;
