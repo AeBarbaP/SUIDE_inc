@@ -3571,29 +3571,27 @@ function logEntregaTarjeton(){
     });
 }
 
-/* $(document).ready(function () {
-    $("#buscarMed").on("keyup", function () {
-        var value = $(this).val();
-        $("#medicamentos").filter(function () {
-            $(this).toggle($(this).text().indexOf(value) > -1)
-        });
-    });
-}); */
+function filterOptions() {
+    const filterText = document.getElementById('buscarMed').value.toLowerCase();
+    const select = document.getElementById('medicamentos');
+    const options = select.options;
 
-$(document).ready(function() {
+    let hasVisibleOptions = false;  // Track if there are any visible options
 
-    //Hide all li-Elements
-    var $lis = $(".result option").hide();
-  
-    //When select-Element is change, do something
-    $("buscarMed").change(function() {
-  
-      //Add all selected Options to the array
-      var selectors = $("buscarMed").map(function(value) {
-        return ':contains("' + this.value + '")'
-      }).get();
-      var $selected = $lis.stop().filter(selectors.join()).slideDown();
-      $lis.not($selected).slideUp();
-    });
-  
-  });
+    for (let i = 0; i < options.length; i++) {
+        const optionText = options[i].text.toLowerCase();
+        if (optionText.includes(filterText)) {
+            options[i].style.display = 'block';
+            hasVisibleOptions = true;
+        } else {
+            options[i].style.display = 'none';
+        }
+    }
+
+    // If no options match, hide the select element
+    select.style.display = hasVisibleOptions ? 'block' : 'none';
+}
+
+document.getElementById('filterInput').addEventListener('input', filterOptions);
+
+

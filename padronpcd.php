@@ -1197,10 +1197,10 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Medicamentos:</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" id="buscarMed" onfocus="buscarMedicamento()" aria-label="Buscar...">
+                        <input type="text" class="form-control" id="buscarMed" onfocus="buscarMedicamento()" oninput="filterOptions()" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
-                      <select class="form-select result" id="medicamentos" onchange="medicamentosOp(this.value)" multiple aria-label="multiple select example">
+                      <select class="form-select result" id="medicamentos" multiple aria-label="multiple select example">
                       </select>
                       <div class="form-text" style="color:red" id="nohay"></div>
                     </div>
