@@ -838,7 +838,7 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-3">
                       <div class="mb-3">
-                        <label for="basic-url" class="form-label">Persona que brinda la información:</label>
+                        <label for="basic-url" class="form-label">Persona que da la información:</label>
                         <select class="form-select" id="informante" onchange="informanteOp(this.value)" aria-label="Default select example" required>
                           <option value="" selected>Selecciona...</option>
                           <option value="1">Usuario</option>
@@ -877,18 +877,36 @@ include('prcd/qc/qc.php');
                       </div>
                     </div><!-- /.row -->
                     <div class="row">
-                      <div class="col-sm-5">
+                      <label class="mt-2">Cambiar Estatus de Expediente:</label>
+                      <div class="col-sm-2">
+                        <label for="basic-url" class="form-label"> </label>
                         <div class="mb-3">
-                          <label for="basic-url" class="form-label">Estatus del expediente:</label>
+                          <div class="input-group">
+                            <div class="form-check form-check-inline mt-2">
+                              <input class="form-check-input" type="radio" onclick="estatusOp(this.value)" name="estatus" id="estatusSi" value="1" required>
+                              <label class="form-check-label" for="inlineRadio1">Sí</label>
+                            </div>
+                            <div class="form-check form-check-inline mt-2">
+                              <input class="form-check-input" type="radio" onclick="estatusOp(this.value)" name="estatus" id="estatusNo" value="0">
+                              <label class="form-check-label" for="inlineRadio2">No</label>
+                              <div class="invalid-feedback">
+                                * Campo requerido.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6" id="estatusDiv" hidden>
+                        <div class="mb-3">
+                          <label for="basic-url" class="form-label"></label>
                           <select class="form-select" id="estatus">
-                            <option value="" selected>Selecciona...</option>
+                            <option value="" >Selecciona...</option>
                             <!-- <option value="1">Creado (Activo)</option> -->
-                            <option value="2">Inactivo</option>
-                            <option value="3">Inactivo (Finado)</option>
+                            <option value="1" selected>Creado</option>
+                            <option value="2">Inactivo (Finado)</option>
                           </select>
                         </div>
                       </div>
-                      <div class="col-6"></div>
                     </div>
                   <br>
                     <div class="d-grid gap-2 mt-3">
@@ -1237,7 +1255,7 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Enfermedades:</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" id="enfermedadesSearch" aria-label="Buscar...">
+                        <input type="text" class="form-control" id="enfermedadesSearch" aria-label="Buscar..." oninput="filterOptionsE()">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
                       <select class="form-select" id="enfermedades" onselect="enfermedadesOp(this.value)"  multiple aria-label="multiple select example">
@@ -1278,7 +1296,7 @@ include('prcd/qc/qc.php');
                     <div class="col-sm-4">
                       <label for="datos_usr" class="form-label"> Medicamentos:</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" id="buscarMed" aria-label="Buscar...">
+                        <input type="text" class="form-control" id="buscarMed" oninput="filterOptions()" aria-label="Buscar...">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
                       </div>
                       <select class="form-select" id="medicamentos" onchange="medicamentosOp(this.value)" multiple aria-label="multiple select example">

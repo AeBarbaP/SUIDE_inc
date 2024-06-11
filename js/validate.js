@@ -1222,3 +1222,15 @@ window.addEventListener("keypress", function(event){
         event.preventDefault();
     }
 }, false);
+
+function estatusOp(x){
+    var estatus = x;
+
+    if (estatus == 1){
+        document.getElementById('estatusDiv').hidden = false;
+        /* document.getElementById('montoP').disabled = false;
+        document.getElementById('periodo').disabled = false; */
+    } else {
+        document.getElementById('estatusDiv').hidden = true;
+    }
+}

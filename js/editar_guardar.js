@@ -1910,3 +1910,44 @@ function alvScroll(){
     var bt1 = document.getElementById('tab-pane');
     bt1.style.height = '300vh';
 }
+
+function filterOptions() {
+    const filterText = document.getElementById('buscarMed').value.toLowerCase();
+    const select = document.getElementById('medicamentos');
+    const options = select.options;
+
+    let hasVisibleOptions = false;  // Track if there are any visible options
+
+    for (let i = 0; i < options.length; i++) {
+        const optionText = options[i].text.toLowerCase();
+        if (optionText.includes(filterText)) {
+            options[i].style.display = 'block';
+            hasVisibleOptions = true;
+        } else {
+            options[i].style.display = 'none';
+        }
+    }
+
+    // If no options match, hide the select element
+    select.style.display = hasVisibleOptions ? 'block' : 'none';
+}
+function filterOptionsE() {
+    const filterText = document.getElementById('enfermedadesSearch').value.toLowerCase();
+    const select = document.getElementById('enfermedades');
+    const options = select.options;
+
+    let hasVisibleOptions = false;  // Track if there are any visible options
+
+    for (let i = 0; i < options.length; i++) {
+        const optionText = options[i].text.toLowerCase();
+        if (optionText.includes(filterText)) {
+            options[i].style.display = 'block';
+            hasVisibleOptions = true;
+        } else {
+            options[i].style.display = 'none';
+        }
+    }
+
+    // If no options match, hide the select element
+    select.style.display = hasVisibleOptions ? 'block' : 'none';
+}

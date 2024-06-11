@@ -3412,10 +3412,14 @@ function finalizarExpediente(){
 }
 
 function logFinalizarExpediente(){
+    var curp = document.getElementById('curp_exp').value;
     $.ajax({
         type: "POST",
         url: 'prcd/logFin.php',
         dataType:'json',
+        data: {
+            curp:curp
+        },
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));
             var success = jsonData.success;
@@ -3591,7 +3595,25 @@ function filterOptions() {
     // If no options match, hide the select element
     select.style.display = hasVisibleOptions ? 'block' : 'none';
 }
+function filterOptionsE() {
+    const filterText = document.getElementById('enfermedadesSearch').value.toLowerCase();
+    const select = document.getElementById('enfermedades');
+    const options = select.options;
 
-document.getElementById('filterInput').addEventListener('input', filterOptions);
+    let hasVisibleOptions = false;  // Track if there are any visible options
+
+    for (let i = 0; i < options.length; i++) {
+        const optionText = options[i].text.toLowerCase();
+        if (optionText.includes(filterText)) {
+            options[i].style.display = 'block';
+            hasVisibleOptions = true;
+        } else {
+            options[i].style.display = 'none';
+        }
+    }
+
+    // If no options match, hide the select element
+    select.style.display = hasVisibleOptions ? 'block' : 'none';
+}
 
 
