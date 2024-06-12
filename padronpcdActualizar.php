@@ -1890,8 +1890,8 @@ include('prcd/qc/qc.php');
                     </div>
                     <div class="col-sm-12 mt-3 p-4">
                       <label for="basic-url" class="form-label h4"><i class="bi bi-people-fill"></i> Solicitudes y Servicios</label>
-                      <table class="table table-bordered table-hover text-center">
-                        <thead style="background-color:#6d5973;color:white;">
+                      <table class="table table-bordered text-center">
+                        <thead style="background-color:#6d5973;color:white;"> <!-- editando -->
                           <tr>
                             <th scope="col"># Folio</th>
                             <th scope="col">Fecha Solicitud</th>

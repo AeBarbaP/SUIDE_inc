@@ -1,13 +1,10 @@
 <?php
 include('../prcd/qc/qc.php');
 
-$id = $_POST['id'];
+$id = $_POST['cadenaTexto'];
 
-$var = "SELECT * FROM datos_generales WHERE numExpediente = '$id%' OR nombre = '$id%' ORDER BY id DESC LIMIT 10";
+$var = "SELECT * FROM datos_generales WHERE numExpediente LIKE '%$id' OR curp LIKE '$id%' OR nombre LIKE '$id%' OR apellido_p LIKE '$id%' OR apellido_m LIKE '$id%' ORDER BY id DESC LIMIT 10";
 $resultadoVariable = $conn->query($var);
-
-$sqlfILTRO = "SELECT CONCAT (datos_generales.apellido_p,' ', datos_generales.apellido_m ,' ', datos_generales.nombre) AS nombre_completo
-FROM datos_generales";
 
 $x = 0;
 

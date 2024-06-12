@@ -99,6 +99,9 @@ $tipoSangre = $rowSqlSangre['tipoSangre'];
 
 $alergias = $rowSqlMedicos['alergias_cual'];
 $cadena = strlen($alergias);
+if ($alergias == "" || $alergias == null){
+	$alergias = "No Reportadas";
+}
 
 
 define('FPDF_FONTPATH','font/');
@@ -132,7 +135,7 @@ class PDF extends FPDF
 		$this->Ln(31);
 		$this->Cell(50,5,'','','','L','');
 		$this->Cell(50,4,utf8_decode($discapacidadShow),'','','L','');
-			
+		
 }
 function hoja2($cadena,$qrcode,$direccion,$concatNumIntNumCasa,$estado,$cp,$colonia,$localidad,$municipio,$telefono,$tipoSangre,$alergias)
 {
