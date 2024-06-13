@@ -1207,9 +1207,6 @@ $(document).ready(function () {
           
 
             <!-- Termina modal para cortar imagen -->
-<script>
-  //console.error(cropPhoto())
-</script>
 
 <!-- Inicia Modal editar-->
 

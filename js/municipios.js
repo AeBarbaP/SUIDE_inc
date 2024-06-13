@@ -19,3 +19,19 @@ function municipiosSelect(x){
                 }
             });
     }
+function municipiosSelect2(x){
+        var cveEstado = x;
+        $.ajax({
+            type:"POST",
+            url:"query/queryMunicipio.php",
+            data:{
+                cveEstado:cveEstado
+            },
+            dataType: "html",
+            //cache: false,
+                success: function(response)
+                { 
+                $('#municipiosList2').fadeIn(1000).html(response);
+                }
+            });
+    }

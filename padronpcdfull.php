@@ -175,7 +175,7 @@ include('prcd/qc/qc.php');
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
-  <body onload="tablaPCDFull()">
+  <body onload="tablaPCDFull(); municipiosSelect2(32)">
     
   <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-3 text-white" style="background-color: #917799;">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light text-center" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
@@ -270,12 +270,38 @@ include('prcd/qc/qc.php');
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center ">
         <p class="h3">Padrón de Personas con Discapacidad</p>
       </div>
-      <div class="input-group mb-2 mt-2">
-        <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-        <input class="form-control w-50" id="buscarFiltroPadron" oninput="filtroPadronFull(this.value)" placeholder="Buscar...">
-        <!-- <div class="col-3 text-start"> -->
-        <button class="btn btn-primary" type="button"><i class="bi bi-qr-code-scan"></i> Buscar</button>
-      </div><!-- input group -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="input-group mb-2 mt-3">
+            <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+            <input class="form-control w-50" id="buscarFiltroPadron" oninput="filtroPadronFull(this.value)" placeholder="Buscar...">
+          </div><!-- input group -->
+        </div>
+        <div class="col-md-3">
+          <div class="input-group mb-2 mt-3">
+            <!-- <input class="form-control w-50" id="buscarFiltroPadronFull" oninput="filtroPadronFull(this.value)" placeholder="Buscar..."> -->
+            <span class="input-group-text" id="basic-addon1"><i class="bi bi-universal-access"></i></span>
+            <select class="form-select" id="tipoDiscapacidadFull" onchange="filtroPadronFull(this.value)" aria-label="Default select example">
+              <option value="" selected>Tipo Discapacidad...</option>
+              <option value="Física">Física</option>
+              <option value="Intelectual">Intelectual</option>
+              <option value="Sensorial">Sensorial</option>
+              <option value="Múltiple">Múltiple</option>
+              <option value="Psicosocial">Psicosocial</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="input-group mb-2 mt-3">
+            <span class="input-group-text" id="basic-addon1"><i class="bi bi-pin-map"></i></i></span>
+            <!-- <input class="form-control w-50" id="buscarFiltroPadronFull2" oninput="filtroPadronFull2(this.value)" placeholder="Buscar..."> -->
+            <select class="form-select" id="municipiosList2" onchange="filtroPadronFull(this.value)" placeholder="Municipio...">
+
+            </select>
+          </div><!-- input group -->
+        </div>
+      </div>
+      
       <hr>
       <!-- <h4 class="text-muted mt-4">Últimos documentos generados</h4> -->
       <div class="table-responsive mb-2 ">

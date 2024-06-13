@@ -12,7 +12,7 @@ while ($rowVariable = $resultadoVariable->fetch_assoc()){
     
     $x++;
 
-    $curp = $rowVariable['curp'];
+    $expediente = $rowVariable['numExpediente'];
     $cveMunicipio = $rowVariable['municipio'];
     $statusVar = $rowVariable['estatus'];
     if ($statusVar == 1){
@@ -22,7 +22,7 @@ while ($rowVariable = $resultadoVariable->fetch_assoc()){
         $estatus = "Finado";
     }
 
-    $medicos = "SELECT * FROM datos_medicos WHERE curp = '$curp'";
+    $medicos = "SELECT * FROM datos_medicos WHERE expediente = '$expediente'";
     $resultadoMedicos = $conn->query($medicos);
     $rowSqlMedicos = $resultadoMedicos->fetch_assoc(); //Para sacar el tipo de discapacidad
 
