@@ -2,7 +2,7 @@
 include('../prcd/qc/qc.php');
 
 
-$var = "SELECT * FROM datos_generales ORDER BY id DESC LIMIT 10";
+$var = "SELECT * FROM datos_generales ORDER BY id DESC";
 $resultadoVariable = $conn->query($var);
 
 
