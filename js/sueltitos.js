@@ -266,7 +266,7 @@ function swaldatoscrd() {
         type:"POST",
         url:"query/query_searchPadronBD.php",
         data:{
-        expediente:expediente
+            expediente:expediente
         },
         // dataType: "html",
         //contentType:false,
@@ -307,12 +307,44 @@ function swaldatoscrd() {
     });
     }
 
-    function ValidaSoloNumeros() {
+function buscarExpediente3(){
+    var curp = document.getElementById('curp_exp').value;
+    var expediente = document.getElementById('numeroExpediente').innerText;
+    $("#tarjetongen2").modal('show');
+    var longitud = expediente.length;
+    expediente = expediente.substr(7,longitud);
+    $.ajax({
+        type:"POST",
+        url:"query/query_searchPadronBDTarjeton.php",
+        dataType: 'html',
+        data:{
+            expediente:expediente,
+            curp:curp
+        },
+        cache: false,
+            success: function(data) {
+            document.getElementById('tarjeton').hidden = false;
+            document.getElementById('searchDBInclusion2').hidden = true;
+            document.getElementById('modeloPerm').disabled = false;
+            document.getElementById('marcaPerm').disabled = false;
+            document.getElementById('annioPerm').disabled = false;
+            document.getElementById('placasPerm').disabled = false;
+            document.getElementById('seriePerm').disabled = false;
+            document.getElementById('folioTPerm').disabled = false;
+            document.getElementById('vigenciaPerm').disabled = false;
+            document.getElementById('checkAutoS').checked = false;
+            document.getElementById('AutoSeguroInput').value = "";
+            document.getElementById('agregarVehiculoBtn').disabled = false;
+            $("#tarjeton2").html(data);
+        }               
+    });
+}
+function ValidaSoloNumeros() {
     if ((event.keyCode < 48) || (event.keyCode > 57)) 
         event.returnValue = false;
-    }
+}
 
-    function OcultarInput() {
+function OcultarInput() {
     var valor = document.getElementById("selectentrega").value;
     if(valor == 1){
         document.getElementById("selectentrega").setAttribute("name","recibeCrd");
@@ -326,4 +358,14 @@ function swaldatoscrd() {
         document.getElementById("recibe").required = true;
         document.getElementById("inputentrega").hidden = false;
     }
+}
+
+function mostrarImagen(event) {
+    var file = event.target.files[0];
+    var reader = new FileReader();
+        reader.onload = function(event) {
+        var img = document.getElementById('img1');
+        img.src= event.target.result;
     }
+    reader.readAsDataURL(file);
+}

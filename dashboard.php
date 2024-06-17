@@ -91,6 +91,7 @@ include('prcd/qc/qc.php');
     <script src="js/credencialEmpleados.js"></script>
     <script src="js/graficas.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/sueltitos.js"></script>
 
     <style>
 
@@ -175,6 +176,14 @@ include('prcd/qc/qc.php');
     <link href="dashboard.css" rel="stylesheet">
   </head>
   <body onload="estadosSelect(); discapacidadTab(); conteoExpNews();">
+  
+  <?php
+    include("modals/credenciales.php");
+    include("modals/tarjetonesPadron.php");
+    include("modals/editarUser.php");
+    include("modals/tarjetonesTemp.php");
+  ?>
+
   
 <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-3 text-white" style="background-color: #917799;">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light text-center" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>

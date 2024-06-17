@@ -21,7 +21,7 @@ echo '
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1" for="inputGroupSelect01" readonly>Perfil</span>
 
-                        <select class="form-select" id="inputGroupSelect01" value="'.$rowPerfil.'" selected="selected" disabled>
+                        <select class="form-select" id="inputGroupSelect01" value="'.$rowPerfil['perfil'].'" selected="selected" disabled>
 
                         <option value="'.$rowPerfil['id'].'" selected="selected" disabled>'.$rowPerfil['perfil'].'</option>
 

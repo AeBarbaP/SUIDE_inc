@@ -8,7 +8,6 @@ if ($_POST['expediente'] == 0){
 else{
 
 $expediente = $_POST['expediente'];
-header("content-type: image/jpeg");
 
     // Detalles del expediente
     $QueryExpediente = "SELECT * FROM datos_generales WHERE numExpediente LIKE '%$expediente'";
@@ -17,7 +16,7 @@ header("content-type: image/jpeg");
     
     // este es el id de tabla expedientes que nos llevaremos a datos médicos
     
-    if ($filasExpediente>1){
+    if ($filasExpediente>=1){
       
       $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
       // Dirección
@@ -107,8 +106,6 @@ header("content-type: image/jpeg");
       $row_QueryEstado = $resultado_QueryEstado->fetch_assoc();
       $estado2 = $row_QueryEstado['nombreEstado'];
 
-      /* $QueryLocalidad = "SELECT * FROM catlocalidades WHERE claveLocalidad = '$localidad'";      $resultado_QueryLocalidad = $conn->query($QueryLocalidad);
-      $row_QueryLocalidad = $resultado_QueryLocalidad->fetch_assoc(); */
       $localidad2 = $row_sql_expediente['localidad'];
 
       $alergias = $row_QueryDatosMedicos['alergias_cual'];
@@ -123,10 +120,19 @@ header("content-type: image/jpeg");
 
       $fotoBD = $row_sql_expediente['photo'];
       
-      if(isset($fotoBD)){
+      if($fotoBD == "" || $fotoBD == NULL){
+        echo ' <div class="col-md-4">
+          <img id="img1" src="img/no_profile.png" width="100%" style="width:15rem">
+          <div class="input-group">
+            <input id="inputFile1" type="file" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+          </div>';
+      }
+      else{
         echo '
           <div class="col-md-4">
-            <img width="100%" src="fotos_expedientes/'.$fotoBD.'" style="width:15rem">
+            <img width="100%" src="fotos_expedientes/'.$fotoBD.'" style="width:15rem;">';
+      }
+      echo'
           </div>
           <div class="col-md-8">
             <div class="card-body text-start">
@@ -175,8 +181,8 @@ header("content-type: image/jpeg");
           </div>
           
         ';
-      }
-      else {
+      /* } */
+      /* else {
         echo '
         <div class="col-md-4">
           <img id="img1" src="img/no_profile.png" width="100%" style="width:15rem">
@@ -185,44 +191,15 @@ header("content-type: image/jpeg");
           </div>
 
         ';
-      
-
-      /*   if ($filaA == 1){
-          $foto = base64_encode($row_QueryImagen['fotografia']);
-          echo '
-          <div class="col-md-4">';
-          if(isset($foto)){
-            echo'
-            <img width="100%" src="data:image/jpg;base64,'.base64_encode($row_QueryImagen['fotografia']).'" style="width:15rem">';
-          }
-          else {
-            echo'
-            <img id="img1" src="img/no_profile.png" width="100%" style="width:15rem">
-            <div class="input-group">
-              <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-            </div>
-            '; 
-          }
-        }
-        else {
-          $foto = "";
-          echo'
-          <div class="col-md-4">
-            <img id="img1" src="img/no_profile.png" width="100%" style="width:15rem">
-            <div class="input-group">
-              <input id="inputFile1" type="file" oninput="init()" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-            </div>
-            ';
-        } */
-        
-      }
+      } */
       
     }
     else {
     echo'
     <script>
       alert("No se encontró el registro");
-    </script>';
+    </script>
+    ';
     $tipoSangre = "";
     $tipoSangre2 = "";
     
