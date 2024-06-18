@@ -110,7 +110,7 @@ $expediente = $_POST['expediente'];
 
       $alergias = $row_QueryDatosMedicos['alergias_cual'];
       if ($alergias == null || $alergias == '') {
-        $alergias2 = "Sin alergias";
+        $alergias2 = "No reportadas";
         $cadena = 13;
       }      
       else {

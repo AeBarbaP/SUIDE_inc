@@ -80,12 +80,7 @@ function swaldatoscrd() {
         })
     }
 }
-    function swaldatoscrdEmp() {
-    /* var selectAB = document.getElementById("selectentrega").value;
-    var selectVig = document.getElementById("selectvigencia").value;
-    if ((selectAB!=="") && (selectVig!=="")){
-
-        */
+function swaldatoscrdEmp() {
     Swal.fire({
         title: 'Los datos están correctos?',
         showDenyButton: true,
@@ -106,21 +101,8 @@ function swaldatoscrd() {
         } else if (result.isDenied) {
         Swal.fire('Verifica los datos en el padrón!', '', 'info')
         }
-    /* })
-    } else {
-        Swal.fire({
-        title: '<strong>SUIDEV</strong>',
-        imageUrl: 'img/horizontal-justo.png',
-        imageHeight: 120,
-        text: 'Hay un campo vacío',
-        showCloseButton: true,
-        focusConfirm: false,
-        confirmButtonText:
-            '<i class="fa fa-thumbs-up"></i> OK!',
-        confirmButtonAriaLabel: 'OK!',
-    })*/
     })
-    }
+}
 
     function swaldatostrn() {
     Swal.fire({
@@ -369,3 +351,11 @@ function mostrarImagen(event) {
     }
     reader.readAsDataURL(file);
 }
+function myFunction() {
+    var x = document.getElementById("passW");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+} 

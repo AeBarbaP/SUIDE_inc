@@ -135,11 +135,11 @@ header("content-type: image/jpeg");
 //                $alergias3 = $row_QueryDatosAlergias2['nombreAlergia'];
 //            }
 //            else {
-//              $alergias3 = "Sin Alergias.";
+//              $alergias3 = "";
 //            }
     }
     else{
-      $alergias3 = "Sin Alergias.";
+      $alergias3 = "";
       $cadena = 13;
     }
         
@@ -149,7 +149,7 @@ header("content-type: image/jpeg");
 
 
 //      if($IdCatAlergias = 0){
-//          $alergias3 = "Sin alergias";
+//          $alergias3 = "";
 //      }
 //        else{
 //            $QueryDatosAlergias = "SELECT * FROM CatAlergias WHERE clave = '$IdCatAlergias'";
@@ -162,7 +162,7 @@ header("content-type: image/jpeg");
 //                $alergias3 = $row_QueryDatosAlergias['nombreAlergia'];
 //            }
 //            else {
-//              $alergias3 = "Sin Alergias.";
+//              $alergias3 = "";
 //            }
 //        }
      

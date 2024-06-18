@@ -887,7 +887,7 @@ $(document).ready(function() {
             document.getElementById('lugarRehab').required = false;
         }
         if (alergias == 0){
-            var alergiasFull = "Sin alergias";
+            var alergiasFull = "";
         }
         else if (alergias > 0){
             alergias = 1
@@ -895,14 +895,14 @@ $(document).ready(function() {
         }
         if (enfermedadesFull == ""){
             var enfermedades = 0;
-            enfermedadesFull = "Enfermedades no reportadas";
+            enfermedadesFull = "";
         }
         else if (enfermedadesFull != ""){
             var enfermedades = 1;
         }
         if (medicamentosFull == ""){
             var medicamentos = 0;
-            medicamentosFull = "Medicamentos no reportadas";
+            medicamentosFull = "";
         }
         else if (medicamentosFull != ""){
             var medicamentos = 1;
@@ -1078,7 +1078,7 @@ function updateDatosMedicos(){
             document.getElementById('lugarRehab').required = false;
         }
         if (alergias == 0){
-            var alergiasFull = "Sin alergias";
+            var alergiasFull = "";
         }
         else if (alergias > 0){
             alergias = 1
@@ -1086,14 +1086,14 @@ function updateDatosMedicos(){
         }
         if (enfermedadesFull == ""){
             var enfermedades = 0;
-            enfermedadesFull = "Enfermedades no reportadas";
+            enfermedadesFull = "";
         }
         else if (enfermedadesFull != ""){
             var enfermedades = 1;
         }
         if (medicamentosFull == ""){
             var medicamentos = 0;
-            medicamentosFull = "Medicamentos no reportadas";
+            medicamentosFull = "";
         }
         else if (medicamentosFull != ""){
             var medicamentos = 1;

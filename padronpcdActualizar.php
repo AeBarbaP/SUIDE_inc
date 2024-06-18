@@ -2127,6 +2127,8 @@ include('prcd/qc/qc.php');
                       <option value="Sobrino(a)">Sobrino(a)</option>
                       <option value="Abuelo(a)">Abuelo(a)</option>
                       <option value="Primo(a)">Primo(a)</option>
+                      <option value="Nuera">Nuera</option>
+                      <option value="Yerno">Yerno</option>
                       <option value="Otro(a)">Otro(a)</option>
                     </select>
                   </div>
