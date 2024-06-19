@@ -12,6 +12,7 @@ function estadosSelect(){
                 success: function(response)
                 { 
                 $('#estadosList').fadeIn(1000).html(response);
+                $('#estadosList2').fadeIn(1000).html(response);
                 }
             });
     }
