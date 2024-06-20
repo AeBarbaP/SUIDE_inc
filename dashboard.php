@@ -1159,6 +1159,9 @@ $(document).ready(function () {
 <?php
     include("modals/credenciales.php");
     include("modals/tarjetonesPadron.php");
+    include("modals/editarInfoVehiculo.php");
+    include("modals/reemplazarTarjetonP.php");
+    include("modals/imprimirQRtarjeton.php");
     include("modals/editarUser.php");
     include("modals/tarjetonesTemp.php");
   ?>
