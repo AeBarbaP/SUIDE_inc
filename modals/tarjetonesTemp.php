@@ -172,7 +172,7 @@ echo '
                                                     <div class="col-md-12">
                                                         <div class="input-group mb-3">
                                                             <span class="input-group-text" id="basic-addon1">Tipo Discapacidad:</span>
-                                                            <select class="form-select" id="tipoDiscTemp" onchange="discapacidadTab(this.value)" aria-label="Default select example">
+                                                            <select class="form-select" id="tipoDiscTemp" onchange="discapacidadTab2(this.value)" aria-label="Default select example">
                                                                 <option selected>Selecciona...</option>
                                                                 <option value="Física">Física</option>
                                                                 <option value="Intelectual">Intelectual</option>
@@ -182,7 +182,7 @@ echo '
                                                             </select>
                                                             <span class="input-group-text" id="basic-addon1">Discapacidad:</span>
                                                             <!-- <input class="form-control w-25" list="discapacidadList" id="discapacidadTemp" placeholder="Buscar..." > -->
-                                                            <select class="form-select" id="discapacidadList" required>
+                                                            <select class="form-select" id="discapacidadList2" required>
                                                             
                                                             </select>
                                                         </div>
@@ -287,42 +287,43 @@ echo '
                                                         <option value="730" id="twoY" hidden>2 años</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-text mb-2" id="basic-addon4"><a href="#" class="ms-2 link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" data-bs-toggle="modal" data-bs-target="#reemplazarTarjetonTemp" onclick="datosTarjetonT()">Reemplazar tarjetón asignado...</a></div>
-                                                    <label id="textoTarjeton" hidden></label>
-                                                    <div class="col-md-12">
-                                                        <div class="input-group mb-3">
-                                                            <span class="input-group-text">Vehículo extranjero</span>
-                                                            <div class="input-group-text">
-                                                                <input class="form-check-input mt-0" type="checkbox" id="checkAutoST" onchange="autoSeguroTCheck()" value="" aria-label="Checkbox for following text input" disabled>
-                                                            </div>
-                                                            <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroTemp" disabled>
-                                                        </div>  
-                                                    </div>
-                                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                        <button class="btn btn-primary me-md-2" id="agregarVehiculoTempBtn" onclick="vehiculoTempAdd(); limpiarInputsVehiculoTemp()" type="button" disabled><i class="bi bi-plus-lg"></i> Agregar</button>
+                                                <div class="form-text mb-2" id="basic-addon4"><a href="#" class="ms-2 link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" data-bs-toggle="modal" data-bs-target="#reemplazarTarjetonTemp" onclick="datosTarjetonT()">Reemplazar tarjetón asignado...</a>
+                                                </div>
+                                                <label id="textoTarjeton" hidden></label>
+                                                <div class="col-md-12">
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">Vehículo extranjero</span>
+                                                        <div class="input-group-text">
+                                                            <input class="form-check-input mt-0" type="checkbox" id="checkAutoST" onchange="autoSeguroTCheck()" value="" aria-label="Checkbox for following text input" disabled>
+                                                        </div>
+                                                        <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroTemp" disabled>
+                                                    </div>  
+                                                </div>
+                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                    <button class="btn btn-primary me-md-2" id="agregarVehiculoTempBtn" onclick="vehiculoTempAdd(); limpiarInputsVehiculoTemp()" type="button" disabled><i class="bi bi-plus-lg"></i> Agregar</button>
+                                                </div>
+                                                <br>
+                                                <div id = "tarjetonPrestamo">
+                                                    <hr>
+                                                    <div class="table-responsive text-center">
+                                                        <table class="table table-hover">
+                                                            <thead>
+                                                            <tr>
+                                                                <th scope="col">#</th>
+                                                                <th scope="col">Marca</th>
+                                                                <th scope="col">Modelo</th>
+                                                                <th scope="col"># de Placa</th>
+                                                                <th scope="col"># Tarjeton</th>
+                                                                <th scope="col">Editar</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody id="vehiculosTemp">
+                                                        
+                                                            </tbody>
+                                                        </table>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <br>
-                                            <div id = "tarjetonPrestamo">
-                                                <hr>
-                                                <div class="table-responsive text-center">
-                                                    <table class="table table-hover">
-                                                        <thead>
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">Marca</th>
-                                                            <th scope="col">Modelo</th>
-                                                            <th scope="col"># de Placa</th>
-                                                            <th scope="col"># Tarjeton</th>
-                                                            <th scope="col">Editar</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody id="vehiculosTemp">
-                                                    
-                                                        </tbody>
-                                                    </table>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

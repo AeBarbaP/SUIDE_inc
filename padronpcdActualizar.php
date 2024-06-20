@@ -55,47 +55,27 @@
       <title>SUIDEV · Inclusión</title>
 
       <link rel="icon" type="image/png" href="img/inclusion.ico"/>
-      <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-      <link href="dashboard.css" rel="stylesheet">
-      <link href="sidebars.css" rel="stylesheet">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
+      <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
+      <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+      <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script>
+      <script src="sidebars.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+      <link href="dashboard.css" rel="stylesheet">
+      <link href="sidebars.css" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
       <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+      <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
       
-      <script src="sidebars.js"></script>
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-      <script src="script.js"></script>
-      <script src="js/edicionExp.js"></script>
-      <script src="js/editar_guardar.js"></script>
-      <script src="js/validate.js"></script>
-      <script src="js/files_update.js"></script>
-      <script src="js/files.js"></script>
-      <script src="js/estados.js"></script>
-      <script src="js/municipios.js"></script>
-      <script src="js/localidades.js"></script>
-      <script src="js/asentamientos.js"></script>
-      <script src="js/validaciones.js"></script>
-      <script src="js/discapacidades.js"></script>
-      <script src="js/numeroExpediente.js"></script>
-      <script src="js/checkList.js"></script>
-      <script src="js/tarjetones.js"></script>
-      <script src="js/tarjetonesTemp.js"></script>
-      <script src="js/usuarioTemp.js"></script>
-      <script src="js/editarFamRef.js"></script>
-      <script src="js/print.js"></script>
-      <script src="js/guardar.js"></script>
-      <script src="js/credencialEmpleados.js"></script>
-      <script src="js/sueltitos.js"></script>
 
       <audio id="myAudio">
         <source src="beep.mp3" type="audio/mpeg">
@@ -198,7 +178,30 @@
 
     </head>
     <body onload="estadosSelect(); catTipoVialidades(); buscarGrupo(); buscarEnfermedadUpdate();buscarMedicamento(); ">
-    
+
+      <script src="script.js"></script>
+      <script src="js/edicionExp.js"></script>
+      <script src="js/editar_guardar.js"></script>
+      <script src="js/validate.js"></script>
+      <script src="js/files_update.js"></script>
+      <script src="js/files.js"></script>
+      <script src="js/estados.js"></script>
+      <script src="js/municipios.js"></script>
+      <script src="js/localidades.js"></script>
+      <script src="js/asentamientos.js"></script>
+      <script src="js/validaciones.js"></script>
+      <script src="js/discapacidades.js"></script>
+      <script src="js/numeroExpediente.js"></script>
+      <script src="js/checkList.js"></script>
+      <script src="js/tarjetones.js"></script>
+      <script src="js/tarjetonesTemp.js"></script>
+      <script src="js/usuarioTemp.js"></script>
+      <script src="js/editarFamRef.js"></script>
+      <script src="js/print.js"></script>
+      <script src="js/guardar.js"></script>
+      <script src="js/credencialEmpleados.js"></script>
+      <script src="js/sueltitos.js"></script>
+
       <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -287,7 +290,6 @@
           <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="alert text-center" role="alert" style="background-color: #F7D472;">
               <p class="h1 text-light"><strong><i class="bi bi-pencil-square" style="font-style: normal;"> Actualizar Registro</i></strong></p>
-              <!-- <p class="h6 mb-1 text-light" style="font-style:oblique">Sistema Único de Identificación y Verificación</p> -->
             </div>
             <div class="input-group mb-2 mt-2">
               <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
@@ -1169,8 +1171,6 @@
                             <div class="invalid-feedback">
                               * Campo requerido.
                             </div>
-                            <!-- <span class="input-group-text"> ¿De qué tipo? </span>
-                            <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="tipoProtesis" name="datos_usr" placeholder="" disabled> -->
                           </div>
                         </div>
                         <div class="col-sm-4">
@@ -1320,7 +1320,6 @@
                         </div>
                         <br>
                         <div class="d-grid gap-2 mt-3">
-                          <!-- <button class="btn btn-primary" type="submit" id="guardarMedicosbtn">Guardar</button> -->
                           <button class="btn btn-primary" type="button" id="guardarMedicosbtnUpdate" onclick="updateDatosMedicos()">Guardar</button>
                           </form>
                         </div>
@@ -1711,7 +1710,6 @@
                         <!-- dependencia económica -->
                         <br>
                         <div class="d-grid gap-2 mt-3">
-                          <!-- <button class="btn btn-primary" type="submit" id="guardarBTNpadron">Guardar</button> -->
                           <button class="btn btn-primary" type="button" onclick="updateVivienda()" id="guardarBTNVivienda1">Guardar</button>
                         </div>
                       </form>
@@ -1963,8 +1961,6 @@
               </div>
             </div>
 
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-      
           </main>
     
         </div>
@@ -1977,6 +1973,7 @@
         include("modals/editarInfoVehiculo.php");
         include("modals/reemplazarTarjetonP.php");
         include("modals/imprimirQRtarjeton.php");
+        include("modals/tarjetonesTemp.php");
       ?>
 
     </body>

@@ -55,23 +55,23 @@ include('prcd/qc/qc.php');
     <title>SUIDEV · Inclusión</title>
 
     <link rel="icon" type="image/png" href="img/inclusion.ico"/>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link href="sidebars.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
     <script src="js/guardar.js"></script>
     <script src="js/validate.js"></script>
@@ -174,6 +174,7 @@ include('prcd/qc/qc.php');
     
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
+    
   </head>
   <body onload="estadosSelect(); discapacidadTab(); conteoExpNews();">
   
@@ -299,7 +300,6 @@ include('prcd/qc/qc.php');
           <div class="container">
             <div class="row">
               <div class="col-5 my-auto text-center align-middle border-end border-light">
-                <script src="https://cdn.lordicon.com/lordicon.js"></script>
                 <lord-icon
                     src="https://cdn.lordicon.com/wwmtsdzm.json"
                     trigger="hover"
@@ -323,7 +323,6 @@ include('prcd/qc/qc.php');
           <div class="container">
             <div class="row">
               <div class="col-5 my-auto text-center align-middle border-end border-white">
-                <!-- <script src="https://cdn.lordicon.com/lordicon.js"></script> -->
                 <lord-icon
                     src="https://cdn.lordicon.com/uecgmesg.json"
                     trigger="hover"
@@ -347,7 +346,6 @@ include('prcd/qc/qc.php');
           <div class="container">
             <div class="row">
               <div class="col-5 my-auto text-center align-middle border-end border-light">
-                <!-- <script src="https://cdn.lordicon.com/lordicon.js"></script> -->
                 <lord-icon
                     src="https://cdn.lordicon.com/rahouxil.json"
                     trigger="hover"
@@ -371,7 +369,7 @@ include('prcd/qc/qc.php');
           <div class="container">
             <div class="row">
               <div class="col-5 my-auto text-center align-middle border-end border-light">
-                <!-- <script src="https://cdn.lordicon.com/lordicon.js"></script> -->
+                
                 <lord-icon
                     src="https://cdn.lordicon.com/ghhwiltn.json"
                     trigger="hover"
@@ -450,669 +448,9 @@ include('prcd/qc/qc.php');
         </div><!-- modal -->
                 
 
-    <!-- Inicia Modal para generar tarjeton -->
-
-    <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="tarjetongen" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><strong><i class="bi bi-plus"></i> Generar Tarjetón con QR</strong></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="input-group mb-1 mt-2 w-100">
-              <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-              <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2(); desbloquearInputsT(this.value)" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
-            </div><!-- input group -->
-            <br>
-            <div class="container text-center">
-              <div class="card mb-3" style="max-width: 100%;">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body text-start" >
-                      <div id = "tarjeton">
-
-                      </div>
-                      <hr>
-                      <h5 class="mb-3">Datos del vehículo</h5>
-                      <input type="text" id="tipoTarjeton" value="1" hidden>
-                      <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">Marca</span>
-                        <input type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaPerm" disabled>
-                      </div>
-                      <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">Modelo</span>
-                        <input type="text" class="form-control" placeholder="Modelo" id="modeloPerm" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="modelo" aria-describedby="basic-addon1" disabled>
-                        <span class="input-group-text">Año</span>
-                        <input type="text" onkeypress="ValidaSoloNumeros()" class="form-control" placeholder="Año" aria-label="anio" id="annioPerm" disabled>
-                      </div>
-                      <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">No. de Placas</span>
-                        <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-describedby="basic-addon1" id="placasPerm" disabled>
-                        <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" oninput="habilitaBTNadd()" placeholder="# de Serie del vehículo" aria-label="numeroserie" aria-describedby="basic-addon1" id="seriePerm" disabled>
-                      </div>
-                      <div class="input-group mb-1">
-                        <span class="input-group-text" id="basic-addon1">Folio Tarjetón</span>
-                        <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()"  placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPerm" disabled>
-                        <span class="input-group-text" id="basic-addon1">Vigencia</span>
-                        <select class="form-select" id="vigenciaPerm" aria-label="Default select example" disabled>
-                          <option selected>Selecciona...</option>
-                          <option value="730">2 años</option>
-                          <option value="2190">6 años</option>
-                        </select>
-                      </div>
-                      <div class="form-text mb-2" id="basic-addon4"><a href="#" class="ms-2 link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" data-bs-toggle="modal" data-bs-target="#reemplazarTarjeton" onclick="datosTarjeton()">Reemplazar tarjetón asignado...</a></div>
-                      <label id="textoTarjeton" hidden></label>
-                      <div class="col-md-12">
-                        <div class="input-group mb-3">
-                          <span class="input-group-text">Vehículo extranjero</span>
-                          <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" onchange="autoSeguroCheck()" value="" id="checkAutoS" aria-label="Checkbox for following text input">
-                          </div>
-                          <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroInput" disabled>
-                        </div>  
-                      </div>
-                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-primary me-md-2" type="button" id="agregarVehiculoBtn" onclick="vehiculoAdd()" disabled><i class="bi bi-plus-lg"></i> Agregar</button>
-                      </div>
-                      <hr>
-                      <div class="table-responsive text-center">
-                        <table class="table table-hover">
-                          <thead>
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">Marca</th>
-                              <th scope="col">Modelo</th>
-                              <th scope="col"># de Placa</th>
-                              <th scope="col"># Tarjeton</th>
-                              <th scope="col">Editar</th>
-                            </tr>
-                          </thead>
-                          <tbody id="vehiculosTabla">
-                            
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>  
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiaModalTarjeton()">Cerrar</button>
-            <!-- <button type="button" class="btn btn-primary" id="habilitaimprimirtp" onclick="swaldatostrn();limpiaModalTarjeton()" disabled><i class="bi bi-save2"></i> Generar QR</button> -->
-            <button type="button" class="btn btn-primary" id="imprimirt" data-bs-toggle="modal" data-bs-target="#qrShows" onclick="limpiaModalTarjeton()" disabled><i class="bi bi-printer"></i> Imprimir</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Inicia modal para editar información de vehículo en tarjetón de padrón -->
-    
-    <div class="modal fade" id="editarVehiculo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualizar Vehículo</h1>
-            <button type="button" class="btn-close" aria-label="Close" data-bs-toggle="modal" id="closeEditarTarjeton" data-bs-target="#tarjetongen"></button>
-          </div>
-          <div class="modal-body">
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Marca</span>
-              <input type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaPerm2">
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Modelo</span>
-              <input type="text" class="form-control" placeholder="Modelo" id="modeloPerm2" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="modelo" aria-describedby="basic-addon1">
-              <span class="input-group-text">Año</span>
-              <input type="text" onkeypress="ValidaSoloNumeros()" class="form-control" placeholder="Año" aria-label="anio" id="annioPerm2">
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">No. de Placas</span>
-              <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-describedby="basic-addon1" id="placasPerm2">
-              <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-              <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" oninput="habilitaBTNadd()" placeholder="# de Serie del vehículo" aria-label="numeroserie" aria-describedby="basic-addon1" id="seriePerm2">
-            </div>
-            <div class="col-md-12">
-              <div class="input-group mb-3">
-                <span class="input-group-text">Vehículo extranjero</span>
-                <div class="input-group-text">
-                  <input class="form-check-input mt-0" type="checkbox" onchange="autoSeguroCheck()" value="" id="checkAutoS" aria-label="Checkbox for following text input">
-                </div>
-                <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroInput" disabled>
-              </div>  
-              <input type="text" id="folioDTT" hidden>
-              <input type="text" id="idVeT" hidden>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" id="cerrarEditarTarjeton" data-bs-target="#tarjetongen">Cerrar</button>
-            <button type="button" onclick="updateVehiculo()" class="btn btn-primary" id="guardarEditarTarjeton" data-bs-toggle="modal" data-bs-target="#tarjetongen">Guardar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Termina modal para editar información de vehículo en tarjetón de padrón -->
-    
-    <!-- Inicia modal para reemplazar tarjetón de padrón asignado-->
-    
-    <div class="modal fade" id="reemplazarTarjeton" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Reemplazar Tarjetón</h1>
-            <button type="button" class="btn-close" aria-label="Close" data-bs-toggle="modal" data-bs-target="#tarjetongen"></button>
-          </div>
-          <div class="modal-body">
-            <label>Folio Tarjetón:</label>
-            <div class="input-group mt-2">
-              <span class="input-group-text" id="basic-addon1"><i class="bi bi-123 "></i></span>
-              <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPermC">
-            </div>
-            <label class="mt-1">Vigencia:</label>
-            <div class="input-group mt-2">
-              <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar4-range me-2"></i></span>
-              <select class="form-select" id="vigenciaPermC" aria-label="Default select example">
-                <option selected>Selecciona...</option>
-                <option value="730">2 años</option>
-                <option value="2190">6 años</option>
-              </select>
-            </div>
-            <input type="text" id="folioDT" hidden>
-            <input type="text" id="idVe" hidden>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Cerrar</button>
-            <button type="button" onclick="reemplazaTarjeton(); buscarExpediente2()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Guardar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Termina modal para editar folio de tarjetón de padrón asignado -->
-    
-    <!-- Inicia modal para reemplazar tarjetón Temporal asignado-->
-    
-    <div class="modal fade" id="reemplazarTarjetonTemp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Reemplazar Tarjetón</h1>
-            <button type="button" class="btn-close" aria-label="Close" data-bs-toggle="modal" data-bs-target="#tarjetongen"></button>
-          </div>
-          <div class="modal-body">
-            <label>Folio Tarjetón:</label>
-            <div class="input-group mt-2">
-              <span class="input-group-text" id="basic-addon1"><i class="bi bi-123 "></i></span>
-              <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTTempC">
-            </div>
-            <label class="mt-1">Vigencia:</label>
-            <div class="input-group mt-2">
-              <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar4-range me-2"></i></span>
-              <select class="form-select" id="vigenciaTempC" aria-label="Default select example">
-                <option selected>Selecciona...</option>
-                <option value="15">15 días</option>
-                <option value="30">1 mes</option>
-                <option value="61">2 meses</option>
-                <option value="92">3 meses</option>
-                <option value="123">4 meses</option>
-                <option value="154">5 meses</option>
-                <option value="185">6 meses</option>
-              </select>
-            </div>
-            <input type="text" id="folioDT" hidden>
-            <input type="text" id="idVe" hidden>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo">Cerrar</button>
-            <button type="button" onclick="reemplazaTarjeton(); buscarExpediente2()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo">Guardar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Termina modal para editar folio de tarjetón Temporal asignado -->
     
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-    <!-- Inicia modal para imprimir qr -->
-    <div class="modal fade" id="qrShows" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Código QR Tarjetón</h1>
-            <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#tarjetongen" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <strong><div class="text-center" style="font-family: Verdana, Geneva, Tahoma, sans-serif;  font-size:large" id="etiquetaNum">
-              
-            </div></strong>
-            <div class="text-center" id="qrTarjeton">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Cerrar</button>
-            <button type="button" id="etiquetanumbtn"  class="btn btn-primary" onclick="imprimirEtiqueta('etiquetaNum')"><i class="bi bi-printer"></i> # Expediente</button>
-            <button type="button" id="qrTarjetonbtn" class="btn btn-primary" onclick="imprimirSeleccion('qrTarjeton')"><i class="bi bi-printer-fill"></i> Imprimir QR</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Termina modal para imprimir qr -->
-
-
-
-<!-- Inicia impresion modal -->
-
-<script>
-$(document).ready(function () {
-  $('#printButton').on('click', function (event) {
-      if ($('.modal').is(':visible')) {
-          console.log('si');
-          var modalId = $(event.target).closest('.modal').attr('id');
-          $('body').css('visibility', 'hidden');
-          $('button').css('visibility', 'hidden');
-          $('#exampleModalLabel').css('visibility', 'hidden');
-          $("#" + modalId).css('visibility', 'visible');
-          $('#' + modalId).removeClass('modal');
-          window.print();
-          $('body').css('visibility', 'visible');
-          $('button').css('visibility', 'visible');
-          $('#exampleModalLabel').css('visibility', 'visible');
-          $('#' + modalId).addClass('modal');
-      } else {
-          window.print();
-      }
-  })
-});
-</script>
-<!-- Termina impresion modal -->
-
-<!-- Termina Modal para generar tarjeton -->
-
-<!-- Inicia Modal para generar tarjeton de préstamo-->
-
-<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="tarjetonPrestamo" tabindex="-1" aria-labelledby="generatarjeton" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered modal-xl">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel"><strong><i class="bi bi-plus h2"></i> Tarjetón de Préstamo con QR</strong></h5>
-      <button type="button" class="btn-close" id="closeModalPrestamo" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-      <div class="container ">
-      <div class="input-group mb-3">
-            <input type="radio" class="btn-check" onchange="cambiarAtribUSR()" name="options-outlined" id="usuarioSD" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="usuarioSD">Usuario</label>
-            <input type="radio" class="btn-check" onchange="cambiarAtrib()" name="options-outlined" id="oficial" autocomplete="off">
-            <label class="btn btn-outline-primary" for="oficial">Institución</label>
-            <input type="text" class="form-control" oninput="buscarTarjetonTemp(this.value)" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Buscar CURP, RFC o # de Tarjetón..." aria-label="Buscar">
-          </div>
-          <div class="alert alert-warning" role="alert" id="nadaDoor">
-            Ingresa la CURP o RFC para encontrar al beneficiario.
-          </div>
-          <div class="alert alert-primary" role="alert" id="positivoT" hidden>
-            <div class="row">
-              <div class="col-10 align-middle p-1">
-                  <strong># Tarjetón:</strong> <span id="numTarjeton1"></span> | 
-                  <strong>Nombre:</strong> <span id="nombreTarjeto1"></span>&nbsp<span id="apellidoPT1"></span>&nbsp<span id="apellidoMT1"></span>
-              </div>
-              <div class="col-2 text-end">
-                <button class="btn btn-primary btn-sm" id="editarTarjeton" onclick="queryDatosT()">Editar beneficiario</button>
-                <button class="btn btn-danger btn-sm" id="cancelarEditar" onclick="cancelarActualizarT()" hidden>Cancelar edición</button>
-                <button class="btn btn-success btn-sm" id="finalizarEditar" onclick="finActualizarT()" hidden>Finalizar edición</button>
-              </div>
-            </div>
-          </div>
-          <div class="alert alert-danger" role="alert" id="negativoT" hidden>
-            No se encontró el expediente.
-          </div>
-          <input type="text" id="datosCompletosT" hidden>
-          <input type="text" id="datosCompletosCURPT" hidden>
-          <input type="text" id="estadoConsultaT" hidden>
-          <input type="text" id="municipioConsultaT" hidden>
-          <input type="text" id="discapacidadConsultaT" onchange="discapacidadTab(this.value)" hidden>
-          <input type="text" id="tipoDiscapacidadConsultaT" hidden>
-          <!-- inicia body -->
-          <div class="card mb-3" style="max-width: 100%;">
-            <div class="row g-0 align-items-center">
-              <div class="col-md-3">
-                <img src="img/tarjeton.jpg" class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-9">
-                <div class="card-body text-start" id="cardPrestamo">
-                  <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link active" id="usuario-tab" data-bs-toggle="tab" data-bs-target="#usuario-tab-pane" type="button" role="tab" aria-controls="usuario-tab-pane" aria-selected="true">Datos del Usuario</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="medic-tab-temp" data-bs-toggle="tab" data-bs-target="#medic-tab-pane" type="button" role="tab" aria-controls="medic-tab-pane" aria-selected="false">Valoración Médica</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="vehiculoadd-tab" data-bs-toggle="tab" data-bs-target="#vehiculoadd-tab-pane" type="button" role="tab" aria-controls="vehiculoadd-tab-pane" aria-selected="false">Agregar Vehículos</button>
-                    </li>
-                  </ul>
-                  <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="usuario-tab-pane" role="tabpanel" aria-labelledby="usuario-tab" tabindex="0">
-                      <div id = "tarjetonPrestamo">
-                        <h5 class="mb-3 mt-3"><i class="bi bi-person"></i> Datos del Usuario</h5>
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="input-group mb-3">
-                              <span class="input-group-text" id="basic-addon1">Nombre (s)</span>
-                              <input type="text" class="form-control bloqDes" oninput="habilitaBTNsiguiente()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="nombreTemp" onkeyup="javascript:this.value=this.value.toUpperCase()">
-                            </div>  
-                          </div>
-                          <div class="col-md-12" id="apellidosDiv">
-                            <div class="input-group mb-3">
-                              <span class="input-group-text" id="lastname1">Apellido Paterno</span>
-                              <input type="text" class="form-control bloqDes" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apPaterno" onkeyup="javascript:this.value=this.value.toUpperCase()">
-                              <span class="input-group-text" id="lastname2">Apellido Materno</span>
-                              <input type="text" class="form-control bloqDes" placeholder="" aria-label="marca" aria-describedby="basic-addon1" id="apMaterno" onkeyup="javascript:this.value=this.value.toUpperCase()">
-                            </div>  
-                          </div>
-                          <div class="col-md-12">
-                            <div class="input-group mb-3">
-                              <span class="input-group-text" id="spanRFC">CURP</span>
-                              <input type="text" class="form-control w-25 bloqDes" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="" onchange="validarInput2(this);curp2date2(this)" aria-label="" aria-describedby="basic-addon1" id="curpTemp" onkeyup="javascript:this.value=this.value.toUpperCase()">
-                              <span class="input-group-text" id="cveid">Clave INE / Folio ID:</span>
-                              <input type="text" class="form-control bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="idClaveTemp" onkeyup="javascript:this.value=this.value.toUpperCase()">
-                            </div>  
-                          </div>
-                          <div class="col-md-12" id="divEdad">
-                            <div class="input-group mb-3">
-                              <span class="input-group-text" id="spanEdad">Edad</span>
-                              <input type="text" class="form-control bloqDes" onkeypress="ValidaSoloNumeros()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="edadTemp" disabled>
-                              <span class="input-group-text" id="fechaNacT">Fecha de Nacimiento:</span>
-                              <input type="text" class="form-control bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaNacimientoTemp" disabled>
-                              <span class="input-group-text" id="sexoTag">Sexo:</span>
-                              <select class="form-select" id="sexoSel"  placeholder="Selecciona..." aria-label="Default select example">
-                                <option value=Selected>Selecciona</option>
-                                <option value="Mujer">Mujer</option>
-                                <option value="Hombre">Hombre</option>
-                                <option value="Otro">Otro</option>
-                              </select>
-                            </div>  
-                          </div>
-                          <div class="col-md-12">
-                            <div class="input-group mb-3">
-                              <span class="input-group-text" id="basic-addon1">Correo-e:</span>
-                              <input type="text" class="form-control w-25 bloqDes" onkeyup="javascript:this.value=this.value.toLowerCase()" placeholder="" aria-label="" aria-describedby="basic-addon1" id="correoTemp">
-                              <span class="input-group-text" id="basic-addon1">Teléfono:</span>
-                              <input type="text" class="form-control bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="telcelTemp" onkeypress="ValidaSoloNumeros()">
-                            </div>  
-                          </div>
-                          <h5 class="mb-3"><i class="bi bi-house-door"></i> Domicilio</h5>
-                          <div class="col-md-12">
-                            <div class="input-group mb-3">
-                              <span class="input-group-text" id="basic-addon1">Calle:</span>
-                              <input type="text" class="form-control w-25 bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="calleTemp">
-                              <span class="input-group-text" id="basic-addon1">No. Ext.:</span>
-                              <input type="text" class="form-control bloqDes" placeholder="" aria-label="" maxlength="11" aria-describedby="basic-addon1" id="extTemp" >
-                              <span class="input-group-text" id="basic-addon1">No. Int.:</span>
-                              <input type="text" class="form-control bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="intTemp" >
-                            </div>  
-                          </div>
-                          <div class="col-md-12">
-                            <div class="input-group mb-3">
-                              <span class="input-group-text" id="basic-addon1">Colonia:</span>
-                              <input type="text" class="form-control w-25 bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="coloniaTemp">
-                              <span class="input-group-text" id="basic-addon1">C.P.:</span>
-                              <input type="text" class="form-control bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="CPTemp" onkeypress="ValidaSoloNumeros()">
-                            </div>  
-                          </div>
-                          <div class="col-md-12">
-                            <div class="input-group mb-3">
-                              <span class="input-group-text">Estado:</span>
-                              <select class="form-select" id="estadosList" oninput="municipiosSelect(this.value)" placeholder="Selecciona..." aria-label="Default select example">
-                
-                              </select>
-                              <span class="input-group-text" id="basic-addon1">Municipio:</span>
-                              <select class="form-select bloqDes" id="municipiosList" placeholder="Selecciona..." onchange="localidadesSelect(this.value)" required>
-
-                              </select>
-                              <span class="input-group-text" id="basic-addon1">Localidad:</span>
-                              <input class="form-control bloqDes" list="localidadesList" id="localidades" placeholder="Buscar..." onchange="asentamientosSelect(this.value)" required>
-                              <datalist id="localidadesList">
-
-                              </datalist>
-                              <input class="form-control bloqDes" list="asentamientosList" id="asentamiento" placeholder="Buscar..." hidden>
-                              <datalist id="asentamientosList" hidden>
-                                
-                              </datalist>
-                            </div>  
-                          </div>
-                          <div class="row">
-                            <div class="col-4 text-start">
-                              <button class="btn btn-sm btn-light" id="editarUsuarioTempBtn" onclick="updateUsuarioTemp()" type="button" > Editar Información <i class="bi bi-pencil-square"></i></button>
-                            </div>
-                            <div class="col-4">
-                              &nbsp;
-                            </div>
-                            <div class="col-4 text-end">
-                              <button class="btn btn-primary" id="agregarUsuarioTempBtn" onclick="cambiarTabTT()" type="button" disabled> Siguente<i class="bi bi-skip-forward "></i></button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="medic-tab-pane" role="tabpanel" aria-labelledby="medic-tab" tabindex="0">
-                      <div id = "tarjetonPrestamo" >
-                        <input type="text" id="curp_rfc" hidden>
-                        <h5 class="mb-3 mt-3"><i class="bi bi-heart-pulse"></i> Valoración Médica:</h5>
-                        <div class="col-md-12">
-                          <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1">Tipo Discapacidad:</span>
-                            <select class="form-select" id="tipoDiscTemp" onchange="discapacidadTab(this.value)" aria-label="Default select example">
-                              <option selected>Selecciona...</option>
-                              <option value="Física">Física</option>
-                              <option value="Intelectual">Intelectual</option>
-                              <option value="Sensorial">Sensorial</option>
-                              <option value="Múltiple">Múltiple</option>
-                              <option value="Psicosocial">Psicosocial</option>
-                            </select>
-                            <span class="input-group-text" id="basic-addon1">Discapacidad:</span>
-                            <!-- <input class="form-control w-25" list="discapacidadList" id="discapacidadTemp" placeholder="Buscar..." > -->
-                            <select class="form-select" id="discapacidadList" required>
-                            
-                            </select>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="input-group mb-3">
-                              <span class="input-group-text" id="basic-addon1">Grado</i></span>
-                              <select class="form-select" id="gradoDiscTemp" aria-label="Default select example">
-                                <option selected>Selecciona...</option>
-                                <option value="1-Leve">1. Leve</option>
-                                <option value="2-Moderado">2. Moderado</option>
-                                <option value="3-Grave">3. Grave</option>
-                                <option value="4-Severo">4. Severo</option>
-                                <option value="5-Profundo">5. Profundo</option>
-                              </select>
-                              <span class="input-group-text" id="basic-addon1">Descripción Dx:</span>
-                              <input type="text" class="form-control w-25" placeholder="Descripción del diagnóstico" aria-label="" aria-describedby="basic-addon1" id="dxTemp">
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="input-group mb-3">
-                            <span class="input-group-text" id="causaTag">Causa:</span>
-                              <select class="form-select" id="causaSel" onchange="causaDiscOp(this.value)" placeholder="Selecciona..." aria-label="Default select example">
-                                <option value=Selected>Selecciona</option>
-                                <option value="2">Adquirida</option>
-                                <option value="3">Accidente</option>
-                                <option value="4">Enfermedad</option>
-                                <option value="6">Adicción</option>
-                                <option value="7">Otra</option>
-                              </select>
-                              <span class="input-group-text" id="basic-addon1">Especifique:</span>
-                              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="especifiqueD" disabled>
-                              <span class="input-group-text" id="basic-addon1"><i class="bi bi-clock-history"></i> Temporalidad: </span>
-                              <select class="form-select" id="temporalidad">
-                                <option selected>Temporalidad...</option>
-                                <option value="0">0 - 3 meses</option>
-                                <option value="2">4 - 6 meses</option>
-                                <option value="3">7 - 11 meses</option>
-                                <option value="4">12 meses o más</option>
-                              </select>
-                            </div>
-                          </div>  
-                          <div class="col-md-12">
-                            <div class="input-group mb-3">
-                              <span class="input-group-text" id="basic-addon1">Institución:</span>
-                              <input type="text" class="form-control" placeholder="Nombre de la Institución donde se expide la valoración" aria-label="" aria-describedby="basic-addon1" id="institucionTemp">
-                            </div>  
-                          </div>
-                          <div class="col-md-12">
-                            <div class="input-group mb-3">
-                              <span class="input-group-text" id="basic-addon1">Nombre del Médico:</span>
-                              <input type="text" class="form-control w-25" placeholder="Nombre del Médico" aria-label="" aria-describedby="basic-addon1" id="medicoTemp">
-                              <span class="input-group-text" id="basic-addon1"># de Cédula:</span>
-                              <input type="text" class="form-control" placeholder="# de Cédula" aria-label="" aria-describedby="basic-addon1" id="cedulaTemp">
-                            </div>  
-                          </div>
-                          <div class="col-md-8">
-                            <div class="input-group mb-3">
-                              <span class="input-group-text" id="basic-addon1">Fecha de valoración:</span>
-                              <input type="date" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="fechaValTemp">
-                            </div>  
-                          </div>
-                          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-primary me-md-2" id="agregarValoracionTempBtn" onclick="usuarioTempAdd(); deshabilitaBtnDatos()" type="button"><i class="bi bi-plus-lg"></i> Guardar Datos</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="vehiculoadd-tab-pane" role="tabpanel" aria-labelledby="vehiculoadd-tab" tabindex="0">
-                      <h5 class="mb-3 mt-3"><i class="bi bi-car-front-fill"></i> Datos del vehículo</h5>
-                      <div class="col-md-12">
-                        <div class="input-group mb-3">
-                          <input type="text" id="tipoTarjeton" value="Temporal" hidden>
-                          <span class="input-group-text" id="basic-addon1">Marca</span>
-                          <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase()" oninput="habilitaBTNaddTemp()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaTemp" disabled>
-                          <span class="input-group-text" id="basic-addon1">Modelo</span>
-                          <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Modelo" aria-label="modelo" id="modeloTemp" aria-describedby="basic-addon1" disabled>
-                          <span class="input-group-text">Año</span>
-                          <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="Año" aria-label="anio" id="annioTemp" disabled>
-                        </div>
-                      </div>
-                      <div class="col-md-12">
-                        <div class="input-group mb-3">
-                          <span class="input-group-text" id="basic-addon1">No. de Placas</span>
-                          <input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="# de Placas" aria-label="numeroplacas" aria-describedby="basic-addon1" id="placasTemp" disabled>
-                          <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-                          <input type="text" class="form-control w-25" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="# de Serie" aria-label="numeroserie" aria-describedby="basic-addon1" id="serieTemp" disabled>
-                        </div>
-                      </div>
-                      <div class="input-group mb-2">
-                        <span class="input-group-text" id="basic-addon1">Folio Tarjetón</span>
-                        <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()" placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTTemp" disabled>
-                        <span class="input-group-text" id="basic-addon1">Vigencia</span>
-                        <select class="form-select" id="vigenciaTemp" aria-label="Default select example" disabled>
-                          <option selected>Selecciona...</option>
-                          <option value="15">15 días</option>
-                          <option value="30">1 mes</option>
-                          <option value="61">2 meses</option>
-                          <option value="92">3 meses</option>
-                          <option value="123">4 meses</option>
-                          <option value="154">5 meses</option>
-                          <option value="185">6 meses</option>
-                          <option value="730" id="twoY" hidden>2 años</option>
-                        </select>
-                      </div>
-                      <div class="form-text mb-2" id="basic-addon4"><a href="#" class="ms-2 link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" data-bs-toggle="modal" data-bs-target="#reemplazarTarjetonTemp" onclick="datosTarjetonT()">Reemplazar tarjetón asignado...</a></div>
-                        <label id="textoTarjeton" hidden></label>
-                      <div class="col-md-12">
-                        <div class="input-group mb-3">
-                          <span class="input-group-text">Vehículo extranjero</span>
-                          <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" id="checkAutoST" onchange="autoSeguroTCheck()" value="" aria-label="Checkbox for following text input" disabled>
-                          </div>
-                          <input type="text" class="form-control w-25" placeholder="# Registro en AutoSeguro" aria-label="" aria-describedby="basic-addon1" id="AutoSeguroTemp" disabled>
-                        </div>  
-                      </div>
-                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-primary me-md-2" id="agregarVehiculoTempBtn" onclick="vehiculoTempAdd(); limpiarInputsVehiculoTemp()" type="button" disabled><i class="bi bi-plus-lg"></i> Agregar</button>
-                      </div>
-                    </div>
-                  </div>
-                  <br>
-                  <div id = "tarjetonPrestamo">
-                    <hr>
-                    <div class="table-responsive text-center">
-                      <table class="table table-hover">
-                        <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Marca</th>
-                            <th scope="col">Modelo</th>
-                            <th scope="col"># de Placa</th>
-                            <th scope="col"># Tarjeton</th>
-                            <th scope="col">Editar</th>
-                          </tr>
-                        </thead>
-                        <tbody id="vehiculosTemp">
-                          
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>  
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" id="cerrarModalPrestamo" data-bs-dismiss="modal" onclick="limpiaModalTarjetonTemp()">Cerrar</button>
-          <!-- <button type="button" class="btn btn-primary" id="habilitaimprimirtt" onclick="swaldatostrn()" disabled><i class="bi bi-save2"></i> Generar QR</button> -->
-          <button type="button" class="btn btn-primary" id="imprimirtt" data-bs-toggle="modal" data-bs-target="#qrShowsT" onclick="limpiaModalTarjetonTemp()" disabled><i class="bi bi-printer"></i> Imprimir</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-      
-<!-- Inicia modal para imprimir qr -->
-<div class="modal fade" id="qrShowsT" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Código QR Tarjetón</h1>
-        <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo" onclick="cambiarTabTTFin()" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <strong><div class="text-center" style="font-family: Verdana, Geneva, Tahoma, sans-serif;  font-size:large" id="etiquetaNumTemp">
-          
-        </div></strong>
-        <div class="text-center" id="qrTarjetonTemp">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo" onclick="finActualizarT()">Cerrar</button>
-        <button type="button" id="etiquetanumbtnT"  class="btn btn-primary" onclick="imprimirEtiqueta('etiquetaNumTemp')"><i class="bi bi-printer"></i> Etiqueta</button>
-        <button type="button" id="qrTarjetonTbtn" class="btn btn-primary" onclick="imprimirSeleccion('qrTarjetonTemp')"><i class="bi bi-printer-fill"></i> Imprimir QR</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-      <!-- Termina modal para imprimir qr -->
-
-
-
-<!-- Inicia impresion modal -->
-
-<!-- Termina impresion modal -->
-
-
-
-      <!-- Termina Modal para generar tarjeton de préstamo-->
 
       <!-- Inicia Modal para generar credencial empleados -->
         <div class="modal fade" id="credencialEmpleados" tabindex="-1" aria-labelledby="generacredencialempleados" aria-hidden="true">
@@ -1158,11 +496,11 @@ $(document).ready(function () {
 
 <?php
     include("modals/credenciales.php");
+    include("modals/editarUser.php");
     include("modals/tarjetonesPadron.php");
     include("modals/editarInfoVehiculo.php");
     include("modals/reemplazarTarjetonP.php");
     include("modals/imprimirQRtarjeton.php");
-    include("modals/editarUser.php");
     include("modals/tarjetonesTemp.php");
   ?>
 
@@ -1221,88 +559,4 @@ $(document).ready(function () {
           
 
             <!-- Termina modal para cortar imagen -->
-
-<!-- Inicia Modal editar-->
-
-
-<div class="modal fade" id="editarUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-person-plus"></i> Editar Usuario</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form action="prcd/actualizaruseractivo.php" method="POST"><!--form-->
-                  <input name="id" value="<?php echo $id?>" hidden>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
-                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" value="<?php echo $nombre?>" aria-describedby="basic-addon1" name="nombre" required>
-                  </div>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-workspace"></i></span>
-                    <input type="text" class="form-control" placeholder="Usuario" aria-label="usuario" value="<?php echo $usuario?>" aria-describedby="basic-addon1" readonly>
-                  </div>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1" for="inputGroupSelect01" readonly>Perfil</span>
-
-                    <select class="form-select" id="inputGroupSelect01" value="<?php echo $rowPerfil;?>" selected="selected" disabled>
-
-                      <option value="<?php echo $rowPerfil['id'];?>" selected="selected" disabled><?php echo $rowPerfil['perfil'];?></option>
-
-                    </select>
-
-                    <?php
-                    echo '
-                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group" disabled>';
-                      echo '
-                      <input type="radio" class="btn-check" value="1" id="btnradio1" 
-                      ';
-                      if($rowStatus['estatus'] ==  1){
-                        echo 'checked="checked"';
-                      }
-                      echo'
-                      disabled>
-                      <label class="btn btn-outline-success" for="btnradio1"><i class="bi bi-check-lg"></i> Activo</label>
-                    
-                      <input type="radio" class="btn-check" value="2" id="btnradio2"  
-                      ';
-                      if($rowStatus['estatus'] == 2){
-                        echo 'checked="checked"';
-                      }
-                      echo'
-                      disabled>
-                      <label class="btn btn-outline-danger" for="btnradio2"><i class="bi bi-x-lg"></i> Inactivo</label>
-                      ';
-                    
-                    echo '
-                    </div>
-                  </div>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-shield-lock-fill"></i></span>
-                    <input type="password" class="form-control" placeholder="Contraseña" aria-label="contraseña" value="' . $rowStatus['pwd'] . '" aria-describedby="basic-addon1" name="pwd" id="passW">
-                  </div>
-                  <input type="checkbox" onclick="myFunction()"> Mostrar Password 
-                  <script>
-                  function myFunction() {
-                    var x = document.getElementById("passW");
-                    if (x.type === "password") {
-                      x.type = "text";
-                    } else {
-                      x.type = "password";
-                    }
-                  } 
-                  </script>
-                  
-            </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancelar</button>
-                <button type="submit" class="btn btn-primary"><i class="bi bi-person-plus"></i> Guardar Cambios</button>
-              </div>
-            </form><!--form-->
-        </div>
-      </div>
-    </div>
-    ';
-  ?>
   

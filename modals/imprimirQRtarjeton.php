@@ -21,7 +21,7 @@ echo '
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#tarjetongen">Cerrar</button>
                     <button type="button" id="etiquetanumbtn"  class="btn btn-primary" onclick="imprimirEtiqueta(\'etiquetaNum\')"><i class="bi bi-printer"></i> # Expediente</button>
                     <button type="button" id="qrTarjetonbtn" class="btn btn-primary" onclick="imprimirSeleccion(\'qrTarjeton\')"><i class="bi bi-printer-fill"></i> Imprimir QR</button>
                 </div>

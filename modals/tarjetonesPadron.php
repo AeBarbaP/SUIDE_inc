@@ -105,6 +105,4 @@ echo '
 <!-- Termina Modal para generar tarjeton -->
 ';
 
-
-
 ?>

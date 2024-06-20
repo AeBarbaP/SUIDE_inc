@@ -11,11 +11,11 @@ function usuarioTempAdd(){
     var intTemp = document.getElementById('intTemp').value;
     var coloniaTemp = document.getElementById('coloniaTemp').value;
     var CPTemp = document.getElementById('CPTemp').value;
-    var estadoTemp = document.getElementById('estadosList').value;
-    var municipioTemp = document.getElementById('municipiosList').value;
+    var estadoTemp = document.getElementById('estadosList2').value;
+    var municipioTemp = document.getElementById('municipiosList3').value;
     var localidadTemp = document.getElementById('localidades').value;
     var tipoDiscTemp = document.getElementById('tipoDiscTemp').value;
-    var discapacidadTemp = document.getElementById('discapacidadList').value;
+    var discapacidadTemp = document.getElementById('discapacidadList2').value;
     var gradoDiscTemp = document.getElementById('gradoDiscTemp').value;
     var dxTemp = document.getElementById('dxTemp').value;
     var temporalidad = document.getElementById('temporalidad').value;

@@ -97,14 +97,14 @@ function codigoQR2(concatenado){
 }
 
 function mostrarTablaVehiculosTemp(){
-    var curpTarjeton = document.getElementById('curpTemp').value;
+    var curpPaseada = document.getElementById('curpTemp').value;
 
     $.ajax({
         type: "POST",
         url: 'query/queryTablaTarjetones.php',
         dataType:'html',
         data: {
-            curpTarjeton:curpTarjeton,
+            curpPaseada:curpPaseada,
         },
         success: function(data){
             $('#vehiculosTemp').fadeIn(1000).html(data);
