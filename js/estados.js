@@ -11,8 +11,8 @@ function estadosSelect(){
             cache: false,
                 success: function(response)
                 { 
-                $('#estadosList').fadeIn(1000).html(response);
-                $('#estadosList2').fadeIn(1000).html(response);
+                    $('#estadosList').fadeIn(1000).html(response);
+                    $('#estadosList2').fadeIn(1000).html(response);
                 }
             });
     }

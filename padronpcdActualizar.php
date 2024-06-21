@@ -109,6 +109,15 @@
             font-size: 3.5rem;
           }
         }
+
+        #qrTarjetonTemp img{
+          display: none;
+          margin: auto;
+        }
+        #qrTarjeton img{
+          display: none;
+          margin: auto;
+        }
       
         div.editable {
           width: 300px;
@@ -277,7 +286,7 @@
                       </ul>
                       <li class="border-top my-3"></li>
                       <li class="ms-2 mb-1">
-                      <span class="d-inline-flex"><a href="" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
+                      <span class="d-inline-flex"><a href="prcd/sort.php" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
                       Cerrar Sesión
                       </a></span></li>
                       <li class="mb-1"> </li>
@@ -869,47 +878,47 @@
                             </div>
                           </div>
                         </div>
-                      </div><!-- /.row -->
-                      
-                      <div class="row">
-                        <label class="mt-2">Cambiar Estatus de Expediente:</label>
-                        <div class="col-sm-2">
-                          <label for="basic-url" class="form-label"> </label>
-                          <div class="mb-3">
-                            <div class="input-group">
-                              <div class="form-check form-check-inline mt-2">
-                                <input class="form-check-input" type="radio" onclick="estatusOp(this.value)" name="estatus" id="estatusSi" value="1" required>
-                                <label class="form-check-label" for="inlineRadio1">Sí</label>
-                              </div>
-                              <div class="form-check form-check-inline mt-2">
-                                <input class="form-check-input" type="radio" onclick="estatusOp(this.value)" name="estatus" id="estatusNo" value="0">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
-                                <div class="invalid-feedback">
-                                  * Campo requerido.
+                        <div class="row">
+                          <label class="mt-2">Cambiar Estatus de Expediente:</label>
+                          <div class="col-sm-2">
+                            <label for="basic-url" class="form-label"> </label>
+                            <div class="mb-2">
+                              <div class="input-group">
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" onclick="estatusOp(this.value)" name="estatus" id="estatusSi" value="1" required>
+                                  <label class="form-check-label" for="inlineRadio1">Sí</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" onclick="estatusOp(this.value)" name="estatus" id="estatusNo" value="0">
+                                  <label class="form-check-label" for="inlineRadio2">No</label>
+                                  <div class="invalid-feedback">
+                                    * Campo requerido.
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="col-sm-6" id="estatusDiv" hidden>
-                          <div class="mb-3">
-                            <label for="basic-url" class="form-label"></label>
-                            <select class="form-select" id="estatus">
-                              <option value="" >Selecciona...</option>
-                              <!-- <option value="1">Creado (Activo)</option> -->
-                              <option value="1" selected>Creado</option>
-                              <option value="2">Inactivo (Finado)</option>
-                            </select>
+                          <div class="col-sm-6" id="estatusDiv" hidden>
+                            <div class="mb-3">
+                              <label for="basic-url" class="form-label"></label>
+                              <select class="form-select" id="estatus">
+                                <option value="" >Selecciona...</option>
+                                <!-- <option value="1">Creado (Activo)</option> -->
+                                <option value="1" selected>Creado</option>
+                                <option value="2">Inactivo (Finado)</option>
+                              </select>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <br>
-                      <div class="d-grid gap-2 mt-3">
-                        <!-- <button class="btn btn-primary" type="submit" id="btnGuardarGeneral">Guardar</button> -->
-                        <button class="btn btn-primary" type="button" id="btnGuardarGeneralUpdate" onclick="updateGeneralesForm()">Guardar</button>
-                        </form>
-                      </div>
+                        <br>
+                        <div class="d-grid gap-2 mt-3">
+                          <!-- <button class="btn btn-primary" type="submit" id="btnGuardarGeneral">Guardar</button> -->
+                          <button class="btn btn-primary" type="button" id="btnGuardarGeneralUpdate" onclick="updateGeneralesForm()">Guardar</button>
+                          </form>
+                        </div>
+                      </div><!-- /.row -->
                     </div> <!-- div de tabpane generales -->
+                      
                     <!-- </div> --> <!-- div de tab-content comentado para revisión -->
 
                     <!-- fin nuevo nav generales  -->
@@ -1968,12 +1977,17 @@
 
       <?php
         include("modals/credenciales.php");
-        include("modals/editarUser.php");
-        include("modals/tarjetonesPadron.php");
         include("modals/editarInfoVehiculo.php");
-        include("modals/reemplazarTarjetonP.php");
+        include("modals/editarUser.php");
+        include("modals/familiaresModals.php");
         include("modals/imprimirQRtarjeton.php");
+        include("modals/reemplazarTarjetonP.php");
+        include("modals/referenciasModals.php");
+        include("modals/solicitudes.php");
+        include("modals/tarjetonesPadron.php");
         include("modals/tarjetonesTemp.php");
+        include("modals/tarjetonExpedienteNuevo.php");
+        include("modals/uploadDocsModals.php");
       ?>
 
     </body>

@@ -255,7 +255,7 @@ include('prcd/qc/qc.php');
               </ul>
               <li class="border-top my-3"></li>
               <li class="ms-2 mb-1">
-              <span class="d-inline-flex"><a href="" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
+              <span class="d-inline-flex"><a href="prcd/sort.php" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
               Cerrar Sesión
               </a></span>
           </li>

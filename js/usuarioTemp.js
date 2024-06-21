@@ -75,7 +75,7 @@ function usuarioTempAdd(){
                 document.getElementById('imprimirtt').disabled = false;
                 document.getElementById('cancelarEditar').hidden = false;
                 document.getElementById('finalizarEditar').hidden = true; 
-                alert("Datos del vehículo agregados");             
+                alert("Datos de Usuario agregados con éxito");             
             } else if (verificador == 0){
                 alert('no muestra tabla');
             }
@@ -279,7 +279,6 @@ function usuarioTempUpdate(){
                     showConfirmButton: false,
                     timer: 1000
                 });
-                cambiarTabTTV();
                 habilitaDatosVehiculos(); 
                 mostrarTablaVehiculosTemp();
             } else if (verificador == 0){
@@ -296,7 +295,6 @@ function usuarioTempUpdate(){
 }
 
 function finActualizarT(){
-    window.location.href="dashboard.php";
     limpiaModalTarjetonTemp();
     cambiarTabTTFin();
     document.getElementById('nadaDoor').hidden = false;
@@ -308,4 +306,5 @@ function finActualizarT(){
     document.getElementById('cerrarModalPrestamo').setAttribute('data-bs-dismiss','modal');
     document.getElementById('cerrarModalPrestamo').removeAttribute('onclick','');
     document.getElementById('cerrarModalPrestamo').setAttribute('onclick','limpiaModalTarjetonTemp()');
+    window.location.reload();
 }

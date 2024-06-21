@@ -359,11 +359,13 @@ function queryDatosT(){
             document.getElementById('intTemp').value = no_int;
             document.getElementById('coloniaTemp').value = colonia;
             document.getElementById('CPTemp').value = cp;
-            document.getElementById('estadosList').value = estado;
-            document.getElementById('municipiosList').value = municipio;
+            document.getElementById('estadosList2').value = estado;
+            municipiosSelect3(estado);
+            document.getElementById('municipiosList3').value = municipio;
             document.getElementById('localidades').value = localidad;
             document.getElementById('tipoDiscTemp').value = tipo_discapacidad;
-            document.getElementById('discapacidadList').value = discapacidad;
+            discapacidadTab2(tipo_discapacidad);
+            document.getElementById('discapacidadList2').value = discapacidad;
             document.getElementById('gradoDiscTemp').value = grado_discapacidad;
             document.getElementById('dxTemp').value = descripcionDiscapacidad;
             document.getElementById('causaSel').value = causa;

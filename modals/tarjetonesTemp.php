@@ -115,7 +115,7 @@ echo '
                                                         <div class="col-md-12">
                                                             <div class="input-group mb-3">
                                                                 <span class="input-group-text" id="basic-addon1">Calle:</span>
-                                                                <input type="text" class="form-control w-25 bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="calleTemp">
+                                                                <input type="text" class="form-control w-25 bloqDes" placeholder="" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="" aria-describedby="basic-addon1" id="calleTemp">
                                                                 <span class="input-group-text" id="basic-addon1">No. Ext.:</span>
                                                                 <input type="text" class="form-control bloqDes" placeholder="" aria-label="" maxlength="11" aria-describedby="basic-addon1" id="extTemp" >
                                                                 <span class="input-group-text" id="basic-addon1">No. Int.:</span>
@@ -125,7 +125,7 @@ echo '
                                                         <div class="col-md-12">
                                                             <div class="input-group mb-3">
                                                                 <span class="input-group-text" id="basic-addon1">Colonia:</span>
-                                                                <input type="text" class="form-control w-25 bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="coloniaTemp">
+                                                                <input type="text" class="form-control w-25 bloqDes" placeholder="" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="" aria-describedby="basic-addon1" id="coloniaTemp">
                                                                 <span class="input-group-text" id="basic-addon1">C.P.:</span>
                                                                 <input type="text" class="form-control bloqDes" placeholder="" aria-label="" aria-describedby="basic-addon1" id="CPTemp" onkeypress="ValidaSoloNumeros()">
                                                             </div>  
@@ -141,7 +141,7 @@ echo '
 
                                                                 </select>
                                                                 <span class="input-group-text" id="basic-addon1">Localidad:</span>
-                                                                <input class="form-control bloqDes" list="localidadesList" id="localidades" placeholder="Buscar..." onchange="asentamientosSelect(this.value)" required>
+                                                                <input class="form-control bloqDes" list="localidadesList" id="localidades" placeholder="Buscar..." onkeyup="javascript:this.value=this.value.toUpperCase()" onchange="asentamientosSelect(this.value)" required>
                                                                 <datalist id="localidadesList">
 
                                                                 </datalist>
@@ -198,7 +198,7 @@ echo '
                                                                     <option value="5-Profundo">5. Profundo</option>
                                                                 </select>
                                                                 <span class="input-group-text" id="basic-addon1">Descripción Dx:</span>
-                                                                <input type="text" class="form-control w-25" placeholder="Descripción del diagnóstico" aria-label="" aria-describedby="basic-addon1" id="dxTemp">
+                                                                <input type="text" class="form-control w-25" placeholder="Descripción del diagnóstico" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="" aria-describedby="basic-addon1" id="dxTemp">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
@@ -213,29 +213,27 @@ echo '
                                                                     <option value="7">Otra</option>
                                                                 </select>
                                                                 <span class="input-group-text" id="basic-addon1">Especifique:</span>
-                                                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" id="especifiqueD" disabled>
-                                                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-clock-history"></i> Temporalidad: </span>
-                                                                <select class="form-select" id="temporalidad">
-                                                                    <option selected>Temporalidad...</option>
-                                                                    <option value="0">0 - 3 meses</option>
-                                                                    <option value="2">4 - 6 meses</option>
-                                                                    <option value="3">7 - 11 meses</option>
-                                                                    <option value="4">12 meses o más</option>
-                                                                </select>
+                                                                <input type="text" class="form-control" placeholder="" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="" aria-describedby="basic-addon1" id="especifiqueD" disabled>
                                                             </div>
                                                         </div>  
+                                                        <div class="col-md-8">
+                                                            <div class="input-group mb-3">
+                                                                <span class="input-group-text" id="basic-addon1"> Fecha en que la adquirió: </span>
+                                                                <input type="date" class="form-control" placeholder="" id="temporalidad">
+                                                            </div>  
+                                                        </div>
                                                         <div class="col-md-12">
                                                             <div class="input-group mb-3">
                                                                 <span class="input-group-text" id="basic-addon1">Institución:</span>
-                                                                <input type="text" class="form-control" placeholder="Nombre de la Institución donde se expide la valoración" aria-label="" aria-describedby="basic-addon1" id="institucionTemp">
+                                                                <input type="text" class="form-control" placeholder="Nombre de la Institución donde se expide la valoración" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="" aria-describedby="basic-addon1" id="institucionTemp">
                                                             </div>  
                                                         </div>
                                                         <div class="col-md-12">
                                                             <div class="input-group mb-3">
                                                                 <span class="input-group-text" id="basic-addon1">Nombre del Médico:</span>
-                                                                <input type="text" class="form-control w-25" placeholder="Nombre del Médico" aria-label="" aria-describedby="basic-addon1" id="medicoTemp">
+                                                                <input type="text" class="form-control w-25" placeholder="Nombre del Médico" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="" aria-describedby="basic-addon1" id="medicoTemp">
                                                                 <span class="input-group-text" id="basic-addon1"># de Cédula:</span>
-                                                                <input type="text" class="form-control" placeholder="# de Cédula" aria-label="" aria-describedby="basic-addon1" id="cedulaTemp">
+                                                                <input type="text" class="form-control" placeholder="# de Cédula" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="" aria-describedby="basic-addon1" id="cedulaTemp">
                                                             </div>  
                                                         </div>
                                                         <div class="col-md-8">

@@ -306,7 +306,7 @@ function buscarExpediente3(){
         cache: false,
             success: function(data) {
             document.getElementById('tarjeton').hidden = false;
-            document.getElementById('searchDBInclusion2').hidden = true;
+            //document.getElementById('searchDBInclusion2').hidden = true;
             document.getElementById('modeloPerm').disabled = false;
             document.getElementById('marcaPerm').disabled = false;
             document.getElementById('annioPerm').disabled = false;

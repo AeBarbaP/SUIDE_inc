@@ -138,11 +138,11 @@ echo '
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="borrarSolicitud();limpiarModalSolicitud()">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="btnlistaEspera" onclick="swalListaEspera()" disabled>Agregar Solicitud</button>
-                <button type="button" class="btn btn-success" id="btnEntregaApoyo" onclick="swalEntrega()" disabled>Entregar</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="borrarSolicitud();limpiarModalSolicitud()">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnlistaEspera" onclick="swalListaEspera()" disabled>Agregar Solicitud</button>
+                    <button type="button" class="btn btn-success" id="btnEntregaApoyo" onclick="swalEntrega()" disabled>Entregar</button>
+                </div>
             </div>
         </div>
     </div>
@@ -212,6 +212,29 @@ echo '
     </div>
 </div>
 <!-- Termina Modal para editar solicitud -->
+
+<!-- Modal para agregar descripcion -->
+<div class="modal fade" id="descripcionModal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Especifique...</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label> Descripción del apoyo solicitado:</label>
+                <input type="text" class="form-control" id="descripcionInput" name="alergiaInput" value="" placeholder="">
+                <!-- <div class="input-group">
+                </div> -->
+            </div>
+            <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> -->
+                <button type="button" class="btn btn-primary" onclick="refresh()" data-bs-target="#solicitudAdd" data-bs-toggle="modal">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Termina modal para agregar descripcion -->
 
 ';
 

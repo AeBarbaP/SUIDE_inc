@@ -743,13 +743,13 @@ function updateGeneralesForm(){
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    document.getElementById('img1').hidden = true;
-                    var qrcode = new QRCode(document.getElementById("imgQR"), {
+                    /* document.getElementById('img1').hidden = true; */
+                    /* var qrcode = new QRCode(document.getElementById("imgQR"), {
                         text: curpSaved,
                         width: 250,
                         height: 250,
                         correctLevel: QRCode.CorrectLevel.H
-                    });
+                    } */
                     
                     cambiarTab();
                     document.getElementById('nav-medicos-tab').disabled = false;
