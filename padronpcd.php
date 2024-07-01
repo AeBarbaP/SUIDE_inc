@@ -1523,7 +1523,7 @@ include('prcd/qc/qc.php');
                       <div class="col-sm-12 col-md-12">
                         <label for="basic-url" class="form-label mt-3"><i class="bi bi-house"></i> Electrodomésticos</label>
                         <div class="input-group">
-                        <div class="form-check mt-3">
+                          <div class="form-check mt-3">
                             <input class="form-check-input" type="checkbox" onclick="electrodomesticos();electroCheck()" value="" id="checkAllElectro">
                             <label class="form-check-label" for="checkElectro">
                               Selecciona todo

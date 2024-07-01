@@ -1409,12 +1409,7 @@ function removeB2(val2) {
         console.log("Nada");
         document.getElementById(val2).remove();
     }
-    //remover al momento de programar guardar
-    /* const paragraphs = document.querySelectorAll('[class="valorEFull"]');
-    paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
-    numeroB = numeroB.slice(0, numeroB.length - 2);
-    console.log(numeroB);
-    document.getElementById('numeroB').value = numeroB; */
+
 }
 
 function removeC(val3) {
@@ -1431,12 +1426,7 @@ function removeC(val3) {
         console.log("Nada");
         document.getElementById(val3).remove();
     }
-    //remover al momento de programar guardar
-    /* const paragraphs = document.querySelectorAll('[class="valorEFull"]');
-    paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
-    numeroB = numeroB.slice(0, numeroB.length - 2);
-    console.log(numeroB);
-    document.getElementById('numeroB').value = numeroB; */
+
 }
 
 function removeG(val5) {

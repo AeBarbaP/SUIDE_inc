@@ -6,7 +6,7 @@ function tablaPCDFull(){
         dataType: "html",
         cache: false,
         success: function(response) { 
-            $('#myTablePCD').fadeIn(1000).html(response);
+            $('#myTablePCD').html(response);
         }
     });
 }

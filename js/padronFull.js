@@ -103,8 +103,8 @@ function filtroPadronFull(){
             }
         });
     }
-    else{
-        flag = 7;
+    else {
+        /* flag = 7;
         $.ajax({
             type:"POST",
             url:"query/queryPadronFullFiltro.php",
@@ -119,7 +119,8 @@ function filtroPadronFull(){
             {
                 $('#myTablePCD').fadeIn(1000).html(data);
             }
-        });
+        }); */
+        tablaPCDFull();
     }
 }
 /* 

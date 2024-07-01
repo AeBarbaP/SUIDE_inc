@@ -42,7 +42,7 @@ elseif ($flag == 5){
 elseif ($flag == 6){
     $discapacidad  = $_POST['discapacidad'];
 
-    $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente, datos_medicos.tipo_discapacidad AS tipo_discapacidad WHERE datos_medicos.tipo_discapacidad = '$discapacidad'";
+    $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_medicos.tipo_discapacidad = '$discapacidad'";
 }
 
 elseif ($flag == 7){
@@ -51,6 +51,13 @@ elseif ($flag == 7){
     $id = $_POST['cadenaTexto'];
 
     $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE (datos_generales.municipio = '$municipio' AND datos_medicos.tipo_discapacidad = '$discapacidad') AND (datos_generales.numExpediente LIKE '%$id' OR datos_generales.curp LIKE '$id%' OR datos_generales.nombre LIKE '$id%' OR datos_generales.apellido_p LIKE '$id%' OR datos_generales.apellido_m LIKE '$id%')";
+}
+else{
+    echo '
+    <script>
+        tablaPCDFull();
+    </script>
+    ';
 }
 
 $resultadoVariable = $conn->query($var);
