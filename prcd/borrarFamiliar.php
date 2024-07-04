@@ -16,10 +16,12 @@ if ($resultado_sql_delete){
     $sqlInsertUsr = "INSERT INTO log_registro(
         usr,
         tipo_dato,
+        expediente,
         fecha)
         VALUES(
         '$usr',
         '$tipo_dato',
+        '$id',
         '$fecha_registro')";
     $resultadoUsr = $conn->query($sqlInsertUsr);
     echo json_encode(array(

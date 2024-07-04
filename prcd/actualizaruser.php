@@ -31,10 +31,12 @@ $fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
         $sqlInsertUsr = "INSERT INTO log_registro(
             usr,
             tipo_dato,
+            expediente,
             fecha)
             VALUES(
             '$usr',
             '$tipo_dato',
+            '$usr',
             '$fecha_registro')";
         $resultadoUsr = $conn->query($sqlInsertUsr);
         echo "<script type=\"text/javascript\">

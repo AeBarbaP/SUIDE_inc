@@ -9,6 +9,7 @@
 
     $fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
     $curp = $_POST['curp_exp'];
+    $expediente = $_POST['expediente'];
     $folioSolicitud = $_POST['folioSolicitud'];
     $tipo = $_POST['tipo'];
     $estatus = 1;
@@ -58,10 +59,12 @@
         $sqlInsertUsr = "INSERT INTO log_registro(
             usr,
             tipo_dato,
+            expediente,
             fecha)
             VALUES(
             '$usr',
             '$tipo_dato',
+            '$curp',
             '$fecha_registro')";
         $resultadoUsr = $conn->query($sqlInsertUsr);
         echo json_encode(array(
