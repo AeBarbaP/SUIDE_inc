@@ -42,7 +42,7 @@ function generarCodigo($longitud) {
     $max = strlen($pattern)-1;
     for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
     return $key;
-    }
+}
 
     $sqlinsertUsr= "INSERT INTO users(username,pwd,perfil,nombre,fecha_creacion,estatus) VALUES('$username','$pwd','$perfil','$nombre','$fecha_creacion','$estatus')";
     $resultadoUsr= $conn->query($sqlinsertUsr);
