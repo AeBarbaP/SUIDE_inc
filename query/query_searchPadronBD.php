@@ -20,9 +20,7 @@ $expediente = $_POST['expediente'];
       
       $row_sql_expediente = $resultado_QueryExpediente->fetch_assoc();
       // Dirección
-      //$QueryDireccion = "SELECT * FROM DetalleExpedientes WHERE idExpediente = '$idExpediente'";
-      //$resultado_QueryDireccion = $conn2->query($QueryDireccion);
-      //$row_QueryDireccion = $resultado_QueryDireccion->fetch_assoc();
+      
       $curp = $row_sql_expediente['curp'];
       
       //Datos Médicos
@@ -33,7 +31,6 @@ $expediente = $_POST['expediente'];
 
       $tipoSangre = $row_QueryDatosMedicos['tipo_sangre'];
       // este nos los vamos a llevar a alegias
-      //$idDatosMedicos = $row_QueryDatosMedicos['id'];
 
       $QueryDatosMedicos2 = "SELECT * FROM tiposangre WHERE id = '$tipoSangre'";
       $resultado_QueryDatosMedicos2 = $conn->query($QueryDatosMedicos2);
@@ -49,20 +46,8 @@ $expediente = $_POST['expediente'];
       
       $discapacidad1 = $row_QueryDatosMedicos['discapacidad'];
       $discapacidad2 = preg_replace('/[0-9\-]/', '', $discapacidad1); 
-      //$discapacidad2 = explode("-",$discapacidadE);
-      //Discapacidad
-    
-      
-      /* $queryVialidad = "SELECT * FROM cattipovialidades WHERE id = '$tipoVialidad'";
-      $resultado_QueryVialidades = $conn->query($queryVialidad);
-      $row_QueryVialidad = $resultado_QueryVialidades->fetch_assoc();
 
-      if ($row_QueryVialidad['id'] == 22 || $row_QueryVialidad['id'] == 5){
-        $vialidad = "";
-      }
-      else {
-        $vialidad = $row_QueryVialidad['nombreVialidad'].' ';
-      } */
+      //Discapacidad
 
       $direccion = $tipoVialidad.' '.$row_sql_expediente['domicilio'];
       $numeroCasa = $row_sql_expediente['no_ext'];
@@ -94,7 +79,6 @@ $expediente = $_POST['expediente'];
         $telefonoCel = $telefono;
       }
       
-
       $QueryMunicipio = "SELECT * FROM catmunicipios WHERE claveMunicipio = '$municipio'";
       $resultado_QueryMunicipio = $conn->query($QueryMunicipio);
       $row_QueryMunicipio = $resultado_QueryMunicipio->fetch_assoc();
@@ -181,17 +165,6 @@ $expediente = $_POST['expediente'];
           </div>
           
         ';
-      /* } */
-      /* else {
-        echo '
-        <div class="col-md-4">
-          <img id="img1" src="img/no_profile.png" width="100%" style="width:15rem">
-          <div class="input-group">
-            <input id="inputFile1" type="file" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-          </div>
-
-        ';
-      } */
       
     }
     else {

@@ -3,13 +3,28 @@ function filtroPadronFull(){
     document.getElementById("myTablePCD").innerHTML = "";
     var discapacidad = document.getElementById('tipoDiscapacidadFull').value;
     var municipio = document.getElementById('municipiosList2').value;
-
+    
     if (discapacidad == "" && cadenaTexto !== "" && municipio != ""){
         var flag = 1;
+        var optionExpeiente = document.getElementById('expedienteSearch');
+        var optionNombre = document.getElementById('nombreSearch');
+        var option = "";
+        
+        if (optionExpeiente.checked){
+            option = "1";
+        }
+        else if (optionNombre.checked){
+            option = "2";
+        }
+        else{
+            option = "0";
+        }
+
         $.ajax({
             type:"POST",
             url:"query/queryPadronFullFiltro.php",
             data:{
+                option:option,
                 cadenaTexto:cadenaTexto,
                 municipio:municipio,
                 flag:flag
@@ -23,10 +38,25 @@ function filtroPadronFull(){
     }
     else if (discapacidad == "" && municipio == "" && cadenaTexto != ""){
         var flag = 2;
+        var optionExpeiente = document.getElementById('expedienteSearch');
+        var optionNombre = document.getElementById('nombreSearch');
+        var option = "";
+        
+        if (optionExpeiente.checked){
+            option = "1";
+        }
+        else if (optionNombre.checked){
+            option = "2";
+        }
+        else{
+            option = "0";
+        }
+
         $.ajax({
             type:"POST",
             url:"query/queryPadronFullFiltro.php",
             data:{
+                option:option,
                 cadenaTexto:cadenaTexto,
                 flag:flag
             },
@@ -39,10 +69,25 @@ function filtroPadronFull(){
     }
     else if (municipio == "" && discapacidad != "" && cadenaTexto != ""){ 
         flag = 3;
+        var optionExpeiente = document.getElementById('expedienteSearch');
+        var optionNombre = document.getElementById('nombreSearch');
+        var option = "";
+        
+        if (optionExpeiente.checked){
+            option = "1";
+        }
+        else if (optionNombre.checked){
+            option = "2";
+        }
+        else{
+            option = "0";
+        }
+
         $.ajax({
             type:"POST",
             url:"query/queryPadronFullFiltro.php",
             data:{
+                option:option,
                 cadenaTexto:cadenaTexto,
                 discapacidad:discapacidad,
                 flag:flag

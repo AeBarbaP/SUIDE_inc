@@ -6,30 +6,42 @@ $flag = $_POST['flag'];
 
 if ($flag == 2){
     $id = $_POST['cadenaTexto'];
-    //$municipio = $_POST['municipio'];
+    $option = $_POST['option'];
 
-    //$var = "SELECT * FROM datos_generales WHERE numExpediente LIKE '%$id' OR curp LIKE '$id%' OR nombre LIKE '$id%' OR apellido_p LIKE '$id%' OR apellido_m LIKE '$id%' ORDER BY id DESC";
+    if ($option == 1){
 
-    $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_generales.numExpediente LIKE '%$id' OR datos_generales.curp LIKE '$id%' OR datos_generales.nombre LIKE '$id%' OR datos_generales.apellido_p LIKE '$id%' OR datos_generales.apellido_m LIKE '$id%'";
+        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_generales.numExpediente LIKE '%$id'";
+    }
+    else if ($option == 2){
+        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE (datos_generales.nombre LIKE '$id%' OR datos_generales.apellido_p LIKE '$id%' OR datos_generales.apellido_m LIKE '$id%')";
+    }
     
 }
 elseif ($flag == 1){
     $id = $_POST['cadenaTexto'];
     $municipio = $_POST['municipio'];
+    $option = $_POST['option'];
 
-    $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_generales.municipio = '$municipio' AND (datos_generales.numExpediente LIKE '%$id' OR datos_generales.curp LIKE '$id%' OR datos_generales.nombre LIKE '$id%' OR datos_generales.apellido_p LIKE '$id%' OR datos_generales.apellido_m LIKE '$id%')";
+    if ($option == 1){
+        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_generales.municipio = '$municipio' AND datos_generales.numExpediente LIKE '%$id'";
+    }
+    else if ($option == 2){
+        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_generales.municipio = '$municipio' AND (datos_generales.nombre LIKE '$id%' OR datos_generales.apellido_p LIKE '$id%' OR datos_generales.apellido_m LIKE '$id%')";
+    }
+
 }
 elseif ($flag == 3){
     $id = $_POST['cadenaTexto'];
     $discapacidad = $_POST['discapacidad'];
+    $option = $_POST['option'];
 
-    $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_medicos.tipo_discapacidad = '$discapacidad' AND (datos_generales.numExpediente LIKE '%$id' OR datos_generales.curp LIKE '$id%' OR datos_generales.nombre LIKE '$id%' OR datos_generales.apellido_p LIKE '$id%' OR datos_generales.apellido_m LIKE '$id%')";
+    if ($option == 1){
+        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_medicos.tipo_discapacidad = '$discapacidad' AND datos_generales.numExpediente LIKE '%$id'";
+    }
 }
 elseif ($flag == 4){
     $municipio = $_POST['municipio'];
     $discapacidad = $_POST['discapacidad'];
-
-    //$var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE tipo_discapacidad = '$discapacidad' AND municipio = '$municipio%'";
 
     $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_medicos.tipo_discapacidad = '$discapacidad' AND datos_generales.municipio = '$municipio'";
 }
@@ -49,8 +61,14 @@ elseif ($flag == 7){
     $municipio = $_POST["municipio"];
     $discapacidad = $_POST['discapacidad'];
     $id = $_POST['cadenaTexto'];
+    $option = $_POST['option'];
 
-    $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE (datos_generales.municipio = '$municipio' AND datos_medicos.tipo_discapacidad = '$discapacidad') AND (datos_generales.numExpediente LIKE '%$id' OR datos_generales.curp LIKE '$id%' OR datos_generales.nombre LIKE '$id%' OR datos_generales.apellido_p LIKE '$id%' OR datos_generales.apellido_m LIKE '$id%')";
+    if ($option == 1){
+        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE (datos_generales.municipio = '$municipio' AND datos_medicos.tipo_discapacidad = '$discapacidad') AND datos_generales.numExpediente LIKE '%$id'";
+    }
+    else if ($option == 2){
+        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE (datos_generales.municipio = '$municipio' AND datos_medicos.tipo_discapacidad = '$discapacidad') AND (datos_generales.nombre LIKE '$id%' OR datos_generales.apellido_p LIKE '$id%' OR datos_generales.apellido_m LIKE '$id%')";
+    }
 }
 else{
     echo '

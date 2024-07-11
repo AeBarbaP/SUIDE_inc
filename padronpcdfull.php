@@ -271,13 +271,24 @@ include('prcd/qc/qc.php');
         <p class="h3">Padrón de Personas con Discapacidad</p>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-2 mt-2">
+          <h4>Filtro:</h4>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="expedienteSearch" onclick="filtroPadronFull()">
+            <label class="form-check-label" for="inlineRadio1">Expediente</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="nombreSearch" onclick="filtroPadronFull()">
+            <label class="form-check-label" for="inlineRadio2">Nombre</label>
+          </div>
+        </div>
+        <div class="col-md-5">
           <div class="input-group mb-2 mt-3">
             <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-            <input class="form-control w-50" id="buscarFiltroPadron" oninput="filtroPadronFull(this.value)" placeholder="Buscar...">
+            <input class="form-control w-50" id="buscarFiltroPadron" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Buscar...">
           </div><!-- input group -->
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="input-group mb-2 mt-3">
             <!-- <input class="form-control w-50" id="buscarFiltroPadronFull" oninput="filtroPadronFull(this.value)" placeholder="Buscar..."> -->
             <span class="input-group-text" id="basic-addon1"><i class="bi bi-universal-access"></i></span>
