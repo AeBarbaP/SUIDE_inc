@@ -1,6 +1,6 @@
 
 // VALIDA USUARIO REGISTRADO
- 
+
 $(document).ready(function() {	
     $('#curp').on('blur', function() {
         // $('#result-username2').html('<img src="img/loader.gif" />').fadeOut(1000);
@@ -66,6 +66,24 @@ function curp2date2(curp) {
         console.log(anyo+'-'+(mes+1)+'-'+dia);
         document.getElementById("fechaNacimientoTemp").value = anyo+'-'+(mes+1)+'-'+dia;
 }
+function curp2date3(curp) {
+    var miCurp = curp;
+    var resultado = document.getElementById("edad");
+
+    var m = miCurp.match(/^\w{4}(\w{2})(\w{2})(\w{2})/);  
+    var anyo = parseInt(m[1], 10) + 1900;
+    if (anyo < 1950) anyo += 100;
+        var mes = parseInt(m[2], 10) - 1;
+        var dia = parseInt(m[3], 10);  
+        var fechaNacimiento = new Date(anyo, mes, dia);
+        var edad = calcularEdad(fechaNacimiento);  
+        resultado.classList.add("ok");
+        // resultado.innerText = "Su edad es: " + edad + " años.";
+        document.getElementById("edad").value = edad;
+        //document.getElementById("fechaNacimientoTemp").value = fechaNacimiento;
+        console.log(anyo+'-'+(mes+1)+'-'+dia);
+        document.getElementById("fechaNacimiento").value = anyo+'-'+(mes+1)+'-'+dia;
+}
 
 function calcularEdad(fecha) {
     var hoy = new Date();
@@ -92,6 +110,21 @@ function calcularEdad(fecha) {
         } else {
             alert('CURP No Válido');
             document.getElementById('btnGuardarGeneral').disabled=true;
+
+        }
+    }
+function validarInputUpdate(input) {
+        var curp = input.value.toUpperCase(),
+            resultado = document.getElementById("result-username"),
+            valido = "No válido";
+
+        if (curpValida(curp)) {
+            alert('CURP Válido');
+            document.getElementById('btnGuardarGeneralUpdate').disabled=false;
+
+        } else {
+            alert('CURP No Válido');
+            document.getElementById('btnGuardarGeneralUpdate').disabled=true;
 
         }
     }
@@ -135,6 +168,21 @@ function calcularEdad(fecha) {
 
         }
     }
+    function validarInputCurp(input) {
+        var curp = input.value.toUpperCase();
+            //resultado = document.getElementById("result-username"),
+            //valido = "No válido";
+
+        if (curpValida(curp)) {
+            //alert('CURP Válido');
+            document.getElementById('btnUpdateCURP').disabled=false;
+
+        } else {
+            alert('CURP No Válido');
+            document.getElementById('btnUpdateCURP').disabled=true;
+
+        }
+    }
 
     function curpValida(curp) {
         var re = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0\d|1[0-2])(?:[0-2]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/,
@@ -163,6 +211,7 @@ function calcularEdad(fecha) {
     }
 
 function cortarRFC(curp){
+    document.getElementById('rfcCut').innerHTML = "";
     var rfcCutted = curp.substr(0,10);
     document.getElementById('rfcCut').innerHTML = rfcCutted;
 }
@@ -275,7 +324,7 @@ function cambiarAtribUSR(){
         document.getElementById('divEdad').hidden = false;
         document.getElementById('apellidosDiv').hidden = false;
         document.getElementById('tipoDiscTemp').disabled = false;
-        document.getElementById('discapacidadList').disabled = false;
+        document.getElementById('discapacidadList2').disabled = false;
         document.getElementById('gradoDiscTemp').disabled = false;
         document.getElementById('dxTemp').disabled = false;
         document.getElementById('temporalidad').disabled = false;
@@ -311,7 +360,7 @@ function cambiarAtribUSR(){
         document.getElementById('divEdad').hidden = true;
         document.getElementById('apellidosDiv').hidden = true;
         document.getElementById('tipoDiscTemp').disabled = true;
-        document.getElementById('discapacidadList').disabled = true;
+        document.getElementById('discapacidadList2').disabled = true;
         document.getElementById('gradoDiscTemp').disabled = true;
         document.getElementById('dxTemp').disabled = true;
         document.getElementById('temporalidad').disabled = true;

@@ -17,6 +17,7 @@ $resultadoGenerales = $conn->query($sqlGenerales);
 $rowSqlGenerales = $resultadoGenerales->fetch_assoc();
 
 $estado = $rowSqlGenerales['estado'];
+$expediente = $rowSqlGenerales['numExpediente'];
 
 $sqlEstados = "SELECT * FROM catestados WHERE claveEstado = '$estado'";
 $resultadoEstados = $conn->query($sqlEstados);
@@ -41,7 +42,7 @@ $sqlFam = "SELECT * FROM integracion WHERE curp = '$curp'";
 $resultadoFam = $conn->query($sqlFam);
 $rowSqlFam = $resultadoFam->fetch_assoc();
 
-$sqlRef = "SELECT * FROM referencias WHERE curp = '$curp'";
+$sqlRef = "SELECT * FROM referencias WHERE expediente = '$expediente'";
 $resultadoRef = $conn->query($sqlRef);
 $rowSqlRef = $resultadoRef->fetch_assoc();
 
@@ -2244,7 +2245,7 @@ $pdf->Cell(31,5,utf8_decode('Profesión u Oficio:'),1,0,'C');
 $pdf->Cell(15,5,utf8_decode('Teléfono:'),1,0,'C');
 $pdf->Ln();
 
-$sqlReferencias = "SELECT * FROM referencias WHERE curp = '$curp'";
+$sqlReferencias = "SELECT * FROM referencias WHERE curp = '$curp' AND expediente = '$expediente'";
 $resultadosqlReferencia = $conn->query($sqlReferencias);
 
 while ($rowSqlReferencia = $resultadosqlReferencia->fetch_assoc()){

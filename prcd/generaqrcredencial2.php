@@ -44,7 +44,7 @@ class PDF extends FPDF
 
 		$this->Image('../img/CREDENCIAL_PCD_2021-2027_Frente.jpg','0','0','1024','640','JPG');								
 			//IMAGE (RUTA,X,Y,ANCHO,ALTO,EXTEN)
-		$this->Image("../fotos_expedientes/$foto",'720','240','280','360','JPG');
+		$this->Image("../fotos_expedientes/$foto",'710','240','298','360','JPG');
 		$this->Ln(37);
 		$this->Ln(37);
 		$this->Ln(37);

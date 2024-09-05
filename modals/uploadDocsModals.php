@@ -54,7 +54,7 @@ echo'
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btnModal2" onclick="uploadFile(2)">Subir Archivo</button>
+                <button type="button" class="btn btn-primary" id="btnModal2" onclick="uploadFile(2,2)">Subir Archivo</button>
             </div>
         </div>
     </div>
@@ -82,7 +82,7 @@ echo'
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btnModal3" onclick="uploadFile(3)" >Subir Archivo</button>
+                <button type="button" class="btn btn-primary" id="btnModal3" onclick="uploadFile(3,3)" >Subir Archivo</button>
             </div>
         </div>
     </div>
@@ -110,7 +110,7 @@ echo'
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btnModal4" onclick="uploadFile(4)">Subir Archivo</button>
+                <button type="button" class="btn btn-primary" id="btnModal4" onclick="uploadFile(4,4)">Subir Archivo</button>
             </div>
         </div>
     </div>
@@ -138,7 +138,7 @@ echo'
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btnModal5" onclick="uploadFile(5)">Subir Archivo</button>
+                <button type="button" class="btn btn-primary" id="btnModal5" onclick="uploadFile(5,5)">Subir Archivo</button>
             </div>
         </div>
     </div>
@@ -166,7 +166,7 @@ echo'
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btnModal6" onclick="uploadFile(6)">Subir Archivo</button>
+                <button type="button" class="btn btn-primary" id="btnModal6" onclick="uploadFile(6,6)">Subir Archivo</button>
             </div>
         </div>
     </div>
@@ -194,7 +194,7 @@ echo'
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btnModal7" onclick="uploadFile(7)">Subir Archivo</button>
+                <button type="button" class="btn btn-primary" id="btnModal7" onclick="uploadFile(7,7)">Subir Archivo</button>
             </div>
         </div>
     </div>

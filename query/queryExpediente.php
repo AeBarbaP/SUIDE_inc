@@ -32,7 +32,17 @@ else if(strlen($idExp) == 3){
 
 $numExpediente = 'C-'.$numMpio.$discCve.'-'.$idExp;
 
-$sql = "UPDATE datos_generales SET numExpediente = '$numExpediente', estatus = 4 WHERE id = '$idExp'";
+$sql = "UPDATE datos_generales SET numExpediente = '$numExpediente' WHERE id = '$idExp'";
+$resultadoSql = $conn->query($sql);
+$sql = "UPDATE datos_medicos SET expediente = '$numExpediente' WHERE id = '$idExp'";
+$resultadoSql = $conn->query($sql);
+$sql = "UPDATE vivienda SET expediente = '$numExpediente' WHERE id = '$idExp'";
+$resultadoSql = $conn->query($sql);
+$sql = "UPDATE solicitud SET folio_solicitud = '$numExpediente' WHERE curp = '$curp'";
+$resultadoSql = $conn->query($sql);
+$sql = "UPDATE integracion SET expediente = '$numExpediente' WHERE curp = '$curp'";
+$resultadoSql = $conn->query($sql);
+$sql = "UPDATE referencias SET expediente = '$numExpediente' WHERE curp = '$curp'";
 $resultadoSql = $conn->query($sql);
 /* $rowSql = $resultadoSql->fetch_assoc(); */
 

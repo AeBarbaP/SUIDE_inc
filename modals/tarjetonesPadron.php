@@ -45,7 +45,7 @@ echo '
                                         </div>
                                         <div class="input-group mb-1">
                                             <span class="input-group-text" id="basic-addon1">Folio Tarjetón</span>
-                                            <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()"  placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPerm" disabled>
+                                            <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()"  placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPerm" onblur="validaNumtarjeton()" disabled>
                                             <span class="input-group-text" id="basic-addon1">Vigencia</span>
                                             <select class="form-select" id="vigenciaPerm" aria-label="Default select example" disabled>
                                                 <option selected>Selecciona...</option>

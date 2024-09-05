@@ -13,24 +13,25 @@ function buscarExpediente12(x){
             var texto;
             var success = jsonData.success;
             var estatus = jsonData.estatus;
-            if(estatus == 1 || estatus == "CREADO"){
+            if(estatus == 3 || estatus == "CREADO"){
                 texto = 'Creado (Activo)';
-                document.getElementById('estatus').value = "";
-            }
-            else if(estatus == 2 || estatus == "FINADO"){
-                texto = 'Inactivo (Finado)';
-                document.getElementById('estatus').value = 2;
-            }
-            else if(estatus == 3){
-                texto = 'Inactivo';
                 document.getElementById('estatus').value = 3;
+            }
+            else if(estatus == 4 || estatus == "FINADO"){
+                texto = 'Finado';
+                document.getElementById('estatus').value = 4;
+            }
+            else if(estatus == 5){
+                texto = 'Baja Documental';
+                document.getElementById('estatus').value = 5;
             }
             else{
                 texto = "No tienes estatus";
-                document.getElementById('estatus').value = "";
+                document.getElementById('estatus').value = 0;
             }
 
             if(success == 1){
+		
                 document.getElementById('nada').hidden = true;
                 document.getElementById('positivo').hidden = false;
                 document.getElementById('negativo').hidden = true;
@@ -43,7 +44,7 @@ function buscarExpediente12(x){
                 var municipioQuery = jsonData.estado;
                 var discapacidadQuery = jsonData.tipoDiscapacidad;
 
-                console.log("Discapacidad:",discapacidadQuery);
+                //console.log("Discapacidad:",discapacidadQuery);
                 discapacidadTab(discapacidadQuery);
                 municipiosSelect(municipioQuery);
 
@@ -84,25 +85,26 @@ function queryDatos(){
         }).then((result) => {
             /* Read more about handling dismissals below */
             if (result.dismiss === Swal.DismissReason.timer) {
-                console.log("I was closed by the timer");
+                //console.log("I was closed by the timer");
             }
         }
     );
 
     var expediente = document.getElementById('datosCompletos').value;
-    var curp2 = document.getElementById('datosCompletosCURP').value;
+    /*var curp2 = document.getElementById('datosCompletosCURP').value;*/
 
     $.ajax({
         type: "POST",
         url: 'query/datosCompletos.php',
         dataType:'JSON',
         data: {
-            expediente:expediente,
-            curp2:curp2
+            expediente:expediente
         },
         success: function(data){
+
             var jsonData = JSON.parse(JSON.stringify(data));
             var success = jsonData.success;
+            var id = jsonData.id;
             var genero = jsonData.genero;
             var estudia= jsonData.estudia;
             var trabaja= jsonData.trabaja;
@@ -113,9 +115,9 @@ function queryDatos(){
             var alergias_cual  = jsonData.alergias_cual;
             var enfermedades_cual  = jsonData.enfermedades_cual;
             var medicamentos_cual  = jsonData.medicamentos_cual;
-            var vivienda   = jsonData.vivienda;
-            var caracteristicasV= jsonData.caracteristicas;
-            var caracteristicasV_otro   = jsonData.caracteristicas_otro;
+            var vivienda = jsonData.vivienda;
+            var caracteristicasV = jsonData.caracteristicas;
+            var caracteristicasV_otro = jsonData.caracteristicas_otro;
             var cocina = jsonData.vivienda_cocia;
             var sala  = jsonData.vivienda_sala;
             var banio = jsonData.vivienda_banio;
@@ -158,13 +160,22 @@ function queryDatos(){
             var ineDocDoc  = jsonData.ineDocDoc;
             var comprobanteDoc  = jsonData.comprobanteDoc;
             var tarjetaCirculacionDoc  = jsonData.tarjetaCirculacionDoc;
+            
+            var curpJSON = jsonData.curp;
 
             if (success == 1) {
-
+                if (jsonData.curp == "" || curpJSON.trim() === "" || jsonData.curp == null){
+                    $("#curpActualizar").modal("show");
+		            document.getElementById('idUpdate').value = id;
+                }
+                // REVISAR SI NO HABÍA FINAL DEL ELSE
+		
                 document.getElementById('buscarExpActualizar').disabled = true;
+                document.getElementById('idTabla').value = id;
+
                 /*  municipiosSelect(jsonData.estado); */
-                console.log(jsonData.HojaRegistro,jsonData.valoracion,jsonData.actaNacimiento,jsonData.curpDoc,jsonData.ineDoc,jsonData.comprobante,jsonData.tarjetaCirculacion);
-                console.log(jsonData.HojaRegistroDoc,jsonData.valoracionDoc,jsonData.actaNacimientoDoc,jsonData.curpDocDoc,jsonData.ineDocDoc,jsonData.comprobanteDoc,jsonData.tarjetaCirculacionDoc);
+                //console.log(jsonData.HojaRegistro,jsonData.valoracion,jsonData.actaNacimiento,jsonData.curpDoc,jsonData.ineDoc,jsonData.comprobante,jsonData.tarjetaCirculacion);
+                //console.log(jsonData.HojaRegistroDoc,jsonData.valoracionDoc,jsonData.actaNacimientoDoc,jsonData.curpDocDoc,jsonData.ineDocDoc,jsonData.comprobanteDoc,jsonData.tarjetaCirculacionDoc);
 
                 if (hojaRegistro == null && valoracion == null && actaNacimiento == null && curpDoc == null && ineDoc == null && tarjetaCirculacion == null){
                     document.getElementById('btnModal1').setAttribute('onclick','uploadFile(1,1)');
@@ -1073,41 +1084,16 @@ function queryDatos(){
                 else if (tarjetaCirculacion == 21){
                     document.getElementById('circulacionNA').checked = true; 
                 }
-               
+                
                 showMeFam();
                 showMeRef();
                 mostrarTablaServicios();
                 
-                //mostrarTabla();
-               /*  if (grupo == null || grupo == ""){
-                    grupo = "";
-                    document.getElementById('gruposFull').value = "";
-                }
-                else{
-                    var grupoSplit = grupo.replace(/, /g,',');
-                    grupoSplit = grupoSplit.split(',');
-                    for (var i = 0; i < grupoSplit.length; i++) {
-                        console.log(grupoSplit[i]);
-                        addG(grupoSplit[i]);
-                    }
-                } */
-
-
-                /* if (alergias_cual != null || alergias_cual != ""){
-                    var alergiasSplit = alergias_cual.replace(/, /g,',');
-                    var alergiasSlices = alergiasSplit.slice(5,alergiasSplit.length);
-                    alergiasSlices = alergiasSlices.split(',');
-                    for (var i = 0; i < alergiasSplit.length; i++) {
-                        console.log(alergiasSplit[i]);
-                        queryAlergiasBadges(alergiasSplit[i]);
-                    }
-                } */
-                
                 
                 var arrayEnfermedades = jsonData.arregloEnfermedades;
-                console.log(arrayEnfermedades);
+                //console.log(arrayEnfermedades);
                 if (arrayEnfermedades == null || arrayEnfermedades == ""){
-                    console.log('no enfermedades');
+                    //console.log('no enfermedades');
                 }
                 else {
                     var concatEnfermedaes = '';
@@ -1125,11 +1111,6 @@ function queryDatos(){
                             }
                         }
                         
-                        //var enfermedadesConcat = idEnfermedad+'-'+nameEnfermedades;
-                        //concatEnfermedaes = concatEnfermedaes+', '+enfermedadesConcat;
-
-                        console.log("Variable Array "+idEnfermedad);
-                        console.log('Enfermedades: '+concatEnfermedaes);
                         var nombreEnfermedad = contador.enfermedad;
                         $('#enfermedadesFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary valorFull" id="E'+idEnfermedad+'"><label class="labelTextoE" id="'+idEnfermedad+'">'+nombreEnfermedad+'</label> <a class="text-light" onclick="removeB2(\'E'+idEnfermedad+'\')"><i class="bi bi-x-circle"></i></a></button>');
                         paragraphsEnfermedadesUpdate(idEnfermedad,nombreEnfermedad);
@@ -1221,110 +1202,13 @@ function queryDatos(){
                         document.querySelector('#grupos option[value="'+idGrupo+'"]').remove();
                     }
                 }
-                /* if (enfermedades_cual != null || enfermedades_cual != ""){
-                    var enfermedadesSplit = enfermedades_cual.replace(/, /g,',');
-                    enfermedadesSplit = enfermedadesSplit.split(',');
-                    for (var i = 0; i < enfermedadesSplit.length; i++) {
-                        console.log(enfermedadesSplit[i]);
-                        queryEnfermedadesBadges(enfermedadesSplit[i]);
-                    }
-                } */
-                
-                /* if (medicamentos_cual != null || medicamentos_cual != ""){
-                    var medicamentosSplit = medicamentos_cual.replace(/, /g,',');
-                    medicamentosSplit = medicamentosSplit.split(',');
-                    for (var i = 0; i < medicamentosSplit.length; i++) {
-                        console.log(medicamentosSplit[i]);
-                        addC2(medicamentosSplit[i]);
-                    }
-                } */
                 
             } else if (success == 0){
-                console.log(jsonData.error);
+                //console.log(jsonData.error);
             }
         }
     });
-}
-
-/* function addB2(val) {
-    var p2;
-    var numeroB = ""; //remover al momento de programar guardar
-    var textarea = document.getElementById("enfermedadesFull");
-    if (val==null || val =="" || val == 0){
-        console.log('sin valor');
-    } else {
-        textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorEFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-        document.getElementById(val).setAttribute('onclick',"removeB2('"+val+"')");
-        document.getElementById(val).setAttribute('name',"'"+val+"'");
-        document.querySelector('#enfermedades option[value="'+val+'"]').remove();
-    }
-    //remover al momento de programar guardar
-    const paragraphs = document.querySelectorAll('[class="valorEFull"]');
-    paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
-    numeroB = numeroB.slice(0, numeroB.length - 2);
-    console.log(numeroB);
-    document.getElementById('numeroB').value = numeroB;
-}
-
-function removeB2(val) {
-    var numeroB = ""; //remover al momento de programar guardar
-    console.log(val);
-    var nameInput = document.getElementById(val).getAttribute("name");
-    if (nameInput){
-        document.getElementById(val).remove();
-        $('#enfermedades').append("<option value='"+val+"'>"+val+"</option>");
-    }
-    else{
-        console.log("Nada");
-        document.getElementById(val).remove();
-
-    }
-    //remover al momento de programar guardar
-    const paragraphs = document.querySelectorAll('[class="valorEFull"]');
-    paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
-    numeroB = numeroB.slice(0, numeroB.length - 2);
-    console.log(numeroB);
-    document.getElementById('numeroB').value = numeroB;
-}
-
-function addC2(val) {
-    var p2;
-    var numeroC = ""; //remover al momento de programar guardar
-    var textarea = document.getElementById("medicamentosFull");
-    if (val==null || val =="" || val == 0){
-        console.log('sin valor');
-    } else{
-        textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorMFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
-        document.getElementById(val).setAttribute('onclick',"removeC('"+val+"')");
-        document.querySelector('#medicamentos option[value='+val+']').remove();
-    }
-    //remover al momento de programar guardar
-    const paragraphs = document.querySelectorAll('[class="valorMFull"]');
-    paragraphs.forEach(p2 => numeroC = numeroC + p2.id +', ');
-    numeroC = numeroC.slice(0, numeroC.length - 2);
-    console.log(numeroC);
-    document.getElementById('numeroC').value = numeroC;
-}
-
-function removeC2(val) {
-    var numeroC = ""; //remover al momento de programar guardar
-    console.log(val);
-    var nameInput = document.getElementById(val).getAttribute("name");
-    if (nameInput){
-        document.getElementById(val).remove();
-        //$('#medicamentos').append("<option value='"+val+"'>"+val+"</option>");
-    }
-    else{
-        console.log("Nada");
-        document.getElementById(val).remove();
-    }
-    //remover al momento de programar guardar
-    const paragraphs = document.querySelectorAll('[class="valorMFull"]');
-    paragraphs.forEach(p => numeroC = numeroC + p.id +', ');
-    numeroC = numeroC.slice(0, numeroC.length - 2);
-    console.log(numeroC);
-    document.getElementById('numeroC').value = numeroC;
-} */
+} 
 
 function estudioSocioeconomicoA() {
     
@@ -1342,4 +1226,93 @@ function checkListDocsUpdate() {
     document.getElementById('buttonCheck').setAttribute("href", "prcd/checkListPDF2.php?curp="+curp);
     document.getElementById('nav-fin-tab').disabled = false;
     document.getElementById('nav-fin-tab').setAttribute('onclick','finalizarUpdateExpediente()');
+}
+
+function actualizarCURP(){
+
+    var curp = document.getElementById('sinCurpUpdate').value;
+    var id = document.getElementById('idUpdate').value;
+    if (curp == "" || curp == null || curp.trim() === ""){
+        alert("Debes ingresar una CURP");
+        document.getElementById("btnUpdateCURP").disabled = true;
+        
+    }
+    else if (curp.length < 18){
+        alert("La CURP debe tener 18 caracteres");
+        document.getElementById("btnUpdateCURP").disabled = true;
+    }
+    else{
+        $.ajax({
+            type: "POST",
+            url: 'prcd/curpNueva.php',
+            dataType:'JSON',
+            data: {
+            id,id,
+                curp:curp
+            },
+            success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+                var success = jsonData.success;
+
+            if (success == 1) {
+                alert ('CURP Actualizada correctamente!');
+                window.location.reload();
+            }
+            else {
+            alert ('Error en la actualización de CURP');
+				//console.log(jsonData.error1);
+				//console.log(jsonData.error2);
+				//console.log(jsonData.cadena);
+				//console.log(jsonData.cadena2);
+				//console.log(jsonData.cadena3);
+            }
+        }
+        });
+    }
+}
+function cambiarCURP(){
+
+    var curp = document.getElementById('curpCambiar').value;
+    var id = document.getElementById('idTabla').value;
+    if (curp == "" || curp == null || curp.trim() === ""){
+        alert("Debes ingresar una CURP");
+        document.getElementById("btnUpdateCURP").disabled = true;
+        
+    }
+    else if (curp.length < 18){
+        alert("La CURP debe tener 18 caracteres");
+        document.getElementById("btnUpdateCURP").disabled = true;
+    }
+    else{
+        document.getElementById("btnUpdateCURP").disabled = false;
+        $.ajax({
+            type: "POST",
+            url: 'prcd/prcd_curpActualizar.php',
+            dataType:'JSON',
+            data: {
+                id,id,
+                curp:curp
+            },
+            success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+                var success = jsonData.success;
+
+            if (success == 1) {
+                alert ('CURP Actualizada correctamente!');
+                document.getElementById("curp").value = jsonData.curp;
+                var curpData = jsonData.curp;
+                curp2date3(curpData);
+                cortarRFC2();
+            }
+            else {
+                alert ('Error en la actualización de CURP');
+				//console.log(jsonData.error1);
+				//console.log(jsonData.error2);
+				//console.log(jsonData.cadena);
+				//console.log(jsonData.cadena2);
+				//console.log(jsonData.cadena3);
+            }
+        }
+        });
+    }
 }

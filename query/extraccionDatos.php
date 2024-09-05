@@ -1,12 +1,20 @@
 <?php
 include('../prcd/qc/qc.php');
-if (isset($_POST['cadenaTexto'])){
+if ($_POST['cadenaTexto'] == null || $_POST['cadenaTexto'] == ""){
+    $error = $conn->error;
+    echo json_encode(array(
+        'success'=>0,
+        'error'=>$error
+    ));
+    
+}
+else {
     $datos = $_POST['cadenaTexto'];
 
-    $sql = "SELECT * FROM datos_generales WHERE RIGHT(numExpediente,5) LIKE '%$datos' OR curp LIKE '$datos%' LIMIT 1";
+    $sql = "SELECT * FROM datos_generales WHERE numExpediente LIKE '%$datos' OR curp LIKE '$datos%' LIMIT 1";
     $resultadoSql = $conn->query($sql);
     $fila = $resultadoSql->num_rows;
-    $sql2 = "SELECT * FROM datos_medicos WHERE RIGHT(expediente,5) LIKE '%$datos' OR curp LIKE '$datos%' LIMIT 1";
+    $sql2 = "SELECT * FROM datos_medicos WHERE expediente LIKE '%$datos' OR curp LIKE '$datos%' LIMIT 1";
     $resultadoSql2 = $conn->query($sql2);
     $fila2 = $resultadoSql2->num_rows;
 
@@ -40,13 +48,10 @@ if (isset($_POST['cadenaTexto'])){
         ));
     }
     else{
+        $error = $conn->error;
         echo json_encode(array(
-            'success'=>0
+            'success'=>0,
+            'error'=>$error
         ));
     }
-}
-else {
-    echo json_encode(array(
-        'success'=>0
-    ));
 }

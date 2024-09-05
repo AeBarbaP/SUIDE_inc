@@ -60,22 +60,50 @@
       <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
       <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
-      <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <link href="scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-      <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script>
       <script src="sidebars.js"></script>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
       <link href="dashboard.css" rel="stylesheet">
       <link href="sidebars.css" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
       <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
       <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
-      
-      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <!-- <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> -->
+      <script src="scripts/jquery.js"></script>
+      <!-- <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script> -->
+      <script src="scripts/fontawsome.js"></script>
+      <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+      <script src="scripts/sweetalert.js"></script>
+      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"> -->
+      <link rel="stylesheet" href="scripts/bootstrap-icons/font/bootstrap-icons.css">
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+      <!-- <script src="scripts/popper.js"></script> -->
+
+      <script src="script.js"></script>
+      <script src="js/edicionExp.js"></script>
+      <script src="js/editar_guardar.js"></script>
+      <script src="js/validate.js"></script>
+      <script src="js/files_update.js"></script>
+      <script src="js/files.js"></script>
+      <script src="js/estados.js"></script>
+      <script src="js/municipios.js"></script>
+      <script src="js/localidades.js"></script>
+      <script src="js/asentamientos.js"></script>
+      <script src="js/validaciones.js"></script>
+      <script src="js/discapacidades.js"></script>
+      <script src="js/numeroExpediente.js"></script>
+      <script src="js/checkList.js"></script>
+      <script src="js/tarjetones.js"></script>
+      <script src="js/tarjetonesTemp.js"></script>
+      <script src="js/usuarioTemp.js"></script>
+      <script src="js/editarFamRef.js"></script>
+      <script src="js/print.js"></script>
+      <script src="js/guardar.js"></script>
+      <script src="js/credencialEmpleados.js"></script>
+      <script src="js/sueltitos.js"></script>
 
       <audio id="myAudio">
         <source src="beep.mp3" type="audio/mpeg">
@@ -188,28 +216,7 @@
     </head>
     <body onload="estadosSelect(); catTipoVialidades(); buscarGrupo(); buscarEnfermedadUpdate();buscarMedicamento(); ">
 
-      <script src="script.js"></script>
-      <script src="js/edicionExp.js"></script>
-      <script src="js/editar_guardar.js"></script>
-      <script src="js/validate.js"></script>
-      <script src="js/files_update.js"></script>
-      <script src="js/files.js"></script>
-      <script src="js/estados.js"></script>
-      <script src="js/municipios.js"></script>
-      <script src="js/localidades.js"></script>
-      <script src="js/asentamientos.js"></script>
-      <script src="js/validaciones.js"></script>
-      <script src="js/discapacidades.js"></script>
-      <script src="js/numeroExpediente.js"></script>
-      <script src="js/checkList.js"></script>
-      <script src="js/tarjetones.js"></script>
-      <script src="js/tarjetonesTemp.js"></script>
-      <script src="js/usuarioTemp.js"></script>
-      <script src="js/editarFamRef.js"></script>
-      <script src="js/print.js"></script>
-      <script src="js/guardar.js"></script>
-      <script src="js/credencialEmpleados.js"></script>
-      <script src="js/sueltitos.js"></script>
+      
 
       <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-5 text-white" style="background-color: #917799;">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
@@ -382,7 +389,7 @@
                       <button class="nav-link" id="nav-medicos-tab" data-bs-toggle="tab" data-bs-target="#nav-medicos" type="button" role="tab" aria-controls="nav-medicos" aria-selected="false">Datos Médicos</button>
                       <button class="nav-link" id="nav-vivienda-tab" data-bs-toggle="tab" data-bs-target="#nav-vivienda" type="button" role="tab" aria-controls="nav-vivienda" aria-selected="false">Vivienda</button>
                       <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-integracion" type="button" role="tab" aria-controls="nav-integracion" aria-selected="false">Integración Familiar</button>
-                      <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-referencias" type="button" role="tab" aria-controls="nav-referencias" aria-selected="false">Referencias</button>
+                      <button class="nav-link" id="nav-referencias-tab" data-bs-toggle="tab" data-bs-target="#nav-referencias" type="button" role="tab" aria-controls="nav-referencias" aria-selected="false">Referencias</button>
                       <button class="nav-link" id="nav-servicios-tab" data-bs-toggle="tab" data-bs-target="#nav-servicios-otorgados" type="button" role="tab" aria-controls="nav-servicios" aria-selected="false">Solicitudes</button>
                       <button class="nav-link" id="nav-formato-tab" data-bs-toggle="tab" data-bs-target="#nav-formato" type="button" role="tab" aria-controls="nav-formato" aria-selected="false">Formatos</button>
                       <button class="nav-link" id="nav-docs-tab" data-bs-toggle="tab" data-bs-target="#nav-docs" type="button" role="tab" aria-controls="nav-docs" aria-selected="false">Documentos</button>
@@ -442,11 +449,13 @@
                         </div>
                         <div class="col-sm-4">
                           <label for="datos_usr" class="form-label">CURP:</label>
-                          <input type="text" class="form-control" id="curp" name="datos_usr" placeholder="CURP" onkeyup="javascript:this.value=this.value.toUpperCase();" onchange="curp2date(this); validarInput(this); cortarRFC(this.value)" required>
+                          <input type="text" class="form-control" id="curp" name="datos_usr" placeholder="CURP" onkeyup="javascript:this.value=this.value.toUpperCase();" onchange="curp2date(this); validarInputUpdate(this); cortarRFC(this.value)" required disabled>
                           <div class="invalid-feedback">
                             * Campo requerido.
                           </div>
+                          <div class="form-text mb-2" id="basic-addon4"><a href="#" class="ms-2 link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" data-bs-toggle="modal" data-bs-target="#actualizarCurp" >Actualizar CURP</a></div>
                           <div id="result-username2">
+                            <input type="text" id="idTabla" hidden>
                           </div>
                         </div>
                         <div class="col-sm-3">
@@ -1843,7 +1852,7 @@
                             </div>
                             <div class="col-md-6">
                               <div class="d-grid gap-2 mt-3">
-                              <button class="btn btn-secondary" type="button" id="tarjetonExpedienteBtn" onclick="buscarExpediente3()"><i class="bi bi-person-badge me-2"></i> Entregar Tarjetón</button>
+                              <button class="btn btn-secondary" type="button" id="tarjetonExpedienteBtn" onclick="buscarExpediente3()" disabled><i class="bi bi-person-badge me-2"></i> Entregar Tarjetón</button>
                               </div>
                             </div>
                           </div>
@@ -1988,6 +1997,8 @@
         include("modals/tarjetonesTemp.php");
         include("modals/tarjetonExpedienteNuevo.php");
         include("modals/uploadDocsModals.php");
+        include("modals/sinCurp.php");
+        include("modals/actualizarCurp.php");
       ?>
 
     </body>

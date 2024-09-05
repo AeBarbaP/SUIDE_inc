@@ -467,6 +467,7 @@ $(document).ready(function() {
                     document.getElementById('curp_exp').value = curpSaved;
                     document.getElementById('file_photo').disabled = false;
                     cambiarTab();
+		    document.getElementById('curp_exp').value = curpSaved;
                     /* var curpExp = document.getElementById('curp_exp').value;
                     document.getElementById('buttonCheck').setAttribute('href','prcd/checkListPDF.php?curp='+curpExp); */
                 }
@@ -600,25 +601,21 @@ function updateGeneralesForm(){
         }
         else if (estudiaNo.checked){
             var estudia = 0;
-            estudiaLugar = "N/A";
+            estudiaLugar = "";
             document.getElementById('lugarEstudia').required = false;
         }
         if(trabajaSi.checked){
             var trabajaLugar = document.getElementById('lugarTrabajo').value;
+	    var trabaja = 1;
             if (trabajaLugar == "Otro"){
-                var trabaja = 1;
                 document.getElementById('lugarTrabajoOtro').required = true;
                 var lugarTrabajoOtro = document.getElementById('lugarTrabajoOtro').value;
-            }else{
-                document.getElementById('lugarTrabajoOtro').required = false;
-                var lugarTrabajoOtro = "N/A";
-                var trabaja = '';
             }
         }
         else if (trabajaNo.checked){
-            var trabajaLugar = "N/A";
+            var trabajaLugar = "";
             var trabaja = 0;
-            lugarTrabajoOtro = "N/A";
+            lugarTrabajoOtro = "";
             document.getElementById('lugarTrabajo').required = false;
         }
         else {
@@ -635,7 +632,7 @@ function updateGeneralesForm(){
         }
         else if(asociacionNo.checked){
             var asociacion = 0;
-            var nombreAC = "N/A";
+            var nombreAC = "";
             document.getElementById('nombreAC').required = false;
         }
         
@@ -650,9 +647,9 @@ function updateGeneralesForm(){
         }
         else if (pensionNo.checked){
             var pension = 0;
-            var pensionInst = "N/A";
+            var pensionInst = "";
             var pensionMonto = 0;
-            var pensionTemporalidad = "N/A";
+            var pensionTemporalidad = "";
             document.getElementById('instPension').required = false;
             document.getElementById('montoP').required = false;
             document.getElementById('periodo').required = false;
@@ -732,7 +729,7 @@ function updateGeneralesForm(){
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
-                var verificador = jsonData.succes;
+                var verificador = jsonData.success;
                 var curpSaved = jsonData.curp;
                 if (verificador = 1){
                     document.getElementById('btnGuardarGeneralUpdate').disabled = false;
@@ -837,7 +834,7 @@ $(document).ready(function() {
         else if (permanenteNA.checked){
             var permanente = 3;
         } else {
-            var permanente = '';
+            var permanente = 0;
         }
         
         if (braileSi1.checked){
@@ -847,7 +844,7 @@ $(document).ready(function() {
         } else if (braileNA1.checked){
             var braile = 0;
         } else {
-            var braile = '';
+            var braile = 0;
         }
         
         if (lsmSi1.checked){
@@ -857,7 +854,7 @@ $(document).ready(function() {
         } else if (lsmNA1.checked){
             var lsm = 0;
         } else {
-            var lsm = '';
+            var lsm = 0;
         }
         
         if (labiofacialSi1.checked){
@@ -867,7 +864,7 @@ $(document).ready(function() {
         } else if (labiofacialNA1.checked){
             var labiofacial = 0;
         } else {
-            var labiofacial = '';
+            var labiofacial = 0;
         }
         
         if(rehabilitacionSi.checked){
@@ -881,9 +878,9 @@ $(document).ready(function() {
         }
         else if (rehabilitacionNo.checked){
             var rehabilitacion = 0;
-            var lugarRehab = 0;
-            var fechaIni = 0;
-            var duracion = 0;
+            var lugarRehab = "";
+            var fechaIni = "0000-00-00";
+            var duracion = "";
             document.getElementById('lugarRehab').required = false;
         }
         if (alergias == 0){
@@ -948,9 +945,9 @@ $(document).ready(function() {
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
 
-                var verificador = jsonData.succes;
+                var verificador = jsonData.success;
 
-                if (verificador = 1){
+                if (verificador == 1){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -965,7 +962,7 @@ $(document).ready(function() {
                     document.getElementById('guardarMedicosbtnUpdate').hidden = false;
                     cambiarTab2();
                 }
-                else if (verificador = 2){
+                else if (verificador == 2){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'error',
@@ -1028,7 +1025,7 @@ function updateDatosMedicos(){
         else if (permanenteNA.checked){
             var permanente = 3;
         } else {
-            var permanente = '';
+            var permanente = 0;
         }
         
         if (braileSi1.checked){
@@ -1038,7 +1035,7 @@ function updateDatosMedicos(){
         } else if (braileNA1.checked){
             var braile = 0;
         } else {
-            var braile = '';
+            var braile = 0;
         }
         
         if (lsmSi1.checked){
@@ -1048,7 +1045,7 @@ function updateDatosMedicos(){
         } else if (lsmNA1.checked){
             var lsm = 0;
         } else {
-            var lsm = '';
+            var lsm = 0;
         }
         
         if (labiofacialSi1.checked){
@@ -1058,7 +1055,7 @@ function updateDatosMedicos(){
         } else if (labiofacialNA1.checked){
             var labiofacial = 0;
         } else {
-            var labiofacial = '';
+            var labiofacial = 0;
         }
         
         if(rehabilitacionSi.checked){
@@ -1072,10 +1069,12 @@ function updateDatosMedicos(){
         }
         else if (rehabilitacionNo.checked){
             var rehabilitacion = 0;
-            var lugarRehab = 0;
-            var fechaIni = 0;
-            var duracion = 0;
+            var lugarRehab = "";
+            var fechaIni = "0000-00-00";
+            var duracion = "";
             document.getElementById('lugarRehab').required = false;
+	    document.getElementById('fechaIni').required = false;
+            document.getElementById('duracion').required = false;
         }
         if (alergias == 0){
             var alergiasFull = "";
@@ -1138,8 +1137,8 @@ function updateDatosMedicos(){
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
-                var verificador = jsonData.succes;
-                if (verificador = 1){
+                var verificador = jsonData.success;
+                if (verificador == 1){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -1153,7 +1152,7 @@ function updateDatosMedicos(){
 
                     cambiarTab2();
                 }
-                else if (verificador = 2){
+                else if (verificador == 2){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'error',
@@ -1686,19 +1685,17 @@ $(document).ready(function() {
         }
         else if (viviendaPre.checked){
             var vivienda = 2;
-            //var montoRenta = 0;
+            var viviendaProp = 0;
         }
         else if (viviendaRe.checked){
             var vivienda = 3;
-            //var montoRenta = document.getElementById('montoVivienda').value;
+            var viviendaProp = 0;
         }
         if(viviendaPropSi.checked){
             var viviendaProp = 1;
-            //var costoVivienda = document.getElementById('costoVivienda').value;
         }
         else if (viviendaPropNo.checked){
             var viviendaProp = 0;
-            //var costoVivienda = 0;
         }
         if(tipoViviendaC.checked){
             var tipoVivienda = 1;
@@ -1917,7 +1914,7 @@ $(document).ready(function() {
                 
                 var verificador = jsonData.success;
                 
-                if (verificador == 1){
+                if (verificador = 1){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -1938,7 +1935,7 @@ $(document).ready(function() {
                     document.getElementById('nav-docs-tab').disabled = false;
                     document.getElementById('nav-formato-tab').disabled = false;
                 }
-                else if (verificador == 2){
+                else if (verificador = 2){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'error',
@@ -2306,6 +2303,7 @@ $(document).ready(function() {
     $('#familiaForm').submit(function(e) {
         /* Integración Familiar */
         var curp_exp = document.getElementById('curp_exp').value;
+        var numExp = document.getElementById('numeroExpediente').innerText;
         var nombreFamiliar = document.getElementById('nombreFamiliar').value;
         var parentescoFam = document.getElementById('parentescoFam').value;
         var edadFam = document.getElementById('edadFam').value;
@@ -2321,7 +2319,8 @@ $(document).ready(function() {
             url: 'prcd/guardarFamilia.php',
             dataType:'json',
             data: {
-                curp_exp,
+                curp_exp:curp_exp,
+		numExp:numExp,
                 nombreFamiliar:nombreFamiliar,
                 parentescoFam:parentescoFam,
                 edadFam:edadFam,
@@ -2374,6 +2373,7 @@ $(document).ready(function() {
     $('#familiarEditForm').submit(function(e) {
         /* Integración Familiar */
         var curp_exp = document.getElementById('curp_exp').value;
+	var numExp = document.getElementById('numeroExpediente').innerText;
         var nombreFamiliar = document.getElementById('nombreFamiliar2').value;
         var parentescoFam = document.getElementById('parentescoFam2').value;
         var edadFam = document.getElementById('edadFam2').value;
@@ -2390,7 +2390,8 @@ $(document).ready(function() {
             url: 'prcd/updateFamiliar.php',
             dataType:'json',
             data: {
-                curp_exp,
+                curp_exp:curp_exp,
+		numExp:numExp,
                 nombreFamiliar:nombreFamiliar,
                 parentescoFam:parentescoFam,
                 edadFam:edadFam,
@@ -2450,6 +2451,7 @@ $(document).ready(function() {
     $('#referenciasForm').submit(function(e) { 
         /* Referencias */
         var curp_exp = document.getElementById('curp_exp').value;
+	var numExp = document.getElementById('numeroExpediente').innerText;
         var nombreReferencia = document.getElementById('nombreReferencia').value;
         var parentescoRef = document.getElementById('parentescoRef').value;
         var telRef = document.getElementById('telRef').value;
@@ -2462,6 +2464,7 @@ $(document).ready(function() {
             dataType:'json',
             data: {
                 curp_exp:curp_exp,
+		numExp:numExp,
                 nombreReferencia:nombreReferencia,
                 parentescoRef:parentescoRef,
                 telRef:telRef,
@@ -2472,7 +2475,7 @@ $(document).ready(function() {
                 var jsonData = JSON.parse(JSON.stringify(response));
                 
                 var verificador = jsonData.success;
-                if (verificador == 1){
+                if (verificador = 1){
                     document.getElementById('nombreReferencia').value = "";
                     document.getElementById('parentescoRef').value = "";
                     document.getElementById('telRef').value = "";
@@ -2487,7 +2490,7 @@ $(document).ready(function() {
                     });
                     showMeRef();
                 }
-                else if (verificador == 2){
+                else if (verificador = 2){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'error',
@@ -2528,7 +2531,7 @@ $(document).ready(function() {
                 var jsonData = JSON.parse(JSON.stringify(response));
                 
                 var verificador = jsonData.success;
-                if (verificador == 1){
+                if (verificador = 1){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -2538,7 +2541,7 @@ $(document).ready(function() {
                     });
                     showMeRef();
                 }
-                else if (verificador == 2){
+                else if (verificador = 2){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'error',
@@ -2555,12 +2558,14 @@ $(document).ready(function() {
 
 function showMeRef(){
     var curp_exp = document.getElementById('curp_exp').value;
+    var expediente = document.getElementById('numeroExpediente').innerText;
     $.ajax({
         type: "POST",
         url: 'query/queryReferencias.php',
         dataType:'HTML',
         data: {
-            curp_exp:curp_exp
+            curp_exp:curp_exp,
+	    expediente:expediente
         },
         success: function(response){
             $('#referenciasTab').fadeIn(1000).html(response);
@@ -2794,11 +2799,11 @@ function guardarSolicitud(){
             var jsonData = JSON.parse(JSON.stringify(data));
             var verificador = jsonData.success;
             mostrarTablaServicios();
-            if (verificador == 1) {
+            if (verificador = 1) {
                 mostrarTabla();
                 limpiaInputsFunc();
                 mostrarTablaServicios();
-            } else if (verificador == 0){
+            } else if (verificador = 0){
                 alert('no muestra tabla');
             }
             mostrarTablaServicios();
@@ -2874,12 +2879,12 @@ function guardarSolicitudOtros(){
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));
             var verificador = jsonData.success;
-            if (verificador == 1) {
+            if (verificador = 1) {
                 mostrarTabla();
                 flagEntregaEO();
                 limpiaInputsOtro();
                 mostrarTablaServicios();
-            } else if (verificador == 0){
+            } else if (verificador = 0){
                 alert('no muestra tabla');
             }
             document.getElementById('btnlistaEspera').disabled = false;
@@ -2967,9 +2972,9 @@ function flagEntregaEO(){
             var verificador = jsonData.success;
             var monto = jsonData.monto;
             console.log(monto);
-            if (verificador == 1) {
+            if (verificador = 1) {
                 console.log('flag actualizado');
-            } else if (verificador == 0){
+            } else if (verificador = 0){
                 console.log('no muestra tabla');
             }
         }
@@ -2995,9 +3000,9 @@ function flagEntrega(){
             var verificador = jsonData.success;
             var monto = jsonData.monto;
             console.log(monto);
-            if (verificador == 1) {
+            if (verificador = 1) {
                 console.log('flag actualizado');
-            } else if (verificador == 0){
+            } else if (verificador = 0){
                 console.log('no muestra tabla');
             }
         }
@@ -3022,9 +3027,9 @@ function flagEntregaEO(){
             var verificador = jsonData.success;
             var monto = jsonData.monto;
             console.log(monto);
-            if (verificador == 1) {
+            if (verificador = 1) {
                 console.log('flag actualizado');
-            } else if (verificador == 0){
+            } else if (verificador = 0){
                 console.log('no muestra tabla');
             }
         }
@@ -3068,9 +3073,9 @@ function borrarSolicitud(){
             var jsonData = JSON.parse(JSON.stringify(data));
             var success = jsonData.success;
             
-            if (success == 1) {
+            if (success = 1) {
                 alert("No guardado");
-            } else if (success == 0){
+            } else if (success = 0){
                 alert("No eliminado");
             }
         }
@@ -3132,11 +3137,11 @@ function checkListDocs() {
             var jsonData = JSON.parse(JSON.stringify(data));
             var success = jsonData.success;
             
-            if (success == 1) {
+            if (success = 1) {
                 document.getElementById('nav-fin-tab').disabled = false;
                 document.getElementById('nav-fin-tab').setAttribute('onclick','finalizarExpediente()');
                 window.open("prcd/checkListPDF2.php?curp="+curp, "_blank");
-            } else if (success == 0){
+            } else if (success = 0){
                 alert("No haz cargado documentos");
             }
         }
@@ -3351,7 +3356,12 @@ function credencialExp() {
                 document.getElementById('credencialExpedienteBtn').disabled = true;
                 window.open("prcd/generaqrcredencialExp.php?curp="+curp, "_blank");
                 mostrarTablaServicios();
-            } else if (success == 0){
+            } 
+			else if (success == 2) {
+				alert("Ya existe registro el día de hoy, revisa el PDF");
+                document.getElementById('credencialExpedienteBtn').disabled = true;
+                window.open("prcd/generaqrcredencialExp.php?curp="+curp, "_blank");
+            }else if (success == 0){
                 alert("No se pudo entregar la credencial");
             }
         }

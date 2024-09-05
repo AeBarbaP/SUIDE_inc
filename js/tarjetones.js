@@ -58,9 +58,7 @@ function vehiculoAdd(){
                 document.getElementById('imprimirt').disabled = false;
                 mostrarTablaVehiculos();
                 document.getElementById('agregarVehiculoBtn').disabled = true;
-            }
-            
-
+            }            
         });
     }
     else{
@@ -68,8 +66,87 @@ function vehiculoAdd(){
     }
 }
 
+function vehiculoAddExp(){
+    var expediente = document.getElementById('numExpediente1').value;
+    var curp = document.getElementById('curpTarjeton').value;
+    var folioExpediente = document.getElementById('ordenExpediente').value;
+    var tipoTarjeton = document.getElementById('tipoTarjeton').value;
+    var modelo = document.getElementById('modeloPermE').value;
+    var marca = document.getElementById('marcaPermE').value;
+    var annio = document.getElementById('annioPermE').value;
+    var numPlaca = document.getElementById('placasPermE').value;
+    var serie = document.getElementById('seriePermE').value;
+    var folioTarjeton = document.getElementById('folioTPermE').value;
+    var vigencia = document.getElementById('vigenciaPermE').value;
+    var autoSeguroCheck = document.getElementById('checkAutoS')
+    
+    if (autoSeguroCheck.checked){
+	var autoSeguro = document.getElementById('AutoSeguroInput').value;
+	var autoSeguroFlag = 1;
+    }
+    else {
+	var autoSeguro = "";
+	var autoSeguroFlag = 0;
+    }
+
+    if (modelo == "" && marca == "" && annio == "" && numPlaca == "" && serie == "" && folioTarjeton == "" && vigencia  == "") {
+        alert("No se han llenado todos los campos, verifica...");
+    }
+    else{
+	$.ajax({
+            type: "POST",
+            url: 'prcd/guardarVehiculo.php',
+            dataType:'json',
+            data: {
+                expediente:expediente,
+                folioExpediente:folioExpediente,
+                curp:curp,
+                tipoTarjeton:tipoTarjeton,
+                modelo:modelo,
+                marca:marca,
+                annio:annio,
+                numPlaca:numPlaca,
+                serie:serie,
+                folioTarjeton:folioTarjeton,
+                vigencia:vigencia,
+                autoSeguro:autoSeguro
+            },
+            success: function(data){
+                var jsonData = JSON.parse(JSON.stringify(data));
+                var verificador = jsonData.success;
+                //var curpTarjeton = jsonData.cuprTarjeton;
+                //var numExpediente = jsonData.folioExpediente;
+                var expediente = folioExpediente;
+                if (verificador = 1) {
+                    if (curp == "CURP no registrada"){
+                        document.getElementById('agregarVehiculoBtn').disabled = true;
+                        alert('No tiene registrada una CURP, actualice Expediente');
+                    }
+                    else {
+                        // codigoQR(curp);
+                        // document.getElementById('etiquetaNum').innerHTML = expediente;
+                        //console.log(expediente);
+                    }
+                } else if (verificador = 0){
+                    alert('no muestra tabla');
+                }
+                limpiarInputsVehiculo();
+                document.getElementById('vehiculosTabla').hidden = false;
+                document.getElementById('folioTPerm').disabled = true;
+                document.getElementById('vigenciaPerm').disabled = true;
+                document.getElementById('imprimirtExp').disabled = false;
+                mostrarTablaVehiculosE();
+                document.getElementById('agregarVehiculoBtn').disabled = true;
+            }
+        });
+    }
+}
+
 function habilitaBTNadd(){
     document.getElementById('agregarVehiculoBtn').disabled = false;
+}
+function habilitaBTNaddExp(){
+    document.getElementById('agregarVehiculoBtnExp').disabled = false;
 }
 
 function mostrarTablaVehiculos(){
@@ -91,6 +168,29 @@ function mostrarTablaVehiculos(){
         },
         success: function(data){
             $('#vehiculosTabla').fadeIn(1000).html(data);
+        }
+    });
+
+}
+function mostrarTablaVehiculosE(){
+    var curpTarjeton = document.getElementById('curpTarjeton').value;
+    //var numExpediente = document.getElementById('ordenExpediente').value;
+    if (curpTarjeton == null || curpTarjeton== ''){
+        var curpPaseada = "";
+    }
+    else{
+        var curpPaseada = curpTarjeton;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: 'query/queryTablaTarjetones.php',
+        dataType:'html',
+        data: {
+            curpPaseada:curpPaseada
+        },
+        success: function(data){
+            $('#vehiculosTablaE').fadeIn(1000).html(data);
         }
     });
 
@@ -160,6 +260,24 @@ function limpiaModalTarjeton(){
     document.getElementById('agregarVehiculoBtn').disabled = true;
     document.getElementById('tarjeton').innerHTML = "";
     document.getElementById('vehiculosTabla').innerHTML = "";
+}
+
+function limpiaModalTarjetonE(){
+    //document.getElementById('searchDBInclusion2').value = "";
+    document.getElementById('modeloPermE').value = "";
+    document.getElementById('marcaPermE').value = "";
+    document.getElementById('annioPermE').value = "";
+    document.getElementById('placasPermE').value = "";
+    document.getElementById('seriePermE').value = "";
+    //document.getElementById('folioTPermE').value = "";
+    //document.getElementById('vigenciaPerm').value = "";
+    document.getElementById('checkAutoS').checked = false;
+    document.getElementById('AutoSeguroInput').value = "";
+    document.getElementById('curpTarjeton').value = "";
+    document.getElementById('numExpediente').value = "";
+    document.getElementById('agregarVehiculoBtnExp').disabled = true;
+    document.getElementById('tarjeton').innerHTML = "";
+    document.getElementById('vehiculosTablaE').innerHTML = "";
 }
 
 function habilitarBtn(){
@@ -263,7 +381,7 @@ function borrarVehiculoDB(id,folio){
             var success = jsonData.success;
             
             if (success == 1) {
-                mostrarTablaVehiculos();
+                mostrarTablaVehiculosE();
             } else if (success == 0){
                 console.log(jsonData.error);
             }
@@ -369,6 +487,33 @@ function datosTarjeton(){
         }
 
     });
+}
+
+function validaNumtarjeton(){
+    var folioTarjeton = document.getElementById('folioTPerm').value;
+
+    $.ajax({
+        type: "POST",
+        url: 'query/validaFolioTarjeton.php',
+        dataType:'json',
+        data: {
+            folioTarjeton: folioTarjeton
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            
+            if (success == 1) {
+                console.log('disponible');
+            } else if (success == 0){
+                alert('Folio de tarjetón no disponible');
+                document.getElementById('folioTPerm').value = "";
+            }
+            else if (success == 3){
+                console.log(success);
+            }
+        }
+    });   
 }
 
 function reemplazaTarjeton(){

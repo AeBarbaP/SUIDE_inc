@@ -304,3 +304,8 @@ function abrirCamara2(){
       });
 
   }
+
+function llenadoCURP(){
+    let curp = prompt('Ingresa la CURP del usuario:');
+    
+}

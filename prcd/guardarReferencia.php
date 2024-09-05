@@ -11,6 +11,7 @@ $fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
 $fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
 
 $curp_exp = $_POST['curp_exp'];
+$numExp = $_POST['numExp'];
 $nombreReferencia = $_POST['nombreReferencia'];
 $parentescoRef = $_POST['parentescoRef'];
 $telRef = $_POST['telRef'];
@@ -20,6 +21,7 @@ $tipo_dato = 7;
 
 $sqlinsert= "INSERT INTO referencias (
     curp,
+    expediente,
     nombre,
     parentesco,
     celular,
@@ -28,6 +30,7 @@ $sqlinsert= "INSERT INTO referencias (
     )
 VALUES(
     '$curp_exp',
+    '$numExp',
     '$nombreReferencia',
     '$parentescoRef',
     '$telRef',

@@ -44,17 +44,17 @@ while ($rowVariable = $resultadoVariable->fetch_assoc()){
             <td>'.$rowVariable['nombre'].' '.$rowVariable['apellido_p'].' '.$rowVariable['apellido_m'].'</td>
             <td>'.$rowSqlMedicos['tipo_discapacidad'].'</td>
             <td>'.$rowSqlMunicipio['nombreMunicipio'].'</td>
-            <td>'.$estatus.'</td>';
-            if ($rowVariable['curp'] == "" || $rowVariable['curp'] == null){
+            <!-- <td>'.$estatus.'</td> -->';
+            /* if ($rowVariable['curp'] == "" || $rowVariable['curp'] == null){ */ 
                 echo '
-                    <td class="text-center"><a href="padronpcdActualizar.php?curp='.$rowVariable['numExpediente'].'"><i class="bi bi-pencil-square"></i></a>
+                    <td class="text-center"><a href="padronpcdActualizar.php?curp='.$expediente.'"><i class="bi bi-pencil-square"></i></a>
                 ';
-            }
-            else {
+            /* }
+            else if ($rowVariable['numExpediente'] == "" || $rowVariable['numExpediente'] == null){
                 echo '
                     <td class="text-center"><a href="padronpcdActualizar.php?curp='.$rowVariable['curp'].'"><i class="bi bi-pencil-square"></i></a>
                 ';
-            }
+            } */
         echo '
             </td>
         </tr>

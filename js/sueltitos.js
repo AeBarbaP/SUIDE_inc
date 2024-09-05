@@ -242,24 +242,21 @@ function swaldatoscrdEmp() {
     }
     // para generar credencial
 
-    function buscarExpediente(expVal){
+  function buscarExpediente(expVal){
     var expediente = expVal;
     $.ajax({
         type:"POST",
         url:"query/query_searchPadronBD.php",
+	dataType: "html",
         data:{
             expediente:expediente
         },
-        // dataType: "html",
-        //contentType:false,
-        //processData:false,
-        cache: false,
         success: function(data) {
-            document.getElementById('credencial').hidden = false;
             $("#credencial").html(data);
+	    document.getElementById('credencial').hidden = false;
         }               
     });
-    }
+  }
     // para generar tarjetón
     function buscarExpediente2(){
     var expediente = document.getElementById('searchDBInclusion2').value;
@@ -307,17 +304,18 @@ function buscarExpediente3(){
             success: function(data) {
             document.getElementById('tarjeton').hidden = false;
             //document.getElementById('searchDBInclusion2').hidden = true;
-            document.getElementById('modeloPerm').disabled = false;
-            document.getElementById('marcaPerm').disabled = false;
-            document.getElementById('annioPerm').disabled = false;
-            document.getElementById('placasPerm').disabled = false;
-            document.getElementById('seriePerm').disabled = false;
-            document.getElementById('folioTPerm').disabled = false;
-            document.getElementById('vigenciaPerm').disabled = false;
+            document.getElementById('modeloPermE').disabled = false;
+            document.getElementById('marcaPermE').disabled = false;
+            document.getElementById('annioPermE').disabled = false;
+            document.getElementById('placasPermE').disabled = false;
+            document.getElementById('seriePermE').disabled = false;
+            document.getElementById('folioTPermE').disabled = false;
+            document.getElementById('vigenciaPermE').disabled = false;
             document.getElementById('checkAutoS').checked = false;
             document.getElementById('AutoSeguroInput').value = "";
-            document.getElementById('agregarVehiculoBtn').disabled = false;
+            document.getElementById('agregarVehiculoBtnExp').disabled = false;
             $("#tarjeton2").html(data);
+	    mostrarTablaVehiculosE();
         }               
     });
 }

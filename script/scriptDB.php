@@ -7,6 +7,13 @@ setlocale(LC_TIME, 'es_MX.UTF-8');
 
 $hoyX = strtotime("%Y-%m-%d");
 
+$files = glob('../fotos_expedientes/*.jpg'); //obtenemos todos los nombres de los ficheros
+foreach($files as $file){
+    if(is_file($file))
+    unlink($file); //elimino el fichero
+echo "eliminado";
+}
+
 $limpiar = "DELETE FROM datos_generales";
 $resultado = $conn->query($limpiar);
 
@@ -54,7 +61,7 @@ $x = 0;
 if($numeroID == 1){
 
 //$db1 = "SELECT * FROM Expedientes WHERE ordenExpediente = 500";
-$db1 = "SELECT * FROM Expedientes ORDER BY ordenExpediente ASC LIMIT 500";
+$db1 = "SELECT * FROM Expedientes ORDER BY ordenExpediente ASC";
 //$db1 = "SELECT * FROM Expedientes ORDER BY RAND() LIMIT 1, 15";
 $resultadoDB1 = $conn2->query($db1);
 
@@ -98,7 +105,9 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
 
             $file = ($rowFotos['fotografia']);
             $fichero="../fotos_expedientes/".$curp."_".$folio.".jpg";
+            /* $fichero="../fotos_expedientes/".$folio.".jpg"; */
             $foto = $curp."_".$folio.".jpg";
+             //$foto = $folio.".jpg";
             file_put_contents($fichero, $file);
             // echo $file;
         }
@@ -245,14 +254,60 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         if ($rowdbEstudioSE = $resultadoEstudioSE->fetch_assoc()){
         // estudiossocioeconómico
             $estudia = $rowdbEstudioSE['estudia']; // se relaciona con idExpediente
+            if ($estudia == "SI"){
+                $estudia = 1;
+            }
+            else if ($estudia == "NO"){
+                $estudia = 0;
+            }
+            else {
+                $estudia = "";
+            }
             $lgarEstudio = ""; // se relaciona con idExpediente
+
             $trabaja = $rowdbEstudioSE['trabaja']; // se relaciona con idExpediente
+            if ($trabaja == "SI"){
+                $trabaja = 1;
+            }
+            else if ($trabaja == "NO"){
+                $trabaja = 0;
+            }
+            else {
+                $trabaja = "";
+            }
             $lugarTrabajo = ""; // se relaciona con idExpediente
             $asociacion = $rowdbEstudioSE['asociacion']; // se relaciona con idExpediente
+            if ($asociacion == "SI"){
+                $asociacion = 1;
+            }
+            else if ($asociacion == "NO"){
+                $asociacion = 0;
+            }
+            else {
+                $asociacion = "";
+            }
             $lugarAsociacion = $rowdbEstudioSE['lugarAsociacion']; // se relaciona con idExpediente
             $sindicato = ""; // se relaciona con idExpediente
+            if ($sindicato == "SI"){
+                $sindicato = 1;
+            }
+            else if ($sindicato == "NO"){
+                $sindicato = 0;
+            }
+            else {
+                $sindicato = "";
+            }
             $lugarSindicato = ""; // se relaciona con idExpediente
             $pensionado = $rowdbEstudioSE['pensionado']; // se relaciona con idExpediente
+            if ($pensionado == "SI"){
+                $pensionado = 1;
+            }
+            else if ($pensionado == "NO"){
+                $pensionado = 0;
+            }
+            else {
+                $pensionado = "";
+            }
             $lugarPension = $rowdbEstudioSE['lugarPension']; // se relaciona con idExpediente
             $montoPension = $rowdbEstudioSE['montoPension']; // se relaciona con idExpediente
             $idEstudioSocioEconomico = $rowdbEstudioSE['id'];
@@ -300,6 +355,37 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         $tipoCirugia = $rowDB3['tipoCirugia']; // se relaciona con idExpediente
         $idTipoSangre = $rowDB3['idTipoSangre']; // se relaciona con idExpediente
 
+        if ($idTipoSangre == 1){
+            $idTipoSangre = 7;
+        }
+        else if ($idTipoSangre == 2){
+            $idTipoSangre = 8;
+        }
+        else if ($idTipoSangre == 3){
+            $idTipoSangre = 0;
+        }
+        else if ($idTipoSangre == 4){
+            $idTipoSangre = 1;
+        }
+        else if ($idTipoSangre == 5){
+            $idTipoSangre = 5;
+        }
+        else if ($idTipoSangre == 6){
+            $idTipoSangre = 4;
+        }
+        else if ($idTipoSangre == 7){
+            $idTipoSangre = 3;
+        }
+        else if ($idTipoSangre == 8){
+            $idTipoSangre = 2;
+        }
+        else if ($idTipoSangre == 9){
+            $idTipoSangre = 6;
+        }
+        else if ($idTipoSangre == 10){
+            $idTipoSangre = 1;
+        }
+
         if ($cirugia == "SI"){
             $cirugia = 1;
         }
@@ -315,7 +401,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
         $rowDB4 = $resultadoDB4->fetch_assoc();
 
         $grado = $rowDB4['grado']; // se relaciona con idExpediente
-        $temporalidad = $rowDB4['temporalidad']; // se relaciona con idExpediente
+        $temporalidad = ""; // se relaciona con idExpediente
         $valoracion = $rowDB4['idCatInstitucion']; // se relaciona con idExpediente
         $idCatCausa = $rowDB4['idCatCausa']; // se relaciona con idExpediente
 
@@ -365,113 +451,113 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
 
         // $nombreDiscapacidad = "Sin datos de la discapacidad";
 
-        if ($nombreDiscapacidad1 == "MOTORA"){
+        if ($nombreDiscapacidad1 == "MOTORA" || $nombreDiscapacidad1 == "MOTORA "){
             $nombreDiscapacidad = "Motora";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA GUILLAIN B."){
+        else if ($nombreDiscapacidad1 == "MOTORA GUILLAIN B." || $nombreDiscapacidad1 == "MOTORA GUILLAIN B. "){
             $nombreDiscapacidad = "Síndrome de Guillain Barré";
         }
-        else if ($nombreDiscapacidad1 == "MUDEZ"){
+        else if ($nombreDiscapacidad1 == "MUDEZ" || $nombreDiscapacidad1 == "MUDEZ "){
             $nombreDiscapacidad = "Mudez";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA TALLA BAJA"){
+        else if ($nombreDiscapacidad1 == "MOTORA TALLA BAJA" || $nombreDiscapacidad1 == "MOTORA TALLA BAJA "){
             $nombreDiscapacidad = "Talla Baja";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA PSICOMOTOR"){
+        else if ($nombreDiscapacidad1 == "MOTORA PSICOMOTOR" || $nombreDiscapacidad1 == "MOTORA PSICOMOTOR "){
             $nombreDiscapacidad = "Psicomotora";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA ESCLEROSIS"){
+        else if ($nombreDiscapacidad1 == "MOTORA ESCLEROSIS" || $nombreDiscapacidad1 == "MOTORA ESCLEROSIS "){
             $nombreDiscapacidad = "Esclerosis Múltiple";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA ESPONDILITIS"){
+        else if ($nombreDiscapacidad1 == "MOTORA ESPONDILITIS" || $nombreDiscapacidad1 == "MOTORA ESPONDILITIS "){
             $nombreDiscapacidad = "Espondilitis";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA MIELOMENINGOCELE"){
+        else if ($nombreDiscapacidad1 == "MOTORA MIELOMENINGOCELE" || $nombreDiscapacidad1 == "MOTORA MIELOMENINGOCELE "){
             $nombreDiscapacidad = "Mielomeningocele";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA UNIPARESIA"){
+        else if ($nombreDiscapacidad1 == "MOTORA UNIPARESIA" || $nombreDiscapacidad1 == "MOTORA UNIPARESIA "){
             $nombreDiscapacidad = "Uniparesia / Monoparesia";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA CUADRIPARESIA"){
+        else if ($nombreDiscapacidad1 == "MOTORA CUADRIPARESIA" || $nombreDiscapacidad1 == "MOTORA CUADRIPARESIA "){
             $nombreDiscapacidad = "Cuadriparesia";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA AMPUTACION"){
+        else if ($nombreDiscapacidad1 == "MOTORA AMPUTACION" || $nombreDiscapacidad1 == "MOTORA AMPUTACION " || $nombreDiscapacidad1 == "MOTORA AMPUTACIÓN" || $nombreDiscapacidad1 == "MOTORA AMPUTACIÓN "){
             $nombreDiscapacidad = "Amputación";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA POLIOMIELITIS"){
+        else if ($nombreDiscapacidad1 == "MOTORA POLIOMIELITIS" || $nombreDiscapacidad1 == "MOTORA POLIOMIELITIS "){
             $nombreDiscapacidad = "Poliomielitis";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA ENF. ART. DEG."){
+        else if ($nombreDiscapacidad1 == "MOTORA ENF. ART. DEG." || $nombreDiscapacidad1 == "MOTORA ENF. ART. DEG. "){
             $nombreDiscapacidad = "Enfermedad Articular Degenerativa";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA CUADRIPLEJIA"){
+        else if ($nombreDiscapacidad1 == "MOTORA CUADRIPLEJIA" || $nombreDiscapacidad1 == "MOTORA CUADRIPLEJIA "){
             $nombreDiscapacidad = "Cuadriplejia";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA HEMIPLEJIA"){
+        else if ($nombreDiscapacidad1 == "MOTORA HEMIPLEJIA" || $nombreDiscapacidad1 == "MOTORA HEMIPLEJIA "){
             $nombreDiscapacidad = "Hemiplejia";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA PARAPARESIA"){
+        else if ($nombreDiscapacidad1 == "MOTORA PARAPARESIA" || $nombreDiscapacidad1 == "MOTORA PARAPARESIA "){
             $nombreDiscapacidad = "Paraparesia";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA DISTROFIA"){
+        else if ($nombreDiscapacidad1 == "MOTORA DISTROFIA" || $nombreDiscapacidad1 == "MOTORA DISTROFIA "){
             $nombreDiscapacidad = "Distrofia";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA PARAPLEJIA"){
+        else if ($nombreDiscapacidad1 == "MOTORA PARAPLEJIA" || $nombreDiscapacidad1 == "MOTORA PARAPLEJIA "){
             $nombreDiscapacidad = "Paraplejia";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA HEMIMELIA"){
+        else if ($nombreDiscapacidad1 == "MOTORA HEMIMELIA" || $nombreDiscapacidad1 == "MOTORA HEMIMELIA "){
             $nombreDiscapacidad = "Hemimelia";
         }
-        else if ($nombreDiscapacidad1 == "MOTORA ESCOLIOSIS"){
+        else if ($nombreDiscapacidad1 == "MOTORA ESCOLIOSIS" || $nombreDiscapacidad1 == "MOTORA ESCOLIOSIS "){
             $nombreDiscapacidad = "Escoliosis";
         }
         
-        else if ($nombreDiscapacidad1 == "COMUNICACIÓN LENGUAJE"){
+        else if ($nombreDiscapacidad1 == "COMUNICACIÓN LENGUAJE" || $nombreDiscapacidad1 == "COMUNICACIÓN LENGUAJE " || $nombreDiscapacidad1 == "COMUNICACION LENGUAJE" || $nombreDiscapacidad1 == "COMUNICACION LENGUAJE "){
             $nombreDiscapacidad = "Comunicación Lenguaje";
         }
-        else if ($nombreDiscapacidad1 == "VISUAL"){
+        else if ($nombreDiscapacidad1 == "VISUAL" || $nombreDiscapacidad1 == "VISUAL "){
             $nombreDiscapacidad = "Visual";
         }
-        else if ($nombreDiscapacidad1 == "BAJA VISION"){
+        else if ($nombreDiscapacidad1 == "BAJA VISION" || $nombreDiscapacidad1 == "BAJA VISION " || $nombreDiscapacidad1 == "BAJA VISIÓN" || $nombreDiscapacidad1 == "BAJA VISIÓN "){
             $nombreDiscapacidad = "Baja Visión";
         }
-        else if ($nombreDiscapacidad1 == "SORDO CIEGO"){
+        else if ($nombreDiscapacidad1 == "SORDO CIEGO" || $nombreDiscapacidad1 == "SORDO CIEGO "){
             $nombreDiscapacidad = "Sordo Ciego";
         }
-        else if ($nombreDiscapacidad1 == "INTELECTUAL DOWN"){
+        else if ($nombreDiscapacidad1 == "INTELECTUAL DOWN" || $nombreDiscapacidad1 == "INTELECTUAL DOWN "){
             $nombreDiscapacidad = "Síndrome de Down";
         }
-        else if ($nombreDiscapacidad1 == "INTELECTUAL NEUROLOGICO"){
+        else if ($nombreDiscapacidad1 == "INTELECTUAL NEUROLOGICO" || $nombreDiscapacidad1 == "INTELECTUAL NEUROLOGICO "){
             $nombreDiscapacidad = "Intelectual DM";
         }
-        else if ($nombreDiscapacidad1 == "MULTIPLE PC" || $nombreDiscapacidad1 == "MÚLTIPLE PC"){
+        else if ($nombreDiscapacidad1 == "MULTIPLE PC" || $nombreDiscapacidad1 == "MÚLTIPLE PC" || $nombreDiscapacidad1 == "MÚLTIPLE PC " || $nombreDiscapacidad1 == "MULTIPLE PC "){
             $nombreDiscapacidad = "Parálisis Cerebral";
         }
-        else if ($nombreDiscapacidad1 == "INTELECTUAL APRENDIZAJE"){
+        else if ($nombreDiscapacidad1 == "INTELECTUAL APRENDIZAJE" || $nombreDiscapacidad1 == "INTELECTUAL APRENDIZAJE "){
             $nombreDiscapacidad = "Aprendizaje";
         }
-        else if ($nombreDiscapacidad1 == "INTELECTUAL MICROCEFALIA"){
+        else if ($nombreDiscapacidad1 == "INTELECTUAL MICROCEFALIA" || $nombreDiscapacidad1 == "INTELECTUAL MICROCEFALIA "){
             $nombreDiscapacidad = "Microcefalia";
         }
-        else if ($nombreDiscapacidad1 == "INTELECTUAL NEUROLOGICO"){
+        else if ($nombreDiscapacidad1 == "INTELECTUAL NEUROLOGICO" || $nombreDiscapacidad1 == "INTELECTUAL NEUROLOGICO " || $nombreDiscapacidad1 == "INTELECTUAL NEUROLÓGICO " || $nombreDiscapacidad1 == "INTELECTUAL NEUROLÓGICO"){
             $nombreDiscapacidad = "Neurológica";
         }
-        else if ($nombreDiscapacidad1 == "INTELECTUAL D. M."){
+        else if ($nombreDiscapacidad1 == "INTELECTUAL D. M." || $nombreDiscapacidad1 == "INTELECTUAL D. M. "){
             $nombreDiscapacidad = "Intelectual DM";
         }
-        else if ($nombreDiscapacidad1 == "AUTISMO"){
+        else if ($nombreDiscapacidad1 == "AUTISMO" || $nombreDiscapacidad1 == "AUTISMO "){
             $nombreDiscapacidad = "Espectro Autista";
         }
         else if ($nombreDiscapacidad1 == "MÚLTIPLE " || $nombreDiscapacidad1 == "MULTIPLE " || $nombreDiscapacidad1 == "MÚLTIPLE" || $nombreDiscapacidad1 == "MULTIPLE"){
             $nombreDiscapacidad = "Múltiple";
         }
-        else if ($nombreDiscapacidad1 == "MULTIPLE MOTORA AUDITIVA" || $nombreDiscapacidad1 == "MÚLTIPLE MOTORA AUDITIVA"){
+        else if ($nombreDiscapacidad1 == "MULTIPLE MOTORA AUDITIVA" || $nombreDiscapacidad1 == "MÚLTIPLE MOTORA AUDITIVA" || $nombreDiscapacidad1 == "MULTIPLE MOTORA AUDITIVA " || $nombreDiscapacidad1 == "MÚLTIPLE MOTORA AUDITIVA "){
             $nombreDiscapacidad = "Motora Auditiva";
         }
-        else if ($nombreDiscapacidad1 == "MULTIPLE SINDROMES" || $nombreDiscapacidad1 == "MÚLTIPLE SINDROMES"){
+        else if ($nombreDiscapacidad1 == "MULTIPLE SINDROMES" || $nombreDiscapacidad1 == "MÚLTIPLE SINDROMES" || $nombreDiscapacidad1 == "MULTIPLE SINDROMES " || $nombreDiscapacidad1 == "MÚLTIPLE SINDROMES "){
             $nombreDiscapacidad = "Múltiple Síndromes";
         }
-        else if ($nombreDiscapacidad1 == "PROBLEMAS EN LA COMUNICACIÓN"){
+        else if ($nombreDiscapacidad1 == "PROBLEMAS EN LA COMUNICACIÓN" || $nombreDiscapacidad1 == "PROBLEMAS EN LA COMUNICACIÓN " || $nombreDiscapacidad1 == "PROBLEMAS EN LA COMUNICACION" || $nombreDiscapacidad1 == "PROBLEMAS EN LA COMUNICACION "){
             $nombreDiscapacidad = "Problemas en la Comunicación";
         }
         else if ($nombreDiscapacidad1 == "AUDITIVA" || $nombreDiscapacidad1 == "AUDITIVA "){

@@ -111,7 +111,8 @@ $sqlinsert= "INSERT INTO datos_generales (
     seguridad_social_otro,
     numSS,
     gpo_vulnerable,
-    estatus
+    estatus,
+    avance
     )
 VALUES(
     '$fecha_registro',
@@ -164,10 +165,16 @@ VALUES(
     '$otroSS',
     '$numSS',
     '$gruposFull',
+    1,
     1
 )";
 
+$sqlinsert2 = "INSERT INTO datos_medicos (curp) VALUES ('$curp')";
+$sqlinsert3 = "INSERT INTO vivienda (curp) VALUES ('$curp')";
+
 $resultado= $conn->query($sqlinsert);
+$resultado= $conn->query($sqlinsert2);
+$resultado= $conn->query($sqlinsert3);
 
 if ($resultado) {
     $sqlInsertUsr = "INSERT INTO log_registro(

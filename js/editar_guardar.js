@@ -388,7 +388,7 @@ $(document).ready(function() {
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));
-                var verificador = jsonData.succes;
+                var verificador = jsonData.success;
                 var curpSaved = jsonData.curp;
                 if (verificador = 1){
                     document.getElementById('btnGuardarGeneral').disabled=true;

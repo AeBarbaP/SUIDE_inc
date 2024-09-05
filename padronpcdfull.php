@@ -93,6 +93,7 @@ include('prcd/qc/qc.php');
     <script src="js/usuarioTemp.js"></script>
     <script src="js/print.js"></script>
     <script src="js/query.js"></script>
+    <script src="js/sueltitos.js"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
     <style>
@@ -271,8 +272,13 @@ include('prcd/qc/qc.php');
         <p class="h3">Padrón de Personas con Discapacidad</p>
       </div>
       <div class="row">
+        <div class="col-md-5">
+          <div class="input-group mb-2 mt-3">
+            <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+            <input class="form-control w-50" id="buscarFiltroPadron" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Buscar...">
+          </div><!-- input group -->
+        </div>
         <div class="col-md-2 mt-2">
-          <h4>Filtro:</h4>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="expedienteSearch" onclick="filtroPadronFull()">
             <label class="form-check-label" for="inlineRadio1">Expediente</label>
@@ -281,12 +287,6 @@ include('prcd/qc/qc.php');
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="nombreSearch" onclick="filtroPadronFull()">
             <label class="form-check-label" for="inlineRadio2">Nombre</label>
           </div>
-        </div>
-        <div class="col-md-5">
-          <div class="input-group mb-2 mt-3">
-            <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-            <input class="form-control w-50" id="buscarFiltroPadron" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Buscar...">
-          </div><!-- input group -->
         </div>
         <div class="col-md-2">
           <div class="input-group mb-2 mt-3">
@@ -324,7 +324,7 @@ include('prcd/qc/qc.php');
                 <th scope="col">Nombre Completo</th>
                 <th scope="col">Tipo Discapacidad</th>
                 <th scope="col">Municipio</th>
-                <th scope="col">Estatus</th>
+                <!-- <th scope="col">Estatus</th> -->
                 <th scope="col">Actualizar</th>
             </tr>
           </thead>

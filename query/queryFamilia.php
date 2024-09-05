@@ -15,7 +15,7 @@ $resultadoVariable = $conn->query($var);
 $filaVar = $resultadoVariable->num_rows;
 
     if($filaVar != 0){
-    $x=0;
+        $x=0;
         while($rowVar = $resultadoVariable->fetch_assoc()){
             $x++;
             

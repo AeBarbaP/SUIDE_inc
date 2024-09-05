@@ -11,6 +11,7 @@ $fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
 $fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
 
 $curp_exp = $_POST['curp_exp'];
+$numExp = $_POST['numExp'];
 $nombreFamiliar = $_POST['nombreFamiliar'];
 $parentescoFam = $_POST['parentescoFam'];
 $edadFam = $_POST['edadFam'];
@@ -24,6 +25,7 @@ $tipo_dato = 5;
 
 $sqlinsert= "INSERT INTO integracion (
     curp,
+    expediente,
     nombre,
     parentesco,
     edad,
@@ -36,6 +38,7 @@ $sqlinsert= "INSERT INTO integracion (
     )
 VALUES(
     '$curp_exp',
+    '$numExp',
     '$nombreFamiliar',
     '$parentescoFam',
     '$edadFam',

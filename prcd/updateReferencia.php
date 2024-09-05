@@ -17,7 +17,7 @@ $domicilioRef = $_POST['domicilioRef'];
 $id = $_POST['idR'];
 $tipo_dato = 35;
 
-$sqlinsert= "UPDATE referencias SET nombre='$nombreReferencia', parentesco='$parentescoRef', profesion_oficio='$profesionRef', celular='$telRef', direccion='$domicilioRef' WHERE id = '$id'";
+$sqlinsert= "UPDATE referencias SET nombre='$nombreReferencia', parentesco='$parentescoRef', profesion_oficio='$profesionRef', celular='$telRef', direccion='$domicilioRef' WHERE id = '$id' AND curp = '$curp' ";
 
 $resultado= $conn->query($sqlinsert);
 

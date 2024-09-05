@@ -33,26 +33,26 @@
                                     <input type="text" id="tipoTarjeton" value="1" hidden>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Marca</span>
-                                        <input type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaPerm">
+                                        <input type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaPermE">
                                     </div>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">Modelo</span>
-                                        <input type="text" class="form-control" placeholder="Modelo" id="modeloPerm" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="modelo" aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" placeholder="Modelo" id="modeloPermE" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-label="modelo" aria-describedby="basic-addon1">
                                         <span class="input-group-text">Año</span>
-                                        <input type="text" onkeypress="ValidaSoloNumeros()" class="form-control" placeholder="Año" aria-label="anio" id="annioPerm">
+                                        <input type="text" onkeypress="ValidaSoloNumeros()" class="form-control" placeholder="Año" aria-label="anio" id="annioPermE">
                                     </div>
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">No. de Placas</span>
-                                        <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-describedby="basic-addon1" id="placasPerm">
+                                        <input type="text" class="form-control" placeholder="# de Placas" aria-label="numeroplacas" onkeyup="javascript:this.value=this.value.toUpperCase()" aria-describedby="basic-addon1" id="placasPermE">
                                         <span class="input-group-text" id="basic-addon1">No. de Serie</span>
-                                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" placeholder="# de Serie del vehículo" aria-label="numeroserie" aria-describedby="basic-addon1" id="seriePerm">
+                                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control w-25" placeholder="# de Serie del vehículo" aria-label="numeroserieE" aria-describedby="basic-addon1" id="seriePermE">
                                     </div>
                                     <div class="input-group mb-1">
                                         <span class="input-group-text" id="basic-addon1">Folio Tarjetón</span>
-                                        <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()"  placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPerm" >
+                                        <input type="text" class="form-control" onkeypress="ValidaSoloNumeros()"  placeholder="# de del tarjetón a asignar" aria-label="folioTarjeton" aria-describedby="basic-addon1" id="folioTPermE" >
                                         <span class="input-group-text" id="basic-addon1">Vigencia</span>
-                                        <select class="form-select" id="vigenciaPerm" aria-label="Default select example" onchange="habilitaBTNadd()">
-                                            <option selected>Selecciona...</option>
+                                        <select class="form-select" id="vigenciaPermE" aria-label="Default select example" onchange="habilitaBTNaddExp()">
+                                            <option value="0" selected>Selecciona...</option>
                                             <option value="730">2 años</option>
                                             <option value="2190">6 años</option>
                                         </select>
@@ -69,7 +69,7 @@
                                             </div>  
                                         </div>
                                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                            <button class="btn btn-primary me-md-2" type="button" id="agregarVehiculoBtn" onclick="vehiculoAdd()" disabled><i class="bi bi-plus-lg"></i> Agregar</button>
+                                            <button class="btn btn-primary me-md-2" type="button" id="agregarVehiculoBtnExp" onclick="vehiculoAddExp()" disabled><i class="bi bi-plus-lg"></i> Agregar</button>
                                         </div>
                                         <hr>
                                         <div class="table-responsive text-center">
@@ -84,7 +84,7 @@
                                                         <th scope="col">Editar</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody id="vehiculosTabla">
+                                                <tbody id="vehiculosTablaE">
                                                 
                                                 </tbody>
                                             </table>
@@ -95,11 +95,11 @@
                         </div>
                     </div>
                 </div>  
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiaModalTarjeton()">Cerrar</button>
-                <!-- <button type="button" class="btn btn-primary" id="habilitaimprimirtp" onclick="swaldatostrn();limpiaModalTarjeton()" disabled><i class="bi bi-save2"></i> Generar QR</button> -->
-                <button type="button" class="btn btn-primary" id="imprimirt" data-bs-toggle="modal" data-bs-target="#qrShows2" onclick="limpiaModalTarjeton()" disabled><i class="bi bi-printer"></i> Imprimir</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiaModalTarjeton()">Cerrar</button>
+                    <!-- <button type="button" class="btn btn-primary" id="habilitaimprimirtp" onclick="swaldatostrn();limpiaModalTarjeton()" disabled><i class="bi bi-save2"></i> Generar QR</button> -->
+                    <button type="button" class="btn btn-primary" id="imprimirtExp" data-bs-toggle="modal" data-bs-target="#qrShows" onclick="limpiaModalTarjetonE()" disabled><i class="bi bi-printer"></i> Imprimir</button>
+                </div>
             </div>
         </div>
     </div>

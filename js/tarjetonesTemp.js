@@ -229,8 +229,8 @@ function buscarTarjetonTemp(x){
                     
                     var municipioQuery = jsonData.estado;
                     var discapacidadQuery = jsonData.tipoDiscapacidad;
-                    municipiosSelect(municipioQuery);
-                    discapacidadTab(discapacidadQuery);
+                    municipiosSelect3(municipioQuery);
+                    discapacidadTab2(discapacidadQuery);
                     updateUsuarioTempBloquear();
                     
                     document.getElementById('discapacidadConsultaT').value = jsonData.discapacidad;

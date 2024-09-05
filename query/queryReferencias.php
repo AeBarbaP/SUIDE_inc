@@ -10,7 +10,9 @@ if(empty($_POST['curp_exp'])){
 }
 else if(isset($_POST['curp_exp'])){
 $variable = $_POST['curp_exp'];
-$var = "SELECT * FROM referencias WHERE curp = '$variable'";
+$expediente = $_POST['expediente'];
+
+$var = "SELECT * FROM referencias WHERE curp = '$variable' AND expediente = '$expediente'";
 $resultadoVariable = $conn->query($var);
 $filaVar = $resultadoVariable->num_rows;
     if($filaVar > 0){
