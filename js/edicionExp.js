@@ -493,7 +493,7 @@ function queryDatos(){
 
                 document.getElementById('profesion').value = jsonData.profesion; 
                 document.getElementById('profesion').value = jsonData.profesion; 
-                
+                document.getElementById('btncurpactualizar').disabled = false;
                 var rfcCut = jsonData.rfc;
                 //document.getElementById('rfcHomo').value = rfcCut;
 
@@ -606,21 +606,59 @@ function queryDatos(){
                 
                 if (tipoDisc == "FÍSICA" || tipoDisc == "Física"){
                     document.getElementById('tipoDisc').value = "Física";
+                    document.getElementById('visual').hidden = true;
+                    document.getElementById('auditiva').hidden = true;
+                    document.getElementById('auditiva2').hidden = true;
                 }
                 else if (tipoDisc == "Intelectual" || tipoDisc == "INTELECTUAL"){
                     document.getElementById('tipoDisc').value = "Intelectual";
+                    document.getElementById('visual').hidden = true;
+                    document.getElementById('auditiva').hidden = true;
+                    document.getElementById('auditiva2').hidden = true;
                 }
                 else if (tipoDisc == "Sensorial" || tipoDisc == "SENSORIAL"){
                     document.getElementById('tipoDisc').value = "Sensorial";
                 }
                 else if (tipoDisc == "Múltiple" || tipoDisc == "MÚLTIPLE"){
                     document.getElementById('tipoDisc').value = "Múltiple";
+                    document.getElementById('visual').hidden = true;
+                    document.getElementById('auditiva').hidden = true;
+                    document.getElementById('auditiva2').hidden = true;
                 }
                 else if (tipoDisc == "Psicosocial" || tipoDisc == "PSICOSOCIAL"){
                     document.getElementById('tipoDisc').value = "Psicosocial";
+                    document.getElementById('visual').hidden = true;
+                    document.getElementById('auditiva').hidden = true;
+                    document.getElementById('auditiva2').hidden = true;
                 }
 
                 document.getElementById('discapacidadList').value = jsonData.discapacidad;
+                if ((tipoDisc == "Sensorial" || tipoDisc == "SENSORIAL") && (jsonData.discapacidad == "24-Visual")) {
+                    document.getElementById('visual').hidden = false;
+                    document.getElementById('auditiva').disabled = true;
+                    document.getElementById('auditiva2').disabled = true;
+                    document.getElementById('lsmNA').checked = true;
+                    document.getElementById('labiofacialNA').checked = true;
+                }
+                else if (jsonData.discapacidad == "25-Baja Visión"){
+                    document.getElementById('visual').hidden = false;
+                    document.getElementById('auditiva').disabled = true;
+                    document.getElementById('auditiva2').disabled = true;
+                    document.getElementById('lsmNA').checked = true;
+                    document.getElementById('labiofacialNA').checked = true;
+                }
+                else if (jsonData.discapacidad == "21-Auditiva Hipoacusia"){
+                    document.getElementById('auditiva').hidden = false;
+                    document.getElementById('auditiva2').hidden = false;
+                    document.getElementById('visual').disabled = true;
+                    document.getElementById('braileNA').checked = true;
+                }
+                else if (jsonData.discapacidad == "22-Auditiva Anacusia"){
+                    document.getElementById('auditiva').hidden = false;
+                    document.getElementById('auditiva2').hidden = false;
+                    document.getElementById('visual').disabled = true;
+                    document.getElementById('braileNA').checked = true;
+                }
 
                 document.getElementById('descDisc').value = jsonData.descripcionDiscapacidad; 
                 var causaDiscapacidadVar = jsonData.causa;
@@ -675,66 +713,66 @@ function queryDatos(){
 
                 var braile = jsonData.braile;
                 if (braile == 1){
+                    document.getElementById('visual').hidden = false;
                     document.getElementById('braileSi').checked = true;
                     document.getElementById('braileNo').checked = false; 
                     document.getElementById('braileNA').checked = false;
                 }
                 else if (braile == 2){
+                    document.getElementById('visual').hidden = false;
                     document.getElementById('braileNo').checked = true;
                     document.getElementById('braileSi').checked = false;
                     document.getElementById('braileNA').checked = false;
                 }
-                else if (braile == 3){
+                else if (braile == 0){
+                    document.getElementById('visual').hidden = true;
                     document.getElementById('braileNA').checked = true;
-                    document.getElementById('braileSi').checked = false;
-                    document.getElementById('braileNo').checked = false;
-                }
-                else {
-                    document.getElementById('braileNA').checked = false;
                     document.getElementById('braileSi').checked = false;
                     document.getElementById('braileNo').checked = false;
                 }
                 
                 var lsm = jsonData.lsm;
                 if (lsm == 1){
+                    document.getElementById('auditiva').hidden = false;
+                    document.getElementById('auditiva2').hidden = false;
                     document.getElementById('lsmSi').checked = true;
                     document.getElementById('lsmNo').checked = false; 
                     document.getElementById('lsmNA').checked = false;
                 }
                 else if (lsm == 2){
+                    document.getElementById('auditiva').hidden = false;
+                    document.getElementById('auditiva2').hidden = false;
                     document.getElementById('lsmNo').checked = true;
                     document.getElementById('lsmSi').checked = false;
                     document.getElementById('lsmNA').checked = false;
                 }
                 else if (lsm == 0){
+                    document.getElementById('auditiva').hidden = true;
+                    document.getElementById('auditiva2').hidden = true;
                     document.getElementById('lsmNA').checked = true;
-                    document.getElementById('lsmSi').checked = false;
-                    document.getElementById('lsmNo').checked = false;
-                }
-                else {
-                    document.getElementById('lsmNA').checked = false;
                     document.getElementById('lsmSi').checked = false;
                     document.getElementById('lsmNo').checked = false;
                 }
                 
                 var labiofacial = jsonData.labiofacial;
                 if (labiofacial == 1){
+                    document.getElementById('auditiva').hidden = false;
+                    document.getElementById('auditiva2').hidden = false;
                     document.getElementById('labiofacialSi').checked = true;
                     document.getElementById('labiofacialNo').checked = false; 
                     document.getElementById('labiofacialNA').checked = false;
                 }
                 else if (labiofacial == 2){
+                    document.getElementById('auditiva').hidden = false;
+                    document.getElementById('auditiva2').hidden = false;
                     document.getElementById('labiofacialNo').checked = true;
                     document.getElementById('labiofacialSi').checked = false;
                     document.getElementById('labiofacialNA').checked = false;
                 }
                 else if (labiofacial == 0){
+                    document.getElementById('auditiva').hidden = true;
+                    document.getElementById('auditiva2').hidden = true;
                     document.getElementById('labiofacialNA').checked = true;
-                    document.getElementById('labiofacialSi').checked = false;
-                    document.getElementById('labiofacialNo').checked = false;
-                }
-                else {
-                    document.getElementById('labiofacialNA').checked = false;
                     document.getElementById('labiofacialSi').checked = false;
                     document.getElementById('labiofacialNo').checked = false;
                 }

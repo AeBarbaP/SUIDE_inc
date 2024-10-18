@@ -17,7 +17,7 @@ $(document).ready(function () {
             window.print();
         }
     })
-});
+}); 
 
 $(document).ready(function () {
     $('#printButton').on('click', function (event) {
@@ -395,3 +395,22 @@ function swalEntrega(){
     })
 }
 /* <!-- Termina SWAL (CuteAlert) para generar acta de entrega--> */
+
+function modalCurpUpdate(){
+    $('#actualizarCurp').modal('show');
+    var curp = document.geteElementById('curp').value;
+    var idTabla = document.geteById('idTabla').value;
+    $.ajax({
+        type:"POST",
+        url:"prcd/actualziarCurpModal.php",
+        data:{
+            curp:curp,
+            idTabla:idTabla
+        },
+        dataType: "json",
+        success: function(data) {
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+        }
+    });
+}

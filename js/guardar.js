@@ -547,7 +547,7 @@ function updateGeneralesForm(){
         var informante = document.getElementById('nombreInformante').value;
         var informanteRelacion1 = document.getElementById('informanteRel').value;
         var informanteRelacionOtro = document.getElementById('otraRel').value;
-        var estatus = 3;
+        var estatus = 1;
 
         /* if (estatus != 2 || estatus != 3) {
             estatus = 1;
@@ -3306,7 +3306,7 @@ function nona(){
             actaDoc:actaDoc,
             curpDoc:curpDoc,
             ineDoc:ineDoc,
-            comprobanteDoc:comprobanteDoc,
+            comprobanteDoc:comprobanteDoc, 
             circulacionDoc:circulacionDoc
         },
         success: function(data){
