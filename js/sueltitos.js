@@ -399,13 +399,14 @@ function swalEntrega(){
 function modalCurpUpdate(){
     $('#actualizarCurp').modal('show');
     var curp = document.geteElementById('curp').value;
-    var idTabla = document.geteById('idTabla').value;
+    var curp2 = document.getElementById('curpCambiar').value;
+
     $.ajax({
         type:"POST",
         url:"prcd/actualziarCurpModal.php",
         data:{
             curp:curp,
-            idTabla:idTabla
+            curp2:curp2
         },
         dataType: "json",
         success: function(data) {

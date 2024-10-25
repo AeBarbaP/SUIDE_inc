@@ -455,7 +455,7 @@
                           <div class="invalid-feedback">
                             * Campo requerido.
                           </div>
-                          <div class="form-text mb-2" id="divActualizaCurp"><button class="btn btn-outline-light btn-sm text-secondary" aria-disabled="true" id="btncurpactualizar" onclick="modalCurpUpdate()" disabled>Actualizar CURP</button></div>
+                          <div class="form-text mb-2" id="divActualizaCurp"><button class="btn btn-outline-light btn-sm text-secondary" id="btncurpactualizar" onclick="modalCurpUpdate()" disabled>Actualizar CURP</button></div>
                           <div id="result-username2">
                             <input type="text" id="idTabla" hidden>
                           </div>
