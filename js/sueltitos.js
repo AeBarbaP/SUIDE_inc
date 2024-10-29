@@ -398,20 +398,89 @@ function swalEntrega(){
 
 function modalCurpUpdate(){
     $('#actualizarCurp').modal('show');
-    var curp = document.geteElementById('curp').value;
+    var curp = document.getElementById('curp').value;
+
+    document.getElementById('curpCambiar').value = curp;
+}
+
+function actualizarCURP2(){
+    var curp = document.getElementById('curp').value;
     var curp2 = document.getElementById('curpCambiar').value;
 
     $.ajax({
         type:"POST",
-        url:"prcd/actualziarCurpModal.php",
+        url:"prcd/actualizarCurpModal.php",
         data:{
             curp:curp,
             curp2:curp2
         },
         dataType: "json",
         success: function(data) {
+            
             var jsonData = JSON.parse(JSON.stringify(data));
-            var success = jsonData.success;
+            var success1 = jsonData.success1;
+            var success2 = jsonData.success2;
+            var success3 = jsonData.success3;
+            var success4 = jsonData.success4;
+            var success5 = jsonData.success5;
+            var success6 = jsonData.success6;
+            var success7 = jsonData.success7;
+            var success8 = jsonData.success8;
+            var success9 = jsonData.success9;
+            if(success1 == 1){
+                console.log("Datos generales actualizados");
+            }
+            else {
+                console.log("Error al actualizar datos generales: "+jsonData.error1);
+            }
+            if(success2 == 1){
+                console.log("Datos médicos actualizado");
+            }
+            else {
+                console.log("Error al actualizar datos médicos: "+jsonData.error2);
+            }
+            if(success3 == 1){
+                console.log("Datos de vivienda actualizado");
+            }
+            else {
+                console.log("Error al actualizar datos de vivienda: "+jsonData.error3);
+            }
+            if(success4 == 1){
+                console.log("Datos de integración actualizado");
+            }
+            else {
+                console.log("Error al actualizar datos de integración: "+jsonData.error4);
+            }
+            if(success5 == 1){
+                console.log("Datos de referencias actualizado");
+            }
+            else {
+                console.log("Error al actualizar datos de referencias: "+jsonData.error5);
+            }
+            if(success6 == 1){
+                console.log("Datos de documentos actualizado");
+            }
+            else {
+                console.log("Error al actualizar datos de documentos: "+jsonData.error6);
+            }
+            if(success7 == 1){
+                console.log("Datos de solicitud actualizado");
+            }
+            else {
+                console.log("Error al actualizar datos de solicitud: "+jsonData.error7);
+            }
+            if(success8 == 1){
+                console.log("Datos de tarjetones actualizados");
+            }
+            else {
+                console.log("Error al actualizar datos de tarjetones: "+jsonData.error8);
+            }
+            if(success9 == 1){
+                console.log("Datos de servicios actualizados");
+            }
+            else {
+                console.log("Error al actualizar datos de servicios: "+jsonData.error9);
+            }
         }
     });
 }
