@@ -174,12 +174,13 @@ function validarInputUpdate(input) {
             //valido = "No válido";
 
         if (curpValida(curp)) {
+            console.log("llega curp");
             //alert('CURP Válido');
-            document.getElementById('btnUpdateCURP').disabled=false;
+            document.getElementById('btnUpdateCURP2').disabled=false;
 
         } else {
             alert('CURP No Válido');
-            document.getElementById('btnUpdateCURP').disabled=true;
+            document.getElementById('btnUpdateCURP2').disabled=true;
 
         }
     }

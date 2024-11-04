@@ -481,6 +481,7 @@ function actualizarCURP2(){
             else {
                 console.log("Error al actualizar datos de servicios: "+jsonData.error9);
             }
+            $('#actualizarCurp').modal('hide');
         }
     });
 }

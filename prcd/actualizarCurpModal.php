@@ -7,81 +7,98 @@
     $sql = "UPDATE datos_generales SET curp = '$curp2' WHERE curp = '$curp'";
     $resultadoSql = $conn->query($sql);
     if ($resultadoSql){
-        echo json_encode(array(
-            'success1'=>1
-        ));
+        $var1 = 1;
 
         $sql2 = "UPDATE datos_medicos SET curp = '$curp2' WHERE curp = '$curp'";
         $resultadoSql2 = $conn->query($sql2);
         
         if ($resultadoSql2){
-            echo json_encode(array(
-                'success2'=>1
-            ));
+            $var2 = 1;
         
             $sql3 = "UPDATE vivienda SET curp = '$curp2' WHERE curp = '$curp'";
             $resultadoSql3 = $conn->query($sql3);
         
             if ($resultadoSql3){
-                echo json_encode(array(
-                    'success3'=>1
-                ));
+                $var3 = 1;
                 
                 $sql4 = "UPDATE integracion SET curp = '$curp2' WHERE curp = '$curp'";
                 $resultadoSql4 = $conn->query($sql4);
                 
                 if ($resultadoSql4){
-                    echo json_encode(array(
-                        'success4'=>1
-                    ));
+                    $var4 = 1;
+                }
+                else {
+                    $var4 = 0;
                 } 
-                
-                
+
                 $sql5 = "UPDATE referencias SET curp = '$curp2' WHERE curp = '$curp'";
                 $resultadoSql5 = $conn->query($sql5);
                 if ($resultadoSql5){
-                    echo json_encode(array(
-                        'success5'=>1
-                    ));
+                    $var5 = 1;
                 }
-                
+                else {
+                    $var5 = 0;
+                }
 
                 $sql6 = "UPDATE documentos_list SET curp = '$curp2' WHERE curp = '$curp'";
                 $resultadoSql6 = $conn->query($sql6);
                 if ($resultadoSql6){
-                    echo json_encode(array(
-                        'success6'=>1
-                    ));
+                    $var6 = 1;
+                }
+                else {
+                    $var6 = 0;
                 }
                 
                 $sql7 = "UPDATE solicitud SET curp = '$curp2' WHERE curp = '$curp'";
                 $resultadoSql7 = $conn->query($sql7);
                 if ($resultadoSql7){
-                    echo json_encode(array(
-                        'success7'=>1
-                    ));
+                    $var7 = 1;
+                }
+                else {
+                    $var7 = 0;
                 }
                 
                 $sql8 = "UPDATE tarjetones SET curp = '$curp2' WHERE curp = '$curp'";
                 $resultadoSql8 = $conn->query($sql8);
                 if ($resultadoSql8){
-                    echo json_encode(array(
-                        'success8'=>1
-                    ));
+                    $var8 = 1;
+                }
+                else {
+                    $var8 = 0;
                 }
                 
                 $sql9 = "UPDATE servicios SET curp = '$curp2' WHERE curp = '$curp'";
                 $resultadoSql9 = $conn->query($sql9);
                 if ($resultadoSql9){
-                    echo json_encode(array(
-                        'success9'=>1
-                    ));
+                    $var9 = 1;
+                }
+                else {
+                    $var9 = 0;
                 }
                 
             }
+            else {
+                $var3 = 0;
+            }
             
+        } 
+        else {
+            $var2 = 0;
         }
-        
     }
+    else {
+        $var1 = 0;
+    }
+    echo json_encode(array(
+        'success1' => $var1,
+        'success2' => $var2,
+        'success3' => $var3,
+        'success4' => $var4,
+        'success5' => $var5,
+        'success6' => $var6,
+        'success7' => $var7,
+        'success8' => $var8,
+        'success9' => $var9
+    ));
     
 ?>
