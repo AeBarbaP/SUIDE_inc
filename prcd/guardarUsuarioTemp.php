@@ -39,6 +39,27 @@ $causaOtro = $_POST['causaOtro'];
 $fechaNacimiento = $_POST['fechaNacimientoTemp'];
 $tipo_dato = 10;
 
+if ($edadTemp == "" || $edadTemp == null){
+    $edad = 0;
+}
+else {
+    $edad = $edadTemp;
+}
+
+if ($fechaNacimiento == "" || $fechaNacimiento == null){
+    $nacimiento = "0000-00-00";
+}
+else{
+    $nacimiento = $fechaNacimiento;
+}
+
+if ($fechaValTemp == "" || $fechaValTemp == null){
+    $fecha_valoracion = "0000-00-00";
+}
+else{
+    $fecha_valoracion = $fechaValTemp;
+}
+
 $sqlInsert= "INSERT INTO datos_usuariot (
     nombre,
     apellido_p,
@@ -75,8 +96,8 @@ VALUES(
     '$apPaterno',
     '$apMaterno',
     '$curp',
-    '$edadTemp',
-    '$fechaNacimiento',
+    '$edad',
+    '$nacimiento',
     '$sexoSel',
     '$idClaveTemp',
     '$telcelTemp',
@@ -99,7 +120,7 @@ VALUES(
     '$institucionTemp',
     '$medico',
     '$cedula',
-    '$fechaValTemp'
+    '$fecha_valoracion'
 )";
 
 $resultado= $conn->query($sqlInsert);

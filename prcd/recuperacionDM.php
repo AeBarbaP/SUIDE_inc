@@ -335,6 +335,7 @@
             temporalidad = '$temporalidad',
             valoracion = '$valoracionInst',
             causa = '$idCatCausa',
+            causa_otro = '',
             discapacidad = '$discapacidad',
             tipo_discapacidad = '$idCatDiscapacidadTipoNombre',
             protesis = '$protesis',

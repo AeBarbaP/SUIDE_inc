@@ -688,8 +688,8 @@ $(document).ready(function() {
         var viviendaPro = document.getElementById('viviendaPro');
         var viviendaPre = document.getElementById('viviendaPre');
         var viviendaRe = document.getElementById('viviendaRe');
-        var viviendaDebeSi = document.getElementById('viviendaPSi');
-        var viviendaDebeNo = document.getElementById('viviendaPNo');
+        var viviendaPropSi = document.getElementById('viviendaPropSi');
+        var viviendaPropNo = document.getElementById('viviendaPropNo');
         var tipoViviendaC = document.getElementById('tipoViviendaC');
         var tipoViviendaD = document.getElementById('tipoViviendaD');
         var tipoViviendaV = document.getElementById('tipoViviendaV');
@@ -698,6 +698,9 @@ $(document).ready(function() {
         var cocina = document.getElementById('cocina');
         var sala = document.getElementById('sala');
         var bath = document.getElementById('bath');
+        var bathNumInput = document.getElementById('bathNum').value;
+        var interior = document.getElementById('interior');
+        var exterior = document.getElementById('exterior');
         var otroRoom = document.getElementById('otroRoom');
         var lamina = document.getElementById('lamina');
         var cemento = document.getElementById('cemento');
@@ -718,38 +721,52 @@ $(document).ready(function() {
         var otroServicios = document.getElementById('otroServicios');
         var tv = document.getElementById('tv');
         var lavadora = document.getElementById('lavadora');
-        var estereo = document.getElementById('estereo');
+        var dispositivo = document.getElementById('dispositivo');
         var microondas = document.getElementById('microondas');
         var computadora = document.getElementById('computadora');
         var licuadora = document.getElementById('licuadora');
-        var dvd = document.getElementById('dvd');
+        var refrigerador = document.getElementById('refri');
         var estufa = document.getElementById('estufa');
         var otroElectro = document.getElementById('otroElectro');
-        var dependientes = document.getElementById('dependenciaEconomica').value;
-        var deudasSi = document.getElementById('deudasSi');
-        var deudasNo = document.getElementById('deudasNo');
+        var dependienteSi = document.getElementById('dependienteSi');
+        var dependienteNo = document.getElementById('dependienteNo');
+        var dependienteEco = document.getElementById('dependienteEsp').value;
+        var dependientesSi = document.getElementById('dependientesSi');
+        var dependientesNo = document.getElementById('dependientesNo');
         
-        
+        if (dependienteSi.checked){
+            var dependiente = 1;
+            var financiador = dependienteEco;
+        } else if (dependienteNo.checked){
+            var dependiente = 0;
+            var financiador = '';
+        }
+
+        if (dependientesSi.checked){
+            var dependientes = document.getElementById('dependientes').value;
+        } else if (dependientesNo.checked){
+            var dependientes = '';
+        } else {
+            dependientes = '';
+        }
         
         if(viviendaPro.checked){
             var vivienda = 1;
-            var montoRenta = 0;
+
         }
         else if (viviendaPre.checked){
             var vivienda = 2;
-            var montoRenta = 0;
+            var viviendaProp = 0;
         }
         else if (viviendaRe.checked){
             var vivienda = 3;
-            var montoRenta = document.getElementById('montoVivienda').value;
+            var viviendaProp = 0;
         }
-        if(viviendaDebeSi.checked){
-            var viviendaDebe = 1;
-            var costoVivienda = document.getElementById('costoVivienda').value;
+        if(viviendaPropSi.checked){
+            var viviendaProp = 1;
         }
-        else if (viviendaDebeNo.checked){
-            var viviendaDebe = 0;
-            var costoVivienda = 0;
+        else if (viviendaPropNo.checked){
+            var viviendaProp = 0;
         }
         if(tipoViviendaC.checked){
             var tipoVivienda = 1;
@@ -779,8 +796,17 @@ $(document).ready(function() {
         }
         if (bath.checked){
             var bathv = 1;
+            var bathNum = bathNumInput;
         } else {
             var bathv = 0;
+            var bathNum = '';
+        }
+        if (interior.checked){
+            var localizacion = 1;
+        } else if (exterior.checked){
+            var localizacion = 2;
+        } else {
+            var localizacion = 0;
         }
         if (otroRoom.checked){
             var otroRoomInput = document.getElementById('otroRoomInput').value;
@@ -875,10 +901,10 @@ $(document).ready(function() {
         } else {
             var lavadorac = 0;
         }
-        if (estereo.checked){
-            var estereoc = 1;
+        if (dispositivo.checked){
+            var dispositivoC = 1;
         } else {
-            var estereoc = 0;
+            var dispositivoC = 0;
         }
         if (microondas.checked){
             var microondasc = 1;
@@ -895,11 +921,7 @@ $(document).ready(function() {
         } else {
             var licuadorac = 0;
         }
-        if (dvd.checked){
-            var dvdc = 1;
-        } else {
-            var dvdc = 0;
-        }
+
         if (refri.checked){
             var refrigerador = 1;
         } else {
@@ -915,14 +937,7 @@ $(document).ready(function() {
         } else {
             var otroElectroInput = 0;
         }
-        if (deudasSi.checked){
-            var deudas = 1;
-            var deudasInput = document.getElementById('deudasInput').value;
-        }
-        if (deudasNo.checked) {
-            var deudas = 0;
-            var deudasInput = 0;
-        }
+
         $.ajax({
             type: "POST",
             url: 'prcd/editar_guardarvivienda.php',
@@ -931,15 +946,15 @@ $(document).ready(function() {
             data: {
                 curp_exp:curp_exp,
                 vivienda:vivienda,
-                montoRenta:montoRenta,
-                viviendaDebe:viviendaDebe,
-                costoVivienda:costoVivienda,
+                viviendaProp:viviendaProp,
                 tipoVivienda:tipoVivienda,
                 viviendaOtro:viviendaOtro,
                 numHabitaciones:numHabitaciones,
                 cocinav:cocinav,
                 salav:salav,
                 bathv:bathv,
+                bathNum:bathNum,
+                localizacion:localizacion,
                 otroRoomInput:otroRoomInput,
                 techo:techo,
                 otroTechoInput:otroTechoInput,
@@ -957,17 +972,16 @@ $(document).ready(function() {
                 otroServiciosInput:otroServiciosInput,
                 tvc:tvc,
                 lavadorac:lavadorac,
-                estereoc:estereoc,
+                dispositivoC:dispositivoC,
                 microondasc:microondasc,
                 computadorac:computadorac,
                 licuadorac:licuadorac,
-                dvdc:dvdc,
                 estufac:estufac,
                 refrigerador:refrigerador,
                 otroElectroInput:otroElectroInput,
-                dependientes:dependientes,
-                deudas:deudas,
-                deudasInput:deudasInput
+                dependiente:dependiente,
+                financiador:financiador,
+                dependientes:dependientes
             },
             success: function(response){
                 var jsonData = JSON.parse(JSON.stringify(response));

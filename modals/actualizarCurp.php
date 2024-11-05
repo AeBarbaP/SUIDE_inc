@@ -11,13 +11,13 @@
             </div>
             <div class="modal-body">
     
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-credit-card-2-front"></i></span>
                     <input type="text" class="form-control" placeholder="CURP" aria-label="CURP" id="curpCambiar" aria-describedby="basic-addon1" onblur="validarInputCurp(this)">
-                    <input type="text" class="form-control" placeholder="id" aria-label="id" id="idUpdate" aria-describedby="basic-addon1" hidden>
                 </div>
+                <span id="result-usernameUpdate" class="small"></span>
 
-                <div class="alert alert-warning text-center" role="alert">
+                <div class="alert alert-warning text-center mt-3" role="alert">
                     <i class="bi bi-eye me-2" style="font-size: 2rem;"></i><br>Se actualizará la CURP en toda la información del usuario.
                 </div>
             </div>

@@ -9,10 +9,26 @@ if (isset($_POST)) {
     );
     
     if ($result->num_rows > 0) {
-        echo '
-        <span><small class="text-danger">Usuario registrado anteriormente </small><span>
-        ';
-
+        $row = $result->fetch_assoc();
+        $expediente = $row['numExpediente'];
+        $curp = $row['curp'];
+        if ($curp == null || $curp == '' || $curp == ' ') {
+            echo '
+                <script>
+                    console.log ("curp vacio");
+                </script>
+            ';
+        } else {
+            echo '
+                <script>
+                    alert("CURP registrada anteriormente: '.$expediente.'");
+                    document.getElementById("curp").value = "";
+                    document.getElementById("edad").value = "";
+                    document.getElementById("rfcCut").value = "";
+                    document.getElementById("btnGuardarGeneral").disabled = true;
+                </script>
+            ';
+        }
     } else {
         echo '
         <span><small class="text-primary">Usuario válido</small><span>

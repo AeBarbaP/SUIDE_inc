@@ -14,7 +14,7 @@ if ($flag == 2){
     }
     else if ($option == 2){
         /* $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre , datos_generales.apellido_p, datos_generales.apellido_m) AS nombre_completo, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE (nombre_completo LIKE '$id%')"; */
-        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE CONCAT(datos_generales.nombre,' ', datos_generales.apellido_p,' ', datos_generales.apellido_m) LIKE '$id'";
+        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE CONCAT(datos_generales.nombre,' ', datos_generales.apellido_p,' ', datos_generales.apellido_m) LIKE '%$id%'";
     }
     
 }
@@ -140,4 +140,5 @@ else {
             </tr>
         ';
 }
+
 ?>

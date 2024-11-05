@@ -316,7 +316,7 @@ function descartarCambios(x){
     else{
         var seguridadsocial2 = 0;
     }
-let sumaVars = nombre2+aPaterno2+apMaterno2+generoF2+generoM2+generoO2+edad2+curp2+rfc2+fechaNacimiento2+lugarNacimiento2+estadoCivil2+domicilio2+numExt2+numInt2+vialidad2+colonia2+entreVialidades2+descripcionDomicilio2+estado2+municipio2+localidad2+asentamiento2+codigoPostal2+email2+telefonoParticular2+celular2+nivelEscolaridad2+estudiaSi2+estudiaNo2+habilidad2+profesion2+trabajaSi2+trabajaNo2+asociacion2Si+asociacion2No+sindicatoSi2+sindicatoNo2+pensionSi2+pensionNo2+seguridadsocial2;
+let sumaVars = nombre2+aPaterno2+apMaterno2+generoF2+generoM2+generoO2+edad2+curp2+rfc2+fechaNacimiento2+lugarNacimiento2+estadoCivil2+domicilio2+numExt2+numInt2+vialidad2+colonia2+entreVialidades2+descripcionDomicilio2+estado2+municipio2+localidad2+asentamiento2+codigoPostal2+email2+telefonoParticular2+celular2+nivelEscolaridad2+estudiaSi2+estudiaNo2+habilidad2+profesion2+trabajaSi2+trabajaNo2+asociacion2Si+asociacion2No+pensionSi2+pensionNo2+seguridadsocial2;
 
 sumaVars.toString;
 

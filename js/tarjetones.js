@@ -58,7 +58,9 @@ function vehiculoAdd(){
                 document.getElementById('imprimirt').disabled = false;
                 mostrarTablaVehiculos();
                 document.getElementById('agregarVehiculoBtn').disabled = true;
-            }            
+            }
+            
+
         });
     }
     else{

@@ -55,33 +55,21 @@
       <title>SUIDEV · Inclusión</title>
 
       <link rel="icon" type="image/png" href="img/inclusion.ico"/>
-      <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
       <link href="scripts/css/quicksand.css" rel="stylesheet">
       <link href="scripts/css/montserrat.css" rel="stylesheet">
-      <!-- <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet"> -->
-      <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> --> 
-      <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+      <link href="dashboard.css" rel="stylesheet">
+      <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="sidebars.css" rel="stylesheet"> 
+      <script src="sidebars.js"></script>
       <link href="scripts/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
-      <script src="scripts/popper.min.js"></script>
-      <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script> -->
+      <!-- <script src="scripts/popper.min.js"></script> -->
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
       <script src="scripts/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-      <script src="sidebars.js"></script>
-      <link href="dashboard.css" rel="stylesheet">
-      <link href="sidebars.css" rel="stylesheet">
-      <!-- <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet"> -->
-      <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-      <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
-      <!-- <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> -->
       <script src="scripts/jquery-3.7.1.min.js"></script>
-      <!-- <script src="https://kit.fontawesome.com/b2e301b71f.js" crossorigin="anonymous"></script> -->
       <script src="scripts/fontawsome.js"></script>
-      <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
       <script src="scripts/sweetalert2.all.min.js"></script>
       <link href="scripts/sweetalert2.min.css" rel="stylesheet">
-      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"> -->
       <link rel="stylesheet" href="scripts/bootstrap-icons-1.11.3/font/bootstrap-icons.css">
 
       <script src="script.js"></script>
@@ -388,13 +376,13 @@
                   <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                       <button class="nav-link active" id="nav-generales-tab" data-bs-toggle="tab" data-bs-target="#nav-generales" type="button" role="tab" aria-controls="nav-generales" aria-selected="true">Datos Generales</button>
-                      <button class="nav-link" id="nav-medicos-tab" data-bs-toggle="tab" data-bs-target="#nav-medicos" type="button" role="tab" aria-controls="nav-medicos" aria-selected="false">Datos Médicos</button>
-                      <button class="nav-link" id="nav-vivienda-tab" data-bs-toggle="tab" data-bs-target="#nav-vivienda" type="button" role="tab" aria-controls="nav-vivienda" aria-selected="false">Vivienda</button>
-                      <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-integracion" type="button" role="tab" aria-controls="nav-integracion" aria-selected="false">Integración Familiar</button>
-                      <button class="nav-link" id="nav-referencias-tab" data-bs-toggle="tab" data-bs-target="#nav-referencias" type="button" role="tab" aria-controls="nav-referencias" aria-selected="false">Referencias</button>
-                      <button class="nav-link" id="nav-servicios-tab" data-bs-toggle="tab" data-bs-target="#nav-servicios-otorgados" type="button" role="tab" aria-controls="nav-servicios" aria-selected="false">Solicitudes</button>
-                      <button class="nav-link" id="nav-formato-tab" data-bs-toggle="tab" data-bs-target="#nav-formato" type="button" role="tab" aria-controls="nav-formato" aria-selected="false">Formatos</button>
-                      <button class="nav-link" id="nav-docs-tab" data-bs-toggle="tab" data-bs-target="#nav-docs" type="button" role="tab" aria-controls="nav-docs" aria-selected="false">Documentos</button>
+                      <button class="nav-link" id="nav-medicos-tab" data-bs-toggle="tab" data-bs-target="#nav-medicos" type="button" role="tab" aria-controls="nav-medicos" aria-selected="false" disabled>Datos Médicos</button>
+                      <button class="nav-link" id="nav-vivienda-tab" data-bs-toggle="tab" data-bs-target="#nav-vivienda" type="button" role="tab" aria-controls="nav-vivienda" aria-selected="false" disabled>Vivienda</button>
+                      <button class="nav-link" id="nav-integracion-tab" data-bs-toggle="tab" data-bs-target="#nav-integracion" type="button" role="tab" aria-controls="nav-integracion" aria-selected="false" disabled>Integración Familiar</button>
+                      <button class="nav-link" id="nav-referencias-tab" data-bs-toggle="tab" data-bs-target="#nav-referencias" type="button" role="tab" aria-controls="nav-referencias" aria-selected="false" disabled>Referencias</button>
+                      <button class="nav-link" id="nav-servicios-tab" data-bs-toggle="tab" data-bs-target="#nav-servicios-otorgados" type="button" role="tab" aria-controls="nav-servicios" aria-selected="false" disabled>Solicitudes</button>
+                      <button class="nav-link" id="nav-formato-tab" data-bs-toggle="tab" data-bs-target="#nav-formato" type="button" role="tab" aria-controls="nav-formato" aria-selected="false" disabled>Formatos</button>
+                      <button class="nav-link" id="nav-docs-tab" data-bs-toggle="tab" data-bs-target="#nav-docs" type="button" role="tab" aria-controls="nav-docs" aria-selected="false" disabled>Documentos</button>
                       <button class="nav-link" id="nav-fin-tab" data-bs-toggle="tab" data-bs-target="#nav-fin" type="button" role="tab" aria-controls="nav-fin" aria-selected="false" disabled>Finalizar</button>
                     </div>
                   </nav>
@@ -455,7 +443,7 @@
                           <div class="invalid-feedback">
                             * Campo requerido.
                           </div>
-                          <div class="form-text mb-2" id="divActualizaCurp"><button class="btn btn-outline-light btn-sm text-secondary" id="btncurpactualizar" onclick="modalCurpUpdate()" disabled>Actualizar CURP</button></div>
+                          <div class="form-text mb-2" id="divActualizaCurp"><button class="btn btn-outline-light btn-sm text-secondary" aria-disabled="true" id="btncurpactualizar" onclick="modalCurpUpdate()" disabled>Actualizar CURP</button></div>
                           <div id="result-username2">
                             <input type="text" id="idTabla" hidden>
                           </div>
@@ -914,9 +902,9 @@
                               <label for="basic-url" class="form-label"></label>
                               <select class="form-select" id="estatus">
                                 <option value="" >Selecciona...</option>
-                                <!-- <option value="1">Creado (Activo)</option> -->
-                                <option value="1" selected>Creado</option>
-                                <option value="2">Inactivo (Finado)</option>
+                                <option value="3" selected>Creado</option>
+                                <option value="4">Finado</option>
+                                <option value="5">Baja documental</option>
                               </select>
                             </div>
                           </div>
@@ -924,7 +912,7 @@
                         <br>
                         <div class="d-grid gap-2 mt-3">
                           <!-- <button class="btn btn-primary" type="submit" id="btnGuardarGeneral">Guardar</button> -->
-                          <button class="btn btn-primary" type="button" id="btnGuardarGeneralUpdate" onclick="updateGeneralesForm()">Guardar</button>
+                          <button class="btn btn-primary" type="button" id="btnGuardarGeneralUpdate" onclick="updateGeneralesForm()" disabled>Guardar</button>
                           </form>
                         </div>
                       </div><!-- /.row -->

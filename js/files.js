@@ -23,7 +23,7 @@ function _(el) {
     ajax.addEventListener("load", completeHandler, false);
     ajax.addEventListener("error", errorHandler, false);
     ajax.addEventListener("abort", abortHandler, false);
-    ajax.open("POST", "prcd/upload_file.php");  
+    ajax.open("POST", "prcd/upload_file.php"); 
     
     // http://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
     //use file_upload_parser.php from above url

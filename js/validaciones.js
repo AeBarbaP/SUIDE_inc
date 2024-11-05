@@ -17,24 +17,28 @@ $(document).ready(function() {
             }
         });
     });              
-});    
+});
 
 //   EDAD A PARTIR DE LA CURP
 function curp2date(curp) {
     var miCurp = curp.value.toUpperCase();
-    var resultado = document.getElementById("edad");
-
-    var m = miCurp.match(/^\w{4}(\w{2})(\w{2})(\w{2})/);  
-    var anyo = parseInt(m[1], 10) + 1900;
-    if (anyo < 1930) anyo += 100;
-    var mes = parseInt(m[2], 10) - 1;
-    var dia = parseInt(m[3], 10);  
-    var fechaNacimiento = new Date(anyo, mes, dia);
-    var edad = calcularEdad(fechaNacimiento);  
-    resultado.classList.add("ok");
-    // resultado.innerText = "Su edad es: " + edad + " años.";
-    document.getElementById("edad").value = edad;
-    console.log(edad);
+	if (miCurp.length == 18){
+		var resultado = document.getElementById("edad");
+		var m = miCurp.match(/^\w{4}(\w{2})(\w{2})(\w{2})/);  
+		var anyo = parseInt(m[1], 10) + 1900;
+		if (anyo < 1930) anyo += 100;
+		var mes = parseInt(m[2], 10) - 1;
+		var dia = parseInt(m[3], 10);  
+		var fechaNacimiento = new Date(anyo, mes, dia);
+		var edad = calcularEdad(fechaNacimiento);  
+		resultado.classList.add("ok");
+		// resultado.innerText = "Su edad es: " + edad + " años.";
+		document.getElementById("edad").value = edad;
+		console.log(edad);
+	}
+	else {
+		console.log(miCurp);
+	}
 }
 
 function calcularEdad(fecha) {
@@ -50,39 +54,26 @@ function calcularEdad(fecha) {
 }
 function curp2date2(curp) {
     var miCurp = curp.value.toUpperCase();
-    var resultado = document.getElementById("edadTemp");
+	if (miCurp.length == 18){
+		var resultado = document.getElementById("edadTemp");
+		var m = miCurp.match(/^\w{4}(\w{2})(\w{2})(\w{2})/);  
+		var anyo = parseInt(m[1], 10) + 1900;
+		if (anyo < 1950) anyo += 100;
+			var mes = parseInt(m[2], 10) - 1;
+			var dia = parseInt(m[3], 10);  
+			var fechaNacimiento = new Date(anyo, mes, dia);
+			var edad = calcularEdad(fechaNacimiento);  
+			resultado.classList.add("ok");
+			// resultado.innerText = "Su edad es: " + edad + " años.";
+			document.getElementById("edadTemp").value = edad;
+			//document.getElementById("fechaNacimientoTemp").value = fechaNacimiento;
+			console.log(anyo+'-'+(mes+1)+'-'+dia);
+			document.getElementById("fechaNacimientoTemp").value = anyo+'-'+(mes+1)+'-'+dia;
 
-    var m = miCurp.match(/^\w{4}(\w{2})(\w{2})(\w{2})/);  
-    var anyo = parseInt(m[1], 10) + 1900;
-    if (anyo < 1950) anyo += 100;
-        var mes = parseInt(m[2], 10) - 1;
-        var dia = parseInt(m[3], 10);  
-        var fechaNacimiento = new Date(anyo, mes, dia);
-        var edad = calcularEdad(fechaNacimiento);  
-        resultado.classList.add("ok");
-        // resultado.innerText = "Su edad es: " + edad + " años.";
-        document.getElementById("edadTemp").value = edad;
-        //document.getElementById("fechaNacimientoTemp").value = fechaNacimiento;
-        console.log(anyo+'-'+(mes+1)+'-'+dia);
-        document.getElementById("fechaNacimientoTemp").value = anyo+'-'+(mes+1)+'-'+dia;
-}
-function curp2date3(curp) {
-    var miCurp = curp;
-    var resultado = document.getElementById("edad");
-
-    var m = miCurp.match(/^\w{4}(\w{2})(\w{2})(\w{2})/);  
-    var anyo = parseInt(m[1], 10) + 1900;
-    if (anyo < 1950) anyo += 100;
-        var mes = parseInt(m[2], 10) - 1;
-        var dia = parseInt(m[3], 10);  
-        var fechaNacimiento = new Date(anyo, mes, dia);
-        var edad = calcularEdad(fechaNacimiento);  
-        resultado.classList.add("ok");
-        // resultado.innerText = "Su edad es: " + edad + " años.";
-        document.getElementById("edad").value = edad;
-        //document.getElementById("fechaNacimientoTemp").value = fechaNacimiento;
-        console.log(anyo+'-'+(mes+1)+'-'+dia);
-        document.getElementById("fechaNacimiento").value = anyo+'-'+(mes+1)+'-'+dia;
+	}
+	else {
+		console.log(miCurp);
+	}
 }
 
 function calcularEdad(fecha) {
@@ -102,13 +93,13 @@ function calcularEdad(fecha) {
         var curp = input.value.toUpperCase(),
             resultado = document.getElementById("result-username"),
             valido = "No válido";
-
         if (curpValida(curp)) {
-            alert('CURP Válido');
+            document.getElementById('result-username2').innerHTML = '<span><small class="text-primary">CURP válido</small><span>';
             document.getElementById('btnGuardarGeneral').disabled=false;
 
         } else {
             alert('CURP No Válido');
+			document.getElementById('curp').value = "";
             document.getElementById('btnGuardarGeneral').disabled=true;
 
         }
@@ -168,6 +159,7 @@ function validarInputUpdate(input) {
 
         }
     }
+
     function validarInputCurp(input) {
         var curp = input.value.toUpperCase();
             //resultado = document.getElementById("result-username"),
@@ -184,6 +176,23 @@ function validarInputUpdate(input) {
 
         }
     }
+    $(document).ready(function() {	
+        $('#curpCambiar').on('blur', function() {
+            // $('#result-username2').html('<img src="img/loader.gif" />').fadeOut(1000);
+    
+            var username = $(this).val();		
+            var dataString = 'username='+username;
+    
+            $.ajax({
+                type: "POST",
+                url: "query/verficacion2.php",
+                data: dataString,
+                success: function(data) {
+                    $('#result-usernameUpdate').fadeIn(1000).html(data);
+                }
+            });
+        });              
+    });
 
     function curpValida(curp) {
         var re = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0\d|1[0-2])(?:[0-2]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/,
@@ -247,7 +256,7 @@ function cambiarAtrib(){
         document.getElementById('divEdad').hidden = true;
         document.getElementById('apellidosDiv').hidden = true;
         document.getElementById('tipoDiscTemp').disabled = true;
-        document.getElementById('discapacidadList').disabled = true;
+        document.getElementById('discapacidadList2').disabled = true;
         document.getElementById('gradoDiscTemp').disabled = true;
         document.getElementById('dxTemp').disabled = true;
         document.getElementById('temporalidad').disabled = true;
@@ -361,7 +370,7 @@ function cambiarAtribUSR(){
         document.getElementById('divEdad').hidden = true;
         document.getElementById('apellidosDiv').hidden = true;
         document.getElementById('tipoDiscTemp').disabled = true;
-        document.getElementById('discapacidadList2').disabled = true;
+        document.getElementById('discapacidadList').disabled = true;
         document.getElementById('gradoDiscTemp').disabled = true;
         document.getElementById('dxTemp').disabled = true;
         document.getElementById('temporalidad').disabled = true;

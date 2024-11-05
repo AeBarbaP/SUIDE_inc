@@ -93,6 +93,18 @@ function queryDatos(){
     var expediente = document.getElementById('datosCompletos').value;
     /*var curp2 = document.getElementById('datosCompletosCURP').value;*/
 
+    document.getElementById('btnGuardarGeneralUpdate').disabled = false;
+    document.getElementById('nav-medicos-tab').disabled = false;
+    document.getElementById('nav-vivienda-tab').disabled = false;
+    document.getElementById('nav-integracion-tab').disabled = false;
+    document.getElementById('nav-referencias-tab').disabled = false;
+    document.getElementById('nav-servicios-tab').disabled = false;
+    document.getElementById('nav-docs-tab').disabled = false;
+    document.getElementById('nav-formato-tab').disabled = false;
+    document.getElementById('nav-fin-tab').disabled = false;
+    document.getElementById('nav-fin-tab').setAttribute('onclick','finalizarUpdateExpediente()');
+    document.getElementById('cancelarEditar').disabled = true;
+
     $.ajax({
         type: "POST",
         url: 'query/datosCompletos.php',
@@ -101,6 +113,7 @@ function queryDatos(){
             expediente:expediente
         },
         success: function(data){
+            
 
             var jsonData = JSON.parse(JSON.stringify(data));
             var success = jsonData.success;
@@ -115,12 +128,14 @@ function queryDatos(){
             var alergias_cual  = jsonData.alergias_cual;
             var enfermedades_cual  = jsonData.enfermedades_cual;
             var medicamentos_cual  = jsonData.medicamentos_cual;
-            var vivienda = jsonData.vivienda;
-            var caracteristicasV = jsonData.caracteristicas;
-            var caracteristicasV_otro = jsonData.caracteristicas_otro;
+            var vivienda   = jsonData.vivienda;
+            var caracteristicasV= jsonData.caracteristicas;
+            var caracteristicasV_otro   = jsonData.caracteristicas_otro;
             var cocina = jsonData.vivienda_cocia;
             var sala  = jsonData.vivienda_sala;
             var banio = jsonData.vivienda_banio;
+            var numbanio = jsonData.vivienda_numbanio;
+            var baniolocalizacion = jsonData.vivienda_baniolocalizacion;
             var vivienda_otros = jsonData.vivienda_otros;
             var techo  = jsonData.techo;
             var pared  = jsonData.pared;
@@ -165,14 +180,14 @@ function queryDatos(){
 
             if (success == 1) {
                 if (jsonData.curp == "" || curpJSON.trim() === "" || jsonData.curp == null){
+                    
                     $("#curpActualizar").modal("show");
 		            document.getElementById('idUpdate').value = id;
                 }
                 // REVISAR SI NO HABÍA FINAL DEL ELSE
 		
                 document.getElementById('buscarExpActualizar').disabled = true;
-                document.getElementById('idTabla').value = id;
-
+                
                 /*  municipiosSelect(jsonData.estado); */
                 //console.log(jsonData.HojaRegistro,jsonData.valoracion,jsonData.actaNacimiento,jsonData.curpDoc,jsonData.ineDoc,jsonData.comprobante,jsonData.tarjetaCirculacion);
                 //console.log(jsonData.HojaRegistroDoc,jsonData.valoracionDoc,jsonData.actaNacimientoDoc,jsonData.curpDocDoc,jsonData.ineDocDoc,jsonData.comprobanteDoc,jsonData.tarjetaCirculacionDoc);
@@ -492,7 +507,7 @@ function queryDatos(){
                 }
 
                 document.getElementById('profesion').value = jsonData.profesion; 
-                document.getElementById('profesion').value = jsonData.profesion; 
+                
                 document.getElementById('btncurpactualizar').disabled = false;
                 var rfcCut = jsonData.rfc;
                 //document.getElementById('rfcHomo').value = rfcCut;
@@ -594,6 +609,9 @@ function queryDatos(){
                 var seguridad_social = jsonData.seguridad_social; 
                 if (seguridad_social == null || seguridad_social == ""){
                     document.getElementById('seguridadsocial').value = "Ninguno";
+                }
+                else {
+                    document.getElementById('seguridadsocial').value = seguridad_social;
                 }
 
                 document.getElementById('otroSS').value = jsonData.seguridad_social_otro; 
@@ -883,6 +901,21 @@ function queryDatos(){
                 }
                 if (banio == 1){
                     document.getElementById('bath').checked = true; 
+                    document.getElementById('bathNum').value = numbanio;
+                }
+                else {
+                    document.getElementById('bath').checked = false;  
+                    document.getElementById('bathNum').value = "";
+                }
+                if (baniolocalizacion == 1){
+                    document.getElementById('interior').checked = true;
+                    document.getElementById('exterior').checked = false;
+                } else if (baniolocalizacion == 2){
+                    document.getElementById('exterior').checked = true;
+                    document.getElementById('interior').checked = false;
+                } else {
+                    document.getElementById('interior').checked = false;
+                    document.getElementById('exterior').checked = false;
                 }
                 if (vivienda_otros == 0 || vivienda_otros == null || vivienda_otros == ""){
                     document.getElementById('otroRoom').checked = false;
@@ -1122,10 +1155,35 @@ function queryDatos(){
                 else if (tarjetaCirculacion == 21){
                     document.getElementById('circulacionNA').checked = true; 
                 }
-                
+               
                 showMeFam();
                 showMeRef();
                 mostrarTablaServicios();
+                
+                //mostrarTabla();
+               /*  if (grupo == null || grupo == ""){
+                    grupo = "";
+                    document.getElementById('gruposFull').value = "";
+                }
+                else{
+                    var grupoSplit = grupo.replace(/, /g,',');
+                    grupoSplit = grupoSplit.split(',');
+                    for (var i = 0; i < grupoSplit.length; i++) {
+                        console.log(grupoSplit[i]);
+                        addG(grupoSplit[i]);
+                    }
+                } */
+
+
+                /* if (alergias_cual != null || alergias_cual != ""){
+                    var alergiasSplit = alergias_cual.replace(/, /g,',');
+                    var alergiasSlices = alergiasSplit.slice(5,alergiasSplit.length);
+                    alergiasSlices = alergiasSlices.split(',');
+                    for (var i = 0; i < alergiasSplit.length; i++) {
+                        console.log(alergiasSplit[i]);
+                        queryAlergiasBadges(alergiasSplit[i]);
+                    }
+                } */
                 
                 
                 var arrayEnfermedades = jsonData.arregloEnfermedades;
@@ -1149,6 +1207,11 @@ function queryDatos(){
                             }
                         }
                         
+                        //var enfermedadesConcat = idEnfermedad+'-'+nameEnfermedades;
+                        //concatEnfermedaes = concatEnfermedaes+', '+enfermedadesConcat;
+
+                        //console.log("Variable Array "+idEnfermedad);
+                        //console.log('Enfermedades: '+concatEnfermedaes);
                         var nombreEnfermedad = contador.enfermedad;
                         $('#enfermedadesFull').append('<button class="badge btn btn-sm rounded-pill text-bg-secondary valorFull" id="E'+idEnfermedad+'"><label class="labelTextoE" id="'+idEnfermedad+'">'+nombreEnfermedad+'</label> <a class="text-light" onclick="removeB2(\'E'+idEnfermedad+'\')"><i class="bi bi-x-circle"></i></a></button>');
                         paragraphsEnfermedadesUpdate(idEnfermedad,nombreEnfermedad);
@@ -1240,13 +1303,110 @@ function queryDatos(){
                         document.querySelector('#grupos option[value="'+idGrupo+'"]').remove();
                     }
                 }
+                /* if (enfermedades_cual != null || enfermedades_cual != ""){
+                    var enfermedadesSplit = enfermedades_cual.replace(/, /g,',');
+                    enfermedadesSplit = enfermedadesSplit.split(',');
+                    for (var i = 0; i < enfermedadesSplit.length; i++) {
+                        console.log(enfermedadesSplit[i]);
+                        queryEnfermedadesBadges(enfermedadesSplit[i]);
+                    }
+                } */
+                
+                /* if (medicamentos_cual != null || medicamentos_cual != ""){
+                    var medicamentosSplit = medicamentos_cual.replace(/, /g,',');
+                    medicamentosSplit = medicamentosSplit.split(',');
+                    for (var i = 0; i < medicamentosSplit.length; i++) {
+                        console.log(medicamentosSplit[i]);
+                        addC2(medicamentosSplit[i]);
+                    }
+                } */
                 
             } else if (success == 0){
                 //console.log(jsonData.error);
             }
         }
     });
-} 
+} /*REVISAR
+
+/* function addB2(val) {
+    var p2;
+    var numeroB = ""; //remover al momento de programar guardar
+    var textarea = document.getElementById("enfermedadesFull");
+    if (val==null || val =="" || val == 0){
+        console.log('sin valor');
+    } else {
+        textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorEFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+        document.getElementById(val).setAttribute('onclick',"removeB2('"+val+"')");
+        document.getElementById(val).setAttribute('name',"'"+val+"'");
+        document.querySelector('#enfermedades option[value="'+val+'"]').remove();
+    }
+    //remover al momento de programar guardar
+    const paragraphs = document.querySelectorAll('[class="valorEFull"]');
+    paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
+    numeroB = numeroB.slice(0, numeroB.length - 2);
+    console.log(numeroB);
+    document.getElementById('numeroB').value = numeroB;
+}
+
+function removeB2(val) {
+    var numeroB = ""; //remover al momento de programar guardar
+    console.log(val);
+    var nameInput = document.getElementById(val).getAttribute("name");
+    if (nameInput){
+        document.getElementById(val).remove();
+        $('#enfermedades').append("<option value='"+val+"'>"+val+"</option>");
+    }
+    else{
+        console.log("Nada");
+        document.getElementById(val).remove();
+
+    }
+    //remover al momento de programar guardar
+    const paragraphs = document.querySelectorAll('[class="valorEFull"]');
+    paragraphs.forEach(p => numeroB = numeroB + p.id +', ');
+    numeroB = numeroB.slice(0, numeroB.length - 2);
+    console.log(numeroB);
+    document.getElementById('numeroB').value = numeroB;
+}
+
+function addC2(val) {
+    var p2;
+    var numeroC = ""; //remover al momento de programar guardar
+    var textarea = document.getElementById("medicamentosFull");
+    if (val==null || val =="" || val == 0){
+        console.log('sin valor');
+    } else{
+        textarea.innerHTML += '<button class="badge btn btn-sm rounded-pill text-bg-secondary" id="'+val+'"><span id="'+val+'" class="valorMFull">'+val+' </span><a href="#" class="text-light"><i class="bi bi-x-circle"></i></a></button> ';
+        document.getElementById(val).setAttribute('onclick',"removeC('"+val+"')");
+        document.querySelector('#medicamentos option[value='+val+']').remove();
+    }
+    //remover al momento de programar guardar
+    const paragraphs = document.querySelectorAll('[class="valorMFull"]');
+    paragraphs.forEach(p2 => numeroC = numeroC + p2.id +', ');
+    numeroC = numeroC.slice(0, numeroC.length - 2);
+    console.log(numeroC);
+    document.getElementById('numeroC').value = numeroC;
+}
+
+function removeC2(val) {
+    var numeroC = ""; //remover al momento de programar guardar
+    console.log(val);
+    var nameInput = document.getElementById(val).getAttribute("name");
+    if (nameInput){
+        document.getElementById(val).remove();
+        //$('#medicamentos').append("<option value='"+val+"'>"+val+"</option>");
+    }
+    else{
+        console.log("Nada");
+        document.getElementById(val).remove();
+    }
+    //remover al momento de programar guardar
+    const paragraphs = document.querySelectorAll('[class="valorMFull"]');
+    paragraphs.forEach(p => numeroC = numeroC + p.id +', ');
+    numeroC = numeroC.slice(0, numeroC.length - 2);
+    console.log(numeroC);
+    document.getElementById('numeroC').value = numeroC;
+} */
 
 function estudioSocioeconomicoA() {
     
@@ -1275,10 +1435,6 @@ function actualizarCURP(){
         document.getElementById("btnUpdateCURP").disabled = true;
         
     }
-    else if (curp.length < 18){
-        alert("La CURP debe tener 18 caracteres");
-        document.getElementById("btnUpdateCURP").disabled = true;
-    }
     else{
         $.ajax({
             type: "POST",
@@ -1298,52 +1454,6 @@ function actualizarCURP(){
             }
             else {
             alert ('Error en la actualización de CURP');
-				//console.log(jsonData.error1);
-				//console.log(jsonData.error2);
-				//console.log(jsonData.cadena);
-				//console.log(jsonData.cadena2);
-				//console.log(jsonData.cadena3);
-            }
-        }
-        });
-    }
-}
-function cambiarCURP(){
-
-    var curp = document.getElementById('curpCambiar').value;
-    var id = document.getElementById('idTabla').value;
-    if (curp == "" || curp == null || curp.trim() === ""){
-        alert("Debes ingresar una CURP");
-        document.getElementById("btnUpdateCURP").disabled = true;
-        
-    }
-    else if (curp.length < 18){
-        alert("La CURP debe tener 18 caracteres");
-        document.getElementById("btnUpdateCURP").disabled = true;
-    }
-    else{
-        document.getElementById("btnUpdateCURP").disabled = false;
-        $.ajax({
-            type: "POST",
-            url: 'prcd/prcd_curpActualizar.php',
-            dataType:'JSON',
-            data: {
-                id,id,
-                curp:curp
-            },
-            success: function(data){
-            var jsonData = JSON.parse(JSON.stringify(data));
-                var success = jsonData.success;
-
-            if (success == 1) {
-                alert ('CURP Actualizada correctamente!');
-                document.getElementById("curp").value = jsonData.curp;
-                var curpData = jsonData.curp;
-                curp2date3(curpData);
-                cortarRFC2();
-            }
-            else {
-                alert ('Error en la actualización de CURP');
 				//console.log(jsonData.error1);
 				//console.log(jsonData.error2);
 				//console.log(jsonData.cadena);

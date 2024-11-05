@@ -17,7 +17,7 @@ $(document).ready(function () {
             window.print();
         }
     })
-}); 
+});
 
 $(document).ready(function () {
     $('#printButton').on('click', function (event) {
@@ -427,61 +427,64 @@ function actualizarCURP2(){
             var success7 = jsonData.success7;
             var success8 = jsonData.success8;
             var success9 = jsonData.success9;
-            if(success1 == 1){
-                console.log("Datos generales actualizados");
+            var successTotal = success1 + success2 + success3 + success4 + success5 + success6 + success7 + success8 + success9;
+            if (successTotal == 9){
+                Swal.fire({
+                    title: "",
+                    text: "CURP actualizada correctamente",
+                    icon: "success",
+                    confirmButtonColor: "#3085d6",
+                    confirmButtonText: "OK!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#actualizarCurp').modal('hide');
+                        document.getElementById('curp').value = curp2;
+                    }
+                });
             }
             else {
-                console.log("Error al actualizar datos generales: "+jsonData.error1);
+                var error;
+                if(success1 == 0){
+                    error = error + "Datos generales ";
+                }
+                if(success2 == 0){
+                    error = error + "Datos médicos ";
+                }
+                if (success3 == 0) {
+                    error = error + "Vivienda ";
+                }
+                if(success4 == 0){
+                    error = error + "Integracion familiar ";
+                }
+                if(success5 == 0){
+                    error = error + "Referencias ";
+                }
+                if(success6 == 0){
+                    error = error + "Documentos ";
+                }
+                if(success7 == 0){
+                    error = error + "Solicitudes ";
+                }
+                if(success8 == 0){
+                    error = error + "Tarjetones ";
+                }
+                if(success9 == 0){
+                    error = error + "Servicios ";
+                }
+                Swal.fire({
+                    title: "Error al actualizar CURP",
+                    html: "Por favor verifica los datos de "+error,
+                    icon: "error",
+                    confirmButtonColor: "#3085d6",
+                    confirmButtonText: "OK!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#actualizarCurp').modal('hide');
+                    }
+                });
+
             }
-            if(success2 == 1){
-                console.log("Datos médicos actualizado");
-            }
-            else {
-                console.log("Error al actualizar datos médicos: "+jsonData.error2);
-            }
-            if(success3 == 1){
-                console.log("Datos de vivienda actualizado");
-            }
-            else {
-                console.log("Error al actualizar datos de vivienda: "+jsonData.error3);
-            }
-            if(success4 == 1){
-                console.log("Datos de integración actualizado");
-            }
-            else {
-                console.log("Error al actualizar datos de integración: "+jsonData.error4);
-            }
-            if(success5 == 1){
-                console.log("Datos de referencias actualizado");
-            }
-            else {
-                console.log("Error al actualizar datos de referencias: "+jsonData.error5);
-            }
-            if(success6 == 1){
-                console.log("Datos de documentos actualizado");
-            }
-            else {
-                console.log("Error al actualizar datos de documentos: "+jsonData.error6);
-            }
-            if(success7 == 1){
-                console.log("Datos de solicitud actualizado");
-            }
-            else {
-                console.log("Error al actualizar datos de solicitud: "+jsonData.error7);
-            }
-            if(success8 == 1){
-                console.log("Datos de tarjetones actualizados");
-            }
-            else {
-                console.log("Error al actualizar datos de tarjetones: "+jsonData.error8);
-            }
-            if(success9 == 1){
-                console.log("Datos de servicios actualizados");
-            }
-            else {
-                console.log("Error al actualizar datos de servicios: "+jsonData.error9);
-            }
-            $('#actualizarCurp').modal('hide');
+
         }
     });
 }
