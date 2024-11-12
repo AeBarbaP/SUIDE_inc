@@ -42,6 +42,7 @@ $estudia = $_POST['estudia'];
 $estudiaLugar = $_POST['estudiaLugar'];
 $habilidad = $_POST['habilidad'];
 $profesion = $_POST['profesion'];
+$trabaja = $_POST['trabaja'];
 $trabajaLugar = $_POST['trabajaLugar'];
 $lugartrabajoOtro = $_POST['lugarTrabajoOtro'];
 $ingresoMensual = $_POST['ingresoMensual'];
@@ -149,6 +150,7 @@ VALUES(
     '$estudiaLugar',
     '$habilidad',
     '$profesion',
+    '$trabaja',
     '$trabajaLugar',
     '$lugartrabajoOtro',
     '$ingresoMensual',

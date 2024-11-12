@@ -199,6 +199,10 @@ $(document).ready(function() {
         var telFijo = document.getElementById('telFijo').value;
         var celular = document.getElementById('celular').value;
         var escolaridad = document.getElementById('escolaridad').value;
+        var concluidaSi = document.getElementById('concluidoSi');
+        var concluidaNo = document.getElementById('concluidoNo');
+        var concluidaNA = document.getElementById('concluidoNA');
+        var concluidaCur = document.getElementById('concluidoCur');
         var leerSi = document.getElementById('leerSi');/* nuevo */
         var leerNo = document.getElementById('leerNo');/* nuevo */
         var estudiaSi = document.getElementById('estudiaSi');
@@ -220,8 +224,8 @@ $(document).ready(function() {
         var grupovulnerableFull = document.getElementById('numeroG').value;
         var informante = document.getElementById('informante').value;
         var estatus = document.getElementById('estatus').value;
-
         var carrera = document.getElementById('carrera').value;
+
         if (carrera != null || carrera != ""){
             var escolaridad_nombre = "";
         }
@@ -238,13 +242,25 @@ $(document).ready(function() {
         else if (generoO.checked){
             var genero = "Otro";
         }
+        if (concluidaSi.checked){
+            var concluida = 1;
+        }
+        else if (concluidaNo.checked){
+            var concluida = 2;
+        }
+        else if (concluidaNA.checked){
+            var concluida = 4;
+        }
+        else if (concluidaCur.checked){
+            var concluida = 3;
+        }
         if(estudiaSi.checked){
             var estudia = 1;
             var estudiaLugar = document.getElementById('lugarEstudia').value;
             document.getElementById('lugarEstudia').required = true;
         }
         else if (estudiaNo.checked){
-            var estudia = 0;
+            var estudia = 2;
             estudiaLugar = "N/A";
             document.getElementById('lugarEstudia').required = false;
         }
@@ -308,16 +324,16 @@ $(document).ready(function() {
             var relacionInformante = document.getElementById('informanteRel').value;
             var relacionInformante = document.getElementById('otraRel').value;
             if(relacionInformante == 1){
-                var otraRel = document.getElementById('otraRel').value;
+                var otrarelacionInformante = document.getElementById('otraRel').value;
             }else{
-                var otraRel = "";
+                var otrarelacionInformante = "";
             }
         }
         /* leer */
         if(leerSi.checked){
             leer = 1;
         }else if(leerNo.checked){
-            leer = 0;
+            leer = 2;
         }
 
 
@@ -340,6 +356,7 @@ $(document).ready(function() {
                 numExt:numExt,
                 numInt:numInt,
                 colonia:colonia,
+                tipoVialidad:tipoVialidad,
                 entreVialidades:entreVialidades,
                 descripcionLugar:descripcionLugar,
                 estado:estado,
@@ -358,6 +375,7 @@ $(document).ready(function() {
                 profesion:profesion,/* si está en la lista */
                 trabaja:trabaja,
                 trabajaLugar:trabajaLugar,
+                lugarTrabajoOtro:lugarTrabajoOtro,
                 ingresoMensual:ingresoMensual,
                 asociacion:asociacion,
                 nombreAC:nombreAC,
@@ -376,7 +394,7 @@ $(document).ready(function() {
                 /* estudia */
                 /* estudia:estudia, */
                 carrera: carrera,/* nueva en la lista */
-                concluido: concluido,
+                concluido: concluida,
                 /* informante */
                 nombreInformante:nombreInformante,
                 relacionInformante:relacionInformante,

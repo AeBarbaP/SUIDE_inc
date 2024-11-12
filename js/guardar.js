@@ -274,6 +274,7 @@ $(document).ready(function() {
         var informante = document.getElementById('nombreInformante').value;
         var informanteRelacion1 = document.getElementById('informanteRel').value;
         var informanteRelacionOtro = document.getElementById('otraRel').value;
+        var carrera1 = document.getElementById('carrera').value;
 
         if(generoF.checked){
             var genero = "Femenino";
@@ -289,10 +290,9 @@ $(document).ready(function() {
             var leer = 1;
         }
         else if (leerNo.checked){
-            var leer = 0;
+            var leer = 2;
         }
         
-        var carrera1 = document.getElementById('carrera').value;
         if (carrera1 == null || carrera1 == ""){
             var escolaridadNombre = "";
         }
@@ -304,10 +304,10 @@ $(document).ready(function() {
             var concluida = 1;
         }
         else if (concluidaNo.checked){
-            var concluida = 0;
+            var concluida = 2;
         }
         else if (concluidaNA.checked){
-            var concluida = 2;
+            var concluida = 4;
         }
         else if (concluidaCur.checked){
             var concluida = 3;
@@ -319,11 +319,12 @@ $(document).ready(function() {
             document.getElementById('lugarEstudia').required = true;
         }
         else if (estudiaNo.checked){
-            var estudia = 0;
+            var estudia = 2;
             estudiaLugar = "N/A";
             document.getElementById('lugarEstudia').required = false;
         }
         if(trabajaSi.checked){
+            var trabaja = 1;
             var trabajaLugar = document.getElementById('lugarTrabajo').value;
             if (trabajaLugar == "Otro"){
                 document.getElementById('lugarTrabajoOtro').required = true;
@@ -334,6 +335,7 @@ $(document).ready(function() {
             }
         }
         else if (trabajaNo.checked){
+            var trabaja = 0;
             var trabajaLugar = "N/A";
             lugarTrabajoOtro = "N/A";
             document.getElementById('lugarTrabajo').required = false;
@@ -421,6 +423,7 @@ $(document).ready(function() {
                 estudiaLugar:estudiaLugar,
                 habilidad:habilidad,
                 profesion:profesion,
+                trabaja:trabaja,
                 trabajaLugar:trabajaLugar,
                 lugarTrabajoOtro:lugarTrabajoOtro,
                 ingresoMensual:ingresoMensual,
