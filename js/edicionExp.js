@@ -564,7 +564,7 @@ function queryDatos(){
                 else {
                     document.getElementById('trabajaSi').checked = true;
                     document.getElementById('trabajaNo').checked = false;
-                    document.getElementById('lugarTrabajo').value = jsonData.trabaja;
+                    document.getElementById('lugarTrabajo').value = jsonData.trabaja_donde;
                     document.getElementById('lugarTrabajo').disabled = false; 
                     document.getElementById('ingresoMensual').value = jsonData.ingreso_mensual; 
                     document.getElementById('ingresoMensual').disabled = false; 

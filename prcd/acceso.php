@@ -43,7 +43,7 @@ if (isset($_POST['usr']) && isset($_POST['pwd'])) {
 
         elseif($row_sql['perfil']==3){ //admin 3
 
-            echo "<script type=\"text/javascript\">location.href='../dashboard.php';</script>";
+            echo "<script type=\"text/javascript\">location.href='../admin/index.php';</script>";
     
         }
 
