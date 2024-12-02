@@ -349,9 +349,11 @@ else {
                         <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#gestionUsuarios" onclick="usuariosQueryG()" href="#">Gestión de Usuarios <i class="bi bi-person-gear ms-2" style="font-size: 30px;"></i></a></li>
                     </ul>
                 </div>
-                <div class="nav-item mx-auto">
-                    <h3 class="ms-end">Administrador</h3>  
-                </div>
+                
+
+                <span class="navbar-text ms-auto">
+                <h4 class="mt-1 me-1">Administrador</h4>  
+                </span>
                 <!-- esto no sera el fin apenas es el inicio -->
                 <!-- <form class="d-flex justify-content-end align-items-end" style="justify-content: end;" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
