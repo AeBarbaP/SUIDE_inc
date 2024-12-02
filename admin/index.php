@@ -2,25 +2,26 @@
 session_start();
 
 
-if (isset($_SESSION['perfil']){
+if (isset($_SESSION['perfil'])){
     echo "
-    <script type=\"text/javascript>
-        alert('Acceso correcto');
-    </script>
-    ;
-";
+        <script type=\"text/javascript>
+            alert('Acceso correcto');
+        </script>
+        ;
+    ";
 }
 else {
     echo "
-    <script type=\"text/javascript>
-        alert('Acceso denegado');
-        window.location.href='login.html';
-    </script>
-    ;
-";
+        <script type=\"text/javascript>
+            alert('Acceso denegado');
+            window.location.href='login.html';
+        </script>
+        ;
+    ";
 }
 
 ?>
+
 <!doctype html>
 
 <html lang="es" data-bs-theme="auto">

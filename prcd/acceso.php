@@ -12,12 +12,12 @@ if (isset($_POST['usr']) && isset($_POST['pwd'])) {
     $id = $_POST['usr'];
     $pwd = $_POST['pwd'];
 
-    $sql = "SELECT * FROM users WHERE username = '$id' AND pwd ='$pwd'";   
+    $sql = "SELECT * FROM users WHERE username = '$id' AND pwd ='$pwd'";  
     $resultado_sql = $conn->query($sql);
-    $no_resultados = mysqli_num_rows($resultado_sql);
+    $row_sql=$resultado_sql->fetch_assoc();
+    $resultados = $resultado_sql->num_rows;
 
-    if ($no_resultados==1) {
-        $row_sql=$resultado_sql->fetch_assoc();
+    if ($resultados == 1) {
 
         $_SESSION['id']=$row_sql['id'];
         $_SESSION['usr']=$row_sql['username'];
@@ -30,19 +30,20 @@ if (isset($_POST['usr']) && isset($_POST['pwd'])) {
         $sqlInicioSesion = "INSERT INTO log_usrlogin(id_usr, fecha_iniciosesion) VALUES ('$idSesion','$fecha_iniciosesion')";
         $resultadoSesion= $conn->query($sqlInicioSesion);
 
-        if($row_sql['perfil']==1){ //admin 1
+
+        if($row_sql['perfil'] == 1){ //admin 1
     
             echo "<script type=\"text/javascript\">location.href='../dashboard.php';</script>";
         }   
 
-        elseif($row_sql['perfil']==2){ //admin 2
-
+       /*  else if($row_sql['perfil'] == 2){ //admin 2
+            echo "<script>alert('admin');</script>";
             echo "<script type=\"text/javascript\">location.href='../dashboard.php';</script>";
     
-        }
+        } */
 
-        elseif($row_sql['perfil']==3){ //admin 3
-
+        else if($row_sql['perfil'] == 4){ //admin 3
+            
             echo "<script type=\"text/javascript\">location.href='../admin/index.php';</script>";
     
         }
