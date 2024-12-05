@@ -40,12 +40,12 @@
     $resultadoVivienda = $conn->query($sqlVivienda);
     $rowSqlVivienda = $resultadoVivienda->fetch_assoc();
 
-    if (flag == 1) {
+    if ($flag == 1) {
         $sql = "SELECT * FROM solicitud WHERE curp = '$curp'";
         $resultadoSQL = $conn->query($sql);
         $row = $resultadoSQL->fetch_assoc();
         $descripcion1 = $row['tipo'];
-        if ()
+        
     }
 
     class PDF extends FPDF
