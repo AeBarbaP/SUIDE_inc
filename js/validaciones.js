@@ -176,6 +176,23 @@ function validarInputUpdate(input) {
 
         }
     }
+
+    function validarInputCurpSinCurp(input) {
+        var curp = input.value.toUpperCase();
+            //resultado = document.getElementById("result-username"),
+            //valido = "No válido";
+
+        if (curpValida(curp)) {
+            console.log("llega curp");
+            //alert('CURP Válido');
+            document.getElementById('btnUpdateCURP').disabled=false;
+
+        } else {
+            alert('CURP No Válido');
+            document.getElementById('btnUpdateCURP').disabled=true;
+
+        }
+    }
     $(document).ready(function() {	
         $('#curpCambiar').on('blur', function() {
             // $('#result-username2').html('<img src="img/loader.gif" />').fadeOut(1000);

@@ -45,7 +45,23 @@
         $resultadoSQL = $conn->query($sql);
         $row = $resultadoSQL->fetch_assoc();
         $descripcion1 = $row['tipo'];
-        
+        if ($descripcion1 == 4){
+            $descripcion = "CREDENCIAL DE PERSONA CON DISCAPACIDAD";
+        }
+        else if ($descripcion1 == 5){
+            $descripcion = "TARJETÓN VEHICULAR";
+        }
+    }
+    else if ($flag == 2) {
+        $sql2 = "SELECT * FROM  servicios WHERE curp = '$curp'";
+        $resultadoSQL2 = $conn->query($sql2);
+        $row2 = $resultadoSQL2->fetch_assoc();
+        $detalle = $rowSqlServicios['detalle_solicitud'];
+
+        $sqlServicios = "SELECT * FROM funcionales WHERE id = '$detalle'";
+        $resultadoServicios = $conn->query($sqlServicios);
+        $rowServicios = $resultadoServicios->fetch_assoc();
+        $descripcion = strtoupper($rowServicios['nombre']);
     }
 
     class PDF extends FPDF
@@ -96,7 +112,7 @@
     $pdf->SetFont('Arial','B',9);
     $pdf->Cell(17,7,utf8_decode('FECHA: '),0,0,'C');
     $pdf->Cell(5,7,utf8_decode(''),0,0,'C');
-    $pdf->Cell(55,7,$fecha_actual,0,0,'C');
+    $pdf->Cell(55,7,$fecha_actual,0,0,'L');
     $pdf->Line(10, 48, 210-10, 48); // 20mm from each edge
     $pdf->Ln();
     $pdf->Ln();
@@ -175,6 +191,7 @@
     $pdf->Ln();
     $pdf->SetFont('Arial','',9);
     $pdf->Multicell(190,5,utf8_decode('Recibí del Gobierno del Estado de Zacatecas, a través del Instituto para la Atención e Inclusión de las Personas con Discapacidad el(los) artículo(s) que abajo se lista(n) en calidad de Donativo a mi favor.'),0,'J',0);
+    $pdf->Multicell(190,10,utf8_decode($descripcion),0,'C',0);
     $pdf->Multicell(190,5,utf8_decode('Mismo(s) que me comprometo a darle buen uso, así como limpieza y mantenimiento en su caso, asimismo, reintegrarlo una vez que deje de ser utilizado por el o la beneficiaria.'),0,'J',0);
     $pdf->Ln();
 
@@ -185,7 +202,7 @@
     $pdf->Cell(72,5,utf8_decode('Firma de recibido: '),0,0,'R');
     $pdf->Cell(2,5,utf8_decode(''),0,0,'C');
     $pdf->SetFont('Arial','',9);
-    $pdf->Cell(93,5,utf8_decode('_________________________________________________'),0,0,'L');
+    $pdf->Cell(90,5,utf8_decode('____________________________________________'),0,0,'C');
     $pdf->Ln();
 
 

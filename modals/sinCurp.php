@@ -13,7 +13,7 @@
     
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-credit-card-2-front"></i></span>
-                    <input type="text" class="form-control" placeholder="CURP" aria-label="CURP" id="sinCurpUpdate" aria-describedby="basic-addon1" onblur="validarInputCurp(this)">
+                    <input type="text" class="form-control" placeholder="CURP" aria-label="CURP" id="sinCurpUpdate" aria-describedby="basic-addon1" onblur="validarInputCurpSinCurp(this)">
                     <input type="text" class="form-control" placeholder="id" aria-label="id" id="idUpdate" aria-describedby="basic-addon1" hidden>
                 </div>
 
