@@ -1076,7 +1076,7 @@ function updateDatosMedicos(){
             var fechaIni = "0000-00-00";
             var duracion = "";
             document.getElementById('lugarRehab').required = false;
-	    document.getElementById('fechaIni').required = false;
+	        document.getElementById('fechaIni').required = false;
             document.getElementById('duracion').required = false;
         }
         if (alergias == 0){
@@ -1423,7 +1423,7 @@ function removeC(val3) {
     //var numeroB = ""; //remover al momento de programar guardar
     var idVal = val3.slice(1,val3.length);
     var idInput = document.getElementById(val3).getAttribute("id");
-    var nameInput = document.getElementById(idVal).innerText;
+    var nameInput = document.getElementById(idInput).innerText;
     if (idInput){
         document.getElementById(val3).remove();
         $('#medicamentos').append('<option value="'+idVal+'" id="'+idInput+'" onclick="queryMedicamentosBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
@@ -3364,6 +3364,40 @@ function credencialExp() {
 				alert("Ya existe registro el día de hoy, revisa el PDF");
                 document.getElementById('credencialExpedienteBtn').disabled = true;
                 window.open("prcd/generaqrcredencialExp.php?curp="+curp, "_blank");
+            }else if (success == 0){
+                alert("No se pudo entregar la credencial");
+            }
+        }
+    });
+}
+
+function credencialExp2() {
+    var tipoDoc = 1;
+    var curp = document.getElementById('curpCredencial').value;
+    var numExp = document.getElementById('folioCredencial').value;
+
+    $.ajax({
+        type: "POST",
+        url: 'prcd/guardarDocumento.php',
+        dataType:'json',
+        data: {
+            curp:curp,
+            tipoDoc:tipoDoc,
+            numExp:numExp
+        },
+        success: function(data){
+            var jsonData = JSON.parse(JSON.stringify(data));
+            var success = jsonData.success;
+            
+            if (success == 1) {
+                document.getElementById('habilitaimprimirc').disabled = true;
+                /* window.open("prcd/generaqrcredencialExp.php?curp="+curp, "_blank"); */
+                mostrarTablaServicios();
+            } 
+			else if (success == 2) {
+				alert("Ya existe registro el día de hoy, revisa el PDF");
+                document.getElementById('habilitaimprimirc').disabled = true;
+                /* window.open("prcd/generaqrcredencialExp.php?curp="+curp, "_blank"); */
             }else if (success == 0){
                 alert("No se pudo entregar la credencial");
             }

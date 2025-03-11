@@ -253,7 +253,9 @@ function swaldatoscrdEmp() {
         },
         success: function(data) {
             $("#credencial").html(data);
-	    document.getElementById('credencial').hidden = false;
+            document.getElementById('credencial').hidden = false;
+            var curp = document.getElementById('curpCredencial').value;
+            document.getElementById('habilitaimprimirc').setAttribute('href', 'prcd/generaqrcredencialExp.php?curp=' + curp);
         }               
     });
   }

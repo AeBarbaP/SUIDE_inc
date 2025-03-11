@@ -187,6 +187,7 @@ $(document).ready(function() {
         var domicilio = document.getElementById('domicilio').value;
         var numExt = document.getElementById('numExt').value;
         var numInt = document.getElementById('numInt').value;
+        var tipoVialidad = document.getElementById('tipoVialidad').value;
         var colonia = document.getElementById('colonia').value;
         var entreVialidades = document.getElementById('entreVialidades').value;
         var descripcionLugar = document.getElementById('descripcionLugar').value;
@@ -398,7 +399,7 @@ $(document).ready(function() {
                 /* informante */
                 nombreInformante:nombreInformante,
                 relacionInformante:relacionInformante,
-                otrarelacionInformante:otrarelacionInformante,
+                otraRelacionInformante:otrarelacionInformante,
                 /* grupo vulnerable */
                 grupovulnerableFull:grupovulnerableFull,
                 /* estatus */

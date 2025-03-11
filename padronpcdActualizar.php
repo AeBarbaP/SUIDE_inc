@@ -1312,7 +1312,7 @@
                                 </div>
                                 <div class="modal-body">
                                   <div class="input-group">
-                                    <input type="text" id="hiddenMedicamento" hidden>
+                                    <input type="text" id="hiddenMed" hidden>
                                     <span class="input-group-text"> Medicamento:</span>
                                     <input type="text" class="form-control  w-50" id="medicamentoInput" name="medicamentoInput" value="" placeholder="">
                                   </div>

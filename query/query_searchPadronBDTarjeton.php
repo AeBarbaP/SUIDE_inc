@@ -60,7 +60,7 @@ else{
       
       echo '
       <script>
-      desbloquearInputsT('.$filasTarjeton.');
+          desbloquearInputsT('.$expediente.');
       
           folioTarjetonNegativo();
           limpiarInputsVehiculo();

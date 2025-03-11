@@ -262,7 +262,9 @@ header("content-type: image/jpeg");
             </div>
           </div>
         </div>
-        
+        <script>
+          document.getElementById("habilitaimprimirc").setAttribute("href", "prcd/generaqrcredencialExp.php?curp="+'.$curp.');
+        </script>
         ';
       }
       else{

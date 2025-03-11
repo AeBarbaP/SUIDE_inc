@@ -22,5 +22,7 @@ function numExpUpdate(x){
     var numExpediente1 = document.getElementById('numeroTemporal2').value;
     var numExpediente2 = document.getElementById('numeroTemporal').value;
     var trimExpediente = numExpediente1.substr(0,4);
-    document.getElementById('numeroExpediente').innerHTML = trimExpediente+cveDiscapacidad+'-'+numExpediente2;
+    var expedienteNum = trimExpediente.concat(cveDiscapacidad,'-',numExpediente2);
+    document.getElementById('numeroExpediente').innerHTML = expedienteNum;
+    /* document.getElementById('numeroExpediente').innerHTML = trimExpediente+cveDiscapacidad+'-'+numExpediente2; */
 }
