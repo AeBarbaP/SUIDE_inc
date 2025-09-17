@@ -20,6 +20,14 @@ $telefono = $_POST['telefonoCel'];
 $tipoSangre = $_POST['tipoSangre'];
 $alergias = $_POST['alergias'];
 $cadena = $_POST['cadena'];
+
+if ($numeroInterior == "" || $numeroInterior == "S/N" || $numeroInterior == null){
+	$numeroInterior = "";
+}
+else {
+	$numeroInterior = $numeroInterior;
+}
+
 $apellidosConcat = $apellidoPaterno.' '.$apellidoMaterno; 
 $concatNumIntNumCasa = $numeroCasa.$numeroInterior;
 

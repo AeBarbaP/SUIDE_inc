@@ -22,6 +22,7 @@ $annio = $_POST['annio'];
 $numPlaca = $_POST['numPlaca'];
 $serie = $_POST['serie'];
 $autoSeguro = $_POST['autoSeguro'];
+$autoSeguroFlag = $_POST['autoSeguroFlag'];
 $tipo_dato = 11;
 
 $sqlinsert= "INSERT INTO tarjetones (

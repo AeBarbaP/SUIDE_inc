@@ -27,7 +27,7 @@
         ';
     }
     echo '
-    <input type="text" id="numMX" value="'.$x.'" hidden>
+    <input type="text" id="numMX" value="'.$x.'">
     <option value="0" onclick="openModalM('.$x.')">Otra</option>
     ';
     ?>

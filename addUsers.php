@@ -670,6 +670,7 @@ include('prcd/qc/qc.php');
       cache: false,
         success: function(data) {
           $("#tarjeton").html(data);
+
       }               
     });
   }

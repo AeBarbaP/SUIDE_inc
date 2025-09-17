@@ -184,7 +184,7 @@ else if ($pension == 1){
     $montoPension = "";
   }
   else{
-    $montoPension = $montoPensionBD.'00';
+    $montoPension = $montoPensionBD.'.00';
   }
 }
 
@@ -1177,22 +1177,22 @@ $pdf->SetFont('Arial','',10);
 $pdf->Cell(43,5,utf8_decode(' '.$curp.' '),'B',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(10,5,utf8_decode('RFC:'),0,0,'L');
+$pdf->Cell(9,5,utf8_decode('RFC:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(33,5,utf8_decode(' '.$rowSqlGenerales['rfc'].' '),'B',0,'C');
+$pdf->Cell(30,5,utf8_decode(' '.$rowSqlGenerales['rfc'].' '),'B',0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(17,5,utf8_decode('Teléfono:'),0,0,'R');
+$pdf->Cell(20,5,utf8_decode('Tel.Contacto:'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(26,5,utf8_decode(' '.$rowSqlGenerales['telefono_part'].' '),'B',0,'L');
+$pdf->Cell(22,5,utf8_decode(' '.$rowSqlGenerales['telefono_part'].' '),'B',0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(17,5,utf8_decode('Celular:'),0,0,'R');
+$pdf->Cell(23,5,utf8_decode('Tel.Emergencia:'),0,0,'R');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',10);
-$pdf->Cell(26,5,utf8_decode(' '.$rowSqlGenerales['telefono_cel'].' '),'B',0,'L');
+$pdf->Cell(25,5,utf8_decode(' '.$rowSqlGenerales['telefono_cel'].' '),'B',0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
@@ -1426,10 +1426,10 @@ $pdf->SetFont('Arial','',8);
 $pdf->Cell(38,5,utf8_decode($rowSqlGenerales['pensionado_donde']),'B',0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(22,5,utf8_decode('Monto pensión: $'),0,0,'L');
+$pdf->Cell(22,5,utf8_decode('Monto pensión: $ '),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',8);
-$pdf->Cell(20,5,utf8_decode($montoPension),'B',0,'L');
+$pdf->Cell(20,5,utf8_decode(' '.$montoPension),'B',0,'L');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->Cell(17,5,utf8_decode('Frecuencia:'),0,0,'L');
@@ -1548,7 +1548,7 @@ $pdf->Ln();
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(21,5,utf8_decode('Discapacidad:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',10);
+$pdf->SetFont('Arial','',8);
 $pdf->Cell(50,5,utf8_decode($idDiscapacidad),'B',0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
@@ -1854,20 +1854,20 @@ $pdf->Ln();
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(14,5,utf8_decode('Alergias:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',10);
+$pdf->SetFont('Arial','',9);
 $pdf->Cell(73,5,utf8_decode($rowSqlMedicos['alergias_cual']),'B',0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(23,5,utf8_decode('Enfermedades:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',10);
+$pdf->SetFont('Arial','',9);
 $pdf->Cell(78,5,utf8_decode($rowSqlMedicos['enfermedades_cual']),'B',0,'L');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(25,5,utf8_decode('Medicamentos:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',10);
+$pdf->SetFont('Arial','',8);
 $pdf->Cell(165,5,utf8_decode($rowSqlMedicos['medicamentos_cual']),'B',0,'L');
 $pdf->Ln();
 $pdf->Ln();
@@ -2225,6 +2225,7 @@ while ($rowSqlFamiliares = $resultadosqlFamiliares->fetch_assoc()){
   $pdf->Cell(30,5,utf8_decode($rowSqlFamiliares['profesion_oficio']),1,0,'C');
   $pdf->Cell(25,5,utf8_decode($rowSqlFamiliares['discapacidad']),1,0,'C');
   $pdf->Cell(15,5,utf8_decode($rowSqlFamiliares['ingreso']),1,0,'C');
+  $pdf->SetFont('Arial','',7);
   $pdf->Cell(15,5,utf8_decode($rowSqlFamiliares['telcel']),1,0,'C');
   $pdf->Ln();
 }
@@ -2254,6 +2255,7 @@ while ($rowSqlReferencia = $resultadosqlReferencia->fetch_assoc()){
   $pdf->Cell(20,5,utf8_decode($rowSqlReferencia['parentesco']),1,0,'C');
   $pdf->Cell(70,5,utf8_decode($rowSqlReferencia['direccion']),1,0,'C');
   $pdf->Cell(31,5,utf8_decode($rowSqlReferencia['profesion_oficio']),1,0,'C');
+  $pdf->SetFont('Arial','',7);
   $pdf->Cell(15,5,utf8_decode($rowSqlReferencia['celular']),1,0,'C');
   $pdf->Ln();
 }

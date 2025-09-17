@@ -10,7 +10,7 @@ echo '
                 <div class="modal-body">
                     <div class="input-group mb-1 mt-2 w-100">
                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                        <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2(); desbloquearInputsT(this.value)" onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
+                        <input class="form-control" id="searchDBInclusion2" oninput="buscarExpediente2(); " onkeypress="ValidaSoloNumeros()" maxlength="5" pattern="[0-9]+" placeholder="Buscar...">
                     </div><!-- input group -->
                     <br>
                     <div class="container text-center">
@@ -29,7 +29,7 @@ echo '
                                         <input type="text" id="tipoTarjeton" value="1" hidden>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1">Marca</span>
-                                            <input type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaPerm" disabled>
+                                            <input type="text" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase()" onfocus="expedienteSinCurp()" placeholder="Marca" aria-label="marca" aria-describedby="basic-addon1" id="marcaPerm" disabled>
                                         </div>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text" id="basic-addon1">Modelo</span>

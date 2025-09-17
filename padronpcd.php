@@ -1,46 +1,46 @@
 <?php
-session_start();
+  session_start();
 
-if (isset($_SESSION['usr'])) {
-    if($_SESSION['perfil']==1){
-        // header('Location: javascript: history.go(-1)');
-    }
-    elseif($_SESSION['perfil']==2){
-        // header('Location: javascript: history.go(-1)');
-    }
-    elseif($_SESSION['perfil']==3){
-        // header('Location: javascript: history.go(-1)');
-    }
-    else{
-        header('Location:prcd/sort.php');
-    }
-    // Si esta identificado, en otras palabras existe la variable, le saludamos
-    // echo 'Hola ' . $_SESSION['usr'];
-} else {
-    // En caso contrario redirigimos el visitante a otra página
+  if (isset($_SESSION['usr'])) {
+      if($_SESSION['perfil']==1){
+          // header('Location: javascript: history.go(-1)');
+      }
+      elseif($_SESSION['perfil']==2){
+          // header('Location: javascript: history.go(-1)');
+      }
+      elseif($_SESSION['perfil']==3){
+          // header('Location: javascript: history.go(-1)');
+      }
+      else{
+          header('Location:prcd/sort.php');
+      }
+      // Si esta identificado, en otras palabras existe la variable, le saludamos
+      // echo 'Hola ' . $_SESSION['usr'];
+  } else {
+      // En caso contrario redirigimos el visitante a otra página
 
-    echo 'Usuario no válido';
-    // header('Location: ../../autentificacion/');
-    header('Location: prcd/sort.php');
-    die();
-}
+      echo 'Usuario no válido';
+      // header('Location: ../../autentificacion/');
+      header('Location: prcd/sort.php');
+      die();
+  }
 
-include('prcd/qc/qc.php');
+  include('prcd/qc/qc.php');
 
-// variables de sesión
+  // variables de sesión
 
-    $usuario = $_SESSION['usr'];
-    $id = $_SESSION['id'];
-    $perfil = $_SESSION['perfil'];
-    $nombre = $_SESSION['nombre'];
-    
-    $sqlStatus = "SELECT * FROM users WHERE id ='$id'";
-    $resultadoStatus = $conn->query($sqlStatus);
-    $rowStatus = $resultadoStatus->fetch_assoc();
+  $usuario = $_SESSION['usr'];
+  $id = $_SESSION['id'];
+  $perfil = $_SESSION['perfil'];
+  $nombre = $_SESSION['nombre'];
+  
+  $sqlStatus = "SELECT * FROM users WHERE id ='$id'";
+  $resultadoStatus = $conn->query($sqlStatus);
+  $rowStatus = $resultadoStatus->fetch_assoc();
 
-    $sqlPerfil="SELECT * FROM perfiles_usr WHERE id='$perfil'";
-    $resultadoPerfil = $conn->query($sqlPerfil);
-    $rowPerfil=$resultadoPerfil->fetch_assoc();
+  $sqlPerfil="SELECT * FROM perfiles_usr WHERE id='$perfil'";
+  $resultadoPerfil = $conn->query($sqlPerfil);
+  $rowPerfil=$resultadoPerfil->fetch_assoc();
 
 ?>
 
@@ -537,12 +537,12 @@ include('prcd/qc/qc.php');
                     </div>
                   </div>
                   <div class="col-sm-6">
-                    <label for="datos_usr" class="form-label">Teléfono Particular:</label>
-                    <input type="text" class="form-control" id="telFijo" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Teléfono particular">
+                    <label for="datos_usr" class="form-label">Teléfono de Contacto:</label>
+                    <input type="text" class="form-control" id="telFijo" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Teléfono de Contacto">
                   </div>
                   <div class="col-sm-6">
-                    <label for="datos_usr" class="form-label">Celular:</label>
-                    <input type="text" class="form-control" id="celular" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Celular">
+                    <label for="datos_usr" class="form-label">Teléfono de Emergencia:</label>
+                    <input type="text" class="form-control" id="celular" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Teléfono de Emergencia">
                   </div>
                   <div class="col-sm-2">
                     <div class="mb-3">

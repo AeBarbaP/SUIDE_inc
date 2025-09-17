@@ -293,6 +293,7 @@ $expediente = $_POST['expediente'];
             'asistencia'=>$rowDatosMedicos['asistencia'],
             //medicamentos
             'vivienda'=>$rowDatosVivienda['vivienda'], 
+            'propietario'=>$rowDatosVivienda['propietario'], 
             'caracteristicas'=>$rowDatosVivienda['caracteristicas'], 
             'caracteristicas_otro'=>$rowDatosVivienda['caracteristicas_otro'], 
             'num_habitaciones'=>$rowDatosVivienda['num_habitaciones'], 

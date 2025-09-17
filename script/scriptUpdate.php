@@ -135,7 +135,7 @@ while($rowDB = $resultadoDB1->fetch_assoc()){
                 $estatusExp = 1;
             }
             else if ($idEstatusExpediente1 == "FINADO"){
-                $estatusExp = 3;
+                $estatusExp = 2;
             }
         } else {
             $estatusExp = '';

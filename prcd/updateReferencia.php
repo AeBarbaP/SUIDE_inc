@@ -9,6 +9,7 @@ setlocale(LC_TIME, 'es_MX.UTF-8');
 $fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
 $fecha_entrega = strftime("%Y-%m-%d,%H:%M:%S");
 
+$curp = $_POST['curp_exp'];
 $nombreReferencia = $_POST['nombreReferencia'];
 $parentescoRef = $_POST['parentescoRef'];
 $profesionRef = $_POST['profesionRef'];
@@ -17,7 +18,13 @@ $domicilioRef = $_POST['domicilioRef'];
 $id = $_POST['idR'];
 $tipo_dato = 35;
 
-$sqlinsert= "UPDATE referencias SET nombre='$nombreReferencia', parentesco='$parentescoRef', profesion_oficio='$profesionRef', celular='$telRef', direccion='$domicilioRef' WHERE id = '$id' AND curp = '$curp' ";
+$sqlinsert= "UPDATE referencias SET 
+    nombre='$nombreReferencia',
+    parentesco='$parentescoRef',
+    profesion_oficio='$profesionRef',
+    celular='$telRef',
+    direccion='$domicilioRef' 
+WHERE id = '$id' AND curp = '$curp' ";
 
 $resultado= $conn->query($sqlinsert);
 

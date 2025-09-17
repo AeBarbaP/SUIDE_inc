@@ -111,7 +111,8 @@ function vehiculoAddExp(){
                 serie:serie,
                 folioTarjeton:folioTarjeton,
                 vigencia:vigencia,
-                autoSeguro:autoSeguro
+                autoSeguro:autoSeguro,
+                autoSeguroFlag:autoSeguroFlag
             },
             success: function(data){
                 var jsonData = JSON.parse(JSON.stringify(data));
@@ -152,13 +153,13 @@ function habilitaBTNaddExp(){
 }
 
 function mostrarTablaVehiculos(){
-    var curpTarjeton = document.getElementById('curpTarjeton').value;
+    var curpTarjetonVal = document.getElementById('curpTarjeton').value;
     //var numExpediente = document.getElementById('ordenExpediente').value;
-    if (curpTarjeton == null || curpTarjeton== ''){
+    if (curpTarjetonVal == null || curpTarjetonVal == ''){
         var curpPaseada = "";
     }
     else{
-        var curpPaseada = curpTarjeton;
+        var curpPaseada = curpTarjetonVal;
     }
 
     $.ajax({
@@ -214,23 +215,6 @@ function codigoQR(concatenado){
 
     // Obtener el elemento canvas generado por QRCode.js
     var canvas = document.querySelector("#codigo-qr canvas");
-
-    // Crear un nuevo elemento de imagen para el logo
-    //var logo = new Image();
-    //logo.src = "imagen.png";
-
-    // Esperar a que el logo se cargue antes de dibujarlo en el canvas
-    //logo.onload = function() {
-        // Calcular la posición del logo en el centro del código QR
-        //var logoSize = qrcode._htOption.width * 0.2; // Tamaño relativo del logo (20%)
-        //var xPos = (canvas.width - logoSize) / 2;
-        //var yPos = (canvas.height - logoSize) / 2;
-
-        // Dibujar el logo en el canvas
-        //var ctx = canvas.getContext("2d");
-        //ctx.drawImage(logo, xPos, yPos, logoSize, logoSize);
-    //};
-
 
 }
 
@@ -324,6 +308,7 @@ function revisarTarjeton(){
 function folioTarjetonPositivo(){
         var folioT = document.getElementById("folioTarjeton").value;
         var vigenciaT = document.getElementById("vigenciaTarjeton").value;
+
         document.getElementById("folioTPerm").disabled = true;
         document.getElementById("vigenciaPerm").disabled = true;
         document.getElementById("folioTPerm").value = folioT;
@@ -338,7 +323,7 @@ function folioTarjetonBloqueado(){
 }
 
 function folioTarjetonNegativo(){
-    document.getElementById("folioTPerm").disabled = false;
+    document.getElementById("folioTPerm").disabled = true;
     document.getElementById("folioTPerm").value = "";
     //document.getElementById("textoTarjeton").innerHTML = "<small class='text-primary'>Folio disponible</small>";
 
@@ -550,31 +535,51 @@ function reemplazaTarjeton(){
     });
 }
 
-function desbloquearInputsT(x){
-    var z = x.length;
-    console.log('Si entra a desbloquear input', z);
-    if (z == 0 || z == null) {
-        document.getElementById('marcaPerm').disabled = false;
-        document.getElementById('modeloPerm').disabled = false;
-        document.getElementById('placasPerm').disabled = false;
-        document.getElementById('annioPerm').disabled = false;
-        document.getElementById('seriePerm').disabled = false;
-        document.getElementById('folioTPerm').disabled = false; 
-        document.getElementById('vigenciaPerm').disabled = false;
-        console.log ("z si");
-    }
-    else{
-        document.getElementById('marcaPerm').disabled = true;
-        document.getElementById('modeloPerm').disabled = true;
-        document.getElementById('placasPerm').disabled = true;
-        document.getElementById('annioPerm').disabled = true;
-        document.getElementById('seriePerm').disabled = true;
-        document.getElementById('folioTPerm').disabled = true; 
-        document.getElementById('vigenciaPerm').disabled = true; 
-        document.getElementById('vehiculosTabla').innerHTML = "";
-        console.log ("z no");
+function desbloquearInputsT(){
+   
+    let inpput = document.getElementById('curpTarjeton').value;
+
+    console.log("La CURP es: ",inpput);
+    
+        if (document.getElementById('curpTarjeton')== null || document.getElementById('curpTarjeton').value == "" || document.getElementById('curpTarjeton').value == " CURP no registrada"){
+            document.getElementById('marcaPerm').disabled = true;
+            document.getElementById('modeloPerm').disabled = true;
+            document.getElementById('placasPerm').disabled = true;
+            document.getElementById('annioPerm').disabled = true;
+            document.getElementById('seriePerm').disabled = true;
+            document.getElementById('folioTPerm').disabled = true; 
+            document.getElementById('vigenciaPerm').disabled = true; 
+            document.getElementById('vehiculosTabla').innerHTML = "";
+            console.log ("z no CURP");
+        }
+        else if (document.getElementById('curpTarjeton')!== null || document.getElementById('curpTarjeton').value !== "" || document.getElementById('curpTarjeton').value !== " CURP no registrada") {
+            if (document.getElementById('folioTPerm').value == "" || document.getElementById('folioTPerm').value == "No hay tarjetón registrado" || document.getElementById('folioTPerm').value == null){
+                document.getElementById('marcaPerm').disabled = false;
+                document.getElementById('modeloPerm').disabled = false;
+                document.getElementById('placasPerm').disabled = false;
+                document.getElementById('annioPerm').disabled = false;
+                document.getElementById('seriePerm').disabled = false;
+                document.getElementById('folioTPerm').disabled = false; 
+                document.getElementById('folioTPerm').value = ""; 
+                document.getElementById('vigenciaPerm').disabled = false;
+                document.getElementById('vigenciaPerm').value = "";
+                /* document.getElementById('vehiculosTabla').innerHTML = ""; */
+                console.log ("z sin tarjeton");
+            }
+            else {
+                document.getElementById('marcaPerm').disabled = false;
+                document.getElementById('modeloPerm').disabled = false;
+                document.getElementById('placasPerm').disabled = false;
+                document.getElementById('annioPerm').disabled = false;
+                document.getElementById('seriePerm').disabled = false;
+                document.getElementById('folioTPerm').disabled = true; 
+                document.getElementById('vigenciaPerm').disabled = true;
+                /* document.getElementById('vehiculosTabla').innerHTML = ""; */
+                console.log ("z con tarjeton");
+            }
+        }
         
-    }
+   
 }
 
 function bloquearInputsT(){
@@ -630,4 +635,8 @@ function LOSVehiculo(id,folio){
         }
 
     });
+}
+
+function ocultarTablaVehiculos () {
+    document.getElementById('vehiculosTabla').hidden = true;
 }

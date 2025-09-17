@@ -30,7 +30,7 @@ $direccion = $rowSqlGenerales['domicilio'];
 $noExt = $rowSqlGenerales['no_ext'];
 $noInt = $rowSqlGenerales['no_int'];
 
-if ($noInt == "" || $noInt == null){
+if ($noInt == "" || $noInt == null || $noInt == "S/N"){
     $concatNumIntNumCasa = $noExt;
 	//echo $concatNumIntNumCasa;
 }
@@ -73,14 +73,21 @@ else {
 $telefonoPart = $rowSqlGenerales['telefono_part'];
 $telefonoCel = $rowSqlGenerales['telefono_cel'];
 
-if ($telefonoPart == "" || $telefonoPart == null){
+if ($telefonoCel == "" || $telefonoCel == null){
+	if ($telefonoPart == "" || $telefonoPart == null){
+        $telefono = "No Disponible";
+    }
+	else {
+        $telefono = $telefonoPart;
+    }
+}
+/* else if ($telefonoPart == "" || $telefonoPart == null){
+	if ($telefonoCel == "" || $telefonoCel == null){
+    	$telefono = "No Disponible";
+	}
+} */
+else {
     $telefono = $telefonoCel;
-}
-else if ($telefonoCel == "" || $telefonoCel == null){
-    $telefono = $telefonoPart;
-}
-else{
-    $telefono = "";
 }
 
 $sqlMedicos = "SELECT * FROM datos_medicos WHERE curp = '$curp'";

@@ -274,7 +274,6 @@ $(document).ready(function() {
         var informante = document.getElementById('nombreInformante').value;
         var informanteRelacion1 = document.getElementById('informanteRel').value;
         var informanteRelacionOtro = document.getElementById('otraRel').value;
-        var carrera1 = document.getElementById('carrera').value;
 
         if(generoF.checked){
             var genero = "Femenino";
@@ -290,9 +289,10 @@ $(document).ready(function() {
             var leer = 1;
         }
         else if (leerNo.checked){
-            var leer = 2;
+            var leer = 0;
         }
         
+        var carrera1 = document.getElementById('carrera').value;
         if (carrera1 == null || carrera1 == ""){
             var escolaridadNombre = "";
         }
@@ -304,10 +304,10 @@ $(document).ready(function() {
             var concluida = 1;
         }
         else if (concluidaNo.checked){
-            var concluida = 2;
+            var concluida = 0;
         }
         else if (concluidaNA.checked){
-            var concluida = 4;
+            var concluida = 2;
         }
         else if (concluidaCur.checked){
             var concluida = 3;
@@ -319,12 +319,11 @@ $(document).ready(function() {
             document.getElementById('lugarEstudia').required = true;
         }
         else if (estudiaNo.checked){
-            var estudia = 2;
+            var estudia = 0;
             estudiaLugar = "N/A";
             document.getElementById('lugarEstudia').required = false;
         }
         if(trabajaSi.checked){
-            var trabaja = 1;
             var trabajaLugar = document.getElementById('lugarTrabajo').value;
             if (trabajaLugar == "Otro"){
                 document.getElementById('lugarTrabajoOtro').required = true;
@@ -335,7 +334,6 @@ $(document).ready(function() {
             }
         }
         else if (trabajaNo.checked){
-            var trabaja = 0;
             var trabajaLugar = "N/A";
             lugarTrabajoOtro = "N/A";
             document.getElementById('lugarTrabajo').required = false;
@@ -423,7 +421,6 @@ $(document).ready(function() {
                 estudiaLugar:estudiaLugar,
                 habilidad:habilidad,
                 profesion:profesion,
-                trabaja:trabaja,
                 trabajaLugar:trabajaLugar,
                 lugarTrabajoOtro:lugarTrabajoOtro,
                 ingresoMensual:ingresoMensual,
@@ -550,7 +547,7 @@ function updateGeneralesForm(){
         var informante = document.getElementById('nombreInformante').value;
         var informanteRelacion1 = document.getElementById('informanteRel').value;
         var informanteRelacionOtro = document.getElementById('otraRel').value;
-        var estatus = 3;
+        var estatus = 1;
 
         /* if (estatus != 2 || estatus != 3) {
             estatus = 1;
@@ -1076,7 +1073,7 @@ function updateDatosMedicos(){
             var fechaIni = "0000-00-00";
             var duracion = "";
             document.getElementById('lugarRehab').required = false;
-	        document.getElementById('fechaIni').required = false;
+	    document.getElementById('fechaIni').required = false;
             document.getElementById('duracion').required = false;
         }
         if (alergias == 0){
@@ -1302,7 +1299,8 @@ function queryMedicamentosBadges(x1){
 
 function queryMedicamentosBadgesModal(){
     var idNext = document.getElementById('hiddenMed').value;
-    var x = parseInt(idNext)+1;
+    var x = (parseInt(idNext))+1;
+    console.log (x);
     var texto = document.getElementById('medicamentoInput').value;
     document.getElementById('hiddenMed').value = "";
     document.getElementById('hiddenMed').value = x;
@@ -1426,7 +1424,7 @@ function removeC(val3) {
     var nameInput = document.getElementById(idInput).innerText;
     if (idInput){
         document.getElementById(val3).remove();
-        $('#medicamentos').append('<option value="'+idVal+'" id="'+idInput+'" onclick="queryMedicamentosBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
+        $('#medicamentos').append('<option value="'+idVal+'" id="'+idVal+'" onclick="queryMedicamentosBadges(this.value)"><span id="TextoBadge'+idInput+'">'+nameInput+'</span></option>');
         paragraphsMedicamentos(idInput);
     }
     else{
@@ -1523,8 +1521,8 @@ function openModalA(val) {
 function openModalM(val) {
     var x = val;
     var y = document.getElementById('hiddenMed').value;
-    $('#medicamentoModal').modal('show');
     console.log(y);
+    $('#medicamentoModal').modal('show');
     if(y == 0){
         x+1;
         document.getElementById('hiddenMed').value = x;
@@ -2410,7 +2408,7 @@ $(document).ready(function() {
                 var jsonData = JSON.parse(JSON.stringify(response));
                 
                 var verificador = jsonData.success;
-                if (verificador = 1){
+                if (verificador == 1){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -2420,7 +2418,7 @@ $(document).ready(function() {
                     });
                     showMeFam();
                 }
-                else if (verificador = 2){
+                else if (verificador == 2){
                     Swal.fire({
                         position: 'top-end',
                         icon: 'error',
@@ -2454,7 +2452,7 @@ $(document).ready(function() {
     $('#referenciasForm').submit(function(e) { 
         /* Referencias */
         var curp_exp = document.getElementById('curp_exp').value;
-	var numExp = document.getElementById('numeroExpediente').innerText;
+	    var numExp = document.getElementById('numeroExpediente').innerText;
         var nombreReferencia = document.getElementById('nombreReferencia').value;
         var parentescoRef = document.getElementById('parentescoRef').value;
         var telRef = document.getElementById('telRef').value;
@@ -2467,7 +2465,7 @@ $(document).ready(function() {
             dataType:'json',
             data: {
                 curp_exp:curp_exp,
-		numExp:numExp,
+		        numExp:numExp,
                 nombreReferencia:nombreReferencia,
                 parentescoRef:parentescoRef,
                 telRef:telRef,
@@ -2517,12 +2515,14 @@ $(document).ready(function() {
         var profesionRef = document.getElementById('profesionRef2').value;
         var domicilioRef = document.getElementById('domicilioRef2').value;
         var idR = document.getElementById('idRef').value;
+        var curp_exp = document.getElementById('curp_exp').value;
         
         $.ajax({
             type: "POST",
             url: 'prcd/updateReferencia.php',
             dataType:'json',
             data: {
+                curp_exp:curp_exp,
                 nombreReferencia:nombreReferencia,
                 parentescoRef:parentescoRef,
                 telRef:telRef,
@@ -2551,7 +2551,8 @@ $(document).ready(function() {
                         title: 'Datos de Referencia NO han sido actualizados',
                         showConfirmButton: false,
                         timer: 1500
-                    })
+                    });
+                    console.log(jsonData.error);
                 }
             }
         })
@@ -3364,40 +3365,6 @@ function credencialExp() {
 				alert("Ya existe registro el día de hoy, revisa el PDF");
                 document.getElementById('credencialExpedienteBtn').disabled = true;
                 window.open("prcd/generaqrcredencialExp.php?curp="+curp, "_blank");
-            }else if (success == 0){
-                alert("No se pudo entregar la credencial");
-            }
-        }
-    });
-}
-
-function credencialExp2() {
-    var tipoDoc = 1;
-    var curp = document.getElementById('curpCredencial').value;
-    var numExp = document.getElementById('folioCredencial').value;
-
-    $.ajax({
-        type: "POST",
-        url: 'prcd/guardarDocumento.php',
-        dataType:'json',
-        data: {
-            curp:curp,
-            tipoDoc:tipoDoc,
-            numExp:numExp
-        },
-        success: function(data){
-            var jsonData = JSON.parse(JSON.stringify(data));
-            var success = jsonData.success;
-            
-            if (success == 1) {
-                document.getElementById('habilitaimprimirc').disabled = true;
-                /* window.open("prcd/generaqrcredencialExp.php?curp="+curp, "_blank"); */
-                mostrarTablaServicios();
-            } 
-			else if (success == 2) {
-				alert("Ya existe registro el día de hoy, revisa el PDF");
-                document.getElementById('habilitaimprimirc').disabled = true;
-                /* window.open("prcd/generaqrcredencialExp.php?curp="+curp, "_blank"); */
             }else if (success == 0){
                 alert("No se pudo entregar la credencial");
             }

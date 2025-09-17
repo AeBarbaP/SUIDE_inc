@@ -42,7 +42,6 @@ $estudia = $_POST['estudia'];
 $estudiaLugar = $_POST['estudiaLugar'];
 $habilidad = $_POST['habilidad'];
 $profesion = $_POST['profesion'];
-$trabaja = $_POST['trabaja'];
 $trabajaLugar = $_POST['trabajaLugar'];
 $lugartrabajoOtro = $_POST['lugarTrabajoOtro'];
 $ingresoMensual = $_POST['ingresoMensual'];
@@ -113,7 +112,8 @@ $sqlinsert= "INSERT INTO datos_generales (
     numSS,
     gpo_vulnerable,
     estatus,
-    avance
+    avance,
+    usuario_crea
     )
 VALUES(
     '$fecha_registro',
@@ -150,7 +150,6 @@ VALUES(
     '$estudiaLugar',
     '$habilidad',
     '$profesion',
-    '$trabaja',
     '$trabajaLugar',
     '$lugartrabajoOtro',
     '$ingresoMensual',
@@ -168,7 +167,8 @@ VALUES(
     '$numSS',
     '$gruposFull',
     1,
-    1
+    1,
+    '$usr'
 )";
 
 $sqlinsert2 = "INSERT INTO datos_medicos (curp) VALUES ('$curp')";

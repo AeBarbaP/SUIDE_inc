@@ -176,7 +176,6 @@ function validarInputUpdate(input) {
 
         }
     }
-
     function validarInputCurpSinCurp(input) {
         var curp = input.value.toUpperCase();
             //resultado = document.getElementById("result-username"),

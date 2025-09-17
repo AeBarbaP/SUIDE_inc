@@ -63,7 +63,8 @@
       <script src="sidebars.js"></script>
       <link href="scripts/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
       <!-- <script src="scripts/popper.min.js"></script> -->
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script> -->
+      <script src="scripts/popper.min.js"></script>
       <script src="scripts/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
       <script src="scripts/jquery-3.7.1.min.js"></script>
@@ -357,7 +358,7 @@
                   <img id="profile" src="img/no_profile.png" width="100%" style="width:14rem">
                   <div class="input-group">
                     <form id="upload_form" enctype="multipart/form-data" method="post">
-                      <input type="file"  name="file_photo" id="file_photo" onchange="fotoUpload()" accept="image/jpeg" class="h6 w-100 mt-3" disabled><br>
+                      <input type="file"  name="file_photo" id="file_photo" onchange="fotoUpload()" accept=".jpeg,.jpg" class="h6 w-100 mt-3" disabled><br>
                       <input type="text" id="flagFoto" value="0" hidden>
                       <progress id="progressBar_photo" value="0" max="100" style="width:230px;"></progress>
                       <small id="status_photo"></small>
@@ -435,7 +436,7 @@
                         </div>
                         <div class="col-sm-1">
                           <label for="edad" class="form-label">Edad:</label>
-                          <input type="text" class="form-control" id="edad" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="" disabled>
+                          <input type="text" class="form-control" id="edad" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="">
                         </div>
                         <div class="col-sm-4">
                           <label for="datos_usr" class="form-label">CURP:</label>
@@ -578,12 +579,12 @@
                           </div>
                         </div>
                         <div class="col-sm-6">
-                          <label for="datos_usr" class="form-label">Teléfono Particular:</label>
-                          <input type="text" class="form-control" id="telFijo" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Teléfono particular">
+                          <label for="datos_usr" class="form-label">Teléfono de Contacto:</label>
+                          <input type="text" class="form-control" id="telFijo" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Teléfono de Contacto">
                         </div>
                         <div class="col-sm-6">
-                          <label for="datos_usr" class="form-label">Celular:</label>
-                          <input type="text" class="form-control" id="celular" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Celular">
+                          <label for="datos_usr" class="form-label">Teléfono de Emergencia:</label>
+                          <input type="text" class="form-control" id="celular" onkeypress="ValidaSoloNumeros()" name="datos_usr" placeholder="Teléfono de Emergencia">
                         </div>
                         <div class="col-sm-2"> 
                           <div class="mb-3">
@@ -839,7 +840,7 @@
                         </div>
                         <div class="col-sm-3">
                           <div class="mb-3">
-                            <label for="basic-url" class="form-label">Persona que da la información:</label>
+                            <label for="basic-url" class="form-label">Persona que realiza el trámite:</label>
                             <select class="form-select" id="informante" onchange="informanteOp(this.value)" aria-label="Default select example" required>
                               <option value="" selected>Selecciona...</option>
                               <option value="1">Usuario</option>
@@ -847,13 +848,13 @@
                             </select>
                           </div>
                         </div>
-                        <div class="col-sm-4" id="divNombre" hidden>
+                        <div class="col-sm-4" id="divNombre" >
                           <div class="mb-3">
                             <label for="basic-url" class="form-label">Nombre completo:</label>
                             <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase()" class="form-control" id="nombreInformante" name="relacion" placeholder="Nombre completo" disabled>
                           </div>
                         </div>
-                        <div class="col-sm-5" id="divSelect" hidden>
+                        <div class="col-sm-5" id="divSelect" >
                           <div class="mb-3">
                             <label for="basic-url" class="form-label">Relación que tiene con el Usuario:</label>
                             <div class="input-group">
@@ -888,7 +889,7 @@
                                   <label class="form-check-label" for="inlineRadio1">Sí</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                  <input class="form-check-input" type="radio" onclick="estatusOp(this.value)" name="estatus" id="estatusNo" value="0">
+                                  <input class="form-check-input" type="radio" onclick="estatusOp(this.value)" name="estatus" id="estatusNo" value="0" checked>
                                   <label class="form-check-label" for="inlineRadio2">No</label>
                                   <div class="invalid-feedback">
                                     * Campo requerido.
@@ -1007,7 +1008,7 @@
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-sm-4 mt-3" id="visual" hidden>
+                          <div class="col-sm-4 mt-3" id="visual">
                             <label for="basic-url" class="form-label">Utiliza Sistema Braile?</label>
                             <div class="input-group">
                               <div class="form-check form-check-inline mt-2">
@@ -1024,7 +1025,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-sm-4 mt-3" id="auditiva" hidden>
+                          <div class="col-sm-4 mt-3" id="auditiva">
                             <label for="basic-url" class="form-label">Utiliza Lengua de Señas Mexicana?</label>
                             <div class="input-group">
                               <div class="form-check form-check-inline mt-2">
@@ -1041,7 +1042,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-sm-4 mt-3" id="auditiva2" hidden>
+                          <div class="col-sm-4 mt-3" id="auditiva2" >
                             <label for="basic-url" class="form-label">Sabe lectura Labiofacial?</label>
                             <div class="input-group">
                               <div class="form-check form-check-inline mt-2">

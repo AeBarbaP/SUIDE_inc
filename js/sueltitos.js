@@ -253,9 +253,7 @@ function swaldatoscrdEmp() {
         },
         success: function(data) {
             $("#credencial").html(data);
-            document.getElementById('credencial').hidden = false;
-            var curp = document.getElementById('curpCredencial').value;
-            document.getElementById('habilitaimprimirc').setAttribute('href', 'prcd/generaqrcredencialExp.php?curp=' + curp);
+	    document.getElementById('credencial').hidden = false;
         }               
     });
   }
@@ -278,6 +276,7 @@ function swaldatoscrdEmp() {
         document.getElementById('tarjeton').hidden = false;
         /* document.getElementById('folioTPerm').disabled = true;
         document.getElementById('vigenciaPerm').disabled = true; */
+        desbloquearInputsT()
         mostrarTablaVehiculos();
         var curp = document.getElementById('curpTarjeton').value;
         var folioExpediente = document.getElementById('numExpediente1').value;
@@ -489,4 +488,22 @@ function actualizarCURP2(){
 
         }
     });
+}
+
+function expedienteSinCurp(){
+    var curp = document.getElementById('curpTarjeton').value;
+    if(curp == "" || curp == " CURP no registrada" || curp == " "){
+        Swal.fire({
+            title: "Expediente sin CURP",
+            text: "Para poder continuar con el proceso, es necesario actualizar el expediente con una CURP válida",
+            icon: "warning",
+            confirmButtonColor: "#3085d6",
+            confirmButtonText: "Agregar CURP!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('#tarjetongen').modal('hide');
+                limpiarInputsVehiculo();
+            }
+        });
+    }
 }

@@ -2,18 +2,18 @@
 
     echo '
     <!-- Modal -->
-    <div class="modal fade bg-info" id="curpActualizar" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade bg-info" id="curpActualizar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar CURP</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="window.location.reload()"></button>
             </div>
             <div class="modal-body">
     
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-credit-card-2-front"></i></span>
-                    <input type="text" class="form-control" placeholder="CURP" aria-label="CURP" id="sinCurpUpdate" aria-describedby="basic-addon1" onblur="validarInputCurpSinCurp(this)">
+                    <input type="text" class="form-control" placeholder="CURP" aria-label="CURP" id="sinCurpUpdate" aria-describedby="basic-addon1" onkeyup="javascript:this.value=this.value.toUpperCase()" onblur="validarInputCurpSinCurp(this)">
                     <input type="text" class="form-control" placeholder="id" aria-label="id" id="idUpdate" aria-describedby="basic-addon1" hidden>
                 </div>
 

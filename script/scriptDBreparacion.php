@@ -127,7 +127,7 @@ if($numeroID == 1){
             
             $idEstatusExpediente = $rowDB['idEstatusExpediente']; //se va a agregar a la nueva db creado, finado, baja
             
-            $dbCatEstatus = "SELECT * FROM estatusexpedientes WHERE id = '$idEstatusExpediente'";
+            $dbCatEstatus = "SELECT * FROM EstatusExpedientes WHERE id = '$idEstatusExpediente'";
             $resultadodbCatEstatus = $conn2->query($dbCatEstatus);
             
             if ($rowdbCatEstatus = $resultadodbCatEstatus-> fetch_assoc()){

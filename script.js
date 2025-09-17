@@ -107,8 +107,8 @@ function abrirCamara(){
                     
                     icon: 'success',
                     title: 'Vigente',
-                    html: '<b>Tarjetón vigente</b><br><font size="+3">Expediente: '+jsonData.numExpediente+'</font><br><br><b>Vigente hasta:'+jsonData.fechaFinal+'<br>Vehiculos Registrados:<br></br><span id="listado">'+texto+'</span>',
-                    footer: 'SUIDEV | 2023',
+                    html: '<b>Tarjetón vigente</b><br><font size="+3">Expediente: '+jsonData.numExpediente+'<br><b>Folio Tarjetón: '+jsonData.folioTarjeton+'</b></font><br><b>Vigente hasta:'+jsonData.fechaFinal+'<br>Vehiculos Registrados:<br></br><span id="listado">'+texto+'</span>',
+                    footer: 'SUIDEV | 2025',
                     timer: 30000,
                   timerProgressBar: true,
                   didOpen: () => {
@@ -266,8 +266,8 @@ function abrirCamara2(){
                     
                     icon: 'success',
                     title: 'Vigente',
-                    html: '<b>Tarjetón vigente</b><br><font size="+3">Expediente: '+jsonData.numExpediente+'</font><br><br><b>Vigente hasta:'+jsonData.fechaFinal+'<br>Vehiculos Registrados:<br></br><span id="listado">'+texto+'</span>',
-                    footer: 'SUIDEV | 2023',
+                    html: '<b>Tarjetón vigente</b><br><font size="+3">Expediente: '+jsonData.numExpediente+'<br><b>Folio Tarjetón: '+jsonData.folioTarjeton+'</b></font><br><b>Vigente hasta:'+jsonData.fechaFinal+'<br>Vehiculos Registrados:<br></br><span id="listado">'+texto+'</span>',
+                    footer: 'SUIDEV | 2025',
                     timer: 30000,
                   timerProgressBar: true,
                   didOpen: () => {

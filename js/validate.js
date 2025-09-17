@@ -584,6 +584,7 @@ function viviendaOp(x){
         
     } else {
         document.getElementById('propiedad').hidden = true;
+        document.getElementById('viviendaPropNo').checked = true
         document.getElementById('viviendaPropSi').required = false;
     }
 }

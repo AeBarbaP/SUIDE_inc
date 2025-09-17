@@ -187,7 +187,7 @@ $(document).ready(function() {
         var domicilio = document.getElementById('domicilio').value;
         var numExt = document.getElementById('numExt').value;
         var numInt = document.getElementById('numInt').value;
-        var tipoVialidad = document.getElementById('tipoVialidad').value;
+        var tipoVialidad = document.getElementById('tipoVialidad').value
         var colonia = document.getElementById('colonia').value;
         var entreVialidades = document.getElementById('entreVialidades').value;
         var descripcionLugar = document.getElementById('descripcionLugar').value;
@@ -200,10 +200,6 @@ $(document).ready(function() {
         var telFijo = document.getElementById('telFijo').value;
         var celular = document.getElementById('celular').value;
         var escolaridad = document.getElementById('escolaridad').value;
-        var concluidaSi = document.getElementById('concluidoSi');
-        var concluidaNo = document.getElementById('concluidoNo');
-        var concluidaNA = document.getElementById('concluidoNA');
-        var concluidaCur = document.getElementById('concluidoCur');
         var leerSi = document.getElementById('leerSi');/* nuevo */
         var leerNo = document.getElementById('leerNo');/* nuevo */
         var estudiaSi = document.getElementById('estudiaSi');
@@ -225,13 +221,19 @@ $(document).ready(function() {
         var grupovulnerableFull = document.getElementById('numeroG').value;
         var informante = document.getElementById('informante').value;
         var estatus = document.getElementById('estatus').value;
-        var carrera = document.getElementById('carrera').value;
 
+        var carrera = document.getElementById('carrera').value;
         if (carrera != null || carrera != ""){
             var escolaridad_nombre = "";
         }
         else {
             var escolaridad_nombre = carrera;
+        }
+
+        if(curp.value == "" || curp.value == null || curp.value == 0){
+            alert("Debes introducir una CURP válida");
+            e.preventDefault();
+            return false;
         }
 
         if(generoF.checked){
@@ -243,25 +245,13 @@ $(document).ready(function() {
         else if (generoO.checked){
             var genero = "Otro";
         }
-        if (concluidaSi.checked){
-            var concluida = 1;
-        }
-        else if (concluidaNo.checked){
-            var concluida = 2;
-        }
-        else if (concluidaNA.checked){
-            var concluida = 4;
-        }
-        else if (concluidaCur.checked){
-            var concluida = 3;
-        }
         if(estudiaSi.checked){
             var estudia = 1;
             var estudiaLugar = document.getElementById('lugarEstudia').value;
             document.getElementById('lugarEstudia').required = true;
         }
         else if (estudiaNo.checked){
-            var estudia = 2;
+            var estudia = 0;
             estudiaLugar = "N/A";
             document.getElementById('lugarEstudia').required = false;
         }
@@ -318,25 +308,24 @@ $(document).ready(function() {
         if(informante == 1){
             var nombreInformante = "";
             var relacionInformante = "";
-            var otrarelacionInformante = "";
+            var otraRelacionInformante = "";
         }
         else{
             var nombreInformante = document.getElementById('nombreInformante').value;
             var relacionInformante = document.getElementById('informanteRel').value;
-            var relacionInformante = document.getElementById('otraRel').value;
-            if(relacionInformante == 1){
-                var otrarelacionInformante = document.getElementById('otraRel').value;
+            var otraRelacionInformante = document.getElementById('otraRel').value;
+            if(relacionInformante == "Otro(a)"){
+                var otraRelacionInformante = document.getElementById('otraRel').value;
             }else{
-                var otrarelacionInformante = "";
+                var otraRelacionInformante = "";
             }
         }
         /* leer */
         if(leerSi.checked){
             leer = 1;
         }else if(leerNo.checked){
-            leer = 2;
+            leer = 0;
         }
-
 
         $.ajax({
             type: "POST",
@@ -356,8 +345,8 @@ $(document).ready(function() {
                 domicilio:domicilio,
                 numExt:numExt,
                 numInt:numInt,
-                colonia:colonia,
                 tipoVialidad:tipoVialidad,
+                colonia:colonia,
                 entreVialidades:entreVialidades,
                 descripcionLugar:descripcionLugar,
                 estado:estado,
@@ -376,7 +365,6 @@ $(document).ready(function() {
                 profesion:profesion,/* si está en la lista */
                 trabaja:trabaja,
                 trabajaLugar:trabajaLugar,
-                lugarTrabajoOtro:lugarTrabajoOtro,
                 ingresoMensual:ingresoMensual,
                 asociacion:asociacion,
                 nombreAC:nombreAC,
@@ -395,11 +383,11 @@ $(document).ready(function() {
                 /* estudia */
                 /* estudia:estudia, */
                 carrera: carrera,/* nueva en la lista */
-                concluido: concluida,
+                concluido: concluido,
                 /* informante */
                 nombreInformante:nombreInformante,
                 relacionInformante:relacionInformante,
-                otraRelacionInformante:otrarelacionInformante,
+                otraRelacionInformante:otraRelacionInformante,
                 /* grupo vulnerable */
                 grupovulnerableFull:grupovulnerableFull,
                 /* estatus */

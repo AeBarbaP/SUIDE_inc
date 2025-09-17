@@ -6,7 +6,7 @@ if ($_POST['expediente'] == 0 || $_POST['expediente'] == null ||$_POST['expedien
   $tipoSangre2 = "";
   echo '
       <script>
-      folioTarjetonBloqueado();
+        folioTarjetonBloqueado();
       </script>
   ';
 }
@@ -39,40 +39,37 @@ else{
 
 
       $queryTarjeton ="SELECT * FROM tarjetones WHERE curp = '$curp'";
-    $resultadoTarjeton = $conn -> query($queryTarjeton);
-    $filasTarjeton = $resultadoTarjeton->num_rows;
+      $resultadoTarjeton = $conn -> query($queryTarjeton);
+      $filasTarjeton = $resultadoTarjeton->num_rows;
 
-    if($filasTarjeton > 0){
-      $rowTarjeton = $resultadoTarjeton->fetch_assoc();
-      $tarjeton = $rowTarjeton['folio_tarjeton'];
-      $vigencia = $rowTarjeton['vigencia'];
-      
-      echo '
-      <script>
-      
-      folioTarjetonPositivo();
-      </script>
-      ';
-    }
-    else{
-      $tarjeton = "No hay tarjetón registrado";
-      $vigencia = "";
-      
-      echo '
-      <script>
-          desbloquearInputsT('.$expediente.');
-      
-          folioTarjetonNegativo();
-          limpiarInputsVehiculo();
+      if($filasTarjeton > 0){
+        $rowTarjeton = $resultadoTarjeton->fetch_assoc();
+        $tarjeton = $rowTarjeton['folio_tarjeton'];
+        $vigencia = $rowTarjeton['vigencia'];
+        
+        echo '
+        <script>
+          folioTarjetonPositivo();
         </script>
-      ';
-    }
+        ';
+      }
+      else{
+        $tarjeton = "No hay tarjetón registrado";
+        $vigencia = "";
+        
+        echo '
+        <script>
+            folioTarjetonNegativo();
+            limpiarInputsVehiculo();
+          </script>
+        ';
+      }
 
-      if (!is_null($curp) || $curp != 0){
-        $curpShow = $curp;
+      if ($curp == null || $curp == "" || $curp == " "){
+        $curpShow = ' CURP no registrada';
       }
       else {
-        $curpShow = ' CURP no registrada';
+        $curpShow = $curp;
       }
       
       echo'
@@ -97,9 +94,10 @@ else{
       ';
     }
     else{
+      //cuando cambie el input de búsqueda 
       echo'
       <div>
-        <input type="text" id="curpTarjeton" value="0" hidden>
+        <input type="text" id="curpTarjeton" value="0" hidden> 
       </div>
       <script>
         alert("No se encontró el registro");

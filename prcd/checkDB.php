@@ -26,6 +26,7 @@ else if ($filas > 0){
     $fechaO = date_create($fecha_sistema);
     $row_SQL = $resultadoSQL->fetch_assoc();
     $fechaInicio = $row_SQL['fecha_entrega'];
+    $folioTarjeton = $row_SQL['folio_tarjeton'];
     $fechaCalculo = date_create($fechaInicio);
     $fechaFinal = date_add($fechaCalculo, date_interval_create_from_date_string("2 years"));
     $fValido = date_format($fechaFinal,"d-m-Y");
@@ -52,7 +53,8 @@ else if ($filas > 0){
             'numExpediente'=>$numExpediente,
             'fechaIncio'=>$fechaInicio,
             'fechaFinal'=>$fValido,
-            'datos'=>$datos
+            'datos'=>$datos,
+            'folioTarjeton'=>$folioTarjeton
         ));
     }
     else if ($intervalo > 720){
