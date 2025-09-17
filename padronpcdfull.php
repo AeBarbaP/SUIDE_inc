@@ -186,6 +186,35 @@ include('prcd/qc/qc.php');
         }
       });
 
+      window.addEventListener('contextmenu', function(event) {
+        event.preventDefault(); // Evita que aparezca el menú contextual en toda la página
+      });
+
+      document.addEventListener('click', function(event) {
+        // Comprobar si se hizo clic en un enlace y si se presionó la tecla Ctrl
+        if (event.target.tagName === 'A' && event.ctrlKey) {
+          event.preventDefault(); // Evitar que se abra en una nueva pestaña
+          console.log('Enlace abierto en la misma pestaña.'); // Opcional: mostrar un mensaje
+          // Aquí puedes implementar una lógica para abrir el enlace en la misma ventana
+          // o realizar otra acción, por ejemplo:
+          // window.location.href = event.target.href;
+        }
+      });
+
+        // Broadcast that you're opening a page.
+        localStorage.openpages = Date.now();
+        var onLocalStorageEvent = function(e){
+            if(e.key == "openpages"){
+                // Listen if anybody else is opening the same page!
+                localStorage.page_available = Date.now();
+            }
+            if(e.key == "page_available"){
+                alert("One more page already open");
+            }
+        };
+        window.addEventListener('storage', onLocalStorageEvent, false);
+
+
 
     </script>
 
