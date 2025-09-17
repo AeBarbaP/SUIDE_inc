@@ -96,6 +96,89 @@
       <script src="js/credencialEmpleados.js"></script>
       <script src="js/sueltitos.js"></script>
 
+      <script>
+		
+        /* let idUsr = sessionStorage.getItem("idUsr");
+        let user = sessionStorage.getItem("username");
+        let nombre = sessionStorage.getItem("nombre");
+        let tipo_usr = sessionStorage.getItem("tipo_usr");
+        let id = sessionStorage.getItem("id"); */
+
+        function detectarMicrosoftEdge() {
+          const userAgent = navigator.userAgent;
+          return userAgent.includes("Edg") || userAgent.includes("Edge");
+        }
+
+        if (detectarMicrosoftEdge()) {
+          console.log("El usuario está usando Microsoft Edge.");
+          alert("Navegador NO Compatible, utiliza Firefox o Chrome");
+          window.location.href = "prcd/sort.php"; // Redirigir al login si no hay usuario
+        } else {
+          console.log("El usuario no está usando Microsoft Edge.");
+        }
+
+        // cerrar session si se cierra el navegador
+              // Variables de control
+            let esNavegacionInterna = false;
+            let esRefresh = false;
+            
+            // Detectar clicks en enlaces internos
+            document.addEventListener('click', function(e) {
+                const target = e.target.closest('a');
+                if (target && target.href) {
+                    const href = target.href;
+                    const currentOrigin = window.location.origin;
+                    
+                    if (href.startsWith(currentOrigin) || href.startsWith('/') || 
+                        href.startsWith('./') || href.startsWith('../')) {
+                        esNavegacionInterna = true;
+                        setTimeout(() => { esNavegacionInterna = false; }, 100);
+                    }
+                }
+            });
+            
+            // Detectar envíos de formularios
+            document.addEventListener('submit', function() {
+                esNavegacionInterna = true;
+                setTimeout(() => { esNavegacionInterna = false; }, 100);
+        });
+        
+        // Detectar refresh (F5, Ctrl+R, etc.)
+        document.addEventListener('keydown', function(e) {
+            // Detectar F5 o Ctrl+R
+            if (e.key === 'F5' || (e.ctrlKey && e.key === 'r')) {
+                esRefresh = true;
+                setTimeout(() => { esRefresh = false; }, 100);
+            }
+        });
+        
+        // También detectar el clic en el botón de refresh del navegador
+        window.addEventListener('beforeunload', function() {
+          // Si es un refresh, no marcar como navegación interna
+          if (esRefresh) {
+            esNavegacionInterna = true;
+          }
+        });
+      
+        // Evento principal
+        window.addEventListener('beforeunload', function(e) {
+          // Si es navegación interna O refresh, no hacer nada
+          if (esNavegacionInterna || esRefresh) {
+            return;
+          }
+          
+          // Mostrar mensaje de confirmación solo para cierre real
+          const mensaje = "¿Estás seguro de que quieres salir? Se cerrará la sesión.";
+          
+          if (!confirm(mensaje)) {
+            e.preventDefault();
+            e.returnValue = "";
+          } else {
+            navigator.sendBeacon('prcd/sort.php');
+          }
+        });
+      </script>
+
       <audio id="myAudio">
         <source src="beep.mp3" type="audio/mpeg">
       </audio>
