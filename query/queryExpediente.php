@@ -30,7 +30,8 @@ else if(strlen($idExp) == 3){
     $idExp = '0'.$idExp;
 }
 
-$numExpediente = 'C-'.$numMpio.$discCve.'-'.$idExp;
+$numExpediente1 = 'C-'.$numMpio.$discCve.'-'.$idExp;
+$numExpediente = rtrim($numExpediente1);
 
 $sql = "UPDATE datos_generales SET numExpediente = '$numExpediente' WHERE id = '$idExp'";
 $resultadoSql = $conn->query($sql);

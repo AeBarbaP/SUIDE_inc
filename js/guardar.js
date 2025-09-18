@@ -3463,7 +3463,7 @@ function finalizarUpdateExpediente(){
             icon: "success",
             showConfirmButton: false,
             });
-            location.reload();
+            window.location.reload();
         }
     });
 }
