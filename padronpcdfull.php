@@ -192,13 +192,17 @@ include('prcd/qc/qc.php');
 
       document.addEventListener('click', function(event) {
         // Comprobar si se hizo clic en un enlace y si se presionó la tecla Ctrl
-        if (event.target.tagName === 'A' && event.ctrlKey) {
+        if (event.ctrlKey) {
           event.preventDefault(); // Evitar que se abra en una nueva pestaña
           console.log('Enlace abierto en la misma pestaña.'); // Opcional: mostrar un mensaje
           // Aquí puedes implementar una lógica para abrir el enlace en la misma ventana
           // o realizar otra acción, por ejemplo:
           // window.location.href = event.target.href;
         }
+      });
+
+      document.documentElement.addEventListener('click', function (event) {
+        if(event.ctrlKey){event.preventDefault()}
       });
 
         // Broadcast that you're opening a page.
@@ -209,7 +213,9 @@ include('prcd/qc/qc.php');
                 localStorage.page_available = Date.now();
             }
             if(e.key == "page_available"){
-                alert("One more page already open");
+
+              event.preventDefault();
+              alert("Enlace abierto en la misma pestaña.");
             }
         };
         window.addEventListener('storage', onLocalStorageEvent, false);
@@ -394,19 +400,19 @@ include('prcd/qc/qc.php');
         <p class="h3">Padrón de Personas con Discapacidad</p>
       </div>
       <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-4">
           <div class="input-group mb-2 mt-3">
             <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
             <input class="form-control w-50" id="buscarFiltroPadron" onkeyup="javascript:this.value=this.value.toUpperCase()" placeholder="Buscar...">
           </div><!-- input group -->
         </div>
         <div class="col-md-2 mt-2">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="expedienteSearch" onclick="filtroPadronFull()">
-            <label class="form-check-label" for="inlineRadio1">Expediente</label>
+          <div class="form-check form-check-inline mt-3">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="expedienteSearch">
+            <label class="form-check-label" for="inlineRadio1"># Exp.</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="nombreSearch" onclick="filtroPadronFull()">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="nombreSearch">
             <label class="form-check-label" for="inlineRadio2">Nombre</label>
           </div>
         </div>
@@ -414,7 +420,7 @@ include('prcd/qc/qc.php');
           <div class="input-group mb-2 mt-3">
             <!-- <input class="form-control w-50" id="buscarFiltroPadronFull" oninput="filtroPadronFull(this.value)" placeholder="Buscar..."> -->
             <span class="input-group-text" id="basic-addon1"><i class="bi bi-universal-access"></i></span>
-            <select class="form-select" id="tipoDiscapacidadFull" onchange="filtroPadronFull(this.value)" aria-label="Default select example">
+            <select class="form-select" id="tipoDiscapacidadFull" aria-label="Default select example">
               <option value="" selected>Tipo Discapacidad...</option>
               <option value="Física">Física</option>
               <option value="Intelectual">Intelectual</option>
@@ -424,40 +430,29 @@ include('prcd/qc/qc.php');
             </select>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="input-group mb-2 mt-3">
             <span class="input-group-text" id="basic-addon1"><i class="bi bi-pin-map"></i></i></span>
             <!-- <input class="form-control w-50" id="buscarFiltroPadronFull2" oninput="filtroPadronFull2(this.value)" placeholder="Buscar..."> -->
-            <select class="form-select" id="municipiosList2" onchange="filtroPadronFull(this.value)" placeholder="Municipio...">
+            <select class="form-select" id="municipiosList2" placeholder="Municipio...">
 
             </select>
           </div><!-- input group -->
+        </div>
+        <div class="col-md-2 mt-3">
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="button" onclick="filtroPadronFull(pagina = 1)">Buscar</button>
+          </div>
         </div>
       </div>
       
       <hr>
       <!-- <h4 class="text-muted mt-4">Últimos documentos generados</h4> -->
-      <div class="table-responsive mb-2 ">
-        <table class="table table-hover table-bordered align-middle">
-          <thead style="background-color:#B8B8B8;" class="text-light align-middle">
-            <tr class="text-center">
-                <th scope="col">Fotografía</th>
-                <th scope="col"># Expediente</th>
-                <th scope="col">Nombre Completo</th>
-                <th scope="col">Tipo Discapacidad</th>
-                <th scope="col">Municipio</th>
-                <!-- <th scope="col">Estatus</th> -->
-                <th scope="col">Actualizar</th>
-            </tr>
-          </thead>
-          <tbody id="myTablePCD">
+      <div class="table-responsive mb-2" id="myTablePCD">
           
-          </tbody>
-        </table>
-        <br>
+      
       </div>
-
-      <nav aria-label="Page navigation example">
+      <!-- <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end">
           <li class="page-item disabled">
             <a class="page-link">Anterior</a>
@@ -469,7 +464,7 @@ include('prcd/qc/qc.php');
             <a class="page-link" href="#">Siguiente</a>
           </li>
         </ul>
-      </nav>
+      </nav> -->
 
     </main>
 

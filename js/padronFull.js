@@ -1,6 +1,6 @@
-function filtroPadronFull(){
+function filtroPadronFull(pagina = 1){
     var cadenaTexto = document.getElementById('buscarFiltroPadron').value;
-    document.getElementById("myTablePCD").innerHTML = "";
+    //document.getElementById("myTablePCD").innerHTML = "";
     var discapacidad = document.getElementById('tipoDiscapacidadFull').value;
     var municipio = document.getElementById('municipiosList2').value;
     
@@ -24,6 +24,7 @@ function filtroPadronFull(){
             type:"POST",
             url:"query/queryPadronFullFiltro.php",
             data:{
+                pagina:pagina,
                 option:option,
                 cadenaTexto:cadenaTexto,
                 municipio:municipio,
@@ -33,6 +34,12 @@ function filtroPadronFull(){
             success: function(data)
             {
                 $('#myTablePCD').fadeIn(1000).html(data);
+                 // Agregar evento a los botones de paginación
+                $('.paginacion').on('click', function(e) {
+                    e.preventDefault();
+                    var pagina = $(this).data('pagina');
+                    filtroPadronFull(pagina);
+                });
             }
         });
     }
@@ -56,6 +63,7 @@ function filtroPadronFull(){
             type:"POST",
             url:"query/queryPadronFullFiltro.php",
             data:{
+                pagina:pagina,
                 option:option,
                 cadenaTexto:cadenaTexto,
                 flag:flag
@@ -64,6 +72,12 @@ function filtroPadronFull(){
             success: function(data)
             {
                 $('#myTablePCD').fadeIn(1000).html(data);
+                 // Agregar evento a los botones de paginación
+                $('.paginacion').on('click', function(e) {
+                    e.preventDefault();
+                    var pagina = $(this).data('pagina');
+                    filtroPadronFull(pagina);
+                });
             }
         });
     }
@@ -87,6 +101,7 @@ function filtroPadronFull(){
             type:"POST",
             url:"query/queryPadronFullFiltro.php",
             data:{
+                pagina:pagina,
                 option:option,
                 cadenaTexto:cadenaTexto,
                 discapacidad:discapacidad,
@@ -96,6 +111,12 @@ function filtroPadronFull(){
             success: function(data)
             {
                 $('#myTablePCD').fadeIn(1000).html(data);
+                 // Agregar evento a los botones de paginación
+                $('.paginacion').on('click', function(e) {
+                    e.preventDefault();
+                    var pagina = $(this).data('pagina');
+                    filtroPadronFull(pagina);
+                });
             }
         });
     }
@@ -105,6 +126,7 @@ function filtroPadronFull(){
             type:"POST",
             url:"query/queryPadronFullFiltro.php",
             data:{
+                pagina:pagina,
                 municipio:municipio,
                 flag:flag
             },
@@ -112,6 +134,12 @@ function filtroPadronFull(){
             success: function(data)
             {
                 $('#myTablePCD').fadeIn(1000).html(data);
+                 // Agregar evento a los botones de paginación
+                $('.paginacion').on('click', function(e) {
+                    e.preventDefault();
+                    var pagina = $(this).data('pagina');
+                    filtroPadronFull(pagina);
+                });
             }
         });
     }
@@ -121,6 +149,7 @@ function filtroPadronFull(){
             type:"POST",
             url:"query/queryPadronFullFiltro.php",
             data:{
+                pagina:pagina,
                 discapacidad:discapacidad,
                 flag:flag
             },
@@ -128,6 +157,12 @@ function filtroPadronFull(){
             success: function(data)
             {
                 $('#myTablePCD').fadeIn(1000).html(data);
+                 // Agregar evento a los botones de paginación
+                $('.paginacion').on('click', function(e) {
+                    e.preventDefault();
+                    var pagina = $(this).data('pagina');
+                    filtroPadronFull(pagina);
+                });
             }
         });
     }
@@ -137,6 +172,7 @@ function filtroPadronFull(){
             type:"POST",
             url:"query/queryPadronFullFiltro.php",
             data:{
+                pagina:pagina,
                 municipio:municipio,
                 discapacidad:discapacidad,
                 flag:flag
@@ -145,6 +181,12 @@ function filtroPadronFull(){
             success: function(data)
             {
                 $('#myTablePCD').fadeIn(1000).html(data);
+                 // Agregar evento a los botones de paginación
+                $('.paginacion').on('click', function(e) {
+                    e.preventDefault();
+                    var pagina = $(this).data('pagina');
+                    filtroPadronFull(pagina);
+                });
             }
         });
     }
@@ -165,7 +207,7 @@ function filtroPadronFull(){
                 $('#myTablePCD').fadeIn(1000).html(data);
             }
         }); */
-        tablaPCDFull();
+        tablaPCDFull(pagina);
     }
 }
 /* 

@@ -1,6 +1,20 @@
 <?php
 include('../prcd/qc/qc.php');
 
+date_default_timezone_set('America/Mexico_City');
+setlocale(LC_TIME, 'es_MX.UTF-8');
+
+
+// Configuración de paginación
+$registrosPorPagina = 10; // Ajusta según necesidad
+$paginaActual = isset($_POST['pagina']) ? intval($_POST['pagina']) : 1;
+$offset = ($paginaActual - 1) * $registrosPorPagina;
+
+// Consulta para obtener el total de registros
+$sqlTotal = "SELECT COUNT(*) as total FROM datos_generales ORDER BY id DESC";
+$resultadoTotal = $conn->query($sqlTotal);
+$totalRegistros = $resultadoTotal->fetch_assoc()['total'];
+$totalPaginas = ceil($totalRegistros / $registrosPorPagina);
 
 $flag = $_POST['flag'];
 
@@ -10,11 +24,11 @@ if ($flag == 2){
 
     if ($option == 1){
 
-        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_generales.numExpediente LIKE '%$id'";
+        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_generales.numExpediente LIKE '%$id' LIMIT $offset, $registrosPorPagina";
     }
     else if ($option == 2){
         /* $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre , datos_generales.apellido_p, datos_generales.apellido_m) AS nombre_completo, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE (nombre_completo LIKE '$id%')"; */
-        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE CONCAT(datos_generales.nombre,' ', datos_generales.apellido_p,' ', datos_generales.apellido_m) LIKE '%$id%'";
+        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE CONCAT(datos_generales.nombre,' ', datos_generales.apellido_p,' ', datos_generales.apellido_m) LIKE '%$id%' LIMIT $offset, $registrosPorPagina";
     }
     
 }
@@ -24,10 +38,10 @@ elseif ($flag == 1){
     $option = $_POST['option'];
 
     if ($option == 1){
-        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_generales.municipio = '$municipio' AND datos_generales.numExpediente LIKE '%$id'";
+        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_generales.municipio = '$municipio' AND datos_generales.numExpediente LIKE '%$id' LIMIT $offset, $registrosPorPagina";
     }
     else if ($option == 2){
-        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_generales.municipio = '$municipio' AND (datos_generales.nombre LIKE '$id%' OR datos_generales.apellido_p LIKE '$id%' OR datos_generales.apellido_m LIKE '$id%')";
+        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_generales.municipio = '$municipio' AND (datos_generales.nombre LIKE '$id%' OR datos_generales.apellido_p LIKE '$id%' OR datos_generales.apellido_m LIKE '$id%') LIMIT $offset, $registrosPorPagina";
     }
 
 }
@@ -37,25 +51,25 @@ elseif ($flag == 3){
     $option = $_POST['option'];
 
     if ($option == 1){
-        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_medicos.tipo_discapacidad = '$discapacidad' AND datos_generales.numExpediente LIKE '%$id'";
+        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_medicos.tipo_discapacidad = '$discapacidad' AND datos_generales.numExpediente LIKE '%$id' LIMIT $offset, $registrosPorPagina";
     }
 }
 elseif ($flag == 4){
     $municipio = $_POST['municipio'];
     $discapacidad = $_POST['discapacidad'];
 
-    $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_medicos.tipo_discapacidad = '$discapacidad' AND datos_generales.municipio = '$municipio'";
+    $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_medicos.tipo_discapacidad = '$discapacidad' AND datos_generales.municipio = '$municipio' LIMIT $offset, $registrosPorPagina";
 }
 elseif ($flag == 5){
     $municipio = $_POST['municipio'];
 
-    $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_generales.municipio = '$municipio'";
+    $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_generales.municipio = '$municipio' LIMIT $offset, $registrosPorPagina";
 }
 
 elseif ($flag == 6){
     $discapacidad  = $_POST['discapacidad'];
 
-    $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_medicos.tipo_discapacidad = '$discapacidad'";
+    $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE datos_medicos.tipo_discapacidad = '$discapacidad' LIMIT $offset, $registrosPorPagina";
 }
 
 elseif ($flag == 7){
@@ -65,22 +79,39 @@ elseif ($flag == 7){
     $option = $_POST['option'];
 
     if ($option == 1){
-        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE (datos_generales.municipio = '$municipio' AND datos_medicos.tipo_discapacidad = '$discapacidad') AND datos_generales.numExpediente LIKE '%$id'";
+        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE (datos_generales.municipio = '$municipio' AND datos_medicos.tipo_discapacidad = '$discapacidad') AND datos_generales.numExpediente LIKE '%$id' LIMIT $offset, $registrosPorPagina";
     }
     else if ($option == 2){
-        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE (datos_generales.municipio = '$municipio' AND datos_medicos.tipo_discapacidad = '$discapacidad') AND (datos_generales.nombre LIKE '$id%' OR datos_generales.apellido_p LIKE '$id%' OR datos_generales.apellido_m LIKE '$id%')";
+        $var = "SELECT datos_generales.numExpediente AS id, datos_generales.curp AS curp, datos_generales.nombre AS nombre, datos_generales.apellido_p AS apellido_p, datos_generales.apellido_m AS apellido_m, datos_generales.municipio AS municipio, datos_generales.estatus AS estatus,datos_generales.photo AS photo, datos_medicos.tipo_discapacidad AS tipo_discapacidad  FROM datos_generales INNER JOIN datos_medicos ON datos_generales.numExpediente = datos_medicos.expediente WHERE (datos_generales.municipio = '$municipio' AND datos_medicos.tipo_discapacidad = '$discapacidad') AND (datos_generales.nombre LIKE '$id%' OR datos_generales.apellido_p LIKE '$id%' OR datos_generales.apellido_m LIKE '$id%') LIMIT $offset, $registrosPorPagina";
     }
 }
 else{
     echo '
     <script>
-        tablaPCDFull();
+        tablaPCDFull(pagina);
     </script>
     ';
 }
 
 $resultadoVariable = $conn->query($var);
 $filas = $resultadoVariable->num_rows;
+
+echo '
+    
+        <table class="table table-hover table-bordered align-middle">
+            <thead style="background-color:#B8B8B8;" class="text-light align-middle">
+                <tr class="text-center">
+                    <th scope="col">Fotografía</th>
+                    <th scope="col"># Expediente</th>
+                    <th scope="col">Nombre Completo</th>
+                    <th scope="col">Tipo Discapacidad</th>
+                    <th scope="col">Municipio</th>
+                    <!-- <th scope="col">Estatus</th> -->
+                    <th scope="col">Actualizar</th>
+                </tr>
+            </thead>
+        <tbody id="myTablePCD1">
+';
 
 if ($filas > 0){
 
@@ -140,5 +171,89 @@ else {
             </tr>
         ';
 }
+
+echo '
+                </tbody>
+            </table>
+        <br>
+';
+
+// Generar HTML de la paginación
+echo '<nav aria-label="Page navigation">
+<ul class="pagination justify-content-end">';
+
+// Botón Primera Página
+if($paginaActual > 1) {
+    echo '<li class="page-item">
+            <a class="page-link paginacion" href="#" data-pagina="1" aria-label="First">
+                <span aria-hidden="true">&laquo;&laquo;</span>
+            </a>
+        </li>';
+} else {
+    echo '<li class="page-item disabled">
+            <span class="page-link" aria-hidden="true">&laquo;&laquo;</span>
+        </li>';
+}
+
+// Botón Anterior
+if($paginaActual > 1) {
+    echo '<li class="page-item">
+            <a class="page-link paginacion" href="#" data-pagina="'.($paginaActual - 1).'" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>';
+} else {
+    echo '<li class="page-item disabled">
+            <span class="page-link" aria-hidden="true">&laquo;</span>
+        </li>';
+}
+
+// Calcular rango de páginas a mostrar (grupos de 5)
+$paginasPorGrupo = 5;
+$grupoActual = ceil($paginaActual / $paginasPorGrupo);
+$paginaInicio = (($grupoActual - 1) * $paginasPorGrupo) + 1;
+$paginaFin = min($paginaInicio + $paginasPorGrupo - 1, $totalPaginas);
+
+// Números de página (solo 5 por grupo)
+for($i = $paginaInicio; $i <= $paginaFin; $i++) {
+    $active = ($i == $paginaActual) ? 'active' : '';
+    echo '
+        <li class="page-item '.$active.'">
+            <a class="page-link paginacion" href="#" data-pagina="'.$i.'">'.$i.'</a>
+        </li>
+    ';
+}
+
+// Botón Siguiente
+if($paginaActual < $totalPaginas) {
+    echo '
+        <li class="page-item">
+            <a class="page-link paginacion" href="#" data-pagina="'.($paginaActual + 1).'" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    ';
+} else {
+    echo '
+        <li class="page-item disabled">
+            <span class="page-link" aria-hidden="true">&raquo;</span>
+        </li>
+    ';
+}
+
+// Botón Última Página
+if($paginaActual < $totalPaginas) {
+    echo '<li class="page-item">
+            <a class="page-link paginacion" href="#" data-pagina="'.$totalPaginas.'" aria-label="Last">
+                <span aria-hidden="true">&raquo;&raquo;</span>
+            </a>
+        </li>';
+} else {
+    echo '<li class="page-item disabled">
+            <span class="page-link" aria-hidden="true">&raquo;&raquo;</span>
+        </li>';
+}
+
+echo '</ul></nav>';
 
 ?>
