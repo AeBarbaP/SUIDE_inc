@@ -7,10 +7,10 @@ date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
 
 $fecha_registro = strftime("%Y-%m-%d,%H:%M:%S");
-$numExp = $_POST['numExp'];
-$nombre = $_POST['nombre'];
-$apellidoP = $_POST['apellidoP'];
-$apellidoM = $_POST['apellidoM'];
+$numExp = rtrim($_POST['numExp']);
+$nombre = rtrim($_POST['nombre']);
+$apellidoP = rtrim($_POST['apellidoP']);
+$apellidoM = rtrim($_POST['apellidoM']);
 $genero = $_POST['genero'];
 $edad = $_POST['edad'];
 $edoCivil = $_POST['edoCivil'];
@@ -60,6 +60,13 @@ $numSS = $_POST['numSS'];
 $gruposFull = $_POST['gruposFull'];
 $estatus = $_POST['estatus'];
 $tipo_dato = 13;
+
+if ($trabajaLugar != "Otro"){
+    $trabajaLugar = $trabajaLugar;
+}
+else {
+    $trabajaLugar = $lugartrabajoOtro;
+}
 
 if ($curp != "" || $curp != null){
     $sqlinsert= "UPDATE datos_generales SET 

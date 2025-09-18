@@ -391,6 +391,7 @@ function trabajaOtro(x){
         document.getElementById('lugarTrabajoOtro').disabled = false;
     } else {
         document.getElementById('lugarTrabajoOtro').disabled = true;
+        document.getElementById('lugarTrabajoOtro').required = false;
     }
 }
 

@@ -206,6 +206,10 @@ $expediente = $_POST['expediente'];
         else {
             $curp2 = $curp;
         }
+
+        if ($rowDatos['trabaja_donde'] != "Iniciativa Privada" || $rowDatos['trabaja_donde'] != "Gobierno Estatal" ||$rowDatos['trabaja_donde'] != "Gobierno Federal" || $rowDatos['trabaja_donde'] != "Gobierno Municipal"){
+            $trabajaDonde = "Otro";
+        }
         
         echo json_encode(array(
             'success'=>1,
@@ -247,7 +251,8 @@ $expediente = $_POST['expediente'];
             'estudia_donde'=>$rowDatos['estudia_donde'], 
             'estudia_habilidad'=>$rowDatos['estudia_habilidad'], 
             'trabaja'=>$rowDatos['trabaja'], 
-            'trabaja_donde'=>$rowDatos['trabaja_donde'],
+            'trabaja_donde'=>$trabajaDonde,
+            'trabaja_dondeO'=>$rowDatos['trabaja_donde'],
             'ingreso_mensual'=>$rowDatos['trabaja_ingresos'],
             'asoc_civ'=>$rowDatos['asoc_civ'], 
             'asoc_cual'=>$rowDatos['asoc_cual'], 

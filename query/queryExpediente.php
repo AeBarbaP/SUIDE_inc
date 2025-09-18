@@ -30,8 +30,8 @@ else if(strlen($idExp) == 3){
     $idExp = '0'.$idExp;
 }
 
-$numExpediente1 = 'C-'.$numMpio.$discCve.'-'.$idExp;
-$numExpediente = rtrim($numExpediente1);
+$numExpediente = 'C-'.$numMpio.$discCve.'-'.$idExp;
+//$numExpediente = rtrim($numExpediente1);
 
 $sql = "UPDATE datos_generales SET numExpediente = '$numExpediente' WHERE id = '$idExp'";
 $resultadoSql = $conn->query($sql);
@@ -47,8 +47,6 @@ $sql = "UPDATE referencias SET expediente = '$numExpediente' WHERE curp = '$curp
 $resultadoSql = $conn->query($sql);
 /* $rowSql = $resultadoSql->fetch_assoc(); */
 
-echo '
-    <label>'.$numExpediente.'</label>
-';
+echo $numExpediente;
 
 ?>

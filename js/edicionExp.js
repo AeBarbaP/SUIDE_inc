@@ -555,16 +555,17 @@ function queryDatos(){
                 else if (trabaja == "OTRO" || trabaja == "Otro"){
                     document.getElementById('trabajaSi').checked = true;
                     document.getElementById('trabajaNo').checked = false;
-                    document.getElementById('lugarTrabajo').value = jsonData.trabaja;
+                    document.getElementById('lugarTrabajo').value = jsonData.trabaja_donde;
                     document.getElementById('lugarTrabajo').disabled = false; 
+                    document.getElementById('lugarTrabajoOtro').disabled = false; 
                     document.getElementById('ingresoMensual').value = jsonData.ingreso_mensual; 
                     document.getElementById('ingresoMensual').disabled = false; 
-                    document.getElementById('lugarTrabajoOtro').value = jsonData.trabaja_donde; 
+                    document.getElementById('lugarTrabajoOtro').value = jsonData.trabaja_dondeO; 
                 }
                 else {
                     document.getElementById('trabajaSi').checked = true;
                     document.getElementById('trabajaNo').checked = false;
-                    document.getElementById('lugarTrabajo').value = jsonData.trabaja;
+                    document.getElementById('lugarTrabajo').value = jsonData.trabaja_donde;
                     document.getElementById('lugarTrabajo').disabled = false; 
                     document.getElementById('ingresoMensual').value = jsonData.ingreso_mensual; 
                     document.getElementById('ingresoMensual').disabled = false; 

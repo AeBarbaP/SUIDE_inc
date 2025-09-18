@@ -655,7 +655,7 @@
                         </div>
                         <div class="col-sm-4">
                           <label for="exampleDataList" class="form-label">Municipio:</label>
-                          <select class="form-select" id="municipiosList" placeholder="Selecciona..."onchange="localidadesSelect(this.value)" required>
+                          <select class="form-select" id="municipiosList" placeholder="Selecciona..."onchange="localidadesSelect(this.value); numExpUpdate(this.value)" required>
 
 
                           </select>
