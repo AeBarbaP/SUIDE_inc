@@ -16,7 +16,7 @@ $sqlTarjetones = "SELECT * FROM log_registro WHERE tipo_dato = 38 AND usr = '$us
 $resultadoTar = $conn->query($sqlTarjetones);
 $filaTar = $resultadoTar->num_rows;
 
-$sqlActualizar = "SELECT * FROM log_registro WHERE tipo_dato = 40 AND usr = '$usr'";
+$sqlActualizar = "SELECT * FROM datos_generales WHERE usuario_actualiza = '$usr'";
 $resultadoAct = $conn->query($sqlActualizar);
 $filaAct = $resultadoAct->num_rows;
 

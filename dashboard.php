@@ -463,7 +463,7 @@ include('prcd/qc/qc.php');
                 </lord-icon>
               </div>
               <div class="col-7 mt-3">
-                <h4 class="text-center mt-2" style="color:white"><b>Credenciales Diarias</b></h4>
+                <h4 class="text-center mt-2" style="color:white"><b>Credenciales Generadas</b></h4>
                 <div class="text-center" style="font-size:x-large;">
                   <span id="CredD" class="h3" style="color:white"></span>
                 </div>
@@ -486,7 +486,7 @@ include('prcd/qc/qc.php');
                 </lord-icon>
               </div>
               <div class="col-7 mt-3">
-              <h4 class="text-center mt-2"><b>Tarjetones Diarios</b></h4>
+              <h4 class="text-center mt-2"><b>Tarjetones Generados</b></h4>
               <div class="text-center" style="font-size:x-large;">
                 <span id="TarjD" class=""></span>
               </div>
