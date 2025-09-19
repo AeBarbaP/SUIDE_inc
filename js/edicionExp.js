@@ -375,8 +375,12 @@ function queryDatos(){
                 var numExpediente2 = jsonData.numExpediente;
                 var expediente = numExpediente2.substr(0,7);
                 var expedienteNum = numExpediente2.substr(7,5);
+                var municipioClave = municipio.substr(3,2);
+                var discapacidadClave = expediente.substr(4,2);
                 document.getElementById('numeroTemporal').value = expedienteNum;
                 document.getElementById('numeroTemporal2').value = expediente;
+                document.getElementById('municipioChange').value = municipioClave;
+                document.getElementById('discapacidadChange').value = discapacidadClave;
                 document.getElementById('numeroExpediente').innerHTML = numExpediente2;
                 document.getElementById('nombre').value = jsonData.nombre; 
                 document.getElementById('apellidoP').value = jsonData.apellido_p; 

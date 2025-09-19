@@ -178,9 +178,9 @@
         }
       });
 
-      //window.addEventListener('contextmenu', function(event) {
-      //  event.preventDefault(); // Evita que aparezca el menú contextual en toda la página
-      //});
+      window.addEventListener('contextmenu', function(event) {
+        event.preventDefault(); // Evita que aparezca el menú contextual en toda la página
+      });
 
       document.addEventListener('click', function(event) {
         // Comprobar si se hizo clic en un enlace y si se presionó la tecla Ctrl
@@ -471,6 +471,7 @@
                   <input type="text" id="numeroTemporal" hidden>
                   <input type="text" id="numeroTemporal2" hidden>
                   <input type="text" id="municipioChange" hidden>
+                  <input type="text" id="discapacidadChange" hidden>
                   <label for="" id="prueba"></label>
                   <br>
                   <img id="profile" src="img/no_profile.png" width="100%" style="width:14rem">
@@ -1064,7 +1065,7 @@
                             <label for="datos_usr" class="form-label">Discapacidad:</label>
                             <input type="text" id="curp_exp" onchange="curpTemporal()" hidden>
                             <!-- <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..."> -->
-                            <select class="form-select" id="discapacidadList" onchange="numExpGenerator(this.value);discapacidadVA(this.value)" required>
+                            <select class="form-select" id="discapacidadList" onchange=" numExpUpdateDiscapacidad(this.value);discapacidadVA(this.value)" required>
                             
                             </select>
                             <div class="invalid-feedback">
