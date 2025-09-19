@@ -462,6 +462,7 @@
             <input type="text" id="municipioConsulta"  hidden>
             <input type="text" id="discapacidadConsulta" onchange="discapacidadTab(this.value)" hidden>
             <input type="text" id="tipoDiscapacidadConsulta" hidden>
+            <input type="text" id="curp_exp" onchange="curpTemporal()" hidden>
             
             <div class="container-fluid">
               <div class="row">
@@ -472,7 +473,6 @@
                   <input type="text" id="numeroTemporal2" hidden>
                   <input type="text" id="municipioChange" hidden>
                   <input type="text" id="discapacidadChange" hidden>
-                  <label for="" id="prueba"></label>
                   <br>
                   <img id="profile" src="img/no_profile.png" width="100%" style="width:14rem">
                   <div class="input-group">
@@ -1017,13 +1017,13 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-sm-6" id="estatusDiv" hidden>
+                          <div class="col-sm-6" id="estatusDiv" disabled>
                             <div class="mb-3">
                               <label for="basic-url" class="form-label"></label>
                               <select class="form-select" id="estatus">
-                                <option value="" >Selecciona...</option>
-                                <option value="3" selected>Creado</option>
-                                <option value="4">Finado</option>
+                                <option>Selecciona...</option>
+                                <option value="1">Creado</option>
+                                <option value="2">Finado</option>
                                 <option value="5">Baja documental</option>
                               </select>
                             </div>
@@ -1063,7 +1063,7 @@
                           </div>
                           <div class="col-sm-3">
                             <label for="datos_usr" class="form-label">Discapacidad:</label>
-                            <input type="text" id="curp_exp" onchange="curpTemporal()" hidden>
+                            
                             <!-- <input class="form-control" list="discapacidadList" id="discapacidad" placeholder="Buscar..."> -->
                             <select class="form-select" id="discapacidadList" onchange=" numExpUpdateDiscapacidad(this.value);discapacidadVA(this.value)" required>
                             

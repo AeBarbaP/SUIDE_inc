@@ -13,13 +13,13 @@ function buscarExpediente12(x){
             var texto;
             var success = jsonData.success;
             var estatus = jsonData.estatus;
-            if(estatus == 3 || estatus == "CREADO"){
+            if(estatus == 1 || estatus == "CREADO"){
                 texto = 'Creado (Activo)';
-                document.getElementById('estatus').value = 3;
+                document.getElementById('estatus').value = 1;
             }
-            else if(estatus == 4 || estatus == "FINADO"){
+            else if(estatus == 2 || estatus == "FINADO"){
                 texto = 'Finado';
-                document.getElementById('estatus').value = 4;
+                document.getElementById('estatus').value = 2;
             }
             else if(estatus == 5){
                 texto = 'Baja Documental';
@@ -175,6 +175,7 @@ function queryDatos(){
             var ineDocDoc  = jsonData.ineDocDoc;
             var comprobanteDoc  = jsonData.comprobanteDoc;
             var tarjetaCirculacionDoc  = jsonData.tarjetaCirculacionDoc;
+            var estatus = jsonData.estatus;
             
             var curpJSON = jsonData.curp;
 
@@ -623,6 +624,7 @@ function queryDatos(){
 
                 document.getElementById('otroSS').value = jsonData.seguridad_social_otro; 
                 document.getElementById('numss').value = jsonData.numSS; 
+                document.getElementById('estatus').value = jsonData.estatus; 
                 //document.getElementById('file_photo').value = jsonData.photo; 
                 
                 //datos médicos

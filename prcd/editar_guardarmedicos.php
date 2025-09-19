@@ -44,7 +44,6 @@ $permanente = $_POST['permanente'];
 $tipo_dato = 18;
 
 $sqlinsert= "UPDATE datos_medicos SET
-    curp = '$curp_exp',
     expediente = '$numExp',
     discapacidad = '$discapacidad',
     grado_discapacidad = '$gradoDisc',

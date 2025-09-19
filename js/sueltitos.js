@@ -439,8 +439,9 @@ function actualizarCURP2(){
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $('#actualizarCurp').modal('hide');
-                        document.getElementById('curp').value = curp2;
                         document.getElementById('curp_exp').value = curp2;
+                        document.getElementById('curp').value = curp2;
+                        cortarRFC(curp2);
                     }
                 });
             }

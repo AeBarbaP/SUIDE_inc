@@ -18,7 +18,6 @@ $domicilioRef = $_POST['domicilioRef'];
 $tipo_dato = 19;
 
 $sqlinsert= "UPDATE referencias SET
-    curp =  '$curp_exp',
     nombre = '$nombreReferencia',
     parentesco = '$parentescoRef',
     celular = '$telRef',

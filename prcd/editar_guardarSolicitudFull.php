@@ -15,7 +15,6 @@
     $tipo_dato = 20;
     
     $QueryInsert = "UPDATE solicitudes SET
-        curp = '$curp',
         folio_solicitud = '$folioSolicitud',
         fecha_solicitud = '$fechaSolicitud',
         tipo_solicitud = '$tipoSolicitud',

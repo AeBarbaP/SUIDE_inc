@@ -22,7 +22,6 @@ $emailFam = $_POST['emailFam'];
 $tipo_dato = 17;
 
 $sqlinsert= "UPDATE integracion SET
-    curp ='$curp_exp',
     nombre = '$nombreFamiliar',
     parentesco = '$parentescoFam',
     edad = '$edadFam',

@@ -51,7 +51,6 @@ $dependientes = $_POST['dependientes'];
 $tipo_dato = 21;
 
 $sqlinsert= "UPDATE vivienda SET
-    curp = '$curp_exp',
     expediente = '$numExp',
     vivienda = '$vivienda',
     propietario = '$viviendaProp',

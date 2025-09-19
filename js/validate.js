@@ -1229,10 +1229,10 @@ function estatusOp(x){
     var estatus = x;
 
     if (estatus == 1){
-        document.getElementById('estatusDiv').hidden = false;
+        document.getElementById('estatusDiv').disabled = false;
         /* document.getElementById('montoP').disabled = false;
         document.getElementById('periodo').disabled = false; */
     } else {
-        document.getElementById('estatusDiv').hidden = true;
+        document.getElementById('estatusDiv').disabled = true;
     }
 }
