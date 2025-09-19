@@ -11,11 +11,17 @@ if (isset($_POST)) {
     if ($result->num_rows > 0) {
         echo '
         <span><small class="text-danger">Usuario registrado anteriormente </small><span>
+        <script>
+            document.getElementById("btnUpdateCURP2").disabled = true;
+        </script>
         ';
 
     } else {
         echo '
         <span><small class="text-primary">Usuario válido</small><span>
+        <script>
+            document.getElementById("btnUpdateCURP2").disabled = false;
+        </script>
         ';
     }
 }

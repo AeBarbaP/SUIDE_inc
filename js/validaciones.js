@@ -168,8 +168,8 @@ function validarInputUpdate(input) {
         if (curpValida(curp)) {
             console.log("llega curp");
             //alert('CURP Válido');
-            document.getElementById('btnUpdateCURP2').disabled=false;
-
+            verificarCURPdb(curp);
+            //document.getElementById('btnUpdateCURP2').disabled=false;
         } else {
             alert('CURP No Válido');
             document.getElementById('btnUpdateCURP2').disabled=true;
@@ -192,7 +192,8 @@ function validarInputUpdate(input) {
 
         }
     }
-    $(document).ready(function() {	
+
+    /* $(document).ready(function() {
         $('#curpCambiar').on('blur', function() {
             // $('#result-username2').html('<img src="img/loader.gif" />').fadeOut(1000);
     
@@ -208,7 +209,21 @@ function validarInputUpdate(input) {
                 }
             });
         });              
-    });
+    }); */
+
+    function verificarCURPdb(x){
+        var username = x;		
+        var dataString = 'username='+username;
+
+        $.ajax({
+            type: "POST",
+            url: "query/verficacion2.php",
+            data: dataString,
+            success: function(data) {
+                $('#result-usernameUpdate').fadeIn(1000).html(data);
+            }
+        });             
+    }
 
     function curpValida(curp) {
         var re = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0\d|1[0-2])(?:[0-2]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/,
