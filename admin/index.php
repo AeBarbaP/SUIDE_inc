@@ -387,7 +387,7 @@ else {
                             <div class="card mb-3" style="width: 100%; height: 100%;">
                                 <div class="card-body mt-3">
                                     <h5 class="card-title strong">Captura de expedientes</h5>
-                                    <p class="card-text text-muted">Expedientes capturados durante la semana</p>
+                                    <p class="card-text text-muted">Expedientes capturados durante el mes</p>
                                     <div class="row">
                                         <div class="col-6">
                                             <h1 class="text-start p-3">
@@ -396,7 +396,7 @@ else {
                                         </div>
                                         <div class="col-6">
                                             <h1 class="p-3" style="color: #4ea0f2;"><span id="expNews2"></span></h1>
-                                            <p><small class="text-success pe-2">(<i class="bi bi-arrow-up"></i> 17.2%)</small></p>
+                                            <p><small class="text-success pe-2">(<i class="bi bi-arrow-up"></i><span id="porcentajeExp"></span>%)</small></p>
                                         </div>
                                     </div>
                                 </div>

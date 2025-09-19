@@ -22,9 +22,11 @@ function conteoGeneralCards(){
             var filasExp = jsonData.filasExp;
             var filasTar = jsonData.filasTar;
             var filasAct = jsonData.filasAct;
+            var porcentajeExp = jsonData.porcentajeExp;
 
             console.log("Nuevos registros: "+filas);
             document.getElementById("expNews2").innerHTML = filas;
+            document.getElementById("porcentajeExp").innerHTML = porcentajeExp;
             console.log("Entrega credenciales: "+filasExp);
             document.getElementById("credEnt").innerHTML = filasExp;
             console.log("Tarjetones entregados: "+filasTar);
