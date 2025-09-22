@@ -28,7 +28,7 @@ $sqlExpedientes = "SELECT * FROM log_registro WHERE tipo_dato = 37 AND MONTH(fec
 $resultadoExp = $conn->query($sqlExpedientes);
 $filaExp = $resultadoExp->num_rows;
 
-$sqlTarjetones = "SELECT * FROM log_registro WHERE tipo_dato = 38 AND MONTH(fecha) = MONTH(CURRENT_DATE()) AND YEAR(fecha) = YEAR(CURRENT_DATE())";
+$sqlTarjetones = "SELECT * FROM tarjetones WHERE MONTH(fecha_entrega) = MONTH(CURRENT_DATE()) AND YEAR(fecha_entrega) = YEAR(CURRENT_DATE()) GROUP BY folio_tarjeton";
 $resultadoTar = $conn->query($sqlTarjetones);
 $filaTar = $resultadoTar->num_rows;
 
