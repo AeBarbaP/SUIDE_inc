@@ -2,6 +2,28 @@ function _(el) {
     return document.getElementById(el);
 }
 
+function validateFile() {
+    const fileInput = document.getElementById('file_photo');
+    const file = fileInput.files[0];
+
+    if (file) {
+        const fileName = file.name;
+        const fileExtension = fileName.split('.').pop().toLowerCase();
+        const fileType = file.type;
+
+        // Check for common JPG extensions and MIME type
+        if (fileExtension === 'jpg' || fileExtension === 'jpeg' || fileType === 'image/jpeg') {
+            // File is a JPG, proceed with further actions (e.g., upload)
+            console.log('Valid JPG file selected:', fileName);
+            foto();
+        } else {
+            // File is not a JPG, display an alert and clear the input
+            alert('🛑 Solamente se permiten archivos JPG‼️');
+            fileInput.value = ''; // Clear the selected file
+        }
+    }
+}
+
 function foto() {
     var doc = "_photo";
     var idUsr = document.getElementById('curp_exp').value;
@@ -51,6 +73,28 @@ function foto() {
     
     function abortHandler(event) {
         _("status"+doc).innerHTML = "Fallo en la subida";
+    }
+}
+
+function validateFile1() {
+    const fileInput = document.getElementById('file_photo');
+    const file = fileInput.files[0];
+
+    if (file) {
+        const fileName = file.name;
+        const fileExtension = fileName.split('.').pop().toLowerCase();
+        const fileType = file.type;
+
+        // Check for common JPG extensions and MIME type
+        if (fileExtension === 'jpg' || fileExtension === 'jpeg' || fileType === 'image/jpeg') {
+            // File is a JPG, proceed with further actions (e.g., upload)
+            console.log('Valid JPG file selected:', fileName);
+            fotoUpload();
+        } else {
+            // File is not a JPG, display an alert and clear the input
+            alert('🛑 Solamente se permiten archivos JPG‼️');
+            fileInput.value = ''; // Clear the selected file
+        }
     }
 }
 

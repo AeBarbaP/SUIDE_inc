@@ -178,9 +178,9 @@
         }
       });
 
-      window.addEventListener('contextmenu', function(event) {
-        event.preventDefault(); // Evita que aparezca el menú contextual en toda la página
-      });
+      //window.addEventListener('contextmenu', function(event) {
+      //  event.preventDefault(); // Evita que aparezca el menú contextual en toda la página
+      //});
 
       document.addEventListener('click', function(event) {
         // Comprobar si se hizo clic en un enlace y si se presionó la tecla Ctrl
@@ -479,7 +479,7 @@
                   <img id="profile" src="img/no_profile.png" width="100%" style="width:14rem">
                   <div class="input-group">
                     <form id="upload_form" enctype="multipart/form-data" method="post">
-                      <input type="file"  name="file_photo" id="file_photo" onchange="fotoUpload()" accept=".jpeg,.jpg" class="h6 w-100 mt-3" disabled><br>
+                      <input type="file"  name="file_photo" id="file_photo" onchange="validateFile1()" accept=".jpeg,.jpg" class="h6 w-100 mt-3" disabled><br>
                       <input type="text" id="flagFoto" value="0" hidden>
                       <progress id="progressBar_photo" value="0" max="100" style="width:230px;"></progress>
                       <small id="status_photo"></small>

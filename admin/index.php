@@ -374,7 +374,7 @@ else {
                     <div class="card mb-3" style="width: 100%; height: 100%;">
                         <div class="card-body">
                             <h5 class="card-title">Avance de capturas de expedientes</h5>
-                            <p class="text-muted small text-secondary mt-0">Junio 1 de 2024 - Diciembre 31 de 2024</p>
+                            <p class="text-muted small text-secondary mt-0">Enero, 1 - Diciembre, 31 de <span id="anioEjercicio"></span></p>
                             <!-- gráfico -->
                             <canvas id="myChart" style="width:100%;"></canvas>
                             <!-- gráfico -->

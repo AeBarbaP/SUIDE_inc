@@ -218,7 +218,9 @@ include('prcd/qc/qc.php');
             if(e.key == "page_available"){
               event.preventDefault();
               alert("Enlace abierto en la misma pestaña 2.");
-              window.location.href = self;
+              //window.location.href = self;
+              window.open('','_parent',''); 
+              window.close();
             }
         };
         window.addEventListener('storage', onLocalStorageEvent, false);

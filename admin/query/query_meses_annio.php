@@ -24,7 +24,7 @@ for ($meses = 1; $meses <= 12; $meses++) {
         $rowResultado1 = $resultadoExpCompletos->fetch_assoc();
         $credencial = $rowResultado1['conteo'];
 
-        $sqlExpedientesCompletos2 = "SELECT COUNT(*) AS conteo FROM log_registro WHERE MONTH(fecha) = $meses AND YEAR(fecha) = YEAR(CURRENT_DATE()) AND tipo_dato = 38";
+        $sqlExpedientesCompletos2 = "SELECT COUNT(*) AS conteo FROM log_registro WHERE MONTH(fecha) = $meses AND YEAR(fecha) = YEAR(CURRENT_DATE()) AND tipo_dato = 11";
         $resultadoExpCompletos2 = $conn->query($sqlExpedientesCompletos2);
         $rowResultado2 = $resultadoExpCompletos2->fetch_assoc();
         $tarjeton = $rowResultado2['conteo'];

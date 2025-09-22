@@ -23,6 +23,7 @@ function conteoGeneralCards(){
             var filasTar = jsonData.filasTar;
             var filasAct = jsonData.filasAct;
             var porcentajeExp = jsonData.porcentajeExp;
+            var anio = jsonData.anio;
 
             console.log("Nuevos registros: "+filas);
             document.getElementById("expNews2").innerHTML = filas;
@@ -31,6 +32,7 @@ function conteoGeneralCards(){
             document.getElementById("credEnt").innerHTML = filasExp;
             console.log("Tarjetones entregados: "+filasTar);
             document.getElementById("filasTar").innerHTML = filasTar;
+            document.getElementById("anioEjercicio").innerHTML = anio;
         }
     });
 }

@@ -25,6 +25,10 @@ $autoSeguro = $_POST['autoSeguro'];
 $autoSeguroFlag = $_POST['autoSeguroFlag'];
 $tipo_dato = 11;
 
+if ($autoSeguroFlag == null || $autoSeguroFlag == 0){
+    $autoSeguroFlag = "";
+}
+
 $sqlinsert= "INSERT INTO tarjetones (
     curp,
     numExpediente,

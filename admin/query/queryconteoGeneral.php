@@ -42,7 +42,8 @@ $filaAct = $resultadoAct->num_rows;
         'porcentajeExp'=>$porcentajeExp,
         'filasExp'=>$filaExp,
         'filasTar'=>$filaTar,
-        'filasAct'=>$filaAct
+        'filasAct'=>$filaAct,
+        'anio'=>$anio
     ));
 
 ?>
