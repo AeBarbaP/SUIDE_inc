@@ -201,7 +201,8 @@
           console.log('Enlace abierto en la misma pestaña CTRL.'); // Opcional: mostrar un mensaje
           // Aquí puedes implementar una lógica para abrir el enlace en la misma ventana
           // o realizar otra acción, por ejemplo:
-          window.location.href = event.target.href;
+          //window.location.href = event.target.href;
+          window.location.href = self;
         }
       });
 
@@ -219,6 +220,7 @@
             if(e.key == "page_available"){
               alert("Enlace abierto en la misma pestaña 2.");
               event.preventDefault();
+              window.location.href = self;
             }
         };
         window.addEventListener('storage', onLocalStorageEvent, false);

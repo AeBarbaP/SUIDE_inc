@@ -186,9 +186,9 @@ include('prcd/qc/qc.php');
         }
       });
 
-      window.addEventListener('contextmenu', function(event) {
-        event.preventDefault(); // Evita que aparezca el menú contextual en toda la página
-      });
+      //window.addEventListener('contextmenu', function(event) {
+      //  event.preventDefault(); // Evita que aparezca el menú contextual en toda la página
+      //});
 
       document.addEventListener('click', function(event) {
         // Comprobar si se hizo clic en un enlace y si se presionó la tecla Ctrl
@@ -198,6 +198,7 @@ include('prcd/qc/qc.php');
           // Aquí puedes implementar una lógica para abrir el enlace en la misma ventana
           // o realizar otra acción, por ejemplo:
           // window.location.href = event.target.href;
+          window.location.href = self;
         }
       });
 
@@ -216,6 +217,7 @@ include('prcd/qc/qc.php');
 
               event.preventDefault();
               alert("Enlace abierto en la misma pestaña.");
+              window.location.href = self;
             }
         };
         window.addEventListener('storage', onLocalStorageEvent, false);
