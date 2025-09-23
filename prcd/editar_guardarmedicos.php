@@ -80,24 +80,80 @@ WHERE curp = '$curp_exp'
 $resultado= $conn->query($sqlinsert);
 
 if ($resultado) {
-    $sqlInsertUsr = "INSERT INTO log_registro(
-        usr,
-        tipo_dato,
-        fecha)
-        VALUES(
-        '$usr',
-        '$tipo_dato',
-        '$fecha_registro')";
-    $resultadoUsr = $conn->query($sqlInsertUsr);
-    echo json_encode(array(
-        'success'=>1
-    ));
+    $rowUpdate = $conn->query("SELECT COUNT(*) AS filas FROM datos_generales WHERE curp = '$curp_exp' AND DATE(fecha_actualizacion) = DATE('$fecha_entrega')")->fetch_assoc();
+
+    if ($rowUpdate['filas']=0){
+
+        $sqlUpdateUsr="UPDATE datos_generales SET 
+            usuario_actualiza = '$usr',
+            fecha_actualizacion = '$fecha_entrega'
+        WHERE 
+            curp = '$curp_exp' 
+        AND 
+            numExpediente = '$numExp'
+        ";
+        $resultadoUpdateUsr= $conn->query($sqlUpdateUsr);
+        
+        if ($resultadoUpdateUsr){
+            $sqlInsertUsr1 = "INSERT INTO log_registro(
+                usr,
+                tipo_dato,
+                fecha)
+                VALUES(
+                '$usr',
+                40,
+                '$fecha_registro')
+            ";
+            $resultadoUsr1 = $conn->query($sqlInsertUsr1);
+            
+            $sqlInsertUsr = "INSERT INTO log_registro(
+                                usr,
+                                tipo_dato,
+                                fecha
+                            )
+                            VALUES (
+                                '$usr',
+                                '$tipo_dato',
+                                '$fecha_registro'
+                            )";
+            $resultadoUsr = $conn->query($sqlInsertUsr);
+
+            echo json_encode(array(
+                'success'=>2
+            ));
+        }
+        else {
+            $error = $conn->error;
+            echo $error;
+            echo json_encode(array(
+                'success'=>3,
+                'error'=>$error
+            ));
+        }
+    } 
+    else {
+        $sqlInsertUsr = "INSERT INTO log_registro(
+            usr,
+            tipo_dato,
+            fecha)
+            VALUES(
+            '$usr',
+            '$tipo_dato',
+            '$fecha_registro')";
+        $resultadoUsr = $conn->query($sqlInsertUsr);
+        
+        echo json_encode(array(
+            'success'=>1
+        ));
+    }
+
+    
 }
 else {
     $error = $conn->error;
     echo $error;
     echo json_encode(array(
-        'success'=>2,
+        'success'=>4,
         'error'=>$error
     ));
 

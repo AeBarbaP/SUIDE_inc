@@ -178,6 +178,8 @@ function queryDatos(){
             var estatus = jsonData.estatus;
             
             var curpJSON = jsonData.curp;
+            
+            document.getElementById('idUsuario').value = id;
 
             if (success == 1) {
                 if (jsonData.curp == "" || curpJSON.trim() === "" || jsonData.curp == null){
@@ -1468,7 +1470,7 @@ function actualizarCURP(){
             url: 'prcd/curpNueva.php',
             dataType:'JSON',
             data: {
-            id,id,
+                id,id,
                 curp:curp
             },
             success: function(data){

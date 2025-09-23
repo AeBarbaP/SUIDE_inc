@@ -458,6 +458,7 @@
                 No se encontró el expediente.
               </div>
             </p>
+            <input type="text" id="idUsuario" hidden>
             <input type="text" id="datosCompletos" hidden>
             <input type="text" id="datosCompletosCURP" hidden>
             <input type="text" id="estadoConsulta" hidden>

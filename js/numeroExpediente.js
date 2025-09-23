@@ -25,7 +25,7 @@ function numExpUpdate(x){
     var municipioClave = municipio.substr(3,2);
     var discapacidadClave = expediente.substr(4,2);
     var curp = document.getElementById('curp').value;
-    document.getElementById('numeroTemporal').value = expedienteNum;
+    document.getElementById('idUsuario').value = expedienteNum;
     document.getElementById('numeroTemporal2').value = expediente;
     document.getElementById('municipioChange').value = municipioClave;
     document.getElementById('discapacidadChange').value = discapacidadClave;
@@ -56,7 +56,7 @@ function numExpUpdateDiscapacidad(x){
     var discapacidadClave = discapacidad.substr(0,2);
     var municipioClave = document.getElementById('municipioChange').value;
     var curp = document.getElementById('curp').value;
-    document.getElementById('numeroTemporal').value = expedienteNum;
+    document.getElementById('idUsuario').value = expedienteNum;
     document.getElementById('numeroTemporal2').value = expediente;
     document.getElementById('discapacidadChange').value = discapacidadClave;
     var numeroNuevo = "C-"+municipioClave+discapacidadClave+'-'+expedienteNum;

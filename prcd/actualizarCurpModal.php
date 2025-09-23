@@ -1,21 +1,22 @@
 <?php
     include('../prcd/qc/qc.php');
 
+    $id = $_POST['id'];
     $curp = $_POST['curp'];
     $curp2 = $_POST['curp2'];
 
-    $sql = "UPDATE datos_generales SET curp = '$curp2' WHERE curp = '$curp'";
+    $sql = "UPDATE datos_generales SET curp = '$curp2' WHERE curp = '$curp' AND id = '$id'";
     $resultadoSql = $conn->query($sql);
     if ($resultadoSql){
         $var1 = 1;
 
-        $sql2 = "UPDATE datos_medicos SET curp = '$curp2' WHERE curp = '$curp'";
+        $sql2 = "UPDATE datos_medicos SET curp = '$curp2' WHERE curp = '$curp' AND id = '$id'";
         $resultadoSql2 = $conn->query($sql2);
         
         if ($resultadoSql2){
             $var2 = 1;
         
-            $sql3 = "UPDATE vivienda SET curp = '$curp2' WHERE curp = '$curp'";
+            $sql3 = "UPDATE vivienda SET curp = '$curp2' WHERE curp = '$curp' AND id = '$id'";
             $resultadoSql3 = $conn->query($sql3);
         
             if ($resultadoSql3){

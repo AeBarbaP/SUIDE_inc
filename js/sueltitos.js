@@ -400,7 +400,7 @@ function swalEntrega(){
 function modalCurpUpdate(){
     $('#actualizarCurp').modal('show');
     var curp = document.getElementById('curp').value;
-
+    var id = document.getElementById('idUsuario').value;
     document.getElementById('curpCambiar').value = curp;
 }
 
@@ -412,6 +412,7 @@ function actualizarCURP2(){
         type:"POST",
         url:"prcd/actualizarCurpModal.php",
         data:{
+            id:id,
             curp:curp,
             curp2:curp2
         },
