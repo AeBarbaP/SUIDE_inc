@@ -14,6 +14,7 @@ $expediente = $_POST['expediente'];
     if ($filas >= 1){
 
         $rowDatos = $resultadoSql->fetch_assoc();
+        $id = $rowDatos['id'];
         //datos médicos
         $sqlMedicos = "SELECT * FROM datos_medicos WHERE expediente = '$expediente'";
         $resultadoSqlMedicos = $conn->query($sqlMedicos);
@@ -117,6 +118,90 @@ $expediente = $_POST['expediente'];
         $sqlVivienda = "SELECT * FROM vivienda WHERE expediente = '$expediente'";
         $resultadoSqlVivienda = $conn->query($sqlVivienda);
         $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
+        $filasVivienda = $resultadoSqlVivienda->num_rows;
+
+        if ($filasVivienda != 0){
+            $vivienda = $rowDatosVivienda['vivienda']; 
+            $propietario = $rowDatosVivienda['propietario']; 
+            $caracteristicas = $rowDatosVivienda['caracteristicas']; 
+            $caracteristicas_otro = $rowDatosVivienda['caracteristicas_otro']; 
+            $num_habitaciones = $rowDatosVivienda['num_habitaciones']; 
+            $vivienda_cocia = $rowDatosVivienda['vivienda_cocia']; 
+            $vivienda_sala = $rowDatosVivienda['vivienda_sala']; 
+            $vivienda_banio = $rowDatosVivienda['vivienda_banio'];
+            $vivienda_numbanio = $rowDatosVivienda['num_banio'];
+            $vivienda_baniolocalizacion = $rowDatosVivienda['localizacion'];
+            $vivienda_otros = $rowDatosVivienda['vivienda_otros']; 
+            $techo = $rowDatosVivienda['techo']; 
+            $techo_otro = $rowDatosVivienda['techo_otro']; 
+            $pared = $rowDatosVivienda['pared']; 
+            $pared_otro = $rowDatosVivienda['pared_otro']; 
+            $serv_basicos_agua = $rowDatosVivienda['serv_basicos_agua']; 
+            $serv_basicos_luz = $rowDatosVivienda['serv_basicos_luz']; 
+            $serv_basicos_drenaje = $rowDatosVivienda['serv_basicos_drenaje']; 
+            $serv_basicos_internet = $rowDatosVivienda['serv_basicos_internet']; 
+            $serv_basicos_celular = $rowDatosVivienda['serv_basicos_celular']; 
+            $serv_basicos_carro = $rowDatosVivienda['serv_basicos_carro']; 
+            $serv_basicos_gas = $rowDatosVivienda['serv_basicos_gas']; 
+            $serv_basicos_telefono = $rowDatosVivienda['serv_basicos_telefono']; 
+            $serv_basicos_otro = $rowDatosVivienda['serv_basicos_otro']; 
+            $electrodomesticos_tv = $rowDatosVivienda['electrodomesticos_tv']; 
+            $electrodomesticos_lavadora = $rowDatosVivienda['electrodomesticos_lavadora']; 
+            $electrodomesticos_dispositivo = $rowDatosVivienda['electrodomesticos_dispositivo']; 
+            $electrodomesticos_microondas = $rowDatosVivienda['electrodomesticos_microondas']; 
+            $electrodomesticos_computadora = $rowDatosVivienda['electrodomesticos_computadora']; 
+            $electrodomesticos_licuadora = $rowDatosVivienda['electrodomesticos_licuadora']; 
+            $electrodomesticos_estufa = $rowDatosVivienda['electrodomesticos_estufa']; 
+            $electrodomesticos_refri = $rowDatosVivienda['electrodomesticos_refri']; 
+            $electrodomesticos_otro = $rowDatosVivienda['electrodomesticos_otro']; 
+            $dependiente = $rowDatosVivienda['dependiente'];
+            $financiador = $rowDatosVivienda['financiador'];
+            $personas_dependen = $rowDatosVivienda['personas_dependen'];
+        }
+        else {
+            $rowInserVivienda = $conn->query("INSERT INTO vivienda (
+                id,
+                expediente
+            ) VALUES (
+                $id,
+                $expediente
+            )");
+
+            $vivienda = ""; 
+            $propietario = ""; 
+            $caracteristicas = ""; 
+            $caracteristicas_otro = ""; 
+            $num_habitaciones = ""; 
+            $vivienda_cocia = ""; 
+            $vivienda_sala = ""; 
+            $vivienda_banio = "";
+            $vivienda_numbanio = "";
+            $vivienda_baniolocalizacion = "";
+            $vivienda_otros = ""; 
+            $techo = ""; 
+            $pared = ""; 
+            $serv_basicos_agua = ""; 
+            $serv_basicos_luz = ""; 
+            $serv_basicos_drenaje = ""; 
+            $serv_basicos_internet = ""; 
+            $serv_basicos_celular = ""; 
+            $serv_basicos_carro = ""; 
+            $serv_basicos_gas = ""; 
+            $serv_basicos_telefono = ""; 
+            $serv_basicos_otro = ""; 
+            $electrodomesticos_tv = ""; 
+            $electrodomesticos_lavadora = ""; 
+            $electrodomesticos_dispositivo = ""; 
+            $electrodomesticos_microondas = ""; 
+            $electrodomesticos_computadora = ""; 
+            $electrodomesticos_licuadora = ""; 
+            $electrodomesticos_estufa = ""; 
+            $electrodomesticos_refri = ""; 
+            $electrodomesticos_otro = ""; 
+            $dependiente = "";
+            $financiador = "";
+            $personas_dependen = "";
+        }
 
         //documentos
         $sqlDocumentos = "SELECT * FROM documentos_list WHERE documento = 1 AND numExp = '$expediente'";
@@ -297,42 +382,42 @@ $expediente = $_POST['expediente'];
             'labiofacial'=>$rowDatosMedicos['labiofacial'],
             'asistencia'=>$rowDatosMedicos['asistencia'],
             //medicamentos
-            'vivienda'=>$rowDatosVivienda['vivienda'], 
-            'propietario'=>$rowDatosVivienda['propietario'], 
-            'caracteristicas'=>$rowDatosVivienda['caracteristicas'], 
-            'caracteristicas_otro'=>$rowDatosVivienda['caracteristicas_otro'], 
-            'num_habitaciones'=>$rowDatosVivienda['num_habitaciones'], 
-            'vivienda_cocia'=>$rowDatosVivienda['vivienda_cocia'], 
-            'vivienda_sala'=>$rowDatosVivienda['vivienda_sala'], 
-            'vivienda_banio'=>$rowDatosVivienda['vivienda_banio'],
-            'vivienda_numbanio'=>$rowDatosVivienda['num_banio'],
-            'vivienda_baniolocalizacion'=>$rowDatosVivienda['localizacion'],
-            'vivienda_otros'=>$rowDatosVivienda['vivienda_otros'], 
-            'techo'=>$rowDatosVivienda['techo'], 
-            'techo_otro'=>$rowDatosVivienda['techo_otro'], 
-            'pared'=>$rowDatosVivienda['pared'], 
-            'pared_otro'=>$rowDatosVivienda['pared_otro'], 
-            'serv_basicos_agua'=>$rowDatosVivienda['serv_basicos_agua'], 
-            'serv_basicos_luz'=>$rowDatosVivienda['serv_basicos_luz'], 
-            'serv_basicos_drenaje'=>$rowDatosVivienda['serv_basicos_drenaje'], 
-            'serv_basicos_internet'=>$rowDatosVivienda['serv_basicos_internet'], 
-            'serv_basicos_celular'=>$rowDatosVivienda['serv_basicos_celular'], 
-            'serv_basicos_carro'=>$rowDatosVivienda['serv_basicos_carro'], 
-            'serv_basicos_gas'=>$rowDatosVivienda['serv_basicos_gas'], 
-            'serv_basicos_telefono'=>$rowDatosVivienda['serv_basicos_telefono'], 
-            'serv_basicos_otro'=>$rowDatosVivienda['serv_basicos_otro'], 
-            'electrodomesticos_tv'=>$rowDatosVivienda['electrodomesticos_tv'], 
-            'electrodomesticos_lavadora'=>$rowDatosVivienda['electrodomesticos_lavadora'], 
-            'electrodomesticos_dispositivo'=>$rowDatosVivienda['electrodomesticos_dispositivo'], 
-            'electrodomesticos_microondas'=>$rowDatosVivienda['electrodomesticos_microondas'], 
-            'electrodomesticos_computadora'=>$rowDatosVivienda['electrodomesticos_computadora'], 
-            'electrodomesticos_licuadora'=>$rowDatosVivienda['electrodomesticos_licuadora'], 
-            'electrodomesticos_estufa'=>$rowDatosVivienda['electrodomesticos_estufa'], 
-            'electrodomesticos_refri'=>$rowDatosVivienda['electrodomesticos_refri'], 
-            'electrodomesticos_otro'=>$rowDatosVivienda['electrodomesticos_otro'], 
-            'dependiente'=>$rowDatosVivienda['dependiente'],
-            'financiador'=>$rowDatosVivienda['financiador'],
-            'personas_dependen'=>$rowDatosVivienda['personas_dependen'],
+            'vivienda'=>$vivienda, 
+            'propietario'=>$propietario, 
+            'caracteristicas'=>$caracteristicas, 
+            'caracteristicas_otro'=>$caracteristicas_otro, 
+            'num_habitaciones'=>$num_habitaciones, 
+            'vivienda_cocia'=>$vivienda_cocia, 
+            'vivienda_sala'=>$vivienda_sala, 
+            'vivienda_banio'=>$vivienda_banio,
+            'vivienda_numbanio'=>$vivienda_numbanio,
+            'vivienda_baniolocalizacion'=>$vivienda_baniolocalizacion,
+            'vivienda_otros'=>$vivienda_otros, 
+            'techo'=>$techo, 
+            'techo_otro'=>$techo_otro, 
+            'pared'=>$pared, 
+            'pared_otro'=>$pared_otro, 
+            'serv_basicos_agua'=>$serv_basicos_agua, 
+            'serv_basicos_luz'=>$serv_basicos_luz, 
+            'serv_basicos_drenaje'=>$serv_basicos_drenaje, 
+            'serv_basicos_internet'=>$serv_basicos_internet, 
+            'serv_basicos_celular'=>$serv_basicos_celular, 
+            'serv_basicos_carro'=>$serv_basicos_carro, 
+            'serv_basicos_gas'=>$serv_basicos_gas, 
+            'serv_basicos_telefono'=>$serv_basicos_telefono, 
+            'serv_basicos_otro'=>$serv_basicos_otro, 
+            'electrodomesticos_tv'=>$electrodomesticos_tv, 
+            'electrodomesticos_lavadora'=>$electrodomesticos_lavadora, 
+            'electrodomesticos_dispositivo'=>$electrodomesticos_dispositivo, 
+            'electrodomesticos_microondas'=>$electrodomesticos_microondas, 
+            'electrodomesticos_computadora'=>$electrodomesticos_computadora, 
+            'electrodomesticos_licuadora'=>$electrodomesticos_licuadora, 
+            'electrodomesticos_estufa'=>$electrodomesticos_estufa, 
+            'electrodomesticos_refri'=>$electrodomesticos_refri, 
+            'electrodomesticos_otro'=>$electrodomesticos_otro, 
+            'dependiente'=>$dependiente,
+            'financiador'=>$financiador,
+            'personas_dependen'=>$personas_dependen,
             //vivienda
             'HojaRegistro'=> $tipo_documento,
             'valoracion'=> $tipo_documento1,
