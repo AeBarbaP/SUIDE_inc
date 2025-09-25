@@ -120,7 +120,68 @@ $expediente = $_POST['expediente'];
         $rowDatosVivienda = $resultadoSqlVivienda->fetch_assoc();
         $filasVivienda = $resultadoSqlVivienda->num_rows;
 
-        if ($filasVivienda != 0){
+        if ($filasVivienda == 0){
+            $vivienda = ""; 
+            $propietario = ""; 
+            $caracteristicas = ""; 
+            $caracteristicas_otro = ""; 
+            $num_habitaciones = ""; 
+            $vivienda_cocia = ""; 
+            $vivienda_sala = ""; 
+            $vivienda_banio = "";
+            $vivienda_numbanio = "";
+            $vivienda_baniolocalizacion = "";
+            $vivienda_otros = ""; 
+            $techo = ""; 
+            $techo_otro = ""; 
+            $pared = ""; 
+            $pared_otro = ""; 
+            $serv_basicos_agua = ""; 
+            $serv_basicos_luz = ""; 
+            $serv_basicos_drenaje = ""; 
+            $serv_basicos_internet = ""; 
+            $serv_basicos_celular = ""; 
+            $serv_basicos_carro = ""; 
+            $serv_basicos_gas = ""; 
+            $serv_basicos_telefono = ""; 
+            $serv_basicos_otro = ""; 
+            $electrodomesticos_tv = ""; 
+            $electrodomesticos_lavadora = ""; 
+            $electrodomesticos_dispositivo = ""; 
+            $electrodomesticos_microondas = ""; 
+            $electrodomesticos_computadora = ""; 
+            $electrodomesticos_licuadora = ""; 
+            $electrodomesticos_estufa = ""; 
+            $electrodomesticos_refri = ""; 
+            $electrodomesticos_otro = ""; 
+            $dependiente = "";
+            $financiador = "";
+            $personas_dependen = "";
+
+            $InserVivienda = "INSERT INTO vivienda (
+                id,
+                expediente
+            ) VALUES (
+                '$id',
+                '$expediente'
+            )";
+            $resultadoInsertVivienda = $conn->query($InserVivienda);
+
+            /* if ($resultadoInsertVivienda){
+                echo json_encode(array(
+                    'success'=>"ViviendaSi"
+                ));
+            }
+            else {
+                $error = $conn->error;
+                echo $error;
+                echo json_encode(array(
+                    'success'=>"IV",
+                    'error'=>$error
+                ));
+            } */
+        }
+        else {
             $vivienda = $rowDatosVivienda['vivienda']; 
             $propietario = $rowDatosVivienda['propietario']; 
             $caracteristicas = $rowDatosVivienda['caracteristicas']; 
@@ -157,50 +218,8 @@ $expediente = $_POST['expediente'];
             $dependiente = $rowDatosVivienda['dependiente'];
             $financiador = $rowDatosVivienda['financiador'];
             $personas_dependen = $rowDatosVivienda['personas_dependen'];
-        }
-        else {
-            $rowInserVivienda = $conn->query("INSERT INTO vivienda (
-                id,
-                expediente
-            ) VALUES (
-                $id,
-                $expediente
-            )");
+            
 
-            $vivienda = ""; 
-            $propietario = ""; 
-            $caracteristicas = ""; 
-            $caracteristicas_otro = ""; 
-            $num_habitaciones = ""; 
-            $vivienda_cocia = ""; 
-            $vivienda_sala = ""; 
-            $vivienda_banio = "";
-            $vivienda_numbanio = "";
-            $vivienda_baniolocalizacion = "";
-            $vivienda_otros = ""; 
-            $techo = ""; 
-            $pared = ""; 
-            $serv_basicos_agua = ""; 
-            $serv_basicos_luz = ""; 
-            $serv_basicos_drenaje = ""; 
-            $serv_basicos_internet = ""; 
-            $serv_basicos_celular = ""; 
-            $serv_basicos_carro = ""; 
-            $serv_basicos_gas = ""; 
-            $serv_basicos_telefono = ""; 
-            $serv_basicos_otro = ""; 
-            $electrodomesticos_tv = ""; 
-            $electrodomesticos_lavadora = ""; 
-            $electrodomesticos_dispositivo = ""; 
-            $electrodomesticos_microondas = ""; 
-            $electrodomesticos_computadora = ""; 
-            $electrodomesticos_licuadora = ""; 
-            $electrodomesticos_estufa = ""; 
-            $electrodomesticos_refri = ""; 
-            $electrodomesticos_otro = ""; 
-            $dependiente = "";
-            $financiador = "";
-            $personas_dependen = "";
         }
 
         //documentos
@@ -382,8 +401,8 @@ $expediente = $_POST['expediente'];
             'labiofacial'=>$rowDatosMedicos['labiofacial'],
             'asistencia'=>$rowDatosMedicos['asistencia'],
             //medicamentos
-            'vivienda'=>$vivienda, 
-            'propietario'=>$propietario, 
+            'vivienda'=>$vivienda,
+            'propietario'=>$propietario,
             'caracteristicas'=>$caracteristicas, 
             'caracteristicas_otro'=>$caracteristicas_otro, 
             'num_habitaciones'=>$num_habitaciones, 

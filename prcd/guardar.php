@@ -171,14 +171,20 @@ VALUES(
     '$usr'
 )";
 
-$sqlinsert2 = "INSERT INTO datos_medicos (curp) VALUES ('$curp')";
-$sqlinsert3 = "INSERT INTO vivienda (curp) VALUES ('$curp')";
-
 $resultado= $conn->query($sqlinsert);
-$resultado= $conn->query($sqlinsert2);
-$resultado= $conn->query($sqlinsert3);
 
-if ($resultado) {
+$sqlGenerales = "SELECT * FROM datos_generales WHERE curp = '$curp'";
+$resultadoGenerales = $conn->query($sqlGenerales);
+$rowGenerales = $resultadoGenerales->fetch_assoc();
+
+$id = $rowGenerales['id'];
+
+$sqlinsert2 = "INSERT INTO datos_medicos (curp) VALUES ('$curp')";
+$resultado2= $conn->query($sqlinsert2);
+$sqlinsert3 = "INSERT INTO vivienda (id, curp) VALUES ('$id', '$curp')";
+$resultado3= $conn->query($sqlinsert3);
+
+if ($resultado && $resultado2 && $resultado3) {
     $sqlInsertUsr = "INSERT INTO log_registro(
         usr,
         tipo_dato,

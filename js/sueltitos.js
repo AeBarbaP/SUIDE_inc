@@ -400,12 +400,12 @@ function swalEntrega(){
 function modalCurpUpdate(){
     $('#actualizarCurp').modal('show');
     var curp = document.getElementById('curp').value;
-    var id = document.getElementById('idUsuario').value;
     document.getElementById('curpCambiar').value = curp;
 }
 
 function actualizarCURP2(){
     var curp = document.getElementById('curp').value;
+    var id = document.getElementById('idUsuario').value;
     var curp2 = document.getElementById('curpCambiar').value;
 
     $.ajax({
