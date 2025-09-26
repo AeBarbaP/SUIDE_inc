@@ -258,7 +258,7 @@ function swaldatoscrdEmp() {
     });
   }
     // para generar tarjetón
-    function buscarExpediente2(){
+function buscarExpediente2(){
     var expediente = document.getElementById('searchDBInclusion2').value;
 
     $.ajax({
@@ -285,7 +285,7 @@ function swaldatoscrdEmp() {
 
         }               
     });
-    }
+}
 
 function buscarExpediente3(){
     var curp = document.getElementById('curp_exp').value;
@@ -316,7 +316,7 @@ function buscarExpediente3(){
             document.getElementById('AutoSeguroInput').value = "";
             document.getElementById('agregarVehiculoBtnExp').disabled = false;
             $("#tarjeton2").html(data);
-	    mostrarTablaVehiculosE();
+	        mostrarTablaVehiculosE();
         }               
     });
 }

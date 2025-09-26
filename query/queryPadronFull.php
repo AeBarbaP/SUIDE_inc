@@ -52,7 +52,9 @@ while ($rowVariable = $resultado->fetch_assoc()){
     $cveMunicipio = $rowVariable['municipio'];
     $statusVar = $rowVariable['estatus'];
     if ($statusVar == 1 || $statusVar == "CREADO" || $statusVar == 3){
-        $estatus = '<a href="#" style="text-decoration: none; color: green;" onclick="editarEstatusFull('.$id.',1)">Creado<i class="bi bi-check-circle text-success ms-2 h3"></i></a>';
+        $estatus = '<a href="#" style="text-decoration: none; color: green;" data-bs-toggle="tooltip" data-bs-placement="top"
+        data-bs-custom-class="custom-tooltip"
+        data-bs-title="This top tooltip is themed via CSS variables." onclick="editarEstatusFull('.$id.',1)">Creado<i class="bi bi-check-circle text-success ms-2 h3"></i></a>';
     }
     else if($statusVar == 2 || $statusVar == "FINADO" || $statusVar == 4){
         $estatus = '<a href="#" style="text-decoration: none; color: red;" onclick="editarEstatusFull('.$id.',2)">Finado<i class="bi bi-x-circle text-danger ms-2 h3"></i></a>';

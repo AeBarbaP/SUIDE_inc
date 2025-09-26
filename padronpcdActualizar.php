@@ -138,10 +138,10 @@
           });
           
           // Detectar envíos de formularios
-          document.addEventListener('submit', function() {
-              esNavegacionInterna = true;
-              setTimeout(() => { esNavegacionInterna = false; }, 100);
-      });
+          //document.addEventListener('submit', function() {
+              //esNavegacionInterna = true;
+              //setTimeout(() => { esNavegacionInterna = false; }, 100);
+      //});
       
       // Detectar refresh (F5, Ctrl+R, etc.)
       document.addEventListener('keydown', function(e) {
