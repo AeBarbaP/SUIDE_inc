@@ -222,10 +222,11 @@ include('prcd/qc/qc.php');
         };
         window.addEventListener('storage', onLocalStorageEvent, false);
 
-
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
     </script>
-
+    
     <style>
       * {
         font-family: 'Montserrat', sans-serif;
@@ -410,12 +411,12 @@ include('prcd/qc/qc.php');
         </div>
         <div class="col-md-2 mt-2">
           <div class="form-check form-check-inline mt-3">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="expedienteSearch">
-            <label class="form-check-label" for="inlineRadio1"># Exp.</label>
+            <input class="form-check-input" type="radio" name="expediente" id="expedienteSearch">
+            <label class="form-check-label" for="expediente"># Exp.</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="nombreSearch">
-            <label class="form-check-label" for="inlineRadio2">Nombre</label>
+            <input class="form-check-input" type="radio" name="nombre" id="nombreSearch">
+            <label class="form-check-label" for="nombre">Nombre</label>
           </div>
         </div>
         <div class="col-md-2">

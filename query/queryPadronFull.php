@@ -30,7 +30,7 @@ echo '
                     <th scope="col">Nombre Completo</th>
                     <th scope="col">Tipo Discapacidad</th>
                     <th scope="col">Municipio</th>
-                    <!-- <th scope="col">Estatus</th> -->
+                    <th scope="col">Estatus</th>
                     <th scope="col">Actualizar</th>
                 </tr>
             </thead>
@@ -44,15 +44,24 @@ while ($rowVariable = $resultado->fetch_assoc()){
     $x++;
 
     $expediente = $rowVariable['numExpediente'];
-    $cveMunicipio = $rowVariable['municipio'];
-    $statusVar = $rowVariable['estatus'];
-    if ($statusVar == 1){
-        $estatus = "Activo";
-    }
-    else {
-        $estatus = "Finado";
+    $id = $rowVariable['id'];
+    if($expediente == null || $expediente == ""){
+        $expediente == "";
     }
 
+    $cveMunicipio = $rowVariable['municipio'];
+    $statusVar = $rowVariable['estatus'];
+    if ($statusVar == 1 || $statusVar == "CREADO" || $statusVar == 3){
+        $estatus = '<a href="#" style="text-decoration: none; color: green;" onclick="editarEstatusFull('.$id.',1)">Creado<i class="bi bi-check-circle text-success ms-2 h3"></i></a>';
+    }
+    else if($statusVar == 2 || $statusVar == "FINADO" || $statusVar == 4){
+        $estatus = '<a href="#" style="text-decoration: none; color: red;" onclick="editarEstatusFull('.$id.',2)">Finado<i class="bi bi-x-circle text-danger ms-2 h3"></i></a>';
+    }
+    else if($statusVar == 5){
+        $estatus = '<a href="#" style="text-decoration: none; color: gray;" onclick="editarEstatusFull('.$id.',5)">Baja Documental<i class="bi bi-slash-circle text-secondary ms-2 h3"></i></a>';
+    }
+
+    
     $medicos = "SELECT * FROM datos_medicos WHERE expediente = '$expediente'";
     $resultadoMedicos = $conn->query($medicos);
     $rowSqlMedicos = $resultadoMedicos->fetch_assoc(); //Para sacar el tipo de discapacidad
@@ -71,11 +80,11 @@ while ($rowVariable = $resultado->fetch_assoc()){
     echo '
         <tr>
             <td class="text-center"><img src="'.$fotografia.'" style="width: 5rem; height: auto; zindex: 100"></td>
-            <td>'.$rowVariable['numExpediente'].'</td>
+            <td class="text-center"><span id="expedienteFull">'.$rowVariable['numExpediente'].'</span></td>
             <td>'.$rowVariable['nombre'].' '.$rowVariable['apellido_p'].' '.$rowVariable['apellido_m'].'</td>
-            <td>'.$rowSqlMedicos['tipo_discapacidad'].'</td>
-            <td>'.$rowSqlMunicipio['nombreMunicipio'].'</td>
-            <!-- <td>'.$estatus.'</td> -->';
+            <td class="text-center">'.$rowSqlMedicos['tipo_discapacidad'].'</td>
+            <td class="text-center">'.$rowSqlMunicipio['nombreMunicipio'].'</td>
+            <td class="text-center">'.$estatus.'</td>';
             /* if ($rowVariable['curp'] == "" || $rowVariable['curp'] == null){ */ 
                 echo '
                     <td class="text-center"><a href="padronpcdActualizar.php?curp='.$expediente.'"><i class="bi bi-pencil-square"></i></a>

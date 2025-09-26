@@ -106,7 +106,7 @@ echo '
                     <th scope="col">Nombre Completo</th>
                     <th scope="col">Tipo Discapacidad</th>
                     <th scope="col">Municipio</th>
-                    <!-- <th scope="col">Estatus</th> -->
+                    <th scope="col">Estatus</th>
                     <th scope="col">Actualizar</th>
                 </tr>
             </thead>
@@ -123,17 +123,23 @@ if ($filas > 0){
 
         $expediente = $rowVariable['id'];
         $cveMunicipio = $rowVariable['municipio'];
-        $statusVar = $rowVariable['estatus'];
-        if ($statusVar == 1){
-            $estatus = "Activo";
-        }
-        else {
-            $estatus = "Finado";
-        }
-
+        
         $medicos = "SELECT * FROM datos_medicos WHERE expediente = '$expediente'";
         $resultadoMedicos = $conn->query($medicos);
         $rowSqlMedicos = $resultadoMedicos->fetch_assoc(); //Para sacar el tipo de discapacidad
+
+        $idExp = $rowSqlMedicos['id'];
+
+        $statusVar = $rowVariable['estatus'];
+        if ($statusVar == 1 || $statusVar == "CREADO" || $statusVar == 3){
+            $estatus = '<a href="#" style="text-decoration: none; color: green;" onclick="editarEstatusFullFiltro('.$idExp.',1)">Creado<i class="bi bi-check-circle text-success ms-2 h3"></i></a>';
+        }
+        else if($statusVar == 2 || $statusVar == "FINADO" || $statusVar == 4){
+            $estatus = '<a href="#" style="text-decoration: none; color: red;" onclick="editarEstatusFullFiltro('.$idExp.',2)">Finado<i class="bi bi-x-circle text-danger ms-2 h3"></i></a>';
+        }
+        else if($statusVar == 5){
+            $estatus = '<a href="#" style="text-decoration: none; color: gray;" onclick="editarEstatusFullFiltro('.$idExp.',5)">Baja Documental<i class="bi bi-slash-circle text-secondary ms-2 h3"></i></a>';
+        }
 
         $municipio = "SELECT * FROM catmunicipios WHERE claveMunicipio = '$cveMunicipio'";
         $resultadoMunicipio = $conn->query($municipio);
@@ -149,11 +155,11 @@ if ($filas > 0){
         echo '
             <tr>
                 <td class="text-center"><img src="'.$fotografia.'" style="width: 5rem; height: auto; zindex: 100"></td>
-                <td>'.$rowVariable['id'].'</td>
+                <td class="text-center">'.$rowVariable['id'].'</td>
                 <td>'.$rowVariable['nombre'].' '.$rowVariable['apellido_p'].' '.$rowVariable['apellido_m'].'</td>
-                <td>'.$rowVariable['tipo_discapacidad'].'</td>
-                <td>'.$rowSqlMunicipio['nombreMunicipio'].'</td>
-                <!-- <td>'.$estatus.'</td> -->
+                <td class="text-center">'.$rowVariable['tipo_discapacidad'].'</td>
+                <td class="text-center">'.$rowSqlMunicipio['nombreMunicipio'].'</td>
+                <td class="text-center">'.$estatus.'</td>
                 <td class="text-center"><a href="padronpcdActualizar.php?curp='.$expediente.'"><i class="bi bi-pencil-square"></i></a>
                 </td>
             </tr>

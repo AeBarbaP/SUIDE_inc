@@ -1411,7 +1411,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-sm-6" id="propiedad" hidden>
+                      <div class="col-sm-6" id="propiedad">
                         <label for="basic-url" class="form-label"><i class="bi bi-house"></i> Está a su nombre:</label>
                         <div class="input-group mb-3" style="height:max-content">
                           <div class="form-check form-check-inline mt-2">

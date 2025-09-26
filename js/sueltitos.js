@@ -510,3 +510,91 @@ function expedienteSinCurp(){
         });
     }
 }
+
+function editarEstatusFull(id,estatus) {
+    var id;
+    var estatus;
+
+    Swal.fire({
+        title: "¿Estas seguro?",
+        text: "Si aceptas, se cambiará el Estatus del Expediente",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, cambiar Estatus!"
+        }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: "POST",
+                url: 'prcd/cambiarEstatusFull.php',
+                dataType:'JSON',
+                data: {
+                    id:id,
+                    estatus:estatus,
+                },
+                success: function(data){
+                    var jsonData = JSON.parse(JSON.stringify(data));
+                        var success = jsonData.success;
+
+                    if (success == 1 || success == 2 || success == 5) {
+                        Swal.fire({
+                            title: "Listo!",
+                            text: "Se cambió el Estatus del Expediente.",
+                            icon: "success"
+                        });
+                        tablaPCDFull(pagina = 1);
+                    }
+                    else {
+                        alert ('Error en la actualización de Estatus');
+                    }
+                }
+            });
+            
+        }
+    });
+}
+
+function editarEstatusFullFiltro(id,estatus) {
+    var id;
+    var estatus;
+
+    Swal.fire({
+        title: "¿Estas seguro?",
+        text: "Si aceptas, se cambiará el Estatus del Expediente",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, cambiar Estatus!"
+        }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: "POST",
+                url: 'prcd/cambiarEstatusFull.php',
+                dataType:'JSON',
+                data: {
+                    id:id,
+                    estatus:estatus,
+                },
+                success: function(data){
+                    var jsonData = JSON.parse(JSON.stringify(data));
+                        var success = jsonData.success;
+
+                    if (success == 1 || success == 2 || success == 5) {
+                        Swal.fire({
+                            title: "Listo!",
+                            text: "Se cambió el Estatus del Expediente.",
+                            icon: "success"
+                        });
+                        filtroPadronFull(pagina = 1);
+                    }
+                    else {
+                        alert ('Error en la actualización de Estatus');
+                    }
+                }
+            });
+            
+        }
+    });
+}

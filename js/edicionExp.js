@@ -13,11 +13,11 @@ function buscarExpediente12(x){
             var texto;
             var success = jsonData.success;
             var estatus = jsonData.estatus;
-            if(estatus == 1 || estatus == "CREADO"){
+            if(estatus == 1 || estatus == "CREADO" || estatus == 3){
                 texto = 'Creado (Activo)';
                 document.getElementById('estatus').value = 1;
             }
-            else if(estatus == 2 || estatus == "FINADO"){
+            else if(estatus == 2 || estatus == "FINADO" || estatus == 4){
                 texto = 'Finado';
                 document.getElementById('estatus').value = 2;
             }
@@ -1470,7 +1470,7 @@ function actualizarCURP(){
             url: 'prcd/curpNueva.php',
             dataType:'JSON',
             data: {
-                id,id,
+                id:id,
                 curp:curp
             },
             success: function(data){
