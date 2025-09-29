@@ -3615,11 +3615,15 @@ function insertLogCredencial(){
         }
     });
 }
-function logEntregaTarjeton(){
+function logEntregaTarjeton(x){
+    var tipoTarjeton = x;
     $.ajax({
         type: "POST",
         url: 'prcd/logEntregaTarjetones.php',
         dataType:'json',
+        data: {
+            tipoTarjeton:tipoTarjeton
+        },
         success: function(data){
             var jsonData = JSON.parse(JSON.stringify(data));
             var success = jsonData.success;

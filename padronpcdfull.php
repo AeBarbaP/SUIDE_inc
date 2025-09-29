@@ -152,10 +152,10 @@ include('prcd/qc/qc.php');
           });
           
           // Detectar envíos de formularios
-          document.addEventListener('submit', function() {
-              esNavegacionInterna = true;
-              setTimeout(() => { esNavegacionInterna = false; }, 100);
-      });
+          //document.addEventListener('submit', function() {
+          //    esNavegacionInterna = true;
+          //    setTimeout(() => { esNavegacionInterna = false; }, 100);
+      //});
       
       // Detectar refresh (F5, Ctrl+R, etc.)
       document.addEventListener('keydown', function(e) {
@@ -477,8 +477,6 @@ include('prcd/qc/qc.php');
 
     </main>
 
-    <script src="sidebars.js"></script>
-    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
   </div>
 </div>
 
@@ -486,7 +484,11 @@ include('prcd/qc/qc.php');
 
 </body>
 
+<script src="sidebars.js"></script>
+<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <?php
+    include("modals/tarjetonesPadron.php");
     include("modals/credenciales.php");
     include("modals/editarInfoVehiculo.php");
     include("modals/editarUser.php");
@@ -495,7 +497,6 @@ include('prcd/qc/qc.php');
     include("modals/reemplazarTarjetonP.php");
     include("modals/referenciasModals.php");
     include("modals/solicitudes.php");
-    include("modals/tarjetonesPadron.php");
     include("modals/tarjetonesTemp.php");
     include("modals/tarjetonExpedienteNuevo.php");
     include("modals/uploadDocsModals.php");

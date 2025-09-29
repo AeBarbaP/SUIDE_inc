@@ -83,12 +83,10 @@ function vehiculoAddExp(){
     var autoSeguroCheck = document.getElementById('checkAutoS')
     
     if (autoSeguroCheck.checked){
-	var autoSeguro = document.getElementById('AutoSeguroInput').value;
-	var autoSeguroFlag = 1;
+	    var autoSeguro = document.getElementById('AutoSeguroInput').value;
     }
     else {
-	var autoSeguro = "";
-	var autoSeguroFlag = 0;
+	    var autoSeguro = "";
     }
 
     if (modelo == "" && marca == "" && annio == "" && numPlaca == "" && serie == "" && folioTarjeton == "" && vigencia  == "") {
@@ -111,8 +109,7 @@ function vehiculoAddExp(){
                 serie:serie,
                 folioTarjeton:folioTarjeton,
                 vigencia:vigencia,
-                autoSeguro:autoSeguro,
-                autoSeguroFlag:autoSeguroFlag
+                autoSeguro:autoSeguro
             },
             success: function(data){
                 var jsonData = JSON.parse(JSON.stringify(data));
@@ -264,6 +261,7 @@ function limpiaModalTarjetonE(){
     document.getElementById('agregarVehiculoBtnExp').disabled = true;
     document.getElementById('tarjeton').innerHTML = "";
     document.getElementById('vehiculosTablaE').innerHTML = "";
+    //logEntregaTarjeton("2");
 }
 
 function habilitarBtn(){
