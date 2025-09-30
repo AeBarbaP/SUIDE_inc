@@ -98,7 +98,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiaModalTarjeton()">Cerrar</button>
                     <!-- <button type="button" class="btn btn-primary" id="habilitaimprimirtp" onclick="swaldatostrn();limpiaModalTarjeton()" disabled><i class="bi bi-save2"></i> Generar QR</button> -->
-                    <button type="button" class="btn btn-primary" id="imprimirtExp" data-bs-toggle="modal" data-bs-target="#qrShows" onclick="limpiaModalTarjetonE();logEntregaTarjeton(2);" disabled><i class="bi bi-printer"></i> Imprimir</button>
+                    <button type="button" class="btn btn-primary" id="imprimirtExp" data-bs-toggle="modal" data-bs-target="#qrShows" onclick="limpiaModalTarjetonE();logEntregaTarjeton(1)" disabled><i class="bi bi-printer"></i> Imprimir</button>
                 </div>
             </div>
         </div>

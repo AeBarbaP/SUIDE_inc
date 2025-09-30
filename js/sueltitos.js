@@ -61,7 +61,9 @@ function swaldatoscrd() {
             var form = document.getElementById("form-id");
             form.submit();
             insertLogCredencial();
-            Swal.fire('Listo!', '', 'success')
+            Swal.fire('Listo!', '', 'success');
+            credencialExp();
+            mostrarTablaServicios();
         } else if (result.isDenied) {
             Swal.fire('Verifica los datos en el padrón!', '', 'info')
         }

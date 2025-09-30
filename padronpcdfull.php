@@ -1,33 +1,33 @@
 <?php
-session_start();
+  session_start();
 
-if (isset($_SESSION['usr'])) {
-    if($_SESSION['perfil']==1){
-        // header('Location: javascript: history.go(-1)');
-    }
-    elseif($_SESSION['perfil']==2){
-        // header('Location: javascript: history.go(-1)');
-    }
-    elseif($_SESSION['perfil']==3){
-        // header('Location: javascript: history.go(-1)');
-    }
-    else{
-        header('Location:prcd/sort.php');
-    }
-    // Si esta identificado, en otras palabras existe la variable, le saludamos
-    // echo 'Hola ' . $_SESSION['usr'];
-} else {
-    // En caso contrario redirigimos el visitante a otra página
+  if (isset($_SESSION['usr'])) {
+      if($_SESSION['perfil']==1){
+          // header('Location: javascript: history.go(-1)');
+      }
+      elseif($_SESSION['perfil']==2){
+          // header('Location: javascript: history.go(-1)');
+      }
+      elseif($_SESSION['perfil']==3){
+          // header('Location: javascript: history.go(-1)');
+      }
+      else{
+          header('Location:prcd/sort.php');
+      }
+      // Si esta identificado, en otras palabras existe la variable, le saludamos
+      // echo 'Hola ' . $_SESSION['usr'];
+  } else {
+      // En caso contrario redirigimos el visitante a otra página
 
-    echo 'Usuario no válido';
-    // header('Location: ../../autentificacion/');
-    header('Location: prcd/sort.php');
-    die();
-}
+      echo 'Usuario no válido';
+      // header('Location: ../../autentificacion/');
+      header('Location: prcd/sort.php');
+      die();
+  }
 
-include('prcd/qc/qc.php');
+  include('prcd/qc/qc.php');
 
-// variables de sesión
+  // variables de sesión
 
     $usuario = $_SESSION['usr'];
     $id = $_SESSION['id'];
@@ -46,6 +46,7 @@ include('prcd/qc/qc.php');
 ?>
 
 <!doctype html>
+
 <html lang="es">
   <head>
     <meta charset="utf-8">
@@ -56,11 +57,6 @@ include('prcd/qc/qc.php');
     <title>SUIDEV · Inclusión</title>
 
     <link rel="icon" type="image/png" href="img/inclusion.ico"/>
-
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">  -->
     <link href="scripts/css/quicksand.css" rel="stylesheet">
     <link href="scripts/css/montserrat.css" rel="stylesheet">
     <link href="dashboard.css" rel="stylesheet">
@@ -71,13 +67,7 @@ include('prcd/qc/qc.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="scripts/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- POPPER PARA TOOLTIP -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
-    
-    <!-- <script src="scripts/popper.min.js"></script> -->
+    <script src="scripts/popper.min.js"></script>
     <script src="scripts/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
     <script src="scripts/jquery-3.7.1.min.js"></script>
     <script src="scripts/fontawsome.js"></script>
@@ -132,26 +122,26 @@ include('prcd/qc/qc.php');
       }
 
       // cerrar session si se cierra el navegador
-            // Variables de control
-          let esNavegacionInterna = false;
-          let esRefresh = false;
-          
-          // Detectar clicks en enlaces internos
-          document.addEventListener('click', function(e) {
-              const target = e.target.closest('a');
-              if (target && target.href) {
-                  const href = target.href;
-                  const currentOrigin = window.location.origin;
-                  
-                  if (href.startsWith(currentOrigin) || href.startsWith('/') || 
-                      href.startsWith('./') || href.startsWith('../')) {
-                      esNavegacionInterna = true;
-                      setTimeout(() => { esNavegacionInterna = false; }, 100);
-                  }
+      // Variables de control
+      let esNavegacionInterna = false;
+      let esRefresh = false;
+      
+      // Detectar clicks en enlaces internos
+      document.addEventListener('click', function(e) {
+          const target = e.target.closest('a');
+          if (target && target.href) {
+              const href = target.href;
+              const currentOrigin = window.location.origin;
+              
+              if (href.startsWith(currentOrigin) || href.startsWith('/') || 
+                  href.startsWith('./') || href.startsWith('../')) {
+                  esNavegacionInterna = true;
+                  setTimeout(() => { esNavegacionInterna = false; }, 100);
               }
-          });
-          
-          // Detectar envíos de formularios
+          }
+      });
+      
+      // Detectar envíos de formularios
           //document.addEventListener('submit', function() {
           //    esNavegacionInterna = true;
           //    setTimeout(() => { esNavegacionInterna = false; }, 100);
@@ -159,11 +149,11 @@ include('prcd/qc/qc.php');
       
       // Detectar refresh (F5, Ctrl+R, etc.)
       document.addEventListener('keydown', function(e) {
-          // Detectar F5 o Ctrl+R
-          if (e.key === 'F5' || (e.ctrlKey && e.key === 'r')) {
-              esRefresh = true;
-              setTimeout(() => { esRefresh = false; }, 100);
-          }
+        // Detectar F5 o Ctrl+R
+        if (e.key === 'F5' || (e.ctrlKey && e.key === 'r')) {
+            esRefresh = true;
+            setTimeout(() => { esRefresh = false; }, 100);
+        }
       });
       
       // También detectar el clic en el botón de refresh del navegador
@@ -212,25 +202,24 @@ include('prcd/qc/qc.php');
         if(event.ctrlKey){event.preventDefault()}
       });
 
-        // Broadcast that you're opening a page.
-        localStorage.openpages = Date.now();
-        var onLocalStorageEvent = function(e){
-            if(e.key == "openpages"){
-                // Listen if anybody else is opening the same page!
-                localStorage.page_available = Date.now();
-            }
-            if(e.key == "page_available"){
+      // Broadcast that you're opening a page.
+      localStorage.openpages = Date.now();
+      var onLocalStorageEvent = function(e){
+        if(e.key == "openpages"){
+            // Listen if anybody else is opening the same page!
+            localStorage.page_available = Date.now();
+        }
+        if(e.key == "page_available"){
 
-              event.preventDefault();
-              alert("Enlace abierto en la misma pestaña.");
-              window.location.href = self;
-            }
-        };
-        window.addEventListener('storage', onLocalStorageEvent, false);
-
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-
+          event.preventDefault();
+          alert("Enlace abierto en la misma pestaña.");
+          window.location.href = self;
+        }
+      };
+      
+      window.addEventListener('storage', onLocalStorageEvent, false);
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     </script>
     
     <style>
@@ -315,95 +304,98 @@ include('prcd/qc/qc.php');
   </head>
   <body onload="tablaPCDFull(); municipiosSelect2(32)">
     
-  <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-3 text-white" style="background-color: #917799;">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light text-center" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="navbar-nav">
-    <div class="nav-item text-nowrap text-light">
-      <a class="nav-link px-3 text-white" style="font-family: 'Quicksand', sans-serif;" href="prcd/sort.php">Cerrar Sesión</a>
-    </div>
-  </div>
-</nav>
-
-<div class="container-fluid">
-<div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse mt-3">
-      <p class="sidebar-heading d-flex justify-content-center text-center align-items-center px-3 mt-4 mb-1 text-muted" style="font-size: 1rem;">
-        <span class="" style="font-family: 'Montserrat', sans-serif;"><strong>Bienvenid@<br><i class="fas fa-user me-2"></i> 
-          <?php
-            echo ($nombre);
-          ?></strong>
-        </span>
-      </p>
-      <hr>      
-      <div class="flex-shrink-0 p-2 bg-white" style="width: 100%;">
-
-        <ul class="list-unstyled ps-0 mt-3">
-          <li class="ms-2 mb-1">
-            <span class="d-inline-flex"><a href="dashboard.php" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
-          </li>
-          <li class="mb-1 mt-2">
-          <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-inboxes ms-3 me-2"></i>
-              Padrón PCD
-            </a></span>
-            <div class="collapse" id="padron-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="padronpcdfull.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-inboxes ms-2 me-3"></i> Padrón PCD</a></li>
-                <li><a href="padronpcd.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-folder-plus ms-2 me-3"></i> Agregar nuevo</a></li>
-                <li><a href="padronpcdActualizar.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-journals ms-2 me-3"></i> Actualizar expediente</a></li>
-                
-              </ul>
-            </div>
-          </li>
-          <li class="mb-1 mt-2">
-          <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false"><a href="" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-person-badge ms-3 me-2"></i>
-              Tarjetones
-            </a></span>
-            <div class="collapse" id="dashboard-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetongen"><i class="bi bi-bookmark-plus ms-2 me-3"></i> Tarjetón de Padrón</a></li>
-                <li><a href="" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo"><i class="bi bi-tag ms-2 me-3"></i> Tarjeton de Préstamo</a></li>
-                
-              </ul>
-            </div>
-          </li>
-          <li class="mb-1 ms-2">
-          <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#credencial-collapse" aria-expanded="false"><a href="" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-person-vcard ms-2 me-2"></i>
-              Credenciales
-            </a></span>
-            <div class="collapse" id="credencial-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#credgen"><i class="bi bi-plus-circle me-3"></i> Nueva</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="border-top my-3"></li>
-          <li class="ms-2 mb-1">
-            <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"><a href="" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-gear-fill ms-2 me-2"></i>
-              Ajustes
-            </a></span>
-          </li>
-          <li class="mb-1"> 
-            <div class="collapse" id="account-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#editarUser"><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
-                <li><a href="cuentasusuario.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-people ms-2 me-3"></i>Gestión de usuarios</a></li>
-              </ul>
-              <li class="border-top my-3"></li>
-              <li class="ms-2 mb-1">
-              <span class="d-inline-flex"><a href="prcd/sort.php" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
-              Cerrar Sesión
-              </a></span>
-          </li>
-          <li class="mb-1"> 
-            </div>
-          </li>
-        </ul>
+    <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow mb-3 text-white" style="background-color: #917799;">
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-light text-center" href="#" style="font-family: 'Quicksand', sans-serif;"><img src="img/small.png" with="auto" height="45rem"> | SUIDEV</a>
+      <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-nav">
+        <div class="nav-item text-nowrap text-light">
+          <a class="nav-link px-3 text-white" style="font-family: 'Quicksand', sans-serif;" href="prcd/sort.php">Cerrar Sesión</a>
+        </div>
       </div>
     </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse mt-3">
+          <p class="sidebar-heading d-flex justify-content-center text-center align-items-center px-3 mt-4 mb-1 text-muted" style="font-size: 1rem;">
+            <span class="" style="font-family: 'Montserrat', sans-serif;"><strong>Bienvenid@<br><i class="fas fa-user me-2"></i> 
+              <?php
+                echo ($nombre);
+              ?></strong>
+            </span>
+          </p>
+          <hr>      
+          <div class="flex-shrink-0 p-2 bg-white" style="width: 100%;">
 
+            <ul class="list-unstyled ps-0 mt-3">
+              <li class="ms-2 mb-1">
+                <span class="d-inline-flex"><a href="dashboard.php" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-house-door-fill ms-2 me-2"></i> Inicio</a></span>
+              </li>
+              <li class="mb-1 mt-2">
+                <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#padron-collapse" aria-expanded="false"><a href="" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-inboxes ms-3 me-2"></i>
+                  Padrón PCD
+                </a></span>
+                <div class="collapse" id="padron-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="padronpcdfull.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-inboxes ms-2 me-3"></i> Padrón PCD</a></li>
+                    <li><a href="padronpcd.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-folder-plus ms-2 me-3"></i> Agregar nuevo</a></li>
+                    <li><a href="padronpcdActualizar.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-journals ms-2 me-3"></i> Actualizar expediente</a></li>
+                    
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1 mt-2">
+                <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false"><a href="" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-person-badge ms-3 me-2"></i>
+                  Tarjetones
+                </a></span>
+                <div class="collapse" id="dashboard-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>
+                      <a href="" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetongen"><i class="bi bi-bookmark-plus ms-2 me-3"></i> Tarjetón de Padrón</a>
+                    </li>
+                    <li>
+                      <a href="" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#tarjetonPrestamo"><i class="bi bi-tag ms-2 me-3"></i> Tarjeton de Préstamo</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mb-1 ms-2">
+                <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#credencial-collapse" aria-expanded="false"><a href="" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-person-vcard ms-2 me-2"></i>
+                  Credenciales
+                </a></span>
+                <div class="collapse" id="credencial-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#credgen"><i class="bi bi-plus-circle me-3"></i> Nueva</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="border-top my-3"></li>
+              <li class="ms-2 mb-1">
+                <span class="d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"><a href="" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-gear-fill ms-2 me-2"></i>
+                  Ajustes
+                </a></span>
+              </li>
+              <li class="mb-1"> 
+                <div class="collapse" id="account-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded" data-bs-toggle="modal" data-bs-target="#editarUser"><i class="bi bi-person-gear ms-2 me-3"></i> Editar mi perfil</a></li>
+                    <li><a href="cuentasusuario.php" class="link-dark d-inline-flex text-decoration-none rounded"><i class="bi bi-people ms-2 me-3"></i>Gestión de usuarios</a></li>
+                  </ul>
+                  <li class="border-top my-3"></li>
+                  <li class="ms-2 mb-1">
+                    <span class="d-inline-flex"><a href="prcd/sort.php" id="linkHome" class="link-dark text-decoration-none"><i class="bi bi-door-closed-fill ms-2 me-2"></i>
+                    Cerrar Sesión
+                    </a></span>
+                  </li>
+                  <li class="mb-1"></li>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="height: 200vh;">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center ">
         <p class="h3">Padrón de Personas con Discapacidad</p>
@@ -456,38 +448,20 @@ include('prcd/qc/qc.php');
       </div>
       
       <hr>
-      <!-- <h4 class="text-muted mt-4">Últimos documentos generados</h4> -->
+
       <div class="table-responsive mb-2" id="myTablePCD">
           
-      
       </div>
-      <!-- <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-end">
-          <li class="page-item disabled">
-            <a class="page-link">Anterior</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Siguiente</a>
-          </li>
-        </ul>
-      </nav> -->
+
 
     </main>
-
-  </div>
-</div>
+  </body>
 
 
+  <script src="sidebars.js"></script>
+  <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
-</body>
-
-<script src="sidebars.js"></script>
-<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<?php
+  <?php
     include("modals/tarjetonesPadron.php");
     include("modals/credenciales.php");
     include("modals/editarInfoVehiculo.php");
@@ -501,6 +475,6 @@ include('prcd/qc/qc.php');
     include("modals/tarjetonExpedienteNuevo.php");
     include("modals/uploadDocsModals.php");
   ?>
-<script src="js/sueltitos.js"></script>
+  <script src="js/sueltitos.js"></script>
 
 </html>

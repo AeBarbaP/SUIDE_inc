@@ -2097,7 +2097,7 @@ include('prcd/qc/qc.php');
             </div>  
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="limpiaModalTarjeton()">Cerrar</button>
-              <button type="button" class="btn btn-primary" id="habilitaimprimirtp" onclick="swaldatostrn();limpiaModalTarjeton()" disabled><i class="bi bi-save2"></i> Generar QR</button>
+              <button type="button" class="btn btn-primary" id="habilitaimprimirtp" onclick="swaldatostrn();limpiaModalTarjetonE();logEntregaTarjeton(1);" disabled><i class="bi bi-save2"></i> Generar QR</button>
               <button type="button" class="btn btn-primary" id="imprimirt" disabled><i class="bi bi-printer"></i> Imprimir</button>
             </div>
           </div>
@@ -2759,7 +2759,9 @@ include('prcd/qc/qc.php');
         document.getElementById("imprimirc").disabled=false;
         var form = document.getElementById("form-id");
         form.submit();
-        Swal.fire('Listo!', '', 'success')
+        Swal.fire('Listo!', '', 'success');
+        credencialExp();
+        mostrarTablaServicios();
       } else if (result.isDenied) {
         Swal.fire('Verifica los datos en el padrón!', '', 'info')
       }

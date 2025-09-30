@@ -437,7 +437,7 @@ include('prcd/qc/qc.php');
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             <button type="button" class="btn btn-primary" id="habilitaimprimirt" onclick="swaldatostrn()"><i class="bi bi-save2"></i> Generar Tarjetón</button>
-                            <button type="button" class="btn btn-primary" id="imprimirt" disabled><i class="bi bi-printer"></i> Imprimir</button>
+                            <button type="button" class="btn btn-primary" id="imprimirt" onclick="limpiaModalTarjeton();logEntregaTarjeton(1);entregarTarjetonExp()" disabled><i class="bi bi-printer"></i> Imprimir</button>
                           </div>
                         </div>
                       </div>
@@ -480,6 +480,8 @@ include('prcd/qc/qc.php');
         var form = document.getElementById("form-id");
         form.submit();
         Swal.fire('Listo!', '', 'success')
+        credencialExp();
+        mostrarTablaServicios();
       } else if (result.isDenied) {
         Swal.fire('Verifica los datos en el padrón!', '', 'info')
       }

@@ -26,7 +26,9 @@ function myFunction() {
         document.getElementById("imprimirc").disabled=false;
         var form = document.getElementById("form-id");
         form.submit();
-        Swal.fire('Listo!', '', 'success')
+        Swal.fire('Listo!', '', 'success');
+        credencialExp();
+        mostrarTablaServicios();
       } else if (result.isDenied) {
         Swal.fire('Verifica los datos en el padrón!', '', 'info')
       }

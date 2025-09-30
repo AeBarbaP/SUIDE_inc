@@ -3439,6 +3439,7 @@ function entregarTarjetonExp(){
             
             if (success == 1) {
                 document.getElementById('tarjetonExpedienteBtn').disabled = true;
+                mostrarTablaServicios();
             } else if (success == 0){
                 alert("No se pudo entregar el tarjetón");
             }
