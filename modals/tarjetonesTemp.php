@@ -330,7 +330,7 @@ echo '
                         </div>  
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" id="cerrarModalPrestamo" data-bs-dismiss="modal" onclick="limpiaModalTarjetonTemp()">Cerrar</button>
-                            <!-- <button type="button" class="btn btn-primary" id="habilitaimprimirtt" onclick="swaldatostrn()" disabled><i class="bi bi-save2"></i> Generar QR</button> -->
+                            <button type="button" class="btn btn-primary" id="actaresponsivatemp" onclick="" disabled><i class="bi bi-save2"></i> Generar Responsiva</button>
                             <button type="button" class="btn btn-primary" id="imprimirtt" data-bs-toggle="modal" data-bs-target="#qrShowsT" onclick="limpiaModalTarjetonTemp()" disabled><i class="bi bi-printer"></i> Imprimir</button>
                         </div>
                     </div>

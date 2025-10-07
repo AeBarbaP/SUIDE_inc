@@ -172,7 +172,7 @@ else {
         <link href="navbars-offcanvas.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     </head>
-    <body class="bg-body-secondary" onload="usuariosQueryLogs(); usuariosQuery(); conteoGeneral(); conteoGeneralCards()">
+    <body class="bg-body-secondary" onload="usuariosQueryLogs(); usuariosQuery(); conteoGeneral(); conteoGeneralCards();conteoUsuarios(); cardConteoMensual()">
         <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
             <symbol id="check2" viewBox="0 0 16 16">
                 <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -439,30 +439,31 @@ else {
             <div class="row mt-4">
                 <div class="col-3">
                     <div class="row">
+                        
+                        <div class="col-12">
+                            <div class="card mb-3" style="max-width: 20rem; background-color: rgba(65, 147, 147, 1);">
+                                <div class="card-header text-white" style="font-size: larger;"><strong>EXPEDIENTES CREADOS</strong></div>
+                                <div class="card-body">
+                                    <h5 class="card-title text-white">TRIMESTRALES</h5>
+                                    <p class="card-text text-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card mb-3" style="max-width: 20rem; background-color: rgba(225, 85, 127);">
+                                <div class="card-header text-white">CREDENCIALES</div>
+                                <div class="card-body">
+                                    <h5 class="card-title text-white">TRIMESTRALES</h5>
+                                    <p class="card-text text-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-12">
                             <div class="card mb-3" style="max-width: 20rem; background-color: rgba(78, 160, 242);">
-                                <!-- <div class="card-header text-white" style="font-size: larger;"><strong>TITULO</strong></div> -->
+                                <div class="card-header text-white" style="font-size: larger;"><strong>TARJETONES</strong></div>
                                 <div class="card-body">
-                                    <h5 class="card-title text-white">Empleado más Eficiente</h5>
-                                    <p class="card-text text-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="card mb-3" style="max-width: 20rem; background-color: rgba(245, 205, 45);">
-                                <div class="card-header text-white" style="font-size: larger;"><strong>HEADER</strong></div>
-                                <div class="card-body">
-                                    <h5 class="card-title text-white">Warning card title</h5>
-                                    <p class="card-text text-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="card" style="max-width: 20rem; background-color: rgba(225, 85, 127);">
-                                <div class="card-header text-white">Header</div>
-                                <div class="card-body">
-                                    <h5 class="card-title text-white">Danger card title</h5>
-                                    <p class="card-text text-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <h5 class="card-title text-white">TRIMESTRALES</h5>
+                                    <p class="card-text text-white">.......</p>
                                 </div>
                             </div>
                         </div>
@@ -483,21 +484,7 @@ else {
                                         </div>
                                     </div>
                                     <!-- tabla -->
-                                    <table class="table p-1">
-                                        <thead>
-                                            <tr>
-                                            <th scope="col"></th>
-                                            <th scope="col">Actividad</th>
-                                            <th scope="col">Avance</th>
-                                            <th scope="col">Departamento</th>
-                                            <th scope="col">Usuario</th>
-                                            <th scope="col" class="text-end"><i class="bi bi-people"></i></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="usuariosTabla">
-                                            
-                                        </tbody>
-                                    </table>
+                                    <canvas id="myChartUsers" style="width:100%;"></canvas>
                                     <!-- tabla -->
                                 </div>
                             </div>
