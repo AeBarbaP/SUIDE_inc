@@ -389,14 +389,15 @@ else {
                                     <h5 class="card-title strong">Captura de expedientes</h5>
                                     <p class="card-text text-muted">Expedientes capturados durante el mes</p>
                                     <div class="row">
-                                        <div class="col-6">
+                                        <div class="col-4">
                                             <h1 class="text-start p-3">
                                                 <i class="bi bi-clipboard-plus-fill border p-2 rounded" style="background-color: #cbe5ff; color: #4ea0f2;"></i>
                                             </h1>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-8">
                                             <h1 class="p-3" style="color: #4ea0f2;"><span id="expNews2"></span></h1>
-                                            <p><small class="text-success pe-2">(<i class="bi bi-arrow-up"></i><span id="porcentajeExp"></span>%)</small></p>
+                                            <p class="text-secondary"><i class="bi bi-person-standing text-primary me-2"></i><span class="mt-2" id="hombresTotal"></span> | <i class="bi bi-person-standing-dress text-danger me-2"></i><span class="mt-2" id="mujeresTotal"></span></p>
+                                            <p><small class="text-primary">(<span id="porcentajeExp"></span>%)</small></p>
                                         </div>
                                     </div>
                                 </div>
@@ -441,46 +442,56 @@ else {
                     <div class="row">
                         
                         <div class="col-12">
-                            <div class="card mb-3" style="max-width: 20rem; background-color: rgba(65, 147, 147, 1);">
-                                <div class="card-header text-white" style="font-size: larger;"><strong>EXPEDIENTES CREADOS</strong></div>
+                            <div class="card mb-3" style="max-width: 20rem; background-color: rgba(73, 152, 152, 1);">
+                                <div class="card-header text-white" style="font-size: larger;"><strong>Expedientes Totales</strong></div>
                                 <div class="card-body">
-                                    <h5 class="card-title text-white">TRIMESTRALES</h5>
-                                    <p class="card-text text-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <h5 class="card-title text-white"><span class="h1" id="expedientesNews"></span></h5>
+                                    <p class="text-white"><i class="bi bi-person-standing me-2"></i><span class="mt-2" id="hombresTotal1"></span> | <i class="bi bi-person-standing-dress me-2"></i><span class="mt-2" id="mujeresTotal1"></span></p>
+                                    <p class="card-text text-white"><small>Información correspondiente a los expedientes registrados en el padrón.</small></p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="card mb-3" style="max-width: 20rem; background-color: rgba(225, 85, 127);">
-                                <div class="card-header text-white">CREDENCIALES</div>
+                                <div class="card-header text-white" style="font-size: larger;"><strong>Credenciales Generadas</strong></div>
                                 <div class="card-body">
-                                    <h5 class="card-title text-white">TRIMESTRALES</h5>
-                                    <p class="card-text text-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <h5 class="card-title text-white"><span class="h1" id="credencialesNews"></span></h5>
+                                    <p class="card-text text-white"><small>Información correspondiente a las credenciales generadas a usuarios.</small></p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="card mb-3" style="max-width: 20rem; background-color: rgba(78, 160, 242);">
-                                <div class="card-header text-white" style="font-size: larger;"><strong>TARJETONES</strong></div>
+                                <div class="card-header text-white" style="font-size: larger;"><strong>Tarjetones Entregados</strong></div>
                                 <div class="card-body">
-                                    <h5 class="card-title text-white">TRIMESTRALES</h5>
-                                    <p class="card-text text-white">.......</p>
+                                    <h5 class="card-title text-white"><span class="h1" id="tarjetonesNews"></span></h5>
+                                    <p class="card-text text-white"><small>Información correspondiente a los tarjetones otorgados a los usuarios.</small></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-9">
+                <div class="col-9 mb-2">
                     <div class="row h-100">
                         <div class="col-12">
                             <div class="card mb-3" style="width: 100%; height: 100%;">
                                 <div class="card-body">
                                     <div class="row mb-3">
-                                        <div class="col-3 text-start">
-                                            <a class="btn btn-secondary btn-sm mt-2 text-white" type="btn" href="query/excel_usuarioslog.php" style="color: #bfc7d1;" >Exportar<i class="bi bi-download ms-2 me-1"></i></a>
+                                        <div class="col-5 text-start">
+                                            <!-- <a class="btn btn-secondary btn-sm mt-2 text-white" type="btn" href="query/excel_usuarioslog.php" style="color: #bfc7d1;" >Exportar<i class="bi bi-download ms-2 me-1"></i></a> -->
+                                            <div class="input-group input-group-sm mb-3">
+                                                <button class="btn btn-outline-secondary" type="button">Exportar</button>
+                                                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+                                                    <option selected>Municipio</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <div class="col-9 text-end">
-                                            <h4 class="card-title">Actividad Reciente</h4>
-                                            <p class="text-muted small text-secondary mt-0">de Junio 1 de 2024 - Diciembre 31 de 2024</p>
+                                        <div class="col-7 text-end">
+                                            <h4 class="card-title">Actividad del Mes por Usuario</h4>
+                                            <p class="text-muted small text-secondary mt-0"><span id="mesActivo"></span> del <span id="anioActivo"></span></p>
                                         </div>
                                     </div>
                                     <!-- tabla -->
@@ -492,6 +503,38 @@ else {
                     </div>
                 </div>
             </div>
+            <div class="col-12 mt-3">
+                <div class="row h-100">
+                    <div class="col-12">
+                        <div class="card mb-3" style="width: 100%; height: 100%;">
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col-5 text-start">
+                                        <!-- <a class="btn btn-secondary btn-sm mt-2 text-white" type="btn" href="query/excel_usuarioslog.php" style="color: #bfc7d1;" >Exportar<i class="bi bi-download ms-2 me-1"></i></a> -->
+                                        <div class="input-group input-group-sm mb-3">
+                                            <button class="btn btn-outline-secondary" type="button">Exportar</button>
+                                            <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+                                                <option selected>Mes Actual</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-7 text-end">
+                                        <h4 class="card-title">Actividad del Mes por Usuario</h4>
+                                        <p class="text-muted small text-secondary mt-0"><span id="mesActivo"></span> del <span id="anioActivo"></span></p>
+                                    </div>
+                                </div>
+                                <!-- tabla -->
+                                <canvas id="myChartUsers" style="width:100%;"></canvas>
+                                <!-- tabla -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
             <div class="row mt-4">
                 <div class="col-12">
                     <div class="card mb-3" style="width: 100%; height: 100%;">

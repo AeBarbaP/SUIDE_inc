@@ -11,11 +11,21 @@ $fechaHoy = new DateTime();
 $mes = $fechaHoy->format('m');
 $anio = $fechaHoy->format('Y');
 
-$sql = "SELECT * FROM log_registro WHERE tipo_dato = 39 AND MONTH(fecha) = MONTH(CURRENT_DATE()) AND YEAR(fecha) = YEAR(CURRENT_DATE())";
+$sql = "SELECT datos_generales.municipio, COUNT(tarjetones.folio_tarjeton) AS tarjetonesTotal FROM datos_generales INNER JOIN tarjetones ON tarjetones.numExpediente = datos_generales.id GROUP BY datos_generales.municipio"; 
 $resultado = $conn->query($sql);
-$row = $resultado->fetch_assoc();
-$mesAnt = $mes-1;
-$fila = $resultado->num_rows;
+
+$municipios = array();
+
+while ($row = $resultado->fetch_assoc()){
+    $totalTarjetones = $row['tarjetonesTotal'];
+    $municipios[] = array(
+        'municipio' => $row['municipio'],
+        'tartetones' => (int)$row['tarjetonesTotal']
+    );
+}
+
+
+
 
 $sql1 = "SELECT * FROM log_registro WHERE tipo_dato = 39 AND MONTH(fecha) = '$mesAnt' AND YEAR(fecha) = YEAR(CURRENT_DATE())";
 $resultado1 = $conn->query($sql1);
@@ -34,9 +44,7 @@ $sqlExpedientes = "SELECT * FROM log_registro WHERE tipo_dato = 37 AND MONTH(fec
 $resultadoExp = $conn->query($sqlExpedientes);
 $filaExp = $resultadoExp->num_rows;
 
-$sqlTarjetones = "SELECT * FROM tarjetones WHERE MONTH(fecha_entrega) = MONTH(CURRENT_DATE()) AND YEAR(fecha_entrega) = YEAR(CURRENT_DATE()) GROUP BY folio_tarjeton";
-$resultadoTar = $conn->query($sqlTarjetones);
-$filaTar = $resultadoTar->num_rows;
+
 
 $sqlActualizar = "SELECT * FROM datos_generales WHERE MONTH(fecha_actualizacion) = MONTH(CURRENT_DATE()) AND YEAR(fecha_actualizacion) = YEAR(CURRENT_DATE())";
 $resultadoAct = $conn->query($sqlActualizar);

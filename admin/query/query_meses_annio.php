@@ -5,6 +5,7 @@ include ("../prcd/qc/qc.php");
 date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
 $fecha_actual = strftime("%Y-%m-%d,%H:%M:%S");
+$year = date('Y', strtotime($fecha_actual));
 
 $credencial = 0;
 $tarjeton = 0;
@@ -48,6 +49,7 @@ for ($meses = 1; $meses <= 12; $meses++) {
     //}
     $datos[] = array(
                 'mes' => $meses,
+                'annio' => $year,
                 'credencial' => $credencial,
                 'tarjeton' => $tarjeton,
                 'expediente' => $expediente

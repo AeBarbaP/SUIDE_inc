@@ -24,6 +24,8 @@ function conteoGeneralCards(){
             var filasAct = jsonData.filasAct;
             var porcentajeExp = jsonData.porcentajeExp;
             var anio = jsonData.anio;
+            var mujeresTotal = jsonData.mujeresTotal;
+            var hombresTotal = jsonData.hombresTotal;
 
             console.log("Nuevos registros: "+filas);
             document.getElementById("expNews2").innerHTML = filas;
@@ -33,6 +35,8 @@ function conteoGeneralCards(){
             console.log("Tarjetones entregados: "+filasTar);
             document.getElementById("filasTar").innerHTML = filasTar;
             document.getElementById("anioEjercicio").innerHTML = anio;
+            document.getElementById("mujeresTotal").innerHTML = mujeresTotal;
+            document.getElementById("hombresTotal").innerHTML = hombresTotal;
         }
     });
 }
