@@ -1,3 +1,4 @@
+
 function conteoGeneral() {
     const fechaActual = new Date();
 
@@ -261,10 +262,12 @@ function conteoMunicipios() {
     
     $.ajax({
         type: "POST",
-        url: "query/queryMunicipiosGeneral.php",
+        url: "query/queryMunicipioGeneral.php",
         dataType: "json",
         cache: false,
         success: function(response) {
+            console.log ("Identado por Anny: ",response);
+            return;
             var jsonData = JSON.parse(JSON.stringify(response));
             console.log('Respuesta JSON:', jsonData);
             var filas = 0;
@@ -401,3 +404,4 @@ function conteoMunicipios() {
     });
 }
 
+conteoMunicipios();

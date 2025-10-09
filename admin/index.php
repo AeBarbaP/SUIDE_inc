@@ -482,7 +482,7 @@ else {
                                             <div class="input-group input-group-sm mb-3">
                                                 <button class="btn btn-outline-secondary" type="button">Exportar</button>
                                                 <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
-                                                    <option selected>Municipio</option>
+                                                    <option selected>Octubre</option>
                                                     <option value="1">One</option>
                                                     <option value="2">Two</option>
                                                     <option value="3">Three</option>
@@ -514,7 +514,7 @@ else {
                                         <div class="input-group input-group-sm mb-3">
                                             <button class="btn btn-outline-secondary" type="button">Exportar</button>
                                             <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
-                                                <option selected>Mes Actual</option>
+                                                <option selected>Selecciona Municipio</option>
                                                 <option value="1">One</option>
                                                 <option value="2">Two</option>
                                                 <option value="3">Three</option>
