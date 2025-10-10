@@ -40,10 +40,12 @@ function vehiculoTempAdd(){
                 alert('no muestra tabla');
             }
             limpiarInputsVehiculoTemp();
+            responsivaPrestamo();
             document.getElementById('vehiculosTemp').hidden = false;
             document.getElementById('folioTTemp').disabled = true;
             document.getElementById('vigenciaTemp').disabled = true;
             document.getElementById('imprimirtt').disabled = false;
+            document.getElementById('actaresponsivatemp').disabled = false;
             mostrarTablaVehiculosTemp();
         }
         
@@ -56,6 +58,11 @@ function habilitaBTNaddTemp(){
 }
 function habilitaBTNsiguiente(){
     document.getElementById('agregarUsuarioTempBtn').disabled = false;
+}
+
+function responsivaPrestamo() {
+    var curp = document.getElementById('curpTemp').value;
+    document.getElementById('actaresponsivatemp').setAttribute("href", "prcd/responsivaPDF.php?curp="+curp);
 }
 
 function codigoQR2(concatenado){
@@ -391,6 +398,9 @@ function queryDatosT(){
             document.getElementById('closeEditarTarjeton').setAttribute('data-bs-target','#tarjetonPrestamo');
             document.getElementById('guardarEditarTarjeton').removeAttribute('data-bs-target','');
             document.getElementById('cerrarEditarTarjeton').setAttribute('data-bs-target','#tarjetonPrestamo');
+            document.getElementById('actaresponsivatemp').setAttribute("target", "_blank");
+            document.getElementById('actaresponsivatemp').setAttribute("href", "prcd/responsivaPrestamoPDF.php?curp="+curp2);
+            document.getElementById('actaresponsivatemp').disabled = false;
         }
     });
 }

@@ -3108,6 +3108,11 @@ function responsivaCarta() {
     document.getElementById('imprimeCR').setAttribute("href", "prcd/responsivaPDF.php?curp="+curp);
 }
 
+function responsivaPrestamo() {
+    var curp = document.getElementById('curpTemp').value;
+    document.getElementById('actaresponsivatemp').setAttribute("href", "prcd/responsivaPDF.php?curp="+curp);
+}
+
 function checkListDocs() {
     var curp = document.getElementById('curp_exp').value;
 

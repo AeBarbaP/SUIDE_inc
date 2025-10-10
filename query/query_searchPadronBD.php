@@ -43,6 +43,10 @@ $expediente = $_POST['expediente'];
       $apellidoMaterno = $row_sql_expediente['apellido_m'];
       $curp = $row_sql_expediente['curp'];
       $tipoVialidad = $row_sql_expediente['tipoVialidad'];
+
+      if ($tipoVialidad == "CALLE"){
+        $tipoVialidad = "";
+      }
       
       $discapacidad1 = $row_QueryDatosMedicos['discapacidad'];
       $discapacidad2 = preg_replace('/[0-9\-]/', '', $discapacidad1); 

@@ -55,9 +55,14 @@ header("content-type: image/jpeg");
       }
       else {
         $vialidad = $row_QueryVialidad['nombreVialidad'].' ';
+        if ($vialidad == "CALLE"){
+          $vialidad = "";
+        }
       }
 
+      
       $direccion = $vialidad.$row_QueryDireccion['direccion'];
+
       $numeroCasa = $row_QueryDireccion['numeroCasa'];
 
       if ($row_QueryDireccion['numeroInterior'] == "S/N" || $row_QueryDireccion['numeroInterior'] == "" || $row_QueryDireccion['numeroInterior'] == null){

@@ -62,6 +62,7 @@ function myFunction() {
         document.getElementById("habilitaimprimirtt").disabled=true;
         document.getElementById("imprimirt").disabled=false;
         document.getElementById("imprimirtt").disabled=false;
+        document.getElementById("actaresponsivatemp").disabled=false;
         Swal.fire('Listo!', '', 'success');
       } else if (result.isDenied) {
         Swal.fire('Verifica los datos en el padrón!', '', 'info')

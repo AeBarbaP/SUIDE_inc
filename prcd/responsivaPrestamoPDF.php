@@ -12,7 +12,7 @@ $fecha_actual = strftime("%d-%m-%Y");
 
 $curp =$_REQUEST['curp'];
 
-$sqlGenerales = "SELECT * FROM datos_generales WHERE curp = '$curp'";
+$sqlGenerales = "SELECT * FROM datos_usuariot WHERE curp = '$curp'";
 $resultadoGenerales = $conn->query($sqlGenerales);
 $rowSqlGenerales = $resultadoGenerales->fetch_assoc();
 
@@ -100,7 +100,7 @@ $pdf->SetFont('Arial','B',9);
 $pdf->Cell(44,5,utf8_decode('Número de Expediente: '),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',9);
-$pdf->Cell(44,5,utf8_decode($rowSqlGenerales['numExpediente']),0,0,'C');
+$pdf->Cell(44,5,utf8_decode('PRÉSTAMO'),0,0,'C');
 $pdf->Cell(5,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(12,5,utf8_decode('CURP:'),0,0,'L');
@@ -120,7 +120,7 @@ $pdf->SetFont('Arial','B',9);
 $pdf->Cell(18,5,utf8_decode('Domicilio:'),0,0,'L');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',9);
-$pdf->Cell(105,5,utf8_decode($rowSqlGenerales['domicilio']),0,0,'C');
+$pdf->Cell(105,5,utf8_decode($rowSqlGenerales['calle']),0,0,'C');
 $pdf->Cell(2,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(13,5,utf8_decode('No. Ext:'),0,0,'R');
@@ -141,11 +141,11 @@ $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
 $pdf->SetFont('Arial','',9);
 $pdf->Cell(75,5,utf8_decode($rowSqlGenerales['colonia']),0,0,'C');
 $pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','B',9);
-$pdf->Cell(26,5,utf8_decode('Entre vialidades:'),0,0,'R');
-$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
-$pdf->SetFont('Arial','',9);
-$pdf->Cell(72,5,utf8_decode($rowSqlGenerales['entre_vialidades']),0,0,'C');
+//$pdf->SetFont('Arial','B',9);
+//$pdf->Cell(26,5,utf8_decode('Entre vialidades:'),0,0,'R');
+//$pdf->Cell(1,5,utf8_decode(''),0,0,'C');
+//$pdf->SetFont('Arial','',9);
+//$pdf->Cell(72,5,utf8_decode($rowSqlGenerales['entre_vialidades']),0,0,'C');
 $pdf->Ln();
 
 $pdf->SetFont('Arial','B',9);
@@ -169,7 +169,7 @@ $pdf->Ln();
 
 $pdf->Ln();
 $pdf->SetFont('Arial','',9);
-$pdf->Multicell(185,4,utf8_decode('Recibí tarjetón que permite el uso de los espacios públicos exclusivos para Personas con Discapacidad con número de control: '),0,'J',0);
+$pdf->Multicell(185,4,utf8_decode('Recibí Tarjetón de Préstamo que permite el uso de los espacios públicos exclusivos para Personas con Discapacidad con número de control: '),0,'J',0);
 $pdf->Ln();
 $pdf->SetFont('Arial','B',11);
 $pdf->Cell(190,4,utf8_decode($folioTarjeton),0,0,'C');
