@@ -13,7 +13,7 @@ $anio = $fechaHoy->format('Y');
 
 $sql = "SELECT datos_generales.municipio, COUNT(tarjetones.folio_tarjeton) AS tarjetonesTotal FROM datos_generales 
 INNER JOIN tarjetones ON tarjetones.numExpediente = datos_generales.id
-WHERE (MONTH(datos_generales.fecha_actualizacion) = 09) AND YEAR(datos_generales.fecha_actualizacion) = YEAR(CURRENT_DATE())) AND tarjetones.tipo_tarjeton = 1 
+WHERE (MONTH(datos_generales.fecha_actualizacion) = 08 AND YEAR(datos_generales.fecha_actualizacion) = YEAR(CURRENT_DATE())) AND tarjetones.tipo_tarjeton = 1 
 GROUP BY datos_generales.municipio"; 
 $resultado = $conn->query($sql);
 
@@ -35,7 +35,7 @@ while ($rowTarjetones = $resultado->fetch_assoc()){
 
 $sql2 = "SELECT datos_generales.municipio, COUNT(solicitud.folio_solicitud) AS credencialesTotal FROM datos_generales 
 INNER JOIN solicitud ON solicitud.folio_solicitud = datos_generales.numExpediente
-WHERE MONTH(datos_generales.fecha_actualizacion) = 09) AND YEAR(datos_generales.fecha_actualizacion) = YEAR(CURRENT_DATE())  
+WHERE MONTH(datos_generales.fecha_actualizacion) = 08 AND YEAR(datos_generales.fecha_actualizacion) = YEAR(CURRENT_DATE())  
 GROUP BY datos_generales.municipio"; 
 $resultado2 = $conn->query($sql2);
 
@@ -55,8 +55,8 @@ while ($rowCredenciales = $resultado2->fetch_assoc()){
     );
 }
 
-$sql3 = "SELECT datos_generales.municipio, COUNT(datos.generales.id) AS expedientesTotal FROM datos_generales
-WHERE MONTH(datos_generales.fecha_actualizacion) = 09) AND YEAR(datos_generales.fecha_actualizacion) = YEAR(CURRENT_DATE())  
+$sql3 = "SELECT datos_generales.municipio, COUNT(datos_generales.id) AS expedientesTotal FROM datos_generales
+WHERE MONTH(datos_generales.fecha_actualizacion) = 08 AND YEAR(datos_generales.fecha_actualizacion) = YEAR(CURRENT_DATE())  
 GROUP BY datos_generales.municipio"; 
 $resultado3 = $conn->query($sql3);
 
