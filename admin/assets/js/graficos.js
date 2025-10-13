@@ -266,61 +266,61 @@ function conteoMunicipios() {
         dataType: "json",
         cache: false,
         success: function(response) {
-            console.log ("Identado por Anny: ",response);
-            return;
+            //console.log ("Identado por Anny: ",response);
+            //return;
             var jsonData = JSON.parse(JSON.stringify(response));
             console.log('Respuesta JSON:', jsonData);
-            var filas = 0;
-            var filasExp = 0;
-            var filasTar = 0;
-            var filasAct = 0;
 
-            if (Array.isArray(jsonData)) {
-                console.log('Número de elementos en el array:', jsonData.length);
-                var x = jsonData.length;
-                var datosTabla = Array(x).fill(0).map(() => ({ credencial: 0, tarjeton: 0, expediente: 0 , usuario: 0, expedienteUpdate: 0}));
+            if (Array.isArray(response)) {
+                //console.log('Número de elementos en el array:', jsonData.length);
+                var x = response.length;
+                
+                const arrayConcatenado = [...response[0], ...response[1], ...response[2]];
+                
+                const datosAgrupados = arrayConcatenado.reduce((acumulador, objetoActual) => {
+                    if (objetoActual.municipio) {
+                        const municipio1 = objetoActual.municipio;
+                        
+                        // Si el municipio no existe en el acumulador, lo inicializamos con el objeto actual.
+                        // Si ya existe, usamos Object.assign para fusionar el objeto actual con el existente.
+                        acumulador[municipio1] = acumulador[municipio1] 
+                        ? Object.assign(acumulador[municipio1], objetoActual)
+                        : { ...objetoActual };
+                    }
 
+                    return acumulador;
+                }, {}); // El objeto inicial del acumulador es un objeto vacío
                 // Iterar sobre cada elemento en el array
-                for (var i = 0; i < jsonData.length; i++) {
-                    var datosGenerales = jsonData[i];
-                    var credencial = datosGenerales.credencial;
-                    var tarjeton = datosGenerales.tarjeton;
-                    var usuario = datosGenerales.usuario;
-                    var expediente = datosGenerales.expediente;
-                    var expedienteUpdate = datosGenerales.expedienteUpdate;
 
-                    
-                    console.log('credencial:', credencial);
-                    console.log('tarjeton:', tarjeton);
-                    console.log('usuario:', usuario);
-                    console.log('expediente:', expediente);
-                    console.log('expedienteUpdate:', expedienteUpdate);
+                console.log('datosAgrupados',datosAgrupados);
 
-                    // Agregar los datos al arreglo multidimensional
-                    datosTabla[i] = { credencial, tarjeton, expediente , expedienteUpdate, usuario};
-                }
+                /* console.log('Este es el array concatenado ',arrayConcatenado); */
+                //console.log('xxx ',arrayConcatenado[1]);
+                var y = datosAgrupados.length;
 
-                console.log('datosTabla:', datosTabla);
-                // Crear un arreglo para los datos del gráfico
-                var credencialData = datosTabla.map(d => d.credencial);
-                var tarjetonData = datosTabla.map(d => d.tarjeton);
-                var usuarioData = datosTabla.map(d => d.usuario);
-                var expedienteData = datosTabla.map(d => d.expediente);
-                var expedienteUpdateData = datosTabla.map(d => d.expedienteUpdate);
+                // 1. Obtener el array de municipios para las etiquetas
+                const etiquetasMunicipios = Object.keys(datosAgrupados);
 
+                // 2. Obtener un array con los valores para la serie de datos (por ejemplo, 'tarjeton')
+                const datosEtiquetas = etiquetasMunicipios.map(municipio => datosAgrupados[municipio].municipio);
+                const datosCredenciales = etiquetasMunicipios.map(municipio => datosAgrupados[municipio].credenciales);
+                const datosTarjeton = etiquetasMunicipios.map(municipio => datosAgrupados[municipio].tarjetones);
+                const datosExpedientes = etiquetasMunicipios.map(municipio => datosAgrupados[municipio].expedientes);
+
+                console.log('datosTarjeton',datosTarjeton);
                 // Crear el gráfico
-                const ctx = document.getElementById('myChartUsers').getContext('2d');
+                const ctx = document.getElementById('myChartMunicipios').getContext('2d');
                 let delayed;
                 const myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
                         labels: 
-                            usuarioData
+                            datosEtiquetas
                         ,
                         datasets: [
                             {
                                 label: 'Credencial',
-                                data: credencialData,
+                                data: datosCredenciales,
                                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                                 borderColor: 'rgba(255, 99, 132, 1)',
                                 borderWidth: 1,
@@ -332,7 +332,7 @@ function conteoMunicipios() {
                             },
                             {
                                 label: 'Tarjeton',
-                                data: tarjetonData,
+                                data: datosTarjeton,
                                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                                 borderColor: 'rgba(54, 162, 235, 1)',
                                 borderWidth: 1,
@@ -344,7 +344,7 @@ function conteoMunicipios() {
                             },
                             {
                                 label: 'Expediente',
-                                data: expedienteData,
+                                data: datosExpedientes,
                                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                                 borderColor: 'rgba(75, 192, 192, 1)',
                                 borderWidth: 1,
@@ -354,7 +354,7 @@ function conteoMunicipios() {
                                 responsive: true,
                                 maintainAspectRatio: false,
                             },
-                            {
+                            /* {
                                 label: 'Actualizados',
                                 data: expedienteUpdateData,
                                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
@@ -365,7 +365,7 @@ function conteoMunicipios() {
                                 borderSkipped: false,
                                 responsive: true,
                                 maintainAspectRatio: false,
-                            }
+                            } */
                         ],
                     },
                     options: {

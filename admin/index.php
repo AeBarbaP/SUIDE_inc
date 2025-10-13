@@ -502,39 +502,39 @@ else {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 mt-3">
-                <div class="row h-100">
-                    <div class="col-12">
-                        <div class="card mb-3" style="width: 100%; height: 100%;">
-                            <div class="card-body">
-                                <div class="row mb-3">
-                                    <div class="col-5 text-start">
-                                        <!-- <a class="btn btn-secondary btn-sm mt-2 text-white" type="btn" href="query/excel_usuarioslog.php" style="color: #bfc7d1;" >Exportar<i class="bi bi-download ms-2 me-1"></i></a> -->
-                                        <div class="input-group input-group-sm mb-3">
-                                            <button class="btn btn-outline-secondary" type="button">Exportar</button>
-                                            <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
-                                                <option selected>Selecciona Municipio</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
+            
+                <div class="col-12 mt-3">
+                    <div class="row h-100">
+                        <div class="col-12">
+                            <div class="card mb-3" style="width: 100%; height: 100%;">
+                                <div class="card-body">
+                                    <div class="row mb-3">
+                                        <div class="col-5 text-start">
+                                            <!-- <a class="btn btn-secondary btn-sm mt-2 text-white" type="btn" href="query/excel_usuarioslog.php" style="color: #bfc7d1;" >Exportar<i class="bi bi-download ms-2 me-1"></i></a> -->
+                                            <div class="input-group input-group-sm mb-3">
+                                                <button class="btn btn-outline-secondary" type="button">Exportar</button>
+                                                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+                                                    <option selected>Mes en curso</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-7 text-end">
+                                            <h4 class="card-title">Estadísticas de Atención por Municipio</h4>
+                                            <p class="text-muted small text-secondary mt-0"><span id="mesActivo"></span> del <span id="anioActivo"></span></p>
                                         </div>
                                     </div>
-                                    <div class="col-7 text-end">
-                                        <h4 class="card-title">Actividad del Mes por Usuario</h4>
-                                        <p class="text-muted small text-secondary mt-0"><span id="mesActivo"></span> del <span id="anioActivo"></span></p>
-                                    </div>
+                                    <!-- tabla -->
+                                    <canvas id="myChartMunicipios" style="width:100%;"></canvas>
+                                    <!-- tabla -->
                                 </div>
-                                <!-- tabla -->
-                                <canvas id="myChartUsers" style="width:100%;"></canvas>
-                                <!-- tabla -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
             <div class="row mt-4">
                 <div class="col-12">
                     <div class="card mb-3" style="width: 100%; height: 100%;">
