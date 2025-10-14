@@ -109,8 +109,8 @@ function conteoFiltrado(){
                 // Graphs
                 const ctx = document.getElementById('myChart')
                 
-                if (myChart!=null) {
-                  myChart.destroy();
+                if (miGrafico!=null) {
+                  miGrafico.destroy();
                 }
               
                  // eslint-disable-next-line no-unused-vars

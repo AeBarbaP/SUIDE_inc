@@ -13,14 +13,14 @@ $expediente = 0;
 
 $meses = 12;
 
-for ($meses = 1; $meses <= 12; $meses++) {
+for ($meses = 01; $meses <= 12; $meses++) {
     
     //$sqlUsers = "SELECT * FROM users ORDER BY id ASC";
     //$resultadoUsers = $conn->query($sqlUsers);
     //while($rowUsers = $resultadoUsers->fetch_assoc()){
 
         //$user = $rowUsers['username'];
-        $sqlExpedientesCompletos = "SELECT COUNT(*) AS conteo FROM log_registro WHERE MONTH(fecha) = $meses AND YEAR(fecha) = YEAR(CURRENT_DATE()) AND tipo_dato = 37";
+        $sqlExpedientesCompletos = "SELECT COUNT(*) AS conteo FROM solicitud WHERE (MONTH(fecha_solicitud) = $meses AND YEAR(fecha_solicitud) = YEAR(CURRENT_DATE())) AND tipo = 4";
         $resultadoExpCompletos = $conn->query($sqlExpedientesCompletos);
         $rowResultado1 = $resultadoExpCompletos->fetch_assoc();
         $credencial = $rowResultado1['conteo'];
@@ -29,10 +29,16 @@ for ($meses = 1; $meses <= 12; $meses++) {
         $resultadoExpCompletos2 = $conn->query($sqlExpedientesCompletos2);
         $tarjeton = $resultadoExpCompletos2->num_rows;
         
-        $sqlExpedientesCompletos3 = "SELECT COUNT(*) AS conteo FROM log_registro WHERE MONTH(fecha) = $meses AND YEAR(fecha) = YEAR(CURRENT_DATE()) AND tipo_dato = 39";
+        $sqlExpedientesCompletos3 = "SELECT COUNT(*) AS conteo FROM datos_generales WHERE MONTH(fecha_registro) = $meses AND YEAR(fecha_registro) = YEAR(CURRENT_DATE())";
         $resultadoExpCompletos3 = $conn->query($sqlExpedientesCompletos3);
         $rowResultado3 = $resultadoExpCompletos3->fetch_assoc();
         $expediente = $rowResultado3['conteo'];
+        
+        $sqlExpedientesActualizados = "SELECT COUNT(*) AS conteo FROM datos_generales WHERE MONTH(fecha_actualizacion) = $meses AND YEAR(fecha_actualizacion) = YEAR(CURRENT_DATE())";
+        $resultadoExpActualizados = $conn->query($sqlExpedientesActualizados);
+        $rowResultadoAct = $resultadoExpActualizados->fetch_assoc();
+        $expedienteAct = $rowResultadoAct['conteo'];
+
         /* while($rowExp = $resultadoExpCompletos->fetch_assoc()){
             $tipoDato = $rowExp['tipo_dato'];
             if($tipoDato == 37){
@@ -52,6 +58,7 @@ for ($meses = 1; $meses <= 12; $meses++) {
                 'annio' => $year,
                 'credencial' => $credencial,
                 'tarjeton' => $tarjeton,
+                'expedienteAct' => $expedienteAct,
                 'expediente' => $expediente
         );
 

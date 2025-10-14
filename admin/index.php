@@ -397,7 +397,8 @@ else {
                                         <div class="col-8">
                                             <h1 class="p-3" style="color: #4ea0f2;"><span id="expNews2"></span></h1>
                                             <p class="text-secondary"><i class="bi bi-person-standing text-primary me-2"></i><span class="mt-2" id="hombresTotal"></span> | <i class="bi bi-person-standing-dress text-danger me-2"></i><span class="mt-2" id="mujeresTotal"></span></p>
-                                            <p><small class="text-primary">(<span id="porcentajeExp"></span>%)</small></p>
+                                            <p><small class="text-primary">(<span id="porcentajeExp"></span>%*)</small><br><span class="text-secondary"><small style="font-size: x-small;">* Porcentaje en comparación al mes anterior.</small></span></p>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -411,7 +412,7 @@ else {
                                         <div class="col-6 text-start h1"><i class="bi bi-person-badge border p-2 rounded" style="background-color: #cbe5ff; color: #4ea0f2;"></i></div>
                                         <div class="col-6">
                                             <p class="card-text h3 pe-2" style="color: #4ea0f2;"><span id="filasTar"></span></p>
-                                            <p class=""><small class="text-success">(<i class="bi bi-arrow-up"></i> 33.3%)</small></p>
+                                            <p class=""><small class="text-primary">(<span id="porcentajeTarjetones"></span>%*)</small></p>
                                         </div>
                                     </div>
                                 </div>
@@ -425,10 +426,7 @@ else {
                                         <div class="col-6 text-start h1"><i class="bi bi-credit-card-2-front-fill border p-2 rounded" style="background-color: #cbe5ff; color: #4ea0f2;"></i></div>
                                         <div class="col-6">
                                             <p class="card-text h3 pe-2" style="color: #4ea0f2;"><span id="credEnt"></span></p>
-                                            <p class=""><small class="text-success">(<i class="bi bi-arrow-up"></i> 54.3%)</small></p>
-                                        </div>
-                                        <div class="col-12 justify-content-center">
-                                            <p class=""><small class="text-secondary"><i class="bi bi-list-columns-reverse me-2"></i> Reportes</small></p>
+                                            <p class=""><small class="text-primary">(<span id="porcentajeCredenciales"></span>%*)</small></p>
                                         </div>
                                     </div>
                                 </div>
@@ -481,11 +479,20 @@ else {
                                             <!-- <a class="btn btn-secondary btn-sm mt-2 text-white" type="btn" href="query/excel_usuarioslog.php" style="color: #bfc7d1;" >Exportar<i class="bi bi-download ms-2 me-1"></i></a> -->
                                             <div class="input-group input-group-sm mb-3">
                                                 <button class="btn btn-outline-secondary" type="button">Exportar</button>
-                                                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
-                                                    <option selected>Octubre</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                <select class="form-select" id="actividadUsuarios" aria-label="Example select with button addon" onchange="conteoUsuarios();">
+                                                    <option value="" selected>Selecciona...</option>
+                                                    <option value="01">Enero</option>
+                                                    <option value="02">Febrero</option>
+                                                    <option value="03">Marzo</option>
+                                                    <option value="04">Abril</option>
+                                                    <option value="05">Mayo</option>
+                                                    <option value="06">Junio</option>
+                                                    <option value="07">Julio</option>
+                                                    <option value="08">Agosto</option>
+                                                    <option value="09">Septiembre</option>
+                                                    <option value="10">Octubre</option>
+                                                    <option value="11">Noviembre</option>
+                                                    <option value="12">Diciembre</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -513,11 +520,19 @@ else {
                                             <!-- <a class="btn btn-secondary btn-sm mt-2 text-white" type="btn" href="query/excel_usuarioslog.php" style="color: #bfc7d1;" >Exportar<i class="bi bi-download ms-2 me-1"></i></a> -->
                                             <div class="input-group input-group-sm mb-3">
                                                 <button class="btn btn-outline-secondary" type="button">Exportar</button>
-                                                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
-                                                    <option selected>Mes en curso</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                <select class="form-select" id="actividadMunicipios" aria-label="" onchange="municipiosMes(this)">
+                                                    <option value="01">Enero</option>
+                                                    <option value="02">Febrero</option>
+                                                    <option value="03">Marzo</option>
+                                                    <option value="04">Abril</option>
+                                                    <option value="05">Mayo</option>
+                                                    <option value="06">Junio</option>
+                                                    <option value="07">Julio</option>
+                                                    <option value="08">Agosto</option>
+                                                    <option value="09">Septiembre</option>
+                                                    <option value="10">Octubre</option>
+                                                    <option value="11">Noviembre</option>
+                                                    <option value="12">Diciembre</option>
                                                 </select>
                                             </div>
                                         </div>

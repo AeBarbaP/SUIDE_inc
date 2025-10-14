@@ -21,7 +21,7 @@ function conteoGeneral() {
 
             if (Array.isArray(jsonData)) {
                 console.log('Número de elementos en el array:', jsonData.length);
-                var datosTabla = Array(12).fill(0).map(() => ({ credencial: 0, tarjeton: 0, expediente: 0 }));
+                var datosTabla = Array(12).fill(0).map(() => ({ credencial: 0, tarjeton: 0, expediente: 0, expedienteAct: 0 }));
 
                 // Iterar sobre cada elemento en el array
                 for (var i = 0; i < jsonData.length; i++) {
@@ -30,15 +30,17 @@ function conteoGeneral() {
                     var credencial = datosGenerales.credencial;
                     var tarjeton = datosGenerales.tarjeton;
                     var expediente = datosGenerales.expediente;
+                    var expedienteAct = datosGenerales.expedienteAct;
 
                     // Agregar los datos al arreglo multidimensional
-                    datosTabla[mes] = { credencial, tarjeton, expediente };
+                    datosTabla[mes] = { credencial, tarjeton, expediente, expedienteAct };
                 }
 
                 // Crear un arreglo para los datos del gráfico
                 var credencialData = datosTabla.map(d => d.credencial);
                 var tarjetonData = datosTabla.map(d => d.tarjeton);
                 var expedienteData = datosTabla.map(d => d.expediente);
+                var expedienteActData = datosTabla.map(d => d.expedienteAct);
 
                 // Crear el gráfico
                 const ctx = document.getElementById('myChart').getContext('2d');
@@ -51,7 +53,7 @@ function conteoGeneral() {
                         ],
                         datasets: [
                             {
-                                label: 'Credencial',
+                                label: 'Credenciales',
                                 data: credencialData,
                                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                                 borderColor: 'rgba(255, 99, 132, 1)',
@@ -63,7 +65,7 @@ function conteoGeneral() {
                                 maintainAspectRatio: false,
                             },
                             {
-                                label: 'Tarjeton',
+                                label: 'Tarjetones',
                                 data: tarjetonData,
                                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                                 borderColor: 'rgba(54, 162, 235, 1)',
@@ -75,12 +77,24 @@ function conteoGeneral() {
                                 maintainAspectRatio: false,
                             },
                             {
-                                label: 'Expediente',
+                                label: 'Expedientes',
                                 data: expedienteData,
                                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                                 borderColor: 'rgba(75, 192, 192, 1)',
                                 borderWidth: 1,
                                 pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                                borderRadius: 40,
+                                borderSkipped: false,
+                                responsive: true,
+                                maintainAspectRatio: false,
+                            },
+                            {
+                                label: 'Actualizados',
+                                data: expedienteActData,
+                                backgroundColor: 'rgba(80, 197, 121, 0.2)',
+                                borderColor: 'rgba(80, 197, 121, 1)',
+                                borderWidth: 1,
+                                pointBackgroundColor: 'rgba(80, 197, 121, 1)',
                                 borderRadius: 40,
                                 borderSkipped: false,
                                 responsive: true,
@@ -123,11 +137,18 @@ function conteoGeneral() {
         }
     });
 }
+
+let miGrafico;
+
 function conteoUsuarios() {
-    
+    var mes = document.getElementById('actividadUsuarios').value;
+
     $.ajax({
         type: "POST",
         url: "query/query_actividadUsers.php",
+        data:{
+            mes:mes
+        },
         dataType: "json",
         cache: false,
         success: function(response) {
@@ -162,9 +183,16 @@ function conteoUsuarios() {
                 var expedienteData = datosTabla.map(d => d.expediente);
                 var expedienteUpdateData = datosTabla.map(d => d.expedienteUpdate);
 
+                let delayed;
+                // Graphs
+                const ctx1 = document.getElementById('myChartUsers')
+                
+                if (myChart!=null) {
+                  myChart.destroy();
+                }
+              
                 // Crear el gráfico
                 const ctx = document.getElementById('myChartUsers').getContext('2d');
-                let delayed;
                 const myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
@@ -211,10 +239,10 @@ function conteoUsuarios() {
                             {
                                 label: 'Actualizados',
                                 data: expedienteUpdateData,
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                borderColor: 'rgba(75, 192, 192, 1)',
+                                backgroundColor: 'rgba(80, 197, 121, 0.2)',
+                                borderColor: 'rgba(80, 197, 121, 1)',
                                 borderWidth: 1,
-                                pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                                pointBackgroundColor: 'rgba(80, 197, 121, 1)',
                                 borderRadius: 40,
                                 borderSkipped: false,
                                 responsive: true,
@@ -259,11 +287,15 @@ function conteoUsuarios() {
 }
 
 function conteoMunicipios() {
-    
+    var mes = document.getElementById('actividadMunicipios').value;
+
     $.ajax({
         type: "POST",
         url: "query/queryMunicipioGeneral.php",
         dataType: "json",
+        data: {
+            mes:mes
+        },
         cache: false,
         success: function(response) {
             //console.log ("Identado por Anny: ",response);
@@ -275,7 +307,7 @@ function conteoMunicipios() {
                 //console.log('Número de elementos en el array:', jsonData.length);
                 var x = response.length;
                 
-                const arrayConcatenado = [...response[0], ...response[1], ...response[2]];
+                const arrayConcatenado = [...response[0], ...response[1], ...response[2], ...response[3]];
                 
                 const datosAgrupados = arrayConcatenado.reduce((acumulador, objetoActual) => {
                     if (objetoActual.municipio) {
@@ -306,6 +338,7 @@ function conteoMunicipios() {
                 const datosCredenciales = etiquetasMunicipios.map(municipio => datosAgrupados[municipio].credenciales);
                 const datosTarjeton = etiquetasMunicipios.map(municipio => datosAgrupados[municipio].tarjetones);
                 const datosExpedientes = etiquetasMunicipios.map(municipio => datosAgrupados[municipio].expedientes);
+                const datosExpedientesAct = etiquetasMunicipios.map(municipio => datosAgrupados[municipio].expedientesActualizados);
 
                 console.log('datosTarjeton',datosTarjeton);
                 // Crear el gráfico
@@ -354,18 +387,18 @@ function conteoMunicipios() {
                                 responsive: true,
                                 maintainAspectRatio: false,
                             },
-                            /* {
+                            {
                                 label: 'Actualizados',
-                                data: expedienteUpdateData,
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                borderColor: 'rgba(75, 192, 192, 1)',
+                                data: datosExpedientesAct,
+                                backgroundColor: 'rgba(80, 197, 121, 0.2)',
+                                borderColor: 'rgba(80, 197, 121, 1)',
                                 borderWidth: 1,
-                                pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                                pointBackgroundColor: 'rgba(80, 197, 121, 1)',
                                 borderRadius: 40,
                                 borderSkipped: false,
                                 responsive: true,
                                 maintainAspectRatio: false,
-                            } */
+                            }
                         ],
                     },
                     options: {

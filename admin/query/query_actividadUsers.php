@@ -6,6 +6,15 @@ date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
 $fecha_actual = strftime("%Y-%m-%d,%H:%M:%S");
 
+$mes = $_POST['mes'];
+
+if ($mes == "" || $mes == null){
+    $month = date('m', strtotime($fecha_actual));
+}
+else {
+    $month = $mes;
+}
+
 $credencial = 0;
 $tarjeton = 0;
 $expediente = 0;
@@ -19,21 +28,21 @@ $expediente = 0;
 
         $user = $rowUsers['username'];
 
-        $sqlExpedientesCompletos = "SELECT COUNT(*) AS conteo FROM log_registro WHERE MONTH(fecha) = MONTH(CURRENT_DATE()) AND YEAR(fecha) = YEAR(CURRENT_DATE()) AND tipo_dato = 37 AND usr = '$user'";
+        $sqlExpedientesCompletos = "SELECT COUNT(*) AS conteo FROM log_registro WHERE MONTH(fecha) = '$month' AND YEAR(fecha) = YEAR(CURRENT_DATE()) AND tipo_dato = 37 AND usr = '$user'";
         $resultadoExpCompletos = $conn->query($sqlExpedientesCompletos);
         $rowResultado1 = $resultadoExpCompletos->fetch_assoc();
         $credencial = $rowResultado1['conteo'];
 
-        $sqlExpedientesCompletos2 = "SELECT * FROM tarjetones WHERE MONTH(fecha_entrega) = MONTH(CURRENT_DATE()) AND YEAR(fecha_entrega) = YEAR(CURRENT_DATE()) AND user = '$user' GROUP BY folio_tarjeton";
+        $sqlExpedientesCompletos2 = "SELECT * FROM tarjetones WHERE MONTH(fecha_entrega) = '$month' AND YEAR(fecha_entrega) = YEAR(CURRENT_DATE()) AND user = '$user' GROUP BY folio_tarjeton";
         $resultadoExpCompletos2 = $conn->query($sqlExpedientesCompletos2);
         $tarjeton = $resultadoExpCompletos2->num_rows;
         
-        $sqlExpedientesCompletos3 = "SELECT COUNT(*) AS conteo FROM log_registro WHERE MONTH(fecha) = MONTH(CURRENT_DATE()) AND YEAR(fecha) = YEAR(CURRENT_DATE()) AND tipo_dato = 39 AND usr = '$user'";
+        $sqlExpedientesCompletos3 = "SELECT COUNT(*) AS conteo FROM log_registro WHERE MONTH(fecha) = '$month' AND YEAR(fecha) = YEAR(CURRENT_DATE()) AND tipo_dato = 39 AND usr = '$user'";
         $resultadoExpCompletos3 = $conn->query($sqlExpedientesCompletos3);
         $rowResultado3 = $resultadoExpCompletos3->fetch_assoc();
         $expediente = $rowResultado3['conteo'];
         
-        $sqlExpedientesCompletos4 = "SELECT COUNT(*) AS conteo FROM log_registro WHERE MONTH(fecha) = MONTH(CURRENT_DATE()) AND YEAR(fecha) = YEAR(CURRENT_DATE()) AND tipo_dato = 41 AND usr = '$user'";
+        $sqlExpedientesCompletos4 = "SELECT COUNT(*) AS conteo FROM datos_generales WHERE MONTH(fecha_actualizacion) = '$month' AND YEAR(fecha_actualizacion) = YEAR(CURRENT_DATE()) AND usuario_actualiza = '$user'";
         $resultadoExpCompletos4 = $conn->query($sqlExpedientesCompletos4);
         $rowResultado4 = $resultadoExpCompletos4->fetch_assoc();
         $expedienteActualizado = $rowResultado4['conteo'];
