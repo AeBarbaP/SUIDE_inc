@@ -56,11 +56,7 @@ else {
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         <!-- js de carga -->
-        <script src="assets/js/query_onload.js"></script>
-        <script src="assets/js/userUpdate.js"></script>
-        <script src="assets/js/agregarUser.js"></script>
-        <script src="assets/js/reportes.js"></script>
-        <script src="assets/js/gestionUsers.js"></script>
+        
 
         <!-- js jquery cdn -->
         <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
@@ -520,7 +516,8 @@ else {
                                             <!-- <a class="btn btn-secondary btn-sm mt-2 text-white" type="btn" href="query/excel_usuarioslog.php" style="color: #bfc7d1;" >Exportar<i class="bi bi-download ms-2 me-1"></i></a> -->
                                             <div class="input-group input-group-sm mb-3">
                                                 <button class="btn btn-outline-secondary" type="button">Exportar</button>
-                                                <select class="form-select" id="actividadMunicipios" aria-label="" onchange="municipiosMes(this)">
+                                                <select class="form-select" id="actividadMunicipios" aria-label="" onchange="conteoMunicipios()">
+                                                    <option value="" selected>Selecciona...</option>
                                                     <option value="01">Enero</option>
                                                     <option value="02">Febrero</option>
                                                     <option value="03">Marzo</option>
@@ -590,6 +587,12 @@ else {
     </body><!--aqui-->
 </html>
     
+<script src="assets/js/graficos.js"></script>
+<script src="assets/js/query_onload.js"></script>
+<script src="assets/js/userUpdate.js"></script>
+<script src="assets/js/agregarUser.js"></script>
+<script src="assets/js/reportes.js"></script>
+<script src="assets/js/gestionUsers.js"></script>
 <script src="assets/js/graficos.js"></script>
 
 <?php

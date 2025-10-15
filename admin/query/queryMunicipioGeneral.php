@@ -6,13 +6,20 @@
     date_default_timezone_set('America/Mexico_City');
     setlocale(LC_TIME, 'es_MX.UTF-8');
 
-    $fechaHoy = new DateTime();
-    $mes = $fechaHoy->format('m');
-    $anio = $fechaHoy->format('Y');
+    $fechaHoy = strftime("%Y-%m-%d,%H:%M:%S");
+    
+    $mes = $_POST['mes'];
+
+    if ($mes == "" || $mes == null){
+        $month = date('m', strtotime($fechaHoy));
+    }
+    else {
+        $month = $mes;
+    }
 
     $sql = "SELECT datos_generales.municipio, COUNT(tarjetones.folio_tarjeton) AS tarjetonesTotal FROM datos_generales 
     INNER JOIN tarjetones ON tarjetones.numExpediente = datos_generales.id
-    WHERE (MONTH(tarjetones.fecha_entrega) = 08 AND YEAR(tarjetones.fecha_entrega) = YEAR(CURRENT_DATE())) AND tarjetones.tipo_tarjeton = 1 
+    WHERE (MONTH(tarjetones.fecha_entrega) = '$month' AND YEAR(tarjetones.fecha_entrega) = YEAR(CURRENT_DATE())) AND tarjetones.tipo_tarjeton = 1 
     GROUP BY datos_generales.municipio"; 
     $resultado = $conn->query($sql);
 
@@ -34,7 +41,7 @@
 
     $sql2 = "SELECT datos_generales.municipio, COUNT(solicitud.folio_solicitud) AS credencialesTotal FROM datos_generales 
     INNER JOIN solicitud ON solicitud.folio_solicitud = datos_generales.numExpediente
-    WHERE MONTH(solicitud.fecha_solicitud) = 08 AND YEAR(solicitud.fecha_solicitud) = YEAR(CURRENT_DATE())  
+    WHERE MONTH(solicitud.fecha_solicitud) = '$month' AND YEAR(solicitud.fecha_solicitud) = YEAR(CURRENT_DATE())  
     GROUP BY datos_generales.municipio"; 
     $resultado2 = $conn->query($sql2);
 
@@ -55,7 +62,7 @@
     }
 
     $sql3 = "SELECT datos_generales.municipio, COUNT(datos_generales.id) AS expedientesTotal FROM datos_generales
-    WHERE MONTH(datos_generales.fecha_registro) = 08 AND YEAR(datos_generales.fecha_registro) = YEAR(CURRENT_DATE())  
+    WHERE MONTH(datos_generales.fecha_registro) = '$month' AND YEAR(datos_generales.fecha_registro) = YEAR(CURRENT_DATE())  
     GROUP BY datos_generales.municipio"; 
     $resultado3 = $conn->query($sql3);
 
@@ -76,7 +83,7 @@
     }
 
     $sql4 = "SELECT datos_generales.municipio, COUNT(datos_generales.id) AS expedientesActualizados FROM datos_generales
-    WHERE MONTH(datos_generales.fecha_actualizacion) = 08 AND YEAR(datos_generales.fecha_actualizacion) = YEAR(CURRENT_DATE())  
+    WHERE MONTH(datos_generales.fecha_actualizacion) = '$month' AND YEAR(datos_generales.fecha_actualizacion) = YEAR(CURRENT_DATE())  
     GROUP BY datos_generales.municipio"; 
     $resultado4 = $conn->query($sql4);
 

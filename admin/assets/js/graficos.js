@@ -1,4 +1,4 @@
-
+let myChart2 = null;
 function conteoGeneral() {
     const fechaActual = new Date();
 
@@ -45,7 +45,7 @@ function conteoGeneral() {
                 // Crear el gráfico
                 const ctx = document.getElementById('myChart').getContext('2d');
                 let delayed;
-                const myChart = new Chart(ctx, {
+                myChart2 = new Chart(ctx, {
                     type: 'bar',
                     data: {
                         labels: [
@@ -138,7 +138,7 @@ function conteoGeneral() {
     });
 }
 
-let miGrafico;
+let myChart = null;
 
 function conteoUsuarios() {
     var mes = document.getElementById('actividadUsuarios').value;
@@ -185,15 +185,13 @@ function conteoUsuarios() {
 
                 let delayed;
                 // Graphs
-                const ctx1 = document.getElementById('myChartUsers')
                 
-                if (myChart!=null) {
-                  myChart.destroy();
+                if (myChart) {
+                    myChart.destroy();
                 }
-              
                 // Crear el gráfico
                 const ctx = document.getElementById('myChartUsers').getContext('2d');
-                const myChart = new Chart(ctx, {
+                myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
                         labels: 
@@ -286,6 +284,8 @@ function conteoUsuarios() {
     });
 }
 
+let myChart1 = null;
+
 function conteoMunicipios() {
     var mes = document.getElementById('actividadMunicipios').value;
 
@@ -341,10 +341,16 @@ function conteoMunicipios() {
                 const datosExpedientesAct = etiquetasMunicipios.map(municipio => datosAgrupados[municipio].expedientesActualizados);
 
                 console.log('datosTarjeton',datosTarjeton);
+                
+                if (myChart1) {
+                    myChart1.destroy();
+                }
+                
                 // Crear el gráfico
+
                 const ctx = document.getElementById('myChartMunicipios').getContext('2d');
                 let delayed;
-                const myChart = new Chart(ctx, {
+                myChart1 = new Chart(ctx, {
                     type: 'bar',
                     data: {
                         labels: 

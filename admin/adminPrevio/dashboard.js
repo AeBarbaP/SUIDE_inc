@@ -114,7 +114,7 @@ function conteoFiltrado(){
                 }
               
                  // eslint-disable-next-line no-unused-vars
-                 
+                
                 myChart = new Chart(ctx, {
                   type: 'bar',
                   data: {
